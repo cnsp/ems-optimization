@@ -1,0 +1,15 @@
+{
+  "scenario": "extreme_demand",
+  "K": 5,
+  "demand_multiplier": 3,
+  "horizon_hours": 12,
+  "total_incidents": 70,
+  "incidents_queued": 40,
+  "queue_fraction": 0.5714,
+  "queue_length_max": 24,
+  "response_time_mean_min": 32.45,
+  "response_time_p90_min": 70.7,
+  "coverage_fraction": 0.1429,
+  "simulation_completed": true,
+  "metrics_consistent": true
+}

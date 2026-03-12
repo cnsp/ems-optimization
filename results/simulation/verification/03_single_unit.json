@@ -1,0 +1,15 @@
+{
+  "scenario": "single_unit",
+  "K": 1,
+  "firehouse": "Engine 4/Ladder 15",
+  "horizon_hours": 24,
+  "total_incidents": 34,
+  "incidents_queued": 33,
+  "queue_fraction": 0.9706,
+  "queue_length_max": 43,
+  "queue_length_tw_avg": 19.44,
+  "response_time_mean_min": 316.09,
+  "response_time_p90_min": 633.27,
+  "coverage_fraction": 0.0,
+  "unit_utilization": 0.9948
+}
