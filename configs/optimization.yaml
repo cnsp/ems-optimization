@@ -1,0 +1,35 @@
+# ============================================================
+# Optimization Configuration
+# ============================================================
+# Used by: src/ems_readiness/optimization/allocator.py
+# ============================================================
+
+# Total EMS units to allocate (scenarios to evaluate)
+unit_counts: [20, 30, 40, 48]
+
+# Default total units if not specified
+default_K: 40
+
+# Maximum units any single firehouse can host
+firehouse_capacity: 5
+
+# Coverage threshold for maximal-coverage model (minutes)
+coverage_threshold_minutes: 8
+
+# Default optimisation model
+# Options: demand_weighted, p_median, maximal_coverage
+default_model: demand_weighted
+
+# Solver configuration
+solver:
+  name: CBC           # PuLP default; also supports GLPK
+  time_limit_sec: 300
+  verbose: false
+
+# Models to include in comparison runs
+compare_models:
+  - uniform
+  - demand_proportional
+  - demand_weighted
+  - p_median
+  - maximal_coverage

@@ -7,4 +7,4 @@ service  – Travel-time proxy and on-scene service-time models.
 utils    – Distance calculations and shared helpers.
 """
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
