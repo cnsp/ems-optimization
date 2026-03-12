@@ -153,3 +153,173 @@ Option 3 - Use all available data for demand pattern estimation, with options to
 ---
 
 *Last Updated: March 12, 2026*
+
+
+
+### [DEC-003] Optimization Policy Selection
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+Multiple optimization formulations exist for EMS allocation. Need to determine which models to implement and compare for Manhattan EMS readiness.
+
+**Options Considered**:
+1. Demand-Weighted Optimization: Minimize demand-weighted average response time
+2. P-Median: Minimize total response time (unweighted)
+3. Maximal Coverage: Maximize demand covered within threshold
+4. Set Covering: Cover all demand with minimum units
+5. Hybrid: Multi-objective optimization
+
+**Decision**:
+Implement and compare options 1-3 (Demand-Weighted, P-Median, Maximal Coverage) plus two baseline policies (Uniform, Demand-Proportional).
+
+**Rationale**:
+- Demand-Weighted (P2) aligns with equity goals (weight by demand intensity)
+- P-Median (P2b) provides comparison for unweighted optimization
+- Maximal Coverage (P2c) represents pure coverage objective
+- Baselines (P0, P1) provide non-optimized benchmarks
+- Set Covering is subsumed by other models
+- Multi-objective deferred to future work
+
+**Consequences**:
+- Need to implement 3 MIP solvers + 2 baseline policies
+- Compare 5 policies × 4 K values = 20 scenarios
+- Provides comprehensive policy comparison for decision-makers
+
+---
+
+### [DEC-004] Unit Count Scenarios (K)
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+Need to determine which unit counts to evaluate for optimization and sensitivity analysis.
+
+**Options Considered**:
+1. K = {20, 30, 40, 48} - Current recommendation
+2. K = {10, 20, 30, 40, 50} - Wider range
+3. K = {25, 30, 35, 40, 45, 50} - Finer granularity
+4. K = 40 only - Current Manhattan capacity
+
+**Decision**:
+Use K = {20, 30, 40, 48}
+
+**Rationale**:
+- K=20: Resource-constrained scenario (50% of current)
+- K=30: Moderate resource scenario (75% of current)
+- K=40: Current Manhattan capacity (baseline)
+- K=48: All firehouses staffed with 1 unit (upper bound given capacity=5)
+- Provides sufficient range to observe diminishing returns
+- Computationally efficient (4 scenarios × 5 policies = 20 optimizations)
+
+**Consequences**:
+- May miss optimal K if it falls outside range (e.g., K=25)
+- But results show K=20 achieves near-optimal for P2, so range is sufficient
+- Future work can refine with continuous K if needed
+
+---
+
+### [DEC-005] Firehouse Capacity Constraint
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+Need to determine maximum units that can be allocated to a single firehouse.
+
+**Options Considered**:
+1. No limit (unconstrained)
+2. Capacity = 3 units per firehouse
+3. Capacity = 5 units per firehouse
+4. Capacity = 10 units per firehouse
+5. Variable capacity by firehouse size
+
+**Decision**:
+Use capacity = 5 units per firehouse (uniform across all locations)
+
+**Rationale**:
+- Based on FDNY operational guidance (typical firehouse can support 4-6 units)
+- Prevents unrealistic concentration (e.g., all 40 units at one location)
+- 5 units allows sufficient flexibility for optimized allocation
+- Uniform capacity simplifies optimization formulation
+- Conservative estimate (actual capacity varies 3-10 by location)
+
+**Consequences**:
+- P2 allocates up to 5 units at high-demand firehouses (Midtown, Financial District)
+- May under-utilize capacity at larger firehouses
+- Future work can incorporate actual capacity data per location
+
+---
+
+### [DEC-006] Coverage Threshold for Maximal Coverage Model
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+Maximal Coverage model requires threshold τ (minutes) to define "covered" demand.
+
+**Options Considered**:
+1. τ = 5 minutes (aggressive response target)
+2. τ = 8 minutes (NFPA recommendation)
+3. τ = 10 minutes (relaxed target)
+4. τ = 6 minutes (NYC local law)
+5. Multiple thresholds for sensitivity analysis
+
+**Decision**:
+Use τ = 8 minutes (NFPA standard)
+
+**Rationale**:
+- NFPA 1710 specifies 8 minutes for 90% of emergencies
+- Aligns with national standards for comparability
+- NYC local law (6 min) is aspirational but not consistently achievable
+- All policies achieve 100% coverage at τ=8 with K≥20
+- Using τ=5 would require more units; τ=10 is too lenient
+
+**Consequences**:
+- P2c (Maximal Coverage) achieves 100% coverage but with worse response time (3.48 min)
+- May want to test τ=6 in future work to align with NYC requirements
+- 8-minute threshold appropriate for Manhattan context (dense, short distances)
+
+---
+
+### [DEC-007] Recommended Policy for Deployment
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Proposed
+
+**Context**:
+After comparing 5 policies, need to recommend best allocation strategy for Manhattan EMS.
+
+**Options Considered**:
+1. P0 (Uniform): Equal distribution
+2. P1 (Demand-Proportional): Simple heuristic
+3. P2 (Demand-Weighted): Minimizes weighted response time
+4. P2b (P-Median): Minimizes total response time
+5. P2c (Maximal Coverage): Maximizes coverage
+
+**Decision**:
+**Primary recommendation: P2 (Demand-Weighted) with K=20-30**
+
+**Rationale**:
+- Best response time: 2.49-2.54 min (0-2% from optimal)
+- 100% coverage at K≥20
+- Efficient: Uses only 20-23 firehouses vs. 34+ for other policies
+- Significant improvement over P0: 17-86% faster response time
+- Fast solve time: <0.05 seconds
+- Diminishing returns beyond K=30 (additional units provide <0.01 min benefit)
+
+**Alternative**: P2b for political feasibility (distributes units more evenly)
+
+**Consequences**:
+- Requires MIP solver integration (PuLP + CBC)
+- Concentrated allocation may face political resistance (some firehouses get 0 units)
+- Recommend phased implementation: Start with P1, transition to P2
+- Quarterly reallocation based on updated demand patterns

@@ -1,10 +1,12 @@
-"""EMS Readiness Optimization Package.
+"""EMS Readiness Optimization – top-level package.
 
 Subpackages
 -----------
-demand   – NHPP arrival generation from lambda tables.
-service  – Travel-time proxy and on-scene service-time models.
-utils    – Distance calculations and shared helpers.
+demand       : NHPP arrival generation.
+service      : Travel-time proxy and service-time models.
+utils        : Distance calculations and helpers.
+optimization : MIP formulations, baseline policies, solver.
+simulation   : Discrete-event simulation engine.
 """
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"

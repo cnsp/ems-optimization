@@ -1,0 +1,31 @@
+# ============================================================
+# Simulation Configuration
+# ============================================================
+# Used by: src/ems_readiness/simulation/engine.py
+#          src/ems_readiness/simulation/runner.py
+# ============================================================
+
+# Simulation horizon (hours)
+# 168 hours = 1 week (7 × 24)
+horizon_hours: 168
+
+# Warm-up period (hours) – discarded before collecting statistics.
+# Set to 0 for terminating simulation (no steady-state warm-up).
+warmup_hours: 0
+
+# Number of independent replications per scenario.
+# 30 gives reasonable CI width for most metrics.
+num_replications: 30
+
+# Base random seed.  Replication i uses seed_base + i.
+seed_base: 42
+
+# Response-time threshold for coverage metric (minutes).
+# Fraction of incidents with response_time ≤ threshold is "coverage".
+response_threshold_minutes: 8.0
+
+# Trace mode: if true, log every event to console (slow, for debugging).
+trace_mode: false
+
+# Output directory for simulation results
+output_dir: results/simulation

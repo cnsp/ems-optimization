@@ -1,0 +1,64 @@
+{
+  "best_overall_response": {
+    "K": 30,
+    "policy_id": "P2",
+    "policy_name": "Demand-Weighted Optimized",
+    "model_type": "demand_weighted",
+    "status": "Optimal",
+    "response_time": 2.4935,
+    "covered_precincts": 25,
+    "total_precincts": 25,
+    "pct_precincts_covered": 100.0,
+    "pct_demand_covered": 100.0,
+    "num_firehouses_used": 23,
+    "max_units_at_firehouse": 5,
+    "solve_time_sec": 0.041
+  },
+  "best_overall_coverage": {
+    "K": 20,
+    "policy_id": "P1",
+    "policy_name": "Demand-Proportional",
+    "model_type": "baseline",
+    "status": "Baseline",
+    "response_time": 2.8696,
+    "covered_precincts": 25,
+    "total_precincts": 25,
+    "pct_precincts_covered": 100.0,
+    "pct_demand_covered": 100.0,
+    "num_firehouses_used": 18,
+    "max_units_at_firehouse": 2,
+    "solve_time_sec": 0.0
+  },
+  "policy_rankings_K40": [
+    {
+      "policy_id": "P2b",
+      "policy_name": "P-Median Optimized",
+      "response_time": 2.4935,
+      "pct_demand_covered": 100.0
+    },
+    {
+      "policy_id": "P2",
+      "policy_name": "Demand-Weighted Optimized",
+      "response_time": 2.4935,
+      "pct_demand_covered": 100.0
+    },
+    {
+      "policy_id": "P1",
+      "policy_name": "Demand-Proportional",
+      "response_time": 2.5199,
+      "pct_demand_covered": 100.0
+    },
+    {
+      "policy_id": "P0",
+      "policy_name": "Uniform",
+      "response_time": 3.0194,
+      "pct_demand_covered": 100.0
+    },
+    {
+      "policy_id": "P2c",
+      "policy_name": "Maximal Coverage",
+      "response_time": 3.4821,
+      "pct_demand_covered": 100.0
+    }
+  ]
+}
