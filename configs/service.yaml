@@ -1,0 +1,39 @@
+# ============================================================
+# Service Model Configuration
+# ============================================================
+# Used by: src/ems_readiness/service/travel_time.py
+#          src/ems_readiness/service/service_time.py
+# ============================================================
+
+travel_time:
+  # Base average speed for EMS vehicles (mph)
+  # 20 mph is a defensible default for urban EMS with lights & sirens
+  # in Manhattan (NYC DOT reports avg traffic speeds of 12–25 mph).
+  average_speed_mph: 20.0
+
+  # Whether to apply time-of-day speed variation
+  use_time_of_day: true
+
+  # Time-of-day speed factors (multiplied by average_speed_mph)
+  # Keys are hour ranges; values are speed multipliers
+  time_of_day_factors:
+    overnight_00_06: 1.30   # less traffic
+    am_peak_06_10:   0.75   # heavy commuter traffic
+    midday_10_16:    0.90   # moderate
+    pm_peak_16_20:   0.70   # heaviest traffic
+    evening_20_24:   1.10   # lighter traffic
+
+service_time:
+  # Distribution for on-scene service time
+  distribution: lognormal   # options: lognormal, exponential
+
+  # Mean on-scene service time (minutes)
+  # Covers: dispatch handling + on-scene care + return-to-available
+  # Travel-to-scene is modelled separately
+  mean_minutes: 25.0
+
+  # Standard deviation (minutes) – used only for lognormal
+  std_minutes: 10.0
+
+# Dispatch delay (fixed component added to every call, minutes)
+dispatch_delay_minutes: 1.5

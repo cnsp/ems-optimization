@@ -109,8 +109,80 @@ Processed Data (data/processed/)
     - Simulation inputs
 ```
 
+## Processed Data Files
+
+### crashes_manhattan.csv
+| Attribute | Value |
+|-----------|-------|
+| **Location** | `data/processed/` |
+| **Size** | 99 MB |
+| **Records** | 416,434 |
+| **Description** | Crash records filtered to Manhattan boundary with `in_cbd` flag |
+| **Date Range** | July 2012 - February 2026 |
+
+### firehouses_clean.csv
+| Attribute | Value |
+|-----------|-------|
+| **Location** | `data/processed/` |
+| **Records** | 219 (all NYC) |
+| **Description** | All firehouses with `in_manhattan` and `in_cbd` flags |
+
+### firehouses_manhattan.csv
+| Attribute | Value |
+|-----------|-------|
+| **Location** | `data/processed/` |
+| **Records** | 48 (27 in CBD) |
+| **Description** | Manhattan firehouses only |
+
+### precincts_manhattan.geojson
+| Attribute | Value |
+|-----------|-------|
+| **Location** | `data/processed/` |
+| **Records** | 30 precincts |
+| **Description** | Police precincts intersecting Manhattan |
+
+---
+
+## Data Quality Audit Findings
+
+**Audit Date:** March 12, 2026
+
+### Crash Data Quality Issues
+| Issue | Count | Percentage | Impact |
+|-------|-------|------------|--------|
+| Missing coordinates | ~448,804 | 20.0% | Cannot be geocoded; excluded from spatial analysis |
+| Missing borough | ~134,641 | 6.0% | Borough field unreliable; use spatial filtering instead |
+| Invalid coordinates | ~0.1% | <0.1% | Outside NYC bounds; excluded |
+
+### Geographic Validation
+| Boundary | Status | Notes |
+|----------|--------|-------|
+| Manhattan | ✓ Valid | 636.63 sq km; CRS EPSG:4326 |
+| CBD | ✓ Valid | 259.58 sq km; 100% within Manhattan |
+| Precincts | ✓ Valid | All 78 geometries valid |
+
+### Firehouse Data
+- All 219 firehouses have valid NYC coordinates
+- 48 firehouses in Manhattan (27 in CBD)
+- No missing data
+
+### Borough Distribution (from raw crash data)
+| Borough | Crashes | Percentage |
+|---------|---------|------------|
+| Brooklyn | ~627,000 | 28.0% |
+| Queens | ~516,000 | 23.0% |
+| Bronx | ~294,000 | 13.1% |
+| Manhattan | ~278,000 | 12.4% |
+| Staten Island | ~79,000 | 3.5% |
+| Missing | ~450,000 | 20.0% |
+
+*Note: Spatial filtering to Manhattan boundary yields 416,434 crashes with valid coordinates.*
+
+---
+
 ## Update Log
 
 | Date | Action | Notes |
 |------|--------|-------|
 | 2026-03-12 | Initial data acquisition | All raw data files downloaded from NYC Open Data |
+| 2026-03-12 | Data audit complete | Validated all datasets; created Manhattan-filtered processed files |

@@ -1,0 +1,25 @@
+# ============================================================
+# Demand Model Configuration
+# ============================================================
+# Used by: src/ems_readiness/demand/arrival_generator.py
+# ============================================================
+
+# Overall base arrival rate (crashes per hour, Manhattan-wide)
+base_rate_per_hour: 3.48
+
+# Paths to pre-computed lambda tables (relative to project root)
+lambda_tables:
+  hourly:   data/processed/demand_lambda_hourly.csv
+  dow:      data/processed/demand_lambda_dow.csv
+  precinct: data/processed/demand_lambda_precinct.csv
+
+# Simulation defaults
+simulation:
+  # Default simulation duration (hours)
+  default_duration_hours: 168   # 1 week
+
+  # Number of replications for Monte-Carlo runs
+  default_replications: 30
+
+  # Random seed for reproducibility (null = random)
+  seed: 42

@@ -1,0 +1,10 @@
+file,type,rows,date_range,quality_issues,notes
+Motor_Vehicle_Collisions_-_Crashes_20260223.csv,raw,2244021,2012-07-01 to 2026-02-23,"~20% missing coordinates; ~6% missing borough","Primary crash data source"
+crashes_manhattan.csv,processed,416434,2012-07-01 to 2026-02-23,None,"Filtered to Manhattan boundary; includes in_cbd flag"
+FDNY_Firehouse_Listing_20260223.csv,raw,219,N/A,None,"All 219 firehouses have valid NYC coordinates"
+firehouses_clean.csv,processed,219,N/A,None,"All firehouses with in_manhattan and in_cbd flags"
+firehouses_manhattan.csv,processed,48,N/A,None,"Manhattan firehouses only (27 in CBD)"
+Police_Precincts_20260223.csv,raw,78,N/A,None,"All geometries valid"
+precincts_manhattan.geojson,processed,30,N/A,None,"Precincts intersecting Manhattan"
+manhattan_boundary.geojson,raw,1,N/A,None,"CRS: EPSG:4326; Area: 636.63 sq km"
+cbd_boundary.geojson,raw,1,N/A,None,"CRS: EPSG:4326; Area: 259.58 sq km; 100% within Manhattan"
