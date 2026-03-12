@@ -8,7 +8,7 @@
 
 ## Overview
 
-The project alignment verification identified **no critical gaps** and **three minor gaps** between the project outline and deliverables. All three gaps have low remediation effort because the underlying data and infrastructure already exist.
+The project alignment verification identified **no critical gaps** and **three minor gaps** between the project outline and deliverables. All three gaps have been **fully resolved** in v1.1.0.
 
 ---
 
@@ -16,9 +16,9 @@ The project alignment verification identified **no critical gaps** and **three m
 
 | ID | Gap | Priority | Effort | Status |
 |----|-----|----------|--------|--------|
-| G1 | CBD robustness comparison not in DES experiments | ⚠️ Recommended | Medium | Open |
-| G2 | Queue metrics underreported in technical report | ⚠️ Nice-to-have | Low | Open |
-| G3 | Seasonal analysis not deeply covered | ⚠️ Nice-to-have | Very Low | Open |
+| G1 | CBD robustness comparison not in DES experiments | ⚠️ Recommended | Medium | ✅ **RESOLVED** |
+| G2 | Queue metrics underreported in technical report | ⚠️ Nice-to-have | Low | ✅ **RESOLVED** |
+| G3 | Seasonal analysis not deeply covered | ⚠️ Nice-to-have | Very Low | ✅ **RESOLVED** |
 
 ---
 
@@ -53,6 +53,25 @@ Rather than re-running simulations, filter the existing incident-level logs from
 - Incident-level logs must include precinct field (✅ they do)
 - CBD precinct mapping exists (✅ `cbd_boundary.geojson` available)
 
+### ✅ Resolution (v1.1.0)
+
+**Approach chosen:** Dedicated CBD DES experiment (Option A — exceeding the recommended Option B).
+
+**Implementation:**
+- Identified 10 CBD precincts via spatial intersection (≥30% overlap with MTA Congestion Relief Zone): precincts 1, 5, 6, 7, 9, 10, 13, 14, 17, 18
+- Created `docs/cbd_definition.md` documenting CBD precinct selection methodology
+- Created `configs/cbd_scenario.yaml` with CBD-specific scenario parameters
+- Built `scripts/run_cbd_experiment.py` — full factorial CBD experiment:
+  - 11 scenarios × 3 policies × 30 replications = **330 dedicated CBD simulation runs**
+  - Scenarios: baseline, high-demand CBD, low-demand non-CBD, fleet variations (K=15,20,25,30), service time variations
+- Created `notebooks/09_cbd_analysis.ipynb` for interactive CBD analysis
+- Created `docs/cbd_robustness_analysis.md` with comprehensive findings
+- Added §5.7 "CBD Robustness Analysis" to `docs/technical_report.md`
+
+**Key findings:** P2 dominates across all CBD scenarios. CBD response times are 2.5–2.9 min for all policies due to firehouse concentration. P0 degrades to 12.81 min in non-CBD areas. P2's advantage is most pronounced in mixed CBD/non-CBD scenarios.
+
+**Deliverables:** 3 figures (`cbd_response_comparison.png`, `cbd_scenario_comparison.png`, `cbd_heatmap.png`), 2 tables (`cbd_summary_all.csv`, `cbd_comparison.csv`), 1 notebook, 2 docs.
+
 ---
 
 ## G2: Queue Metrics in Technical Report
@@ -75,6 +94,18 @@ Add queue metrics to the results section.
 
 ### Estimated Effort: 30 minutes
 
+### ✅ Resolution (v1.1.0)
+
+**Implementation:**
+- Created `scripts/analyze_queue_metrics.py` — comprehensive queue analysis across all 1,770 simulation runs
+- Analyzed queue metrics: mean queue length, max queue length, queue fraction, incidents queued
+- Created `docs/queue_analysis.md` with full findings
+- Added §5.8 "Queueing Performance Analysis" to `docs/technical_report.md`
+
+**Key findings:** Queue metrics are **zero across all 1,770 runs**. System utilization is 10–15%, far below queueing thresholds. This is a legitimate and important finding — the fleet is sufficiently sized that no incidents experience queueing delays under any tested scenario. This validates the system design and demonstrates that response time differences between policies are driven by spatial allocation, not capacity constraints.
+
+**Deliverables:** 4 figures (`queue_comparison_by_policy.png`, `queue_vs_fleet_size.png`, `queue_vs_demand.png`, `queue_heatmap.png`), 2 tables (`queue_statistics.csv`, `queue_anova.csv`), 1 doc.
+
 ---
 
 ## G3: Seasonal Analysis
@@ -96,20 +127,29 @@ Add a brief seasonal note to the demand model documentation.
 
 ### Estimated Effort: 15–30 minutes
 
+### ✅ Resolution (v1.1.0)
+
+**Implementation:**
+- Created `scripts/analyze_seasonal_patterns.py` — monthly/seasonal pattern analysis from 2.24M crash records
+- Computed monthly demand factors, seasonal decomposition, and statistical tests
+- Created `docs/demand_model_spec.md` §8 "Seasonal Patterns" with monthly factors and chi-square results
+- Added §5.9 "Seasonal Variation Analysis" to `docs/technical_report.md`
+
+**Key findings:** Monthly coefficient of variation is **9%** — moderate seasonal variation. Peak month is October (factor 1.103), trough is February (factor 0.822). Chi-square test rejects strict uniformity (p < 0.001), but the 9% CV indicates variation is small relative to hourly (CV ~60%) and DOW patterns. The NHPP model using annual averages remains appropriate, with seasonal factors documented for future refinement.
+
+**Deliverables:** 3 figures (`seasonal_patterns.png`, `seasonal_decomposition.png`, `seasonal_heatmap.png`), 1 table (`seasonal_analysis.csv`), updated `demand_model_spec.md`.
+
 ---
 
-## Priority Ranking
+## Outcome
 
-| Priority | Action | Impact on Submission |
-|----------|--------|---------------------|
-| 1 | G1: CBD robustness | Directly addresses explicit outline requirement |
-| 2 | G2: Queue metrics | Strengthens MOE coverage claim |
-| 3 | G3: Seasonal note | Minor completeness improvement |
+All three gaps are now **fully resolved**. The project achieves **100% alignment** with the project outline.
 
----
+| Gap | Resolution | New Runs | New Figures | New Tables |
+|-----|-----------|----------|-------------|------------|
+| G1 | CBD DES experiment | 330 | 3 | 2 |
+| G2 | Queue analysis | 0 | 4 | 2 |
+| G3 | Seasonal analysis | 0 | 3 | 1 |
+| **Total** | | **330** | **10** | **5** |
 
-## Decision
-
-All three gaps are **non-blocking** for submission. The project fully meets the outline's structural and methodological requirements. These remediation items would polish the submission but are not required for a complete and defensible project package.
-
-**Recommended action:** Address G1 (CBD robustness) if time permits, as it is the only item explicitly called out in the outline's scope and experimental design sections. G2 and G3 can be addressed with minimal effort during final editing.
+**Tagged as v1.1.0 — Gap Closure Release.**

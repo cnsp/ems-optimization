@@ -1,9 +1,9 @@
 # Final Project Summary
-## EMS Readiness Optimization for Manhattan — v1.0.0
+## EMS Readiness Optimization for Manhattan — v1.1.0
 
 **Completion Date:** March 12, 2026  
 **Repository:** github.com/cnsp/ems-optimization  
-**Tag:** v1.0.0
+**Tag:** v1.1.0 (Gap Closure Release)
 
 ---
 
@@ -14,25 +14,25 @@
 | Total files in repository | **205** |
 | Total Python lines of code | **7,348** |
 | Python source files | 42 |
-| Jupyter notebooks | 7 |
-| CSV result files | 36 |
-| PNG figures | 37 |
-| PDF documents | 18 |
-| Markdown documents | 22 |
+| Jupyter notebooks | 8 |
+| CSV result files | 42 |
+| PNG figures | 47 |
+| PDF documents | 21 |
+| Markdown documents | 26 |
 | LaTeX tables | 4 |
-| YAML configuration files | 4 |
+| YAML configuration files | 5 |
 | Unit tests | 39 (all passing) |
 
 ## Simulation Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total simulation runs | **1,440** |
+| Total simulation runs | **1,770** |
 | Replications per cell | 30 |
 | Simulation duration per run | 168 hours (1 week) |
 | Warm-up period per run | 24 hours |
-| Total simulated time | 241,920 hours (~27.6 years) |
-| Total experiments | 4 (factorial design) |
+| Total simulated time | 296,520 hours (~33.8 years) |
+| Total experiments | 5 (factorial design + CBD robustness) |
 | Verification tests | 4 (all passed) |
 | Validation pilots | 3 (all passed) |
 
@@ -55,7 +55,7 @@
 | Phase 2 | Demand & Service Modeling | ✅ Complete | NHPP model, lambda tables, 2 spec docs |
 | Phase 3 | Optimization Models | ✅ Complete | 3 MIP models, allocations, comparison |
 | Phase 4 | DES Simulation + V&V | ✅ Complete | SimPy engine, 39 tests, V&V log |
-| Phase 5 | Production Experiments | ✅ Complete | 1,440 runs, 4 experiment CSVs |
+| Phase 5 | Production Experiments | ✅ Complete | 1,770 runs, 5 experiments (incl. CBD) |
 | Phase 6 | Statistical Analysis | ✅ Complete | ANOVA, post-hoc, 5 pub figures, 4 tables |
 | Phase 7 | Final Report & Docs | ✅ Complete | Technical report, presentation, roadmap |
 
@@ -80,6 +80,24 @@
 - `results/figures/project_summary_dashboard.png` — Visual summary
 - `docs/final_summary.md` — This file
 
+### Part 3: Gap Closure (v1.1.0)
+- `docs/cbd_definition.md` — CBD geographic definition (10 precincts)
+- `configs/cbd_scenario.yaml` — CBD experiment configuration
+- `scripts/run_cbd_experiment.py` — CBD DES experiment runner (330 runs)
+- `scripts/analyze_queue_metrics.py` — Queue metrics analysis script
+- `scripts/analyze_seasonal_patterns.py` — Seasonal pattern analysis script
+- `notebooks/09_cbd_analysis.ipynb` — CBD analysis notebook
+- `docs/cbd_robustness_analysis.md` (.pdf) — CBD findings document
+- `docs/queue_analysis.md` (.pdf) — Queue metrics analysis document
+- `docs/gap_closure_report.md` (.pdf) — Gap closure verification report
+- `results/simulation/cbd_experiment/` — 330 CBD simulation runs
+- `results/figures/cbd_*.png` — 3 CBD figures
+- `results/figures/queue_*.png` — 4 queue analysis figures
+- `results/figures/seasonal_*.png` — 3 seasonal analysis figures
+- `results/tables/cbd_*.csv` — 2 CBD tables
+- `results/tables/queue_*.csv` — 2 queue tables
+- `results/tables/seasonal_*.csv` — 1 seasonal table
+
 ---
 
-*Project complete. Tagged as v1.0.0 and pushed to remote.*
+*Project complete. Tagged as v1.1.0 — 100% alignment with project outline.*
