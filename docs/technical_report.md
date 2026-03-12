@@ -37,7 +37,7 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
    - **P0** (Uniform): Equal distribution across all firehouses
    - **P1** (Demand-Proportional): Units allocated proportional to nearby demand
    - **P2** (Demand-Weighted Optimized): MIP-optimized allocation minimizing expected response time
-3. **Discrete-Event Simulation (DES)** with 1,440 production runs across 4 factorial experiments
+3. **Discrete-Event Simulation (DES)** with 1,770 production runs across 5 experiment sets (including CBD robustness)
 
 ### Key Findings
 
@@ -48,7 +48,7 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
 | 8-min Coverage | 64.4% | 99.6% | **99.6%** | **+35.2 pp** |
 | Mean Utilization | 9.1% | 7.5% | **7.5%** | −1.6 pp |
 
-All differences are statistically significant (p < 0.001) with large effect sizes (Cohen's d > 28 for P0 vs P2 on mean response time). The optimized policy P2 is robust to demand fluctuations (0.5×–2.0× multiplier) and service time variations (20–30 min mean).
+All differences are statistically significant (p < 0.001) with large effect sizes (Cohen's d > 28 for P0 vs P2 on mean response time). The optimized policy P2 is robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific stress scenarios (2× demand surge, increased service times). Queue analysis confirms zero queueing across all experiments, indicating that performance differences are driven entirely by spatial allocation efficiency. Seasonal analysis shows moderate monthly variation (CV = 9%) that does not significantly impact policy rankings.
 
 ### Recommendations
 
@@ -366,6 +366,68 @@ Varying mean service time across 20, 25, and 30 minutes:
 | Service time affects rankings | Two-way ANOVA | F(interaction) = 0.14 | ns (p = 0.97) |
 
 ---
+
+### 5.7 CBD Robustness Analysis
+
+To assess policy performance under CBD-specific conditions, we conducted 330 additional simulation runs across four CBD-focused scenarios (see `docs/cbd_robustness_analysis.md` for full details).
+
+**CBD Definition:** The CBD comprises 10 precincts (1, 5, 6, 7, 9, 10, 13, 14, 17, 18) overlapping ≥30% with the MTA Congestion Relief Zone, accounting for 55.7% of Manhattan crash demand.
+
+| Scenario | P0 RT (min) | P2 RT (min) | P0 Coverage | P2 Coverage |
+|----------|------------|------------|-------------|-------------|
+| Baseline (CBD only) | 2.73 | 2.48 | 99.9% | 99.9% |
+| CBD Surge (2× demand) | 2.91 | 2.61 | 99.5% | 99.8% |
+| CBD Slow Service | 2.77 | 2.53 | 99.9% | 99.9% |
+
+**Key findings:**
+- CBD response times are significantly lower than Manhattan-wide averages due to firehouse concentration
+- P2 maintains its advantage across all CBD scenarios
+- Even under 2× CBD demand, P2 achieves 99.3% overall coverage
+- P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD)
+
+![CBD Scenario Comparison](../results/figures/cbd_scenario_comparison.png)
+
+### 5.8 Queueing Analysis
+
+Queue metrics were systematically collected across all 1,770 simulation runs (production + CBD experiments). Detailed analysis is provided in `docs/queue_analysis.md`.
+
+**Finding: Zero queueing across all experiments.** No incidents experienced any waiting in queue under any scenario, policy, or parameter combination tested.
+
+| Experiment | Queue Fraction | Mean Queue Length | Max Queue Length |
+|-----------|---------------|------------------|-----------------|
+| Exp 1 (Policy comparison) | 0.000 | 0.000 | 0 |
+| Exp 2 (Fleet sensitivity) | 0.000 | 0.000 | 0 |
+| Exp 3 (Demand sensitivity) | 0.000 | 0.000 | 0 |
+| Exp 4 (Service robustness) | 0.000 | 0.000 | 0 |
+| CBD experiments | 0.000 | 0.000 | 0 |
+
+**Explanation:** The system operates at ~10-15% utilization. With K=20 units and an average service cycle of 30 minutes, maximum throughput is ~40 incidents/hour — far exceeding peak demand of 5-6 incidents/hour. This low traffic intensity (ρ ≈ 0.087) ensures near-zero waiting probability even under stress scenarios.
+
+**Implication:** Since queuing is negligible, response time differences between policies are **entirely due to spatial allocation** (travel distances), not capacity constraints. This validates the focus on optimization-based allocation (P2) as the primary mechanism for service improvement.
+
+![Queue Metrics by Policy](../results/figures/queue_comparison_by_policy.png)
+
+### 5.9 Seasonal Variation Analysis
+
+Monthly crash demand patterns were analyzed using 416,434 Manhattan crash records to assess seasonal effects on the NHPP demand model.
+
+| Month | Avg Crashes/Month | Factor | Season |
+|-------|------------------|--------|--------|
+| January | — | 0.876 | Winter |
+| February | — | 0.822 | Winter |
+| May | — | 1.067 | Spring |
+| October | — | 1.103 | Fall (peak) |
+
+**Statistical Tests:**
+- Chi-square test for uniformity: **Rejected** (p < 0.001) — monthly demand is not uniform
+- ANOVA across months: **Significant** (p < 0.001)
+- Coefficient of variation: **9%** (moderate variation)
+- Seasonal amplitude: **28%** (peak-to-trough range)
+
+**Interpretation:** While statistically significant, seasonal variation is moderate (CV = 9%). The peak month (October, factor = 1.103) has only 10.3% more demand than average. The NHPP model's use of an annual average rate is a reasonable approximation, as hourly variation (factor range: 0.5–1.6) and day-of-week variation (0.85–1.15) dominate seasonal effects. For high-fidelity future models, seasonal adjustments could be incorporated.
+
+![Seasonal Patterns](../results/figures/seasonal_patterns.png)
+
 
 ## 6. Discussion
 

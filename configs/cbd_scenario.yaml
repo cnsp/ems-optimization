@@ -1,0 +1,66 @@
+# ============================================================
+# CBD-Specific Scenario Configuration
+# ============================================================
+# Used by: scripts/run_cbd_experiment.py
+# Reference: docs/cbd_definition.md
+# ============================================================
+
+# CBD precinct list (≥30% overlap with MTA Congestion Relief Zone)
+cbd_precincts: [1, 5, 6, 7, 9, 10, 13, 14, 17, 18]
+
+# Non-CBD Manhattan precincts
+non_cbd_precincts: [19, 20, 22, 23, 24, 25, 26, 28, 30, 32, 33, 34, 50, 52, 114]
+
+# CBD demand statistics (from crash data analysis)
+cbd_demand_share: 0.557  # 55.7% of Manhattan crashes in CBD
+non_cbd_demand_share: 0.443
+
+# Experiment scenarios
+scenarios:
+  # Scenario A: CBD demand surge (2x CBD demand, 1x elsewhere)
+  cbd_surge:
+    name: "CBD Demand Surge"
+    description: "Double the demand rate in CBD precincts, normal elsewhere"
+    cbd_demand_multiplier: 2.0
+    non_cbd_demand_multiplier: 1.0
+    service_time_mean: 25.0
+
+  # Scenario B: CBD service time increase (longer on-scene in CBD)
+  cbd_slow_service:
+    name: "CBD Service Time Increase"
+    description: "Longer average on-scene time in CBD due to access difficulty"
+    cbd_demand_multiplier: 1.0
+    non_cbd_demand_multiplier: 1.0
+    cbd_service_time_mean: 35.0
+    non_cbd_service_time_mean: 25.0
+
+  # Scenario C: CBD-only allocation (units only at CBD firehouses)
+  cbd_only:
+    name: "CBD-Only Allocation"
+    description: "Units allocated only to firehouses nearest CBD precincts"
+    cbd_demand_multiplier: 1.0
+    non_cbd_demand_multiplier: 1.0
+    allocation_strategy: "cbd_only"
+
+  # Scenario D: Mixed allocation (60% CBD, 40% non-CBD)
+  mixed:
+    name: "Mixed Allocation"
+    description: "60% of units dedicated to CBD, 40% flexible for non-CBD"
+    cbd_demand_multiplier: 1.0
+    non_cbd_demand_multiplier: 1.0
+    cbd_unit_fraction: 0.6
+    allocation_strategy: "mixed"
+
+# Simulation parameters
+simulation:
+  num_replications: 30
+  horizon_hours: 168
+  seed_base: 42
+  policies: ["P0", "P1", "P2"]
+  default_K: 20
+
+# Output configuration
+output:
+  directory: "results/simulation/cbd_experiment"
+  figures_directory: "results/figures"
+  tables_directory: "results/tables"

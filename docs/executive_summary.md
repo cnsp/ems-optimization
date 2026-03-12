@@ -19,9 +19,9 @@ policies for Manhattan:
 | **P1 – Demand-Proportional** | Station more units where crashes occur most often |
 | **P2 – Maximal Coverage** | Optimally position units to maximise 8-minute coverage |
 
-A total of **1 440 simulation replications** were run across four experiment sets,
-using 30 independent replications per scenario with Common Random Numbers (CRN) to
-ensure fair comparisons.
+A total of **1,770 simulation replications** were run across five experiment sets
+(including CBD robustness), using 30 independent replications per scenario with
+Common Random Numbers (CRN) to ensure fair comparisons.
 
 ---
 
@@ -47,7 +47,19 @@ sizes** (Cohen's d > 2.0).
 - **Service time variation**: ±20% changes in on-scene service time have minimal
   impact on the P2 advantage.
 
-### 3. Statistical Confidence
+### 3. CBD Robustness
+
+- P2 maintains near-complete coverage (99.3%) even under 2× CBD demand surge
+- CBD response times are consistently below 3 minutes for P1 and P2
+- Zero queueing across all experiments confirms sufficient fleet capacity
+
+### 4. Seasonal Stability
+
+- Monthly demand variation is moderate (CV = 9%, amplitude 28%)
+- Peak month (October) has only 10.3% more demand than average
+- Policy rankings are stable across seasonal variations
+
+### 5. Statistical Confidence
 
 - All comparisons confirmed by one-way and two-way ANOVA (η² > 0.14 – large effects).
 - 95% confidence intervals for response-time differences exclude zero.
@@ -105,6 +117,8 @@ sizes** (Cohen's d > 2.0).
 
 ---
 
-*Analysis performed with 1 440 simulation replications, rigorous statistical testing
-(ANOVA, Tukey HSD, Bonferroni corrections), and publication-quality reporting.
-Full methodology documented in `docs/output_analysis.md`.*
+*Analysis performed with 1,770 simulation replications (including CBD robustness),
+rigorous statistical testing (ANOVA, Tukey HSD, Bonferroni corrections),
+comprehensive queueing analysis, seasonal variation assessment, and
+publication-quality reporting. Full methodology documented in
+`docs/output_analysis.md` and `docs/technical_report.md`.*

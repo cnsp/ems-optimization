@@ -15,7 +15,7 @@
 | P90 Response Time | 19.47 min | **3.76 min** | **−80.7%** |
 | 8-min Coverage | 64.4% | **99.6%** | **+35.2 pp** |
 
-Results based on 1,440 simulation experiments with 30 replications each (p < 0.001, Cohen's d > 28).
+Results based on 1,770 simulation experiments with 30 replications each (p < 0.001, Cohen's d > 28).
 
 ---
 
@@ -30,7 +30,7 @@ This project evaluates three ambulance allocation policies for Manhattan's 48 FD
 The analysis combines:
 1. **NHPP Demand Modeling** — Calibrated from 2.24M historical motor vehicle collision records
 2. **Mixed-Integer Programming** — Three optimization formulations (PuLP/CBC solver)
-3. **Discrete-Event Simulation** — SimPy-based DES with 1,440 production runs
+3. **Discrete-Event Simulation** — SimPy-based DES with 1,770 production runs (incl. CBD robustness)
 4. **Statistical Analysis** — ANOVA, Tukey HSD, confidence intervals, effect sizes
 
 ## Repository Structure
@@ -41,7 +41,8 @@ ems-optimization/
 │   ├── demand.yaml             # NHPP demand model parameters
 │   ├── optimization.yaml       # MIP solver settings
 │   ├── service.yaml            # Travel & service time config
-│   └── simulation.yaml         # DES engine settings
+│   ├── simulation.yaml         # DES engine settings
+│   └── cbd_scenario.yaml       # CBD robustness experiment config
 ├── data/
 │   ├── raw/                    # Original data files (NYC Open Data)
 │   ├── processed/              # Cleaned & transformed data
@@ -62,9 +63,10 @@ ems-optimization/
 │   ├── 05_optimization.ipynb
 │   ├── 06_simulation_debug.ipynb
 │   ├── 07_production_results.ipynb
-│   └── 08_statistical_analysis.ipynb
+│   ├── 08_statistical_analysis.ipynb
+│   └── 09_cbd_analysis.ipynb
 ├── results/
-│   ├── figures/                # 33 visualization PNGs
+│   ├── figures/                # 47 visualization PNGs
 │   ├── tables/                 # Statistical tables (CSV + LaTeX)
 │   ├── simulation/             # Simulation output data
 │   ├── optimization/           # Optimization results
@@ -145,6 +147,13 @@ python scripts/run_production_experiments.py
 # 6. Analyze results and generate figures
 python scripts/analyze_production_results.py
 python scripts/generate_publication_figures.py
+
+# 7. Run CBD robustness experiment (330 simulations)
+python scripts/run_cbd_experiment.py --reps 30
+
+# 8. Run gap closure analyses
+python scripts/analyze_queue_metrics.py
+python scripts/analyze_seasonal_patterns.py
 ```
 
 ### Run Specific Experiments
@@ -194,6 +203,9 @@ pytest tests/test_reproducibility.py -v
 | [Code Documentation](docs/code_documentation.md) | Architecture and API guide |
 | [File Inventory](docs/file_inventory.md) | Complete project file listing |
 | [Project Archive](docs/project_archive.md) | Timeline and lessons learned |
+| [CBD Robustness Analysis](docs/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
+| [Queue Analysis](docs/queue_analysis.md) | Queueing performance analysis |
+| [Gap Closure Report](docs/gap_closure_report.md) | Verification of 100% alignment |
 
 ## Research Questions
 
@@ -211,7 +223,7 @@ pytest tests/test_reproducibility.py -v
   author={EMS Optimization Research Team},
   year={2026},
   howpublished={\url{https://github.com/cnsp/ems-optimization}},
-  note={Version 1.0.0}
+  note={Version 1.1.0}
 }
 ```
 
@@ -226,4 +238,4 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-*Built with Python, SimPy, PuLP, pandas, and matplotlib. 7,134 lines of code across 14 modules, validated with 39 tests and 1,440 simulation experiments.*
+*Built with Python, SimPy, PuLP, pandas, and matplotlib. 7,500+ lines of code across 14 modules, validated with 39 tests and 1,770 simulation experiments. 100% alignment with project outline (v1.1.0).*

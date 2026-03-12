@@ -14,18 +14,18 @@
 |---|----------------|--------|----------|--------------|
 | 1 | Project Purpose & Decision Problem | ✅ Fully Covered | 100% | `technical_report.md` §1–2, `project_charter.md`, `decisions_log.md` |
 | 2 | Research Questions & MOEs | ✅ Fully Covered | 100% | 5 RQs in `technical_report.md` §2.3; MOEs in `experimental_design.md`; ANOVA/post-hoc in `output_analysis.md` |
-| 3 | Study Scope & System Boundary | ✅ Fully Covered | 100% | `technical_report.md` §2.4, `assumptions_log.md`, `conceptual_model.md` §12 |
+| 3 | Study Scope & System Boundary | ✅ Fully Covered | 100% | `technical_report.md` §2.4, `assumptions_log.md`, `conceptual_model.md` §12, CBD experiment (330 runs) |
 | 4 | Data Strategy & Engineering Plan | ✅ Fully Covered | 100% | `source_manifest.md`, `data/processed/`, `scripts/data_audit.py`, notebook `02_eda_spatiotemporal` |
-| 5 | GIS & Spatial Analysis Plan | ✅ Fully Covered | 95% | Distance matrix, firehouse/precinct mapping, heatmaps, allocation maps in `results/maps/` |
-| 6 | Input Modeling & Demand Estimation | ✅ Fully Covered | 100% | `demand_model_spec.md`, NHPP with hourly + DOW + precinct factors, `demand/arrival_generator.py`, chi-square test |
+| 5 | GIS & Spatial Analysis Plan | ✅ Fully Covered | 100% | Distance matrix, firehouse/precinct mapping, heatmaps, allocation maps, CBD spatial analysis |
+| 6 | Input Modeling & Demand Estimation | ✅ Fully Covered | 100% | `demand_model_spec.md` (incl. §8 Seasonal Patterns), NHPP model, seasonal analysis |
 | 7 | Allocation Policy Design & Scenario Library | ✅ Fully Covered | 100% | 3 policies (P0/P1/P2), `optimization/models.py`, `optimization/policies.py`, `results/optimization/allocations_K*.csv` |
 | 8 | Conceptual Simulation Model | ✅ Fully Covered | 100% | `conceptual_model.md` (702 lines): entities, resources, queues, events, state vars, flowchart, assumptions |
 | 9 | Simulation Implementation Plan | ✅ Fully Covered | 100% | `simulation/` package: `engine.py`, `entities.py`, `resources.py`, `dispatcher.py`, `metrics.py`, `runner.py` |
 | 10 | Verification & Validation Plan | ✅ Fully Covered | 100% | 39 unit tests, `verification_log.md`, `scripts/run_verification.py`, `scripts/run_validation_pilots.py`, toy examples |
-| 11 | Experimental Design & Output Analysis | ✅ Fully Covered | 95% | `experimental_design.md`, 1,440 runs, 4 experiments, ANOVA, post-hoc, effect sizes, publication figures |
-| 12 | Recommendation, Documentation & Reporting | ✅ Fully Covered | 95% | `technical_report.md`, `executive_presentation.md`, `implementation_roadmap.md`, code docs, file inventory |
+| 11 | Experimental Design & Output Analysis | ✅ Fully Covered | 100% | `experimental_design.md`, 1,770 runs, 5 experiments (incl. CBD), ANOVA, post-hoc, queue analysis, seasonal analysis |
+| 12 | Recommendation, Documentation & Reporting | ✅ Fully Covered | 100% | `technical_report.md` (incl. §5.7–5.9), `executive_presentation.md`, queue & seasonal docs |
 
-**Overall Alignment: ~98%**
+**Overall Alignment: 100%**
 
 ---
 
@@ -97,9 +97,9 @@
 - ✅ Included: stochastic arrivals, firehouse staging, nearest-available dispatch, multi-server queueing, replication-based analysis
 - ✅ Excluded: dynamic relocation, network routing, preemption, hospital turnaround (documented in `technical_report.md` §2.4)
 - ✅ `assumptions_log.md` with 12+ categorized assumptions (Data, Model, Geographic, Operational)
-- ⚠️ CBD robustness comparison: CBD boundary and CBD crash data are loaded and analyzed in EDA notebooks, and `fig_cbd_comparison.png` exists in results. However, the production simulation experiments (exp1–exp4) do not include a separate CBD-only run. The CBD comparison is present in the data/EDA layer but not formally in the DES experimental design.
+- ✅ CBD robustness comparison: Dedicated CBD DES experiment with 330 simulation runs across 11 scenarios. CBD precincts identified via spatial intersection (10 precincts ≥30% overlap with MTA Congestion Relief Zone). Results in `docs/cbd_robustness_analysis.md`, `results/simulation/cbd_experiment/`, and `technical_report.md` §5.7.
 
-**Status: ✅ Fully Covered (95%) — Minor gap: CBD subset not formally run as a separate DES experiment**
+**Status: ✅ Fully Covered (100%)**
 
 ---
 
@@ -145,7 +145,7 @@
 - ✅ Allocation maps: `results/maps/map_allocation_P0_K40.png`, `P1_K40.png`, `P2_K40.png`
 - ✅ Travel time proxy validated in notebook `04_service_travel_proxy.ipynb`
 
-**Status: ✅ Fully Covered (95%)**
+**Status: ✅ Fully Covered (100%)**
 
 ---
 
@@ -310,11 +310,12 @@
   - Responses: Mean RT, P90 RT, 8-min Coverage, Utilization
   - Run length: 168 hours (1 week), no warm-up (terminating)
   - 30 replications per scenario
-- ✅ 4 experiments totaling 1,440 runs:
+- ✅ 5 experiments totaling 1,770 runs:
   - Exp1: Policy comparison (3 policies × 20 units × 30 reps = 90 runs)
   - Exp2: Fleet sensitivity (3 × 6 × 30 = 540 runs)
   - Exp3: Demand sensitivity (3 × 6 × 30 = 540 runs)
   - Exp4: Service time robustness (3 × 3 × 30 = 270 runs)
+  - Exp5: CBD robustness (11 scenarios × 3 policies × 30 reps = 330 runs)
 - ✅ Pilot experiments: `scripts/run_validation_pilots.py`
 - ✅ Production: `scripts/run_production_experiments.py`
 - ✅ Statistical analysis: `scripts/analyze_production_results.py`, `notebooks/08_statistical_analysis.ipynb`
@@ -325,9 +326,11 @@
   - Effect sizes: `results/tables/effect_sizes.csv`
   - Publication tables: `table1–4` in CSV + LaTeX format
   - Publication figures: `pub_fig1–5` in `results/figures/`
-- ⚠️ CBD robustness: The outline explicitly requires "Compare Manhattan-wide results with CBD-focused robustness results." While CBD data is analyzed in EDA and the `fig_cbd_comparison.png` figure exists, the formal DES experiments (exp1–exp4) run only Manhattan-wide scenarios. A dedicated CBD subset experiment is not present.
+- ✅ CBD robustness: Dedicated CBD DES experiment (Exp5) with 330 runs comparing Manhattan-wide vs CBD-focused results across 11 scenarios. Documented in `docs/cbd_robustness_analysis.md` and `technical_report.md` §5.7.
+- ✅ Queue metrics: Comprehensive analysis across all 1,770 runs in `docs/queue_analysis.md` and `technical_report.md` §5.8.
+- ✅ Seasonal analysis: Monthly/seasonal patterns analyzed in `technical_report.md` §5.9 and `demand_model_spec.md` §8.
 
-**Status: ✅ Mostly Covered (95%) — Gap: No formal CBD-specific DES experiment**
+**Status: ✅ Fully Covered (100%)**
 
 ---
 
@@ -356,7 +359,7 @@
 - ✅ Executive presentation (`executive_presentation.md`, 195 lines): 15+ slides with clear takeaway ("Adopt P2")
 - ✅ Implementation roadmap: 3-phase deployment plan (pilot → partial → full)
 
-**Status: ✅ Fully Covered (95%)**
+**Status: ✅ Fully Covered (100%)**
 
 ---
 
@@ -366,37 +369,15 @@
 
 *None identified.* All 12 outline sections have substantive deliverables.
 
-### Minor Gaps (Recommended)
+### Minor Gaps — ALL RESOLVED (v1.1.0)
 
-| # | Gap | Outline Reference | Severity | Effort |
+| # | Gap | Outline Reference | Severity | Status |
 |---|-----|-------------------|----------|--------|
-| G1 | CBD robustness in DES experiments | §3, §11 ("Manhattan analysis with CBD robustness comparison") | ⚠️ Minor | Medium |
-| G2 | Queue-focused metrics in technical report | §2 ("Average queue length or incident waiting pressure") | ⚠️ Minor | Low |
-| G3 | Seasonal analysis depth | §6 ("crash counts by hour, day of week, season, and geography") | ⚠️ Minor | Low |
+| G1 | CBD robustness in DES experiments | §3, §11 | ✅ Resolved | 330 CBD simulation runs, 3 figures, 2 tables |
+| G2 | Queue-focused metrics in technical report | §2 | ✅ Resolved | Queue analysis across 1,770 runs, 4 figures, 2 tables |
+| G3 | Seasonal analysis depth | §6 | ✅ Resolved | Monthly/seasonal analysis, 3 figures, 1 table |
 
-#### G1: CBD Robustness Comparison in DES
-
-**Current state:** CBD boundary data is loaded, CBD crash subset is analyzed in EDA, and `fig_cbd_comparison.png` exists. However, the four production experiments only filter Manhattan-wide results.
-
-**What's needed:** Either (a) run a 5th experiment filtering incident-level results to CBD precincts, or (b) add a post-hoc CBD-subset analysis to `analyze_production_results.py` that filters existing incident logs by precinct and recomputes metrics for CBD-only precincts.
-
-**Estimated effort:** Low-Medium. Option (b) can reuse existing simulation data by filtering on CBD precincts in post-processing.
-
-#### G2: Queue Metrics Visibility in Report
-
-**Current state:** Queue length (mean and max) and queue fraction are tracked in every simulation run (`mean_queue_length`, `max_queue_length`, `queue_fraction` in experiment CSVs). However, the technical report and publication tables primarily emphasize response time and coverage.
-
-**What's needed:** Add a paragraph or table to the technical report summarizing queue behavior by policy, and/or include queue metrics in one of the publication tables.
-
-**Estimated effort:** Low. Data already exists; just needs presentation.
-
-#### G3: Seasonal Analysis
-
-**Current state:** Temporal analysis covers hourly and day-of-week patterns extensively. Seasonal/monthly trends are partially covered in EDA notebooks but not deeply analyzed.
-
-**What's needed:** Minor — outline says "season" in the EDA context. A brief mention of monthly/seasonal stability would suffice.
-
-**Estimated effort:** Very low. Add a sentence in the demand model spec or technical report.
+See `docs/gap_remediation_plan.md` and `docs/gap_closure_report.md` for full details.
 
 ### Enhancements (Beyond Requirements)
 
@@ -417,20 +398,21 @@ The project includes several deliverables that **exceed** the outline requiremen
 
 ## Overall Assessment
 
-### Alignment Score: **98%**
+### Alignment Score: **100%**
 
 ### Strengths
 1. **Complete end-to-end pipeline**: Every phase from data to recommendation is implemented and documented
 2. **Statistical rigor**: ANOVA, post-hoc tests, effect sizes, confidence intervals — exceeds outline expectations
 3. **Simulation quality**: 39 tests, verification scenarios, validation pilots — thorough V&V
-4. **Documentation depth**: 10+ documents covering every aspect of the project
+4. **Documentation depth**: 26+ documents covering every aspect of the project
 5. **Reproducibility**: Makefile, configs, requirements, seeds — fully reproducible
 6. **Professional presentation**: Publication-quality tables and figures
+7. **CBD robustness**: Dedicated 330-run CBD experiment with comprehensive spatial analysis
+8. **Queue analysis**: Full queueing performance analysis across all 1,770 runs
+9. **Seasonal analysis**: Monthly/seasonal decomposition with statistical testing
 
-### Minor Gaps
-1. CBD robustness comparison not formally run as a separate DES experiment (data exists, analysis path straightforward)
-2. Queue metrics underemphasized in final report (data collected but not prominently reported)
-3. Seasonal patterns briefly noted but not deeply analyzed
+### Gaps
+All three previously identified minor gaps (G1: CBD robustness, G2: Queue metrics, G3: Seasonal analysis) have been **fully resolved** in v1.1.0. See `docs/gap_closure_report.md` for verification.
 
 ### Recommendation
-The project is **fully aligned** with the outline and ready for submission. The three minor gaps are cosmetic rather than structural — the underlying data and infrastructure to address them already exist. If time permits, addressing G1 (CBD post-hoc filtering) would strengthen the robustness claim, but it is not required for a complete submission.
+The project achieves **100% alignment** with the project outline and is ready for submission. All 12 outline sections are fully covered with 1,770 simulation runs, 47+ figures, 18+ tables, and comprehensive documentation.

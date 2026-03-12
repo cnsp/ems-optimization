@@ -1,0 +1,1034 @@
+2026-03-12 22:09:54,272 [INFO] 
+######################################################################
+2026-03-12 22:09:54,272 [INFO] CBD Robustness Experiment – 2026-03-12 22:09:54
+2026-03-12 22:09:54,272 [INFO] Replications: 30
+2026-03-12 22:09:54,272 [INFO] CBD precincts: [1, 5, 6, 7, 9, 10, 13, 14, 17, 18]
+2026-03-12 22:09:54,272 [INFO] ######################################################################
+2026-03-12 22:09:54,286 [INFO] Total scenarios: 11
+2026-03-12 22:09:54,286 [INFO] Total runs: 330
+2026-03-12 22:09:54,286 [INFO] 
+============================================================
+2026-03-12 22:09:54,286 [INFO] CBD EXPERIMENT: cbd_robustness
+2026-03-12 22:09:54,286 [INFO] Scenarios: 11, Reps: 30, Total: 330
+2026-03-12 22:09:54,286 [INFO] ============================================================
+2026-03-12 22:09:54,287 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:54,292 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:09:54,451 [INFO] Simulation complete: 951 incidents, coverage=62.3%
+2026-03-12 22:09:54,457 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:54,462 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:09:54,586 [INFO] Simulation complete: 849 incidents, coverage=65.5%
+2026-03-12 22:09:54,591 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:54,596 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:09:54,732 [INFO] Simulation complete: 955 incidents, coverage=63.1%
+2026-03-12 22:09:54,738 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:54,743 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:09:54,875 [INFO] Simulation complete: 916 incidents, coverage=65.3%
+2026-03-12 22:09:54,880 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:54,885 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:09:55,026 [INFO] Simulation complete: 982 incidents, coverage=63.7%
+2026-03-12 22:09:55,031 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,036 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:09:55,166 [INFO] Simulation complete: 899 incidents, coverage=64.8%
+2026-03-12 22:09:55,171 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,177 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:09:55,309 [INFO] Simulation complete: 912 incidents, coverage=64.7%
+2026-03-12 22:09:55,314 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,320 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:09:55,454 [INFO] Simulation complete: 930 incidents, coverage=62.3%
+2026-03-12 22:09:55,459 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,464 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:09:55,593 [INFO] Simulation complete: 887 incidents, coverage=64.8%
+2026-03-12 22:09:55,598 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,603 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:09:55,735 [INFO] Simulation complete: 933 incidents, coverage=61.0%
+2026-03-12 22:09:55,740 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,745 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:09:55,871 [INFO] Simulation complete: 880 incidents, coverage=59.4%
+2026-03-12 22:09:55,876 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:55,881 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:09:56,045 [INFO] Simulation complete: 885 incidents, coverage=64.1%
+2026-03-12 22:09:56,050 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,055 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:09:56,194 [INFO] Simulation complete: 893 incidents, coverage=61.5%
+2026-03-12 22:09:56,200 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,205 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:09:56,336 [INFO] Simulation complete: 892 incidents, coverage=61.8%
+2026-03-12 22:09:56,341 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,346 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:09:56,483 [INFO] Simulation complete: 952 incidents, coverage=63.6%
+2026-03-12 22:09:56,489 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,494 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:09:56,624 [INFO] Simulation complete: 867 incidents, coverage=64.0%
+2026-03-12 22:09:56,630 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,635 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:09:56,763 [INFO] Simulation complete: 864 incidents, coverage=60.5%
+2026-03-12 22:09:56,768 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,773 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:09:56,910 [INFO] Simulation complete: 881 incidents, coverage=67.0%
+2026-03-12 22:09:56,915 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:56,920 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:09:57,062 [INFO] Simulation complete: 978 incidents, coverage=59.8%
+2026-03-12 22:09:57,067 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,073 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:09:57,217 [INFO] Simulation complete: 947 incidents, coverage=64.0%
+2026-03-12 22:09:57,222 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,228 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:09:57,359 [INFO] Simulation complete: 888 incidents, coverage=63.0%
+2026-03-12 22:09:57,364 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,369 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:09:57,500 [INFO] Simulation complete: 857 incidents, coverage=62.5%
+2026-03-12 22:09:57,505 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,511 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:09:57,692 [INFO] Simulation complete: 943 incidents, coverage=62.0%
+2026-03-12 22:09:57,697 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,703 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:09:57,843 [INFO] Simulation complete: 933 incidents, coverage=66.2%
+2026-03-12 22:09:57,849 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:57,854 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:09:57,992 [INFO] Simulation complete: 962 incidents, coverage=61.6%
+2026-03-12 22:09:57,998 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,003 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:09:58,132 [INFO] Simulation complete: 890 incidents, coverage=64.2%
+2026-03-12 22:09:58,138 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,144 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:09:58,285 [INFO] Simulation complete: 874 incidents, coverage=61.9%
+2026-03-12 22:09:58,290 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,295 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:09:58,433 [INFO] Simulation complete: 928 incidents, coverage=60.9%
+2026-03-12 22:09:58,438 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,443 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:09:58,575 [INFO] Simulation complete: 875 incidents, coverage=64.7%
+2026-03-12 22:09:58,580 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,585 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:09:58,714 [INFO] Simulation complete: 885 incidents, coverage=63.6%
+2026-03-12 22:09:58,719 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,724 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:09:58,814 [INFO] Simulation complete: 578 incidents, coverage=65.6%
+2026-03-12 22:09:58,818 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,823 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:09:58,914 [INFO] Simulation complete: 573 incidents, coverage=63.5%
+2026-03-12 22:09:58,918 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:58,923 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:09:59,014 [INFO] Simulation complete: 587 incidents, coverage=63.0%
+2026-03-12 22:09:59,018 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,023 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:09:59,114 [INFO] Simulation complete: 598 incidents, coverage=63.9%
+2026-03-12 22:09:59,118 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,124 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:09:59,252 [INFO] Simulation complete: 577 incidents, coverage=64.8%
+2026-03-12 22:09:59,257 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,262 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:09:59,348 [INFO] Simulation complete: 547 incidents, coverage=66.2%
+2026-03-12 22:09:59,352 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,357 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:09:59,447 [INFO] Simulation complete: 591 incidents, coverage=66.0%
+2026-03-12 22:09:59,452 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,457 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:09:59,542 [INFO] Simulation complete: 551 incidents, coverage=63.9%
+2026-03-12 22:09:59,546 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,551 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:09:59,634 [INFO] Simulation complete: 531 incidents, coverage=65.9%
+2026-03-12 22:09:59,638 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,643 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:09:59,730 [INFO] Simulation complete: 551 incidents, coverage=67.5%
+2026-03-12 22:09:59,734 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,739 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:09:59,833 [INFO] Simulation complete: 608 incidents, coverage=63.8%
+2026-03-12 22:09:59,838 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,843 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:09:59,933 [INFO] Simulation complete: 587 incidents, coverage=63.9%
+2026-03-12 22:09:59,938 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:09:59,943 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:00,027 [INFO] Simulation complete: 539 incidents, coverage=60.3%
+2026-03-12 22:10:00,032 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,037 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:00,126 [INFO] Simulation complete: 574 incidents, coverage=63.2%
+2026-03-12 22:10:00,130 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,135 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:00,232 [INFO] Simulation complete: 633 incidents, coverage=64.3%
+2026-03-12 22:10:00,236 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,241 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:00,330 [INFO] Simulation complete: 573 incidents, coverage=66.3%
+2026-03-12 22:10:00,334 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,339 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:00,424 [INFO] Simulation complete: 543 incidents, coverage=63.2%
+2026-03-12 22:10:00,428 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,433 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:00,523 [INFO] Simulation complete: 578 incidents, coverage=64.7%
+2026-03-12 22:10:00,527 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,532 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:00,686 [INFO] Simulation complete: 615 incidents, coverage=63.9%
+2026-03-12 22:10:00,693 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,699 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:00,787 [INFO] Simulation complete: 565 incidents, coverage=64.1%
+2026-03-12 22:10:00,790 [INFO]   Progress: 50/330 (15%) | Elapsed: 6.5s | ETA: 36.4s
+2026-03-12 22:10:00,792 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,797 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:00,889 [INFO] Simulation complete: 583 incidents, coverage=65.0%
+2026-03-12 22:10:00,893 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,898 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:00,987 [INFO] Simulation complete: 577 incidents, coverage=60.3%
+2026-03-12 22:10:00,991 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:00,997 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:01,084 [INFO] Simulation complete: 572 incidents, coverage=63.1%
+2026-03-12 22:10:01,088 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,094 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:01,201 [INFO] Simulation complete: 578 incidents, coverage=63.7%
+2026-03-12 22:10:01,205 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,210 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:01,300 [INFO] Simulation complete: 578 incidents, coverage=65.6%
+2026-03-12 22:10:01,305 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,310 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:01,402 [INFO] Simulation complete: 595 incidents, coverage=65.4%
+2026-03-12 22:10:01,406 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,411 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:01,497 [INFO] Simulation complete: 557 incidents, coverage=64.6%
+2026-03-12 22:10:01,502 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,507 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:01,603 [INFO] Simulation complete: 616 incidents, coverage=62.3%
+2026-03-12 22:10:01,607 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,612 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:01,699 [INFO] Simulation complete: 562 incidents, coverage=61.7%
+2026-03-12 22:10:01,703 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:01,708 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:01,802 [INFO] Simulation complete: 581 incidents, coverage=66.8%
+2026-03-12 22:10:01,806 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:01,812 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:01,944 [INFO] Simulation complete: 944 incidents, coverage=99.3%
+2026-03-12 22:10:01,950 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:01,955 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:02,078 [INFO] Simulation complete: 849 incidents, coverage=99.3%
+2026-03-12 22:10:02,083 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,088 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:02,234 [INFO] Simulation complete: 929 incidents, coverage=99.2%
+2026-03-12 22:10:02,283 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,289 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:02,419 [INFO] Simulation complete: 916 incidents, coverage=99.1%
+2026-03-12 22:10:02,424 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,429 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:02,573 [INFO] Simulation complete: 967 incidents, coverage=99.1%
+2026-03-12 22:10:02,579 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,584 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:02,732 [INFO] Simulation complete: 902 incidents, coverage=99.1%
+2026-03-12 22:10:02,738 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,743 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:02,886 [INFO] Simulation complete: 912 incidents, coverage=99.5%
+2026-03-12 22:10:02,891 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:02,897 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:03,050 [INFO] Simulation complete: 910 incidents, coverage=98.5%
+2026-03-12 22:10:03,058 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,066 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:03,207 [INFO] Simulation complete: 909 incidents, coverage=99.4%
+2026-03-12 22:10:03,214 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,220 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:03,358 [INFO] Simulation complete: 933 incidents, coverage=99.0%
+2026-03-12 22:10:03,364 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,369 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:03,513 [INFO] Simulation complete: 931 incidents, coverage=99.1%
+2026-03-12 22:10:03,518 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,523 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:03,654 [INFO] Simulation complete: 871 incidents, coverage=99.7%
+2026-03-12 22:10:03,660 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,665 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:03,800 [INFO] Simulation complete: 893 incidents, coverage=99.2%
+2026-03-12 22:10:03,807 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:03,814 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:03,954 [INFO] Simulation complete: 911 incidents, coverage=98.8%
+2026-03-12 22:10:03,999 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,004 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:04,148 [INFO] Simulation complete: 960 incidents, coverage=99.0%
+2026-03-12 22:10:04,155 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,160 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:04,310 [INFO] Simulation complete: 865 incidents, coverage=99.3%
+2026-03-12 22:10:04,318 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,325 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:04,463 [INFO] Simulation complete: 864 incidents, coverage=99.3%
+2026-03-12 22:10:04,468 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,473 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:04,601 [INFO] Simulation complete: 816 incidents, coverage=99.0%
+2026-03-12 22:10:04,608 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,614 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:04,759 [INFO] Simulation complete: 978 incidents, coverage=99.1%
+2026-03-12 22:10:04,764 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,769 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:04,938 [INFO] Simulation complete: 990 incidents, coverage=99.2%
+2026-03-12 22:10:04,946 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:04,953 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:05,096 [INFO] Simulation complete: 889 incidents, coverage=98.8%
+2026-03-12 22:10:05,104 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,111 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:05,239 [INFO] Simulation complete: 857 incidents, coverage=99.4%
+2026-03-12 22:10:05,244 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,249 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:05,387 [INFO] Simulation complete: 955 incidents, coverage=99.1%
+2026-03-12 22:10:05,392 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,397 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:05,538 [INFO] Simulation complete: 933 incidents, coverage=99.4%
+2026-03-12 22:10:05,544 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,549 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:05,712 [INFO] Simulation complete: 893 incidents, coverage=99.2%
+2026-03-12 22:10:05,717 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,722 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:05,849 [INFO] Simulation complete: 890 incidents, coverage=98.8%
+2026-03-12 22:10:05,855 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:05,861 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:05,999 [INFO] Simulation complete: 860 incidents, coverage=99.4%
+2026-03-12 22:10:06,006 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,013 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:06,156 [INFO] Simulation complete: 944 incidents, coverage=99.6%
+2026-03-12 22:10:06,162 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,170 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:06,303 [INFO] Simulation complete: 876 incidents, coverage=99.2%
+2026-03-12 22:10:06,308 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,314 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:06,449 [INFO] Simulation complete: 886 incidents, coverage=99.2%
+2026-03-12 22:10:06,456 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,461 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:06,551 [INFO] Simulation complete: 578 incidents, coverage=99.7%
+2026-03-12 22:10:06,556 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,561 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:06,646 [INFO] Simulation complete: 535 incidents, coverage=99.4%
+2026-03-12 22:10:06,651 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,658 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:06,752 [INFO] Simulation complete: 565 incidents, coverage=99.3%
+2026-03-12 22:10:06,757 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,762 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:06,861 [INFO] Simulation complete: 599 incidents, coverage=99.7%
+2026-03-12 22:10:06,865 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,871 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:06,976 [INFO] Simulation complete: 577 incidents, coverage=99.0%
+2026-03-12 22:10:06,984 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:06,992 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:07,118 [INFO] Simulation complete: 547 incidents, coverage=99.5%
+2026-03-12 22:10:07,125 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,133 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:07,247 [INFO] Simulation complete: 545 incidents, coverage=99.8%
+2026-03-12 22:10:07,252 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,258 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:07,404 [INFO] Simulation complete: 574 incidents, coverage=99.3%
+2026-03-12 22:10:07,410 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,418 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:07,546 [INFO] Simulation complete: 575 incidents, coverage=99.3%
+2026-03-12 22:10:07,551 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,559 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:07,667 [INFO] Simulation complete: 601 incidents, coverage=99.8%
+2026-03-12 22:10:07,671 [INFO]   Progress: 100/330 (30%) | Elapsed: 13.4s | ETA: 30.8s
+2026-03-12 22:10:07,672 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,678 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:07,807 [INFO] Simulation complete: 607 incidents, coverage=99.3%
+2026-03-12 22:10:07,811 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,817 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:07,919 [INFO] Simulation complete: 587 incidents, coverage=99.7%
+2026-03-12 22:10:07,924 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:07,929 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:08,014 [INFO] Simulation complete: 539 incidents, coverage=99.3%
+2026-03-12 22:10:08,018 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,023 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:08,117 [INFO] Simulation complete: 574 incidents, coverage=99.7%
+2026-03-12 22:10:08,122 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,127 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:08,230 [INFO] Simulation complete: 569 incidents, coverage=99.8%
+2026-03-12 22:10:08,234 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,240 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:08,336 [INFO] Simulation complete: 573 incidents, coverage=99.7%
+2026-03-12 22:10:08,340 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,345 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:08,434 [INFO] Simulation complete: 559 incidents, coverage=99.3%
+2026-03-12 22:10:08,438 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,444 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:08,538 [INFO] Simulation complete: 578 incidents, coverage=99.5%
+2026-03-12 22:10:08,542 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,547 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:08,638 [INFO] Simulation complete: 615 incidents, coverage=98.7%
+2026-03-12 22:10:08,643 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,648 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:08,746 [INFO] Simulation complete: 582 incidents, coverage=99.5%
+2026-03-12 22:10:08,752 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,758 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:08,851 [INFO] Simulation complete: 583 incidents, coverage=99.7%
+2026-03-12 22:10:08,857 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,865 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:08,964 [INFO] Simulation complete: 557 incidents, coverage=99.5%
+2026-03-12 22:10:08,968 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:08,974 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:09,095 [INFO] Simulation complete: 572 incidents, coverage=99.3%
+2026-03-12 22:10:09,100 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,105 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:09,197 [INFO] Simulation complete: 580 incidents, coverage=99.3%
+2026-03-12 22:10:09,201 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,206 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:09,295 [INFO] Simulation complete: 593 incidents, coverage=99.5%
+2026-03-12 22:10:09,299 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,304 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:09,392 [INFO] Simulation complete: 596 incidents, coverage=99.7%
+2026-03-12 22:10:09,396 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,401 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:09,492 [INFO] Simulation complete: 579 incidents, coverage=99.1%
+2026-03-12 22:10:09,498 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,504 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:09,603 [INFO] Simulation complete: 555 incidents, coverage=99.6%
+2026-03-12 22:10:09,607 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,613 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:09,702 [INFO] Simulation complete: 562 incidents, coverage=99.8%
+2026-03-12 22:10:09,707 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:09,712 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:09,797 [INFO] Simulation complete: 563 incidents, coverage=99.3%
+2026-03-12 22:10:09,801 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:09,808 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:09,952 [INFO] Simulation complete: 944 incidents, coverage=99.6%
+2026-03-12 22:10:09,958 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:09,963 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:10,095 [INFO] Simulation complete: 849 incidents, coverage=99.2%
+2026-03-12 22:10:10,103 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,112 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:10,253 [INFO] Simulation complete: 929 incidents, coverage=99.1%
+2026-03-12 22:10:10,259 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,264 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:10,399 [INFO] Simulation complete: 917 incidents, coverage=99.3%
+2026-03-12 22:10:10,405 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,410 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:10,556 [INFO] Simulation complete: 967 incidents, coverage=99.4%
+2026-03-12 22:10:10,562 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,568 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:10,815 [INFO] Simulation complete: 902 incidents, coverage=99.3%
+2026-03-12 22:10:10,821 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,826 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:10,973 [INFO] Simulation complete: 912 incidents, coverage=99.7%
+2026-03-12 22:10:10,978 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:10,984 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:11,129 [INFO] Simulation complete: 910 incidents, coverage=98.6%
+2026-03-12 22:10:11,135 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,141 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:11,288 [INFO] Simulation complete: 909 incidents, coverage=99.6%
+2026-03-12 22:10:11,294 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,300 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:11,458 [INFO] Simulation complete: 933 incidents, coverage=99.4%
+2026-03-12 22:10:11,465 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,471 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:11,629 [INFO] Simulation complete: 902 incidents, coverage=99.1%
+2026-03-12 22:10:11,634 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,639 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:11,774 [INFO] Simulation complete: 871 incidents, coverage=99.7%
+2026-03-12 22:10:11,780 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,785 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:11,954 [INFO] Simulation complete: 893 incidents, coverage=99.6%
+2026-03-12 22:10:11,962 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:11,969 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:12,125 [INFO] Simulation complete: 911 incidents, coverage=98.9%
+2026-03-12 22:10:12,132 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,138 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:12,297 [INFO] Simulation complete: 960 incidents, coverage=98.8%
+2026-03-12 22:10:12,303 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,308 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:12,442 [INFO] Simulation complete: 865 incidents, coverage=99.3%
+2026-03-12 22:10:12,447 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,452 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:12,632 [INFO] Simulation complete: 864 incidents, coverage=99.4%
+2026-03-12 22:10:12,638 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,645 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:12,788 [INFO] Simulation complete: 816 incidents, coverage=99.4%
+2026-03-12 22:10:12,794 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,802 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:12,979 [INFO] Simulation complete: 978 incidents, coverage=99.3%
+2026-03-12 22:10:12,984 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:12,990 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:13,139 [INFO] Simulation complete: 990 incidents, coverage=99.1%
+2026-03-12 22:10:13,145 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,150 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:13,281 [INFO] Simulation complete: 889 incidents, coverage=99.0%
+2026-03-12 22:10:13,287 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,292 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:13,437 [INFO] Simulation complete: 857 incidents, coverage=99.6%
+2026-03-12 22:10:13,443 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,448 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:13,621 [INFO] Simulation complete: 955 incidents, coverage=99.2%
+2026-03-12 22:10:13,626 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,632 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:13,785 [INFO] Simulation complete: 933 incidents, coverage=99.4%
+2026-03-12 22:10:13,791 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,797 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:13,952 [INFO] Simulation complete: 893 incidents, coverage=99.2%
+2026-03-12 22:10:13,957 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:13,962 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:14,102 [INFO] Simulation complete: 890 incidents, coverage=99.0%
+2026-03-12 22:10:14,107 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,113 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:14,244 [INFO] Simulation complete: 860 incidents, coverage=99.4%
+2026-03-12 22:10:14,249 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,254 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:14,438 [INFO] Simulation complete: 944 incidents, coverage=99.5%
+2026-03-12 22:10:14,443 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,448 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:14,578 [INFO] Simulation complete: 876 incidents, coverage=99.1%
+2026-03-12 22:10:14,583 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,588 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:14,727 [INFO] Simulation complete: 886 incidents, coverage=99.7%
+2026-03-12 22:10:14,731 [INFO]   Progress: 150/330 (45%) | Elapsed: 20.4s | ETA: 24.5s
+2026-03-12 22:10:14,732 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,737 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:14,829 [INFO] Simulation complete: 578 incidents, coverage=99.5%
+2026-03-12 22:10:14,833 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,838 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:14,929 [INFO] Simulation complete: 535 incidents, coverage=99.6%
+2026-03-12 22:10:14,935 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:14,940 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:15,031 [INFO] Simulation complete: 565 incidents, coverage=99.5%
+2026-03-12 22:10:15,036 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,042 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:15,143 [INFO] Simulation complete: 599 incidents, coverage=99.5%
+2026-03-12 22:10:15,148 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,154 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:15,249 [INFO] Simulation complete: 577 incidents, coverage=99.3%
+2026-03-12 22:10:15,253 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,258 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:15,345 [INFO] Simulation complete: 547 incidents, coverage=99.5%
+2026-03-12 22:10:15,350 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,355 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:15,441 [INFO] Simulation complete: 545 incidents, coverage=99.6%
+2026-03-12 22:10:15,445 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,451 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:15,540 [INFO] Simulation complete: 574 incidents, coverage=99.5%
+2026-03-12 22:10:15,544 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,549 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:15,639 [INFO] Simulation complete: 575 incidents, coverage=99.5%
+2026-03-12 22:10:15,643 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,648 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:15,742 [INFO] Simulation complete: 601 incidents, coverage=99.8%
+2026-03-12 22:10:15,746 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,751 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:15,844 [INFO] Simulation complete: 607 incidents, coverage=99.3%
+2026-03-12 22:10:15,848 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,853 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:15,977 [INFO] Simulation complete: 587 incidents, coverage=99.8%
+2026-03-12 22:10:15,981 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:15,986 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:16,070 [INFO] Simulation complete: 539 incidents, coverage=99.4%
+2026-03-12 22:10:16,075 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,080 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:16,169 [INFO] Simulation complete: 574 incidents, coverage=99.7%
+2026-03-12 22:10:16,174 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,179 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:16,268 [INFO] Simulation complete: 569 incidents, coverage=99.8%
+2026-03-12 22:10:16,273 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,278 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:16,368 [INFO] Simulation complete: 573 incidents, coverage=99.8%
+2026-03-12 22:10:16,372 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,377 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:16,473 [INFO] Simulation complete: 559 incidents, coverage=99.3%
+2026-03-12 22:10:16,477 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,483 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:16,588 [INFO] Simulation complete: 578 incidents, coverage=99.8%
+2026-03-12 22:10:16,593 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,599 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:16,695 [INFO] Simulation complete: 615 incidents, coverage=98.7%
+2026-03-12 22:10:16,700 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,705 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:16,795 [INFO] Simulation complete: 582 incidents, coverage=99.5%
+2026-03-12 22:10:16,799 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,804 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:16,902 [INFO] Simulation complete: 583 incidents, coverage=100.0%
+2026-03-12 22:10:16,908 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:16,915 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:17,041 [INFO] Simulation complete: 557 incidents, coverage=99.6%
+2026-03-12 22:10:17,045 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,051 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:17,141 [INFO] Simulation complete: 572 incidents, coverage=99.3%
+2026-03-12 22:10:17,145 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,150 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:17,243 [INFO] Simulation complete: 580 incidents, coverage=99.7%
+2026-03-12 22:10:17,247 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,253 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:17,351 [INFO] Simulation complete: 593 incidents, coverage=99.5%
+2026-03-12 22:10:17,356 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,361 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:17,509 [INFO] Simulation complete: 596 incidents, coverage=99.7%
+2026-03-12 22:10:17,515 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,520 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:17,629 [INFO] Simulation complete: 579 incidents, coverage=99.3%
+2026-03-12 22:10:17,636 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,643 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:17,743 [INFO] Simulation complete: 555 incidents, coverage=99.6%
+2026-03-12 22:10:17,747 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,753 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:17,843 [INFO] Simulation complete: 562 incidents, coverage=99.8%
+2026-03-12 22:10:17,847 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,852 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:17,944 [INFO] Simulation complete: 582 incidents, coverage=99.8%
+2026-03-12 22:10:17,949 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:17,955 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:18,056 [INFO] Simulation complete: 578 incidents, coverage=65.4%
+2026-03-12 22:10:18,060 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,066 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:18,156 [INFO] Simulation complete: 578 incidents, coverage=59.5%
+2026-03-12 22:10:18,160 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,166 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:18,260 [INFO] Simulation complete: 587 incidents, coverage=62.4%
+2026-03-12 22:10:18,264 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,270 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:18,367 [INFO] Simulation complete: 599 incidents, coverage=63.3%
+2026-03-12 22:10:18,372 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,378 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:18,482 [INFO] Simulation complete: 577 incidents, coverage=64.3%
+2026-03-12 22:10:18,487 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,493 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:18,584 [INFO] Simulation complete: 547 incidents, coverage=64.7%
+2026-03-12 22:10:18,589 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,595 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:18,690 [INFO] Simulation complete: 591 incidents, coverage=65.8%
+2026-03-12 22:10:18,694 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,700 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:18,788 [INFO] Simulation complete: 551 incidents, coverage=62.6%
+2026-03-12 22:10:18,793 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,799 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:18,888 [INFO] Simulation complete: 531 incidents, coverage=65.7%
+2026-03-12 22:10:18,893 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:18,899 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:19,008 [INFO] Simulation complete: 551 incidents, coverage=67.0%
+2026-03-12 22:10:19,013 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,020 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:19,179 [INFO] Simulation complete: 608 incidents, coverage=62.8%
+2026-03-12 22:10:19,184 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,190 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:19,287 [INFO] Simulation complete: 587 incidents, coverage=63.7%
+2026-03-12 22:10:19,291 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,297 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:19,385 [INFO] Simulation complete: 539 incidents, coverage=58.8%
+2026-03-12 22:10:19,389 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,395 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:19,486 [INFO] Simulation complete: 574 incidents, coverage=62.2%
+2026-03-12 22:10:19,490 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,496 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:19,595 [INFO] Simulation complete: 634 incidents, coverage=63.9%
+2026-03-12 22:10:19,600 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,606 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:19,710 [INFO] Simulation complete: 573 incidents, coverage=66.7%
+2026-03-12 22:10:19,715 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,720 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:19,810 [INFO] Simulation complete: 543 incidents, coverage=62.6%
+2026-03-12 22:10:19,815 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,821 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:19,917 [INFO] Simulation complete: 578 incidents, coverage=63.3%
+2026-03-12 22:10:19,921 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:19,927 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:20,035 [INFO] Simulation complete: 615 incidents, coverage=63.4%
+2026-03-12 22:10:20,040 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,045 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:20,150 [INFO] Simulation complete: 565 incidents, coverage=63.7%
+2026-03-12 22:10:20,153 [INFO]   Progress: 200/330 (61%) | Elapsed: 25.9s | ETA: 16.8s
+2026-03-12 22:10:20,154 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,160 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:20,249 [INFO] Simulation complete: 583 incidents, coverage=65.0%
+2026-03-12 22:10:20,254 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,259 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:20,348 [INFO] Simulation complete: 577 incidents, coverage=59.8%
+2026-03-12 22:10:20,352 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,358 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:20,457 [INFO] Simulation complete: 572 incidents, coverage=63.3%
+2026-03-12 22:10:20,461 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,467 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:20,557 [INFO] Simulation complete: 580 incidents, coverage=63.1%
+2026-03-12 22:10:20,561 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,567 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:20,661 [INFO] Simulation complete: 578 incidents, coverage=64.7%
+2026-03-12 22:10:20,665 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,671 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:20,800 [INFO] Simulation complete: 595 incidents, coverage=64.7%
+2026-03-12 22:10:20,805 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,810 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:20,901 [INFO] Simulation complete: 557 incidents, coverage=64.3%
+2026-03-12 22:10:20,905 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:20,911 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:21,010 [INFO] Simulation complete: 616 incidents, coverage=61.5%
+2026-03-12 22:10:21,014 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,019 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:21,127 [INFO] Simulation complete: 562 incidents, coverage=61.0%
+2026-03-12 22:10:21,134 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,142 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:21,281 [INFO] Simulation complete: 581 incidents, coverage=65.4%
+2026-03-12 22:10:21,288 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,296 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:21,406 [INFO] Simulation complete: 578 incidents, coverage=65.4%
+2026-03-12 22:10:21,411 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,416 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:21,509 [INFO] Simulation complete: 578 incidents, coverage=59.5%
+2026-03-12 22:10:21,514 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,519 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:21,614 [INFO] Simulation complete: 587 incidents, coverage=62.4%
+2026-03-12 22:10:21,618 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,623 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:21,720 [INFO] Simulation complete: 599 incidents, coverage=63.3%
+2026-03-12 22:10:21,725 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,730 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:21,825 [INFO] Simulation complete: 577 incidents, coverage=64.3%
+2026-03-12 22:10:21,829 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,835 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:21,931 [INFO] Simulation complete: 547 incidents, coverage=64.7%
+2026-03-12 22:10:21,936 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:21,942 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:22,037 [INFO] Simulation complete: 591 incidents, coverage=65.8%
+2026-03-12 22:10:22,041 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,047 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:22,136 [INFO] Simulation complete: 551 incidents, coverage=62.6%
+2026-03-12 22:10:22,141 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,146 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:22,237 [INFO] Simulation complete: 531 incidents, coverage=65.7%
+2026-03-12 22:10:22,242 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,247 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:22,335 [INFO] Simulation complete: 551 incidents, coverage=67.0%
+2026-03-12 22:10:22,339 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,345 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:22,481 [INFO] Simulation complete: 608 incidents, coverage=62.8%
+2026-03-12 22:10:22,485 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,491 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:22,584 [INFO] Simulation complete: 587 incidents, coverage=63.7%
+2026-03-12 22:10:22,589 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,595 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:22,683 [INFO] Simulation complete: 539 incidents, coverage=58.8%
+2026-03-12 22:10:22,688 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,693 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:22,786 [INFO] Simulation complete: 574 incidents, coverage=62.2%
+2026-03-12 22:10:22,791 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,796 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:22,899 [INFO] Simulation complete: 634 incidents, coverage=63.9%
+2026-03-12 22:10:22,905 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:22,911 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:23,005 [INFO] Simulation complete: 573 incidents, coverage=66.7%
+2026-03-12 22:10:23,010 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,015 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:23,104 [INFO] Simulation complete: 543 incidents, coverage=62.6%
+2026-03-12 22:10:23,108 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,113 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:23,207 [INFO] Simulation complete: 578 incidents, coverage=63.3%
+2026-03-12 22:10:23,211 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,218 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:23,319 [INFO] Simulation complete: 615 incidents, coverage=63.4%
+2026-03-12 22:10:23,323 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,328 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:23,415 [INFO] Simulation complete: 565 incidents, coverage=63.7%
+2026-03-12 22:10:23,419 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,424 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:23,515 [INFO] Simulation complete: 583 incidents, coverage=65.0%
+2026-03-12 22:10:23,520 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,525 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:23,616 [INFO] Simulation complete: 577 incidents, coverage=59.8%
+2026-03-12 22:10:23,620 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,625 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:23,714 [INFO] Simulation complete: 572 incidents, coverage=63.3%
+2026-03-12 22:10:23,718 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,723 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:23,815 [INFO] Simulation complete: 580 incidents, coverage=63.1%
+2026-03-12 22:10:23,819 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,824 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:23,913 [INFO] Simulation complete: 578 incidents, coverage=64.7%
+2026-03-12 22:10:23,918 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:23,923 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:24,049 [INFO] Simulation complete: 595 incidents, coverage=64.7%
+2026-03-12 22:10:24,053 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,058 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:24,148 [INFO] Simulation complete: 557 incidents, coverage=64.3%
+2026-03-12 22:10:24,153 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,158 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:24,258 [INFO] Simulation complete: 616 incidents, coverage=61.5%
+2026-03-12 22:10:24,263 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,269 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:24,361 [INFO] Simulation complete: 562 incidents, coverage=61.0%
+2026-03-12 22:10:24,366 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,371 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:24,462 [INFO] Simulation complete: 581 incidents, coverage=65.4%
+2026-03-12 22:10:24,467 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,473 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:24,563 [INFO] Simulation complete: 578 incidents, coverage=66.1%
+2026-03-12 22:10:24,567 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,572 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:24,663 [INFO] Simulation complete: 578 incidents, coverage=60.6%
+2026-03-12 22:10:24,668 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,673 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:24,765 [INFO] Simulation complete: 587 incidents, coverage=63.4%
+2026-03-12 22:10:24,769 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,774 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:24,867 [INFO] Simulation complete: 599 incidents, coverage=64.3%
+2026-03-12 22:10:24,872 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,877 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:24,966 [INFO] Simulation complete: 577 incidents, coverage=65.0%
+2026-03-12 22:10:24,970 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:24,976 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:25,068 [INFO] Simulation complete: 547 incidents, coverage=66.4%
+2026-03-12 22:10:25,072 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,077 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:25,169 [INFO] Simulation complete: 591 incidents, coverage=66.8%
+2026-03-12 22:10:25,174 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,179 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:25,265 [INFO] Simulation complete: 551 incidents, coverage=63.9%
+2026-03-12 22:10:25,269 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,274 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:25,359 [INFO] Simulation complete: 531 incidents, coverage=66.9%
+2026-03-12 22:10:25,363 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,368 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:25,498 [INFO] Simulation complete: 551 incidents, coverage=67.5%
+2026-03-12 22:10:25,501 [INFO]   Progress: 250/330 (76%) | Elapsed: 31.2s | ETA: 10.0s
+2026-03-12 22:10:25,502 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,508 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:25,605 [INFO] Simulation complete: 608 incidents, coverage=64.5%
+2026-03-12 22:10:25,610 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,615 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:25,710 [INFO] Simulation complete: 587 incidents, coverage=64.7%
+2026-03-12 22:10:25,715 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,720 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:25,805 [INFO] Simulation complete: 539 incidents, coverage=59.6%
+2026-03-12 22:10:25,809 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,814 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:25,904 [INFO] Simulation complete: 574 incidents, coverage=63.2%
+2026-03-12 22:10:25,909 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:25,914 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:26,011 [INFO] Simulation complete: 634 incidents, coverage=64.7%
+2026-03-12 22:10:26,016 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,021 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:26,112 [INFO] Simulation complete: 573 incidents, coverage=66.8%
+2026-03-12 22:10:26,116 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,121 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:26,206 [INFO] Simulation complete: 543 incidents, coverage=63.4%
+2026-03-12 22:10:26,210 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,215 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:26,305 [INFO] Simulation complete: 578 incidents, coverage=64.4%
+2026-03-12 22:10:26,310 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,315 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:26,409 [INFO] Simulation complete: 615 incidents, coverage=64.2%
+2026-03-12 22:10:26,414 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,419 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:26,506 [INFO] Simulation complete: 565 incidents, coverage=64.2%
+2026-03-12 22:10:26,510 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,515 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:26,608 [INFO] Simulation complete: 583 incidents, coverage=66.0%
+2026-03-12 22:10:26,612 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,617 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:26,707 [INFO] Simulation complete: 577 incidents, coverage=60.8%
+2026-03-12 22:10:26,711 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,716 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:26,804 [INFO] Simulation complete: 572 incidents, coverage=63.5%
+2026-03-12 22:10:26,808 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,813 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:26,905 [INFO] Simulation complete: 580 incidents, coverage=63.6%
+2026-03-12 22:10:26,909 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:26,915 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:27,037 [INFO] Simulation complete: 578 incidents, coverage=66.4%
+2026-03-12 22:10:27,042 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:27,047 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:27,141 [INFO] Simulation complete: 595 incidents, coverage=66.2%
+2026-03-12 22:10:27,145 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:27,151 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:27,240 [INFO] Simulation complete: 557 incidents, coverage=65.0%
+2026-03-12 22:10:27,244 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:27,249 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:27,350 [INFO] Simulation complete: 616 incidents, coverage=62.2%
+2026-03-12 22:10:27,356 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:27,364 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:27,460 [INFO] Simulation complete: 562 incidents, coverage=61.9%
+2026-03-12 22:10:27,464 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:27,469 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:27,575 [INFO] Simulation complete: 581 incidents, coverage=67.0%
+2026-03-12 22:10:27,582 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:27,589 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:27,691 [INFO] Simulation complete: 578 incidents, coverage=99.7%
+2026-03-12 22:10:27,695 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:27,700 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:27,782 [INFO] Simulation complete: 535 incidents, coverage=99.6%
+2026-03-12 22:10:27,786 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:27,791 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:27,877 [INFO] Simulation complete: 565 incidents, coverage=99.6%
+2026-03-12 22:10:27,881 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:27,886 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:27,976 [INFO] Simulation complete: 599 incidents, coverage=99.8%
+2026-03-12 22:10:27,981 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:27,986 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:28,072 [INFO] Simulation complete: 577 incidents, coverage=99.5%
+2026-03-12 22:10:28,077 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,082 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:28,163 [INFO] Simulation complete: 547 incidents, coverage=99.8%
+2026-03-12 22:10:28,168 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,173 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:28,256 [INFO] Simulation complete: 546 incidents, coverage=99.8%
+2026-03-12 22:10:28,260 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,266 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:28,351 [INFO] Simulation complete: 574 incidents, coverage=99.3%
+2026-03-12 22:10:28,355 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,361 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:28,448 [INFO] Simulation complete: 575 incidents, coverage=99.3%
+2026-03-12 22:10:28,452 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,457 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:28,580 [INFO] Simulation complete: 601 incidents, coverage=99.8%
+2026-03-12 22:10:28,584 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,589 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:28,683 [INFO] Simulation complete: 608 incidents, coverage=99.7%
+2026-03-12 22:10:28,688 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,693 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:28,780 [INFO] Simulation complete: 587 incidents, coverage=99.8%
+2026-03-12 22:10:28,785 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,790 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:28,871 [INFO] Simulation complete: 539 incidents, coverage=99.4%
+2026-03-12 22:10:28,875 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,881 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:28,966 [INFO] Simulation complete: 574 incidents, coverage=99.5%
+2026-03-12 22:10:28,970 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:28,976 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:29,076 [INFO] Simulation complete: 569 incidents, coverage=100.0%
+2026-03-12 22:10:29,082 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,088 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:29,181 [INFO] Simulation complete: 573 incidents, coverage=100.0%
+2026-03-12 22:10:29,185 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,191 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:29,275 [INFO] Simulation complete: 559 incidents, coverage=99.3%
+2026-03-12 22:10:29,279 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,284 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:29,370 [INFO] Simulation complete: 578 incidents, coverage=99.5%
+2026-03-12 22:10:29,375 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,380 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:29,471 [INFO] Simulation complete: 615 incidents, coverage=98.9%
+2026-03-12 22:10:29,475 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,481 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:29,566 [INFO] Simulation complete: 582 incidents, coverage=99.3%
+2026-03-12 22:10:29,571 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,576 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:29,662 [INFO] Simulation complete: 584 incidents, coverage=99.8%
+2026-03-12 22:10:29,667 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,672 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:29,755 [INFO] Simulation complete: 558 incidents, coverage=99.5%
+2026-03-12 22:10:29,759 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,764 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:29,848 [INFO] Simulation complete: 572 incidents, coverage=99.7%
+2026-03-12 22:10:29,852 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,857 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:29,942 [INFO] Simulation complete: 580 incidents, coverage=99.3%
+2026-03-12 22:10:29,947 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:29,952 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:30,068 [INFO] Simulation complete: 593 incidents, coverage=99.5%
+2026-03-12 22:10:30,072 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:30,077 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:30,165 [INFO] Simulation complete: 596 incidents, coverage=99.7%
+2026-03-12 22:10:30,169 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:30,174 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:30,260 [INFO] Simulation complete: 579 incidents, coverage=99.3%
+2026-03-12 22:10:30,264 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:30,270 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:30,352 [INFO] Simulation complete: 555 incidents, coverage=99.6%
+2026-03-12 22:10:30,356 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:30,361 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:30,447 [INFO] Simulation complete: 562 incidents, coverage=99.8%
+2026-03-12 22:10:30,451 [INFO] Initialized UnitPool: 20 units across 18 firehouses
+2026-03-12 22:10:30,456 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:30,544 [INFO] Simulation complete: 563 incidents, coverage=99.5%
+2026-03-12 22:10:30,548 [INFO]   Progress: 300/330 (91%) | Elapsed: 36.3s | ETA: 3.6s
+2026-03-12 22:10:30,549 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:30,554 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-12 22:10:30,648 [INFO] Simulation complete: 578 incidents, coverage=99.5%
+2026-03-12 22:10:30,652 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:30,658 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-12 22:10:30,743 [INFO] Simulation complete: 535 incidents, coverage=99.6%
+2026-03-12 22:10:30,747 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:30,752 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-12 22:10:30,842 [INFO] Simulation complete: 565 incidents, coverage=99.6%
+2026-03-12 22:10:30,846 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:30,851 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-12 22:10:30,944 [INFO] Simulation complete: 599 incidents, coverage=99.8%
+2026-03-12 22:10:30,949 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:30,954 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-12 22:10:31,044 [INFO] Simulation complete: 577 incidents, coverage=99.5%
+2026-03-12 22:10:31,048 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,053 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-12 22:10:31,139 [INFO] Simulation complete: 547 incidents, coverage=99.8%
+2026-03-12 22:10:31,144 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,149 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-12 22:10:31,250 [INFO] Simulation complete: 546 incidents, coverage=99.8%
+2026-03-12 22:10:31,254 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,260 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-12 22:10:31,350 [INFO] Simulation complete: 574 incidents, coverage=99.5%
+2026-03-12 22:10:31,354 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,359 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-12 22:10:31,497 [INFO] Simulation complete: 575 incidents, coverage=99.5%
+2026-03-12 22:10:31,502 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,507 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-12 22:10:31,602 [INFO] Simulation complete: 601 incidents, coverage=99.8%
+2026-03-12 22:10:31,606 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,612 [INFO] Starting simulation: horizon=168h, units=20, seed=52
+2026-03-12 22:10:31,713 [INFO] Simulation complete: 608 incidents, coverage=99.7%
+2026-03-12 22:10:31,718 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,723 [INFO] Starting simulation: horizon=168h, units=20, seed=53
+2026-03-12 22:10:31,819 [INFO] Simulation complete: 587 incidents, coverage=99.8%
+2026-03-12 22:10:31,824 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,830 [INFO] Starting simulation: horizon=168h, units=20, seed=54
+2026-03-12 22:10:31,919 [INFO] Simulation complete: 539 incidents, coverage=99.4%
+2026-03-12 22:10:31,924 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:31,930 [INFO] Starting simulation: horizon=168h, units=20, seed=55
+2026-03-12 22:10:32,025 [INFO] Simulation complete: 574 incidents, coverage=99.5%
+2026-03-12 22:10:32,029 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,035 [INFO] Starting simulation: horizon=168h, units=20, seed=56
+2026-03-12 22:10:32,131 [INFO] Simulation complete: 569 incidents, coverage=99.8%
+2026-03-12 22:10:32,137 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,144 [INFO] Starting simulation: horizon=168h, units=20, seed=57
+2026-03-12 22:10:32,244 [INFO] Simulation complete: 573 incidents, coverage=100.0%
+2026-03-12 22:10:32,252 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,260 [INFO] Starting simulation: horizon=168h, units=20, seed=58
+2026-03-12 22:10:32,374 [INFO] Simulation complete: 559 incidents, coverage=99.3%
+2026-03-12 22:10:32,379 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,384 [INFO] Starting simulation: horizon=168h, units=20, seed=59
+2026-03-12 22:10:32,482 [INFO] Simulation complete: 578 incidents, coverage=99.8%
+2026-03-12 22:10:32,487 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,493 [INFO] Starting simulation: horizon=168h, units=20, seed=60
+2026-03-12 22:10:32,597 [INFO] Simulation complete: 615 incidents, coverage=98.9%
+2026-03-12 22:10:32,602 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,609 [INFO] Starting simulation: horizon=168h, units=20, seed=61
+2026-03-12 22:10:32,712 [INFO] Simulation complete: 582 incidents, coverage=99.5%
+2026-03-12 22:10:32,717 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,723 [INFO] Starting simulation: horizon=168h, units=20, seed=62
+2026-03-12 22:10:32,829 [INFO] Simulation complete: 584 incidents, coverage=100.0%
+2026-03-12 22:10:32,833 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,839 [INFO] Starting simulation: horizon=168h, units=20, seed=63
+2026-03-12 22:10:32,955 [INFO] Simulation complete: 558 incidents, coverage=99.6%
+2026-03-12 22:10:32,961 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:32,967 [INFO] Starting simulation: horizon=168h, units=20, seed=64
+2026-03-12 22:10:33,065 [INFO] Simulation complete: 572 incidents, coverage=99.5%
+2026-03-12 22:10:33,070 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,075 [INFO] Starting simulation: horizon=168h, units=20, seed=65
+2026-03-12 22:10:33,206 [INFO] Simulation complete: 580 incidents, coverage=99.7%
+2026-03-12 22:10:33,211 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,216 [INFO] Starting simulation: horizon=168h, units=20, seed=66
+2026-03-12 22:10:33,311 [INFO] Simulation complete: 593 incidents, coverage=99.5%
+2026-03-12 22:10:33,315 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,321 [INFO] Starting simulation: horizon=168h, units=20, seed=67
+2026-03-12 22:10:33,414 [INFO] Simulation complete: 596 incidents, coverage=99.7%
+2026-03-12 22:10:33,419 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,425 [INFO] Starting simulation: horizon=168h, units=20, seed=68
+2026-03-12 22:10:33,519 [INFO] Simulation complete: 579 incidents, coverage=99.3%
+2026-03-12 22:10:33,524 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,529 [INFO] Starting simulation: horizon=168h, units=20, seed=69
+2026-03-12 22:10:33,626 [INFO] Simulation complete: 555 incidents, coverage=99.6%
+2026-03-12 22:10:33,630 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,636 [INFO] Starting simulation: horizon=168h, units=20, seed=70
+2026-03-12 22:10:33,729 [INFO] Simulation complete: 562 incidents, coverage=99.8%
+2026-03-12 22:10:33,733 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-12 22:10:33,738 [INFO] Starting simulation: horizon=168h, units=20, seed=71
+2026-03-12 22:10:33,831 [INFO] Simulation complete: 582 incidents, coverage=99.8%
+2026-03-12 22:10:33,834 [INFO]   Progress: 330/330 (100%) | Elapsed: 39.5s | ETA: 0.0s
+2026-03-12 22:10:33,839 [INFO] Saved 330 rows to /home/ubuntu/ems-optimization/results/simulation/cbd_experiment/cbd_experiment_results.csv
+2026-03-12 22:10:33,840 [INFO] 
+============================================================
+2026-03-12 22:10:33,840 [INFO] CBD EXPERIMENT SUMMARY
+2026-03-12 22:10:33,840 [INFO] ============================================================
+2026-03-12 22:10:33,840 [INFO] Total runs: 330
+2026-03-12 22:10:33,840 [INFO] Total time: 39.6s (0.7 min)
+2026-03-12 22:10:33,845 [INFO] 
+                          mean_response_time         coverage_8min         cbd_mean_rt cbd_coverage_8min queue_fraction
+                                        mean     std          mean     std        mean              mean           mean
+scenario_type    policy                                                                                                
+baseline         P0                   8.0825  0.2663        0.6444  0.0203      2.7300            0.9987            0.0
+                 P1                   2.6340  0.0468        0.9958  0.0025      2.4417            0.9994            0.0
+                 P2                   2.5702  0.0437        0.9962  0.0024      2.4821            0.9994            0.0
+cbd_only         CBD_ONLY             8.3456  0.2602        0.6349  0.0199      2.9707            0.9988            0.0
+cbd_slow_service P0                   8.1462  0.2526        0.6422  0.0171      2.7702            0.9986            0.0
+                 P1                   2.6783  0.0447        0.9946  0.0026      2.4730            0.9987            0.0
+                 P2                   2.6250  0.0493        0.9956  0.0025      2.5265            0.9987            0.0
+cbd_surge        P0                   8.3520  0.3284        0.6313  0.0188      2.9074            0.9946            0.0
+                 P1                   2.7498  0.0520        0.9917  0.0026      2.5318            0.9979            0.0
+                 P2                   2.7259  0.0489        0.9929  0.0027      2.6137            0.9976            0.0
+mixed            MIXED                8.3456  0.2602        0.6349  0.0199      2.9707            0.9988            0.0
+2026-03-12 22:10:33,848 [INFO] 
+Saved summary to /home/ubuntu/ems-optimization/results/simulation/cbd_experiment/cbd_experiment_summary.csv
