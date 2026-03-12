@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large files - track with Git LFS or exclude)
+# Large CSV files excluded (>100MB GitHub limit)
+data/raw/Motor_Vehicle_Collisions_-_Crashes_*.csv
+data/raw/Police_Precincts_*.csv
+# Keep smaller files tracked
+# data/raw/*.xlsx  # Data dictionaries - tracked
+# data/raw/*.geojson  # Boundary files - tracked
+# data/raw/FDNY_*.csv  # Small firehouse file - tracked
+data/interim/*.csv
+data/interim/*.pkl
+data/interim/*.parquet
+data/processed/*.csv
+data/processed/*.pkl
+data/processed/*.parquet
+
+# Don't ignore .gitkeep files
+!.gitkeep
+
+# Results (can be regenerated)
+results/figures/*.png
+results/figures/*.pdf
+results/figures/*.svg
+results/maps/*.html
+results/maps/*.png
+results/tables/*.csv
+results/tables/*.xlsx
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# mypy
+.mypy_cache/

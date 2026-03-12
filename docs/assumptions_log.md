@@ -1,0 +1,89 @@
+# Assumptions Log
+
+This document records all assumptions made during the EMS Readiness Optimization project.
+
+## Data Assumptions
+
+### A1: Crash Data Representativeness
+**Assumption**: Historical crash data (2013-2026) is representative of future crash patterns.
+**Rationale**: Long time series provides stable estimates of spatial and temporal patterns.
+**Risk**: Major changes in traffic patterns (e.g., congestion pricing) could alter future demand.
+**Mitigation**: Include sensitivity analysis on demand levels.
+
+### A2: Location Accuracy
+**Assumption**: Crash latitude/longitude coordinates are sufficiently accurate for demand estimation.
+**Rationale**: NYPD geocoding process should provide reasonable accuracy for most incidents.
+**Risk**: Some records may have missing or inaccurate coordinates.
+**Mitigation**: Filter records with missing coordinates; aggregate to grid cells.
+
+### A3: Firehouse Availability
+**Assumption**: All Manhattan firehouses are available as potential EMS staging locations.
+**Rationale**: Study explores optimal staging locations; operational constraints addressed separately.
+**Risk**: Some firehouses may not have space or infrastructure for EMS staging.
+**Mitigation**: Document as limitation; can add constraints in future iterations.
+
+## Model Assumptions
+
+### A4: Travel Time Model
+**Assumption**: Travel times can be approximated using Euclidean distance with a scaling factor or simplified network distances.
+**Rationale**: Full routing adds complexity without fundamentally changing optimization insights.
+**Risk**: May over/underestimate actual response times in some areas.
+**Mitigation**: Sensitivity analysis on travel time multipliers.
+
+### A5: Single Unit Response
+**Assumption**: Each crash incident requires exactly one EMS unit.
+**Rationale**: Simplifies simulation while capturing core dispatch dynamics.
+**Risk**: Major incidents may require multiple units.
+**Mitigation**: Model captures most incidents; note as limitation.
+
+### A6: Homogeneous Service Time
+**Assumption**: Service time (on-scene + transport) follows a single distribution.
+**Rationale**: Data on actual service times not available; use literature estimates.
+**Risk**: Service times may vary by incident severity.
+**Mitigation**: Sensitivity analysis on service time parameters.
+
+### A7: Immediate Dispatch
+**Assumption**: EMS units are dispatched immediately upon incident occurrence.
+**Rationale**: Focuses on travel time rather than dispatch delay.
+**Risk**: Real systems have dispatch processing time.
+**Mitigation**: Can add dispatch delay parameter if needed.
+
+## Geographic Assumptions
+
+### A8: Manhattan Boundary
+**Assumption**: Incidents and firehouses are classified by whether they fall within Manhattan borough boundary.
+**Rationale**: Standard geographic classification for NYC.
+**Risk**: Boundary edges may have some ambiguity.
+**Mitigation**: Use official borough boundary polygons.
+
+### A9: CBD Definition
+**Assumption**: CBD is defined as the MTA Congestion Relief Zone boundary.
+**Rationale**: Provides consistent, official boundary for the high-density core.
+**Risk**: Other CBD definitions exist; results depend on boundary choice.
+**Mitigation**: Document specific boundary used; can test alternatives.
+
+## Operational Assumptions
+
+### A10: Unlimited Staging Capacity
+**Assumption**: Any number of EMS units can stage at a single firehouse.
+**Rationale**: Simplifies optimization; capacity constraints are secondary.
+**Risk**: Physical constraints may limit actual staging.
+**Mitigation**: Document as limitation; add capacity constraints in extensions.
+
+### A11: No Pre-emption
+**Assumption**: Once an EMS unit is assigned to an incident, it completes service before taking new calls.
+**Rationale**: Standard EMS operational policy.
+**Risk**: Pre-emption for high-priority calls does occur.
+**Mitigation**: Aligns with most common practice; note limitation.
+
+---
+
+## Assumption Review Schedule
+
+| Assumption | Review Date | Reviewer | Status |
+|------------|-------------|----------|--------|
+| All | Initial | Project Lead | Documented |
+
+---
+
+*Last Updated: March 12, 2026*
