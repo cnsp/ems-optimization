@@ -1,0 +1,40 @@
+2026-03-13 02:47:34,634 [INFO] ============================================================
+2026-03-13 02:47:34,634 [INFO] CBD-Focused vs Manhattan-Wide Optimization Experiment
+2026-03-13 02:47:34,634 [INFO] K=20, replications=10
+2026-03-13 02:47:34,634 [INFO] ============================================================
+2026-03-13 02:47:34,638 [INFO] Solving Manhattan-wide P2 (demand_weighted)...
+2026-03-13 02:47:34,703 [INFO]   Manhattan-wide: 20 units, 20 firehouses
+2026-03-13 02:47:34,703 [INFO] Solving CBD-focused P2...
+2026-03-13 02:47:34,756 [INFO]   CBD-focused: 20 units, 12 firehouses
+2026-03-13 02:47:34,758 [INFO] 
+Running Manhattan-Wide P2 simulations (10 reps)...
+2026-03-13 02:47:35,842 [INFO] 
+Running CBD-Focused P2 simulations (10 reps)...
+2026-03-13 02:47:36,717 [INFO] 
+Manhattan-Wide P2:
+2026-03-13 02:47:36,717 [INFO]   Overall RT: 2.55 ± 0.03 min
+2026-03-13 02:47:36,717 [INFO]   CBD RT:     2.47 ± 0.04 min
+2026-03-13 02:47:36,717 [INFO]   Non-CBD RT: 2.66 ± 0.05 min
+2026-03-13 02:47:36,717 [INFO]   CBD Coverage: 100.0%
+2026-03-13 02:47:36,717 [INFO]   Non-CBD Coverage: 99.2%
+2026-03-13 02:47:36,727 [INFO] 
+CBD-Focused P2:
+2026-03-13 02:47:36,727 [INFO]   Overall RT: 4.42 ± 0.12 min
+2026-03-13 02:47:36,727 [INFO]   CBD RT:     2.50 ± 0.06 min
+2026-03-13 02:47:36,727 [INFO]   Non-CBD RT: 6.88 ± 0.24 min
+2026-03-13 02:47:36,727 [INFO]   CBD Coverage: 99.9%
+2026-03-13 02:47:36,727 [INFO]   Non-CBD Coverage: 73.6%
+2026-03-13 02:47:36,728 [INFO] 
+Saved comparison table to /home/ubuntu/ems-optimization/results/cbd_focused_comparison/comparison_table.csv
+2026-03-13 02:47:36,936 [INFO] Saved: cbd_focused_comparison.png
+2026-03-13 02:47:37,227 [INFO] Saved: allocation_comparison.png
+2026-03-13 02:47:37,354 [INFO] Saved: equity_tradeoff.png
+2026-03-13 02:47:37,354 [INFO] 
+Experiment completed in 2.7s (0.0 min)
+2026-03-13 02:47:37,354 [INFO] Results saved to: /home/ubuntu/ems-optimization/results/cbd_focused_comparison
+2026-03-13 02:47:37,355 [INFO] 
+============================================================
+2026-03-13 02:47:37,355 [INFO] KEY FINDINGS
+2026-03-13 02:47:37,355 [INFO] ============================================================
+2026-03-13 02:47:37,355 [INFO]   Manhattan-Wide P2        : CBD=2.47, Non-CBD=2.66, Overall=2.55 min
+2026-03-13 02:47:37,355 [INFO]   CBD-Focused P2           : CBD=2.50, Non-CBD=6.88, Overall=4.42 min

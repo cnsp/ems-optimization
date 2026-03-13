@@ -1,7 +1,7 @@
 # Code Documentation
 ## EMS Readiness Optimization — Architecture & Developer Guide
 
-**Version:** 1.0.0 | **Python:** 3.11+ | **Lines of Code:** 7,134
+**Version:** 1.2.0 | **Python:** 3.11+ | **Lines of Code:** 7,800+
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```
 ems_readiness/                  # Core package
-├── __init__.py                 # Package metadata (v0.4.0)
+├── __init__.py                 # Package metadata (v0.5.0)
 ├── demand/                     # Demand modeling module
 │   ├── __init__.py
 │   └── arrival_generator.py    # NHPP arrival generation
@@ -32,7 +32,7 @@ ems_readiness/                  # Core package
 │   └── runner.py               # Batch experiment runner
 └── utils/                      # Utilities
     ├── __init__.py
-    └── distance.py             # Haversine distance
+    └── distance.py             # Haversine & Manhattan distance
 ```
 
 ### Data Flow
@@ -135,10 +135,22 @@ def build_p_median(travel_time_matrix, demand, K, ...) -> pulp.LpProblem
 
 def build_maximal_coverage(travel_time_matrix, demand, K, threshold_minutes=8.0, ...) -> pulp.LpProblem
 
+# --- Added in v1.2.0 (CBD-focused models) ---
+def build_cbd_focused_demand_weighted(
+    travel_time_matrix, demand, K, cbd_precincts, cbd_weight=3.0, capacity=5, ...
+) -> pulp.LpProblem
+
+def build_cbd_focused_coverage(
+    travel_time_matrix, demand, K, cbd_precincts, threshold_minutes=8.0,
+    cbd_coverage_weight=3.0, capacity=5, ...
+) -> pulp.LpProblem
+
 def extract_allocation(model) -> pd.Series
 def extract_assignments(model) -> pd.DataFrame
 def extract_coverage(model) -> pd.Series
 ```
+
+**Added in v1.2.0:** `build_cbd_focused_demand_weighted()` applies a multiplier to CBD precinct demand weights, concentrating allocation toward the CBD. `build_cbd_focused_coverage()` applies analogous weighting to the coverage objective.
 
 ---
 
@@ -287,11 +299,22 @@ class BatchRunner:
 
 ### `utils.distance`
 
-```python
-def haversine(lat1, lon1, lat2, lon2) -> float  # miles
+**Purpose:** Geographic distance calculations with support for Haversine and Manhattan metrics.
 
-def build_distance_matrix(origins, destinations, ...) -> pd.DataFrame
+```python
+EARTH_RADIUS_MILES = 3958.8
+MILES_PER_DEGREE_LAT = 69.0
+MILES_PER_DEGREE_LON_NYC = 52.3  # At 40.75°N latitude
+
+def haversine(lat1, lon1, lat2, lon2) -> float  # great-circle distance (miles)
+
+def manhattan_distance(lat1, lon1, lat2, lon2) -> float  # taxicab distance (miles)
+
+def build_distance_matrix(origins, destinations, ..., metric="haversine") -> pd.DataFrame
+    # metric: "haversine" or "manhattan"
 ```
+
+**Added in v1.2.0:** `manhattan_distance()` function and `metric` parameter for `build_distance_matrix()`. Manhattan distance computes |Δlat|×69.0 + |Δlon|×52.3 miles, approximating grid-based travel in NYC.
 
 ---
 

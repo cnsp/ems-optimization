@@ -1,6 +1,6 @@
 # File Inventory — EMS Readiness Optimization Project
 
-> Generated: 2026-03-12 | Total tracked files in remote: **191** | Total local files: **195**
+> Generated: 2026-03-12 | Version: 1.2.0 | Total tracked files in remote: **210+** | Total local files: **220+**
 
 ---
 
@@ -15,6 +15,7 @@
 | Phase 5 | Experimental Design & Production Runs (1,440 sims) | ✅ Complete |
 | Phase 6 | Comprehensive Statistical Analysis | ✅ Complete |
 | Phase 7 | Final Report & Documentation | ✅ Complete |
+| Phase 8 | Alternative Analyses & Extensions | ✅ Complete |
 
 ---
 
@@ -50,19 +51,20 @@
 | `demand_lambda_dow.csv` | 653 B | ✅ | Day-of-week λ factors |
 | `demand_lambda_precinct.csv` | 1.7 KB | ✅ | Precinct-level λ rates |
 | `demand_model_summary.json` | 696 B | ✅ | Demand model summary stats |
-| `distance_matrix_firehouse_precinct.csv` | 27 KB | ✅ | 48×30 distance matrix |
+| `distance_matrix_firehouse_precinct.csv` | 27 KB | ✅ | 48×30 Haversine distance matrix |
+| `distance_matrix_firehouse_precinct_manhattan.csv` | 27 KB | ✅ | 48×30 Manhattan distance matrix |
 | `firehouses_clean.csv` | 32 KB | ✅ | All cleaned firehouses |
 | `firehouses_manhattan.csv` | 7.1 KB | ✅ | 48 Manhattan firehouses |
 | `precincts_manhattan.geojson` | 640 KB | ✅ | 30 Manhattan precincts |
 
-### `src/ems_readiness/` — Source Code (7,134 lines total)
+### `src/ems_readiness/` — Source Code (7,800+ lines total)
 | Module | Files | Description |
 |--------|-------|-------------|
 | `demand/` | `__init__.py`, `arrival_generator.py` | NHPP arrival generation (thinning algorithm) |
 | `service/` | `__init__.py`, `travel_time.py`, `service_time.py` | Travel proxy & LogNormal service time |
-| `optimization/` | `__init__.py`, `models.py`, `policies.py`, `allocator.py` | MIP formulations & baseline policies |
+| `optimization/` | `__init__.py`, `models.py`, `policies.py`, `allocator.py` | MIP formulations (incl. CBD-focused) & baseline policies |
 | `simulation/` | `__init__.py`, `engine.py`, `entities.py`, `resources.py`, `dispatcher.py`, `metrics.py`, `runner.py` | SimPy DES engine with batch runner |
-| `utils/` | `__init__.py`, `distance.py` | Haversine distance calculations |
+| `utils/` | `__init__.py`, `distance.py` | Haversine & Manhattan distance calculations |
 
 ### `scripts/` — Automation Scripts
 | File | Description |
@@ -80,6 +82,12 @@
 | `analyze_production_results.py` | Production result analysis |
 | `generate_publication_figures.py` | Publication-quality figure generation |
 | `generate_summary_dashboard.py` | Project summary dashboard |
+| `run_cbd_experiment.py` | CBD robustness experiment (330 runs) |
+| `analyze_queue_metrics.py` | Queue metrics analysis |
+| `analyze_seasonal_patterns.py` | Seasonal variation analysis |
+| `generate_manhattan_distance_matrix.py` | Manhattan (taxicab) distance matrix generation |
+| `run_distance_comparison_experiment.py` | Haversine vs. Manhattan metric comparison |
+| `run_cbd_focused_optimization.py` | CBD-focused vs. Manhattan-wide optimization |
 
 ### `tests/` — Test Suite (39 tests)
 | File | Tests | Description |
@@ -140,7 +148,28 @@
 | `findings_summary.json` | Machine-readable summary |
 | `PHASE3_SUMMARY.md/.pdf` | Phase 3 narrative summary |
 
-### `docs/` — Documentation (25+ files)
+### `results/distance_comparison/` — Distance Metric Comparison (Phase 8)
+| File | Description |
+|------|-------------|
+| `comparison_table.csv` | Haversine vs. Manhattan simulation metrics |
+| `allocation_comparison.csv` | Side-by-side firehouse allocations |
+| `distance_matrices_heatmap.png` | Dual-panel heatmap |
+| `distance_scatter.png` | Manhattan vs. Haversine scatter |
+| `distance_comparison_bar.png` | RT comparison bar chart |
+| `distance_comparison_boxplot.png` | RT distribution boxplot |
+| `experiment_log.txt` | Experiment execution log |
+
+### `results/cbd_focused_comparison/` — CBD-Focused Optimization (Phase 8)
+| File | Description |
+|------|-------------|
+| `comparison_table.csv` | CBD-focused vs. Manhattan-wide metrics |
+| `allocations.csv` | Side-by-side allocations |
+| `cbd_focused_comparison.png` | RT comparison bar chart |
+| `allocation_comparison.png` | Allocation distribution comparison |
+| `equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
+| `experiment_log.txt` | Experiment execution log |
+
+### `docs/` — Documentation (30+ files)
 | File | Description |
 |------|-------------|
 | `project_charter.md` | Project scope and objectives |
@@ -163,6 +192,13 @@
 | `project_archive.md` | Project archive & timeline |
 | `code_documentation.md` | Code architecture guide |
 | `file_inventory.md` | This file |
+| `cbd_robustness_analysis.md` | CBD robustness DES experiment |
+| `queue_analysis.md` | Queueing performance analysis |
+| `gap_closure_report.md` | Gap closure verification |
+| `distance_metric_comparison.md/.pdf` | Haversine vs. Manhattan comparison (Phase 8) |
+| `cbd_focused_optimization_analysis.md/.pdf` | CBD-focused optimization report (Phase 8) |
+| `alternative_analyses_summary.md/.pdf` | Alternative analyses summary (Phase 8) |
+| `project_workflow_wbs.md/.pdf` | Work Breakdown Structure |
 
 ---
 
@@ -170,13 +206,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Python LOC | 7,134 |
+| Total Python LOC | 7,800+ |
 | Total source modules | 14 |
+| Total scripts | 19 |
 | Total test cases | 39 |
-| Total notebooks | 7 |
-| Total figures | 33 |
-| Total CSV result files | 27 |
-| Total documentation files | 25+ |
-| Total simulation runs | 1,440 |
-| Tracked files in Git | 191+ |
-| Project size (excl. raw data) | ~130 MB |
+| Total notebooks | 8 |
+| Total figures | 51+ |
+| Total CSV result files | 30+ |
+| Total documentation files | 30+ |
+| Total simulation runs | 1,770+ (production) + alternative analyses |
+| Tracked files in Git | 210+ |
+| Project size (excl. raw data) | ~140 MB |

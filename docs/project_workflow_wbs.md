@@ -3,7 +3,7 @@
 ## EMS Readiness Optimization for Manhattan
 
 **Date:** March 12, 2026  
-**Version:** 1.0.0  
+**Version:** 1.2.0  
 **Project:** EMS Readiness Optimization — Manhattan, NYC
 
 ---
@@ -18,8 +18,9 @@
 6. [Phase 5 — Verification & Validation](#6-phase-5--verification--validation)
 7. [Phase 6 — Experimentation & Analysis](#7-phase-6--experimentation--analysis)
 8. [Phase 7 — Reporting & Final Delivery](#8-phase-7--reporting--final-delivery)
-9. [Phase Dependency Diagram](#9-phase-dependency-diagram)
-10. [Timeline Summary](#10-timeline-summary)
+9. [Phase 8 — Alternative Analyses & Extensions](#9-phase-8--alternative-analyses--extensions)
+10. [Phase Dependency Diagram](#10-phase-dependency-diagram)
+11. [Timeline Summary](#11-timeline-summary)
 
 ---
 
@@ -29,7 +30,7 @@ This document provides the complete Work Breakdown Structure (WBS) for the EMS R
 
 **Project Scope:** Evaluate strategic EMS ambulance staging policies across 48 FDNY firehouses in Manhattan using discrete-event simulation, comparing uniform (P0), demand-proportional (P1), and MIP-optimized (P2) allocation strategies.
 
-**Total Deliverables:** 14 Python modules, 16 scripts, 9 notebooks, 44 figures, 24 tables, 25+ documentation files.
+**Total Deliverables:** 14 Python modules, 19 scripts, 9 notebooks, 51+ figures, 28+ tables, 30+ documentation files.
 
 ---
 
@@ -477,7 +478,72 @@ Compile all findings into a comprehensive technical report, executive presentati
 
 ---
 
-## 9. Phase Dependency Diagram
+## 9. Phase 8 — Alternative Analyses & Extensions
+
+### Objective
+Conduct alternative analyses to test the robustness of modelling choices and compare Manhattan-wide vs. CBD-focused optimization strategies.
+
+### Step-by-Step Procedure
+
+| Step | Action | Output |
+|------|--------|--------|
+| 8.1 | Implement Manhattan (taxicab) distance metric in `distance.py` alongside Haversine | Updated distance module |
+| 8.2 | Generate 48×30 Manhattan distance matrix from firehouse-to-precinct centroids | Manhattan distance matrix CSV |
+| 8.3 | Run distance metric comparison experiment: solve P2 with both metrics, simulate, compare RT | Distance comparison results |
+| 8.4 | Generate distance comparison figures (heatmap, scatter, bar, boxplot) | 4 comparison figures |
+| 8.5 | Implement CBD-focused optimization models: `build_cbd_focused_demand_weighted()` and `build_cbd_focused_coverage()` | Updated models module |
+| 8.6 | Run CBD-focused vs. Manhattan-wide comparison experiment: solve, simulate, compare RT by zone | CBD comparison results |
+| 8.7 | Generate CBD comparison figures (bar chart, allocation map, equity trade-off) | 3 comparison figures |
+| 8.8 | Document distance metric comparison findings | Distance metric report |
+| 8.9 | Document CBD-focused optimization findings | CBD optimization report |
+| 8.10 | Write alternative analyses summary integrating both studies | Summary report |
+| 8.11 | Update technical report (§5.10, §5.11), final summary, WBS, README, decisions log, assumptions log | Updated docs |
+
+### Input Files
+
+| File | Source |
+|------|--------|
+| `data/processed/distance_matrix_firehouse_precinct.csv` | Phase 2 output (Haversine) |
+| `data/processed/demand_lambda_precinct.csv` | Phase 2 output |
+| `data/raw/Police_Precincts_20260223.csv` | Raw precinct geometries |
+| `data/raw/cbd_boundary.geojson` | CBD boundary |
+| `configs/optimization.yaml` | Optimization config |
+| `configs/service.yaml` | Travel speed config |
+
+### Output Files / Deliverables
+
+| File | Description |
+|------|-------------|
+| `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` | 48×30 Manhattan distance matrix (miles) |
+| `results/distance_comparison/comparison_table.csv` | Haversine vs. Manhattan metric comparison |
+| `results/distance_comparison/allocation_comparison.csv` | Side-by-side allocations |
+| `results/distance_comparison/distance_matrices_heatmap.png` | Dual-panel heatmap |
+| `results/distance_comparison/distance_scatter.png` | Scatter: Manhattan vs. Haversine |
+| `results/distance_comparison/distance_comparison_bar.png` | RT comparison bar chart |
+| `results/distance_comparison/distance_comparison_boxplot.png` | RT distribution boxplot |
+| `results/cbd_focused_comparison/comparison_table.csv` | CBD-focused vs. Manhattan-wide metrics |
+| `results/cbd_focused_comparison/allocations.csv` | Side-by-side allocations |
+| `results/cbd_focused_comparison/cbd_focused_comparison.png` | RT comparison bar chart |
+| `results/cbd_focused_comparison/allocation_comparison.png` | Allocation map comparison |
+| `results/cbd_focused_comparison/equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
+| `docs/distance_metric_comparison.md` | Distance metric comparison report |
+| `docs/cbd_focused_optimization_analysis.md` | CBD-focused optimization report |
+| `docs/alternative_analyses_summary.md` | Combined alternative analyses summary |
+
+### Scripts / Notebooks Used
+
+| Script / Notebook | Purpose |
+|-------------------|---------|
+| `scripts/generate_manhattan_distance_matrix.py` | Generate Manhattan distance matrix |
+| `scripts/run_distance_comparison_experiment.py` | Run Haversine vs. Manhattan comparison (P2 + simulation) |
+| `scripts/run_cbd_focused_optimization.py` | Run CBD-focused vs. Manhattan-wide comparison |
+
+### Dependencies
+- **Depends on:** Phase 2 (distance matrix, demand data), Phase 3 (optimization models), Phase 4–5 (simulation engine)
+
+---
+
+## 10. Phase Dependency Diagram
 
 ```
 Phase 1: Problem Definition & Project Setup
@@ -501,17 +567,21 @@ Phase 6: Experimentation & Analysis
     │
     ▼
 Phase 7: Reporting & Final Delivery
+    │
+    ▼
+Phase 8: Alternative Analyses & Extensions
 ```
 
-**Critical Path:** Phase 1 → Phase 2 → Phase 4 → Phase 5 → Phase 6 → Phase 7
+**Critical Path:** Phase 1 → Phase 2 → Phase 4 → Phase 5 → Phase 6 → Phase 7 → Phase 8
 
 **Parallel Opportunities:**
 - Phase 3 (Optimization) and Phase 4 (Simulation design) can partially overlap, as the conceptual model design does not depend on optimization results. However, the simulation *implementation* requires the allocation policies from Phase 3 as input.
 - Documentation tasks in Phase 7 can begin concurrently with Phase 6 experimentation.
+- Phase 8 can begin once Phase 6 is complete, and runs in parallel with or after Phase 7.
 
 ---
 
-## 10. Timeline Summary
+## 11. Timeline Summary
 
 | Phase | Description | Estimated Duration | Cumulative |
 |-------|-------------|-------------------|------------|
@@ -522,8 +592,9 @@ Phase 7: Reporting & Final Delivery
 | 5 | Verification & Validation | 1 week | Week 7 |
 | 6 | Experimentation & Analysis | 2 weeks | Week 9 |
 | 7 | Reporting & Final Delivery | 2 weeks | Week 11 |
+| 8 | Alternative Analyses & Extensions | 1 week | Week 12 |
 
-**Total Project Duration:** ~11 weeks
+**Total Project Duration:** ~12 weeks
 
 ### Key Milestones
 
@@ -535,6 +606,7 @@ Phase 7: Reporting & Final Delivery
 | M4: V&V Complete | Week 7 | Verified and validated simulation model |
 | M5: Experiments Complete | Week 9 | 1,770 production runs with statistical analysis |
 | M6: Final Submission | Week 11 | Complete report, presentation, and reproducible archive |
+| M7: Alternative Analyses | Week 12 | Distance metric & CBD-focused comparison reports |
 
 ---
 
@@ -558,8 +630,11 @@ Phase 7: Reporting & Final Delivery
 | `scripts/analyze_seasonal_patterns.py` | 6 | Seasonal variation analysis | — |
 | `scripts/generate_publication_figures.py` | 6 | Publication figures | — |
 | `scripts/generate_summary_dashboard.py` | 6 | Summary dashboard | — |
+| `scripts/generate_manhattan_distance_matrix.py` | 8 | Manhattan distance matrix | — |
+| `scripts/run_distance_comparison_experiment.py` | 8 | Haversine vs. Manhattan comparison | K=20, reps=10 |
+| `scripts/run_cbd_focused_optimization.py` | 8 | CBD-focused vs. Manhattan-wide | K=20, reps=10 |
 
 ---
 
-*Document prepared as part of the EMS Readiness Optimization project, Phase 7.*  
-*Version 1.0.0 — March 12, 2026*
+*Document prepared as part of the EMS Readiness Optimization project, Phase 8.*  
+*Version 1.2.0 — March 12, 2026*
