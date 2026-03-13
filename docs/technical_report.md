@@ -4,7 +4,15 @@
 
 **Authors:** EMS Optimization Research Team  
 **Date:** March 12, 2026  
-**Version:** 1.0.0
+**Version:** 2.0.0 (Phase 21 — Full Compliance)
+
+---
+
+## Abstract
+
+This study presents a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a uniform baseline (P0), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 1,770 production runs across five experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, and CBD-focused stress tests—with 30 replications each using Common Random Numbers for variance reduction. Results demonstrate that the optimized policy P2 reduces mean response time by 68.2% (from 8.08 to 2.57 minutes) and improves 8-minute coverage from 64.4% to 99.6% compared to the uniform baseline, with all differences statistically significant (p < 0.001, Cohen's d > 28). Performance gains are robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments, establishing that performance differentials arise entirely from spatial allocation efficiency. We recommend adoption of P2 for operational deployment, with a phased 12-month implementation roadmap targeting the highest-impact firehouses first.
+
+**Keywords:** Emergency Medical Services, ambulance staging, discrete-event simulation, facility location optimization, Non-Homogeneous Poisson Process, Mixed-Integer Programming, SimPy
 
 ---
 
@@ -19,6 +27,11 @@
 7. [Conclusions and Recommendations](#7-conclusions-and-recommendations)
 8. [References](#8-references)
 9. [Appendices](#9-appendices)
+10. [List of Figures](#10-list-of-figures)
+11. [List of Tables](#11-list-of-tables)
+12. [Reproducibility](#12-reproducibility)
+
+---
 
 ---
 
@@ -102,7 +115,41 @@ This study addresses five primary research questions:
 - Cost optimization
 - Multi-borough coordination
 
+### 2.5 Why Discrete-Event Simulation?
+
+Several modeling paradigms were considered for evaluating ambulance staging policies. The choice of **Discrete-Event Simulation (DES)** over alternatives was deliberate and is justified below.
+
+#### 2.5.1 Alternatives Considered
+
+| Approach | Description | Why Not Sufficient |
+|----------|-------------|-------------------|
+| **Analytical (Queueing) Models** | Closed-form M/G/K queue or Erlang formulas | Require stationarity and spatial homogeneity. Our system has NHPP arrivals with pronounced hourly/DOW variation and 30 spatial demand zones — violating the i.i.d. assumptions of classical queueing theory. |
+| **Agent-Based Models (ABM)** | Model individual ambulances and incidents as autonomous agents with behavioral rules | Appropriate for emergent coordination behaviors (e.g., self-organizing fleets), but our dispatch rule is centralized (nearest-available) with no agent autonomy. ABM adds complexity without analytical benefit for a centralized, rule-based dispatch system. |
+| **System Dynamics (SD)** | Aggregate stock-and-flow models of fleet utilization and demand | Captures macro-level feedback loops but cannot represent individual incident timelines, dispatch sequencing, or the spatial matching of specific units to specific incidents. SD models cannot compute per-incident response times needed for coverage metrics. |
+| **Spreadsheet / Deterministic Models** | Static average-case calculations | Cannot capture stochastic variability, queueing effects, or the interaction between random arrivals and spatially distributed resources. |
+
+#### 2.5.2 Why DES is the Right Choice
+
+DES is uniquely suited to this problem for the following reasons:
+
+1. **Stochastic demand capture**: DES naturally handles the Non-Homogeneous Poisson Process (NHPP) arrival model with time-varying rates, generating realistic demand sequences that no analytical model can tractably represent for 30 spatial zones.
+
+2. **Individual entity tracking**: Each incident's full lifecycle — arrival, dispatch, travel, on-scene service, and unit return — is tracked individually, enabling precise computation of response times, coverage fractions, and utilization metrics at the incident level.
+
+3. **Resource contention and queueing**: When all K units are busy, DES implements FIFO queueing with automatic dispatch-on-release, faithfully capturing capacity constraints that arise under high-demand scenarios.
+
+4. **Spatial dispatch logic**: The nearest-available dispatch algorithm requires knowledge of each unit's current state and location — information that DES maintains through its event-driven state updates.
+
+5. **Common Random Numbers (CRN)**: DES supports dedicated random number streams for arrivals, service times, and spatial assignment, enabling CRN-based variance reduction for policy comparisons — a technique not available in SD or ABM frameworks.
+
+6. **Replication-based inference**: DES provides independent replications that support standard statistical inference (confidence intervals, ANOVA, Tukey HSD) without relying on asymptotic steady-state assumptions.
+
+7. **Alignment with the operations research literature**: The EMS simulation literature (Goldberg 2004, Ingolfsson et al. 2008, Lam et al. 2016) overwhelmingly uses DES for ambulance deployment studies, providing validated methodological precedent.
+
+In summary, DES is the minimal-complexity, maximum-fidelity approach for this problem class: it captures stochastic, spatial, and dynamic interactions that simpler models cannot, while avoiding the unnecessary complexity of agent-based or continuous-time frameworks.
+
 ---
+
 
 ## 3. Literature Review
 
@@ -225,6 +272,79 @@ The DES models the following process for each EMS call:
 3. **Travel**: Haversine distance / (20 mph × TOD factor)
 4. **On-Scene Service**: LogNormal(μ=25 min, σ=10 min)
 5. **Return to Station**: Unit returns to home firehouse (travel time)
+
+**Event Flow Diagram** (extracted from `docs/conceptual_model.md`):
+
+```
+                        ┌─────────────────────────┐
+                        │   SIMULATION START       │
+                        │   t = 0, all units idle  │
+                        └────────────┬────────────┘
+                                     │
+                                     ▼
+                   ┌──────────────────────────────────┐
+                   │       INCIDENT ARRIVAL            │
+                   │  (NHPP thinning at rate λ(t))     │
+                   └──────────┬───────────┬───────────┘
+                              │           │
+                    unit free?│           │ all units busy
+                              ▼           ▼
+                   ┌──────────────┐  ┌──────────────────┐
+                   │   DISPATCH   │  │  ENQUEUE (FIFO)  │
+                   │   DECISION   │  │  incident_queue   │
+                   └──────┬───────┘  └────────┬─────────┘
+                          │                   │
+                          │     ◄─────────────┘  (dequeued when
+                          │                       unit freed)
+                          ▼
+                   ┌──────────────────────┐
+                   │    SERVICE START     │
+                   │  (after δ + travel)  │
+                   └──────────┬───────────┘
+                              │
+                              ▼
+                   ┌──────────────────────┐
+                   │  SERVICE COMPLETION  │
+                   │  unit → AVAILABLE    │
+                   └──────┬──────┬────────┘
+                          │      │
+              queue empty? │      │ queue non-empty
+                          ▼      ▼
+                   ┌──────────┐  ┌──────────────┐
+                   │  UNIT    │  │  DISPATCH     │
+                   │  IDLES   │  │  next queued  │
+                   │  at home │  │  incident     │
+                   └──────────┘  └──────────────┘
+                                        │
+                                        ▼
+                              (back to SERVICE START)
+
+                   ─────────────────────────────────────
+                   When sim_clock ≥ T:
+                   ┌──────────────────────────────┐
+                   │     END OF SIMULATION         │
+                   │  • Stop new arrivals          │
+                   │  • Drain in-progress services │
+                   │  • Collect final statistics   │
+                   └──────────────────────────────┘
+```
+
+**Single-Incident Timeline:**
+
+```
+     arrival_time          dispatch_time        service_start        service_end
+          │                      │                    │                    │
+          ├──── dispatch_delay ──┤                    │                    │
+          │     (queue wait + δ) │                    │                    │
+          │                      ├─── travel_time ────┤                    │
+          │                      │                    ├── service_time ────┤
+          │                      │                    │                    │
+          ├────── response_time ─────────────────────┤                    │
+          │                                           │                    │
+          ├──────────────── total_time ───────────────────────────────────┤
+```
+
+> *Full conceptual model specification: see `docs/conceptual_model.md`*
 
 #### 4.4.2 Implementation
 
@@ -586,4 +706,209 @@ See `docs/code_documentation.md` for architecture overview, module descriptions,
 
 ---
 
-*End of Technical Report*
+## 10. List of Figures
+
+The following figures are generated by the analysis pipeline and stored in `results/figures/`. Each figure is referenced in the relevant section of this report or in supporting documentation.
+
+| # | Filename | Caption / Description |
+|---|----------|----------------------|
+| 1 | `cbd_heatmap.png` | Heatmap of CBD-area crash demand density and firehouse locations |
+| 2 | `cbd_response_comparison.png` | Response time comparison between policies under CBD stress scenario |
+| 3 | `cbd_scenario_comparison.png` | CBD vs. Manhattan-wide scenario performance comparison |
+| 4 | `distance_matrix_heatmap.png` | Heatmap of Haversine distance matrix (48 firehouses × 30 precincts) |
+| 5 | `exp1_policy_comparison.png` | Experiment 1: Policy comparison box plots (P0 vs. P1 vs. P2) |
+| 6 | `exp2_fleet_sensitivity.png` | Experiment 2: Response time vs. fleet size by policy |
+| 7 | `exp3_demand_sensitivity.png` | Experiment 3: Response time vs. demand multiplier by policy |
+| 8 | `exp4_service_robustness.png` | Experiment 4: Response time vs. service time mean by policy |
+| 9 | `fig_cbd_comparison.png` | CBD-focused robustness comparison across policies |
+| 10 | `fig_crash_heatmap.png` | Spatial heatmap of crash incidents across Manhattan precincts |
+| 11 | `fig_daily_demand.png` | Daily crash demand patterns (day-of-week variation) |
+| 12 | `fig_demand_model_fit.png` | NHPP demand model fit diagnostics — observed vs. predicted rates |
+| 13 | `fig_firehouses_map.png` | Map of 48 Manhattan FDNY firehouses used as candidate staging sites |
+| 14 | `fig_hourly_demand.png` | Hourly crash demand distribution (24-hour profile) |
+| 15 | `fig_hourly_rates.png` | Calibrated NHPP hourly arrival rate factors |
+| 16 | `fig_policy_comparison.png` | Summary policy comparison across all key metrics |
+| 17 | `fig_precinct_demand.png` | Per-precinct crash demand distribution across Manhattan |
+| 18 | `fig_precinct_density.png` | Precinct-level demand density choropleth map |
+| 19 | `fig_temporal_trends.png` | Long-term temporal trends in crash demand (2012–2026) |
+| 20 | `fig_tradeoff_curve.png` | Response time vs. coverage trade-off curve across fleet sizes |
+| 21 | `nhpp_arrivals_demo.png` | Demonstration of NHPP thinning algorithm arrival generation |
+| 22 | `opt_allocation_comparison.png` | Allocation comparison across optimization models (top 20 firehouses) |
+| 23 | `opt_inputs.png` | Optimization input visualization (travel times and demand weights) |
+| 24 | `opt_sensitivity.png` | Optimization sensitivity analysis: objective value vs. fleet size |
+| 25 | `project_summary_dashboard.png` | Comprehensive project summary dashboard with key results |
+| 26 | `pub_fig1_policy_comparison.png` | Publication-quality: Policy comparison (Figure 1) |
+| 27 | `pub_fig2_fleet_sensitivity.png` | Publication-quality: Fleet sensitivity analysis (Figure 2) |
+| 28 | `pub_fig3_demand_robustness.png` | Publication-quality: Demand robustness analysis (Figure 3) |
+| 29 | `pub_fig4_service_sensitivity.png` | Publication-quality: Service time sensitivity (Figure 4) |
+| 30 | `pub_fig5_performance_heatmap.png` | Publication-quality: Performance heatmap across scenarios (Figure 5) |
+| 31 | `queue_comparison_by_policy.png` | Queue metrics comparison by policy (§5.8) |
+| 32 | `queue_heatmap.png` | Queue length heatmap across experiments and policies |
+| 33 | `queue_vs_demand.png` | Queue metrics vs. demand multiplier |
+| 34 | `queue_vs_fleet_size.png` | Queue metrics vs. fleet size |
+| 35 | `seasonal_decomposition.png` | Seasonal decomposition of monthly crash demand |
+| 36 | `seasonal_heatmap.png` | Monthly × day-of-week crash demand heatmap |
+| 37 | `seasonal_patterns.png` | Seasonal variation analysis (§5.9) |
+| 38 | `service_time_distribution.png` | LogNormal service time distribution with empirical comparison |
+| 39 | `tod_speed_factors.png` | Time-of-day speed factor profile (24-hour) |
+| 40 | `travel_time_by_tod.png` | Travel time distribution by time-of-day band |
+| 41 | `validation_p0_vs_p2.png` | Validation pilot: P0 vs. P2 directional comparison |
+| 42 | `validation_sensitivity_K.png` | Validation pilot: Response time sensitivity to fleet size K |
+| 43 | `validation_sensitivity_demand.png` | Validation pilot: Response time sensitivity to demand intensity |
+| 44 | `verification_toy_timeline.png` | Verification: Toy example event timeline trace |
+
+**Total: 44 figures** generated across EDA, optimization, simulation, and publication workflows.
+
+---
+
+## 11. List of Tables
+
+The following tables are generated by the analysis pipeline and stored in `results/tables/`. CSV files are used for data interchange; LaTeX (`.tex`) files are provided for publication-quality typesetting.
+
+| # | Filename | Caption / Description |
+|---|----------|----------------------|
+| 1 | `anova_results.csv` | Full ANOVA results with F-statistics, p-values, and effect sizes |
+| 2 | `cbd_comparison.csv` | CBD vs. Manhattan-wide performance comparison table |
+| 3 | `cbd_summary_all.csv` | Comprehensive CBD experiment summary across all scenarios |
+| 4 | `confidence_intervals.csv` | 95% confidence intervals for all policy-metric combinations |
+| 5 | `descriptive_statistics.csv` | Descriptive statistics (mean, std, min, max, quartiles) for all experiments |
+| 6 | `effect_sizes.csv` | Cohen's d effect sizes for all pairwise policy comparisons |
+| 7 | `exp1_summary.csv` | Experiment 1 summary: Policy comparison at K=20 |
+| 8 | `exp2_pivot_rt.csv` | Experiment 2 pivot: Mean response time by policy × fleet size |
+| 9 | `exp3_pivot_rt.csv` | Experiment 3 pivot: Mean response time by policy × demand multiplier |
+| 10 | `exp4_pivot_rt.csv` | Experiment 4 pivot: Mean response time by policy × service time mean |
+| 11 | `optimization_comparison.csv` | Optimization model comparison (demand-weighted, p-median, maximal coverage) |
+| 12 | `posthoc_comparisons.csv` | Tukey HSD post-hoc pairwise comparisons with corrected p-values |
+| 13 | `queue_anova.csv` | ANOVA results for queue metrics across experiments |
+| 14 | `queue_statistics.csv` | Queue statistics (fraction queued, mean/max queue length) by experiment |
+| 15 | `seasonal_analysis.csv` | Monthly seasonal variation analysis with factors and statistical tests |
+| 16 | `sensitivity_summary.csv` | Overall sensitivity analysis summary across all experiments |
+| 17 | `table1_baseline_comparison.csv` | Publication Table 1: Baseline policy comparison |
+| 18 | `table1_baseline_comparison.tex` | Publication Table 1: LaTeX version |
+| 19 | `table2_anova_summary.csv` | Publication Table 2: ANOVA summary |
+| 20 | `table2_anova_summary.tex` | Publication Table 2: LaTeX version |
+| 21 | `table3_pairwise_comparisons.csv` | Publication Table 3: Pairwise comparisons |
+| 22 | `table3_pairwise_comparisons.tex` | Publication Table 3: LaTeX version |
+| 23 | `table4_sensitivity_summary.csv` | Publication Table 4: Sensitivity analysis |
+| 24 | `table4_sensitivity_summary.tex` | Publication Table 4: LaTeX version |
+
+**Total: 24 table files** (16 CSV + 4 LaTeX + 4 supplementary CSV).
+
+---
+
+## 12. Reproducibility
+
+This section provides complete instructions for reproducing all results presented in this report.
+
+### 12.1 Environment Specification
+
+| Component | Version / Value |
+|-----------|----------------|
+| **Python** | 3.11.6 |
+| **Operating System** | Ubuntu Linux |
+| **NumPy** | ≥ 1.24.0 |
+| **pandas** | ≥ 2.0.0 |
+| **SimPy** | ≥ 4.0.0 (DES engine) |
+| **PuLP** | ≥ 2.7.0 (MIP solver, CBC backend) |
+| **SciPy** | ≥ 1.11.0 |
+| **matplotlib** | ≥ 3.7.0 |
+| **seaborn** | ≥ 0.12.0 |
+| **geopandas** | ≥ 0.14.0 |
+| **Shapely** | ≥ 2.0.0 |
+| **folium** | ≥ 0.15.0 |
+| **tqdm** | ≥ 4.65.0 |
+| **openpyxl** | ≥ 3.1.0 |
+
+Full dependency list: `requirements.txt`
+
+### 12.2 Random Seeds and Reproducibility Strategy
+
+All stochastic components use **deterministic seeding** to ensure exact reproducibility:
+
+| Component | Seed / Strategy | Configuration |
+|-----------|----------------|---------------|
+| **Base seed** | `42` | `configs/demand.yaml → simulation.seed`, `configs/simulation.yaml → seed_base` |
+| **Production experiments** | `SEED_BASE = 42`; replication *i* uses seed `42 + i` | `scripts/run_production_experiments.py` (line 52) |
+| **CBD experiments** | `SEED_BASE = 42`; replication *i* uses seed `42 + i` | `scripts/run_cbd_experiment.py` (line 53) |
+| **Verification tests** | Fixed seed `42` for all 4 tests | `scripts/run_verification.py` |
+| **Validation pilots** | Pilot 1–2: seed base `100`; Pilot 3: seed base `200`; Pilot 4: `300 + rep` | `scripts/run_validation_pilots.py` |
+| **PRNG algorithm** | NumPy PCG64 `Generator` | Used throughout via `np.random.default_rng(seed)` |
+
+**Common Random Numbers (CRN):** Dedicated random number streams are used for (1) NHPP arrival generation, (2) precinct assignment (multinomial), and (3) service-time sampling. Stream offsets ensure that changing one component (e.g., service time distribution) does not alter the arrival sequence, enabling valid variance reduction across policy comparisons.
+
+### 12.3 Configuration Files
+
+| File | Purpose | Key Parameters |
+|------|---------|----------------|
+| `configs/demand.yaml` | NHPP demand model parameters | Base rate (3.48/hr), lambda table paths, replications (30), seed (42) |
+| `configs/service.yaml` | Travel time and service time models | Speed (20 mph), TOD factors, LogNormal(25, 10), dispatch delay (1.5 min) |
+| `configs/optimization.yaml` | MIP optimization settings | Unit counts [20,30,40,48], capacity (5), threshold (8 min), CBC solver |
+| `configs/simulation.yaml` | DES engine configuration | Horizon (168 hr), warmup (0), replications (30), seed base (42), threshold (8 min) |
+| `configs/cbd_scenario.yaml` | CBD robustness experiment | Demand surge (2×), increased service times, CBD boundary, seed base (42) |
+
+### 12.4 Step-by-Step Reproduction Instructions
+
+```bash
+# 1. Clone repository and set up environment
+git clone <repository-url>
+cd ems-optimization
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 2. Process raw data (requires raw data files in data/raw/)
+python src/ems_readiness/data_processing.py
+# Alternatively: make data
+
+# 3. Run demand modeling
+python scripts/demand_modeling.py
+
+# 4. Run optimization comparison
+python scripts/run_optimization_comparison.py
+
+# 5. Run verification tests (4 tests)
+python scripts/run_verification.py
+
+# 6. Run validation pilots (3 pilots)
+python scripts/run_validation_pilots.py
+
+# 7. Execute production experiments (1,440 runs)
+python scripts/run_production_experiments.py
+
+# 8. Analyze production results
+python scripts/analyze_production_results.py
+
+# 9. Run CBD robustness experiment (330 additional runs)
+python scripts/run_cbd_experiment.py
+
+# 10. Run gap closure analyses
+python scripts/analyze_queue_metrics.py
+python scripts/analyze_seasonal_patterns.py
+
+# 11. Generate publication figures
+python scripts/generate_publication_figures.py
+python scripts/generate_summary_dashboard.py
+```
+
+### 12.5 Data Requirements
+
+| File | Size | Source | Notes |
+|------|------|--------|-------|
+| `Motor_Vehicle_Collisions_-_Crashes_20260223.csv` | 536 MB | NYC Open Data | 2.24M records; not in Git (too large) |
+| `FDNY_Firehouse_Listing_20260223.csv` | 15 KB | NYC Open Data | 219 firehouses; tracked in Git |
+| `Police_Precincts_20260223.csv` | 3.6 MB | NYC Open Data | 78 precincts; not in Git |
+| `manhattan_boundary.geojson` | 5 KB | NYC Open Data | Tracked in Git |
+| `cbd_boundary.geojson` | 2 KB | MTA Congestion Relief Zone | Tracked in Git |
+| `nyc_borough_boundaries.geojson` | 650 KB | NYC Open Data | Tracked in Git |
+
+### 12.6 Expected Outputs
+
+Successful reproduction generates:
+- **44 figures** in `results/figures/`
+- **24 table files** in `results/tables/`
+- **Simulation logs** in `results/simulation/`
+- All statistical results should match to within floating-point tolerance (< 10⁻⁶ relative error) when using identical seeds and Python/NumPy versions.
+
+---
+
+*End of Technical Report — Version 2.0.0 (Phase 21 Full Compliance)*
