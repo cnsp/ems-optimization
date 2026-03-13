@@ -218,6 +218,7 @@ pytest tests/test_reproducibility.py -v
 | [Distance Metric Comparison](docs/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
 | [CBD-Focused Optimization](docs/cbd_focused_optimization_analysis.md) | CBD-focused vs. Manhattan-wide comparison |
 | [Alternative Analyses Summary](docs/alternative_analyses_summary.md) | Combined Phase 8 alternative analyses |
+| [Research Questions Assessment](docs/research_questions_assessment.md) | Evaluation of all 5 research questions with simulation evidence |
 | [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 8 phases |
 
 ## Research Questions

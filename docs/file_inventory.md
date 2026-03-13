@@ -198,6 +198,7 @@
 | `distance_metric_comparison.md/.pdf` | Haversine vs. Manhattan comparison (Phase 8) |
 | `cbd_focused_optimization_analysis.md/.pdf` | CBD-focused optimization report (Phase 8) |
 | `alternative_analyses_summary.md/.pdf` | Alternative analyses summary (Phase 8) |
+| `research_questions_assessment.md` | Research questions assessment with simulation evidence |
 | `project_workflow_wbs.md/.pdf` | Work Breakdown Structure |
 
 ---
