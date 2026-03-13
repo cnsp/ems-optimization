@@ -200,6 +200,136 @@ def build_maximal_coverage(
 
 
 # ---------------------------------------------------------------------------
+# D) CBD-Focused Demand-Weighted Allocation
+# ---------------------------------------------------------------------------
+def build_cbd_focused_demand_weighted(
+    travel_time: pd.DataFrame,
+    demand: pd.Series,
+    K: int,
+    cbd_precincts: list | None = None,
+    capacity: int = 5,
+    solver_time_limit: int = 300,
+) -> pulp.LpProblem:
+    """Minimise demand-weighted response time for **CBD precincts only**.
+
+    Same formulation as ``build_demand_weighted`` but the objective function
+    considers only CBD precincts. Non-CBD precincts are still assigned to
+    firehouses (ensuring feasibility) but their response time does not
+    contribute to the objective.
+
+    Parameters
+    ----------
+    travel_time : pd.DataFrame
+        Travel-time matrix (minutes). Rows = firehouses, columns = precincts.
+    demand : pd.Series
+        Demand weight per precinct.
+    K : int
+        Total EMS units.
+    cbd_precincts : list or None
+        List of CBD precinct IDs (as strings). Defaults to the 10 standard
+        Manhattan CBD precincts if None.
+    capacity : int
+        Maximum units per firehouse.
+    solver_time_limit : int
+        Solver time limit in seconds.
+    """
+    if cbd_precincts is None:
+        cbd_precincts = ["1", "5", "6", "7", "9", "10", "13", "14", "17", "18"]
+    cbd_set = set(str(p) for p in cbd_precincts)
+
+    firehouses = list(travel_time.index)
+    precincts = [p for p in travel_time.columns if p in demand.index]
+
+    prob = pulp.LpProblem("CBD_DemandWeighted_EMS_Allocation", pulp.LpMinimize)
+
+    x = pulp.LpVariable.dicts("x", firehouses, lowBound=0, upBound=capacity, cat="Integer")
+    y = pulp.LpVariable.dicts("y", ((i, j) for i in firehouses for j in precincts),
+                              cat="Binary")
+
+    # Objective: minimise ONLY CBD demand-weighted response time
+    prob += pulp.lpSum(
+        demand[j] * travel_time.loc[i, j] * y[(i, j)]
+        for j in precincts if str(j) in cbd_set
+        for i in firehouses
+    ), "CBD_DemandWeightedResponseTime"
+
+    # Total units
+    prob += pulp.lpSum(x[i] for i in firehouses) == K, "TotalUnits"
+
+    # Each precinct served by exactly one firehouse (including non-CBD)
+    for j in precincts:
+        prob += pulp.lpSum(y[(i, j)] for i in firehouses) == 1, f"Serve_{j}"
+
+    # Linking
+    for i in firehouses:
+        for j in precincts:
+            prob += y[(i, j)] <= x[i], f"Link_{i}_{j}"
+
+    prob._ems_meta = dict(firehouses=firehouses, precincts=precincts,
+                          x=x, y=y, K=K, capacity=capacity,
+                          cbd_precincts=list(cbd_set))
+    return prob
+
+
+# ---------------------------------------------------------------------------
+# E) CBD-Focused Maximal Coverage
+# ---------------------------------------------------------------------------
+def build_cbd_focused_coverage(
+    travel_time: pd.DataFrame,
+    demand: pd.Series,
+    K: int,
+    cbd_precincts: list | None = None,
+    capacity: int = 5,
+    coverage_threshold: float = 8.0,
+    solver_time_limit: int = 300,
+) -> pulp.LpProblem:
+    """Maximise demand-weighted coverage within threshold for **CBD only**.
+
+    Same as ``build_maximal_coverage`` but the objective maximises coverage
+    only for CBD precincts. Non-CBD precincts are not penalised if uncovered.
+
+    Parameters
+    ----------
+    travel_time, demand, K, capacity, coverage_threshold, solver_time_limit :
+        Same as ``build_maximal_coverage``.
+    cbd_precincts : list or None
+        CBD precinct IDs. Defaults to 10 standard CBD precincts.
+    """
+    if cbd_precincts is None:
+        cbd_precincts = ["1", "5", "6", "7", "9", "10", "13", "14", "17", "18"]
+    cbd_set = set(str(p) for p in cbd_precincts)
+
+    firehouses = list(travel_time.index)
+    precincts = [p for p in travel_time.columns if p in demand.index]
+
+    a = {}
+    for i in firehouses:
+        for j in precincts:
+            a[(i, j)] = 1 if travel_time.loc[i, j] <= coverage_threshold else 0
+
+    prob = pulp.LpProblem("CBD_MaxCoverage_EMS_Allocation", pulp.LpMaximize)
+
+    x = pulp.LpVariable.dicts("x", firehouses, lowBound=0, upBound=capacity, cat="Integer")
+    z = pulp.LpVariable.dicts("z", precincts, cat="Binary")
+
+    # Objective: maximise covered demand for CBD precincts only
+    prob += pulp.lpSum(
+        demand[j] * z[j] for j in precincts if str(j) in cbd_set
+    ), "CBD_CoveredDemand"
+
+    prob += pulp.lpSum(x[i] for i in firehouses) == K, "TotalUnits"
+
+    for j in precincts:
+        prob += z[j] <= pulp.lpSum(x[i] * a[(i, j)] for i in firehouses), f"Cover_{j}"
+
+    prob._ems_meta = dict(firehouses=firehouses, precincts=precincts,
+                          x=x, z=z, a=a, K=K, capacity=capacity,
+                          coverage_threshold=coverage_threshold,
+                          cbd_precincts=list(cbd_set))
+    return prob
+
+
+# ---------------------------------------------------------------------------
 # Extraction helpers
 # ---------------------------------------------------------------------------
 def extract_allocation(prob: pulp.LpProblem) -> pd.Series:

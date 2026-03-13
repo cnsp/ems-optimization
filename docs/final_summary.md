@@ -98,6 +98,28 @@
 - `results/tables/queue_*.csv` — 2 queue tables
 - `results/tables/seasonal_*.csv` — 1 seasonal table
 
+### v1.2.0 – Alternative Analyses (March 12, 2026)
+
+**New experiments:**
+- **Distance Metric Comparison:** Haversine vs Manhattan (taxicab) distance — confirmed model robustness; allocations differ at only 2/48 firehouses; simulation performance identical
+- **CBD-Focused Optimisation:** Manhattan-wide vs CBD-focused allocation — demonstrated that demand-weighted objective already optimally balances CBD and non-CBD performance; CBD-focused allocation provides no CBD benefit while severely degrading non-CBD service
+
+**New deliverables:**
+- `scripts/generate_manhattan_distance_matrix.py` — Manhattan distance matrix generation
+- `scripts/run_distance_comparison_experiment.py` — Distance metric comparison experiment
+- `scripts/run_cbd_focused_optimization.py` — CBD-focused optimisation experiment
+- `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` — Manhattan distance matrix
+- `docs/distance_metric_comparison.md` (.pdf) — Distance metric comparison report
+- `docs/cbd_focused_optimization_analysis.md` (.pdf) — CBD-focused analysis report
+- `docs/alternative_analyses_summary.md` (.pdf) — Combined summary of alternative analyses
+- `results/distance_comparison/` — 4 figures + 2 tables
+- `results/cbd_focused_comparison/` — 3 figures + 2 tables
+
+**Modified files:**
+- `src/ems_readiness/utils/distance.py` — Added `manhattan_distance()` function
+- `src/ems_readiness/optimization/models.py` — Added `build_cbd_focused_demand_weighted()` and `build_cbd_focused_coverage()`
+- `docs/technical_report.md` — Added §5.10 and §5.11; updated figures/tables lists
+
 ---
 
-*Project complete. Tagged as v1.1.0 — 100% alignment with project outline.*
+*Project complete. Tagged as v1.2.0 — 100% alignment with project outline plus alternative analyses.*

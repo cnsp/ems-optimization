@@ -76,6 +76,18 @@ This document records all assumptions made during the EMS Readiness Optimization
 **Risk**: Pre-emption for high-priority calls does occur.
 **Mitigation**: Aligns with most common practice; note limitation.
 
+### A12: Manhattan Distance Approximation
+**Assumption**: Manhattan (taxicab) distance provides an upper-bound approximation of actual road distance in a grid-based network; Haversine provides a lower bound.
+**Rationale**: Manhattan's street grid is largely rectangular; true road distance falls between Haversine and Manhattan distance.
+**Risk**: Diagonal avenues and non-grid areas (e.g., lower Manhattan) deviate from both approximations.
+**Mitigation**: Compared both metrics side-by-side; P2 allocation is robust to metric choice (mean RT differs by <0.01 min in simulation).
+
+### A13: CBD-Focused Demand Weighting
+**Assumption**: Applying a 3× demand weight to CBD precincts in the CBD-focused model is a reasonable multiplier to test CBD prioritisation.
+**Rationale**: The 3× factor substantially up-weights CBD demand (from 56% to ~77% effective weight) without completely ignoring non-CBD.
+**Risk**: A different multiplier (e.g., 2× or 5×) might yield different conclusions.
+**Mitigation**: Results show that even with 3× weight, CBD RT does not improve (2.50 vs. 2.47 min), while non-CBD RT degrades dramatically (+159%). This confirms that the Manhattan-wide P2 is robust and any CBD-focused up-weighting is counterproductive.
+
 ---
 
 ## Assumption Review Schedule

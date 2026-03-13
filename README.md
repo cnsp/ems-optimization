@@ -15,7 +15,8 @@
 | P90 Response Time | 19.47 min | **3.76 min** | **−80.7%** |
 | 8-min Coverage | 64.4% | **99.6%** | **+35.2 pp** |
 
-Results based on 1,770 simulation experiments with 30 replications each (p < 0.001, Cohen's d > 28).
+Results based on 1,770+ simulation experiments with 30 replications each (p < 0.001, Cohen's d > 28).  
+Additional alternative analyses confirm robustness to distance metric choice and geographic focus.
 
 ---
 
@@ -30,8 +31,9 @@ This project evaluates three ambulance allocation policies for Manhattan's 48 FD
 The analysis combines:
 1. **NHPP Demand Modeling** — Calibrated from 2.24M historical motor vehicle collision records
 2. **Mixed-Integer Programming** — Three optimization formulations (PuLP/CBC solver)
-3. **Discrete-Event Simulation** — SimPy-based DES with 1,770 production runs (incl. CBD robustness)
+3. **Discrete-Event Simulation** — SimPy-based DES with 1,770+ production runs (incl. CBD robustness)
 4. **Statistical Analysis** — ANOVA, Tukey HSD, confidence intervals, effect sizes
+5. **Alternative Analyses** — Manhattan distance metric comparison + CBD-focused optimization evaluation
 
 ## Repository Structure
 
@@ -66,10 +68,12 @@ ems-optimization/
 │   ├── 08_statistical_analysis.ipynb
 │   └── 09_cbd_analysis.ipynb
 ├── results/
-│   ├── figures/                # 47 visualization PNGs
+│   ├── figures/                # 47+ visualization PNGs
 │   ├── tables/                 # Statistical tables (CSV + LaTeX)
 │   ├── simulation/             # Simulation output data
 │   ├── optimization/           # Optimization results
+│   ├── distance_comparison/    # Haversine vs Manhattan metric results
+│   ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
 │   └── maps/                   # Allocation map visualizations
 ├── scripts/                    # Automation & analysis scripts
 ├── src/ems_readiness/          # Core Python package
@@ -154,6 +158,11 @@ python scripts/run_cbd_experiment.py --reps 30
 # 8. Run gap closure analyses
 python scripts/analyze_queue_metrics.py
 python scripts/analyze_seasonal_patterns.py
+
+# 9. Run alternative analyses (Phase 8)
+python scripts/generate_manhattan_distance_matrix.py
+python scripts/run_distance_comparison_experiment.py --reps 10
+python scripts/run_cbd_focused_optimization.py --reps 10
 ```
 
 ### Run Specific Experiments
@@ -206,6 +215,10 @@ pytest tests/test_reproducibility.py -v
 | [CBD Robustness Analysis](docs/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
 | [Queue Analysis](docs/queue_analysis.md) | Queueing performance analysis |
 | [Gap Closure Report](docs/gap_closure_report.md) | Verification of 100% alignment |
+| [Distance Metric Comparison](docs/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
+| [CBD-Focused Optimization](docs/cbd_focused_optimization_analysis.md) | CBD-focused vs. Manhattan-wide comparison |
+| [Alternative Analyses Summary](docs/alternative_analyses_summary.md) | Combined Phase 8 alternative analyses |
+| [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 8 phases |
 
 ## Research Questions
 
@@ -223,7 +236,7 @@ pytest tests/test_reproducibility.py -v
   author={EMS Optimization Research Team},
   year={2026},
   howpublished={\url{https://github.com/cnsp/ems-optimization}},
-  note={Version 1.1.0}
+  note={Version 1.2.0}
 }
 ```
 
@@ -238,4 +251,4 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-*Built with Python, SimPy, PuLP, pandas, and matplotlib. 7,500+ lines of code across 14 modules, validated with 39 tests and 1,770 simulation experiments. 100% alignment with project outline (v1.1.0).*
+*Built with Python, SimPy, PuLP, pandas, and matplotlib. 7,800+ lines of code across 14 modules, validated with 39 tests and 1,770+ simulation experiments. Includes alternative distance metric and CBD-focused optimization analyses. 100% alignment with project outline (v1.2.0).*
