@@ -152,6 +152,72 @@ Option 3 - Use all available data for demand pattern estimation, with options to
 
 ---
 
+---
+
+### [DEC-008] Alternative Distance Metric — Manhattan (Taxicab) Distance
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+Haversine (great-circle) distance underestimates true road distances in a grid-based street network like Manhattan. Need to evaluate whether a Manhattan (taxicab) distance metric produces materially different optimization and simulation results.
+
+**Options Considered**:
+1. Haversine only (status quo)
+2. Manhattan (taxicab) distance replacing Haversine
+3. Both metrics compared side-by-side with simulation evaluation
+4. Road network distance (OSRM / Google routing)
+
+**Decision**:
+Option 3 — Implement Manhattan distance as an alternative metric, run P2 optimization with both, and compare via simulation.
+
+**Rationale**:
+- Manhattan distance is ~27% longer on average than Haversine for Manhattan geography, better approximating grid-based street travel
+- Side-by-side comparison quantifies sensitivity to metric choice
+- Road network routing (Option 4) out of scope — requires external APIs and adds complexity without changing relative policy rankings
+- Simulation dispatcher always uses Haversine internally, so this isolates the effect on allocation decisions
+
+**Consequences**:
+- Added `manhattan_distance()` function to `distance.py` and `metric` parameter to `build_distance_matrix()`
+- Manhattan matrix generated: mean 5.48 mi vs. Haversine 4.29 mi
+- Experiment showed near-identical simulation results (mean RT 2.55 min for both), confirming P2 allocation is robust to distance metric choice
+- Only 2 of 48 firehouses differ between allocations
+- Validates that Haversine is a sufficient approximation for this study
+
+---
+
+### [DEC-009] CBD-Focused vs. Manhattan-Wide Optimization
+
+**Date**: 2026-03-12
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+The CBD (precincts 1, 5, 6, 7, 9, 10, 13, 14, 17, 18) accounts for ~56% of total demand. Need to evaluate whether a CBD-focused optimization strategy (up-weighting CBD demand) improves CBD response times and is preferable to the Manhattan-wide P2 model.
+
+**Options Considered**:
+1. Manhattan-wide P2 only (status quo)
+2. CBD-only model (ignore non-CBD precincts)
+3. CBD-focused model with 3× demand weight on CBD precincts
+4. Multi-objective (Pareto) CBD/non-CBD optimization
+
+**Decision**:
+Option 3 — Implement CBD-focused demand-weighted model (3× CBD weight) and compare against Manhattan-wide P2 via simulation.
+
+**Rationale**:
+- CBD-focused (3× weight) tests whether concentrating resources improves CBD performance
+- Comparison with Manhattan-wide P2 quantifies equity trade-offs
+- CBD-only model (Option 2) is impractical — abandons non-CBD coverage
+- Multi-objective Pareto (Option 4) deferred to future work
+
+**Consequences**:
+- Added `build_cbd_focused_demand_weighted()` and `build_cbd_focused_coverage()` to `models.py`
+- CBD-focused P2 does NOT improve CBD RT (2.50 vs. 2.47 min, +1.2%) but dramatically worsens non-CBD RT (6.88 vs. 2.66 min, +159%)
+- Non-CBD 8-min coverage drops from 100% to 73.6%
+- Validates that Manhattan-wide P2 already near-optimally serves the CBD without sacrificing equity
+- Recommends against CBD-focused optimization for operational deployment
+
 *Last Updated: March 12, 2026*
 
 
