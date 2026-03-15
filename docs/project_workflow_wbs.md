@@ -2,8 +2,8 @@
 
 ## EMS Readiness Optimization for Manhattan
 
-**Date:** March 12, 2026  
-**Version:** 1.2.0  
+**Date:** March 15, 2026  
+**Version:** 1.3.0  
 **Project:** EMS Readiness Optimization — Manhattan, NYC
 
 ---
@@ -19,8 +19,9 @@
 7. [Phase 6 — Experimentation & Analysis](#7-phase-6--experimentation--analysis)
 8. [Phase 7 — Reporting & Final Delivery](#8-phase-7--reporting--final-delivery)
 9. [Phase 8 — Alternative Analyses & Extensions](#9-phase-8--alternative-analyses--extensions)
-10. [Phase Dependency Diagram](#10-phase-dependency-diagram)
-11. [Timeline Summary](#11-timeline-summary)
+10. [Phase 9 — Capacity & Baseline Improvements](#10-phase-9--capacity--baseline-improvements)
+11. [Phase Dependency Diagram](#11-phase-dependency-diagram)
+12. [Timeline Summary](#12-timeline-summary)
 
 ---
 
@@ -30,7 +31,7 @@ This document provides the complete Work Breakdown Structure (WBS) for the EMS R
 
 **Project Scope:** Evaluate strategic EMS ambulance staging policies across 48 FDNY firehouses in Manhattan using discrete-event simulation, comparing uniform (P0), demand-proportional (P1), and MIP-optimized (P2) allocation strategies.
 
-**Total Deliverables:** 14 Python modules, 19 scripts, 9 notebooks, 51+ figures, 28+ tables, 30+ documentation files.
+**Total Deliverables:** 14 Python modules, 23 scripts, 9 notebooks, 66+ figures, 55+ tables, 32+ documentation files.
 
 ---
 
@@ -543,7 +544,65 @@ Conduct alternative analyses to test the robustness of modelling choices and com
 
 ---
 
-## 10. Phase Dependency Diagram
+## 10. Phase 9 — Capacity & Baseline Improvements
+
+### Objective
+Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stratified P0 baseline, and re-run all production experiments as Production V2 with updated defaults (capacity=2, P0-spatial).
+
+### Step-by-Step Procedure
+
+| Step | Action | Output |
+|------|--------|--------|
+| 9.1 | Implement capacity parameter in optimization models: update `build_p_median` for capacity-aware allocation; add `solve_model()` convenience function | Updated models module |
+| 9.2 | Run initial capacity comparison: cap=2 vs cap=5 for K ∈ {20, 40} with P0, P1, P2 | Initial comparison results |
+| 9.3 | Run full-spectrum capacity sensitivity: cap ∈ {1, 2, 3, 5, unlimited} × K ∈ {10, 15, 20, 25, 30, 35, 40, 45, 48} | 450 optimization runs |
+| 9.4 | Generate capacity sensitivity figures and tables | Capacity comparison visualizations |
+| 9.5 | Document capacity sensitivity findings | Capacity analysis reports |
+| 9.6 | Implement spatially-stratified allocation: `spatially_stratified_allocation()` with latitude, grid, and maximin methods | Updated policies module |
+| 9.7 | Implement `spatial_stratification_analysis()` for comparing stratification methods | Analysis function |
+| 9.8 | Run P0-spatial analysis: evaluate latitude-based stratification vs index-based P0 | P0 spatial comparison |
+| 9.9 | Update `configs/optimization.yaml` default capacity from 5 to 2 | Updated config |
+| 9.10 | Run Production V2 experiments: 9 fleet sizes × 3 policies × 30 replications = 810 runs (cap=2, P0-spatial) | Production V2 results |
+| 9.11 | Update all documentation: technical report, README, WBS, file inventory, decisions log, assumptions log, code docs, final summary | Updated documentation (v1.3.0) |
+
+### Input Files
+
+| File | Source |
+|------|--------|
+| `data/processed/distance_matrix_firehouse_precinct.csv` | Phase 2 output |
+| `data/processed/demand_lambda_precinct.csv` | Phase 2 output |
+| `data/processed/firehouses_manhattan.csv` | Phase 2 output |
+| `configs/optimization.yaml` | Configuration (updated cap=2) |
+| `configs/service.yaml` | Travel speed configuration |
+| `configs/simulation.yaml` | Simulation configuration |
+
+### Output Files / Deliverables
+
+| File | Description |
+|------|-------------|
+| `results/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
+| `results/production_v2/` | Complete V2 results: allocations, simulation data, figures, tables |
+| `docs/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
+| `docs/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
+| `src/ems_readiness/optimization/policies.py` | Updated with `spatially_stratified_allocation()` |
+| `src/ems_readiness/optimization/models.py` | Updated `build_p_median` + `solve_model()` |
+| `configs/optimization.yaml` | Default capacity updated to 2 |
+
+### Scripts / Notebooks Used
+
+| Script / Notebook | Purpose |
+|-------------------|---------|
+| `scripts/capacity_sensitivity_analysis.py` | Initial cap=2 vs cap=5 comparison |
+| `scripts/capacity_sensitivity_full_spectrum.py` | Full-spectrum cap 1–5 sensitivity (450 runs) |
+| `scripts/p0_spatial_analysis.py` | Spatial stratification analysis and visualization |
+| `scripts/run_production_v2.py` | Production V2 experiment runner (810 runs) |
+
+### Dependencies
+- **Depends on:** Phase 2 (distance matrix, demand data), Phase 3 (optimization models), Phase 4–5 (simulation engine), Phase 6 (production V1 results for comparison)
+
+---
+
+## 11. Phase Dependency Diagram
 
 ```
 Phase 1: Problem Definition & Project Setup
@@ -570,18 +629,22 @@ Phase 7: Reporting & Final Delivery
     │
     ▼
 Phase 8: Alternative Analyses & Extensions
+    │
+    ▼
+Phase 9: Capacity & Baseline Improvements
 ```
 
-**Critical Path:** Phase 1 → Phase 2 → Phase 4 → Phase 5 → Phase 6 → Phase 7 → Phase 8
+**Critical Path:** Phase 1 → Phase 2 → Phase 4 → Phase 5 → Phase 6 → Phase 7 → Phase 8 → Phase 9
 
 **Parallel Opportunities:**
 - Phase 3 (Optimization) and Phase 4 (Simulation design) can partially overlap, as the conceptual model design does not depend on optimization results. However, the simulation *implementation* requires the allocation policies from Phase 3 as input.
 - Documentation tasks in Phase 7 can begin concurrently with Phase 6 experimentation.
 - Phase 8 can begin once Phase 6 is complete, and runs in parallel with or after Phase 7.
+- Phase 9 extends Phase 8 with capacity analysis and baseline improvements, requiring all prior phases.
 
 ---
 
-## 11. Timeline Summary
+## 12. Timeline Summary
 
 | Phase | Description | Estimated Duration | Cumulative |
 |-------|-------------|-------------------|------------|
@@ -593,8 +656,9 @@ Phase 8: Alternative Analyses & Extensions
 | 6 | Experimentation & Analysis | 2 weeks | Week 9 |
 | 7 | Reporting & Final Delivery | 2 weeks | Week 11 |
 | 8 | Alternative Analyses & Extensions | 1 week | Week 12 |
+| 9 | Capacity & Baseline Improvements | 1 week | Week 13 |
 
-**Total Project Duration:** ~12 weeks
+**Total Project Duration:** ~13 weeks
 
 ### Key Milestones
 
@@ -607,6 +671,7 @@ Phase 8: Alternative Analyses & Extensions
 | M5: Experiments Complete | Week 9 | 1,770 production runs with statistical analysis |
 | M6: Final Submission | Week 11 | Complete report, presentation, and reproducible archive |
 | M7: Alternative Analyses | Week 12 | Distance metric & CBD-focused comparison reports |
+| M8: Capacity & Baseline | Week 13 | Capacity sensitivity (cap 1–5), P0-spatial, Production V2 (810 runs) |
 
 ---
 
@@ -633,8 +698,12 @@ Phase 8: Alternative Analyses & Extensions
 | `scripts/generate_manhattan_distance_matrix.py` | 8 | Manhattan distance matrix | — |
 | `scripts/run_distance_comparison_experiment.py` | 8 | Haversine vs. Manhattan comparison | K=20, reps=10 |
 | `scripts/run_cbd_focused_optimization.py` | 8 | CBD-focused vs. Manhattan-wide | K=20, reps=10 |
+| `scripts/capacity_sensitivity_analysis.py` | 9 | Initial cap=2 vs cap=5 comparison | K∈{20,40} |
+| `scripts/capacity_sensitivity_full_spectrum.py` | 9 | Full-spectrum cap 1–5 sensitivity | cap∈{1,2,3,5,∞}, K∈{10–48} |
+| `scripts/p0_spatial_analysis.py` | 9 | P0 spatial stratification analysis | latitude, grid, maximin |
+| `scripts/run_production_v2.py` | 9 | Production V2 experiments | cap=2, P0-spatial, 810 runs |
 
 ---
 
-*Document prepared as part of the EMS Readiness Optimization project, Phase 8.*  
-*Version 1.2.0 — March 12, 2026*
+*Document prepared as part of the EMS Readiness Optimization project, Phase 9.*  
+*Version 1.3.0 — March 15, 2026*

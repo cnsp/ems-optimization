@@ -1,6 +1,6 @@
 # File Inventory — EMS Readiness Optimization Project
 
-> Generated: 2026-03-12 | Version: 1.2.0 | Total tracked files in remote: **210+** | Total local files: **220+**
+> Generated: 2026-03-15 | Version: 1.3.0 | Total tracked files in remote: **230+** | Total local files: **240+**
 
 ---
 
@@ -16,6 +16,7 @@
 | Phase 6 | Comprehensive Statistical Analysis | ✅ Complete |
 | Phase 7 | Final Report & Documentation | ✅ Complete |
 | Phase 8 | Alternative Analyses & Extensions | ✅ Complete |
+| Phase 9 | Capacity & Baseline Improvements | ✅ Complete |
 
 ---
 
@@ -25,9 +26,10 @@
 | File | Size | Description |
 |------|------|-------------|
 | `demand.yaml` | 856 B | NHPP demand model parameters |
-| `optimization.yaml` | 960 B | MIP solver and unit-count settings |
+| `optimization.yaml` | 960 B | MIP solver and unit-count settings (capacity=2 default) |
 | `service.yaml` | 1.5 KB | Travel time and service time config |
 | `simulation.yaml` | 1.1 KB | DES engine and batch runner settings |
+| `cbd_scenario.yaml` | ~500 B | CBD robustness experiment config |
 
 ### `data/raw/` — Raw Input Data
 | File | Size | Tracked | Description |
@@ -57,37 +59,42 @@
 | `firehouses_manhattan.csv` | 7.1 KB | ✅ | 48 Manhattan firehouses |
 | `precincts_manhattan.geojson` | 640 KB | ✅ | 30 Manhattan precincts |
 
-### `src/ems_readiness/` — Source Code (7,800+ lines total)
+### `src/ems_readiness/` — Source Code (8,500+ lines total)
 | Module | Files | Description |
 |--------|-------|-------------|
+| `__init__.py` | 1 | Package metadata (v0.6.0) |
 | `demand/` | `__init__.py`, `arrival_generator.py` | NHPP arrival generation (thinning algorithm) |
 | `service/` | `__init__.py`, `travel_time.py`, `service_time.py` | Travel proxy & LogNormal service time |
-| `optimization/` | `__init__.py`, `models.py`, `policies.py`, `allocator.py` | MIP formulations (incl. CBD-focused) & baseline policies |
+| `optimization/` | `__init__.py`, `models.py`, `policies.py`, `allocator.py` | MIP formulations (incl. CBD-focused, capacity-aware) & baseline policies (incl. spatially-stratified) |
 | `simulation/` | `__init__.py`, `engine.py`, `entities.py`, `resources.py`, `dispatcher.py`, `metrics.py`, `runner.py` | SimPy DES engine with batch runner |
 | `utils/` | `__init__.py`, `distance.py` | Haversine & Manhattan distance calculations |
 
-### `scripts/` — Automation Scripts
-| File | Description |
-|------|-------------|
-| `data_audit.py` | Data quality audit pipeline |
-| `audit_step1_boundaries.py` | Boundary file validation |
-| `audit_step2_firehouses.py` | Firehouse data validation |
-| `audit_step3_precincts.py` | Precinct data validation |
-| `audit_step4_crashes.py` | Crash data validation |
-| `demand_modeling.py` | NHPP demand model fitting |
-| `run_optimization_comparison.py` | Multi-model optimization comparison |
-| `run_verification.py` | Simulation verification tests |
-| `run_validation_pilots.py` | Validation pilot experiments |
-| `run_production_experiments.py` | Full 1,440-run production experiments |
-| `analyze_production_results.py` | Production result analysis |
-| `generate_publication_figures.py` | Publication-quality figure generation |
-| `generate_summary_dashboard.py` | Project summary dashboard |
-| `run_cbd_experiment.py` | CBD robustness experiment (330 runs) |
-| `analyze_queue_metrics.py` | Queue metrics analysis |
-| `analyze_seasonal_patterns.py` | Seasonal variation analysis |
-| `generate_manhattan_distance_matrix.py` | Manhattan (taxicab) distance matrix generation |
-| `run_distance_comparison_experiment.py` | Haversine vs. Manhattan metric comparison |
-| `run_cbd_focused_optimization.py` | CBD-focused vs. Manhattan-wide optimization |
+### `scripts/` — Automation Scripts (23 scripts)
+| File | Phase | Description |
+|------|-------|-------------|
+| `data_audit.py` | 2 | Data quality audit pipeline |
+| `audit_step1_boundaries.py` | 2 | Boundary file validation |
+| `audit_step2_firehouses.py` | 2 | Firehouse data validation |
+| `audit_step3_precincts.py` | 2 | Precinct data validation |
+| `audit_step4_crashes.py` | 2 | Crash data validation |
+| `demand_modeling.py` | 2 | NHPP demand model fitting |
+| `run_optimization_comparison.py` | 3 | Multi-model optimization comparison |
+| `run_verification.py` | 5 | Simulation verification tests |
+| `run_validation_pilots.py` | 5 | Validation pilot experiments |
+| `run_production_experiments.py` | 6 | Full 1,440-run production experiments |
+| `analyze_production_results.py` | 6 | Production result analysis |
+| `generate_publication_figures.py` | 6 | Publication-quality figure generation |
+| `generate_summary_dashboard.py` | 6 | Project summary dashboard |
+| `run_cbd_experiment.py` | 6 | CBD robustness experiment (330 runs) |
+| `analyze_queue_metrics.py` | 6 | Queue metrics analysis |
+| `analyze_seasonal_patterns.py` | 6 | Seasonal variation analysis |
+| `generate_manhattan_distance_matrix.py` | 8 | Manhattan (taxicab) distance matrix generation |
+| `run_distance_comparison_experiment.py` | 8 | Haversine vs. Manhattan metric comparison |
+| `run_cbd_focused_optimization.py` | 8 | CBD-focused vs. Manhattan-wide optimization |
+| `capacity_sensitivity_analysis.py` | 9 | Initial cap=2 vs cap=5 comparison |
+| `capacity_sensitivity_full_spectrum.py` | 9 | Full-spectrum cap 1–5 sensitivity (450 runs) |
+| `p0_spatial_analysis.py` | 9 | P0 spatial stratification analysis and visualization |
+| `run_production_v2.py` | 9 | Production V2 experiment runner (810 runs) |
 
 ### `tests/` — Test Suite (39 tests)
 | File | Tests | Description |
@@ -98,7 +105,7 @@
 | `test_extreme_cases.py` | 8 | Edge case & stress tests |
 | `test_reproducibility.py` | 6 | Seeded reproducibility tests |
 
-### `notebooks/` — Analysis Notebooks (7 notebooks)
+### `notebooks/` — Analysis Notebooks (8 notebooks)
 | File | Description |
 |------|-------------|
 | `02_eda_spatiotemporal.ipynb` | Exploratory data analysis |
@@ -108,8 +115,9 @@
 | `06_simulation_debug.ipynb` | Simulation debugging & V&V |
 | `07_production_results.ipynb` | Production experiment results |
 | `08_statistical_analysis.ipynb` | Comprehensive statistical analysis |
+| `09_cbd_analysis.ipynb` | CBD robustness analysis |
 
-### `results/figures/` — Visualizations (33 PNG files)
+### `results/figures/` — Visualizations (66+ PNG files)
 | Category | Files | Description |
 |----------|-------|-------------|
 | EDA | 10 | Crash heatmap, temporal trends, firehouses map, etc. |
@@ -118,8 +126,15 @@
 | Experiments | 4 | Exp1–Exp4 result plots |
 | Publication | 5 | pub_fig1–pub_fig5 (high quality) |
 | Model | 6 | Distance heatmap, travel time, service time, NHPP |
+| CBD | 3 | CBD robustness figures |
+| Queue | 4 | Queue analysis figures |
+| Seasonal | 3 | Seasonal analysis figures |
+| Distance Comparison | 4 | Haversine vs Manhattan figures |
+| CBD-Focused Comparison | 3 | CBD-focused vs Manhattan-wide figures |
+| Capacity Sensitivity | 10+ | Cap 1–5 sensitivity figures |
+| Production V2 | 10+ | V2 result figures |
 
-### `results/tables/` — Statistical Tables (18 files)
+### `results/tables/` — Statistical Tables (55+ files)
 | File | Description |
 |------|-------------|
 | `descriptive_statistics.csv` | Summary stats for all experiments |
@@ -131,6 +146,9 @@
 | `table1–table4_*.csv/.tex` | Publication-ready tables (CSV + LaTeX) |
 | `exp1–exp4_*.csv` | Per-experiment pivot tables |
 | `optimization_comparison.csv` | Policy comparison metrics |
+| `cbd_*.csv` | CBD robustness tables |
+| `queue_*.csv` | Queue analysis tables |
+| `seasonal_*.csv` | Seasonal analysis tables |
 
 ### `results/simulation/` — Simulation Outputs
 | Directory | Files | Description |
@@ -169,13 +187,30 @@
 | `equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
 | `experiment_log.txt` | Experiment execution log |
 
-### `docs/` — Documentation (30+ files)
+### `results/capacity_comparison/` — Capacity Sensitivity Analysis (Phase 9)
+| File | Description |
+|------|-------------|
+| `cap_*_allocations_*.csv` | Allocation vectors per capacity × K |
+| `capacity_sensitivity_summary.csv` | Summary table: cap 1–5 × K 10–48 |
+| `capacity_*_figures.png` | Capacity sensitivity visualization figures |
+| `experiment_log.txt` | Experiment execution log |
+
+### `results/production_v2/` — Production V2 Results (Phase 9)
+| File | Description |
+|------|-------------|
+| `v2_allocations_*.csv` | P0-spatial, P1, P2 allocations per K |
+| `v2_simulation_results.csv` | Full simulation results (810 runs) |
+| `v2_summary_statistics.csv` | Summary statistics by policy × K |
+| `comparison_with_v1.csv` | V1 vs V2 comparison table |
+| `v2_*.png` | Production V2 result figures |
+
+### `docs/` — Documentation (32+ files)
 | File | Description |
 |------|-------------|
 | `project_charter.md` | Project scope and objectives |
 | `source_manifest.md/.pdf` | Data source inventory |
-| `assumptions_log.md` | Documented assumptions |
-| `decisions_log.md/.pdf` | Key decision records |
+| `assumptions_log.md` | Documented assumptions (14 items) |
+| `decisions_log.md/.pdf` | Key decision records (DEC-001 through DEC-011) |
 | `blocker_log.md` | Issue tracking |
 | `demand_model_spec.md/.pdf` | NHPP demand model specification |
 | `service_model_spec.md/.pdf` | Travel & service model spec |
@@ -186,11 +221,11 @@
 | `verification_log.md/.pdf` | V&V test results |
 | `output_analysis.md/.pdf` | Statistical analysis report |
 | `executive_summary.md/.pdf` | Executive summary |
-| `technical_report.md` | Comprehensive final report |
+| `technical_report.md` | Comprehensive final report (v2.1.0) |
 | `executive_presentation.md` | Slide deck for stakeholders |
 | `implementation_roadmap.md` | Deployment plan |
 | `project_archive.md` | Project archive & timeline |
-| `code_documentation.md` | Code architecture guide |
+| `code_documentation.md` | Code architecture guide (v1.3.0) |
 | `file_inventory.md` | This file |
 | `cbd_robustness_analysis.md` | CBD robustness DES experiment |
 | `queue_analysis.md` | Queueing performance analysis |
@@ -198,8 +233,11 @@
 | `distance_metric_comparison.md/.pdf` | Haversine vs. Manhattan comparison (Phase 8) |
 | `cbd_focused_optimization_analysis.md/.pdf` | CBD-focused optimization report (Phase 8) |
 | `alternative_analyses_summary.md/.pdf` | Alternative analyses summary (Phase 8) |
-| `research_questions_assessment.md` | Research questions assessment with simulation evidence |
-| `project_workflow_wbs.md/.pdf` | Work Breakdown Structure |
+| `research_questions_assessment.md` | Research questions assessment |
+| `project_workflow_wbs.md/.pdf` | Work Breakdown Structure (v1.3.0) |
+| `firehouse_capacity_analysis.md` | Firehouse capacity methodology (Phase 9) |
+| `capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report (Phase 9) |
+| `final_summary.md` | Final project summary (v1.3.0) |
 
 ---
 
@@ -207,14 +245,18 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Python LOC | 7,800+ |
+| Total Python LOC | 8,500+ |
 | Total source modules | 14 |
-| Total scripts | 19 |
+| Total scripts | 23 |
 | Total test cases | 39 |
 | Total notebooks | 8 |
-| Total figures | 51+ |
-| Total CSV result files | 30+ |
-| Total documentation files | 30+ |
-| Total simulation runs | 1,770+ (production) + alternative analyses |
-| Tracked files in Git | 210+ |
-| Project size (excl. raw data) | ~140 MB |
+| Total figures | 66+ |
+| Total CSV result files | 55+ |
+| Total documentation files | 32+ |
+| Total simulation runs | 2,700+ (production V1 + V2 + CBD + capacity + alternatives) |
+| Tracked files in Git | 230+ |
+| Project size (excl. raw data) | ~160 MB |
+
+---
+
+*Last updated: March 15, 2026 — Version 1.3.0*

@@ -3,20 +3,29 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**A simulation-based approach to optimizing ambulance staging locations in Manhattan, reducing EMS response times by 68% through demand-weighted allocation.**
+**A simulation-based approach to optimizing ambulance staging locations in Manhattan, reducing EMS response times by 19% over a spatially-stratified baseline through demand-weighted allocation with capacity=2 constraints.**
 
 ---
 
-## Key Findings
+## Key Findings (Production V2 — cap=2, P0-spatial)
 
-| Metric | P0 (Current) | P2 (Optimized) | Improvement |
-|--------|-------------|-----------------|-------------|
-| Mean Response Time | 8.08 min | **2.57 min** | **−68.2%** |
-| P90 Response Time | 19.47 min | **3.76 min** | **−80.7%** |
+| Metric | P0-spatial (Baseline) | P2 (Optimized) | Improvement |
+|--------|----------------------|-----------------|-------------|
+| Mean Response Time | 3.17 min | **2.57 min** | **−19.0%** |
+| P95 Response Time | 6.26 min | **4.66 min** | **−25.6%** |
+| 8-min Coverage | 99.6% | **99.6%** | +0.0 pp |
+| Mean Utilization | 7.6% | 7.5% | −0.1 pp |
+
+**P0 Baseline Improvement (V1 → V2):**
+
+| Metric | P0-index (V1) | P0-spatial (V2) | Improvement |
+|--------|--------------|-----------------|-------------|
+| Mean Response Time | 8.08 min | **3.17 min** | **−60.7%** |
 | 8-min Coverage | 64.4% | **99.6%** | **+35.2 pp** |
 
-Results based on 1,770+ simulation experiments with 30 replications each (p < 0.001, Cohen's d > 28).  
-Additional alternative analyses confirm robustness to distance metric choice and geographic focus.
+Results based on 2,700+ simulation experiments with 30 replications each (p < 0.001).
+Capacity sensitivity analysis (cap 1–5) confirms cap=2 as operationally optimal default.
+Alternative analyses confirm robustness to distance metric choice and geographic focus.
 
 ---
 
@@ -24,16 +33,17 @@ Additional alternative analyses confirm robustness to distance metric choice and
 
 This project evaluates three ambulance allocation policies for Manhattan's 48 FDNY firehouses:
 
-- **P0 (Uniform)**: Current practice — equal distribution across all firehouses
+- **P0 (Spatially-Stratified Uniform)**: Latitude-based geographic stratification ensuring even north–south coverage
 - **P1 (Demand-Proportional)**: Units allocated based on nearby demand
 - **P2 (Demand-Weighted Optimized)**: MIP-optimized allocation minimizing expected response time
 
 The analysis combines:
 1. **NHPP Demand Modeling** — Calibrated from 2.24M historical motor vehicle collision records
-2. **Mixed-Integer Programming** — Three optimization formulations (PuLP/CBC solver)
-3. **Discrete-Event Simulation** — SimPy-based DES with 1,770+ production runs (incl. CBD robustness)
+2. **Mixed-Integer Programming** — Three optimization formulations with capacity=2 constraint (PuLP/CBC solver)
+3. **Discrete-Event Simulation** — SimPy-based DES with 2,700+ production runs across 9 experiment sets
 4. **Statistical Analysis** — ANOVA, Tukey HSD, confidence intervals, effect sizes
-5. **Alternative Analyses** — Manhattan distance metric comparison + CBD-focused optimization evaluation
+5. **Capacity Sensitivity Analysis** — Full spectrum (cap 1–5) across 9 fleet sizes
+6. **Alternative Analyses** — Manhattan distance metric comparison + CBD-focused optimization evaluation
 
 ## Repository Structure
 
@@ -41,7 +51,7 @@ The analysis combines:
 ems-optimization/
 ├── configs/                    # YAML configuration files
 │   ├── demand.yaml             # NHPP demand model parameters
-│   ├── optimization.yaml       # MIP solver settings
+│   ├── optimization.yaml       # MIP solver settings (capacity=2 default)
 │   ├── service.yaml            # Travel & service time config
 │   ├── simulation.yaml         # DES engine settings
 │   └── cbd_scenario.yaml       # CBD robustness experiment config
@@ -49,14 +59,16 @@ ems-optimization/
 │   ├── raw/                    # Original data files (NYC Open Data)
 │   ├── processed/              # Cleaned & transformed data
 │   └── manifests/              # Data audit records
-├── docs/                       # Project documentation
-│   ├── technical_report.md     # Comprehensive final report
+├── docs/                       # Project documentation (32+ files)
+│   ├── technical_report.md     # Comprehensive final report (v2.1.0)
 │   ├── executive_presentation.md # Stakeholder slide deck
 │   ├── implementation_roadmap.md # Deployment plan
 │   ├── conceptual_model.md     # DES model specification
 │   ├── optimization_formulation.md # MIP formulations
 │   ├── experimental_design.md  # Factorial experiment design
 │   ├── output_analysis.md      # Statistical analysis report
+│   ├── capacity_sensitivity_analysis.md # Cap 1–5 sensitivity report
+│   ├── firehouse_capacity_analysis.md # Capacity methodology
 │   └── ...                     # Additional documentation
 ├── notebooks/                  # Jupyter analysis notebooks
 │   ├── 02_eda_spatiotemporal.ipynb
@@ -68,18 +80,20 @@ ems-optimization/
 │   ├── 08_statistical_analysis.ipynb
 │   └── 09_cbd_analysis.ipynb
 ├── results/
-│   ├── figures/                # 47+ visualization PNGs
+│   ├── figures/                # 66+ visualization PNGs
 │   ├── tables/                 # Statistical tables (CSV + LaTeX)
 │   ├── simulation/             # Simulation output data
 │   ├── optimization/           # Optimization results
 │   ├── distance_comparison/    # Haversine vs Manhattan metric results
 │   ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
+│   ├── capacity_comparison/    # Capacity sensitivity (cap 1–5) results
+│   ├── production_v2/          # Production V2 results (cap=2, P0-spatial)
 │   └── maps/                   # Allocation map visualizations
-├── scripts/                    # Automation & analysis scripts
-├── src/ems_readiness/          # Core Python package
+├── scripts/                    # Automation & analysis scripts (23+)
+├── src/ems_readiness/          # Core Python package (v0.6.0)
 │   ├── demand/                 # NHPP arrival generator
 │   ├── service/                # Travel time & service time models
-│   ├── optimization/           # MIP formulations & allocator
+│   ├── optimization/           # MIP formulations, policies & allocator
 │   ├── simulation/             # SimPy DES engine
 │   └── utils/                  # Distance calculations
 ├── tests/                      # 39 unit tests (pytest)
@@ -163,6 +177,15 @@ python scripts/analyze_seasonal_patterns.py
 python scripts/generate_manhattan_distance_matrix.py
 python scripts/run_distance_comparison_experiment.py --reps 10
 python scripts/run_cbd_focused_optimization.py --reps 10
+
+# 10. Run capacity sensitivity analysis (Phase 9)
+python scripts/capacity_sensitivity_full_spectrum.py
+
+# 11. Run P0 spatial stratification analysis
+python scripts/p0_spatial_analysis.py
+
+# 12. Run Production V2 experiments (810 simulations — cap=2, P0-spatial)
+python scripts/run_production_v2.py
 ```
 
 ### Run Specific Experiments
@@ -174,7 +197,7 @@ from ems_readiness.optimization import EMSAllocator
 # Initialize allocator
 allocator = EMSAllocator.from_project(".")
 
-# Get P2 allocation for K=20 units
+# Get P2 allocation for K=20 units (capacity=2 default)
 result = allocator.solve(model="demand_weighted", K=20)
 print(result.allocation)
 
@@ -201,7 +224,7 @@ pytest tests/test_reproducibility.py -v
 
 | Document | Description |
 |----------|-------------|
-| [Technical Report](docs/technical_report.md) | Comprehensive final report with all findings |
+| [Technical Report](docs/technical_report.md) | Comprehensive final report (v2.1.0) with all findings |
 | [Executive Presentation](docs/executive_presentation.md) | 10-slide stakeholder presentation |
 | [Implementation Roadmap](docs/implementation_roadmap.md) | Phased deployment plan |
 | [Conceptual Model](docs/conceptual_model.md) | DES model specification |
@@ -218,15 +241,17 @@ pytest tests/test_reproducibility.py -v
 | [Distance Metric Comparison](docs/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
 | [CBD-Focused Optimization](docs/cbd_focused_optimization_analysis.md) | CBD-focused vs. Manhattan-wide comparison |
 | [Alternative Analyses Summary](docs/alternative_analyses_summary.md) | Combined Phase 8 alternative analyses |
+| [Capacity Sensitivity Analysis](docs/capacity_sensitivity_analysis.md) | Full-spectrum capacity (cap 1–5) analysis |
+| [Firehouse Capacity Analysis](docs/firehouse_capacity_analysis.md) | Capacity methodology and initial findings |
 | [Research Questions Assessment](docs/research_questions_assessment.md) | Evaluation of all 5 research questions with simulation evidence |
-| [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 8 phases |
+| [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 9 phases |
 
 ## Research Questions
 
 1. **RQ1**: How does demand for EMS services vary spatially and temporally across Manhattan?
 2. **RQ2**: What is the optimal allocation of K ambulances to minimize expected response time?
-3. **RQ3**: How do optimized allocations compare to the uniform baseline under realistic conditions?
-4. **RQ4**: How sensitive are policy rankings to fleet size, demand intensity, and service time?
+3. **RQ3**: How do optimized allocations compare to the spatially-stratified uniform baseline under realistic conditions?
+4. **RQ4**: How sensitive are policy rankings to fleet size, demand intensity, service time, and firehouse capacity?
 5. **RQ5**: What fleet size achieves ≥95% coverage within 8 minutes?
 
 ## Citation
@@ -237,7 +262,7 @@ pytest tests/test_reproducibility.py -v
   author={EMS Optimization Research Team},
   year={2026},
   howpublished={\url{https://github.com/cnsp/ems-optimization}},
-  note={Version 1.2.0}
+  note={Version 1.3.0}
 }
 ```
 
@@ -252,4 +277,4 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-*Built with Python, SimPy, PuLP, pandas, and matplotlib. 7,800+ lines of code across 14 modules, validated with 39 tests and 1,770+ simulation experiments. Includes alternative distance metric and CBD-focused optimization analyses. 100% alignment with project outline (v1.2.0).*
+*Built with Python, SimPy, PuLP, pandas, and matplotlib. 8,500+ lines of code across 14 modules, validated with 39 tests and 2,700+ simulation experiments. Includes capacity sensitivity analysis (cap 1–5), spatially-stratified P0 baseline, Production V2 results, alternative distance metric and CBD-focused optimization analyses. 100% alignment with project outline (v1.3.0).*

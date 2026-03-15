@@ -64,11 +64,11 @@ This document records all assumptions made during the EMS Readiness Optimization
 
 ## Operational Assumptions
 
-### A10: Unlimited Staging Capacity
-**Assumption**: Any number of EMS units can stage at a single firehouse.
-**Rationale**: Simplifies optimization; capacity constraints are secondary.
-**Risk**: Physical constraints may limit actual staging.
-**Mitigation**: Document as limitation; add capacity constraints in extensions.
+### A10: Firehouse Staging Capacity (Updated v1.3.0)
+**Assumption**: ~~Any number of EMS units can stage at a single firehouse.~~ **Updated:** Maximum 2 EMS units per firehouse (default capacity constraint).
+**Rationale**: Full capacity sensitivity analysis (cap 1–5) demonstrates that cap=2 is operationally realistic based on typical FDNY firehouse infrastructure, and matches or improves performance compared to cap=5 at K ≤ 40. At K=20, capacity never binds (all policies allocate ≤ 1 unit/firehouse). At K=40, cap=2 forces wider geographic dispersion (29 vs 24 firehouses for P2).
+**Risk**: Some firehouses may accommodate more or fewer units depending on physical infrastructure.
+**Mitigation**: Capacity sensitivity analysis (cap 1–5) quantifies performance impact. Results are robust across all tested capacity values.
 
 ### A11: No Pre-emption
 **Assumption**: Once an EMS unit is assigned to an incident, it completes service before taking new calls.
@@ -88,6 +88,12 @@ This document records all assumptions made during the EMS Readiness Optimization
 **Risk**: A different multiplier (e.g., 2× or 5×) might yield different conclusions.
 **Mitigation**: Results show that even with 3× weight, CBD RT does not improve (2.50 vs. 2.47 min), while non-CBD RT degrades dramatically (+159%). This confirms that the Manhattan-wide P2 is robust and any CBD-focused up-weighting is counterproductive.
 
+### A14: Spatially-Stratified Baseline (P0-spatial) *(Added v1.3.0)*
+**Assumption**: The baseline uniform allocation policy (P0) distributes units across firehouses using latitude-based spatial stratification rather than arbitrary index-based ordering.
+**Rationale**: Index-based allocation (original P0) assigned units to firehouses in database-order, producing geographically biased clusters. Latitude-based stratification divides Manhattan into equal-width latitude bands and round-robins units across bands, ensuring even north–south geographic coverage regardless of firehouse ordering in the dataset.
+**Risk**: Latitude-only stratification does not account for east–west variation or local demand density.
+**Mitigation**: Manhattan's elongated north–south geometry makes latitude the dominant spatial axis. P0-spatial is a *baseline* comparator; optimized policies (P1, P2) already account for demand. Simulation confirms P0-spatial reduces mean response time by ~61% vs. original P0 (3.17 vs. 8.08 min at K=20).
+
 ---
 
 ## Assumption Review Schedule
@@ -98,4 +104,4 @@ This document records all assumptions made during the EMS Readiness Optimization
 
 ---
 
-*Last Updated: March 12, 2026*
+*Last Updated: March 15, 2026*

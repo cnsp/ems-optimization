@@ -1,7 +1,7 @@
 # Code Documentation
 ## EMS Readiness Optimization — Architecture & Developer Guide
 
-**Version:** 1.2.0 | **Python:** 3.11+ | **Lines of Code:** 7,800+
+**Version:** 1.3.0 | **Python:** 3.11+ | **Lines of Code:** 8,500+
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```
 ems_readiness/                  # Core package
-├── __init__.py                 # Package metadata (v0.5.0)
+├── __init__.py                 # Package metadata (v0.6.0)
 ├── demand/                     # Demand modeling module
 │   ├── __init__.py
 │   └── arrival_generator.py    # NHPP arrival generation
@@ -129,7 +129,7 @@ class ServiceTimeModel:
 **Key Functions:**
 
 ```python
-def build_demand_weighted(travel_time_matrix, demand, K, capacity=5, ...) -> pulp.LpProblem
+def build_demand_weighted(travel_time_matrix, demand, K, capacity=2, ...) -> pulp.LpProblem
 
 def build_p_median(travel_time_matrix, demand, K, ...) -> pulp.LpProblem
 
@@ -137,12 +137,12 @@ def build_maximal_coverage(travel_time_matrix, demand, K, threshold_minutes=8.0,
 
 # --- Added in v1.2.0 (CBD-focused models) ---
 def build_cbd_focused_demand_weighted(
-    travel_time_matrix, demand, K, cbd_precincts, cbd_weight=3.0, capacity=5, ...
+    travel_time_matrix, demand, K, cbd_precincts, cbd_weight=3.0, capacity=2, ...
 ) -> pulp.LpProblem
 
 def build_cbd_focused_coverage(
     travel_time_matrix, demand, K, cbd_precincts, threshold_minutes=8.0,
-    cbd_coverage_weight=3.0, capacity=5, ...
+    cbd_coverage_weight=3.0, capacity=2, ...
 ) -> pulp.LpProblem
 
 def extract_allocation(model) -> pd.Series
@@ -159,10 +159,17 @@ def extract_coverage(model) -> pd.Series
 **Purpose:** Non-optimized baseline allocation strategies.
 
 ```python
-def uniform_allocation(firehouses, K, capacity=5) -> pd.Series
+def uniform_allocation(firehouses, K, capacity=2) -> pd.Series
 
-def demand_proportional_allocation(travel_time_matrix, demand, K, capacity=5) -> pd.Series
+def demand_proportional_allocation(travel_time_matrix, demand, K, capacity=2) -> pd.Series
+
+# --- Added in v1.3.0 (Spatially-stratified baseline) ---
+def spatially_stratified_allocation(firehouses, K, capacity=2, n_bands=None) -> pd.Series
+
+def spatial_stratification_analysis(firehouses, K_values, capacity=2) -> pd.DataFrame
 ```
+
+**Added in v1.3.0:** `spatially_stratified_allocation()` divides firehouses into latitude bands and round-robins units across bands to ensure geographic coverage. This replaces index-based P0 as the standard baseline (P0-spatial). `spatial_stratification_analysis()` evaluates stratification quality across multiple K values.
 
 ---
 
@@ -348,7 +355,7 @@ dispatch_delay_minutes: 1.5
 ### `configs/optimization.yaml`
 ```yaml
 unit_counts: [20, 30, 40, 48]
-firehouse_capacity: 5
+firehouse_capacity: 2
 coverage_threshold_minutes: 8.0
 solver:
   name: CBC
@@ -425,4 +432,4 @@ See `requirements.txt` for complete dependency list.
 
 ---
 
-*Last updated: March 12, 2026*
+*Last updated: March 15, 2026*

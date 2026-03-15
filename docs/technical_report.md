@@ -3,14 +3,14 @@
 ## Comprehensive Technical Report
 
 **Authors:** EMS Optimization Research Team  
-**Date:** March 12, 2026  
-**Version:** 2.0.0 (Phase 21 — Full Compliance)
+**Date:** March 15, 2026  
+**Version:** 2.1.0 (Phase 9 — Capacity & Baseline Improvements)
 
 ---
 
 ## Abstract
 
-This study presents a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a uniform baseline (P0), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 1,770 production runs across five experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, and CBD-focused stress tests—with 30 replications each using Common Random Numbers for variance reduction. Results demonstrate that the optimized policy P2 reduces mean response time by 68.2% (from 8.08 to 2.57 minutes) and improves 8-minute coverage from 64.4% to 99.6% compared to the uniform baseline, with all differences statistically significant (p < 0.001, Cohen's d > 28). Performance gains are robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments, establishing that performance differentials arise entirely from spatial allocation efficiency. We recommend adoption of P2 for operational deployment, with a phased 12-month implementation roadmap targeting the highest-impact firehouses first.
+This study presents a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a spatially-stratified uniform baseline (P0-spatial), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 2,580+ production runs across multiple experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, CBD-focused stress tests, capacity sensitivity (cap 1–5), and Production V2 experiments (810 runs with capacity=2 and spatially-stratified P0)—with 30 replications each using Common Random Numbers for variance reduction. Results demonstrate that the optimized policy P2 achieves a mean response time of 2.57 minutes with 99.6% 8-minute coverage. The spatially-stratified P0 baseline reduces P0 mean response time by 61% (from 8.08 to 3.17 minutes at K=20), confirming that geographic placement is the dominant factor in EMS performance. Full capacity sensitivity analysis (cap 1–5) establishes capacity=2 as the operationally optimal default. Performance gains are robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments. We recommend adoption of P2 with capacity=2 for operational deployment, with a phased 12-month implementation roadmap.
 
 **Keywords:** Emergency Medical Services, ambulance staging, discrete-event simulation, facility location optimization, Non-Homogeneous Poisson Process, Mixed-Integer Programming, SimPy
 
@@ -235,11 +235,11 @@ We use the **Lewis-Shedler thinning algorithm** to generate NHPP arrivals:
 
 Three MIP formulations generate the allocation policies evaluated by simulation:
 
-#### 4.3.1 P0 — Uniform Allocation (Baseline)
+#### 4.3.1 P0 — Spatially-Stratified Uniform Allocation (Baseline)
 
-$$x_i = \lfloor K / |I| \rfloor \text{ for all } i \in I, \text{ with round-robin remainder}$$
+In Production V2, P0 uses a **spatially-stratified** allocation: firehouses are sorted by latitude and K evenly-spaced stations are selected, ensuring geographic coverage from Battery Park to Inwood. Each selected firehouse receives one unit, with remaining units distributed round-robin. This replaces the original index-based P0 which distributed units without geographic awareness.
 
-No optimization; simply divides K units equally among |I|=48 firehouses.
+$$\text{Select } K \text{ firehouses by latitude spacing; } x_i = 1 \text{ for selected } i, \text{ round-robin remainder}$$
 
 #### 4.3.2 P1 — Demand-Proportional Allocation
 
@@ -254,7 +254,7 @@ $$\min_{x, y} \sum_{i \in I} \sum_{j \in J} d_j \cdot t_{ij} \cdot y_{ij}$$
 
 subject to:
 - $\sum_{i \in I} x_i = K$ (total units)
-- $x_i \leq C_i$ for all $i$ (capacity: 5 units/firehouse)
+- $x_i \leq C_i$ for all $i$ (capacity: 2 units/firehouse, default)
 - $\sum_{i \in I} y_{ij} = 1$ for all $j$ (full assignment)
 - $y_{ij} \leq x_i$ for all $i, j$ (linking constraint)
 - $x_i \in \mathbb{Z}_+$, $y_{ij} \in [0,1]$
@@ -380,7 +380,9 @@ Built using **SimPy** discrete-event simulation library in Python:
 | Exp2: Fleet Sensitivity | Policy × K (15–40) | 3×6 | 30 | 540 |
 | Exp3: Demand Sensitivity | Policy × Demand (0.5–2.0×) | 3×6 | 30 | 540 |
 | Exp4: Service Robustness | Policy × Service (20,25,30 min) | 3×3 | 30 | 270 |
-| **Total** | | | | **1,440** |
+| Capacity Sensitivity | Policy × K × Cap (1–5) | 3×2×5 | 15 | 450 |
+| **Production V2** | **Policy × K (10–48, cap=2, P0-spatial)** | **3×9** | **30** | **810** |
+| **Total** | | | | **2,700** |
 
 Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
 
@@ -581,6 +583,73 @@ To evaluate the equity–efficiency tradeoff, we implemented a **CBD-focused dem
 The Manhattan-wide P2 allocation is strongly preferred as it achieves both efficiency and equity. See `docs/cbd_focused_optimization_analysis.md` for the full report.
 
 ![CBD-Focused Comparison](../results/cbd_focused_comparison/cbd_focused_comparison.png)
+
+
+### 5.12 Firehouse Capacity Constraints Analysis
+
+To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20 and K=40 for all three policies (P0-spatial, P1, P2). A total of 30 allocation–simulation experiments were executed (5 capacity levels × 2 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
+
+#### K = 20: Capacity Does Not Bind
+
+At K=20, the capacity constraint is effectively non-binding for all policies:
+- **P0-spatial** and **P2**: Naturally allocate at most 1 unit per firehouse, so performance is identical across all capacity values
+- **P1**: Only differs at cap=1 (forced to use 20 vs 18 firehouses), with a marginal RT improvement (2.59 vs 2.62 min)
+
+| Policy | Cap=1 RT | Cap=2 RT | Cap=5 RT | Difference |
+|--------|----------|----------|----------|------------|
+| P0-spatial | 3.11 | 3.11 | 3.11 | None |
+| P1 | 2.59 | 2.62 | 2.62 | < 0.03 min |
+| P2 | 2.56 | 2.56 | 2.56 | None |
+
+#### K = 40: Capacity Actively Shapes Allocation
+
+With 40 units across 48 firehouses, capacity constraints meaningfully affect P1 and P2:
+- **P2**: Firehouses used decreases from 40 (cap=1) to 24 (cap=5) as higher capacity allows concentration
+- **P1**: Similar pattern — 40 to 21 firehouses
+- **P0-spatial**: Immune to capacity (always 1 unit/station with maximin selection)
+
+Performance differences across capacity levels remain small (< 0.15 min mean RT), confirming that **capacity=2 is operationally realistic and matches or improves upon cap=5 performance** at typical fleet sizes (K ≤ 40).
+
+**Decision**: Default firehouse capacity updated from 5 to 2 in `configs/optimization.yaml` (see DEC-010).
+
+![Full Spectrum Capacity Summary](../results/capacity_comparison/full_spectrum_summary.png)
+
+
+### 5.13 Spatially-Stratified Baseline Policy (P0-spatial)
+
+The original P0 baseline used **index-based** uniform allocation (round-robin by dataset order), which does not guarantee geographic coverage. We developed a **spatially-stratified P0** using latitude-based selection to ensure even spatial distribution of units across Manhattan's north–south extent.
+
+#### Methodology
+
+Three spatial stratification methods were evaluated:
+1. **Latitude-based**: Sort firehouses by latitude, select K evenly-spaced stations (chosen as default)
+2. **Grid-based**: Divide Manhattan into aspect-ratio-aware grid cells, select nearest firehouse per cell
+3. **Maximin**: Greedy farthest-point heuristic maximising minimum pairwise distance
+
+The latitude-based method was selected as the default for its simplicity, interpretability, and excellent geographic coverage from Battery Park to Inwood.
+
+#### Performance Improvement
+
+The spatially-stratified P0 dramatically outperforms the index-based P0:
+
+| Metric | P0-index (V1) | P0-spatial (V2) | Improvement |
+|--------|---------------|-----------------|-------------|
+| Mean RT (K=20) | 8.08 min | **3.17 min** | **−60.7%** |
+| 8-min Coverage (K=20) | 64.4% | **99.6%** | **+35.2 pp** |
+| Mean RT (K=15) | 9.57 min | **3.70 min** | **−61.4%** |
+
+The 61% improvement in P0 baseline performance demonstrates that **geographic placement is the dominant factor** in EMS response time — even a non-optimised baseline achieves near-optimal coverage when units are spatially distributed. This significantly narrows the gap between P0 and P2 (from 68% to 19% at K=20).
+
+#### Implications for Policy Comparison
+
+With the improved P0-spatial baseline, the Production V2 results show:
+- P2 still outperforms P0-spatial by 19% at K=20 (2.57 vs 3.17 min)
+- The performance gap widens at smaller fleet sizes (23% at K=15)
+- At K ≥ 40, all three policies converge to similar performance (< 0.15 min difference)
+- The primary advantage of P2 is now concentrated in the small-fleet regime (K < 25)
+
+See `docs/firehouse_capacity_analysis.md` for the spatial stratification methodology details.
+
 
 
 ## 6. Discussion
@@ -802,7 +871,26 @@ The following figures are generated by the analysis pipeline and stored in `resu
 50. `results/cbd_focused_comparison/allocation_comparison.png` — Unit allocation comparison between strategies
 51. `results/cbd_focused_comparison/equity_tradeoff.png` — Equity–efficiency tradeoff scatter plot
 
-**Total: 51 figures** generated across EDA, optimization, simulation, alternative analyses, and publication workflows.
+**Capacity Sensitivity Figures** (§5.12):
+52. `results/capacity_comparison/full_spectrum_summary.png` — Full-spectrum capacity sensitivity summary (cap 1–5)
+53. `results/capacity_comparison/performance_vs_capacity_K20.png` — Performance vs capacity at K=20
+54. `results/capacity_comparison/performance_vs_capacity_K40.png` — Performance vs capacity at K=40
+55. `results/capacity_comparison/rt_heatmap_K20.png` — Response time heatmap by policy × capacity at K=20
+56. `results/capacity_comparison/rt_heatmap_K40.png` — Response time heatmap by policy × capacity at K=40
+57. `results/capacity_comparison/allocation_comparison_K20.png` — Allocation comparison at K=20
+58. `results/capacity_comparison/allocation_comparison_K40.png` — Allocation comparison at K=40
+
+**Production V2 Figures** (§5.13):
+59. `results/production_v2/figures/mean_rt_vs_K.png` — Mean response time vs fleet size (V2)
+60. `results/production_v2/figures/coverage_vs_K.png` — 8-minute coverage vs fleet size (V2)
+61. `results/production_v2/figures/rt_distribution_K20.png` — Response time distributions at K=20 (V2)
+62. `results/production_v2/figures/utilization_vs_K.png` — Utilization vs fleet size (V2)
+63. `results/production_v2/figures/effect_sizes.png` — Effect sizes across fleet sizes (V2)
+64. `results/production_v2/figures/allocation_map_K20.png` — Allocation map at K=20 (V2)
+65. `results/production_v2/figures/allocation_map_K30.png` — Allocation map at K=30 (V2)
+66. `results/production_v2/figures/allocation_map_K40.png` — Allocation map at K=40 (V2)
+
+**Total: 66 figures** generated across EDA, optimization, simulation, alternative analyses, capacity sensitivity, Production V2, and publication workflows.
 
 ---
 
@@ -847,7 +935,28 @@ The following tables are generated by the analysis pipeline and stored in `resul
 | 27 | `results/cbd_focused_comparison/comparison_table.csv` | CBD-focused vs Manhattan-wide performance |
 | 28 | `results/cbd_focused_comparison/allocations.csv` | CBD-focused vs Manhattan-wide allocations |
 
-**Total: 28 table files** (20 CSV + 4 LaTeX + 4 supplementary CSV).
+**Capacity Sensitivity Tables:**
+
+| # | Filename | Description |
+|---|----------|-------------|
+| 29 | `results/capacity_comparison/full_comparison.csv` | Full capacity sensitivity comparison (all cap × K × policy) |
+| 30 | `results/capacity_comparison/simulation_results.csv` | Simulation results for capacity experiments |
+| 31 | `results/capacity_comparison/optimal_configurations.csv` | Optimal capacity configurations by policy |
+| 32 | `results/capacity_comparison/allocation_statistics.csv` | Allocation statistics across capacity levels |
+
+**Production V2 Tables:**
+
+| # | Filename | Description |
+|---|----------|-------------|
+| 33 | `results/production_v2/tables/descriptive_statistics.csv` | V2 descriptive statistics (cap=2, P0-spatial) |
+| 34 | `results/production_v2/tables/anova_results.csv` | V2 ANOVA results |
+| 35 | `results/production_v2/tables/posthoc_comparisons.csv` | V2 pairwise comparisons |
+| 36 | `results/production_v2/tables/confidence_intervals.csv` | V2 95% confidence intervals |
+| 37 | `results/production_v2/tables/effect_sizes.csv` | V2 Cohen's d effect sizes |
+| 38 | `results/production_v2/tables/queue_statistics.csv` | V2 queue statistics |
+| 39 | `results/production_v2/comparison_with_v1.csv` | V1 vs V2 comparison table |
+
+**Total: 39 table files** (20 CSV + 4 LaTeX + 4 supplementary CSV + 4 capacity CSV + 7 V2 CSV).
 
 ---
 
@@ -973,4 +1082,4 @@ Successful reproduction generates:
 
 ---
 
-*End of Technical Report — Version 2.0.0 (Phase 21 Full Compliance)*
+*End of Technical Report — Version 2.1.0 (Phase 9 — Capacity & Baseline Improvements)*

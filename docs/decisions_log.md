@@ -218,7 +218,74 @@ Option 3 — Implement CBD-focused demand-weighted model (3× CBD weight) and co
 - Validates that Manhattan-wide P2 already near-optimally serves the CBD without sacrificing equity
 - Recommends against CBD-focused optimization for operational deployment
 
-*Last Updated: March 12, 2026*
+---
+
+### [DEC-010] Firehouse Capacity Constraint — cap=2 Default
+
+**Date**: 2026-03-15
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+The original formulation used cap=5 (DEC-005). Full capacity sensitivity analysis across cap ∈ {1, 2, 3, 5, unlimited} and K ∈ {10, 15, 20, 25, 30, 35, 40, 45, 48} was conducted to determine a realistic default.
+
+**Options Considered**:
+1. Keep cap=5 (original default)
+2. Set cap=2 (tighter constraint)
+3. Set cap=1 (strictest — one unit per firehouse)
+4. Remove capacity constraint entirely
+
+**Decision**:
+Set default firehouse capacity to 2 (`firehouse_capacity: 2` in `configs/optimization.yaml`).
+
+**Rationale**:
+- At K ≤ 30, capacity never binds for any policy (max allocation ≤ 1 unit/FH), so cap=2 and cap=5 yield identical results
+- At K=40, cap=2 forces wider geographic dispersion (29 vs. 24 firehouses for P2) with negligible performance loss (<0.15 min mean RT)
+- cap=2 better reflects typical FDNY firehouse physical infrastructure than cap=5
+- cap=1 is overly restrictive (requires 40 firehouses at K=40, some with suboptimal locations)
+- Full sensitivity analysis (450 runs) confirms robustness across all capacity levels
+
+**Consequences**:
+- All Production V2 results use cap=2 as default
+- V1→V2 P0 improvement is entirely due to P0-spatial baseline change (not capacity)
+- P1 and P2 results unchanged between V1 and V2 (capacity does not bind at typical K)
+- Future work can incorporate per-firehouse capacity data from FDNY
+
+---
+
+### [DEC-011] Spatially-Stratified P0 Baseline (P0-spatial)
+
+**Date**: 2026-03-15
+**Decision Maker**: Technical Lead
+**Status**: Accepted
+
+**Context**:
+The original P0 (uniform allocation) assigned units to firehouses in database index order, which produced geographically clustered allocations biased toward lower Manhattan. This made P0 an artificially weak baseline.
+
+**Options Considered**:
+1. Keep index-based P0 (status quo)
+2. Latitude-based spatial stratification (P0-spatial)
+3. Random allocation with fixed seed
+4. Grid-based stratification (latitude + longitude)
+
+**Decision**:
+Replace index-based P0 with latitude-based spatially-stratified P0 (P0-spatial) as the standard baseline.
+
+**Rationale**:
+- Index-based P0 is not a meaningful "uniform" allocation — it depends on arbitrary database ordering
+- Latitude-based stratification divides Manhattan into equal-width bands and round-robins units, ensuring even north–south coverage
+- Manhattan's elongated geometry makes latitude the dominant spatial axis; adding longitude stratification adds complexity with minimal benefit
+- Random allocation is non-reproducible without seed management
+- P0-spatial at K=20: mean RT = 3.17 min vs. 8.08 min for index-based P0 (−60.7%)
+- P0-spatial provides a fairer baseline for evaluating P1 and P2 improvements
+
+**Consequences**:
+- P2 improvement over P0 narrows from 68% to 19% (2.57 vs. 3.17 min) — reflects that much of P0's original weakness was geographic clustering, not lack of demand-weighting
+- All Production V2 results use P0-spatial
+- Added `spatially_stratified_allocation()` and `spatial_stratification_analysis()` to `optimization/policies.py`
+- Historical V1 results preserved in `results/production_v1/` for comparison
+
+*Last Updated: March 15, 2026*
 
 
 
