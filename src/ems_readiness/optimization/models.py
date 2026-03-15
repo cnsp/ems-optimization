@@ -96,11 +96,14 @@ def build_p_median(
     capacity: int = 5,
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
-    """Classic p-median: select K firehouses and assign precincts.
+    """Capacity-aware p-median: allocate K units across firehouses.
+
+    Each firehouse can host up to *capacity* units.  A firehouse is
+    considered "open" if it has ≥ 1 unit.
 
     Decision variables
     ------------------
-    x_i  : binary, 1 if firehouse i is opened
+    x_i  : integer [0, capacity], number of units at firehouse i
     y_ij : binary, 1 if precinct j is served by firehouse i
 
     Objective
@@ -109,16 +112,17 @@ def build_p_median(
 
     Constraints
     -----------
-    sum_i x_i = K            (open exactly K firehouses)
+    sum_i x_i = K            (total units)
+    0 <= x_i <= capacity
     sum_i y_ij = 1           for all j
-    y_ij <= x_i
+    y_ij <= x_i              (can only assign to open firehouse)
     """
     firehouses = list(travel_time.index)
     precincts = [p for p in travel_time.columns if p in demand.index]
 
     prob = pulp.LpProblem("PMedian_EMS_Allocation", pulp.LpMinimize)
 
-    x = pulp.LpVariable.dicts("x", firehouses, cat="Binary")
+    x = pulp.LpVariable.dicts("x", firehouses, lowBound=0, upBound=capacity, cat="Integer")
     y = pulp.LpVariable.dicts("y", ((i, j) for i in firehouses for j in precincts),
                               cat="Binary")
 
@@ -127,7 +131,7 @@ def build_p_median(
         for j in precincts for i in firehouses
     ), "TotalDemandWeightedDistance"
 
-    prob += pulp.lpSum(x[i] for i in firehouses) == K, "OpenKFirehouses"
+    prob += pulp.lpSum(x[i] for i in firehouses) == K, "TotalUnits"
 
     for j in precincts:
         prob += pulp.lpSum(y[(i, j)] for i in firehouses) == 1, f"Serve_{j}"
@@ -137,7 +141,7 @@ def build_p_median(
             prob += y[(i, j)] <= x[i], f"Link_{i}_{j}"
 
     prob._ems_meta = dict(firehouses=firehouses, precincts=precincts,
-                          x=x, y=y, K=K)
+                          x=x, y=y, K=K, capacity=capacity)
     return prob
 
 
@@ -326,6 +330,52 @@ def build_cbd_focused_coverage(
                           x=x, z=z, a=a, K=K, capacity=capacity,
                           coverage_threshold=coverage_threshold,
                           cbd_precincts=list(cbd_set))
+    return prob
+
+
+# ---------------------------------------------------------------------------
+# Convenience: solve a model by name
+# ---------------------------------------------------------------------------
+def solve_model(
+    model_name: str,
+    travel_time: pd.DataFrame,
+    demand: pd.Series,
+    K: int,
+    capacity: int = 5,
+    coverage_threshold: float = 8.0,
+    solver_time_limit: int = 300,
+    cbd_precincts: list | None = None,
+) -> pulp.LpProblem:
+    """Build and solve a model by name.  Returns the solved LpProblem.
+
+    Parameters
+    ----------
+    model_name : str
+        One of 'demand_weighted', 'p_median', 'maximal_coverage',
+        'cbd_focused_demand_weighted', 'cbd_focused_coverage'.
+    """
+    builders = {
+        "demand_weighted": build_demand_weighted,
+        "p_median": build_p_median,
+        "maximal_coverage": build_maximal_coverage,
+        "cbd_focused_demand_weighted": build_cbd_focused_demand_weighted,
+        "cbd_focused_coverage": build_cbd_focused_coverage,
+    }
+    if model_name not in builders:
+        raise ValueError(f"Unknown model '{model_name}'. Choose from {list(builders)}")
+
+    kwargs: dict = dict(
+        travel_time=travel_time, demand=demand, K=K,
+        capacity=capacity, solver_time_limit=solver_time_limit,
+    )
+    if "coverage" in model_name and model_name != "cbd_focused_demand_weighted":
+        kwargs["coverage_threshold"] = coverage_threshold
+    if "cbd" in model_name:
+        kwargs["cbd_precincts"] = cbd_precincts
+
+    prob = builders[model_name](**kwargs)
+    solver = pulp.PULP_CBC_CMD(msg=0, timeLimit=solver_time_limit)
+    prob.solve(solver)
     return prob
 
 

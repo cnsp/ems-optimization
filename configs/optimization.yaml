@@ -11,7 +11,10 @@ unit_counts: [20, 30, 40, 48]
 default_K: 40
 
 # Maximum units any single firehouse can host
-firehouse_capacity: 5
+# Valid range: 1–5.  Recommended: 2 (operationally realistic).
+# Capacity sensitivity analysis (docs/capacity_sensitivity_analysis.md)
+# shows cap=2 matches or improves upon cap=5 at K≤40.
+firehouse_capacity: 2
 
 # Coverage threshold for maximal-coverage model (minutes)
 coverage_threshold_minutes: 8

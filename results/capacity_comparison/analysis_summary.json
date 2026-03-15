@@ -1,0 +1,19 @@
+{
+  "K_values": [
+    20,
+    40
+  ],
+  "capacity_values": [
+    2,
+    5
+  ],
+  "num_replications": 15,
+  "horizon_hours": 168,
+  "policies": [
+    "P0_spatial",
+    "P1_demand",
+    "P2_optimised"
+  ],
+  "timestamp": "2026-03-15 19:01:15",
+  "runtime_seconds": 23.5
+}
