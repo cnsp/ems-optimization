@@ -2,11 +2,42 @@
 
 Standalone, reproducible notebook suite for the EMS Readiness Optimization project. These notebooks can be run independently in Google Colab to verify and reproduce the entire analysis.
 
-### Quick Start
+### Quick Start — Google Colab
 
 1. Open any notebook in Google Colab
 2. Run the first setup cell (installs dependencies and clones the repository)
 3. Execute cells sequentially
+
+### Quick Start — Local Jupyter
+
+The **same notebooks** work in both Google Colab and local Jupyter with no modifications needed. The first cell automatically detects the environment and adjusts paths, imports, and setup accordingly.
+
+**Prerequisites:**
+- Python 3.8+
+- Jupyter Notebook or JupyterLab
+
+**Steps:**
+```bash
+# 1. Clone the repository (if you haven't already)
+git clone https://github.com/cnsp/ems-optimization.git
+cd ems-optimization
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Launch Jupyter
+jupyter notebook notebooks/colab_standalone/individual/
+# — or for the all-in-one pipeline —
+jupyter notebook notebooks/colab_standalone/EMS_Optimization_Complete_Pipeline.ipynb
+```
+
+When running locally the setup cell will:
+- Skip `pip install` and `git clone` (assumes you already have the repo and packages)
+- Auto-detect the project root by walking up the directory tree
+- Set all data/config/results paths relative to the detected project root
+- Skip Google Drive mounting and Colab file-download calls
+
+> **Tip:** You can launch notebooks from *any* working directory — the path detection walks up from `os.getcwd()` looking for `requirements.txt` + `src/ems_readiness/`, so it always finds the project root.
 
 ### System Requirements
 
@@ -70,15 +101,29 @@ Notebooks 05-07 have sequential dependencies:
 - **06 (Statistical Analysis)** requires results from **05 (Simulation)**
 - **07 (Visualization)** requires results from **05 (Simulation)**
 
+### Colab vs Local — Key Differences
+
+| Feature | Google Colab | Local Jupyter |
+|---------|-------------|---------------|
+| Package installation | Automatic (`!pip install`) | Manual (`pip install -r requirements.txt`) |
+| Repository access | Auto-cloned from GitHub | Already on disk |
+| Path detection | Hardcoded `/content/ems-optimization` | Auto-detected by walking up directory tree |
+| File downloads | `google.colab.files.download()` | Saved to `results/` directory |
+| Google Drive | Optional mount & save | Skipped (not available) |
+| `DOWNLOAD_OUTPUTS` flag | Triggers browser download | Saves to `results/` only (no browser prompt) |
+| `SAVE_TO_DRIVE` flag | Mounts Drive and copies files | Ignored |
+
 ### Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| `ModuleNotFoundError` | Re-run the setup cell; ensure `!pip install` completed |
+| `ModuleNotFoundError` | **Colab:** Re-run the setup cell. **Local:** Run `pip install -r requirements.txt` |
 | `FileNotFoundError` for processed data | Run notebook 00 first to verify data files |
+| `PROJECT_ROOT` is wrong | Check that `requirements.txt` and `src/ems_readiness/` exist in the project root. The auto-detection walks up from the current directory. |
 | Colab disconnects during simulation | Use Colab Pro; reduce `NUM_REPS` or `K_VALUES` |
 | Out of memory | Restart runtime; reduce batch sizes |
 | Slow optimization | CBC solver has 120s timeout; results may be suboptimal for large K |
+| `!pip` / `!git` commands shown as errors locally | These only run inside the `if IN_COLAB:` block — they should never execute locally. If they do, check that `google.colab` is not accidentally importable in your environment. |
 
 ### Verification Checklist
 
