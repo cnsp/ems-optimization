@@ -11,8 +11,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable=None, *args, **kwargs):
+        return iterable
 
-def process_precincts(project_root: str | Path, force: bool = False) -> dict:
+
+def process_precincts(project_root: str | Path, force: bool = False, cache_mgr=None) -> dict:
     """Identify precincts intersecting Manhattan and save as GeoJSON."""
     import pandas as pd
     import geopandas as gpd
@@ -26,6 +32,11 @@ def process_precincts(project_root: str | Path, force: bool = False) -> dict:
     raw = project_root / "data" / "raw"
 
     out_path = processed / "precincts_manhattan.geojson"
+
+    # Cache check
+    if not force and cache_mgr and cache_mgr.is_valid("tier2_precincts"):
+        print("  [cache] Precinct data unchanged -- using cached data.")
+        return {"precincts_manhattan": str(out_path), "skipped": True}
 
     if not force and out_path.exists():
         print("  [skip] precincts_manhattan.geojson already exists.")
@@ -45,7 +56,7 @@ def process_precincts(project_root: str | Path, force: bool = False) -> dict:
     if geom_col is None:
         raise ValueError("Cannot find geometry column in precinct data.")
 
-    df["geometry"] = df[geom_col].apply(wkt.loads)
+    df["geometry"] = [wkt.loads(g) for g in tqdm(df[geom_col], desc="  Parsing WKT", leave=False)]
     gdf = gpd.GeoDataFrame(df, geometry="geometry", crs="EPSG:4326")
 
     gdf["in_manhattan"] = gdf.geometry.intersects(manhattan_geom)
@@ -54,5 +65,8 @@ def process_precincts(project_root: str | Path, force: bool = False) -> dict:
     manhattan_precincts_save = manhattan_precincts.drop(columns=[geom_col])
     manhattan_precincts_save.to_file(out_path, driver="GeoJSON")
     print(f"  Saved precincts_manhattan.geojson ({len(manhattan_precincts_save)} precincts)")
+
+    if cache_mgr:
+        cache_mgr.update("tier2_precincts")
 
     return {"precincts_manhattan": str(out_path), "n_precincts": len(manhattan_precincts_save), "skipped": False}

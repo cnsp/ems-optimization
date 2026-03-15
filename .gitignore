@@ -60,6 +60,8 @@ data/processed/*.parquet
 data/processed/*.geojson
 data/processed/*.json
 data/processed/cache/
+data/processed/.cache_manifest.json
+data/processed/.data_manifest.json
 
 # Generated intermediates in raw/
 data/raw/*.pkl

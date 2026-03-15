@@ -73,6 +73,57 @@ Assert that key operations stay within wall-clock budgets:
 
 Adjust thresholds in `test_performance.py` if the CI environment is slower.
 
+## Pipeline Enhancement Features
+
+The data pipeline includes several quality-of-life enhancements that can be
+tested independently:
+
+### Data Validation
+```bash
+# Test validation directly
+python -c "
+from scripts.data_processing.validation import validate_raw_data
+ok, errors = validate_raw_data('.')
+print('OK:', ok, '| Errors:', len(errors))
+"
+```
+
+### Smart Caching
+```bash
+# Check cache status
+python -c "
+from scripts.data_processing.cache import CacheManager
+cm = CacheManager('.')
+print(cm.summary())
+"
+
+# Second run should skip unchanged tiers
+python scripts/generate_all_data.py  # First run
+python scripts/generate_all_data.py  # Second run (cached, much faster)
+```
+
+### Data Versioning
+```bash
+# View current data version
+python scripts/generate_all_data.py --version
+
+# Compare manifests programmatically
+python -c "
+from scripts.data_processing.versioning import DataVersionManager
+dvm = DataVersionManager('.')
+result = dvm.compare_manifests()
+print('Needs regen:', result['needs_regeneration'])
+for r in result['reasons']:
+    print(' -', r)
+"
+```
+
+### Parallel Processing
+```bash
+# Run with parallel workers
+python scripts/generate_all_data.py --force --jobs 4
+```
+
 ## Adding New Tests
 
 1. **Pick the right file** based on the category table above.

@@ -26,3 +26,4 @@ shapely>=2.0.0   # Geometric operations (dependency of geopandas)
 pyproj>=3.6.0    # Coordinate transformations (dependency of geopandas)
 folium>=0.15.0   # Interactive maps
 tqdm>=4.65.0     # Progress bars
+joblib>=1.3.0    # Parallel processing for data pipeline

@@ -124,3 +124,63 @@ for rep in range(n_replications):
 3. **Pin the git commit** — code changes can alter call order even with same seed.
 4. **Use the environment variable** for CI/CD sweeps over seeds.
 5. **Run ≥ 30 replications** for publishable statistics; report the seed range.
+
+
+
+## Data Versioning
+
+The data pipeline now generates a manifest file (`data/processed/.data_manifest.json`)
+after each successful run, which tracks:
+
+- **Timestamp** of generation
+- **Git commit hash** at the time of generation
+- **Raw data file hashes** (SHA-256) for all input files
+- **Seed** used for the pipeline
+- **Software versions** (Python, pandas, numpy, geopandas, etc.)
+- **Platform** information (OS, architecture)
+
+### Viewing the Current Data Version
+
+```bash
+python scripts/generate_all_data.py --version
+```
+
+This displays a summary like:
+
+```
+EMS Data Version Info
+========================================
+Generated at:  2026-03-15T23:46:06+00:00
+Git commit:    aac03c9b
+Seed:          42
+
+Software versions:
+  python           3.11.6
+  pandas           2.2.3
+  numpy            1.26.4
+  ...
+```
+
+### Comparing Manifests
+
+To check if data needs regeneration (e.g., after updating raw files or
+upgrading packages):
+
+```python
+from scripts.data_processing.versioning import DataVersionManager
+dvm = DataVersionManager(".")
+result = dvm.compare_manifests()
+if result["needs_regeneration"]:
+    for reason in result["reasons"]:
+        print(f"  - {reason}")
+```
+
+### Smart Caching
+
+The pipeline uses a cache manifest (`.cache_manifest.json`) to track input
+file hashes per tier.  On subsequent runs, if inputs have not changed, the
+tier is skipped entirely.  This can reduce a typical re-run from minutes to
+under a second.
+
+Use `--force` to bypass caching, or `--no-cache` to disable it without
+force-regenerating.

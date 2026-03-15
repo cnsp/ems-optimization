@@ -13,8 +13,14 @@ from __future__ import annotations
 import pickle
 from pathlib import Path
 
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable=None, *args, **kwargs):
+        return iterable
 
-def process_boundaries(project_root: str | Path, force: bool = False) -> dict:
+
+def process_boundaries(project_root: str | Path, force: bool = False, cache_mgr=None) -> dict:
     """Load GeoJSON boundaries and save as pickle for fast reuse.
 
     Parameters
@@ -23,6 +29,8 @@ def process_boundaries(project_root: str | Path, force: bool = False) -> dict:
         Project root directory.
     force : bool
         If True, regenerate even if outputs exist.
+    cache_mgr : CacheManager, optional
+        If provided, check/update cache validity.
 
     Returns
     -------
@@ -35,37 +43,38 @@ def process_boundaries(project_root: str | Path, force: bool = False) -> dict:
     cache_dir = project_root / "data" / "processed" / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
 
-    # Also keep copies in raw/ for backward compat with existing scripts
     manhattan_pkl = cache_dir / "manhattan_geom.pkl"
     cbd_pkl = cache_dir / "cbd_geom.pkl"
     manhattan_pkl_raw = raw_dir / "manhattan_geom.pkl"
     cbd_pkl_raw = raw_dir / "cbd_geom.pkl"
 
+    # Cache check
+    if not force and cache_mgr and cache_mgr.is_valid("tier1_boundaries"):
+        print("  [cache] Boundary pickles unchanged -- using cached data.")
+        return {"manhattan_geom": str(manhattan_pkl), "cbd_geom": str(cbd_pkl), "skipped": True}
+
     if not force and manhattan_pkl.exists() and cbd_pkl.exists():
         print("  [skip] Boundary pickles already exist.")
         return {"manhattan_geom": str(manhattan_pkl), "cbd_geom": str(cbd_pkl), "skipped": True}
 
-    # --- Manhattan ---
-    src = raw_dir / "manhattan_boundary.geojson"
-    if not src.exists():
-        raise FileNotFoundError(f"Missing raw file: {src}")
-    manhattan_gdf = gpd.read_file(src)
-    manhattan_geom = manhattan_gdf.unary_union
-    for p in (manhattan_pkl, manhattan_pkl_raw):
-        with open(p, "wb") as f:
-            pickle.dump(manhattan_geom, f)
-    print(f"  Saved manhattan_geom.pkl  (bounds: {manhattan_gdf.total_bounds})")
+    boundaries = [
+        ("manhattan_boundary.geojson", manhattan_pkl, manhattan_pkl_raw, "manhattan_geom.pkl"),
+        ("cbd_boundary.geojson", cbd_pkl, cbd_pkl_raw, "cbd_geom.pkl"),
+    ]
 
-    # --- CBD ---
-    src = raw_dir / "cbd_boundary.geojson"
-    if not src.exists():
-        raise FileNotFoundError(f"Missing raw file: {src}")
-    cbd_gdf = gpd.read_file(src)
-    cbd_geom = cbd_gdf.unary_union
-    for p in (cbd_pkl, cbd_pkl_raw):
-        with open(p, "wb") as f:
-            pickle.dump(cbd_geom, f)
-    print(f"  Saved cbd_geom.pkl  (bounds: {cbd_gdf.total_bounds})")
+    for src_name, pkl_path, pkl_raw, label in tqdm(boundaries, desc="  Boundaries", leave=False):
+        src = raw_dir / src_name
+        if not src.exists():
+            raise FileNotFoundError(f"Missing raw file: {src}")
+        gdf = gpd.read_file(src)
+        geom = gdf.unary_union
+        for p in (pkl_path, pkl_raw):
+            with open(p, "wb") as f:
+                pickle.dump(geom, f)
+        print(f"  Saved {label}  (bounds: {gdf.total_bounds})")
+
+    if cache_mgr:
+        cache_mgr.update("tier1_boundaries")
 
     return {"manhattan_geom": str(manhattan_pkl), "cbd_geom": str(cbd_pkl), "skipped": False}
 

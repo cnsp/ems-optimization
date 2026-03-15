@@ -15,8 +15,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable=None, *args, **kwargs):
+        return iterable
 
-def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
+
+def build_lambda_tables(project_root: str | Path, force: bool = False, cache_mgr=None) -> dict:
     """Compute hourly, DOW, and precinct arrival-rate factors."""
     import pandas as pd
     import numpy as np
@@ -33,6 +39,11 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
         processed / "demand_model_summary.json",
     ]
 
+    # Cache check
+    if not force and cache_mgr and cache_mgr.is_valid("tier3_demand"):
+        print("  [cache] Demand tables unchanged -- using cached data.")
+        return {"files": [str(p) for p in outputs], "skipped": True}
+
     if not force and all(p.exists() for p in outputs):
         print("  [skip] Lambda tables already exist.")
         return {"files": [str(p) for p in outputs], "skipped": True}
@@ -43,6 +54,8 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
         raise FileNotFoundError(
             f"Missing {parquet}. Run crash processing first (Tier 2c)."
         )
+
+    print("  Loading Manhattan crash data...")
     df = pd.read_parquet(parquet)
     df["crash_datetime"] = pd.to_datetime(df["crash_datetime"])
     df["hour"] = df["crash_datetime"].dt.hour
@@ -58,6 +71,7 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
     print(f"  Overall lambda: {lambda_overall:.4f} crashes/hour")
 
     # --- Hourly factors ---
+    print("  Computing hourly factors...")
     hourly_crash_counts = df.groupby("hour").size()
     date_hour_counts = df.groupby(["date", "hour"]).size().reset_index(name="crashes")
     hours_per_bucket = date_hour_counts.groupby("hour").size()
@@ -91,6 +105,7 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
     print(f"  Saved demand_lambda_hourly.csv")
 
     # --- DOW factors ---
+    print("  Computing day-of-week factors...")
     dow_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     dow_crash_counts = df.groupby("dow").size()
     date_dow_counts = df.groupby(["date", "dow"]).size().reset_index(name="crashes")
@@ -122,10 +137,14 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
     print(f"  Saved demand_lambda_dow.csv")
 
     # --- Precinct rates ---
+    print("  Computing precinct rates...")
     precincts_path = processed / "precincts_manhattan.geojson"
     if precincts_path.exists():
         precincts = gpd.read_file(precincts_path)
-        geometry = [Point(xy) for xy in zip(df["LONGITUDE"], df["LATITUDE"])]
+        geometry = [Point(xy) for xy in tqdm(
+            zip(df["LONGITUDE"], df["LATITUDE"]),
+            total=len(df), desc="  Crash geometry", leave=False
+        )]
         crashes_gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
         joined = gpd.sjoin(crashes_gdf, precincts[["Precinct", "geometry"]], how="left", predicate="within")
         joined = joined.rename(columns={"Precinct": "precinct"})
@@ -151,5 +170,8 @@ def build_lambda_tables(project_root: str | Path, force: bool = False) -> dict:
     with open(outputs[3], "w") as f:
         json.dump(summary, f, indent=2)
     print(f"  Saved demand_model_summary.json")
+
+    if cache_mgr:
+        cache_mgr.update("tier3_demand")
 
     return {"files": [str(p) for p in outputs], "skipped": False}

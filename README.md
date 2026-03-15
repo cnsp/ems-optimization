@@ -151,6 +151,32 @@ make data
 make verify-data
 ```
 
+#### Pipeline CLI Options
+
+The data pipeline (`scripts/generate_all_data.py`) supports several options:
+
+| Flag | Description |
+|------|-------------|
+| `--force` | Regenerate all files even if they exist |
+| `--no-validate` | Skip raw data validation checks |
+| `--no-cache` | Disable smart caching |
+| `--jobs N` / `-j N` | Parallel workers (0 = auto-detect CPU count) |
+| `--tier {1,2,3}` | Run only a specific tier |
+| `--version` | Show current data version info |
+| `--seed N` | Master seed for reproducibility (default: 42) |
+| `--verify` | Check data existence without generating |
+
+```bash
+# Force-regenerate with 4 parallel workers
+python scripts/generate_all_data.py --force --jobs 4
+
+# Show data version/lineage info
+python scripts/generate_all_data.py --version
+
+# Skip validation (faster startup)
+python scripts/generate_all_data.py --no-validate
+```
+
 > **Note**: Notebooks auto-detect and regenerate missing processed data on first run, so you can also just open any notebook and it will trigger the pipeline if needed.
 
 ## How to Reproduce Results

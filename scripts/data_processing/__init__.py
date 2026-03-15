@@ -10,6 +10,11 @@ Tier 2: Spatial filtering      (raw data + pkl -> Manhattan subsets)
 Tier 3: Demand modeling        (Manhattan crashes -> lambda tables)
 Tier 3: Distance matrices      (firehouses + precincts -> distance CSVs)
 
+Enhancements:
+    - Data validation (scripts.data_processing.validation)
+    - Smart caching   (scripts.data_processing.cache)
+    - Data versioning (scripts.data_processing.versioning)
+
 Usage
 -----
     from scripts.data_processing import (
@@ -31,7 +36,7 @@ from scripts.data_processing.tier3_demand import build_lambda_tables
 from scripts.data_processing.tier3_distance import build_distance_matrices
 
 
-def run_full_pipeline(project_root, force=False):
+def run_full_pipeline(project_root, force=False, cache_mgr=None, n_jobs=1):
     """Run all data processing tiers in order.
     
     Parameters
@@ -40,6 +45,10 @@ def run_full_pipeline(project_root, force=False):
         Path to the project root directory.
     force : bool
         If True, regenerate all files even if they already exist.
+    cache_mgr : CacheManager, optional
+        If provided, use smart caching to skip unchanged tiers.
+    n_jobs : int
+        Number of parallel workers for embarrassingly parallel steps.
     
     Returns
     -------
@@ -56,22 +65,26 @@ def run_full_pipeline(project_root, force=False):
     print("=" * 60)
     
     print("\n--- Tier 1: Geographic Boundaries ---")
-    summary["tier1"] = process_boundaries(project_root, force=force)
+    summary["tier1"] = process_boundaries(project_root, force=force, cache_mgr=cache_mgr)
     
     print("\n--- Tier 2a: Firehouses ---")
-    summary["tier2_firehouses"] = process_firehouses(project_root, force=force)
+    summary["tier2_firehouses"] = process_firehouses(project_root, force=force, cache_mgr=cache_mgr)
     
     print("\n--- Tier 2b: Precincts ---")
-    summary["tier2_precincts"] = process_precincts(project_root, force=force)
+    summary["tier2_precincts"] = process_precincts(project_root, force=force, cache_mgr=cache_mgr)
     
     print("\n--- Tier 2c: Crashes ---")
-    summary["tier2_crashes"] = process_crashes(project_root, force=force)
+    summary["tier2_crashes"] = process_crashes(
+        project_root, force=force, cache_mgr=cache_mgr, n_jobs=n_jobs,
+    )
     
     print("\n--- Tier 3a: Demand Lambda Tables ---")
-    summary["tier3_demand"] = build_lambda_tables(project_root, force=force)
+    summary["tier3_demand"] = build_lambda_tables(project_root, force=force, cache_mgr=cache_mgr)
     
     print("\n--- Tier 3b: Distance Matrices ---")
-    summary["tier3_distance"] = build_distance_matrices(project_root, force=force)
+    summary["tier3_distance"] = build_distance_matrices(
+        project_root, force=force, cache_mgr=cache_mgr, n_jobs=n_jobs,
+    )
     
     print("\n" + "=" * 60)
     print("PIPELINE COMPLETE")
