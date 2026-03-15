@@ -33,13 +33,13 @@ The project was executed in **7 phases**, each completed over approximately one 
 
 | Phase | Description | Status | Key Deliverables | Original Sections Covered |
 |-------|-------------|--------|-------------------|--------------------------|
-| **Phase 1** | Data Processing & EDA | ✅ Complete | 628K Manhattan crashes, 48 firehouses, 10 EDA figures | Sections 1–5 (problem definition, scope, data, GIS) |
-| **Phase 2** | Demand & Service Modeling | ✅ Complete | NHPP model (λ₀=3.48/hr), lambda tables, distance matrix | Section 6 (input modeling) |
-| **Phase 3** | Optimization Models | ✅ Complete | 3 MIP formulations (Demand-Weighted, P-Median, Maximal Coverage), policy library | Section 7 (allocation policy design) |
-| **Phase 4** | DES Simulation + V&V | ✅ Complete | SimPy engine (7 modules), 39 unit tests, verification log | Sections 8–10 (conceptual model, implementation, V&V) |
-| **Phase 5** | Production Experiments | ✅ Complete | 1,770 runs across 5 experiments (incl. CBD robustness) | Section 11 (experimental design) |
-| **Phase 6** | Statistical Analysis | ✅ Complete | ANOVA, Tukey HSD, Cohen's d, 5 pub-quality figures, 4 tables | Section 11 (output analysis) |
-| **Phase 7** | Final Report & Docs | ✅ Complete | Technical report, executive presentation, implementation roadmap, archive | Section 12 (reporting & documentation) |
+| **Phase 1** | Data Processing & EDA | Complete | 628K Manhattan crashes, 48 firehouses, 10 EDA figures | Sections 1–5 (problem definition, scope, data, GIS) |
+| **Phase 2** | Demand & Service Modeling | Complete | NHPP model (λ₀=3.48/hr), lambda tables, distance matrix | Section 6 (input modeling) |
+| **Phase 3** | Optimization Models | Complete | 3 MIP formulations (Demand-Weighted, P-Median, Maximal Coverage), policy library | Section 7 (allocation policy design) |
+| **Phase 4** | DES Simulation + V&V | Complete | SimPy engine (7 modules), 39 unit tests, verification log | Sections 8–10 (conceptual model, implementation, V&V) |
+| **Phase 5** | Production Experiments | Complete | 1,770 runs across 5 experiments (incl. CBD robustness) | Section 11 (experimental design) |
+| **Phase 6** | Statistical Analysis | Complete | ANOVA, Tukey HSD, Cohen's d, 5 pub-quality figures, 4 tables | Section 11 (output analysis) |
+| **Phase 7** | Final Report & Docs | Complete | Technical report, executive presentation, implementation roadmap, archive | Section 12 (reporting & documentation) |
 
 ---
 

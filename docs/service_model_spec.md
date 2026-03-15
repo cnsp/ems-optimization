@@ -77,11 +77,11 @@ We model on-scene service time with a **LogNormal** distribution.
 
 | Criterion | LogNormal | Exponential |
 |-----------|-----------|-------------|
-| Positivity | ✅ Always > 0 | ✅ Always > 0 |
-| Skewness | ✅ Right-skewed (matches EMS data) | ✅ Right-skewed |
-| Mode ≠ 0 | ✅ Has a meaningful mode | ❌ Mode = 0 |
-| Coefficient of variation | ✅ Flexible (CV < 1 possible) | ❌ Fixed at CV = 1 |
-| Empirical fit | ✅ Better fit in EMS literature | ❌ Over-predicts short calls |
+| Positivity | Always > 0 | Always > 0 |
+| Skewness | Right-skewed (matches EMS data) | Right-skewed |
+| Mode ≠ 0 | Has a meaningful mode | No — Mode = 0 |
+| Coefficient of variation | Flexible (CV < 1 possible) | No — Fixed at CV = 1 |
+| Empirical fit | Better fit in EMS literature | No — Over-predicts short calls |
 
 ### 3.2 Parameters
 

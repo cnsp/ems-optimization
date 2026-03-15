@@ -16,9 +16,9 @@ The project alignment verification identified **no critical gaps** and **three m
 
 | ID | Gap | Priority | Effort | Status |
 |----|-----|----------|--------|--------|
-| G1 | CBD robustness comparison not in DES experiments | ⚠️ Recommended | Medium | ✅ **RESOLVED** |
-| G2 | Queue metrics underreported in technical report | ⚠️ Nice-to-have | Low | ✅ **RESOLVED** |
-| G3 | Seasonal analysis not deeply covered | ⚠️ Nice-to-have | Very Low | ✅ **RESOLVED** |
+| G1 | CBD robustness comparison not in DES experiments | Note: Recommended | Medium | **RESOLVED** |
+| G2 | Queue metrics underreported in technical report | Note: Nice-to-have | Low | **RESOLVED** |
+| G3 | Seasonal analysis not deeply covered | Note: Nice-to-have | Very Low | **RESOLVED** |
 
 ---
 
@@ -50,10 +50,10 @@ Rather than re-running simulations, filter the existing incident-level logs from
 ### Estimated Effort: 2–3 hours
 
 ### Prerequisites
-- Incident-level logs must include precinct field (✅ they do)
-- CBD precinct mapping exists (✅ `cbd_boundary.geojson` available)
+- Incident-level logs must include precinct field (they do)
+- CBD precinct mapping exists (`cbd_boundary.geojson` available)
 
-### ✅ Resolution (v1.1.0)
+### Resolution (v1.1.0)
 
 **Approach chosen:** Dedicated CBD DES experiment (Option A — exceeding the recommended Option B).
 
@@ -94,7 +94,7 @@ Add queue metrics to the results section.
 
 ### Estimated Effort: 30 minutes
 
-### ✅ Resolution (v1.1.0)
+### Resolution (v1.1.0)
 
 **Implementation:**
 - Created `scripts/analyze_queue_metrics.py` — queue analysis across all 1,770 simulation runs
@@ -127,7 +127,7 @@ Add a brief seasonal note to the demand model documentation.
 
 ### Estimated Effort: 15–30 minutes
 
-### ✅ Resolution (v1.1.0)
+### Resolution (v1.1.0)
 
 **Implementation:**
 - Created `scripts/analyze_seasonal_patterns.py` — monthly/seasonal pattern analysis from 2.24M crash records

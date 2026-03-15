@@ -17,7 +17,7 @@ The EMS Optimization project defines five primary research questions in **§2.3 
 
 ## RQ1: How does demand for EMS services vary spatially and temporally across Manhattan?
 
-### Status: ✅ **Fully Answered**
+### Status: **Fully Answered**
 
 ### Concrete Evidence
 
@@ -59,7 +59,7 @@ Demand is distributed across **30 police precincts** with clear spatial heteroge
 
 ## RQ2: What is the optimal allocation of K ambulances across 48 firehouses to minimize expected response time?
 
-### Status: ✅ **Fully Answered**
+### Status: **Fully Answered**
 
 ### Concrete Evidence
 
@@ -97,7 +97,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 ## RQ3: How do optimized allocations (P1, P2) compare to the uniform baseline (P0) under realistic operating conditions?
 
-### Status: ✅ **Fully Answered**
+### Status: **Fully Answered**
 
 ### Concrete Evidence
 
@@ -144,7 +144,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 ## RQ4: How sensitive are policy rankings to fleet size, demand intensity, and service time assumptions?
 
-### Status: ✅ **Fully Answered**
+### Status: **Fully Answered**
 
 ### Concrete Evidence
 
@@ -184,9 +184,9 @@ Two-way ANOVA: Policy (F = 40,874, p < 0.001, η² = 0.47), K (F = 7,528, p < 0.
 
 | Service Time Mean | P0 Mean RT | P2 Mean RT | Rankings Preserved? |
 |-------------------|-----------|-----------|---------------------|
-| 20 min | 8.02 min | **2.52 min** | ✅ P2 ≻ P1 ≻ P0 |
-| 25 min | 8.08 min | **2.57 min** | ✅ P2 ≻ P1 ≻ P0 |
-| 30 min | 8.14 min | **2.62 min** | ✅ P2 ≻ P1 ≻ P0 |
+| 20 min | 8.02 min | **2.52 min** | P2 ≻ P1 ≻ P0 |
+| 25 min | 8.08 min | **2.57 min** | P2 ≻ P1 ≻ P0 |
+| 30 min | 8.14 min | **2.62 min** | P2 ≻ P1 ≻ P0 |
 
 *Source: `results/tables/exp4_pivot_rt.csv`, `results/simulation/production/exp4_service_robustness.csv`*
 
@@ -212,7 +212,7 @@ Two-way ANOVA: Policy (F = 40,874, p < 0.001, η² = 0.47), K (F = 7,528, p < 0.
 
 ## RQ5: What fleet size is needed to achieve a target coverage level (e.g., 95% of calls within 8 minutes)?
 
-### Status: ✅ **Fully Answered**
+### Status: **Fully Answered**
 
 ### Concrete Evidence
 
@@ -253,11 +253,11 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 | RQ | Question | Status | Evidence Quality | Key Metric | Simulation Runs | Statistical Tests |
 |----|----------|--------|-----------------|------------|----------------|-------------------|
-| **RQ1** | Spatiotemporal demand variation | ✅ Fully Answered | **Strong** — 628K records, NHPP model, seasonal analysis | Hourly factor range 0.40–1.40; Precinct share range 2–8%; Seasonal CV = 9% | N/A (data analysis) | Chi-square (p < 0.001), ANOVA (p < 0.001) |
-| **RQ2** | Optimal ambulance allocation | ✅ Fully Answered | **Strong** — MIP solved to optimality, validated with 2 distance metrics | P2: 2.57 min mean RT, 99.6% coverage (K=20) | 90 (Exp1) + 60 (distance) + 60 (CBD-focused) | MIP optimality gap = 0%; Haversine vs Manhattan: identical |
-| **RQ3** | Policy comparison under realistic conditions | ✅ Fully Answered | **Very Strong** — 1,770 replicated runs, ANOVA/Tukey/Cohen's d | P2 vs P0: −68.2% RT, +35.2 pp coverage; Cohen's d = 28.9 | 1,770 (all experiments) | ANOVA F = 12,010 (p < 0.001, η² = 0.996); Tukey HSD all p < 0.001 |
-| **RQ4** | Sensitivity to fleet/demand/service | ✅ Fully Answered | **Very Strong** — Full factorial + CBD stress testing | Rankings invariant across all 1,350 sensitivity runs; η² < 0.001 for interactions | 1,350 (Exp2–4) + 330 (CBD) | Two-way ANOVA; interaction η² = 0.0007 (demand), 0 (service time) |
-| **RQ5** | Fleet size for target coverage | ✅ Fully Answered | **Strong** — 6-level fleet sweep with 30 reps each | P2 achieves 95% at K=15; P0 needs K≈40 (2.7× more) | 540 (Exp2) | 95% CIs for each K-level; monotonicity confirmed |
+| **RQ1** | Spatiotemporal demand variation | Fully Answered | **Strong** — 628K records, NHPP model, seasonal analysis | Hourly factor range 0.40–1.40; Precinct share range 2–8%; Seasonal CV = 9% | N/A (data analysis) | Chi-square (p < 0.001), ANOVA (p < 0.001) |
+| **RQ2** | Optimal ambulance allocation | Fully Answered | **Strong** — MIP solved to optimality, validated with 2 distance metrics | P2: 2.57 min mean RT, 99.6% coverage (K=20) | 90 (Exp1) + 60 (distance) + 60 (CBD-focused) | MIP optimality gap = 0%; Haversine vs Manhattan: identical |
+| **RQ3** | Policy comparison under realistic conditions | Fully Answered | **Very Strong** — 1,770 replicated runs, ANOVA/Tukey/Cohen's d | P2 vs P0: −68.2% RT, +35.2 pp coverage; Cohen's d = 28.9 | 1,770 (all experiments) | ANOVA F = 12,010 (p < 0.001, η² = 0.996); Tukey HSD all p < 0.001 |
+| **RQ4** | Sensitivity to fleet/demand/service | Fully Answered | **Very Strong** — Full factorial + CBD stress testing | Rankings invariant across all 1,350 sensitivity runs; η² < 0.001 for interactions | 1,350 (Exp2–4) + 330 (CBD) | Two-way ANOVA; interaction η² = 0.0007 (demand), 0 (service time) |
+| **RQ5** | Fleet size for target coverage | Fully Answered | **Strong** — 6-level fleet sweep with 30 reps each | P2 achieves 95% at K=15; P0 needs K≈40 (2.7× more) | 540 (Exp2) | 95% CIs for each K-level; monotonicity confirmed |
 
 ---
 

@@ -69,10 +69,10 @@ The project contains thorough EDA across all four dimensions. Here's what exists
 
 | Dimension | Notebook 02 (EDA) | Notebook 03 (Modeling) | demand_model_spec.md | Figures |
 |-----------|:--:|:--:|:--:|:--:|
-| **Hourly** | ✅ Charts + table | ✅ Factor table + viz | ✅ Full 24-hr table | `fig_hourly_demand.png`, `fig_hourly_rates.png` |
-| **Day-of-Week** | ✅ Charts + weekday/weekend | ✅ Factor table | ✅ 7-day table | `fig_daily_demand.png` |
-| **Seasonal/Monthly** | ✅ Monthly + yearly trends | ❌ | ✅ 12-month table + tests | `fig_temporal_trends.png`, `seasonal_*.png` (×3) |
-| **Geographic** | ✅ Heatmap + choropleth + precinct + CBD | ✅ Precinct rates + CBD | ✅ Precinct table + CBD split | `fig_crash_heatmap.png`, `fig_precinct_*.png`, `fig_firehouses_map.png` |
+| **Hourly** | Charts + table | Factor table + viz | Full 24-hr table | `fig_hourly_demand.png`, `fig_hourly_rates.png` |
+| **Day-of-Week** | Charts + weekday/weekend | Factor table | 7-day table | `fig_daily_demand.png` |
+| **Seasonal/Monthly** | Monthly + yearly trends | No — | 12-month table + tests | `fig_temporal_trends.png`, `seasonal_*.png` (×3) |
+| **Geographic** | Heatmap + choropleth + precinct + CBD | Precinct rates + CBD | Precinct table + CBD split | `fig_crash_heatmap.png`, `fig_precinct_*.png`, `fig_firehouses_map.png` |
 
 ---
 

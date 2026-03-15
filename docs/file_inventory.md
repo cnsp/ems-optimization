@@ -8,15 +8,15 @@
 
 | Phase | Description | Status |
 |-------|-------------|--------|
-| Phase 1 | Data Processing & EDA | ✅ Complete |
-| Phase 2 | Demand & Service Modeling (NHPP) | ✅ Complete |
-| Phase 3 | Optimization Models (P0, P1, P2) | ✅ Complete |
-| Phase 4 | DES Simulation with V&V (39 tests) | ✅ Complete |
-| Phase 5 | Experimental Design & Production Runs (1,440 sims) | ✅ Complete |
-| Phase 6 | Comprehensive Statistical Analysis | ✅ Complete |
-| Phase 7 | Final Report & Documentation | ✅ Complete |
-| Phase 8 | Alternative Analyses & Extensions | ✅ Complete |
-| Phase 9 | Capacity & Baseline Improvements | ✅ Complete |
+| Phase 1 | Data Processing & EDA | Complete |
+| Phase 2 | Demand & Service Modeling (NHPP) | Complete |
+| Phase 3 | Optimization Models (P0, P1, P2) | Complete |
+| Phase 4 | DES Simulation with V&V (39 tests) | Complete |
+| Phase 5 | Experimental Design & Production Runs (1,440 sims) | Complete |
+| Phase 6 | Comprehensive Statistical Analysis | Complete |
+| Phase 7 | Final Report & Documentation | Complete |
+| Phase 8 | Alternative Analyses & Extensions | Complete |
+| Phase 9 | Capacity & Baseline Improvements | Complete |
 
 ---
 
@@ -34,30 +34,30 @@
 ### `data/raw/` — Raw Input Data
 | File | Size | Tracked | Description |
 |------|------|---------|-------------|
-| `FDNY_Firehouse_Listing_20260223.csv` | 34 KB | ✅ | 219 FDNY firehouses |
-| `FDNY_Firehouse_Listing_Data_Dictionary.xlsx` | 66 KB | ✅ | Firehouse field definitions |
-| `Motor_Vehicle_Collisions_-_Crashes_20260223.csv` | 536 MB | ❌ | 2.24M crash records (too large) |
-| `Motor_Vehicle_Collisions_Data_Dictionary.xlsx` | 96 KB | ✅ | Crash field definitions |
-| `Police_Precincts_20260223.csv` | 3.6 MB | ❌ | 78 precinct boundaries (large) |
-| `Police_Precincts_Data_Dictionary.xlsx` | 62 KB | ✅ | Precinct field definitions |
-| `manhattan_boundary.geojson` | 247 KB | ✅ | Manhattan polygon boundary |
-| `cbd_boundary.geojson` | 101 KB | ✅ | CBD/Congestion Relief Zone boundary |
-| `nyc_borough_boundaries.geojson` | 3.1 MB | ✅ | All 5 NYC borough boundaries |
+| `FDNY_Firehouse_Listing_20260223.csv` | 34 KB | | 219 FDNY firehouses |
+| `FDNY_Firehouse_Listing_Data_Dictionary.xlsx` | 66 KB | | Firehouse field definitions |
+| `Motor_Vehicle_Collisions_-_Crashes_20260223.csv` | 536 MB | No — | 2.24M crash records (too large) |
+| `Motor_Vehicle_Collisions_Data_Dictionary.xlsx` | 96 KB | | Crash field definitions |
+| `Police_Precincts_20260223.csv` | 3.6 MB | No — | 78 precinct boundaries (large) |
+| `Police_Precincts_Data_Dictionary.xlsx` | 62 KB | | Precinct field definitions |
+| `manhattan_boundary.geojson` | 247 KB | | Manhattan polygon boundary |
+| `cbd_boundary.geojson` | 101 KB | | CBD/Congestion Relief Zone boundary |
+| `nyc_borough_boundaries.geojson` | 3.1 MB | | All 5 NYC borough boundaries |
 
 ### `data/processed/` — Processed Data
 | File | Size | Tracked | Description |
 |------|------|---------|-------------|
-| `crashes_manhattan.csv` | 99 MB | ❌ | Filtered Manhattan crashes (large) |
-| `crashes_manhattan.parquet` | 15 MB | ❌ | Parquet version of above |
-| `demand_lambda_hourly.csv` | 1.9 KB | ✅ | Hourly λ factors (24 hours) |
-| `demand_lambda_dow.csv` | 653 B | ✅ | Day-of-week λ factors |
-| `demand_lambda_precinct.csv` | 1.7 KB | ✅ | Precinct-level λ rates |
-| `demand_model_summary.json` | 696 B | ✅ | Demand model summary stats |
-| `distance_matrix_firehouse_precinct.csv` | 27 KB | ✅ | 48×30 Haversine distance matrix |
-| `distance_matrix_firehouse_precinct_manhattan.csv` | 27 KB | ✅ | 48×30 Manhattan distance matrix |
-| `firehouses_clean.csv` | 32 KB | ✅ | All cleaned firehouses |
-| `firehouses_manhattan.csv` | 7.1 KB | ✅ | 48 Manhattan firehouses |
-| `precincts_manhattan.geojson` | 640 KB | ✅ | 30 Manhattan precincts |
+| `crashes_manhattan.csv` | 99 MB | No — | Filtered Manhattan crashes (large) |
+| `crashes_manhattan.parquet` | 15 MB | No — | Parquet version of above |
+| `demand_lambda_hourly.csv` | 1.9 KB | | Hourly λ factors (24 hours) |
+| `demand_lambda_dow.csv` | 653 B | | Day-of-week λ factors |
+| `demand_lambda_precinct.csv` | 1.7 KB | | Precinct-level λ rates |
+| `demand_model_summary.json` | 696 B | | Demand model summary stats |
+| `distance_matrix_firehouse_precinct.csv` | 27 KB | | 48×30 Haversine distance matrix |
+| `distance_matrix_firehouse_precinct_manhattan.csv` | 27 KB | | 48×30 Manhattan distance matrix |
+| `firehouses_clean.csv` | 32 KB | | All cleaned firehouses |
+| `firehouses_manhattan.csv` | 7.1 KB | | 48 Manhattan firehouses |
+| `precincts_manhattan.geojson` | 640 KB | | 30 Manhattan precincts |
 
 ### `src/ems_readiness/` — Source Code (8,500+ lines total)
 | Module | Files | Description |

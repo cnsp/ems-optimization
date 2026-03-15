@@ -190,16 +190,16 @@ All policies show **decreasing response time** as K increases, but at different 
 ### 6.1 Best Overall Policy
 
 **Primary recommendation: P2 (Demand-Weighted Optimized)**
-- ✓ Best response time (2.49-2.54 min)
-- ✓ 100% coverage at K≥20
-- ✓ Efficient use of resources (23 firehouses vs. 35+ for others)
-- ✓ Fast solve time (<0.05 sec)
-- ✗ Concentrated allocation may face political resistance
+- Best response time (2.49-2.54 min)
+- 100% coverage at K≥20
+- Efficient use of resources (23 firehouses vs. 35+ for others)
+- Fast solve time (<0.05 sec)
+- x Concentrated allocation may face political resistance
 
 **Alternative: P2b (P-Median Optimized)**
-- ✓ Identical response time to P2
-- ✓ Distributes units across more firehouses (better equity)
-- ✗ Requires more firehouses to be staffed
+- Identical response time to P2
+- Distributes units across more firehouses (better equity)
+- x Requires more firehouses to be staffed
 
 ### 6.2 Resource Planning
 

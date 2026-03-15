@@ -60,15 +60,15 @@
 
 | Phase | Description | Status | Deliverables |
 |-------|-------------|--------|-------------|
-| Phase 1 | Data Processing & EDA | ✅ Complete | 10 figures, processed data, EDA notebook |
-| Phase 2 | Demand & Service Modeling | ✅ Complete | NHPP model, lambda tables, 2 spec docs |
-| Phase 3 | Optimization Models | ✅ Complete | 3 MIP models, allocations, comparison |
-| Phase 4 | DES Simulation + V&V | ✅ Complete | SimPy engine, 39 tests, V&V log |
-| Phase 5 | Production Experiments | ✅ Complete | 1,770 runs, 5 experiments (incl. CBD) |
-| Phase 6 | Statistical Analysis | ✅ Complete | ANOVA, post-hoc, 5 pub figures, 4 tables |
-| Phase 7 | Final Report & Docs | ✅ Complete | Technical report, presentation, roadmap |
-| Phase 8 | Alternative Analyses | ✅ Complete | Distance metric comparison, CBD-focused analysis |
-| Phase 9 | Capacity & Baseline Improvements | ✅ Complete | Capacity sensitivity (cap 1–5), P0-spatial, Production V2 |
+| Phase 1 | Data Processing & EDA | Complete | 10 figures, processed data, EDA notebook |
+| Phase 2 | Demand & Service Modeling | Complete | NHPP model, lambda tables, 2 spec docs |
+| Phase 3 | Optimization Models | Complete | 3 MIP models, allocations, comparison |
+| Phase 4 | DES Simulation + V&V | Complete | SimPy engine, 39 tests, V&V log |
+| Phase 5 | Production Experiments | Complete | 1,770 runs, 5 experiments (incl. CBD) |
+| Phase 6 | Statistical Analysis | Complete | ANOVA, post-hoc, 5 pub figures, 4 tables |
+| Phase 7 | Final Report & Docs | Complete | Technical report, presentation, roadmap |
+| Phase 8 | Alternative Analyses | Complete | Distance metric comparison, CBD-focused analysis |
+| Phase 9 | Capacity & Baseline Improvements | Complete | Capacity sensitivity (cap 1–5), P0-spatial, Production V2 |
 
 **All 9 phases complete. Project delivered.**
 

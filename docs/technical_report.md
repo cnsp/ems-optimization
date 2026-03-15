@@ -358,18 +358,15 @@ Built using **SimPy** discrete-event simulation library in Python:
 #### 4.4.3 Verification & Validation
 
 **Verification (4 tests)**:
-- Toy example with known analytical solution ✅
-- Zero-demand test (no arrivals → no incidents) ✅
-- Single-unit saturation test ✅
-- Extreme demand stress test ✅
-
+- Toy example with known analytical solution — PASS
+- Zero-demand test (no arrivals → no incidents) — PASS
+- Single-unit saturation test — PASS
+- Extreme demand stress test — PASS
 **Validation (3 pilots)**:
-- Pilot 1: P0 vs P2 directional comparison (P2 dominates) ✅
-- Pilot 2: Response time decreases monotonically with fleet size ✅
-- Pilot 3: Response time increases with demand intensity ✅
-
-**Unit tests**: 39 tests across 4 test modules, all passing ✅
-
+- Pilot 1: P0 vs P2 directional comparison (P2 dominates) — PASS
+- Pilot 2: Response time decreases monotonically with fleet size — PASS
+- Pilot 3: Response time increases with demand intensity — PASS
+**Unit tests**: 39 tests across 4 test modules, all passing — PASS
 ### 4.5 Experimental Design
 
 #### 4.5.1 Factorial Design
@@ -618,7 +615,7 @@ Figure 5 provides a summary view of the equity–efficiency tradeoff, contrastin
 
 ### 5.12 Firehouse Capacity Constraints Analysis
 
-To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20 and K=40 for all three policies (P0-spatial, P1, P2). 30 allocation–simulation experiments were executed (5 capacity levels × 2 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
+To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20, K=30, and K=40 for all three policies (P0-spatial, P1, P2). 45 allocation–simulation experiments were executed (5 capacity levels × 3 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
 
 #### K = 20: Capacity Does Not Bind
 
@@ -631,6 +628,21 @@ At K=20, the capacity constraint is effectively non-binding for all policies:
 | P0-spatial | 3.11 | 3.11 | 3.11 | None |
 | P1 | 2.59 | 2.62 | 2.62 | < 0.03 min |
 | P2 | 2.56 | 2.56 | 2.56 | None |
+
+#### K = 30: Capacity Remains Largely Non-Binding
+
+At K=30, capacity constraints still have minimal impact. With 30 units across 48 firehouses, most policies naturally spread units without hitting the per-station cap:
+- **P0-spatial**: Allocates exactly 1 unit per selected firehouse (maximin selection), so performance is identical across all capacity values (mean RT = 2.78 min)
+- **P1**: Minor variation — cap=1 yields mean RT of 2.47 min vs 2.39 min at cap=2, as the constraint forces broader distribution
+- **P2**: Near-identical at cap=1 (2.43 min) and cap=2 (2.44 min); performance is stable across capacity levels
+
+| Policy | Cap=1 RT | Cap=2 RT | Cap=3 RT | Cap=5 RT | Max Difference |
+|--------|----------|----------|----------|----------|----------------|
+| P0-spatial | 2.78 | 2.78 | 2.78 | 2.78 | None |
+| P1 | 2.47 | 2.39 | 2.39 | 2.39 | < 0.09 min |
+| P2 | 2.43 | 2.44 | 2.50 | 2.50 | < 0.08 min |
+
+K=30 represents the mid-range fleet size and confirms that capacity constraints are operationally irrelevant for fleets below ~35 units across Manhattan's 48 firehouses.
 
 #### K = 40: Capacity Actively Shapes Allocation
 
@@ -649,7 +661,7 @@ Figure 6 shows a heatmap view of mean response time across all policy × capacit
 
 ![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)
 
-*Figure 6: Capacity sensitivity heatmap showing mean response time by policy and per-firehouse capacity limit at K=20 (left) and K=40 (right). At K=20, capacity is non-binding for all policies — performance is identical across cap=1 through cap=5. At K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
+*Figure 6: Capacity sensitivity heatmap showing mean response time by policy and per-firehouse capacity limit at K=20 and K=40. At K=20 and K=30, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
 
 
 ### 5.13 Spatially-Stratified Baseline Policy (P0-spatial)

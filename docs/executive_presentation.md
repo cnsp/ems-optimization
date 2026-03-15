@@ -175,10 +175,10 @@
 
 ### Immediate Recommendations
 
-1. ✅ **Approve P2 adoption** as the standard ambulance staging policy for Manhattan
-2. ✅ **Launch pilot** at Midtown firehouses within 30 days
-3. ✅ **Establish monitoring** dashboard with real-time KPI tracking
-4. ✅ **Brief dispatch leadership** on new staging locations
+1. **Approve P2 adoption** as the standard ambulance staging policy for Manhattan
+2. **Launch pilot** at Midtown firehouses within 30 days
+3. **Establish monitoring** dashboard with real-time KPI tracking
+4. **Brief dispatch leadership** on new staging locations
 
 ### Future Opportunities
 - **Dynamic repositioning**: Adjust staging in real-time based on current unit positions

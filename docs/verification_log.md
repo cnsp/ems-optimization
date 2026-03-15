@@ -21,10 +21,10 @@ plausible, sensible outputs.
 
 | Test File | Tests | Status |
 |---|---|---|
-| `tests/test_simulation_core.py` | 14 | ✅ All Pass |
-| `tests/test_dispatch_logic.py` | 9 | ✅ All Pass |
-| `tests/test_extreme_cases.py` | 8 | ✅ All Pass |
-| `tests/test_reproducibility.py` | 6 | ✅ All Pass |
+| `tests/test_simulation_core.py` | 14 | All Pass |
+| `tests/test_dispatch_logic.py` | 9 | All Pass |
+| `tests/test_extreme_cases.py` | 8 | All Pass |
+| `tests/test_reproducibility.py` | 6 | All Pass |
 | **Total** | **39** | **39/39 Pass** |
 
 ### 2.2 Test Categories
@@ -70,19 +70,19 @@ plausible, sensible outputs.
 | 5 | 2.500h | 1 | Engine 6_unit_0 | 2.525h | 2.31 | No |
 
 **Verification:**
-- ✅ Event ordering: arrival < dispatch < service_start < completion for all incidents
-- ✅ Dispatch delay: 1.5 min (0.025h) applied consistently
-- ✅ Nearest unit dispatched: Engine 6 is closer to precinct 1 (0.35 mi) than Engine 4/Ladder 15 (0.48 mi)
-- ✅ No queueing (2 units sufficient for 5 spaced incidents)
+- Event ordering: arrival < dispatch < service_start < completion for all incidents
+- Dispatch delay: 1.5 min (0.025h) applied consistently
+- Nearest unit dispatched: Engine 6 is closer to precinct 1 (0.35 mi) than Engine 4/Ladder 15 (0.48 mi)
+- No queueing (2 units sufficient for 5 spaced incidents)
 
 ### 3.2 Zero Demand (K=10, no arrivals)
 
 | Metric | Expected | Observed |
 |---|---|---|
-| Total incidents | 0 | 0 ✅ |
-| All units idle | True | True ✅ |
-| Zero utilization | True | True ✅ |
-| Max queue length | 0 | 0 ✅ |
+| Total incidents | 0 | 0 |
+| All units idle | True | True |
+| Zero utilization | True | True |
+| Max queue length | 0 | 0 |
 
 ### 3.3 Single Unit (K=1, 24 hours)
 
@@ -98,10 +98,10 @@ plausible, sensible outputs.
 | Unit utilization | 99.5% |
 
 **Verification:**
-- ✅ Nearly all incidents queue (only first incident served immediately)
-- ✅ Queue grows unbounded (arrival rate >> service rate)
-- ✅ Unit utilization near 100% (server saturation)
-- ✅ Response times degraded severely (expected for ρ >> 1)
+- Nearly all incidents queue (only first incident served immediately)
+- Queue grows unbounded (arrival rate >> service rate)
+- Unit utilization near 100% (server saturation)
+- Response times degraded severely (expected for ρ >> 1)
 
 ### 3.4 Extreme Demand (K=5, 3× arrival rate, 12 hours)
 
@@ -112,14 +112,14 @@ plausible, sensible outputs.
 | Max queue length | 24 |
 | Mean response time | 32.45 min |
 | Coverage (≤8 min) | 14.3% |
-| Simulation completed | ✅ Yes |
-| Metrics consistent | ✅ Yes |
+| Simulation completed | Yes |
+| Metrics consistent | Yes |
 
 **Verification:**
-- ✅ Simulation completes without errors or infinite loops
-- ✅ Response time ≥ travel time
-- ✅ Coverage ∈ [0, 1], queue fraction ∈ [0, 1]
-- ✅ Significant queueing under stress
+- Simulation completes without errors or infinite loops
+- Response time ≥ travel time
+- Coverage ∈ [0, 1], queue fraction ∈ [0, 1]
+- Significant queueing under stress
 
 ---
 
@@ -135,9 +135,9 @@ plausible, sensible outputs.
 | Mean Incidents/week | 582 | 579 | ~same |
 
 **Validation:**
-- ✅ P2 outperforms P0 on response time and coverage (as optimization predicted)
-- ✅ Same arrival stream (same seeds) → same incident count
-- ✅ P2 concentrates units near high-demand areas, reducing travel distances
+- P2 outperforms P0 on response time and coverage (as optimization predicted)
+- Same arrival stream (same seeds) → same incident count
+- P2 concentrates units near high-demand areas, reducing travel distances
 
 ### 4.2 Sensitivity to K (P2 allocation, 168h, 15 reps)
 
@@ -149,10 +149,10 @@ plausible, sensible outputs.
 | 40 | 2.63 | 99.8% | 0.0% |
 
 **Validation:**
-- ✅ Response time **monotonically decreasing** with K
-- ✅ Coverage **monotonically increasing** with K
-- ✅ At K=40 (near 1 unit/firehouse), coverage approaches 100%
-- ✅ Diminishing returns pattern (K=10→20: −1.1 min; K=30→40: −1.0 min)
+- Response time **monotonically decreasing** with K
+- Coverage **monotonically increasing** with K
+- At K=40 (near 1 unit/firehouse), coverage approaches 100%
+- Diminishing returns pattern (K=10→20: −1.1 min; K=30→40: −1.0 min)
 
 ### 4.3 Sensitivity to Demand (P2, K=20, 168h, 15 reps)
 
@@ -163,10 +163,10 @@ plausible, sensible outputs.
 | 2.0× | 1168 | 5.67 | 79.6% |
 
 **Validation:**
-- ✅ Incident count scales proportionally with demand multiplier
-- ✅ Response time **increases with demand** (as expected)
-- ✅ Coverage **decreases with demand** (as expected)
-- ✅ With 20 units, system is not saturated even at 2× demand (queue fraction ~0)
+- Incident count scales proportionally with demand multiplier
+- Response time **increases with demand** (as expected)
+- Coverage **decreases with demand** (as expected)
+- With 20 units, system is not saturated even at 2× demand (queue fraction ~0)
  - This is because 20 units × ~25 min service = capacity ~48 calls/hr, vs demand ~7/hr at 2×
 
 ---
@@ -175,13 +175,13 @@ plausible, sensible outputs.
 
 | Check | Status | Evidence |
 |---|---|---|
-| Dispatch logic selects nearest unit | ✅ | Toy example traces |
-| Service time ∼ LogNormal(25, 10) | ✅ | Mean service time ~24-25 min in all runs |
-| NHPP arrival rate ~3.5/hr | ✅ | ~580 incidents/week ÷ 168h = 3.45/hr |
-| Response time = dispatch_delay + travel | ✅ | Event sequence tests |
-| More units → better performance | ✅ | K sensitivity pilot |
-| Higher demand → worse performance | ✅ | Demand sensitivity pilot |
-| Demand-proportional beats uniform | ✅ | P0 vs P2 pilot |
+| Dispatch logic selects nearest unit | | Toy example traces |
+| Service time ∼ LogNormal(25, 10) | | Mean service time ~24-25 min in all runs |
+| NHPP arrival rate ~3.5/hr | | ~580 incidents/week ÷ 168h = 3.45/hr |
+| Response time = dispatch_delay + travel | | Event sequence tests |
+| More units → better performance | | K sensitivity pilot |
+| Higher demand → worse performance | | Demand sensitivity pilot |
+| Demand-proportional beats uniform | | P0 vs P2 pilot |
 
 ---
 

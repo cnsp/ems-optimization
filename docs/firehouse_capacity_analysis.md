@@ -191,12 +191,12 @@ def build_demand_weighted(
 
 | Item | Status | Action |
 |------|--------|--------|
-| Capacity constraint exists in code | ✅ | No structural changes needed |
-| Default capacity = 5 is too generous | ⚠️ | **Change to 2** in `optimization.yaml` |
-| P2c solutions are unrealistic at all K | ⚠️ | Will auto-fix with cap=2 |
-| P2 solutions unrealistic at K≥30 | ⚠️ | Will auto-fix with cap=2 |
-| P0, P2b unaffected | ✅ | No action needed |
-| Per-firehouse capacity | 🔜 | Nice-to-have for future phases |
+| Capacity constraint exists in code | | No structural changes needed |
+| Default capacity = 5 is too generous | Note: | **Change to 2** in `optimization.yaml` |
+| P2c solutions are unrealistic at all K | Note: | Will auto-fix with cap=2 |
+| P2 solutions unrealistic at K≥30 | Note: | Will auto-fix with cap=2 |
+| P0, P2b unaffected | | No action needed |
+| Per-firehouse capacity | Pending —  | Nice-to-have for future phases |
 
 ### Recommended Immediate Action
 

@@ -157,9 +157,9 @@ Processed Data (data/processed/)
 ### Geographic Validation
 | Boundary | Status | Notes |
 |----------|--------|-------|
-| Manhattan | ✓ Valid | 636.63 sq km; CRS EPSG:4326 |
-| CBD | ✓ Valid | 259.58 sq km; 100% within Manhattan |
-| Precincts | ✓ Valid | All 78 geometries valid |
+| Manhattan | Valid | 636.63 sq km; CRS EPSG:4326 |
+| CBD | Valid | 259.58 sq km; 100% within Manhattan |
+| Precincts | Valid | All 78 geometries valid |
 
 ### Firehouse Data
 - All 219 firehouses have valid NYC coordinates

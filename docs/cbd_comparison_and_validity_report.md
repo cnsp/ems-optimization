@@ -54,8 +54,7 @@ Three figures visualize the CBD vs Manhattan comparison:
 
 ## 2. Validity of Previous Results (Phases 1–7)
 
-### 2.1 Production Runs: UNCHANGED ✅
-
+### 2.1 Production Runs: UNCHANGED — PASS
 The original 1,440 production simulation runs are **completely intact** in their original location:
 
 | Experiment | File | Rows | Description |
@@ -68,8 +67,7 @@ The original 1,440 production simulation runs are **completely intact** in their
 
 **Timestamp verification**: All production files were last modified at ~20:51–20:54 UTC on March 12, 2026 (the original production run time). They have **not been touched** since.
 
-### 2.2 CBD Experiment: ADDITIVE ✅
-
+### 2.2 CBD Experiment: ADDITIVE — PASS
 The CBD experiment (330 runs) is stored in a **completely separate directory**:
 
 ```
@@ -88,23 +86,20 @@ results/simulation/
 - No production files were modified during or after the CBD experiment
 - Total project runs: 1,440 + 330 = **1,770 runs**
 
-### 2.3 Queue Analysis: Based on SAME Data ✅
-
+### 2.3 Queue Analysis: Based on SAME Data — PASS
 The queue analysis (`results/tables/queue_statistics.csv`) references both production and CBD experiment data. It **reads** from the existing CSVs without modifying them. Key finding confirmed across all 1,770 runs: **queue_fraction = 0.0** everywhere.
 
-### 2.4 Seasonal Analysis: Based on SAME Underlying Data ✅
-
+### 2.4 Seasonal Analysis: Based on SAME Underlying Data — PASS
 The seasonal analysis (`results/tables/seasonal_analysis.csv`) is based on the **original 416,434 crash records** — the same demand dataset used throughout the project. It performs a temporal decomposition of the input data, not the simulation outputs.
 
-### 2.5 All Previous Deliverables: VALID ✅
-
+### 2.5 All Previous Deliverables: VALID — PASS
 | Category | Status | Notes |
 |----------|--------|-------|
-| Experiment results (exp1–exp4) | ✅ Unchanged | 1,440 runs in `production/` directory |
-| Statistical tables (ANOVA, CIs, effect sizes) | ✅ Valid | Based on unchanged production data |
-| Publication figures (pub_fig1–5) | ✅ Valid | Generated from unchanged data |
-| Optimization results | ✅ Valid | Based on unchanged simulation outputs |
-| Technical documentation | ✅ Valid | Enhanced with new sections, originals preserved |
+| Experiment results (exp1–exp4) | Unchanged | 1,440 runs in `production/` directory |
+| Statistical tables (ANOVA, CIs, effect sizes) | Valid | Based on unchanged production data |
+| Publication figures (pub_fig1–5) | Valid | Generated from unchanged data |
+| Optimization results | Valid | Based on unchanged simulation outputs |
+| Technical documentation | Valid | Enhanced with new sections, originals preserved |
 
 ---
 
