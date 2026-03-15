@@ -1,0 +1,27 @@
+{
+  "total_expected": 108,
+  "total_generated": 108,
+  "total_failed": 0,
+  "K_values": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45
+  ],
+  "policies": [
+    "P0-spatial",
+    "P1",
+    "P2"
+  ],
+  "capacity_values": [
+    1,
+    2,
+    3,
+    5
+  ]
+}
