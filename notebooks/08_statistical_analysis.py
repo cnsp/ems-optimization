@@ -91,12 +91,12 @@ print("=== Normality (Shapiro-Wilk) ===")
 for pol in ["P0", "P1", "P2"]:
     vals = exp1.loc[exp1["policy"] == pol, "mean_response_time"]
     stat, p = stats.shapiro(vals)
-    print(f"  {pol}: W={stat:.4f}, p={p:.4f} {'✓ Normal' if p > 0.05 else '⚠ Non-normal'}")
+    print(f"  {pol}: W={stat:.4f}, p={p:.4f} {'✓ Normal' if p > 0.05 else 'NON-NORMAL'}")
 
 print("\n=== Homogeneity of Variance (Levene) ===")
 groups = [exp1.loc[exp1["policy"] == p, "mean_response_time"].values for p in ["P0", "P1", "P2"]]
 stat, p = stats.levene(*groups)
-print(f"  Levene: F={stat:.4f}, p={p:.4f} {'✓ Equal variances' if p > 0.05 else '⚠ Unequal variances'}")
+print(f"  Levene: F={stat:.4f}, p={p:.4f} {'✓ Equal variances' if p > 0.05 else 'UNEQUAL VARIANCES'}")
 
 # %% [markdown]
 # ## 4. One-Way ANOVA (Experiment 1)

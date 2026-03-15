@@ -210,5 +210,5 @@ fig.text(0.5, 0.01,
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 fig.savefig(OUT, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close(fig)
-print(f"✅ Dashboard saved to {OUT}")
+print(f"Dashboard saved to {OUT}")
 print(f"   Size: {os.path.getsize(OUT) / 1024:.0f} KB")

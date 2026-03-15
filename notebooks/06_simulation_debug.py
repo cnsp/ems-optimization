@@ -35,10 +35,10 @@ plt.rcParams.update({"figure.dpi": 120, "figure.figsize": (10, 5)})
 #
 # | Test File | Tests | Status |
 # |---|---|---|
-# | test_simulation_core.py | 14 | ✅ Pass |
-# | test_dispatch_logic.py | 9 | ✅ Pass |
-# | test_extreme_cases.py | 8 | ✅ Pass |
-# | test_reproducibility.py | 6 | ✅ Pass |
+# | test_simulation_core.py | 14 | PASS |
+# | test_dispatch_logic.py | 9 | PASS |
+# | test_extreme_cases.py | 8 | PASS |
+# | test_reproducibility.py | 6 | PASS |
 
 # %% [markdown]
 # ## 2. Toy Example Event Trace
