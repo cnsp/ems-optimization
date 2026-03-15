@@ -36,14 +36,16 @@
 | Verification tests | 4 (all passed) |
 | Validation pilots | 3 (all passed) |
 
-## Key Metrics Achieved (Production V2 — cap=2, P0-spatial)
+## Key Metrics Achieved (Production V2 — cap=2, P0-spatial, K=20)
 
-| Metric | P0-spatial (V2) | P2 (Optimized) | P2 vs P0-spatial |
-|--------|----------------|-----------------|-----------------|
-| Mean Response Time | 3.17 min | **2.57 min** | **−19.0%** |
-| P95 Response Time | 6.26 min | **4.66 min** | **−25.6%** |
-| 8-min Coverage | 99.6% | **99.6%** | +0.0 pp |
-| Mean Utilization | 7.6% | 7.5% | −0.1 pp |
+| Metric | P0-spatial (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
+|--------|----------------------|--------------------------|-----------------|
+| Mean Response Time | 3.17 min | 2.63 min | **2.57 min** |
+| P95 Response Time | 6.26 min | 5.05 min | **4.66 min** |
+| 8-min Coverage | 99.6% | 99.6% | **99.6%** |
+| Mean Utilization | 7.6% | 7.5% | 7.5% |
+
+**Key Observation:** P1 (demand-proportional allocation) captures most of the improvement over P0-spatial, indicating that matching supply to demand patterns is the primary driver of performance gains. P2's additional optimization yields a further 2.3% reduction in mean response time beyond P1.
 
 **P0 Baseline Improvement (V1 → V2):**
 

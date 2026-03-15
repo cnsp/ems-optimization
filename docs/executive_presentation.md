@@ -33,22 +33,21 @@
 
 ---
 
-## Slide 3: Current State — P0 Performance
+## Slide 3: Baseline Performance — P0 Spatially-Stratified
 
-### Uniform Allocation: Equal ≠ Equitable
+### Even Geographic Spread Still Leaves Room for Improvement
 
-| Metric | P0 Value | Target |
-|--------|----------|--------|
-| Mean Response Time | **8.08 min** | < 4 min |
-| P90 Response Time | **19.47 min** | < 8 min |
-| 8-min Coverage | **64.4%** | > 95% |
-| Utilization | 9.1% | — |
+| Metric | P0-spatial Value | Target |
+|--------|-----------------|--------|
+| Mean Response Time | **3.17 min** | < 4 min |
+| P95 Response Time | **6.26 min** | < 8 min |
+| 8-min Coverage | **99.6%** | > 95% |
+| Utilization | 7.6% | — |
 
-**Root Cause:** Spatial mismatch between where ambulances are staged and where crashes occur.
+**Context:** The spatially-stratified baseline ensures geographic coverage across Manhattan, meeting the 8-minute target. However, it does not account for demand patterns, leaving room for response time improvements through demand-aware allocation.
 
-- Midtown precincts (highest demand) are underserved
-- Upper Manhattan precincts (lowest demand) have excess capacity
-- The system is not capacity-constrained—it's *location-constrained*
+- Midtown precincts (highest demand) could benefit from additional staging capacity
+- A demand-proportional or optimized approach can further reduce average and tail response times
 
 ---
 
@@ -70,22 +69,25 @@
 
 ---
 
-## Slide 5: Key Results — Head-to-Head Comparison
+## Slide 5: Key Results — Three-Policy Comparison
 
-### P2 Sharply Improves Performance
+### Progressive Improvement from P0 → P1 → P2
 
-| Metric | P0 (Current) | P2 (Optimized) | Improvement |
-|--------|-------------|-----------------|-------------|
-| Mean Response Time | 8.08 min | **2.57 min** | **↓ 68%** |
-| P90 Response Time | 19.47 min | **3.76 min** | **↓ 81%** |
-| 8-min Coverage | 64.4% | **99.6%** | **↑ 35 pp** |
-| Fleet Used | 20 units | 20 units | **Same fleet** |
+| Metric | P0-spatial (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
+|--------|----------------------|--------------------------|-----------------|
+| Mean Response Time | 3.17 min | 2.63 min | **2.57 min** |
+| P95 Response Time | 6.26 min | 5.05 min | **4.66 min** |
+| 8-min Coverage | 99.6% | 99.6% | **99.6%** |
+| Fleet Used | 20 units | 20 units | 20 units |
+
+**Interpretation:**
+- P1 (demand-proportional) delivers substantial gains over P0 by matching allocation to demand patterns
+- P2 (optimized) provides additional tail-latency improvement, reducing P95 response time by 7.7% beyond P1
+- All three policies use the same 20-unit fleet — differences are purely from staging decisions
 
 **Statistical confidence:**
-- All improvements significant at p < 0.001
-- Effect sizes are "Large" (Cohen's d > 28)
-- Based on 30 independent simulation replications
-- 95% CI for mean RT improvement: [5.41, 5.61] minutes
+- All pairwise differences significant at p < 0.001
+- Based on 30 independent simulation replications per policy
 
 ---
 

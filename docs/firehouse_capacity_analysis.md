@@ -121,7 +121,9 @@ This ensures:
 
 **At K=20:** Only P2c would be materially affected. Its objective value will decrease (less coverage or same coverage with worse concentration).
 
-**At K=30+:** P1, P2, and P2c are all affected. The optimizer will be forced to open more firehouses, improving spatial dispersion at the possible cost of slightly higher average response time.
+**At K=30:** P1, P2, and P2c are all affected. With cap=2, P1-demand uses 21 firehouses (vs 30 at cap=1) and achieves the best mean RT of 2.39 min. P2-optimised uses 25 firehouses at cap=2 with mean RT of 2.44 min. The optimizer is forced to open more firehouses, improving spatial dispersion.
+
+**At K=40+:** Similar effects are amplified — see capacity_sensitivity_analysis.md for the full spectrum.
 
 ### 4.2 Is This a Problem?
 

@@ -3,7 +3,7 @@
 import geopandas as gpd
 from pathlib import Path
 
-RAW_DIR = Path('/home/ubuntu/ems-optimization/data/raw')
+RAW_DIR = Path(__file__).resolve().parent.parent / 'data' / 'raw'
 
 print("=== GEOGRAPHIC BOUNDARIES AUDIT ===\n")
 

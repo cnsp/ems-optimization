@@ -3,7 +3,7 @@
 ## Full-Spectrum Analysis: Capacity = 1, 2, 3, 4, 5
 
 **Date:** March 2026 
-**Fleet Sizes:** K = 20, K = 40 
+**Fleet Sizes:** K = 20, K = 30, K = 40 
 **Policies:** P0-spatial (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation) 
 **Simulation:** 15 replications × 168 hours (1 week) per scenario 
 **Total scenarios:** 5 × 2 × 3 = **30 allocation–simulation experiments**
@@ -20,7 +20,7 @@ Evaluate how firehouse capacity constraints (cap = 1 through cap = 5) affect EMS
 
 | Factor | Levels |
 |--------|--------|
-| Fleet size (K) | 20, 40 |
+| Fleet size (K) | 20, 30, 40 |
 | Capacity per firehouse | **1, 2, 3, 4, 5** |
 | Allocation policy | P0-spatial (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation) |
 | Replications | 15 per scenario |
@@ -75,7 +75,48 @@ Evaluate how firehouse capacity constraints (cap = 1 through cap = 5) affect EMS
 
 **Notable:** P1 with cap = 1 slightly outperforms P1 at higher caps (mean RT 2.589 vs 2.617), because the forced one-unit-per-station dispersion provides marginally better geographic coverage.
 
-### 2.2 K = 40: Capacity Actively Shapes Allocation
+### 2.2 K = 30: Capacity Begins to Differentiate Policies
+
+At K = 30, the intermediate fleet size reveals the transition point where capacity constraints start to matter for demand-aware policies.
+
+#### Allocation Patterns (K = 30)
+
+| Policy | Cap | FH Used | Max Units/FH | Units in CBD |
+|--------|-----|---------|--------------|--------------|
+| P0-spatial | 1 | 30 | 1 | 15 |
+| P0-spatial | 2–5 | 30 | 1 | 15 |
+| P1-demand | 1 | 30 | 1 | 18 |
+| P1-demand | 2 | 21 | 2 | 17 |
+| P1-demand | 3–5 | 21 | 3 | 17 |
+| P2-optimised | 1 | 30 | 1 | 15 |
+| P2-optimised | 2 | 25 | 2 | 17 |
+| P2-optimised | 3 | 24 | 3 | 18 |
+| P2-optimised | 5 | 23 | 5 | 10 |
+
+**Key patterns:**
+- **P0-spatial** remains unaffected: 30 stations at 1 unit each regardless of capacity
+- **P1-demand** with cap=1 uses all 30 stations; at cap≥2, it consolidates to 21 stations, allocating more units to high-demand locations
+- **P2-optimised** shows progressive concentration: 30 → 25 → 24 → 23 firehouses as capacity increases, with CBD allocation shifting at cap=5
+
+#### Simulation Performance (K = 30)
+
+| Policy | Cap | Mean RT (min) | P90 RT (min) | Coverage |
+|--------|-----|---------------|--------------|----------|
+| P0-spatial | 1–5 | 2.778 | 3.564 | 99.84% |
+| P1-demand | 1 | 2.472 | 3.391 | 99.74% |
+| P1-demand | **2** | **2.385** | **3.188** | **99.74%** |
+| P1-demand | 3–5 | 2.390 | 3.207 | 99.74% |
+| P2-optimised | **1** | **2.426** | **3.280** | **99.72%** |
+| P2-optimised | 2 | 2.442 | 3.348 | 99.74% |
+| P2-optimised | 3 | 2.500 | 3.503 | 99.72% |
+| P2-optimised | 5 | 2.502 | 3.550 | 99.81% |
+
+**Notable findings at K = 30:**
+- P1-demand at cap=2 achieves the best mean response time (2.385 min), outperforming even P2-optimised
+- P2-optimised performance *degrades* as capacity increases (from 2.426 at cap=1 to 2.502 at cap=5), confirming that forced dispersion through lower capacity improves outcomes
+- The cap=2 recommendation from K=20 analysis continues to hold at K=30
+
+### 2.3 K = 40: Capacity Actively Shapes Allocation
 
 This is where the capacity analysis becomes critical. With 40 units across 48 candidate firehouses, the constraint binds meaningfully.
 
@@ -124,6 +165,8 @@ This is where the capacity analysis becomes critical. With 40 units across 48 ca
 The relationship between capacity and response time differs by policy and by fleet size:
 
 **At K = 20:** Essentially flat — capacity does not matter.
+
+**At K = 30:** Intermediate behaviour — P1-demand and P2-optimised begin showing sensitivity. Cap=2 emerges as optimal for P1; P2 favours cap=1 (forced dispersion).
 
 **At K = 40:**
 

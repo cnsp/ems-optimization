@@ -3,7 +3,7 @@
 ## Outline vs. Deliverables — Section-by-Section Analysis
 
 **Document:** `EMS_Project_Outline_Hybrid_Final_Submission.docx`
-**Project:** `/home/ubuntu/ems-optimization`
+**Project:** `ems-optimization` (project root)
 **Date:** March 12, 2026
 
 ---

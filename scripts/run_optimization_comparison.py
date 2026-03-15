@@ -26,7 +26,7 @@ plt.rcParams['figure.figsize'] = (14, 10)
 plt.rcParams['font.size'] = 11
 
 # Paths
-BASE_DIR = Path('/home/ubuntu/ems-optimization')
+BASE_DIR = Path(__file__).resolve().parent.parent
 RESULTS_DIR = BASE_DIR / 'results' / 'optimization'
 MAPS_DIR = BASE_DIR / 'results' / 'maps'
 FIGURES_DIR = BASE_DIR / 'results' / 'figures'

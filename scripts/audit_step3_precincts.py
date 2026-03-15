@@ -6,8 +6,8 @@ from shapely import wkt
 from pathlib import Path
 import pickle
 
-RAW_DIR = Path('/home/ubuntu/ems-optimization/data/raw')
-PROCESSED_DIR = Path('/home/ubuntu/ems-optimization/data/processed')
+RAW_DIR = Path(__file__).resolve().parent.parent / 'data' / 'raw'
+PROCESSED_DIR = Path(__file__).resolve().parent.parent / 'data' / 'processed'
 
 # Load boundaries
 with open(RAW_DIR / 'manhattan_geom.pkl', 'rb') as f:

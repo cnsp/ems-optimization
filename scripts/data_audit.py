@@ -13,9 +13,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Paths
-RAW_DIR = Path('/home/ubuntu/ems-optimization/data/raw')
-PROCESSED_DIR = Path('/home/ubuntu/ems-optimization/data/processed')
-MANIFEST_DIR = Path('/home/ubuntu/ems-optimization/data/manifests')
+RAW_DIR = Path(__file__).resolve().parent.parent / 'data' / 'raw'
+PROCESSED_DIR = Path(__file__).resolve().parent.parent / 'data' / 'processed'
+MANIFEST_DIR = Path(__file__).resolve().parent.parent / 'data' / 'manifests'
 
 # NYC coordinate bounds
 NYC_LAT_MIN, NYC_LAT_MAX = 40.5, 41.0
