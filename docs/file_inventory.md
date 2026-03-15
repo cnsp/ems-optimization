@@ -221,7 +221,7 @@
 | `verification_log.md/.pdf` | V&V test results |
 | `output_analysis.md/.pdf` | Statistical analysis report |
 | `executive_summary.md/.pdf` | Executive summary |
-| `technical_report.md` | Comprehensive final report (v2.1.0) |
+| `technical_report.md` | Full final report (v2.1.0) |
 | `executive_presentation.md` | Slide deck for stakeholders |
 | `implementation_roadmap.md` | Deployment plan |
 | `project_archive.md` | Project archive & timeline |

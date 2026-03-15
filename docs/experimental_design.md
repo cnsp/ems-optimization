@@ -136,26 +136,26 @@ To reduce variance across policy comparisons, all policies within the same exper
 Each experiment CSV contains one row per replication with columns:
 
 ```
-experiment_id          - Experiment identifier (exp1, exp2, exp3, exp4)
-scenario_id            - Unique scenario label
-replication            - Replication number (0-29)
-policy                 - Policy name (P0, P1, P2)
-K                      - Fleet size
-demand_multiplier      - Demand scaling factor
-service_time_mean      - Service time mean (minutes)
-mean_response_time     - Mean response time (minutes)
-p90_response_time      - 90th percentile response time (minutes)
-p95_response_time      - 95th percentile response time (minutes)
-coverage_8min          - Fraction with RT ≤ 8 min
-coverage_10min         - Fraction with RT ≤ 10 min
-mean_utilization       - Mean fleet utilization
-max_utilization        - Maximum unit utilization
-mean_queue_length      - Time-weighted average queue length
-max_queue_length       - Peak queue length
-queue_fraction         - Fraction of incidents queued
-total_incidents        - Total incidents in replication
-incidents_queued       - Number queued
-random_seed            - Random seed used
+experiment_id - Experiment identifier (exp1, exp2, exp3, exp4)
+scenario_id - Unique scenario label
+replication - Replication number (0-29)
+policy - Policy name (P0, P1, P2)
+K - Fleet size
+demand_multiplier - Demand scaling factor
+service_time_mean - Service time mean (minutes)
+mean_response_time - Mean response time (minutes)
+p90_response_time - 90th percentile response time (minutes)
+p95_response_time - 95th percentile response time (minutes)
+coverage_8min - Fraction with RT ≤ 8 min
+coverage_10min - Fraction with RT ≤ 10 min
+mean_utilization - Mean fleet utilization
+max_utilization - Maximum unit utilization
+mean_queue_length - Time-weighted average queue length
+max_queue_length - Peak queue length
+queue_fraction - Fraction of incidents queued
+total_incidents - Total incidents in replication
+incidents_queued - Number queued
+random_seed - Random seed used
 ```
 
 ---
@@ -163,7 +163,7 @@ random_seed            - Random seed used
 ## 7. Analysis Plan
 
 ### Statistical Methods
-1. **Paired t-tests** (leveraging CRN) for pairwise policy comparison
+1. **Paired t-tests** (using CRN) for pairwise policy comparison
 2. **ANOVA** for multi-factor analysis across fleet sizes
 3. **95% confidence intervals** for all point estimates
 4. **Effect size** (Cohen's d) for practical significance

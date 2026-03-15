@@ -1,6 +1,6 @@
 # Blocker Log
 
-This document tracks any blockers encountered during the project and their resolutions.
+This document tracks blockers encountered during the project and their resolutions.
 
 ## Status: No Current Blockers
 

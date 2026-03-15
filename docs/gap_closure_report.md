@@ -27,10 +27,10 @@ This report documents the resolution of all three gaps identified in the project
 - Defined CBD region using MTA Congestion Relief Zone boundary
 - Identified 10 CBD precincts (≥30% overlap criterion)
 - Designed and ran 4 CBD-specific DES scenarios:
-  - Scenario A: CBD demand surge (2× CBD demand)
-  - Scenario B: CBD service time increase (35 min vs 25 min)
-  - Scenario C: CBD-only allocation
-  - Scenario D: Mixed allocation (60/40 CBD/non-CBD)
+ - Scenario A: CBD demand surge (2× CBD demand)
+ - Scenario B: CBD service time increase (35 min vs 25 min)
+ - Scenario C: CBD-only allocation
+ - Scenario D: Mixed allocation (60/40 CBD/non-CBD)
 - Executed 330 simulation runs (30 replications each)
 - Created CBD analysis notebook with visualizations
 - Generated 3 new figures and 2 new tables
@@ -56,7 +56,7 @@ This report documents the resolution of all three gaps identified in the project
 ## G2: Queue Metrics Prominence
 
 ### What was done
-- Created comprehensive queue metrics extraction script
+- Created queue metrics extraction script
 - Analyzed queue behavior across all production and CBD experiments
 - Performed ANOVA on queue metrics
 - Generated 4 queue-focused visualizations
@@ -134,4 +134,4 @@ All gaps have been verified as resolved:
 
 ## Conclusion
 
-The project now achieves **100% alignment** with the project outline. All three identified gaps have been comprehensively addressed with new experiments, analyses, visualizations, and documentation.
+The project now achieves **100% alignment** with the project outline. All three identified gaps have been addressed thoroughly with new experiments, analyses, visualizations, and documentation.

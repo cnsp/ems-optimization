@@ -1,28 +1,28 @@
 # Conceptual Model — EMS Discrete-Event Simulation
 
-> **Document version:** 1.0  
-> **Date:** March 12, 2026  
-> **Project:** EMS Readiness Optimization — Manhattan, NYC  
-> **Phase:** 4 (Simulation Design)  
+> **Document version:** 1.0 
+> **Date:** March 12, 2026 
+> **Project:** EMS Readiness Optimization — Manhattan, NYC 
+> **Phase:** 4 (Simulation Design) 
 > **Status:** Approved for implementation
 
 ---
 
 ## Table of Contents
 
-1. [System Description](#1-system-description)  
-2. [Entities](#2-entities)  
-3. [Resources](#3-resources)  
-4. [Queues](#4-queues)  
-5. [Events](#5-events)  
-6. [State Variables](#6-state-variables)  
-7. [Dispatch Logic](#7-dispatch-logic)  
-8. [Performance Measures](#8-performance-measures)  
-9. [Time Representation](#9-time-representation)  
-10. [Random Phenomena](#10-random-phenomena)  
-11. [Event Flow Diagram](#11-event-flow-diagram)  
-12. [Assumptions and Limitations](#12-assumptions-and-limitations)  
-13. [References](#13-references)  
+1. [System Description](#1-system-description) 
+2. [Entities](#2-entities) 
+3. [Resources](#3-resources) 
+4. [Queues](#4-queues) 
+5. [Events](#5-events) 
+6. [State Variables](#6-state-variables) 
+7. [Dispatch Logic](#7-dispatch-logic) 
+8. [Performance Measures](#8-performance-measures) 
+9. [Time Representation](#9-time-representation) 
+10. [Random Phenomena](#10-random-phenomena) 
+11. [Event Flow Diagram](#11-event-flow-diagram) 
+12. [Assumptions and Limitations](#12-assumptions-and-limitations) 
+13. [References](#13-references) 
 
 ---
 
@@ -31,7 +31,7 @@
 ### 1.1 Purpose
 
 This simulation evaluates **strategic EMS unit staging policies** under
-stochastic crash-driven demand in Manhattan, New York City.  The central
+stochastic crash-driven demand in Manhattan, New York City. The central
 research question is:
 
 > *Given K ambulance units and 48 candidate firehouses, which allocation
@@ -62,7 +62,7 @@ rather than a steady-state simulation.
 | **Replication strategy** | Statistical inference is drawn from *R* independent replications (default *R* = 30), each with a different random-number stream, following the method of independent replications for terminating simulations (Law 2015, Ch. 9). |
 
 Because the simulation is terminating, there is **no warm-up period** to
-discard.  Performance measures are computed over the entire horizon of each
+discard. Performance measures are computed over the entire horizon of each
 replication.
 
 ### 1.3 System Boundary
@@ -70,11 +70,11 @@ replication.
 The system boundary encompasses:
 
 - **Included:** Crash incident arrivals, EMS unit dispatch, travel to scene,
-  on-scene service, return-to-available transition, queueing of unserved
-  incidents.
+ on-scene service, return-to-available transition, queueing of unserved
+ incidents.
 - **Excluded:** Real-time unit relocation, congestion-dependent travel,
-  full road-network routing, dispatch priority / preemption, hospital
-  turnaround delays, non-crash EMS calls.
+ full road-network routing, dispatch priority / preemption, hospital
+ turnaround delays, non-crash EMS calls.
 
 ---
 
@@ -83,7 +83,7 @@ The system boundary encompasses:
 ### 2.1 Incident (Temporary Entity)
 
 An **Incident** represents a motor-vehicle crash event that requires exactly
-one EMS unit for service.  Incidents are created dynamically by the arrival
+one EMS unit for service. Incidents are created dynamically by the arrival
 process and destroyed after service completion.
 
 | Attribute | Type | Description |
@@ -114,7 +114,7 @@ Created ──► Queued (if no unit available) ──► Dispatched ──► I
 
 ### 3.1 EMS Unit (Permanent Entity)
 
-EMS Units are the **servers** in this system.  They are stationed at FDNY
+EMS Units are the **servers** in this system. They are stationed at FDNY
 firehouses according to the allocation policy under evaluation and remain
 in the system for the entire simulation horizon.
 
@@ -144,7 +144,7 @@ The allocation vector is determined **before** the simulation begins and remains
 
 ### 3.3 Firehouse Locations
 
-48 Manhattan FDNY firehouses serve as candidate staging locations.  Their
+48 Manhattan FDNY firehouses serve as candidate staging locations. Their
 coordinates are loaded from `data/raw/FDNY_Firehouse_Listing_20260223.csv`.
 A pre-computed distance matrix (`data/processed/distance_matrix_firehouse_precinct.csv`)
 gives Haversine distances between each firehouse and each of the 30 Manhattan
@@ -175,14 +175,14 @@ The system is analogous to a spatially distributed **M(t)/G/K** queue:
 
 Unlike a classical queue, travel time depends on the dispatched unit's
 location relative to the incident, introducing a spatial component absent
-from standard queueing models.  This is a key motivation for using simulation
+from standard queueing models. This is a key motivation for using simulation
 rather than analytical queueing formulae.
 
 ---
 
 ## 5. Events
 
-The simulation is driven by five event types.  Each is described with its
+The simulation is driven by five event types. Each is described with its
 triggering condition, detailed logic, and state transitions.
 
 ### 5.1 Incident Arrival
@@ -195,14 +195,14 @@ triggering condition, detailed logic, and state transitions.
 
 ```
 INCIDENT_ARRIVAL(t):
-    1.  Create new Incident entity with arrival_time = t
-    2.  Assign precinct via multinomial draw from precinct probabilities
-    3.  Set incident location to precinct centroid (lat, lon)
-    4.  IF any EMS unit has status == AVAILABLE:
-            → trigger DISPATCH_DECISION(incident)
-        ELSE:
-            → enqueue incident in incident_queue (FIFO)
-    5.  Schedule next INCIDENT_ARRIVAL via thinning algorithm
+ 1. Create new Incident entity with arrival_time = t
+ 2. Assign precinct via multinomial draw from precinct probabilities
+ 3. Set incident location to precinct centroid (lat, lon)
+ 4. IF any EMS unit has status == AVAILABLE:
+ → trigger DISPATCH_DECISION(incident)
+ ELSE:
+ → enqueue incident in incident_queue (FIFO)
+ 5. Schedule next INCIDENT_ARRIVAL via thinning algorithm
 ```
 
 ### 5.2 Dispatch Decision
@@ -214,19 +214,19 @@ INCIDENT_ARRIVAL(t):
 
 ```
 DISPATCH_DECISION(incident):
-    1.  Compute travel time from each AVAILABLE unit to incident location:
-            t_travel(u, inc) = haversine(u.current_lat, u.current_lon,
-                                         inc.location_lat, inc.location_lon)
-                               / effective_speed(hour_of_day)
-    2.  Select unit u* = argmin { t_travel(u, inc) : u ∈ AVAILABLE }
-        Tie-breaking: lowest unit_id (deterministic)
-    3.  Set u*.status = DISPATCHED
-    4.  Set incident.assigned_unit = u*.unit_id
-    5.  Set incident.dispatch_time = current_time
-    6.  Add fixed dispatch processing delay δ = 1.5 minutes
-    7.  Compute travel_time = t_travel(u*, inc)
-    8.  Schedule SERVICE_START at t + δ/60 + travel_time/60
-        (all converted to hours for the simulation clock)
+ 1. Compute travel time from each AVAILABLE unit to incident location:
+ t_travel(u, inc) = haversine(u.current_lat, u.current_lon,
+ inc.location_lat, inc.location_lon)
+ / effective_speed(hour_of_day)
+ 2. Select unit u* = argmin { t_travel(u, inc) : u ∈ AVAILABLE }
+ Tie-breaking: lowest unit_id (deterministic)
+ 3. Set u*.status = DISPATCHED
+ 4. Set incident.assigned_unit = u*.unit_id
+ 5. Set incident.dispatch_time = current_time
+ 6. Add fixed dispatch processing delay δ = 1.5 minutes
+ 7. Compute travel_time = t_travel(u*, inc)
+ 8. Schedule SERVICE_START at t + δ/60 + travel_time/60
+ (all converted to hours for the simulation clock)
 ```
 
 ### 5.3 Service Start
@@ -238,13 +238,13 @@ DISPATCH_DECISION(incident):
 
 ```
 SERVICE_START(incident, unit):
-    1.  Set unit.status = ON_SCENE
-    2.  Set unit.current_lat = incident.location_lat
-    3.  Set unit.current_lon = incident.location_lon
-    4.  Set incident.service_start_time = current_time
-    5.  Draw service_duration ~ LogNormal(μ=3.136, σ=0.385)
-        [moment-matched: mean=25 min, std=10 min]
-    6.  Schedule SERVICE_COMPLETION at current_time + service_duration/60
+ 1. Set unit.status = ON_SCENE
+ 2. Set unit.current_lat = incident.location_lat
+ 3. Set unit.current_lon = incident.location_lon
+ 4. Set incident.service_start_time = current_time
+ 5. Draw service_duration ~ LogNormal(μ=3.136, σ=0.385)
+ [moment-matched: mean=25 min, std=10 min]
+ 6. Schedule SERVICE_COMPLETION at current_time + service_duration/60
 ```
 
 ### 5.4 Service Completion
@@ -256,20 +256,20 @@ SERVICE_START(incident, unit):
 
 ```
 SERVICE_COMPLETION(incident, unit):
-    1.  Set incident.service_end_time = current_time
-    2.  Record incident performance metrics
-    3.  Set unit.status = AVAILABLE
-    4.  Set unit.current_lat = unit.home_lat   (return to firehouse)
-    5.  Set unit.current_lon = unit.home_lon
-    6.  Update unit.total_busy_time += (current_time − unit.busy_since)
-    7.  Increment unit.calls_served
-    8.  IF incident_queue is NOT empty:
-            → dequeue oldest incident
-            → trigger DISPATCH_DECISION(dequeued_incident)
+ 1. Set incident.service_end_time = current_time
+ 2. Record incident performance metrics
+ 3. Set unit.status = AVAILABLE
+ 4. Set unit.current_lat = unit.home_lat (return to firehouse)
+ 5. Set unit.current_lon = unit.home_lon
+ 6. Update unit.total_busy_time += (current_time − unit.busy_since)
+ 7. Increment unit.calls_served
+ 8. IF incident_queue is NOT empty:
+ → dequeue oldest incident
+ → trigger DISPATCH_DECISION(dequeued_incident)
 ```
 
 > **Note on return travel:** The unit is modelled as returning to its home
-> firehouse **instantaneously** upon service completion.  This is a
+> firehouse **instantaneously** upon service completion. This is a
 > simplifying assumption; the service-time distribution is calibrated to
 > absorb the return component (see § 12, Assumption A-7).
 
@@ -282,17 +282,17 @@ SERVICE_COMPLETION(incident, unit):
 
 ```
 END_OF_SIMULATION(T):
-    1.  Stop generating new incident arrivals
-    2.  Allow in-progress services to complete (drain phase)
-    3.  For any incidents still in queue: mark as "unserved"
-    4.  Compute replication-level summary statistics:
-        a. Average dispatch delay
-        b. Average response time
-        c. Fraction of incidents with response_time ≤ τ (8 min)
-        d. Maximum and mean queue length
-        e. Per-unit utilisation = total_busy_time / T
-        f. Total incidents served / arrived / unserved
-    5.  Return replication results
+ 1. Stop generating new incident arrivals
+ 2. Allow in-progress services to complete (drain phase)
+ 3. For any incidents still in queue: mark as "unserved"
+ 4. Compute replication-level summary statistics:
+ a. Average dispatch delay
+ b. Average response time
+ c. Fraction of incidents with response_time ≤ τ (8 min)
+ d. Maximum and mean queue length
+ e. Per-unit utilisation = total_busy_time / T
+ f. Total incidents served / arrived / unserved
+ 5. Return replication results
 ```
 
 ---
@@ -300,7 +300,7 @@ END_OF_SIMULATION(T):
 ## 6. State Variables
 
 State variables define the complete system state at any point in simulated
-time.  They are updated exclusively by the event routines described in § 5.
+time. They are updated exclusively by the event routines described in § 5.
 
 ### 6.1 Core State
 
@@ -349,7 +349,7 @@ time.  They are updated exclusively by the event routines described in § 5.
 
 ### 7.1 Nearest-Available Dispatch
 
-The dispatch policy is **nearest-available**:  the available unit with the
+The dispatch policy is **nearest-available**: the available unit with the
 shortest estimated travel time to the incident location is selected.
 
 **Travel-time estimate:**
@@ -368,23 +368,23 @@ where:
 
 When multiple available units have identical minimum travel times (e.g., two
 units co-located at the same firehouse), the unit with the **lowest unit ID**
-(lexicographic order) is selected.  This provides deterministic, reproducible
+(lexicographic order) is selected. This provides deterministic, reproducible
 behaviour.
 
 ### 7.3 Queue Discipline
 
 - **FIFO:** When a unit becomes available and the queue is non-empty, the
-  incident that has been waiting the longest (head of the deque) is dispatched
-  first.
+ incident that has been waiting the longest (head of the deque) is dispatched
+ first.
 - **No priority classes:** All incidents are treated equally regardless of
-  severity.  Priority dispatch is listed as out-of-scope.
+ severity. Priority dispatch is listed as out-of-scope.
 - **No preemption:** Once a unit begins serving an incident, it cannot be
-  recalled for a higher-priority call.
+ recalled for a higher-priority call.
 
 ### 7.4 Dispatch upon Service Completion
 
 When a unit completes service and returns to the available pool, the system
-checks the queue before the unit becomes idle.  If incidents are waiting,
+checks the queue before the unit becomes idle. If incidents are waiting,
 dispatch occurs immediately—there is no idle gap between consecutive services
 when the queue is non-empty.
 
@@ -422,7 +422,7 @@ For each performance measure *Y*, across *R* independent replications:
 - Standard error: $SE = s_Y / \sqrt{R}$
 - 95% confidence interval: $\bar{Y} \pm t_{R-1, 0.025} \cdot SE$
 - Comparison across policies via paired-*t* or Welch's *t*-test on
-  replication-level means using Common Random Numbers (CRN).
+ replication-level means using Common Random Numbers (CRN).
 
 ---
 
@@ -437,7 +437,7 @@ For each performance measure *Y*, across *R* independent replications:
 | **Advancement** | Next-event time advance (SimPy process-based) |
 | **Framework** | SimPy 4.x (Python process-interaction DES library) |
 
-The simulation clock does **not** advance in fixed increments.  Instead, it
+The simulation clock does **not** advance in fixed increments. Instead, it
 jumps from one scheduled event to the next, making it efficient even for
 long horizons with variable inter-event gaps.
 
@@ -454,7 +454,7 @@ weekday/weekend variation and all hourly peaks.
 
 ### 9.3 Time Conversions
 
-All internal calculations use **hours** as the canonical unit.  When service
+All internal calculations use **hours** as the canonical unit. When service
 times and travel times are drawn in minutes, they are divided by 60 before
 being added to the simulation clock.
 
@@ -478,14 +478,14 @@ being added to the simulation clock.
 **Thinning Algorithm Summary:**
 
 ```
-1.  Compute λ_max over the simulation horizon
-2.  Generate candidate arrival from Exponential(1/λ_max)
-3.  Advance clock to candidate time t_c
-4.  Compute acceptance probability p = λ(t_c) / λ_max
-5.  Draw U ~ Uniform(0,1)
-6.  IF U ≤ p: accept arrival; assign precinct; record event
-    ELSE: reject (thin) the candidate
-7.  Repeat from step 2 until t_c > T
+1. Compute λ_max over the simulation horizon
+2. Generate candidate arrival from Exponential(1/λ_max)
+3. Advance clock to candidate time t_c
+4. Compute acceptance probability p = λ(t_c) / λ_max
+5. Draw U ~ Uniform(0,1)
+6. IF U ≤ p: accept arrival; assign precinct; record event
+ ELSE: reject (thin) the candidate
+7. Repeat from step 2 until t_c > T
 ```
 
 ### 10.2 Service Times — LogNormal Distribution
@@ -500,7 +500,7 @@ being added to the simulation clock.
 
 ### 10.3 Travel Times — Deterministic Given State
 
-Travel times are **not** random draws.  They are deterministic functions of:
+Travel times are **not** random draws. They are deterministic functions of:
 
 - The dispatched unit's current location (lat, lon),
 - The incident location (precinct centroid),
@@ -521,8 +521,8 @@ available (depends on prior random service completions).
 
 - **Base seed:** 42 (configurable in `configs/demand.yaml`).
 - **Dedicated streams** ensure that changes to one random component (e.g.,
-  service time distribution) do not alter the arrival sequence, enabling
-  valid variance-reduction via **Common Random Numbers (CRN)**.
+ service time distribution) do not alter the arrival sequence, enabling
+ valid variance-reduction via **Common Random Numbers (CRN)**.
 - NumPy `Generator` (PCG64) is used for all sampling.
 
 ---
@@ -532,91 +532,91 @@ available (depends on prior random service completions).
 ### 11.1 High-Level Event Transition Diagram
 
 ```
-                        ┌─────────────────────────┐
-                        │   SIMULATION START       │
-                        │   t = 0, all units idle  │
-                        └────────────┬────────────┘
-                                     │
-                                     ▼
-                   ┌──────────────────────────────────┐
-                   │       INCIDENT ARRIVAL            │
-                   │  (NHPP thinning at rate λ(t))     │
-                   └──────────┬───────────┬───────────┘
-                              │           │
-                    unit free?│           │ all units busy
-                              ▼           ▼
-                   ┌──────────────┐  ┌──────────────────┐
-                   │   DISPATCH   │  │  ENQUEUE (FIFO)  │
-                   │   DECISION   │  │  incident_queue   │
-                   └──────┬───────┘  └────────┬─────────┘
-                          │                   │
-                          │     ◄─────────────┘  (dequeued when
-                          │                       unit freed)
-                          ▼
-                   ┌──────────────────────┐
-                   │    SERVICE START     │
-                   │  (after δ + travel)  │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │  SERVICE COMPLETION  │
-                   │  unit → AVAILABLE    │
-                   └──────┬──────┬────────┘
-                          │      │
-              queue empty? │      │ queue non-empty
-                          ▼      ▼
-                   ┌──────────┐  ┌──────────────┐
-                   │  UNIT    │  │  DISPATCH     │
-                   │  IDLES   │  │  next queued  │
-                   │  at home │  │  incident     │
-                   └──────────┘  └──────────────┘
-                                        │
-                                        ▼
-                              (back to SERVICE START)
+ ┌─────────────────────────┐
+ │ SIMULATION START │
+ │ t = 0, all units idle │
+ └────────────┬────────────┘
+ │
+ ▼
+ ┌──────────────────────────────────┐
+ │ INCIDENT ARRIVAL │
+ │ (NHPP thinning at rate λ(t)) │
+ └──────────┬───────────┬───────────┘
+ │ │
+ unit free?│ │ all units busy
+ ▼ ▼
+ ┌──────────────┐ ┌──────────────────┐
+ │ DISPATCH │ │ ENQUEUE (FIFO) │
+ │ DECISION │ │ incident_queue │
+ └──────┬───────┘ └────────┬─────────┘
+ │ │
+ │ ◄─────────────┘ (dequeued when
+ │ unit freed)
+ ▼
+ ┌──────────────────────┐
+ │ SERVICE START │
+ │ (after δ + travel) │
+ └──────────┬───────────┘
+ │
+ ▼
+ ┌──────────────────────┐
+ │ SERVICE COMPLETION │
+ │ unit → AVAILABLE │
+ └──────┬──────┬────────┘
+ │ │
+ queue empty? │ │ queue non-empty
+ ▼ ▼
+ ┌──────────┐ ┌──────────────┐
+ │ UNIT │ │ DISPATCH │
+ │ IDLES │ │ next queued │
+ │ at home │ │ incident │
+ └──────────┘ └──────────────┘
+ │
+ ▼
+ (back to SERVICE START)
 
-                   ─────────────────────────────────────
-                   When sim_clock ≥ T:
-                   ┌──────────────────────────────┐
-                   │     END OF SIMULATION         │
-                   │  • Stop new arrivals          │
-                   │  • Drain in-progress services │
-                   │  • Collect final statistics   │
-                   └──────────────────────────────┘
+ ─────────────────────────────────────
+ When sim_clock ≥ T:
+ ┌──────────────────────────────┐
+ │ END OF SIMULATION │
+ │ • Stop new arrivals │
+ │ • Drain in-progress services │
+ │ • Collect final statistics │
+ └──────────────────────────────┘
 ```
 
 ### 11.2 Single-Incident Timeline
 
 ```
-     arrival_time          dispatch_time        service_start        service_end
-          │                      │                    │                    │
-          ├──── dispatch_delay ──┤                    │                    │
-          │     (queue wait + δ) │                    │                    │
-          │                      ├─── travel_time ────┤                    │
-          │                      │                    ├── service_time ────┤
-          │                      │                    │                    │
-          ├────── response_time ─────────────────────┤                    │
-          │                                           │                    │
-          ├──────────────── total_time ───────────────────────────────────┤
+ arrival_time dispatch_time service_start service_end
+ │ │ │ │
+ ├──── dispatch_delay ──┤ │ │
+ │ (queue wait + δ) │ │ │
+ │ ├─── travel_time ────┤ │
+ │ │ ├── service_time ────┤
+ │ │ │ │
+ ├────── response_time ─────────────────────┤ │
+ │ │ │
+ ├──────────────── total_time ───────────────────────────────────┤
 ```
 
 ### 11.3 Process-Interaction View (SimPy)
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│  ArrivalProcess (SimPy generator)                         │
-│    while sim_clock < T:                                   │
-│      yield env.timeout(inter_arrival)  ← thinning        │
-│      if accepted:                                         │
-│        env.process(IncidentProcess(incident))             │
+│ ArrivalProcess (SimPy generator) │
+│ while sim_clock < T: │
+│ yield env.timeout(inter_arrival) ← thinning │
+│ if accepted: │
+│ env.process(IncidentProcess(incident)) │
 ├───────────────────────────────────────────────────────────┤
-│  IncidentProcess (SimPy generator, one per incident)      │
-│    request unit from resource pool                        │
-│    yield request  ← may wait in queue                     │
-│    yield env.timeout(dispatch_delay + travel_time)        │
-│    yield env.timeout(service_time)                        │
-│    release unit back to resource pool                     │
-│    record all timestamps                                  │
+│ IncidentProcess (SimPy generator, one per incident) │
+│ request unit from resource pool │
+│ yield request ← may wait in queue │
+│ yield env.timeout(dispatch_delay + travel_time) │
+│ yield env.timeout(service_time) │
+│ release unit back to resource pool │
+│ record all timestamps │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -672,31 +672,31 @@ will be varied in sensitivity experiments:
 
 ## 13. References
 
-1. **Law, A. M.** (2015). *Simulation Modeling and Analysis*, 5th ed. McGraw-Hill.  
-   Chapters 9 (terminating simulation output analysis), 12 (random variate generation).
+1. **Law, A. M.** (2015). *Simulation Modeling and Analysis*, 5th ed. McGraw-Hill. 
+ Chapters 9 (terminating simulation output analysis), 12 (random variate generation).
 
-2. **Banks, J., Carson, J. S., Nelson, B. L., & Nicol, D. M.** (2014).  
-   *Discrete-Event System Simulation*, 5th ed. Pearson.
+2. **Banks, J., Carson, J. S., Nelson, B. L., & Nicol, D. M.** (2014). 
+ *Discrete-Event System Simulation*, 5th ed. Pearson.
 
-3. **Lewis, P. A. W., & Shedler, G. S.** (1979). Simulation of nonhomogeneous  
-   Poisson processes by thinning. *Naval Research Logistics Quarterly*, 26(3), 403–413.
+3. **Lewis, P. A. W., & Shedler, G. S.** (1979). Simulation of nonhomogeneous 
+ Poisson processes by thinning. *Naval Research Logistics Quarterly*, 26(3), 403–413.
 
-4. **Daskin, M. S.** (1983). A maximum expected covering location model.  
-   *Transportation Science*, 17(1), 48–70.
+4. **Daskin, M. S.** (1983). A maximum expected covering location model. 
+ *Transportation Science*, 17(1), 48–70.
 
-5. **Church, R. L., & ReVelle, C.** (1974). The maximal covering location problem.  
-   *Papers of the Regional Science Association*, 32, 101–118.
+5. **Church, R. L., & ReVelle, C.** (1974). The maximal covering location problem. 
+ *Papers of the Regional Science Association*, 32, 101–118.
 
-6. **McLay, L. A., & Mayorga, M. E.** (2010). Evaluating emergency medical  
-   service performance measures. *Health Care Management Science*, 13(2), 124–136.
+6. **McLay, L. A., & Mayorga, M. E.** (2010). Evaluating emergency medical 
+ service performance measures. *Health Care Management Science*, 13(2), 124–136.
 
-7. **Budge, S., Ingolfsson, A., & Zerom, D.** (2010). Empirical analysis of  
-   ambulance travel times. *Management Science*, 56(4), 716–723.
+7. **Budge, S., Ingolfsson, A., & Zerom, D.** (2010). Empirical analysis of 
+ ambulance travel times. *Management Science*, 56(4), 716–723.
 
 8. **SimPy Documentation** — https://simpy.readthedocs.io/en/latest/
 
 ---
 
-*Document prepared as part of the EMS Readiness Optimization project, Phase 4.*  
+*Document prepared as part of the EMS Readiness Optimization project, Phase 4.* 
 *Cross-references: `docs/project_charter.md`, `docs/assumptions_log.md`,
 `docs/service_model_spec.md`, `docs/optimization_formulation.md`.*

@@ -1,8 +1,8 @@
 # Verification & Validation Log
 
-**Project:** EMS Readiness Optimization – Discrete-Event Simulation  
-**Date:** March 12, 2026  
-**Author:** DeepAgent  
+**Project:** EMS Readiness Optimization – Discrete-Event Simulation 
+**Date:** March 12, 2026 
+**Author:** DeepAgent 
 
 ---
 
@@ -167,7 +167,7 @@ plausible, sensible outputs.
 - ✅ Response time **increases with demand** (as expected)
 - ✅ Coverage **decreases with demand** (as expected)
 - ✅ With 20 units, system is not saturated even at 2× demand (queue fraction ~0)
-  - This is because 20 units × ~25 min service = capacity ~48 calls/hr, vs demand ~7/hr at 2×
+ - This is because 20 units × ~25 min service = capacity ~48 calls/hr, vs demand ~7/hr at 2×
 
 ---
 

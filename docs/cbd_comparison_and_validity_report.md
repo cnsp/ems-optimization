@@ -74,14 +74,14 @@ The CBD experiment (330 runs) is stored in a **completely separate directory**:
 
 ```
 results/simulation/
-├── production/          ← Original 1,440 runs (UNTOUCHED)
-│   ├── exp1_policy_comparison.csv
-│   ├── exp2_fleet_sensitivity.csv
-│   ├── exp3_demand_sensitivity.csv
-│   └── exp4_service_robustness.csv
-└── cbd_experiment/      ← NEW 330 runs (ADDITIVE)
-    ├── cbd_experiment_results.csv
-    └── cbd_experiment_summary.csv
+├── production/ ← Original 1,440 runs (UNTOUCHED)
+│ ├── exp1_policy_comparison.csv
+│ ├── exp2_fleet_sensitivity.csv
+│ ├── exp3_demand_sensitivity.csv
+│ └── exp4_service_robustness.csv
+└── cbd_experiment/ ← NEW 330 runs (ADDITIVE)
+ ├── cbd_experiment_results.csv
+ └── cbd_experiment_summary.csv
 ```
 
 - CBD files were created at 22:10 UTC — **~1.5 hours after** the production runs

@@ -1,8 +1,8 @@
 # Final Project Summary
 ## EMS Readiness Optimization for Manhattan — v1.3.0
 
-**Completion Date:** March 15, 2026  
-**Repository:** github.com/cnsp/ems-optimization  
+**Completion Date:** March 15, 2026 
+**Repository:** github.com/cnsp/ems-optimization 
 **Tag:** v1.3.0 (Capacity & Baseline Improvements)
 
 ---
@@ -78,7 +78,7 @@
 - Pushed successfully to origin/main
 
 ### Part 2: Phase 7 Deliverables
-- `docs/technical_report.md` (.pdf) — 25-page comprehensive report
+- `docs/technical_report.md` (.pdf) — 25-page full report
 - `docs/executive_presentation.md` (.pdf) — 10-slide stakeholder deck
 - `docs/implementation_roadmap.md` (.pdf) — 3-phase deployment plan
 - `docs/project_archive.md` (.pdf) — Timeline, decisions, lessons learned
@@ -134,10 +134,10 @@
 **Phase 9: Major methodological improvements to baseline policy and capacity constraints.**
 
 **Key changes:**
-- **Firehouse capacity constraint reduced from 5 to 2** — Full sensitivity analysis (cap 1–5) demonstrates cap=2 is operationally realistic and optimal for typical fleet sizes
+- **Firehouse capacity constraint reduced from 5 to 2** — Full sensitivity analysis (cap 1–5) shows that cap=2 is operationally realistic and optimal for typical fleet sizes
 - **Spatially-stratified P0 baseline** — Replaced index-based P0 with latitude-sorted selection ensuring geographic coverage; P0 mean RT improved by 61% (8.08 → 3.17 min at K=20)
 - **Production V2 re-run** — Complete 810-run production experiment with cap=2 and P0-spatial across 9 fleet sizes (K=10–48) × 3 policies × 30 replications
-- **38% narrowing of P0-P2 gap** — Spatial stratification demonstrates geographic placement is the dominant factor in EMS response performance
+- **38% narrowing of P0-P2 gap** — Spatial stratification shows geographic placement is the dominant factor in EMS response performance
 
 **New scripts:**
 - `scripts/capacity_sensitivity_analysis.py` — Initial cap=2 vs cap=5 comparison

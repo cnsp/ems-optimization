@@ -25,7 +25,7 @@
 
 Results based on 2,700+ simulation experiments with 30 replications each (p < 0.001).
 Capacity sensitivity analysis (cap 1–5) confirms cap=2 as operationally optimal default.
-Alternative analyses confirm robustness to distance metric choice and geographic focus.
+Alternative analyses confirm stability under distance metric choice and geographic focus.
 
 ---
 
@@ -33,7 +33,7 @@ Alternative analyses confirm robustness to distance metric choice and geographic
 
 This project evaluates three ambulance allocation policies for Manhattan's 48 FDNY firehouses:
 
-- **P0 (Spatially-Stratified Uniform)**: Latitude-based geographic stratification ensuring even north–south coverage
+- **P0 (Spatially-Stratified Uniform)**: Latitude-based geographic stratification providing even north–south coverage
 - **P1 (Demand-Proportional)**: Units allocated based on nearby demand
 - **P2 (Demand-Weighted Optimized)**: MIP-optimized allocation minimizing expected response time
 
@@ -49,57 +49,57 @@ The analysis combines:
 
 ```
 ems-optimization/
-├── configs/                    # YAML configuration files
-│   ├── demand.yaml             # NHPP demand model parameters
-│   ├── optimization.yaml       # MIP solver settings (capacity=2 default)
-│   ├── service.yaml            # Travel & service time config
-│   ├── simulation.yaml         # DES engine settings
-│   └── cbd_scenario.yaml       # CBD robustness experiment config
+├── configs/ # YAML configuration files
+│ ├── demand.yaml # NHPP demand model parameters
+│ ├── optimization.yaml # MIP solver settings (capacity=2 default)
+│ ├── service.yaml # Travel & service time config
+│ ├── simulation.yaml # DES engine settings
+│ └── cbd_scenario.yaml # CBD robustness experiment config
 ├── data/
-│   ├── raw/                    # Original data files (NYC Open Data)
-│   ├── processed/              # Cleaned & transformed data
-│   └── manifests/              # Data audit records
-├── docs/                       # Project documentation (32+ files)
-│   ├── technical_report.md     # Comprehensive final report (v2.1.0)
-│   ├── executive_presentation.md # Stakeholder slide deck
-│   ├── implementation_roadmap.md # Deployment plan
-│   ├── conceptual_model.md     # DES model specification
-│   ├── optimization_formulation.md # MIP formulations
-│   ├── experimental_design.md  # Factorial experiment design
-│   ├── output_analysis.md      # Statistical analysis report
-│   ├── capacity_sensitivity_analysis.md # Cap 1–5 sensitivity report
-│   ├── firehouse_capacity_analysis.md # Capacity methodology
-│   └── ...                     # Additional documentation
-├── notebooks/                  # Jupyter analysis notebooks
-│   ├── 02_eda_spatiotemporal.ipynb
-│   ├── 03_input_modeling.ipynb
-│   ├── 04_service_travel_proxy.ipynb
-│   ├── 05_optimization.ipynb
-│   ├── 06_simulation_debug.ipynb
-│   ├── 07_production_results.ipynb
-│   ├── 08_statistical_analysis.ipynb
-│   └── 09_cbd_analysis.ipynb
+│ ├── raw/ # Original data files (NYC Open Data)
+│ ├── processed/ # Cleaned & transformed data
+│ └── manifests/ # Data audit records
+├── docs/ # Project documentation (32+ files)
+│ ├── technical_report.md # Full final report (v2.1.0)
+│ ├── executive_presentation.md # Stakeholder slide deck
+│ ├── implementation_roadmap.md # Deployment plan
+│ ├── conceptual_model.md # DES model specification
+│ ├── optimization_formulation.md # MIP formulations
+│ ├── experimental_design.md # Factorial experiment design
+│ ├── output_analysis.md # Statistical analysis report
+│ ├── capacity_sensitivity_analysis.md # Cap 1–5 sensitivity report
+│ ├── firehouse_capacity_analysis.md # Capacity methodology
+│ └── ... # Additional documentation
+├── notebooks/ # Jupyter analysis notebooks
+│ ├── 02_eda_spatiotemporal.ipynb
+│ ├── 03_input_modeling.ipynb
+│ ├── 04_service_travel_proxy.ipynb
+│ ├── 05_optimization.ipynb
+│ ├── 06_simulation_debug.ipynb
+│ ├── 07_production_results.ipynb
+│ ├── 08_statistical_analysis.ipynb
+│ └── 09_cbd_analysis.ipynb
 ├── results/
-│   ├── figures/                # 66+ visualization PNGs
-│   ├── tables/                 # Statistical tables (CSV + LaTeX)
-│   ├── simulation/             # Simulation output data
-│   ├── optimization/           # Optimization results
-│   ├── distance_comparison/    # Haversine vs Manhattan metric results
-│   ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
-│   ├── capacity_comparison/    # Capacity sensitivity (cap 1–5) results
-│   ├── production_v2/          # Production V2 results (cap=2, P0-spatial)
-│   └── maps/                   # Allocation map visualizations
-├── scripts/                    # Automation & analysis scripts (23+)
-├── src/ems_readiness/          # Core Python package (v0.6.0)
-│   ├── demand/                 # NHPP arrival generator
-│   ├── service/                # Travel time & service time models
-│   ├── optimization/           # MIP formulations, policies & allocator
-│   ├── simulation/             # SimPy DES engine
-│   └── utils/                  # Distance calculations
-├── tests/                      # 39 unit tests (pytest)
-├── requirements.txt            # Python dependencies
-├── Makefile                    # Build automation
-└── LICENSE                     # MIT License
+│ ├── figures/ # 66+ visualization PNGs
+│ ├── tables/ # Statistical tables (CSV + LaTeX)
+│ ├── simulation/ # Simulation output data
+│ ├── optimization/ # Optimization results
+│ ├── distance_comparison/ # Haversine vs Manhattan metric results
+│ ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
+│ ├── capacity_comparison/ # Capacity sensitivity (cap 1–5) results
+│ ├── production_v2/ # Production V2 results (cap=2, P0-spatial)
+│ └── maps/ # Allocation map visualizations
+├── scripts/ # Automation & analysis scripts (23+)
+├── src/ems_readiness/ # Core Python package (v0.6.0)
+│ ├── demand/ # NHPP arrival generator
+│ ├── service/ # Travel time & service time models
+│ ├── optimization/ # MIP formulations, policies & allocator
+│ ├── simulation/ # SimPy DES engine
+│ └── utils/ # Distance calculations
+├── tests/ # 39 unit tests (pytest)
+├── requirements.txt # Python dependencies
+├── Makefile # Build automation
+└── LICENSE # MIT License
 ```
 
 ## Installation & Setup
@@ -131,8 +131,8 @@ pip install -e .
 The large raw data files are not tracked in Git. To reproduce from scratch:
 
 1. Download from [NYC Open Data](https://data.cityofnewyork.us/):
-   - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
-   - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
+ - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
+ - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
 
 2. Process the data:
 ```bash
@@ -224,7 +224,7 @@ pytest tests/test_reproducibility.py -v
 
 | Document | Description |
 |----------|-------------|
-| [Technical Report](docs/technical_report.md) | Comprehensive final report (v2.1.0) with all findings |
+| [Technical Report](docs/technical_report.md) | Full final report (v2.1.0) with all findings |
 | [Executive Presentation](docs/executive_presentation.md) | 10-slide stakeholder presentation |
 | [Implementation Roadmap](docs/implementation_roadmap.md) | Phased deployment plan |
 | [Conceptual Model](docs/conceptual_model.md) | DES model specification |
@@ -258,11 +258,11 @@ pytest tests/test_reproducibility.py -v
 
 ```bibtex
 @misc{ems_optimization_2026,
-  title={EMS Readiness Optimization for Manhattan: A Simulation-Based Approach to Ambulance Staging},
-  author={EMS Optimization Research Team},
-  year={2026},
-  howpublished={\url{https://github.com/cnsp/ems-optimization}},
-  note={Version 1.3.0}
+ title={EMS Readiness Optimization for Manhattan: A Simulation-Based Approach to Ambulance Staging},
+ author={EMS Optimization Research Team},
+ year={2026},
+ howpublished={\url{https://github.com/cnsp/ems-optimization}},
+ note={Version 1.3.0}
 }
 ```
 
@@ -277,4 +277,4 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-*Built with Python, SimPy, PuLP, pandas, and matplotlib. 8,500+ lines of code across 14 modules, validated with 39 tests and 2,700+ simulation experiments. Includes capacity sensitivity analysis (cap 1–5), spatially-stratified P0 baseline, Production V2 results, alternative distance metric and CBD-focused optimization analyses. 100% alignment with project outline (v1.3.0).*
+*Built with Python, SimPy, PuLP, pandas, and matplotlib. 8,500+ lines of code across 14 modules, tested with 39 unit tests and 2,700+ simulation experiments. Covers capacity sensitivity (cap 1–5), spatially-stratified P0 baseline, Production V2 results, and alternative distance metric and CBD-focused optimization analyses (v1.3.0).*

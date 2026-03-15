@@ -1,6 +1,6 @@
 # Decisions Log
 
-This document records key decisions made during the EMS Readiness Optimization project.
+This document logs key decisions made during the EMS Readiness Optimization project.
 
 ## Decision Template
 
@@ -73,7 +73,7 @@ Need to define candidate locations for EMS staging.
 Option 3 - Use FDNY firehouses as staging candidates.
 
 **Consequences**:
-- Leverages existing infrastructure
+- Uses existing infrastructure
 - Realistic operational scenario
 - Limited to current firehouse locations (may not be optimal in absolute terms)
 
@@ -213,9 +213,9 @@ Option 3 — Implement CBD-focused demand-weighted model (3× CBD weight) and co
 
 **Consequences**:
 - Added `build_cbd_focused_demand_weighted()` and `build_cbd_focused_coverage()` to `models.py`
-- CBD-focused P2 does NOT improve CBD RT (2.50 vs. 2.47 min, +1.2%) but dramatically worsens non-CBD RT (6.88 vs. 2.66 min, +159%)
+- CBD-focused P2 does NOT improve CBD RT (2.50 vs. 2.47 min, +1.2%) but sharply worsens non-CBD RT (6.88 vs. 2.66 min, +159%)
 - Non-CBD 8-min coverage drops from 100% to 73.6%
-- Validates that Manhattan-wide P2 already near-optimally serves the CBD without sacrificing equity
+- Validates that Manhattan-wide P2 already serves the CBD well without sacrificing equity
 - Recommends against CBD-focused optimization for operational deployment
 
 ---
@@ -273,7 +273,7 @@ Replace index-based P0 with latitude-based spatially-stratified P0 (P0-spatial) 
 
 **Rationale**:
 - Index-based P0 is not a meaningful "uniform" allocation — it depends on arbitrary database ordering
-- Latitude-based stratification divides Manhattan into equal-width bands and round-robins units, ensuring even north–south coverage
+- Latitude-based stratification divides Manhattan into equal-width bands and round-robins units, providing even north–south coverage
 - Manhattan's elongated geometry makes latitude the dominant spatial axis; adding longitude stratification adds complexity with minimal benefit
 - Random allocation is non-reproducible without seed management
 - P0-spatial at K=20: mean RT = 3.17 min vs. 8.08 min for index-based P0 (−60.7%)
@@ -319,7 +319,7 @@ Implement and compare options 1-3 (Demand-Weighted, P-Median, Maximal Coverage) 
 **Consequences**:
 - Need to implement 3 MIP solvers + 2 baseline policies
 - Compare 5 policies × 4 K values = 20 scenarios
-- Provides comprehensive policy comparison for decision-makers
+- Provides a full policy comparison for decision-makers
 
 ---
 

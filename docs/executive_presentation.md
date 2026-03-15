@@ -72,7 +72,7 @@
 
 ## Slide 5: Key Results — Head-to-Head Comparison
 
-### P2 Delivers Transformative Performance Improvements
+### P2 Sharply Improves Performance
 
 | Metric | P0 (Current) | P2 (Optimized) | Improvement |
 |--------|-------------|-----------------|-------------|
@@ -101,13 +101,13 @@
 - `pub_fig2_fleet_sensitivity.png` — How fleet size affects each policy
 - `pub_fig5_performance_heatmap.png` — Performance across all scenarios
 
-**The bottom line:** P2 doesn't just improve the average—it virtually eliminates long waits.
+**The bottom line:** P2 doesn't just shift the average — it nearly eliminates the long waits that matter most.
 
 ---
 
 ## Slide 7: Robustness Analysis
 
-### P2 Dominates Under ALL Tested Conditions
+### P2 Wins Under Every Condition We Tested
 
 **Fleet Size Sensitivity (K = 15 to 40):**
 - P2 achieves >99% coverage with just K=25 units
@@ -161,11 +161,11 @@
 | Additional calls within 8-min target | **~10,700** per year |
 | Effective fleet multiplier | **3×** (20 units → equivalent of 60) |
 
-### Beyond the Numbers:
-- **Lives saved** through faster defibrillation and trauma response
-- **Reduced disability** from faster stroke and cardiac care
-- **Improved equity** — better coverage for underserved areas
-- **Cost avoidance** — same performance with fewer units needed
+### What this means in practice:
+- Faster defibrillation and trauma response
+- Quicker stroke and cardiac care
+- Better coverage in currently underserved areas
+- Same performance with fewer units, or better performance with the current fleet
 
 ---
 
@@ -186,10 +186,10 @@
 
 ### Questions?
 
-**Contact:** EMS Optimization Research Team  
-**Repository:** github.com/cnsp/ems-optimization  
+**Contact:** EMS Optimization Research Team 
+**Repository:** github.com/cnsp/ems-optimization 
 **Full Technical Report:** docs/technical_report.md
 
 ---
 
-*This analysis is based on 1,440 simulation experiments, 2.24 million historical crash records, and rigorous statistical validation. All results are reproducible from the project repository.*
+*This analysis is based on 1,440 simulation experiments, 2.24 million historical crash records, and rigorous statistical validation. All results can be reproduced from the project repository.*

@@ -116,14 +116,14 @@ Deploy P2 allocation across all 48 Manhattan firehouses with shift-specific opti
 ## Timeline Summary
 
 ```
-Month:  1    2    3    4    5    6    7    8    9    10   11   12
-        |----Phase 1 (Pilot)----|
-                                |------Phase 2 (Expansion)------|
-                                                  |------Phase 3 (Full)------|
-        [Monitoring Dashboard Development]
-                          [Road Network Integration]
-                                              [Shift-Specific Optimization]
-                                                                [Handoff & Documentation]
+Month: 1 2 3 4 5 6 7 8 9 10 11 12
+ |----Phase 1 (Pilot)----|
+ |------Phase 2 (Expansion)------|
+ |------Phase 3 (Full)------|
+ [Monitoring Dashboard Development]
+ [Road Network Integration]
+ [Shift-Specific Optimization]
+ [Handoff & Documentation]
 ```
 
 ---
@@ -169,7 +169,7 @@ Month:  1    2    3    4    5    6    7    8    9    10   11   12
 - **Daily**: Mean RT and 8-min coverage
 - **Weekly**: Full KPI dashboard review; anomaly detection
 - **Monthly**: Trend analysis and model performance assessment
-- **Quarterly**: Comprehensive review with leadership; model recalibration
+- **Quarterly**: Full review with leadership; model recalibration
 
 ### Rollback Criteria
 - If mean RT increases by >20% in any precinct for >2 consecutive weeks

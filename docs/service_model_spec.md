@@ -3,7 +3,7 @@
 ## 1. Overview
 
 This document describes the **service model** used in the EMS Readiness
-Optimization simulation.  The model has two components:
+Optimization simulation. The model has two components:
 
 | Component | Purpose | Module |
 |-----------|---------|--------|
@@ -27,7 +27,7 @@ $$
 where:
 
 - $d_{\text{haversine}}$ is the great-circle (Haversine) distance between
-  the firehouse and the incident/precinct centroid.
+ the firehouse and the incident/precinct centroid.
 - $v_{\text{avg}}$ is a configurable average EMS speed (default: **20 mph**).
 
 ### 2.2 Justification
@@ -100,7 +100,7 @@ $$
 ### 3.3 What Service Time Covers
 
 The sampled service time represents the **on-scene + return-to-available**
-duration.  The full call timeline is:
+duration. The full call timeline is:
 
 1. **Dispatch delay** — fixed 1.5 min (configurable)
 2. **Travel to scene** — from travel-time proxy
@@ -133,11 +133,11 @@ All parameters are centralized in:
 ## 6. References
 
 1. Goldberg, J. B. (2004). *Operations Research Models for the Deployment
-   of Emergency Services Vehicles*. EMS Management Journal.
+ of Emergency Services Vehicles*. EMS Management Journal.
 2. Ingolfsson, A., Budge, S., & Erkut, E. (2008). Optimal ambulance
-   location with random delays and travel times. *Health Care Management
-   Science*, 11(3), 262–274.
+ location with random delays and travel times. *Health Care Management
+ Science*, 11(3), 262–274.
 3. NYC DOT. *NYC Mobility Report* — average traffic speeds in Manhattan.
 4. Lewis, P. A. W., & Shedler, G. S. (1979). Simulation of
-   nonhomogeneous Poisson processes by thinning.
-   *Naval Research Logistics Quarterly*, 26(3), 403–413.
+ nonhomogeneous Poisson processes by thinning.
+ *Naval Research Logistics Quarterly*, 26(3), 403–413.

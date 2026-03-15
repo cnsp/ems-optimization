@@ -8,47 +8,47 @@
 ## Architecture Overview
 
 ```
-ems_readiness/                  # Core package
-├── __init__.py                 # Package metadata (v0.6.0)
-├── demand/                     # Demand modeling module
-│   ├── __init__.py
-│   └── arrival_generator.py    # NHPP arrival generation
-├── service/                    # Service modeling module
-│   ├── __init__.py
-│   ├── travel_time.py          # Haversine-based travel proxy
-│   └── service_time.py         # LogNormal service time
-├── optimization/               # Optimization module
-│   ├── __init__.py
-│   ├── models.py               # MIP formulations (PuLP)
-│   ├── policies.py             # Baseline allocation policies
-│   └── allocator.py            # High-level solver interface
-├── simulation/                 # DES module
-│   ├── __init__.py
-│   ├── engine.py               # Main SimPy simulation
-│   ├── entities.py             # Incident dataclass
-│   ├── resources.py            # EMSUnit and UnitPool
-│   ├── dispatcher.py           # Nearest-available dispatch
-│   ├── metrics.py              # KPI collection
-│   └── runner.py               # Batch experiment runner
-└── utils/                      # Utilities
-    ├── __init__.py
-    └── distance.py             # Haversine & Manhattan distance
+ems_readiness/ # Core package
+├── __init__.py # Package metadata (v0.6.0)
+├── demand/ # Demand modeling module
+│ ├── __init__.py
+│ └── arrival_generator.py # NHPP arrival generation
+├── service/ # Service modeling module
+│ ├── __init__.py
+│ ├── travel_time.py # Haversine-based travel proxy
+│ └── service_time.py # LogNormal service time
+├── optimization/ # Optimization module
+│ ├── __init__.py
+│ ├── models.py # MIP formulations (PuLP)
+│ ├── policies.py # Baseline allocation policies
+│ └── allocator.py # High-level solver interface
+├── simulation/ # DES module
+│ ├── __init__.py
+│ ├── engine.py # Main SimPy simulation
+│ ├── entities.py # Incident dataclass
+│ ├── resources.py # EMSUnit and UnitPool
+│ ├── dispatcher.py # Nearest-available dispatch
+│ ├── metrics.py # KPI collection
+│ └── runner.py # Batch experiment runner
+└── utils/ # Utilities
+ ├── __init__.py
+ └── distance.py # Haversine & Manhattan distance
 ```
 
 ### Data Flow
 
 ```
 Raw Data → Data Processing → Processed Data
-                                    ↓
-                            Demand Model (NHPP)
-                                    ↓
-                            Optimization (MIP)
-                                    ↓
-                            Allocation (P0/P1/P2)
-                                    ↓
-                            Simulation (DES)
-                                    ↓
-                            Metrics & Analysis
+ ↓
+ Demand Model (NHPP)
+ ↓
+ Optimization (MIP)
+ ↓
+ Allocation (P0/P1/P2)
+ ↓
+ Simulation (DES)
+ ↓
+ Metrics & Analysis
 ```
 
 ---
@@ -64,12 +64,12 @@ Raw Data → Data Processing → Processed Data
 #### `NHPPArrivalGenerator`
 ```python
 class NHPPArrivalGenerator:
-    def __init__(self, base_rate, hourly_factors, dow_factors, precinct_rates=None)
-    
-    @classmethod
-    def from_tables(cls, data_dir, base_rate=3.48) -> NHPPArrivalGenerator
-    
-    def generate_arrivals(self, n_hours, start_hour=0, dow=0, rng=None) -> pd.DataFrame
+ def __init__(self, base_rate, hourly_factors, dow_factors, precinct_rates=None)
+ 
+ @classmethod
+ def from_tables(cls, data_dir, base_rate=3.48) -> NHPPArrivalGenerator
+ 
+ def generate_arrivals(self, n_hours, start_hour=0, dow=0, rng=None) -> pd.DataFrame
 ```
 
 **Parameters:**
@@ -114,8 +114,8 @@ def build_travel_time_matrix(distance_matrix, speed_mph=20.0, hour_of_day=None) 
 
 ```python
 class ServiceTimeModel:
-    def __init__(self, mean_minutes=25.0, std_minutes=10.0, distribution='lognormal')
-    def sample(self, size=1, rng=None) -> np.ndarray
+ def __init__(self, mean_minutes=25.0, std_minutes=10.0, distribution='lognormal')
+ def sample(self, size=1, rng=None) -> np.ndarray
 ```
 
 **Supported distributions:** `'lognormal'`, `'exponential'`
@@ -137,12 +137,12 @@ def build_maximal_coverage(travel_time_matrix, demand, K, threshold_minutes=8.0,
 
 # --- Added in v1.2.0 (CBD-focused models) ---
 def build_cbd_focused_demand_weighted(
-    travel_time_matrix, demand, K, cbd_precincts, cbd_weight=3.0, capacity=2, ...
+ travel_time_matrix, demand, K, cbd_precincts, cbd_weight=3.0, capacity=2, ...
 ) -> pulp.LpProblem
 
 def build_cbd_focused_coverage(
-    travel_time_matrix, demand, K, cbd_precincts, threshold_minutes=8.0,
-    cbd_coverage_weight=3.0, capacity=2, ...
+ travel_time_matrix, demand, K, cbd_precincts, threshold_minutes=8.0,
+ cbd_coverage_weight=3.0, capacity=2, ...
 ) -> pulp.LpProblem
 
 def extract_allocation(model) -> pd.Series
@@ -179,13 +179,13 @@ def spatial_stratification_analysis(firehouses, K_values, capacity=2) -> pd.Data
 
 ```python
 class EMSAllocator:
-    @classmethod
-    def from_project(cls, project_root) -> EMSAllocator
-    
-    def solve(self, model='demand_weighted', K=40, ...) -> AllocationResult
-    def baseline_uniform(self, K=40) -> AllocationResult
-    def baseline_demand_proportional(self, K=40) -> AllocationResult
-    def compare_models(self, K_values=[20,30,40,48]) -> pd.DataFrame
+ @classmethod
+ def from_project(cls, project_root) -> EMSAllocator
+ 
+ def solve(self, model='demand_weighted', K=40, ...) -> AllocationResult
+ def baseline_uniform(self, K=40) -> AllocationResult
+ def baseline_demand_proportional(self, K=40) -> AllocationResult
+ def compare_models(self, K_values=[20,30,40,48]) -> pd.DataFrame
 ```
 
 ---
@@ -196,12 +196,12 @@ class EMSAllocator:
 
 ```python
 class EMSSimulation:
-    def __init__(self, allocation, distance_matrix, config, ...)
-    
-    @classmethod
-    def from_config(cls, config_path, allocation) -> EMSSimulation
-    
-    def run(self, duration_hours=168, warm_up_hours=24, seed=None) -> dict
+ def __init__(self, allocation, distance_matrix, config, ...)
+ 
+ @classmethod
+ def from_config(cls, config_path, allocation) -> EMSSimulation
+ 
+ def run(self, duration_hours=168, warm_up_hours=24, seed=None) -> dict
 ```
 
 **Simulation Process (per call):**
@@ -219,24 +219,24 @@ class EMSSimulation:
 ```python
 @dataclass
 class Incident:
-    id: int
-    arrival_time: float
-    precinct: int
-    assigned_unit: str = None
-    assigned_firehouse: str = None
-    dispatch_time: float = None
-    service_start_time: float = None
-    completion_time: float = None
-    travel_time_minutes: float = None
-    service_time_minutes: float = None
-    dispatch_delay_minutes: float = 1.5
-    queued: bool = False
-    
-    @property
-    def response_time_minutes(self) -> float
-    
-    @property
-    def total_time_minutes(self) -> float
+ id: int
+ arrival_time: float
+ precinct: int
+ assigned_unit: str = None
+ assigned_firehouse: str = None
+ dispatch_time: float = None
+ service_start_time: float = None
+ completion_time: float = None
+ travel_time_minutes: float = None
+ service_time_minutes: float = None
+ dispatch_delay_minutes: float = 1.5
+ queued: bool = False
+ 
+ @property
+ def response_time_minutes(self) -> float
+ 
+ @property
+ def total_time_minutes(self) -> float
 ```
 
 ---
@@ -245,20 +245,20 @@ class Incident:
 
 ```python
 class UnitStatus(Enum):
-    AVAILABLE, DISPATCHED, ON_SCENE
+ AVAILABLE, DISPATCHED, ON_SCENE
 
 @dataclass
 class EMSUnit:
-    id: str
-    home_firehouse: str
-    status: UnitStatus
-    def dispatch(self) / arrive_on_scene(self) / return_available(self)
+ id: str
+ home_firehouse: str
+ status: UnitStatus
+ def dispatch(self) / arrive_on_scene(self) / return_available(self)
 
 class UnitPool:
-    def __init__(self, allocation: pd.Series)
-    def get_available_units(self) -> list[EMSUnit]
-    def count_available(self) -> int
-    def get_utilizations(self) -> dict
+ def __init__(self, allocation: pd.Series)
+ def get_available_units(self) -> list[EMSUnit]
+ def count_available(self) -> int
+ def get_utilizations(self) -> dict
 ```
 
 ---
@@ -267,9 +267,9 @@ class UnitPool:
 
 ```python
 class NearestAvailableDispatcher:
-    def __init__(self, distance_matrix, speed_mph=20.0, use_time_of_day=True)
-    
-    def find_nearest_unit(self, precinct, unit_pool, hour_of_day=None) -> tuple[EMSUnit, float]
+ def __init__(self, distance_matrix, speed_mph=20.0, use_time_of_day=True)
+ 
+ def find_nearest_unit(self, precinct, unit_pool, hour_of_day=None) -> tuple[EMSUnit, float]
 ```
 
 ---
@@ -278,12 +278,12 @@ class NearestAvailableDispatcher:
 
 ```python
 class MetricsCollector:
-    def __init__(self, response_threshold_minutes=8.0)
-    def record_incident(self, incident: Incident)
-    def record_queue_length(self, time, length)
-    def get_summary_statistics(self) -> dict
-    def get_incident_log(self) -> pd.DataFrame
-    def reset(self)
+ def __init__(self, response_threshold_minutes=8.0)
+ def record_incident(self, incident: Incident)
+ def record_queue_length(self, time, length)
+ def get_summary_statistics(self) -> dict
+ def get_incident_log(self) -> pd.DataFrame
+ def reset(self)
 ```
 
 **Summary statistics include:** mean/median/P90/max response time, 8-min coverage fraction, mean utilization, queue metrics.
@@ -294,10 +294,10 @@ class MetricsCollector:
 
 ```python
 class BatchRunner:
-    def __init__(self, base_config, ...)
-    
-    def run_experiment(self, allocation, n_reps=30, ...) -> pd.DataFrame
-    def run_factorial(self, factors, ...) -> pd.DataFrame
+ def __init__(self, base_config, ...)
+ 
+ def run_experiment(self, allocation, n_reps=30, ...) -> pd.DataFrame
+ def run_factorial(self, factors, ...) -> pd.DataFrame
 ```
 
 **Features:** CRN support, parallel execution, progress tracking, result aggregation.
@@ -311,14 +311,14 @@ class BatchRunner:
 ```python
 EARTH_RADIUS_MILES = 3958.8
 MILES_PER_DEGREE_LAT = 69.0
-MILES_PER_DEGREE_LON_NYC = 52.3  # At 40.75°N latitude
+MILES_PER_DEGREE_LON_NYC = 52.3 # At 40.75°N latitude
 
-def haversine(lat1, lon1, lat2, lon2) -> float  # great-circle distance (miles)
+def haversine(lat1, lon1, lat2, lon2) -> float # great-circle distance (miles)
 
-def manhattan_distance(lat1, lon1, lat2, lon2) -> float  # taxicab distance (miles)
+def manhattan_distance(lat1, lon1, lat2, lon2) -> float # taxicab distance (miles)
 
 def build_distance_matrix(origins, destinations, ..., metric="haversine") -> pd.DataFrame
-    # metric: "haversine" or "manhattan"
+ # metric: "haversine" or "manhattan"
 ```
 
 **Added in v1.2.0:** `manhattan_distance()` function and `metric` parameter for `build_distance_matrix()`. Manhattan distance computes |Δlat|×69.0 + |Δlon|×52.3 miles, approximating grid-based travel in NYC.
@@ -331,24 +331,24 @@ def build_distance_matrix(origins, destinations, ..., metric="haversine") -> pd.
 ```yaml
 base_rate_per_hour: 3.48
 lambda_tables:
-  hourly: data/processed/demand_lambda_hourly.csv
-  dow: data/processed/demand_lambda_dow.csv
-  precinct: data/processed/demand_lambda_precinct.csv
+ hourly: data/processed/demand_lambda_hourly.csv
+ dow: data/processed/demand_lambda_dow.csv
+ precinct: data/processed/demand_lambda_precinct.csv
 simulation:
-  default_duration_hours: 168
-  default_replications: 30
-  seed: 42
+ default_duration_hours: 168
+ default_replications: 30
+ seed: 42
 ```
 
 ### `configs/service.yaml`
 ```yaml
 travel_time:
-  average_speed_mph: 20.0
-  use_time_of_day: true
+ average_speed_mph: 20.0
+ use_time_of_day: true
 service_time:
-  distribution: lognormal
-  mean_minutes: 25.0
-  std_minutes: 10.0
+ distribution: lognormal
+ mean_minutes: 25.0
+ std_minutes: 10.0
 dispatch_delay_minutes: 1.5
 ```
 
@@ -358,8 +358,8 @@ unit_counts: [20, 30, 40, 48]
 firehouse_capacity: 2
 coverage_threshold_minutes: 8.0
 solver:
-  name: CBC
-  time_limit_sec: 300
+ name: CBC
+ time_limit_sec: 300
 ```
 
 ---
@@ -371,8 +371,8 @@ solver:
 1. Add policy function in `optimization/policies.py`:
 ```python
 def my_new_policy(travel_time_matrix, demand, K, **kwargs) -> pd.Series:
-    # Return pd.Series: firehouse_name → unit_count
-    pass
+ # Return pd.Series: firehouse_name → unit_count
+ pass
 ```
 
 2. Register in `optimization/allocator.py` `solve()` method
@@ -383,9 +383,9 @@ def my_new_policy(travel_time_matrix, demand, K, **kwargs) -> pd.Series:
 1. Create new dispatcher class in `simulation/dispatcher.py`:
 ```python
 class MyDispatcher:
-    def find_nearest_unit(self, precinct, unit_pool, hour_of_day=None):
-        # Return (EMSUnit, travel_time_minutes)
-        pass
+ def find_nearest_unit(self, precinct, unit_pool, hour_of_day=None):
+ # Return (EMSUnit, travel_time_minutes)
+ pass
 ```
 
 2. Pass to `EMSSimulation.__init__(dispatcher=MyDispatcher(...))`
@@ -395,8 +395,8 @@ class MyDispatcher:
 1. Define factor levels in a new script:
 ```python
 factors = {
-    'policy': ['P0', 'P1', 'P2'],
-    'my_factor': [val1, val2, val3]
+ 'policy': ['P0', 'P1', 'P2'],
+ 'my_factor': [val1, val2, val3]
 }
 runner = BatchRunner(base_config)
 results = runner.run_factorial(factors, n_reps=30)

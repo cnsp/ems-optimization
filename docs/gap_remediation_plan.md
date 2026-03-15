@@ -35,15 +35,15 @@ Rather than re-running simulations, filter the existing incident-level logs from
 1. **Identify CBD precincts** — Use `data/raw/cbd_boundary.geojson` and `data/processed/precincts_manhattan.geojson` to identify which precincts overlap the CBD (approximately precincts 1, 5, 6, 7, 10, 13, 14, 17, 18, 19, 20).
 
 2. **Create CBD analysis script** — `scripts/analyze_cbd_robustness.py`:
-   - Load incident-level logs from production experiments
-   - Filter incidents where `precinct` is in the CBD precinct set
-   - Recompute: mean RT, P90 RT, 8-min coverage, utilization for CBD-only incidents
-   - Compare P0 vs P1 vs P2 performance in CBD subset
-   - Generate comparison table and figure
+ - Load incident-level logs from production experiments
+ - Filter incidents where `precinct` is in the CBD precinct set
+ - Recompute: mean RT, P90 RT, 8-min coverage, utilization for CBD-only incidents
+ - Compare P0 vs P1 vs P2 performance in CBD subset
+ - Generate comparison table and figure
 
 3. **Add CBD section to technical report** — Add a subsection in Results (§5) titled "CBD Robustness Check":
-   - Table comparing Manhattan-wide vs CBD metrics for each policy
-   - Brief interpretation (e.g., "P2's advantage is even more pronounced in the CBD due to higher demand concentration")
+ - Table comparing Manhattan-wide vs CBD metrics for each policy
+ - Brief interpretation (e.g., "P2's advantage is even more pronounced in the CBD due to higher demand concentration")
 
 4. **Update experimental design doc** — Add note that CBD analysis was performed as post-hoc filtering.
 
@@ -62,10 +62,10 @@ Rather than re-running simulations, filter the existing incident-level logs from
 - Created `docs/cbd_definition.md` documenting CBD precinct selection methodology
 - Created `configs/cbd_scenario.yaml` with CBD-specific scenario parameters
 - Built `scripts/run_cbd_experiment.py` — full factorial CBD experiment:
-  - 11 scenarios × 3 policies × 30 replications = **330 dedicated CBD simulation runs**
-  - Scenarios: baseline, high-demand CBD, low-demand non-CBD, fleet variations (K=15,20,25,30), service time variations
+ - 11 scenarios × 3 policies × 30 replications = **330 dedicated CBD simulation runs**
+ - Scenarios: baseline, high-demand CBD, low-demand non-CBD, fleet variations (K=15,20,25,30), service time variations
 - Created `notebooks/09_cbd_analysis.ipynb` for interactive CBD analysis
-- Created `docs/cbd_robustness_analysis.md` with comprehensive findings
+- Created `docs/cbd_robustness_analysis.md` with full findings
 - Added §5.7 "CBD Robustness Analysis" to `docs/technical_report.md`
 
 **Key findings:** P2 dominates across all CBD scenarios. CBD response times are 2.5–2.9 min for all policies due to firehouse concentration. P0 degrades to 12.81 min in non-CBD areas. P2's advantage is most pronounced in mixed CBD/non-CBD scenarios.
@@ -85,10 +85,10 @@ Add queue metrics to the results section.
 ### Implementation Steps
 
 1. **Extract queue data** from `results/simulation/production/exp1_policy_comparison.csv`:
-   - Columns: `mean_queue_length`, `max_queue_length`, `queue_fraction`, `incidents_queued`
+ - Columns: `mean_queue_length`, `max_queue_length`, `queue_fraction`, `incidents_queued`
 
 2. **Add to technical report** — In §5 (Results), add a paragraph:
-   > "Queue behavior was minimal across all policies under the K=20 baseline scenario. Under P2, mean queue length was [X] with [Y]% of incidents experiencing any queuing, compared to [A] and [B]% under P0."
+ > "Queue behavior was minimal across all policies under the K=20 baseline scenario. Under P2, mean queue length was [X] with [Y]% of incidents experiencing any queuing, compared to [A] and [B]% under P0."
 
 3. **Optionally add table** — A small table in the appendix showing queue metrics by policy.
 
@@ -97,12 +97,12 @@ Add queue metrics to the results section.
 ### ✅ Resolution (v1.1.0)
 
 **Implementation:**
-- Created `scripts/analyze_queue_metrics.py` — comprehensive queue analysis across all 1,770 simulation runs
+- Created `scripts/analyze_queue_metrics.py` — queue analysis across all 1,770 simulation runs
 - Analyzed queue metrics: mean queue length, max queue length, queue fraction, incidents queued
 - Created `docs/queue_analysis.md` with full findings
 - Added §5.8 "Queueing Performance Analysis" to `docs/technical_report.md`
 
-**Key findings:** Queue metrics are **zero across all 1,770 runs**. System utilization is 10–15%, far below queueing thresholds. This is a legitimate and important finding — the fleet is sufficiently sized that no incidents experience queueing delays under any tested scenario. This validates the system design and demonstrates that response time differences between policies are driven by spatial allocation, not capacity constraints.
+**Key findings:** Queue metrics are **zero across all 1,770 runs**. System utilization is 10–15%, far below queueing thresholds. This is a legitimate and important finding — the fleet is sufficiently sized that no incidents experience queueing delays under any tested scenario. This confirms that response time differences between policies are driven by spatial allocation, not capacity constraints.
 
 **Deliverables:** 4 figures (`queue_comparison_by_policy.png`, `queue_vs_fleet_size.png`, `queue_vs_demand.png`, `queue_heatmap.png`), 2 tables (`queue_statistics.csv`, `queue_anova.csv`), 1 doc.
 
@@ -121,7 +121,7 @@ Add a brief seasonal note to the demand model documentation.
 1. **Check existing EDA** — `notebooks/02_eda_spatiotemporal.ipynb` likely includes monthly/annual trends. If so, reference it.
 
 2. **Add sentence to demand model spec** — In `demand_model_spec.md`, add:
-   > "Monthly analysis reveals relatively stable crash rates across seasons, with a slight increase during summer months (June–August) and a modest decrease in winter (December–February). These seasonal effects are small relative to hourly and DOW variation and are subsumed by the NHPP model's average rate."
+ > "Monthly analysis reveals relatively stable crash rates across seasons, with a slight increase during summer months (June–August) and a modest decrease in winter (December–February). These seasonal effects are small relative to hourly and DOW variation and are subsumed by the NHPP model's average rate."
 
 3. **If data supports it**, add a brief monthly bar chart to the EDA notebook.
 

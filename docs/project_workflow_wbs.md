@@ -2,8 +2,8 @@
 
 ## EMS Readiness Optimization for Manhattan
 
-**Date:** March 15, 2026  
-**Version:** 1.3.0  
+**Date:** March 15, 2026 
+**Version:** 1.3.0 
 **Project:** EMS Readiness Optimization — Manhattan, NYC
 
 ---
@@ -241,7 +241,7 @@ Design the conceptual DES model and implement a modular simulation engine in Pyt
 | 4.10 | Implement `MetricsCollector` for KPI tracking | `metrics.py` |
 | 4.11 | Implement `EMSSimulation` main engine with SimPy process-interaction | `engine.py` |
 | 4.12 | Implement `BatchRunner` for replicated experiments with CRN support | `runner.py` |
-| 4.13 | Write comprehensive unit tests (39 tests across 4 modules) | Test suite |
+| 4.13 | Write unit tests (39 tests across 4 modules) | Test suite |
 | 4.14 | Document conceptual model and code architecture | Documentation |
 
 ### Input Files
@@ -379,7 +379,7 @@ Execute production simulation experiments, perform statistical analysis, and gen
 | `results/tables/exp4_pivot_rt.csv` | Experiment 4 pivot table |
 | `results/tables/sensitivity_summary.csv` | Overall sensitivity summary |
 | `results/tables/cbd_comparison.csv` | CBD comparison table |
-| `results/tables/cbd_summary_all.csv` | CBD comprehensive summary |
+| `results/tables/cbd_summary_all.csv` | CBD full summary |
 | `results/tables/queue_statistics.csv` | Queue statistics |
 | `results/tables/queue_anova.csv` | Queue ANOVA results |
 | `results/tables/seasonal_analysis.csv` | Seasonal variation analysis |
@@ -418,13 +418,13 @@ Execute production simulation experiments, perform statistical analysis, and gen
 ## 8. Phase 7 — Reporting & Final Delivery
 
 ### Objective
-Compile all findings into a comprehensive technical report, executive presentation, and complete project archive.
+Compile all findings into a full technical report, executive presentation, and complete project archive.
 
 ### Step-by-Step Procedure
 
 | Step | Action | Output |
 |------|--------|--------|
-| 7.1 | Write comprehensive technical report covering all sections (Introduction through Appendices) | Technical report |
+| 7.1 | Write the full technical report covering all sections (Introduction through Appendices) | Technical report |
 | 7.2 | Add formal abstract (~250 words) and executive summary | Report front matter |
 | 7.3 | Create List of Figures (44 figures) and List of Tables (24 tables) | Report indices |
 | 7.4 | Add "Why DES?" justification section | Methodology rationale |
@@ -433,7 +433,7 @@ Compile all findings into a comprehensive technical report, executive presentati
 | 7.7 | Write executive presentation with key findings and recommendations | Presentation document |
 | 7.8 | Prepare implementation roadmap (0–3, 3–6, 6–12, 12+ months) | Roadmap |
 | 7.9 | Create file inventory and project archive documentation | Archive manifest |
-| 7.10 | Perform Phase 21 compliance assessment | Compliance report |
+| 7.10 | Perform compliance assessment | Compliance report |
 | 7.11 | Address any remaining gaps identified in assessment | Gap remediation |
 | 7.12 | Generate PDF versions of all documentation | PDF deliverables |
 | 7.13 | Create Work Breakdown Structure documentation | This document |
@@ -450,7 +450,7 @@ Compile all findings into a comprehensive technical report, executive presentati
 
 | File | Description |
 |------|-------------|
-| `docs/technical_report.md` | Comprehensive technical report (v2.0.0, Phase 21 compliant) |
+| `docs/technical_report.md` | Comprehensive technical report (v2.0.0, fully compliant) |
 | `docs/technical_report.pdf` | PDF version of technical report |
 | `docs/executive_summary.md` | Standalone executive summary |
 | `docs/executive_presentation.md` | Executive presentation |
@@ -458,7 +458,7 @@ Compile all findings into a comprehensive technical report, executive presentati
 | `docs/final_summary.md` | Final project summary |
 | `docs/file_inventory.md` | Complete file inventory |
 | `docs/project_archive.md` | Archive documentation |
-| `docs/phase21_assessment.md` | Phase 21 compliance assessment |
+| `docs/phase21_assessment.md` | compliance assessment |
 | `docs/gap_remediation_plan.md` | Gap remediation plan |
 | `docs/phase_comparison_summary.md` | Phase comparison summary |
 | `docs/project_workflow_wbs.md` | This WBS document |
@@ -606,31 +606,31 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 
 ```
 Phase 1: Problem Definition & Project Setup
-    │
-    ▼
+ │
+ ▼
 Phase 2: Data Strategy & Engineering
-    │
-    ├───────────────────┐
-    ▼                   ▼
-Phase 3: Optimization   │
-    │                   │
-    ├───────────────────┤
-    ▼                   │
+ │
+ ├───────────────────┐
+ ▼ ▼
+Phase 3: Optimization │
+ │ │
+ ├───────────────────┤
+ ▼ │
 Phase 4: Simulation ◄───┘
-    │
-    ▼
+ │
+ ▼
 Phase 5: Verification & Validation
-    │
-    ▼
+ │
+ ▼
 Phase 6: Experimentation & Analysis
-    │
-    ▼
+ │
+ ▼
 Phase 7: Reporting & Final Delivery
-    │
-    ▼
+ │
+ ▼
 Phase 8: Alternative Analyses & Extensions
-    │
-    ▼
+ │
+ ▼
 Phase 9: Capacity & Baseline Improvements
 ```
 
@@ -705,5 +705,5 @@ Phase 9: Capacity & Baseline Improvements
 
 ---
 
-*Document prepared as part of the EMS Readiness Optimization project, Phase 9.*  
+*Part of the EMS Readiness Optimization project, Phase 9.* 
 *Version 1.3.0 — March 15, 2026*

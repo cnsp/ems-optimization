@@ -45,7 +45,7 @@ This document presents the results of CBD-specific robustness experiments design
 | P2 | 2.57 | 2.48 | 2.65 | 99.6% | 99.9% |
 
 **Key observations:**
-- CBD response times are significantly lower than Manhattan-wide averages for all policies
+- CBD response times are notably lower than Manhattan-wide averages for all policies
 - P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD)
 - P1 and P2 achieve near-universal CBD coverage (99.9%)
 - P2 provides the most balanced performance between CBD and non-CBD areas

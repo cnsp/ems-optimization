@@ -78,7 +78,7 @@ $$\min \sum_{j \in J} \sum_{i \in I} d_j \, t_{ij} \, y_{ij}$$
 ### Interpretation
 
 The p-median answers: *"If we can only staff K firehouses, which K
-should we choose?"*  This is useful when fixed costs dominate and units
+should we choose?"* This is useful when fixed costs dominate and units
 are scarce. Note that here $K$ refers to the number of **open
 locations**, not the total unit count.
 
@@ -109,7 +109,7 @@ $$\max \sum_{j \in J} d_j \, z_j$$
 ### Interpretation
 
 The maximal-coverage model focuses on a binary service-level target:
-*"Can we reach precinct $j$ in $\le \tau$ minutes?"*  With $\tau = 8$
+*"Can we reach precinct $j$ in $\le \tau$ minutes?"* With $\tau = 8$
 minutes (configurable), it maximises the proportion of demand that
 meets this standard. This model is especially useful for equity
 analysis and minimum service-level guarantees.
@@ -182,6 +182,6 @@ capabilities; typical solve times are under 5 seconds.
 
 1. Daskin, M.S. (2013). *Network and Discrete Location*. Wiley.
 2. Church, R. & ReVelle, C. (1974). The Maximal Covering Location Problem.
-   *Papers of the Regional Science Association*, 32, 101–118.
+ *Papers of the Regional Science Association*, 32, 101–118.
 3. ReVelle, C. & Swain, R. (1970). Central facilities location.
-   *Geographical Analysis*, 2(1), 30–42.
+ *Geographical Analysis*, 2(1), 30–42.

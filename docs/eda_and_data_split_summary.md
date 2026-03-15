@@ -2,7 +2,7 @@
 
 ## Part 1 — EDA of Crash Counts by Dimension
 
-The project contains comprehensive EDA across all four dimensions. Here's what exists and where:
+The project contains thorough EDA across all four dimensions. Here's what exists and where:
 
 ---
 
@@ -90,24 +90,24 @@ The methodology is a **simulation-based optimization** approach, not a supervise
 
 ```
 Historical Crash Data (416,434 records, 2012–2026)
-        │
-        ▼
-   Demand Model Calibration (NHPP)
-   ├── Hourly factors (24 values)
-   ├── Day-of-week factors (7 values)
-   └── Precinct proportions (22 values)
-        │
-        ▼
-   Discrete-Event Simulation (DES)
-   ├── Generates crash arrivals using NHPP thinning algorithm
-   ├── Simulates dispatch, travel, and service
-   └── Evaluates response times under each allocation policy
-        │
-        ▼
-   Allocation Optimization (MIP)
-   ├── P0: Uniform allocation (baseline)
-   ├── P1: Demand-proportional allocation
-   └── P2: Demand-weighted optimized allocation (MIP)
+ │
+ ▼
+ Demand Model Calibration (NHPP)
+ ├── Hourly factors (24 values)
+ ├── Day-of-week factors (7 values)
+ └── Precinct proportions (22 values)
+ │
+ ▼
+ Discrete-Event Simulation (DES)
+ ├── Generates crash arrivals using NHPP thinning algorithm
+ ├── Simulates dispatch, travel, and service
+ └── Evaluates response times under each allocation policy
+ │
+ ▼
+ Allocation Optimization (MIP)
+ ├── P0: Uniform allocation (baseline)
+ ├── P1: Demand-proportional allocation
+ └── P2: Demand-weighted optimized allocation (MIP)
 ```
 
 ### 2.2 NHPP Demand Model Calibration
@@ -128,10 +128,10 @@ The homogeneous Poisson model was **rejected** via chi-square (stat = 723,713, p
 From `docs/experimental_design.md`:
 
 - **No data split for training/testing** — instead, robustness is established through **experimental design**:
-  - **Experiment 1** (90 runs): Compare 3 policies at baseline (K=20, δ=1.0)
-  - **Experiment 2** (540 runs): Fleet size sensitivity (K ∈ {15, 20, 25, 30, 35, 40})
-  - **Experiment 3** (540 runs): Demand multiplier sensitivity (δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0})
-  - **Experiment 4** (270 runs): Service time robustness (μ_s ∈ {20, 25, 30} min)
+ - **Experiment 1** (90 runs): Compare 3 policies at baseline (K=20, δ=1.0)
+ - **Experiment 2** (540 runs): Fleet size sensitivity (K ∈ {15, 20, 25, 30, 35, 40})
+ - **Experiment 3** (540 runs): Demand multiplier sensitivity (δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0})
+ - **Experiment 4** (270 runs): Service time robustness (μ_s ∈ {20, 25, 30} min)
 - **1,440 total simulation runs**, each 168 hours (1 week), 30 replications per scenario with **Common Random Numbers (CRN)** for variance reduction
 - Statistical analysis via paired t-tests, ANOVA, and confidence intervals
 

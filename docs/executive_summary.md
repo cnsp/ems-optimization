@@ -21,7 +21,7 @@ policies for Manhattan:
 
 A total of **1,770 simulation replications** were run across five experiment sets
 (including CBD robustness), using 30 independent replications per scenario with
-Common Random Numbers (CRN) to ensure fair comparisons.
+Common Random Numbers (CRN) for fair comparisons.
 
 ---
 
@@ -41,11 +41,11 @@ sizes** (Cohen's d > 2.0).
 ### 2. Robustness
 
 - **Fleet size**: P2 outperforms P0 at every fleet size tested (K = 15 to 40).
-  Even with 25% fewer units (K = 15), P2 outperforms P0 at K = 40.
+ Even with 25% fewer units (K = 15), P2 outperforms P0 at K = 40.
 - **Demand surges**: Under 2× demand, P2 maintains 85%+ coverage while P0 drops
-  below 50%.
+ below 50%.
 - **Service time variation**: ±20% changes in on-scene service time have minimal
-  impact on the P2 advantage.
+ impact on the P2 advantage.
 
 ### 3. CBD Robustness
 
@@ -94,8 +94,8 @@ sizes** (Cohen's d > 2.0).
 |------|----------|
 | Implementation cost | Low – repositioning existing units, no new hires |
 | Time to deploy | 2–4 weeks |
-| Expected lives impacted | Significant – faster response directly correlates with survival rates |
-| Risk | Low – P2 is robust across all tested scenarios |
+| Expected lives impacted | Meaningful – faster response is associated with improved survival rates |
+| Risk | Low – P2 holds up across all tested scenarios |
 
 ---
 
@@ -118,7 +118,7 @@ sizes** (Cohen's d > 2.0).
 ---
 
 *Analysis performed with 1,770 simulation replications (including CBD robustness),
-rigorous statistical testing (ANOVA, Tukey HSD, Bonferroni corrections),
-comprehensive queueing analysis, seasonal variation assessment, and
+statistical testing (ANOVA, Tukey HSD, Bonferroni corrections),
+full queueing analysis, seasonal variation assessment, and
 publication-quality reporting. Full methodology documented in
 `docs/output_analysis.md` and `docs/technical_report.md`.*

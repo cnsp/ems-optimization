@@ -1,7 +1,7 @@
 # Distance Metric Comparison: Haversine vs Manhattan
 
-**Date:** March 12, 2026  
-**Version:** 1.0  
+**Date:** March 12, 2026 
+**Version:** 1.0 
 **Author:** EMS Optimization Team
 
 ---

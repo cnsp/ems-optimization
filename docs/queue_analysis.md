@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-This document provides a comprehensive analysis of queueing behavior in the EMS simulation experiments. Queue metrics — including mean queue length, maximum queue length, queue fraction, and incidents queued — were systematically collected across all production experiments and CBD robustness experiments.
+This document provides a thorough analysis of queueing behavior in the EMS simulation experiments. Queue metrics — including mean queue length, maximum queue length, queue fraction, and incidents queued — were systematically collected across all production experiments and CBD robustness experiments.
 
 **Key Finding:** Under all tested scenarios with K ≥ 15 units, queueing is essentially non-existent (queue fraction = 0.0). This indicates that the Manhattan EMS system, even with the minimum fleet size tested, has sufficient capacity to handle demand without queuing delays.
 
@@ -69,7 +69,7 @@ Even at 2× demand (δ=2.0), the system operates at ~30% utilization, well below
 For an M/G/c queue with c servers:
 - ρ = λ/(c·μ) where λ = arrival rate, μ = service rate
 - With λ = 3.48/hr, μ = 2/hr (30-min service), c = 20:
-  - ρ = 3.48 / (20 × 2) = 0.087
+ - ρ = 3.48 / (20 × 2) = 0.087
 - This extremely low traffic intensity ensures near-zero waiting probability
 
 ### Operational Implications

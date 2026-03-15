@@ -3,9 +3,9 @@
 ## 1. Overview
 
 This document specifies the statistical framework used to analyse results from the
-EMS Readiness Optimization production experiments (Phase 5).  The analysis covers
+EMS Readiness Optimization production experiments (Phase 5). The analysis covers
 **1 440 simulation replications** across four experiment sets and three allocation
-policies.  All procedures follow publication standards for discrete-event simulation
+policies. All procedures follow publication standards for discrete-event simulation
 output analysis (Law, 2015; Banks et al., 2010).
 
 ---
@@ -34,7 +34,7 @@ output analysis (Law, 2015; Banks et al., 2010).
 
 ### 3.2 Significance Level
 
-All tests use **α = 0.05** (two-sided).  Family-wise error is controlled with
+All tests use **α = 0.05** (two-sided). Family-wise error is controlled with
 Bonferroni or Tukey adjustments where multiple comparisons are made.
 
 ---
@@ -47,9 +47,9 @@ Bonferroni or Tukey adjustments where multiple comparisons are made.
 - **Response**: Mean response time per replication
 - **Replications**: 30 per policy (Common Random Numbers)
 - **Assumptions checked**:
-  - Normality: Shapiro-Wilk test on residuals
-  - Homogeneity of variance: Levene's test
-  - Independence: ensured by CRN design
+ - Normality: Shapiro-Wilk test on residuals
+ - Homogeneity of variance: Levene's test
+ - Independence: ensured by CRN design
 
 ### 4.2 Two-Way ANOVA (Experiments 2–4)
 
@@ -61,7 +61,7 @@ Bonferroni or Tukey adjustments where multiple comparisons are made.
 
 - **Model**: $Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \varepsilon_{ijk}$
 - **Interaction term** $(\alpha\beta)_{ij}$ tests whether the policy advantage
-  changes across factor levels.
+ changes across factor levels.
 
 ### 4.3 Assumption Diagnostics
 
@@ -102,7 +102,7 @@ with $n = 30$ replications.
 
 ### 6.2 CIs for Differences
 
-For paired policy comparisons (leveraging CRN):
+For paired policy comparisons (using CRN):
 
 $$\bar{D} \pm t_{\alpha/2,\,n-1}\;\frac{s_D}{\sqrt{n}}$$
 

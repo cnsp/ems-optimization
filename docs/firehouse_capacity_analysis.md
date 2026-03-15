@@ -1,6 +1,6 @@
 # Firehouse Capacity Analysis – EMS Optimization Model
 
-**Date:** March 15, 2026  
+**Date:** March 15, 2026 
 **Scope:** Capacity constraints in the MIP formulations allocating K EMS units across 48 Manhattan firehouses
 
 ---
@@ -39,7 +39,7 @@ Baseline policies (`policies.py`) also accept `capacity=5`:
 ```python
 # models.py – Demand-Weighted
 x = pulp.LpVariable.dicts("x", firehouses,
-                           lowBound=0, upBound=capacity, cat="Integer")
+ lowBound=0, upBound=capacity, cat="Integer")
 ```
 
 The P-Median model uses **binary** `x_i` (open/close), so each opened firehouse effectively gets exactly 1 unit—capacity is not a binding concern there.
@@ -139,7 +139,7 @@ firehouse_capacity: 2
 
 # Or use per-firehouse capacities (future enhancement)
 # firehouse_capacity_overrides:
-#   "Battalion 10/Engine 22/Ladder 13": 3   # large double-house
+# "Battalion 10/Engine 22/Ladder 13": 3 # large double-house
 ```
 
 ### 5.2 No Code Changes Needed in `models.py`
@@ -149,7 +149,7 @@ The capacity parameter is already properly implemented. Changing the YAML value 
 ```python
 # In models.py – already correct:
 x = pulp.LpVariable.dicts("x", firehouses,
-                           lowBound=0, upBound=capacity, cat="Integer")
+ lowBound=0, upBound=capacity, cat="Integer")
 ```
 
 ### 5.3 Optional: Per-Firehouse Capacity (Future Enhancement)
@@ -159,28 +159,28 @@ To allow different capacities per firehouse (e.g., large stations get cap=3):
 ```python
 # In models.py – replace scalar capacity with dict
 def build_demand_weighted(
-    travel_time, demand, K,
-    capacity=2,                         # default
-    capacity_overrides: dict = None,    # NEW
-    solver_time_limit=300,
+ travel_time, demand, K,
+ capacity=2, # default
+ capacity_overrides: dict = None, # NEW
+ solver_time_limit=300,
 ):
-    firehouses = list(travel_time.index)
-    precincts = [p for p in travel_time.columns if p in demand.index]
-    
-    # Per-firehouse capacity
-    cap = {}
-    for fh in firehouses:
-        if capacity_overrides and fh in capacity_overrides:
-            cap[fh] = capacity_overrides[fh]
-        else:
-            cap[fh] = capacity
-    
-    prob = pulp.LpProblem("DemandWeighted_EMS_Allocation", pulp.LpMinimize)
-    
-    # Use per-firehouse upper bound
-    x = {fh: pulp.LpVariable(f"x_{fh}", lowBound=0, upBound=cap[fh], cat="Integer")
-         for fh in firehouses}
-    # ... rest unchanged ...
+ firehouses = list(travel_time.index)
+ precincts = [p for p in travel_time.columns if p in demand.index]
+ 
+ # Per-firehouse capacity
+ cap = {}
+ for fh in firehouses:
+ if capacity_overrides and fh in capacity_overrides:
+ cap[fh] = capacity_overrides[fh]
+ else:
+ cap[fh] = capacity
+ 
+ prob = pulp.LpProblem("DemandWeighted_EMS_Allocation", pulp.LpMinimize)
+ 
+ # Use per-firehouse upper bound
+ x = {fh: pulp.LpVariable(f"x_{fh}", lowBound=0, upBound=cap[fh], cat="Integer")
+ for fh in firehouses}
+ # ... rest unchanged ...
 ```
 
 ---

@@ -60,11 +60,11 @@
 
 **Project delivers:**
 - ✅ Five research questions (RQ1–RQ5) in `technical_report.md` §2.3
-  - RQ1: Spatiotemporal demand variation
-  - RQ2: Optimal allocation to minimize response time
-  - RQ3: Optimized vs. baseline under stochastic conditions
-  - RQ4: Sensitivity to fleet size, demand, service time
-  - RQ5: Fleet size for target coverage
+ - RQ1: Spatiotemporal demand variation
+ - RQ2: Optimal allocation to minimize response time
+ - RQ3: Optimized vs. baseline under stochastic conditions
+ - RQ4: Sensitivity to fleet size, demand, service time
+ - RQ5: Fleet size for target coverage
 - ✅ Four hypotheses (H1–H4) in `experimental_design.md`
 - ✅ MOEs defined: Mean RT (primary), P90 RT, 8-min coverage, utilization (secondary)
 - ✅ 8-minute threshold explicitly used throughout (`simulation.yaml`: `response_threshold_minutes: 8.0`)
@@ -183,10 +183,10 @@
 
 **Project delivers:**
 - ✅ Three policies:
-  - P0: Uniform allocation (`policies.py::uniform_allocation`)
-  - P1: Demand-proportional (`policies.py::demand_proportional_allocation`)
-  - P2: Demand-weighted optimized (`models.py::build_demand_weighted`)
-  - Plus P2-alt (p-median) and P2-cov (maximal coverage) alternatives
+ - P0: Uniform allocation (`policies.py::uniform_allocation`)
+ - P1: Demand-proportional (`policies.py::demand_proportional_allocation`)
+ - P2: Demand-weighted optimized (`models.py::build_demand_weighted`)
+ - Plus P2-alt (p-median) and P2-cov (maximal coverage) alternatives
 - ✅ Inputs: demand weights from `demand_lambda_precinct.csv`, travel times from distance matrix at 20mph
 - ✅ Constraints: total units K ∈ {15,20,25,30,35,40}, capacity ≤ 5 per firehouse
 - ✅ Scenario library: `results/optimization/allocations_K20.csv` through `K48.csv`
@@ -207,18 +207,18 @@
 - Written assumptions document
 
 **Project delivers:**
-- ✅ `conceptual_model.md` (702 lines) — comprehensive:
-  - §2 Entities: Incident dataclass
-  - §3 Resources: EMSUnit, UnitPool
-  - §4 Queues: FIFO incident queue
-  - §5 Events: arrival, dispatch, service start, completion
-  - §6 State Variables: unit status, queue length, time-varying demand
-  - §7 Dispatch Logic: nearest-available algorithm
-  - §8 Performance Measures: RT, coverage, utilization, queue metrics
-  - §9 Time Representation: continuous time, hourly demand variation
-  - §10 Random Phenomena: NHPP arrivals, LogNormal service times
-  - §11 Event Flow Diagram: ASCII flowchart in document
-  - §12 Assumptions and Limitations: comprehensive table
+- ✅ `conceptual_model.md` (702 lines) — detailed:
+ - §2 Entities: Incident dataclass
+ - §3 Resources: EMSUnit, UnitPool
+ - §4 Queues: FIFO incident queue
+ - §5 Events: arrival, dispatch, service start, completion
+ - §6 State Variables: unit status, queue length, time-varying demand
+ - §7 Dispatch Logic: nearest-available algorithm
+ - §8 Performance Measures: RT, coverage, utilization, queue metrics
+ - §9 Time Representation: continuous time, hourly demand variation
+ - §10 Random Phenomena: NHPP arrivals, LogNormal service times
+ - §11 Event Flow Diagram: ASCII flowchart in document
+ - §12 Assumptions and Limitations: detailed table
 - ✅ Terminating simulation justification (§1.2)
 - ✅ Initialization: empty-and-idle at t=0
 - ✅ PDF version also generated
@@ -238,12 +238,12 @@
 
 **Project delivers:**
 - ✅ Modular `simulation/` package:
-  - `engine.py`: Main SimPy simulation loop (arrival → dispatch → service → complete)
-  - `entities.py`: Incident dataclass with full lifecycle tracking
-  - `resources.py`: EMSUnit + UnitPool with status management
-  - `dispatcher.py`: NearestAvailableDispatcher with travel-time matrix
-  - `metrics.py`: MetricsCollector for per-replication statistics
-  - `runner.py`: BatchRunner for scenario-level execution
+ - `engine.py`: Main SimPy simulation loop (arrival → dispatch → service → complete)
+ - `entities.py`: Incident dataclass with full lifecycle tracking
+ - `resources.py`: EMSUnit + UnitPool with status management
+ - `dispatcher.py`: NearestAvailableDispatcher with travel-time matrix
+ - `metrics.py`: MetricsCollector for per-replication statistics
+ - `runner.py`: BatchRunner for scenario-level execution
 - ✅ Data loaders: arrival generator from lambda tables, distance matrix, service time from config
 - ✅ NHPP arrivals via `NHPPArrivalGenerator.generate_arrivals()`
 - ✅ Nearest-available dispatch with tie-breaking
@@ -306,28 +306,28 @@
 
 **Project delivers:**
 - ✅ `experimental_design.md` specifies full factorial design:
-  - Factors: Policy (3), Fleet Size (6), Demand Multiplier (6), Service Time Mean (3)
-  - Responses: Mean RT, P90 RT, 8-min Coverage, Utilization
-  - Run length: 168 hours (1 week), no warm-up (terminating)
-  - 30 replications per scenario
+ - Factors: Policy (3), Fleet Size (6), Demand Multiplier (6), Service Time Mean (3)
+ - Responses: Mean RT, P90 RT, 8-min Coverage, Utilization
+ - Run length: 168 hours (1 week), no warm-up (terminating)
+ - 30 replications per scenario
 - ✅ 5 experiments totaling 1,770 runs:
-  - Exp1: Policy comparison (3 policies × 20 units × 30 reps = 90 runs)
-  - Exp2: Fleet sensitivity (3 × 6 × 30 = 540 runs)
-  - Exp3: Demand sensitivity (3 × 6 × 30 = 540 runs)
-  - Exp4: Service time robustness (3 × 3 × 30 = 270 runs)
-  - Exp5: CBD robustness (11 scenarios × 3 policies × 30 reps = 330 runs)
+ - Exp1: Policy comparison (3 policies × 20 units × 30 reps = 90 runs)
+ - Exp2: Fleet sensitivity (3 × 6 × 30 = 540 runs)
+ - Exp3: Demand sensitivity (3 × 6 × 30 = 540 runs)
+ - Exp4: Service time robustness (3 × 3 × 30 = 270 runs)
+ - Exp5: CBD robustness (11 scenarios × 3 policies × 30 reps = 330 runs)
 - ✅ Pilot experiments: `scripts/run_validation_pilots.py`
 - ✅ Production: `scripts/run_production_experiments.py`
 - ✅ Statistical analysis: `scripts/analyze_production_results.py`, `notebooks/08_statistical_analysis.ipynb`
 - ✅ Results:
-  - ANOVA results: `results/tables/anova_results.csv`
-  - Post-hoc: `results/tables/posthoc_comparisons.csv`
-  - Confidence intervals: `results/tables/confidence_intervals.csv`
-  - Effect sizes: `results/tables/effect_sizes.csv`
-  - Publication tables: `table1–4` in CSV + LaTeX format
-  - Publication figures: `pub_fig1–5` in `results/figures/`
+ - ANOVA results: `results/tables/anova_results.csv`
+ - Post-hoc: `results/tables/posthoc_comparisons.csv`
+ - Confidence intervals: `results/tables/confidence_intervals.csv`
+ - Effect sizes: `results/tables/effect_sizes.csv`
+ - Publication tables: `table1–4` in CSV + LaTeX format
+ - Publication figures: `pub_fig1–5` in `results/figures/`
 - ✅ CBD robustness: Dedicated CBD DES experiment (Exp5) with 330 runs comparing Manhattan-wide vs CBD-focused results across 11 scenarios. Documented in `docs/cbd_robustness_analysis.md` and `technical_report.md` §5.7.
-- ✅ Queue metrics: Comprehensive analysis across all 1,770 runs in `docs/queue_analysis.md` and `technical_report.md` §5.8.
+- ✅ Queue metrics: Full analysis across all 1,770 runs in `docs/queue_analysis.md` and `technical_report.md` §5.8.
 - ✅ Seasonal analysis: Monthly/seasonal patterns analyzed in `technical_report.md` §5.9 and `demand_model_spec.md` §8.
 
 **Status: ✅ Fully Covered (100%)**
@@ -350,12 +350,12 @@
 - ✅ Full technical report (`technical_report.md`, 527 lines): Exec Summary, Intro, Lit Review, Methodology, Results, Discussion, Conclusions
 - ✅ 35+ figures in `results/figures/`, 20+ tables in `results/tables/`, 3 maps in `results/maps/`
 - ✅ Reproducible package:
-  - `Makefile` with `setup`, `data`, `analysis`, `test`, `clean` targets
-  - `requirements.txt` with all dependencies
-  - `configs/` with 4 YAML config files
-  - `code_documentation.md` architecture guide
-  - `file_inventory.md` complete file listing
-  - `project_archive.md` archival documentation
+ - `Makefile` with `setup`, `data`, `analysis`, `test`, `clean` targets
+ - `requirements.txt` with all dependencies
+ - `configs/` with 4 YAML config files
+ - `code_documentation.md` architecture guide
+ - `file_inventory.md` complete file listing
+ - `project_archive.md` archival documentation
 - ✅ Executive presentation (`executive_presentation.md`, 195 lines): 15+ slides with clear takeaway ("Adopt P2")
 - ✅ Implementation roadmap: 3-phase deployment plan (pilot → partial → full)
 
@@ -388,7 +388,7 @@ The project includes several deliverables that **exceed** the outline requiremen
 | Publication-quality outputs | LaTeX tables (`table1–4.tex`), publication figures (`pub_fig1–5`) |
 | Effect size analysis | Cohen's d computed for all pairwise comparisons |
 | Implementation roadmap | 3-phase deployment plan with success criteria and KPIs |
-| 39 automated tests | Comprehensive test suite far beyond outline's V&V requirements |
+| 39 automated tests | Full test suite far beyond outline's V&V requirements |
 | Summary dashboard | `project_summary_dashboard.png` consolidating key findings |
 | Code documentation | Architecture guide with module-level API documentation |
 | File inventory | Complete file listing with descriptions |
@@ -407,7 +407,7 @@ The project includes several deliverables that **exceed** the outline requiremen
 4. **Documentation depth**: 26+ documents covering every aspect of the project
 5. **Reproducibility**: Makefile, configs, requirements, seeds — fully reproducible
 6. **Professional presentation**: Publication-quality tables and figures
-7. **CBD robustness**: Dedicated 330-run CBD experiment with comprehensive spatial analysis
+7. **CBD robustness**: Dedicated 330-run CBD experiment with detailed spatial analysis
 8. **Queue analysis**: Full queueing performance analysis across all 1,770 runs
 9. **Seasonal analysis**: Monthly/seasonal decomposition with statistical testing
 
@@ -415,4 +415,4 @@ The project includes several deliverables that **exceed** the outline requiremen
 All three previously identified minor gaps (G1: CBD robustness, G2: Queue metrics, G3: Seasonal analysis) have been **fully resolved** in v1.1.0. See `docs/gap_closure_report.md` for verification.
 
 ### Recommendation
-The project achieves **100% alignment** with the project outline and is ready for submission. All 12 outline sections are fully covered with 1,770 simulation runs, 47+ figures, 18+ tables, and comprehensive documentation.
+The project achieves **100% alignment** with the project outline and is ready for submission. All 12 outline sections are fully covered with 1,770 simulation runs, 47+ figures, 18+ tables, and thorough documentation.

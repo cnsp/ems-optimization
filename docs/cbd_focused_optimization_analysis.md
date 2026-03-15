@@ -1,7 +1,7 @@
 # CBD-Focused vs Manhattan-Wide Optimization Analysis
 
-**Date:** March 12, 2026  
-**Version:** 1.0  
+**Date:** March 12, 2026 
+**Version:** 1.0 
 **Author:** EMS Optimization Team
 
 ---
@@ -106,9 +106,9 @@ When all units are concentrated in CBD firehouses:
 From a public policy perspective:
 - **Equal access to emergency services** is a fundamental equity principle
 - Concentrating resources in the CBD would disproportionately harm residents of:
-  - Washington Heights (Pct 33, 34)
-  - Harlem (Pct 25, 26, 28, 30, 32)
-  - East Harlem (Pct 23, 25)
+ - Washington Heights (Pct 33, 34)
+ - Harlem (Pct 25, 26, 28, 30, 32)
+ - East Harlem (Pct 23, 25)
 - These areas typically have lower income levels, creating an **environmental justice concern**
 
 ### 5.4 When CBD-Focused Might Make Sense

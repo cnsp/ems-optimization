@@ -1,8 +1,8 @@
 # Project Archive
 ## EMS Readiness Optimization — Complete Project Timeline & Record
 
-**Project Duration:** February 2026 — March 2026  
-**Version:** 1.0.0  
+**Project Duration:** February 2026 — March 2026 
+**Version:** 1.0.0 
 **Status:** Complete
 
 ---
@@ -10,7 +10,7 @@
 ## Project Timeline
 
 ### Phase 1: Data Processing & Exploratory Data Analysis
-**Duration:** Week 1  
+**Duration:** Week 1 
 **Deliverables:**
 - Raw data acquisition from NYC Open Data (2.24M crash records, 219 firehouses, 78 precincts)
 - Data cleaning pipeline (`scripts/data_audit.py`, `audit_step1-4`)
@@ -25,7 +25,7 @@
 - DEC-005: Use all available crash data for demand estimation
 
 ### Phase 2: Demand & Service Modeling
-**Duration:** Week 2  
+**Duration:** Week 2 
 **Deliverables:**
 - NHPP demand model (λ₀ = 3.48/hr, hourly + DOW factors)
 - Lambda tables: `demand_lambda_hourly.csv`, `demand_lambda_dow.csv`, `demand_lambda_precinct.csv`
@@ -41,7 +41,7 @@
 - 20 mph average speed for urban EMS
 
 ### Phase 3: Optimization Models
-**Duration:** Week 3  
+**Duration:** Week 3 
 **Deliverables:**
 - Three MIP formulations: Demand-Weighted, P-Median, Maximal Coverage
 - Baseline policies: Uniform (P0), Demand-Proportional (P1)
@@ -57,7 +57,7 @@
 - 8-minute coverage threshold
 
 ### Phase 4: Discrete-Event Simulation with V&V
-**Duration:** Week 4  
+**Duration:** Week 4 
 **Deliverables:**
 - SimPy DES engine (7 modules: engine, entities, resources, dispatcher, metrics, runner)
 - NearestAvailableDispatcher with TOD-adjusted travel times
@@ -74,7 +74,7 @@
 - Common Random Numbers for variance reduction
 
 ### Phase 5: Experimental Design & Production Runs
-**Duration:** Week 5  
+**Duration:** Week 5 
 **Deliverables:**
 - Factorial experimental design (4 experiments, 1,440 total runs)
 - Exp1: 3 policies × 30 reps = 90 runs
@@ -90,8 +90,8 @@
 - Demand multiplier range: 0.5×–2.0×
 - Service time range: 20–30 min mean
 
-### Phase 6: Comprehensive Statistical Analysis
-**Duration:** Week 6  
+### Phase 6: Full Statistical Analysis
+**Duration:** Week 6 
 **Deliverables:**
 - Descriptive statistics for all experiments
 - One-way and two-way ANOVA
@@ -104,9 +104,9 @@
 - Output analysis report
 
 ### Phase 7: Final Report & Documentation
-**Duration:** Week 7  
+**Duration:** Week 7 
 **Deliverables:**
-- Comprehensive technical report
+- Full technical report
 - Executive presentation (10 slides)
 - Implementation roadmap (3-phase deployment plan)
 - Enhanced README with full project documentation

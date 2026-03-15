@@ -97,16 +97,16 @@ This document provides an inventory of all data files used in the EMS Readiness 
 
 ```
 Raw Data (data/raw/)
-    ↓
+ ↓
 Interim Data (data/interim/)
-    - Manhattan-filtered crashes
-    - Manhattan firehouses
-    - Temporal aggregations
-    ↓
+ - Manhattan-filtered crashes
+ - Manhattan firehouses
+ - Temporal aggregations
+ ↓
 Processed Data (data/processed/)
-    - Demand matrices
-    - Network graphs
-    - Simulation inputs
+ - Demand matrices
+ - Network graphs
+ - Simulation inputs
 ```
 
 ## Processed Data Files

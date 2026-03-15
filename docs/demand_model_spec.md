@@ -196,61 +196,61 @@ hourly_factors = pd.read_csv('demand_lambda_hourly.csv').set_index('hour')['fact
 dow_factors = pd.read_csv('demand_lambda_dow.csv').set_index('dow')['factor']
 precinct_probs = pd.read_csv('demand_lambda_precinct.csv').set_index('precinct')['pct_of_total'] / 100
 
-BASE_RATE = 3.482  # crashes per hour
+BASE_RATE = 3.482 # crashes per hour
 
 def get_arrival_rate(hour: int, dow: int, area: str = 'all') -> float:
-    """
-    Get arrival rate λ(t) for given time.
-    
-    Args:
-        hour: Hour of day (0-23)
-        dow: Day of week (0=Monday, 6=Sunday)
-        area: 'all', 'cbd', or 'non_cbd'
-    
-    Returns:
-        Arrival rate in crashes per hour
-    """
-    rate = BASE_RATE * hourly_factors[hour] * dow_factors[dow]
-    
-    if area == 'cbd':
-        rate *= 0.557  # CBD proportion
-    elif area == 'non_cbd':
-        rate *= 0.443  # Non-CBD proportion
-    
-    return rate
+ """
+ Get arrival rate λ(t) for given time.
+ 
+ Args:
+ hour: Hour of day (0-23)
+ dow: Day of week (0=Monday, 6=Sunday)
+ area: 'all', 'cbd', or 'non_cbd'
+ 
+ Returns:
+ Arrival rate in crashes per hour
+ """
+ rate = BASE_RATE * hourly_factors[hour] * dow_factors[dow]
+ 
+ if area == 'cbd':
+ rate *= 0.557 # CBD proportion
+ elif area == 'non_cbd':
+ rate *= 0.443 # Non-CBD proportion
+ 
+ return rate
 
 def generate_next_arrival(current_time: float, dt: float = 1.0) -> float:
-    """
-    Generate next arrival time using thinning algorithm.
-    
-    Args:
-        current_time: Current simulation time (hours from start)
-        dt: Time step for rate evaluation
-    
-    Returns:
-        Time until next arrival (hours)
-    """
-    # Get maximum rate in next period
-    hour = int(current_time % 24)
-    dow = int((current_time // 24) % 7)
-    lambda_max = get_arrival_rate(hour, dow) * 1.1  # Safety margin
-    
-    t = 0
-    while True:
-        # Generate candidate arrival
-        t += np.random.exponential(1 / lambda_max)
-        
-        # Accept/reject
-        new_hour = int((current_time + t) % 24)
-        new_dow = int(((current_time + t) // 24) % 7)
-        lambda_t = get_arrival_rate(new_hour, new_dow)
-        
-        if np.random.random() < lambda_t / lambda_max:
-            return t
+ """
+ Generate next arrival time using thinning algorithm.
+ 
+ Args:
+ current_time: Current simulation time (hours from start)
+ dt: Time step for rate evaluation
+ 
+ Returns:
+ Time until next arrival (hours)
+ """
+ # Get maximum rate in next period
+ hour = int(current_time % 24)
+ dow = int((current_time // 24) % 7)
+ lambda_max = get_arrival_rate(hour, dow) * 1.1 # Safety margin
+ 
+ t = 0
+ while True:
+ # Generate candidate arrival
+ t += np.random.exponential(1 / lambda_max)
+ 
+ # Accept/reject
+ new_hour = int((current_time + t) % 24)
+ new_dow = int(((current_time + t) // 24) % 7)
+ lambda_t = get_arrival_rate(new_hour, new_dow)
+ 
+ if np.random.random() < lambda_t / lambda_max:
+ return t
 
 def assign_precinct() -> int:
-    """Randomly assign crash to precinct based on demand distribution."""
-    return np.random.choice(precinct_probs.index, p=precinct_probs.values)
+ """Randomly assign crash to precinct based on demand distribution."""
+ return np.random.choice(precinct_probs.index, p=precinct_probs.values)
 ```
 
 ### Validation Checks

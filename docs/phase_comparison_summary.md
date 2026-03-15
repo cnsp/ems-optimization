@@ -46,21 +46,21 @@ The project was executed in **7 phases**, each completed over approximately one 
 ## Mapping: Original 12 Sections → Implemented 7 Phases
 
 ```
-Original Outline                          Implementation
-─────────────────                         ──────────────
+Original Outline Implementation
+───────────────── ──────────────
  1. Project Purpose & Decision Problem ─┐
- 2. Research Questions & MOEs          ─┤
- 3. Study Scope & System Boundary      ─┼─► Phase 1: Data Processing & EDA
- 4. Data Strategy & Engineering Plan   ─┤
- 5. GIS & Spatial Analysis Plan        ─┘
+ 2. Research Questions & MOEs ─┤
+ 3. Study Scope & System Boundary ─┼─► Phase 1: Data Processing & EDA
+ 4. Data Strategy & Engineering Plan ─┤
+ 5. GIS & Spatial Analysis Plan ─┘
  6. Input Modeling & Demand Estimation ───► Phase 2: Demand & Service Modeling
- 7. Allocation Policy Design           ───► Phase 3: Optimization Models
- 8. Conceptual Simulation Model        ─┐
- 9. Simulation Implementation          ─┼─► Phase 4: DES Simulation + V&V
-10. Verification & Validation          ─┘
-11. Experimental Design & Output       ─┬─► Phase 5: Production Experiments
-                                        └─► Phase 6: Statistical Analysis
-12. Recommendation & Reporting         ───► Phase 7: Final Report & Docs
+ 7. Allocation Policy Design ───► Phase 3: Optimization Models
+ 8. Conceptual Simulation Model ─┐
+ 9. Simulation Implementation ─┼─► Phase 4: DES Simulation + V&V
+10. Verification & Validation ─┘
+11. Experimental Design & Output ─┬─► Phase 5: Production Experiments
+ └─► Phase 6: Statistical Analysis
+12. Recommendation & Reporting ───► Phase 7: Final Report & Docs
 ```
 
 ---

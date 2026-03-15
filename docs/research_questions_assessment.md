@@ -2,7 +2,7 @@
 ## EMS Readiness Optimization for Manhattan — Simulation Evidence Review
 
 **Assessment Date:** March 12, 2026
-**Project Version:** v2.0.0 (Phase 21 — Full Compliance)
+**Project Version:** v2.0.0 (Final Version — Full Compliance)
 **Assessed By:** Independent Review
 
 ---
@@ -36,7 +36,7 @@ The NHPP demand model was calibrated from **2,237,814** historical motor vehicle
 - **Hourly variation dominates:** Factor range 0.40–1.60 vs. seasonal 0.82–1.10
 
 #### Spatial Variation
-Demand is distributed across **30 police precincts** with pronounced spatial heterogeneity:
+Demand is distributed across **30 police precincts** with clear spatial heterogeneity:
 
 | Precinct | Demand Share | Area Description |
 |----------|-------------|------------------|
@@ -273,7 +273,7 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 3. **Comprehensive sensitivity analysis:** Four-dimensional robustness testing (fleet size × demand intensity × service time × CBD stress) with 1,770+ total runs eliminates concerns about parameter dependence.
 
-4. **Mechanism identification:** Queue analysis (zero queueing across all runs) conclusively demonstrates that performance differentials are driven entirely by spatial allocation, not capacity constraints.
+4. **Mechanism identification:** Queue analysis (zero queueing across all runs) shows that performance differentials are driven entirely by spatial allocation, not capacity constraints.
 
 5. **Alternative analyses:** Distance metric comparison (Haversine vs Manhattan) and CBD-focused vs Manhattan-wide optimisation provide additional validation of the primary findings.
 
@@ -284,7 +284,7 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 - Static allocation (no dynamic repositioning)
 - No road network routing
 
-These limitations are transparently documented in §6.4 of the technical report and do not undermine the core findings, as sensitivity analyses demonstrate robustness to the modelling assumptions.
+These limitations are transparently documented in §6.4 of the technical report and do not undermine the core findings, as sensitivity analyses show stability under the modelling assumptions.
 
 ---
 

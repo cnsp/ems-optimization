@@ -226,16 +226,16 @@ If concentration is acceptable:
 ### 6.4 Implementation
 
 1. **Phase 1** (Immediate): Deploy P1 (Demand-Proportional) with current K
-   - Simple to explain and implement
-   - 2-4% worse than optimal but 66% better than uniform
-   
+ - Simple to explain and implement
+ - 2-4% worse than optimal but 66% better than uniform
+ 
 2. **Phase 2** (6-12 months): Transition to P2 with K=20-30
-   - Requires optimization solver and GIS integration
-   - Achieve 86% improvement over current allocation
+ - Requires optimization solver and GIS integration
+ - Achieve 86% improvement over current allocation
 
 3. **Phase 3** (12-24 months): Dynamic reallocation based on real-time demand
-   - Update allocations quarterly based on crash patterns
-   - Adjust for seasonal variation and special events
+ - Update allocations quarterly based on crash patterns
+ - Adjust for seasonal variation and special events
 
 ---
 

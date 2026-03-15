@@ -1,16 +1,16 @@
 # EMS Readiness Optimization for Manhattan: A Simulation-Based Approach to Ambulance Staging
 
-## Comprehensive Technical Report
+## Full Technical Report
 
-**Authors:** EMS Optimization Research Team  
-**Date:** March 15, 2026  
+**Authors:** EMS Optimization Research Team 
+**Date:** March 15, 2026 
 **Version:** 2.1.0 (Phase 9 — Capacity & Baseline Improvements)
 
 ---
 
 ## Abstract
 
-This study presents a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a spatially-stratified uniform baseline (P0-spatial), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 2,580+ production runs across multiple experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, CBD-focused stress tests, capacity sensitivity (cap 1–5), and Production V2 experiments (810 runs with capacity=2 and spatially-stratified P0)—with 30 replications each using Common Random Numbers for variance reduction. Results demonstrate that the optimized policy P2 achieves a mean response time of 2.57 minutes with 99.6% 8-minute coverage. The spatially-stratified P0 baseline reduces P0 mean response time by 61% (from 8.08 to 3.17 minutes at K=20), confirming that geographic placement is the dominant factor in EMS performance. Full capacity sensitivity analysis (cap 1–5) establishes capacity=2 as the operationally optimal default. Performance gains are robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments. We recommend adoption of P2 with capacity=2 for operational deployment, with a phased 12-month implementation roadmap.
+This study develops a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a spatially-stratified uniform baseline (P0-spatial), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 2,580+ production runs across multiple experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, CBD-focused stress tests, capacity sensitivity (cap 1–5), and Production V2 experiments (810 runs with capacity=2 and spatially-stratified P0)—with 30 replications each using Common Random Numbers for variance reduction. Results show that the optimized policy P2 achieves a mean response time of 2.57 minutes with 99.6% 8-minute coverage. The spatially-stratified P0 baseline reduces P0 mean response time by 61% (from 8.08 to 3.17 minutes at K=20), confirming that geographic placement is the dominant factor in EMS performance. Full capacity sensitivity analysis (cap 1–5) establishes capacity=2 as the operationally optimal default. Performance gains hold up under demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments. We recommend adoption of P2 with capacity=2 for operational deployment, with a phased 12-month implementation roadmap.
 
 **Keywords:** Emergency Medical Services, ambulance staging, discrete-event simulation, facility location optimization, Non-Homogeneous Poisson Process, Mixed-Integer Programming, SimPy
 
@@ -39,7 +39,7 @@ This study presents a simulation-based optimization framework for strategic ambu
 
 ### Problem Statement
 
-Emergency Medical Services (EMS) in Manhattan face a critical challenge: the current uniform ambulance allocation policy (P0) distributes units equally across 48 FDNY firehouses without regard to spatiotemporal demand patterns, resulting in suboptimal response times and inadequate coverage. With approximately 3.48 motor vehicle collision (MVC) calls per hour and significant variation by time-of-day and precinct, a more intelligent allocation strategy is needed to improve emergency response performance.
+Emergency Medical Services (EMS) in Manhattan face a key challenge: the current uniform ambulance allocation policy (P0) distributes units equally across 48 FDNY firehouses ignoring where and when demand actually occurs, leading to poor response times and coverage gaps. With approximately 3.48 motor vehicle collision (MVC) calls per hour and significant variation by time-of-day and precinct, a smarter allocation strategy is needed to improve emergency response performance.
 
 ### Methodology Overview
 
@@ -47,9 +47,9 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
 
 1. **Non-Homogeneous Poisson Process (NHPP)** demand model calibrated from 2.24 million historical MVC records
 2. **Mixed-Integer Programming (MIP)** optimization models generating three allocation policies:
-   - **P0** (Uniform): Equal distribution across all firehouses
-   - **P1** (Demand-Proportional): Units allocated proportional to nearby demand
-   - **P2** (Demand-Weighted Optimized): MIP-optimized allocation minimizing expected response time
+ - **P0** (Uniform): Equal distribution across all firehouses
+ - **P1** (Demand-Proportional): Units allocated proportional to nearby demand
+ - **P2** (Demand-Weighted Optimized): MIP-optimized allocation minimizing expected response time
 3. **Discrete-Event Simulation (DES)** with 1,770 production runs across 5 experiment sets (including CBD robustness)
 
 ### Key Findings
@@ -61,7 +61,7 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
 | 8-min Coverage | 64.4% | 99.6% | **99.6%** | **+35.2 pp** |
 | Mean Utilization | 9.1% | 7.5% | **7.5%** | −1.6 pp |
 
-All differences are statistically significant (p < 0.001) with large effect sizes (Cohen's d > 28 for P0 vs P2 on mean response time). The optimized policy P2 is robust to demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific stress scenarios (2× demand surge, increased service times). Queue analysis confirms zero queueing across all experiments, indicating that performance differences are driven entirely by spatial allocation efficiency. Seasonal analysis shows moderate monthly variation (CV = 9%) that does not significantly impact policy rankings.
+All differences are statistically significant (p < 0.001) with large effect sizes (Cohen's d > 28 for P0 vs P2 on mean response time). The optimized policy P2 holds up under demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific stress scenarios (2× demand surge, increased service times). Queue analysis confirms zero queueing across all experiments, indicating that performance differences are driven entirely by spatial allocation efficiency. Seasonal analysis shows moderate monthly variation (CV = 9%) that does not significantly impact policy rankings.
 
 ### Recommendations
 
@@ -76,13 +76,13 @@ All differences are statistically significant (p < 0.001) with large effect size
 
 ### 2.1 Background on EMS Operations in Manhattan
 
-Manhattan, the most densely populated borough in New York City (72,918 people/mi² as of 2020), generates approximately 3.48 motor vehicle collision-related EMS calls per hour. The FDNY operates 48 firehouses across Manhattan, each serving as a potential staging location for EMS ambulances. These firehouses span from Battery Park at the southern tip to Inwood at the northern end, covering 30 police precincts with highly heterogeneous demand patterns.
+Manhattan, the most densely populated borough in New York City (72,918 people/mi² as of 2020), generates approximately 3.48 motor vehicle collision-related EMS calls per hour. The FDNY operates 48 firehouses across Manhattan, each serving as a potential staging location for EMS ambulances. These firehouses span from Battery Park at the southern tip to Inwood at the northern end, covering 30 police precincts with heterogeneous demand patterns.
 
-Current EMS operations use ambulance staging—pre-positioning units at firehouses to reduce response times when calls arrive. The effectiveness of this strategy depends critically on *where* and *how many* units are staged at each location. A well-designed allocation can dramatically reduce response times for a given fleet size.
+Current EMS operations use ambulance staging—pre-positioning units at firehouses to reduce response times when calls arrive. How well this works depends heavily on *where* and *how many* units are staged at each location. A well-designed allocation can sharply reduce response times for a given fleet size.
 
 ### 2.2 Current Allocation Practices (P0)
 
-The baseline policy (P0) distributes ambulances uniformly across all 48 firehouses. While simple to implement and manage, this approach ignores two fundamental realities:
+The baseline policy (P0) distributes ambulances uniformly across all 48 firehouses. While simple to implement and manage, this approach ignores two basic realities:
 
 1. **Spatial demand heterogeneity**: Midtown precincts (e.g., Precinct 14 covering Times Square) generate 3–5× more calls than Upper Manhattan precincts
 2. **Temporal demand patterns**: Demand peaks during afternoon hours (2–5 PM) and weekdays, with 40–60% lower demand overnight
@@ -117,20 +117,20 @@ This study addresses five primary research questions:
 
 ### 2.5 Why Discrete-Event Simulation?
 
-Several modeling paradigms were considered for evaluating ambulance staging policies. The choice of **Discrete-Event Simulation (DES)** over alternatives was deliberate and is justified below.
+We considered several modeling approaches for evaluating ambulance staging policies. We chose **Discrete-Event Simulation (DES)** over the alternatives for the reasons below.
 
 #### 2.5.1 Alternatives Considered
 
 | Approach | Description | Why Not Sufficient |
 |----------|-------------|-------------------|
-| **Analytical (Queueing) Models** | Closed-form M/G/K queue or Erlang formulas | Require stationarity and spatial homogeneity. Our system has NHPP arrivals with pronounced hourly/DOW variation and 30 spatial demand zones — violating the i.i.d. assumptions of classical queueing theory. |
+| **Analytical (Queueing) Models** | Closed-form M/G/K queue or Erlang formulas | Require stationarity and spatial homogeneity. Our system has NHPP arrivals with notable hourly/DOW variation and 30 spatial demand zones — violating the i.i.d. assumptions of classical queueing theory. |
 | **Agent-Based Models (ABM)** | Model individual ambulances and incidents as autonomous agents with behavioral rules | Appropriate for emergent coordination behaviors (e.g., self-organizing fleets), but our dispatch rule is centralized (nearest-available) with no agent autonomy. ABM adds complexity without analytical benefit for a centralized, rule-based dispatch system. |
 | **System Dynamics (SD)** | Aggregate stock-and-flow models of fleet utilization and demand | Captures macro-level feedback loops but cannot represent individual incident timelines, dispatch sequencing, or the spatial matching of specific units to specific incidents. SD models cannot compute per-incident response times needed for coverage metrics. |
 | **Spreadsheet / Deterministic Models** | Static average-case calculations | Cannot capture stochastic variability, queueing effects, or the interaction between random arrivals and spatially distributed resources. |
 
 #### 2.5.2 Why DES is the Right Choice
 
-DES is uniquely suited to this problem for the following reasons:
+DES fits this problem well for several reasons:
 
 1. **Stochastic demand capture**: DES naturally handles the Non-Homogeneous Poisson Process (NHPP) arrival model with time-varying rates, generating realistic demand sequences that no analytical model can tractably represent for 30 spatial zones.
 
@@ -146,7 +146,7 @@ DES is uniquely suited to this problem for the following reasons:
 
 7. **Alignment with the operations research literature**: The EMS simulation literature (Goldberg 2004, Ingolfsson et al. 2008, Lam et al. 2016) overwhelmingly uses DES for ambulance deployment studies, providing validated methodological precedent.
 
-In summary, DES is the minimal-complexity, maximum-fidelity approach for this problem class: it captures stochastic, spatial, and dynamic interactions that simpler models cannot, while avoiding the unnecessary complexity of agent-based or continuous-time frameworks.
+DES is the right trade-off between complexity and fidelity for this problem class: it captures stochastic, spatial, and dynamic interactions that simpler models cannot, while avoiding the unnecessary complexity of agent-based or continuous-time frameworks.
 
 ---
 
@@ -155,21 +155,21 @@ In summary, DES is the minimal-complexity, maximum-fidelity approach for this pr
 
 ### 3.1 EMS Location Optimization
 
-The problem of optimally locating emergency service facilities has a rich history in operations research. **Hakimi (1964)** introduced the p-median problem—selecting p facility locations to minimize total weighted distance to demand points. **Toregas et al. (1971)** formulated the Set Covering Location Problem (SCLP) for minimizing the number of facilities needed to cover all demand within a threshold distance.
+Optimal location of emergency service facilities is a well-studied problem in operations research. **Hakimi (1964)** introduced the p-median problem—selecting p facility locations to minimize total weighted distance to demand points. **Toregas et al. (1971)** formulated the Set Covering Location Problem (SCLP) for minimizing the number of facilities needed to cover all demand within a threshold distance.
 
 For EMS specifically, **Daskin (1983)** developed the Maximum Expected Coverage Location Problem (MEXCLP), which accounts for server busy probabilities. **ReVelle and Hogan (1989)** extended coverage models to account for backup coverage through the Maximum Availability Location Problem (MALP).
 
 ### 3.2 Discrete-Event Simulation in Emergency Services
 
-Simulation provides a complement to optimization by capturing stochastic dynamics that static models cannot represent. **Goldberg (2004)** provides a comprehensive review of operations research methods for EMS, emphasizing the need to integrate optimization and simulation. **Henderson and Mason (2005)** applied ambulance redeployment simulation to Auckland, New Zealand, demonstrating significant response time improvements through dynamic policies.
+Simulation complements optimization by capturing stochastic dynamics that static models miss. **Goldberg (2004)** provides a thorough review of operations research methods for EMS, emphasizing the need to integrate optimization and simulation. **Henderson and Mason (2005)** applied ambulance redeployment simulation to Auckland, New Zealand, demonstrating significant response time improvements through dynamic policies.
 
 **Ingolfsson et al. (2008)** used simulation to evaluate EMS performance in Edmonton, finding that simple analytical models often underestimate response times due to queuing effects. More recently, **Lam et al. (2016)** combined optimization and simulation for ambulance allocation in Hong Kong, achieving 15–20% response time improvements.
 
 ### 3.3 Coverage Models
 
-The 8-minute response time standard is widely used in EMS planning. **Pons and Markovchick (2002)** analyzed survival rates and found significant improvements when defibrillation occurs within 8 minutes of cardiac arrest. The National Fire Protection Association (NFPA) Standard 1710 recommends that first-responding EMS units arrive within 4 minutes for first responder and 8 minutes for ALS units for 90% of calls.
+The 8-minute response time standard is standard in EMS planning. **Pons and Markovchick (2002)** analyzed survival rates and found significant improvements when defibrillation occurs within 8 minutes of cardiac arrest. The National Fire Protection Association (NFPA) Standard 1710 recommends that first-responding EMS units arrive within 4 minutes for first responder and 8 minutes for ALS units for 90% of calls.
 
-Our study adopts the 8-minute threshold as the primary coverage criterion, consistent with industry practice and regulatory standards.
+Our study adopts the 8-minute threshold as the primary coverage criterion, in line with industry practice and regulatory standards.
 
 ---
 
@@ -237,7 +237,7 @@ Three MIP formulations generate the allocation policies evaluated by simulation:
 
 #### 4.3.1 P0 — Spatially-Stratified Uniform Allocation (Baseline)
 
-In Production V2, P0 uses a **spatially-stratified** allocation: firehouses are sorted by latitude and K evenly-spaced stations are selected, ensuring geographic coverage from Battery Park to Inwood. Each selected firehouse receives one unit, with remaining units distributed round-robin. This replaces the original index-based P0 which distributed units without geographic awareness.
+In Production V2, P0 uses a **spatially-stratified** allocation: firehouses are sorted by latitude and K evenly-spaced stations are selected, covering the full stretch from Battery Park to Inwood. Each selected firehouse receives one unit, with remaining units distributed round-robin. This replaces the original index-based P0 which distributed units without geographic awareness.
 
 $$\text{Select } K \text{ firehouses by latitude spacing; } x_i = 1 \text{ for selected } i, \text{ round-robin remainder}$$
 
@@ -276,72 +276,72 @@ The DES models the following process for each EMS call:
 **Event Flow Diagram** (extracted from `docs/conceptual_model.md`):
 
 ```
-                        ┌─────────────────────────┐
-                        │   SIMULATION START       │
-                        │   t = 0, all units idle  │
-                        └────────────┬────────────┘
-                                     │
-                                     ▼
-                   ┌──────────────────────────────────┐
-                   │       INCIDENT ARRIVAL            │
-                   │  (NHPP thinning at rate λ(t))     │
-                   └──────────┬───────────┬───────────┘
-                              │           │
-                    unit free?│           │ all units busy
-                              ▼           ▼
-                   ┌──────────────┐  ┌──────────────────┐
-                   │   DISPATCH   │  │  ENQUEUE (FIFO)  │
-                   │   DECISION   │  │  incident_queue   │
-                   └──────┬───────┘  └────────┬─────────┘
-                          │                   │
-                          │     ◄─────────────┘  (dequeued when
-                          │                       unit freed)
-                          ▼
-                   ┌──────────────────────┐
-                   │    SERVICE START     │
-                   │  (after δ + travel)  │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │  SERVICE COMPLETION  │
-                   │  unit → AVAILABLE    │
-                   └──────┬──────┬────────┘
-                          │      │
-              queue empty? │      │ queue non-empty
-                          ▼      ▼
-                   ┌──────────┐  ┌──────────────┐
-                   │  UNIT    │  │  DISPATCH     │
-                   │  IDLES   │  │  next queued  │
-                   │  at home │  │  incident     │
-                   └──────────┘  └──────────────┘
-                                        │
-                                        ▼
-                              (back to SERVICE START)
+ ┌─────────────────────────┐
+ │ SIMULATION START │
+ │ t = 0, all units idle │
+ └────────────┬────────────┘
+ │
+ ▼
+ ┌──────────────────────────────────┐
+ │ INCIDENT ARRIVAL │
+ │ (NHPP thinning at rate λ(t)) │
+ └──────────┬───────────┬───────────┘
+ │ │
+ unit free?│ │ all units busy
+ ▼ ▼
+ ┌──────────────┐ ┌──────────────────┐
+ │ DISPATCH │ │ ENQUEUE (FIFO) │
+ │ DECISION │ │ incident_queue │
+ └──────┬───────┘ └────────┬─────────┘
+ │ │
+ │ ◄─────────────┘ (dequeued when
+ │ unit freed)
+ ▼
+ ┌──────────────────────┐
+ │ SERVICE START │
+ │ (after δ + travel) │
+ └──────────┬───────────┘
+ │
+ ▼
+ ┌──────────────────────┐
+ │ SERVICE COMPLETION │
+ │ unit → AVAILABLE │
+ └──────┬──────┬────────┘
+ │ │
+ queue empty? │ │ queue non-empty
+ ▼ ▼
+ ┌──────────┐ ┌──────────────┐
+ │ UNIT │ │ DISPATCH │
+ │ IDLES │ │ next queued │
+ │ at home │ │ incident │
+ └──────────┘ └──────────────┘
+ │
+ ▼
+ (back to SERVICE START)
 
-                   ─────────────────────────────────────
-                   When sim_clock ≥ T:
-                   ┌──────────────────────────────┐
-                   │     END OF SIMULATION         │
-                   │  • Stop new arrivals          │
-                   │  • Drain in-progress services │
-                   │  • Collect final statistics   │
-                   └──────────────────────────────┘
+ ─────────────────────────────────────
+ When sim_clock ≥ T:
+ ┌──────────────────────────────┐
+ │ END OF SIMULATION │
+ │ • Stop new arrivals │
+ │ • Drain in-progress services │
+ │ • Collect final statistics │
+ └──────────────────────────────┘
 ```
 
 **Single-Incident Timeline:**
 
 ```
-     arrival_time          dispatch_time        service_start        service_end
-          │                      │                    │                    │
-          ├──── dispatch_delay ──┤                    │                    │
-          │     (queue wait + δ) │                    │                    │
-          │                      ├─── travel_time ────┤                    │
-          │                      │                    ├── service_time ────┤
-          │                      │                    │                    │
-          ├────── response_time ─────────────────────┤                    │
-          │                                           │                    │
-          ├──────────────── total_time ───────────────────────────────────┤
+ arrival_time dispatch_time service_start service_end
+ │ │ │ │
+ ├──── dispatch_delay ──┤ │ │
+ │ (queue wait + δ) │ │ │
+ │ ├─── travel_time ────┤ │
+ │ │ ├── service_time ────┤
+ │ │ │ │
+ ├────── response_time ─────────────────────┤ │
+ │ │ │
+ ├──────────────── total_time ───────────────────────────────────┤
 ```
 
 > *Full conceptual model specification: see `docs/conceptual_model.md`*
@@ -425,7 +425,7 @@ The primary policy comparison (K=20 units, n=30 replications each) yields:
 
 ### 5.2 Policy Comparison Results (ANOVA)
 
-One-way ANOVA confirms highly significant policy effects across all metrics:
+One-way ANOVA confirms significant policy effects across all metrics:
 
 | Metric | F-statistic | p-value | η² | Effect |
 |--------|------------|---------|-----|--------|
@@ -449,7 +449,7 @@ Two-way ANOVA (Policy × K) reveals significant main effects and interactions:
 - K=30: Mean RT = 3.92 min, Coverage = 90.3%
 - K=40: Mean RT = 2.58 min, Coverage = 99.5%
 
-**P1 and P2 are robust across fleet sizes:**
+**P1 and P2 hold steady across fleet sizes:**
 - P2 achieves >99% coverage with as few as K=25 units
 - P1 reaches similar coverage at K=25
 - Even at K=15, P2 maintains mean RT = 2.84 min (vs P0's 9.57 min)
@@ -502,7 +502,7 @@ To assess policy performance under CBD-specific conditions, we conducted 330 add
 | CBD Slow Service | 2.77 | 2.53 | 99.9% | 99.9% |
 
 **Key findings:**
-- CBD response times are significantly lower than Manhattan-wide averages due to firehouse concentration
+- CBD response times are notably lower than Manhattan-wide averages due to firehouse concentration
 - P2 maintains its advantage across all CBD scenarios
 - Even under 2× CBD demand, P2 achieves 99.3% overall coverage
 - P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD)
@@ -523,9 +523,9 @@ Queue metrics were systematically collected across all 1,770 simulation runs (pr
 | Exp 4 (Service robustness) | 0.000 | 0.000 | 0 |
 | CBD experiments | 0.000 | 0.000 | 0 |
 
-**Explanation:** The system operates at ~10-15% utilization. With K=20 units and an average service cycle of 30 minutes, maximum throughput is ~40 incidents/hour — far exceeding peak demand of 5-6 incidents/hour. This low traffic intensity (ρ ≈ 0.087) ensures near-zero waiting probability even under stress scenarios.
+**Explanation:** The system operates at ~10-15% utilization. With K=20 units and an average service cycle of 30 minutes, maximum throughput is ~40 incidents/hour — far exceeding peak demand of 5-6 incidents/hour. At this low traffic intensity (ρ ≈ 0.087), waiting is effectively impossible even under stress scenarios.
 
-**Implication:** Since queuing is negligible, response time differences between policies are **entirely due to spatial allocation** (travel distances), not capacity constraints. This validates the focus on optimization-based allocation (P2) as the primary mechanism for service improvement.
+**Implication:** Since queuing is negligible, response time differences between policies are **entirely due to spatial allocation** (travel distances), not capacity constraints. This supports the focus on optimization-based allocation (P2) as the primary mechanism for service improvement.
 
 ![Queue Metrics by Policy](../results/figures/queue_comparison_by_policy.png)
 
@@ -561,7 +561,7 @@ To assess the sensitivity of allocation decisions to the distance metric, we imp
 - Simulation performance is **effectively identical** (mean RT: 2.55 min for both)
 - The uniform scaling preserves relative distance ordering, so the same firehouses remain nearest to each precinct
 
-The analysis confirms that Haversine distance is adequate for this study, as both metrics produce equivalent optimisation solutions. See `docs/distance_metric_comparison.md` for the full report.
+The analysis shows that Haversine distance is adequate for this study, as both metrics produce equivalent optimisation solutions. See `docs/distance_metric_comparison.md` for the full report.
 
 ![Distance Metrics Comparison](../results/distance_comparison/distance_comparison_bar.png)
 
@@ -587,7 +587,7 @@ The Manhattan-wide P2 allocation is strongly preferred as it achieves both effic
 
 ### 5.12 Firehouse Capacity Constraints Analysis
 
-To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20 and K=40 for all three policies (P0-spatial, P1, P2). A total of 30 allocation–simulation experiments were executed (5 capacity levels × 2 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
+To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20 and K=40 for all three policies (P0-spatial, P1, P2). 30 allocation–simulation experiments were executed (5 capacity levels × 2 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
 
 #### K = 20: Capacity Does Not Bind
 
@@ -617,7 +617,7 @@ Performance differences across capacity levels remain small (< 0.15 min mean RT)
 
 ### 5.13 Spatially-Stratified Baseline Policy (P0-spatial)
 
-The original P0 baseline used **index-based** uniform allocation (round-robin by dataset order), which does not guarantee geographic coverage. We developed a **spatially-stratified P0** using latitude-based selection to ensure even spatial distribution of units across Manhattan's north–south extent.
+The original P0 baseline used **index-based** uniform allocation (round-robin by dataset order), which does not guarantee geographic coverage. We developed a **spatially-stratified P0** using latitude-based selection for even spatial distribution of units across Manhattan's north–south extent.
 
 #### Methodology
 
@@ -630,7 +630,7 @@ The latitude-based method was selected as the default for its simplicity, interp
 
 #### Performance Improvement
 
-The spatially-stratified P0 dramatically outperforms the index-based P0:
+The spatially-stratified P0 substantially outperforms the index-based P0:
 
 | Metric | P0-index (V1) | P0-spatial (V2) | Improvement |
 |--------|---------------|-----------------|-------------|
@@ -638,7 +638,7 @@ The spatially-stratified P0 dramatically outperforms the index-based P0:
 | 8-min Coverage (K=20) | 64.4% | **99.6%** | **+35.2 pp** |
 | Mean RT (K=15) | 9.57 min | **3.70 min** | **−61.4%** |
 
-The 61% improvement in P0 baseline performance demonstrates that **geographic placement is the dominant factor** in EMS response time — even a non-optimised baseline achieves near-optimal coverage when units are spatially distributed. This significantly narrows the gap between P0 and P2 (from 68% to 19% at K=20).
+The 61% improvement in P0 baseline performance shows that **geographic placement is the dominant factor** in EMS response time — even a non-optimised baseline achieves near-optimal coverage when units are spatially distributed. This narrows the gap considerably between P0 and P2 (from 68% to 19% at K=20).
 
 #### Implications for Policy Comparison
 
@@ -656,13 +656,13 @@ See `docs/firehouse_capacity_analysis.md` for the spatial stratification methodo
 
 ### 6.1 Interpretation of Findings
 
-The results demonstrate that **spatial intelligence in ambulance allocation yields transformative performance improvements**. The demand-weighted optimization (P2) reduces mean response time by 68% and achieves near-universal 8-minute coverage (99.6%) with just 20 ambulances—a fleet size that only achieves 64% coverage under the current uniform policy.
+The results show that **spatial intelligence in ambulance allocation leads to major performance gains**. The demand-weighted optimization (P2) reduces mean response time by 68% and achieves near-complete 8-minute coverage (99.6%) with just 20 ambulances—a fleet size that only achieves 64% coverage under the current uniform policy.
 
-The key mechanism is straightforward: P2 concentrates units near high-demand precincts (Midtown, Lower Manhattan) while maintaining coverage of lower-demand areas through strategic placement. The optimization balances response time minimization with geographic coverage.
+The mechanism is simple: P2 concentrates units near high-demand precincts (Midtown, Lower Manhattan) while maintaining coverage of lower-demand areas through strategic placement. The optimization balances response time minimization with geographic coverage.
 
 ### 6.2 Practical Implications
 
-1. **Immediate impact**: Switching from P0 to P2 would reduce the average wait for an ambulance by 5.5 minutes for Manhattan MVC incidents—a life-saving improvement for time-critical cases.
+1. **Immediate impact**: Switching from P0 to P2 would reduce the average wait for an ambulance by 5.5 minutes for Manhattan MVC incidents—a meaningful improvement for time-critical cases.
 
 2. **Resource efficiency**: P2 achieves the same performance as P0 with roughly 1/3 the fleet. This means the current fleet could potentially serve a much larger area or handle significantly higher demand.
 
@@ -702,11 +702,11 @@ The finding that optimized allocation is equivalent to ~3× fleet expansion alig
 
 ### 7.1 Summary of Key Findings
 
-1. **The current uniform allocation (P0) is dramatically suboptimal**, with only 64.4% 8-minute coverage and a mean response time of 8.08 minutes.
+1. **The current uniform allocation (P0) is far from optimal**, with only 64.4% 8-minute coverage and a mean response time of 8.08 minutes.
 
-2. **The demand-weighted optimized allocation (P2) achieves near-perfect coverage (99.6%)** and reduces mean response time to 2.57 minutes—a 68.2% improvement.
+2. **The demand-weighted optimized allocation (P2) achieves near-complete coverage (99.6%)** and reduces mean response time to 2.57 minutes—a 68.2% improvement.
 
-3. **P2 is robust**: Performance rankings are invariant to demand fluctuations (±100%), service time assumptions (20–30 min), and fleet size variations (15–40 units).
+3. **P2 holds up well**: Performance rankings are invariant to demand fluctuations (±100%), service time assumptions (20–30 min), and fleet size variations (15–40 units).
 
 4. **The improvement is equivalent to tripling fleet capacity**: P2 with K=15 units outperforms P0 with K=40 units.
 
@@ -839,7 +839,7 @@ The following figures are generated by the analysis pipeline and stored in `resu
 | 22 | `opt_allocation_comparison.png` | Allocation comparison across optimization models (top 20 firehouses) |
 | 23 | `opt_inputs.png` | Optimization input visualization (travel times and demand weights) |
 | 24 | `opt_sensitivity.png` | Optimization sensitivity analysis: objective value vs. fleet size |
-| 25 | `project_summary_dashboard.png` | Comprehensive project summary dashboard with key results |
+| 25 | `project_summary_dashboard.png` | Full project summary dashboard with key results |
 | 26 | `pub_fig1_policy_comparison.png` | Publication-quality: Policy comparison (Figure 1) |
 | 27 | `pub_fig2_fleet_sensitivity.png` | Publication-quality: Fleet sensitivity analysis (Figure 2) |
 | 28 | `pub_fig3_demand_robustness.png` | Publication-quality: Demand robustness analysis (Figure 3) |
@@ -902,7 +902,7 @@ The following tables are generated by the analysis pipeline and stored in `resul
 |---|----------|----------------------|
 | 1 | `anova_results.csv` | Full ANOVA results with F-statistics, p-values, and effect sizes |
 | 2 | `cbd_comparison.csv` | CBD vs. Manhattan-wide performance comparison table |
-| 3 | `cbd_summary_all.csv` | Comprehensive CBD experiment summary across all scenarios |
+| 3 | `cbd_summary_all.csv` | Full CBD experiment summary across all scenarios |
 | 4 | `confidence_intervals.csv` | 95% confidence intervals for all policy-metric combinations |
 | 5 | `descriptive_statistics.csv` | Descriptive statistics (mean, std, min, max, quartiles) for all experiments |
 | 6 | `effect_sizes.csv` | Cohen's d effect sizes for all pairwise policy comparisons |
@@ -987,7 +987,7 @@ Full dependency list: `requirements.txt`
 
 ### 12.2 Random Seeds and Reproducibility Strategy
 
-All stochastic components use **deterministic seeding** to ensure exact reproducibility:
+All stochastic components use **deterministic seeding** for exact reproducibility:
 
 | Component | Seed / Strategy | Configuration |
 |-----------|----------------|---------------|

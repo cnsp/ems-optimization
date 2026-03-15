@@ -1,6 +1,6 @@
 # Assumptions Log
 
-This document records all assumptions made during the EMS Readiness Optimization project.
+This document logs the assumptions made during the EMS Readiness Optimization project.
 
 ## Data Assumptions
 
@@ -66,7 +66,7 @@ This document records all assumptions made during the EMS Readiness Optimization
 
 ### A10: Firehouse Staging Capacity (Updated v1.3.0)
 **Assumption**: ~~Any number of EMS units can stage at a single firehouse.~~ **Updated:** Maximum 2 EMS units per firehouse (default capacity constraint).
-**Rationale**: Full capacity sensitivity analysis (cap 1–5) demonstrates that cap=2 is operationally realistic based on typical FDNY firehouse infrastructure, and matches or improves performance compared to cap=5 at K ≤ 40. At K=20, capacity never binds (all policies allocate ≤ 1 unit/firehouse). At K=40, cap=2 forces wider geographic dispersion (29 vs 24 firehouses for P2).
+**Rationale**: Full capacity sensitivity analysis (cap 1–5) shows that cap=2 is operationally realistic based on typical FDNY firehouse infrastructure, and matches or improves performance compared to cap=5 at K ≤ 40. At K=20, capacity never binds (all policies allocate ≤ 1 unit/firehouse). At K=40, cap=2 forces wider geographic dispersion (29 vs 24 firehouses for P2).
 **Risk**: Some firehouses may accommodate more or fewer units depending on physical infrastructure.
 **Mitigation**: Capacity sensitivity analysis (cap 1–5) quantifies performance impact. Results are robust across all tested capacity values.
 

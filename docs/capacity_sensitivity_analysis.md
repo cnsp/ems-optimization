@@ -2,10 +2,10 @@
 
 ## Full-Spectrum Analysis: Capacity = 1, 2, 3, 4, 5
 
-**Date:** March 2026  
-**Fleet Sizes:** K = 20, K = 40  
-**Policies:** P0-spatial (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation)  
-**Simulation:** 15 replications × 168 hours (1 week) per scenario  
+**Date:** March 2026 
+**Fleet Sizes:** K = 20, K = 40 
+**Policies:** P0-spatial (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation) 
+**Simulation:** 15 replications × 168 hours (1 week) per scenario 
 **Total scenarios:** 5 × 2 × 3 = **30 allocation–simulation experiments**
 
 ---

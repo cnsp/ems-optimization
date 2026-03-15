@@ -20,7 +20,7 @@ Emergency Medical Services (EMS) response times are critical for patient outcome
 
 1. Test robustness of conclusions within the Central Business District (CBD)
 2. Conduct sensitivity analysis on key parameters (unit count, demand levels, travel times)
-3. Provide actionable recommendations for EMS operational planning
+3. Provide practical recommendations for EMS operational planning
 
 ## Scope
 
@@ -49,9 +49,9 @@ Emergency Medical Services (EMS) response times are critical for patient outcome
 3. **RQ3**: Are the conclusions robust when the analysis is restricted to the Central Business District?
 
 4. **RQ4**: How sensitive are the results to changes in:
-   - Number of available EMS units
-   - Demand intensity levels
-   - Service time and travel time assumptions
+ - Number of available EMS units
+ - Demand intensity levels
+ - Service time and travel time assumptions
 
 5. **RQ5**: What are the key managerial trade-offs in implementing optimized staging?
 
@@ -60,19 +60,19 @@ Emergency Medical Services (EMS) response times are critical for patient outcome
 ### Technical Deliverables
 
 1. **Simulation Model**
-   - Discrete-event simulation implemented in Python (SimPy)
-   - Configurable parameters for scenario analysis
-   - Documentation of model assumptions and validation
+ - Discrete-event simulation implemented in Python (SimPy)
+ - Configurable parameters for scenario analysis
+ - Documentation of model assumptions and validation
 
 2. **Optimization Model**
-   - Linear program for ambulance staging (PuLP)
-   - Time-varying allocation framework
-   - Baseline policy implementations
+ - Linear program for ambulance staging (PuLP)
+ - Time-varying allocation framework
+ - Baseline policy implementations
 
 3. **Analysis Pipeline**
-   - Data preprocessing scripts
-   - Experiment execution framework
-   - Results aggregation and visualization
+ - Data preprocessing scripts
+ - Experiment execution framework
+ - Results aggregation and visualization
 
 ### Documentation Deliverables
 
