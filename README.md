@@ -78,7 +78,11 @@ ems-optimization/
 │ ├── 06_simulation_debug.ipynb
 │ ├── 07_production_results.ipynb
 │ ├── 08_statistical_analysis.ipynb
-│ └── 09_cbd_analysis.ipynb
+│ ├── 09_cbd_analysis.ipynb
+│ └── colab_standalone/ # Google Colab standalone notebooks
+│     ├── individual/ # 8 phase notebooks (00–07)
+│     ├── EMS_Optimization_Complete_Pipeline.ipynb
+│     └── README.md
 ├── results/
 │ ├── figures/ # 66+ visualization PNGs
 │ ├── tables/ # Statistical tables (CSV + LaTeX)
@@ -247,6 +251,24 @@ pytest tests/test_reproducibility.py -v
 | [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 9 phases |
 | [Conceptual Model Selection](docs/conceptual_model_selection.md) | Analysis of all conceptual models considered, implemented, and deferred |
 | [Notebook Guide](docs/notebook_guide.md) | Purpose, scope, and usage guide for Jupyter notebooks |
+
+## Google Colab Notebooks
+
+For external verification and reproduction, standalone Google Colab notebooks are available in `notebooks/colab_standalone/`. These require no local setup — just open in Colab and run.
+
+| Notebook | Phase | Runtime |
+|----------|-------|---------|
+| `00_colab_setup_and_data` | Environment setup, data verification | ~2 min |
+| `01_colab_eda_spatiotemporal` | Exploratory data analysis | ~5 min |
+| `02_colab_demand_modeling` | NHPP demand model | ~5 min |
+| `03_colab_service_modeling` | Travel/service time models | ~3 min |
+| `04_colab_optimization` | P0/P1/P2 allocation policies | ~5 min |
+| `05_colab_simulation` | SimPy DES (demo or full-scale) | 5 min – 8 hr |
+| `06_colab_statistical_analysis` | ANOVA, effect sizes, CIs | ~3 min |
+| `07_colab_visualization_reporting` | Publication figures, summary report | ~3 min |
+| **All-in-One Pipeline** | Complete end-to-end analysis | 5–10 hr |
+
+See [`notebooks/colab_standalone/README.md`](notebooks/colab_standalone/README.md) for detailed instructions.
 
 ## Research Questions
 
