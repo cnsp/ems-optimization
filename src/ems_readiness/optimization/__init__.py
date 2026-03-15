@@ -9,7 +9,12 @@ policies   – Baseline (non-optimized) allocation policies
 """
 
 from .allocator import EMSAllocator          # noqa: F401
-from .policies import uniform_allocation, demand_proportional_allocation  # noqa: F401
+from .policies import (                     # noqa: F401
+    uniform_allocation,
+    demand_proportional_allocation,
+    spatially_stratified_allocation,
+    spatial_stratification_analysis,
+)
 from .models import (                        # noqa: F401
     build_cbd_focused_demand_weighted,
     build_cbd_focused_coverage,
