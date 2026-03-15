@@ -1,0 +1,32 @@
+# ============================================================
+# Reproducibility Configuration
+# ============================================================
+# Used by: src/ems_readiness/utils/reproducibility.py
+#
+# This file provides a single source of truth for all random
+# seeds used across the project.  To reproduce any experiment,
+# set the master_seed to the value recorded in that run's
+# output metadata.
+# ============================================================
+
+reproducibility:
+  # Master seed: all component seeds are deterministically derived
+  # from this value unless explicitly overridden below.
+  master_seed: 42
+
+  # When true, SeedManager also calls random.seed() and
+  # np.random.seed() to cover legacy code paths.
+  enable_deterministic: true
+
+  # Emit seed information to the log on initialisation.
+  log_seeds: true
+
+  # Per-component seed overrides.  Leave empty ({}) to let
+  # SeedManager derive all seeds from the master_seed.
+  # If you set a value here it takes precedence over derivation.
+  component_seeds: {}
+    # demand: 43
+    # simulation: 44
+    # service: 45
+    # optimization: 46
+    # analysis: 47
