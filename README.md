@@ -57,7 +57,7 @@ ems-optimization/
 │ └── cbd_scenario.yaml # CBD robustness experiment config
 ├── data/
 │ ├── raw/ # Original data files (NYC Open Data)
-│ ├── processed/ # Cleaned & transformed data
+│ ├── processed/ # Generated data (not in Git — run `make data`)
 │ └── manifests/ # Data audit records
 ├── docs/ # Project documentation (32+ files)
 │ ├── technical_report.md # Full final report (v2.1.0)
@@ -132,19 +132,26 @@ pip install -e .
 
 ### Data Setup
 
-The large raw data files are not tracked in Git. To reproduce from scratch:
+Raw data files and all processed/intermediate data are **not** tracked in Git. The pipeline regenerates everything from raw inputs.
 
-1. Download from [NYC Open Data](https://data.cityofnewyork.us/):
- - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
- - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
+1. Download large files from [NYC Open Data](https://data.cityofnewyork.us/):
+   - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
+   - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
 
-2. Process the data:
+   See [`data/raw/README.md`](data/raw/README.md) for download links and verification instructions.
+
+2. Generate all processed data (single command):
 ```bash
 make data
-# Or: python src/ems_readiness/data_processing.py
+# Or: python scripts/generate_all_data.py
 ```
 
-> **Note**: All processed data files needed for simulation and analysis are tracked in Git, so you can skip data download if you only want to run simulations.
+3. Verify data:
+```bash
+make verify-data
+```
+
+> **Note**: Notebooks auto-detect and regenerate missing processed data on first run, so you can also just open any notebook and it will trigger the pipeline if needed.
 
 ## How to Reproduce Results
 
