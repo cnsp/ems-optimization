@@ -245,6 +245,8 @@ pytest tests/test_reproducibility.py -v
 | [Firehouse Capacity Analysis](docs/firehouse_capacity_analysis.md) | Capacity methodology and initial findings |
 | [Research Questions Assessment](docs/research_questions_assessment.md) | Evaluation of all 5 research questions with simulation evidence |
 | [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 9 phases |
+| [Conceptual Model Selection](docs/conceptual_model_selection.md) | Analysis of all conceptual models considered, implemented, and deferred |
+| [Notebook Guide](docs/notebook_guide.md) | Purpose, scope, and usage guide for Jupyter notebooks |
 
 ## Research Questions
 
