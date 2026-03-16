@@ -33,11 +33,11 @@
 
 ---
 
-## Slide 3: Baseline Performance — P0 Spatially-Stratified
+## Slide 3: Baseline Performance — P0 (Spatially-Stratified)
 
 ### Even Geographic Spread Still Leaves Room for Improvement
 
-| Metric | P0-spatial Value | Target |
+| Metric | P0 Value | Target |
 |--------|-----------------|--------|
 | Mean Response Time | **3.17 min** | < 4 min |
 | P95 Response Time | **6.26 min** | < 8 min |
@@ -59,7 +59,7 @@
 1. Analyzed **2.24 million** historical crash records
 2. Built a demand model capturing hourly and geographic patterns
 3. Used **mathematical optimization** to find the best allocation
-4. Validated with **1,440 simulation runs**
+4. Validated with **2,700+ simulation runs**
 
 **P2 Allocation Strategy:**
 - Concentrates units in **high-demand areas** (Midtown, Lower Manhattan)
@@ -73,7 +73,7 @@
 
 ### Progressive Improvement from P0 → P1 → P2
 
-| Metric | P0-spatial (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
+| Metric | P0 (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
 |--------|----------------------|--------------------------|-----------------|
 | Mean Response Time | 3.17 min | 2.63 min | **2.57 min** |
 | P95 Response Time | 6.26 min | 5.05 min | **4.66 min** |
@@ -158,10 +158,10 @@
 | Benefit | Value |
 |---------|-------|
 | Calls per year affected | **~30,500** MVC calls |
-| Mean RT reduction per call | **5.5 minutes** |
-| Total annual time saved | **167,750 minutes** (2,796 hours) |
-| Additional calls within 8-min target | **~10,700** per year |
-| Effective fleet multiplier | **3×** (20 units → equivalent of 60) |
+| Mean RT reduction per call | **0.60 minutes** (3.17 → 2.57 min) |
+| Total annual time saved | **~18,300 minutes** (~305 hours) |
+| 6-min coverage improvement | **+4.2 pp** (94.0% → 98.2%) |
+| 8-min coverage | **99.7%** — maintained at near-perfect levels |
 
 ### What this means in practice:
 - Faster defibrillation and trauma response
@@ -194,4 +194,4 @@
 
 ---
 
-*This analysis is based on 1,440 simulation experiments, 2.24 million historical crash records, and rigorous statistical validation. All results can be reproduced from the project repository.*
+*This analysis is based on 2,700+ simulation experiments, 2.24 million historical crash records, and rigorous statistical validation. All results can be reproduced from the project repository.*

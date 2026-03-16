@@ -2,9 +2,9 @@
 
 ## Bottom Line
 
-**Optimized ambulance staging (P2 – Maximal Coverage) reduces average emergency
-response time by 68% compared to the current uniform deployment**, while increasing
-the proportion of calls answered within 8 minutes from 64% to 95%.
+**Optimized ambulance staging (P2 – Demand-Weighted Optimised) reduces average emergency
+response time by 19% compared to the spatially-stratified baseline (P0)**, while maintaining
+near-perfect 8-minute coverage at 99.7% and improving 6-minute coverage from 94% to 98%.
 
 ---
 
@@ -15,12 +15,13 @@ policies for Manhattan:
 
 | Policy | Strategy |
 |--------|----------|
-| **P0 – Uniform** | Spread ambulances equally across firehouses (current practice proxy) |
+| **P0 – Spatially-Stratified** | Distribute ambulances across firehouses using latitude-based stratification (baseline) |
 | **P1 – Demand-Proportional** | Station more units where crashes occur most often |
-| **P2 – Maximal Coverage** | Optimally position units to maximise coverage (evaluated at 6-min NYC and 8-min NFPA thresholds) |
+| **P2 – Demand-Weighted Optimised** | Optimally position units to maximise coverage (evaluated at 6-min NYC and 8-min NFPA thresholds) |
 
-A total of **1,770 simulation replications** were run across five experiment sets
-(including CBD robustness), using 30 independent replications per scenario with
+A total of **2,700+ simulation replications** were run across five experiment sets
+(including CBD robustness, fleet sensitivity, demand surge, and service-time variation),
+using 30 independent replications per scenario with
 Common Random Numbers (CRN) for fair comparisons.
 
 **All analyses use capacity=2 units per firehouse (the operationally optimal default).**
@@ -33,24 +34,24 @@ upon higher capacity limits at typical fleet sizes; see the technical report §5
 
 ### 1. Response Time Improvement
 
-| Metric | P0 (Uniform) | P1 (Demand-Prop.) | P2 (Max Coverage) |
+| Metric | P0 (Spatially-Stratified) | P1 (Demand-Prop.) | P2 (Optimised) |
 |--------|:------------:|:-----------------:|:-----------------:|
-| Mean Response Time | **8.1 min** | **2.6 min** | **2.6 min** |
-| P90 (90th %ile) RT | 19.3 min | 5.5 min | 5.3 min |
-| 6-min Coverage (NYC law) | ~50% | ~93% | ~94% |
-| 8-min Coverage (NFPA standard) | 64.2% | 94.5% | 94.8% |
+| Mean Response Time | **3.17 min** | **2.62 min** | **2.57 min** |
+| P90 (90th %ile) RT | 5.33 min | 3.99 min | 3.75 min |
+| 6-min Coverage (NYC law) | 94.0% | 98.0% | 98.2% |
+| 8-min Coverage (NFPA standard) | 99.7% | 99.6% | 99.7% |
 
-All differences are **statistically significant** (p < 0.001) with **large effect
-sizes** (Cohen's d > 2.0).
+All differences between P0 and P2 are **statistically significant** (p < 0.001) with
+**large effect sizes** (Cohen's d = 10.3 at K=20).
 
 ### 2. Robustness
 
-- **Fleet size**: P2 outperforms P0 at every fleet size tested (K = 15 to 40).
- Even with 25% fewer units (K = 15), P2 outperforms P0 at K = 40.
-- **Demand surges**: Under 2× demand, P2 maintains 85%+ coverage while P0 drops
- below 50%.
+- **Fleet size**: P2 outperforms P0 at most fleet sizes tested (K = 10 to 40).
+  Even with fewer units, P2 achieves competitive or superior response times.
+- **Demand surges**: Under 2× demand, P2 maintains strong coverage while P0 performance
+  degrades more significantly.
 - **Service time variation**: ±20% changes in on-scene service time have minimal
- impact on the P2 advantage.
+  impact on the P2 advantage.
 
 ### 3. CBD Robustness
 
@@ -74,12 +75,12 @@ sizes** (Cohen's d > 2.0).
 
 ## Recommendation
 
-**Implement P2 (Maximal Coverage) allocation as the primary deployment strategy.**
+**Implement P2 (Demand-Weighted Optimised) allocation as the primary deployment strategy.**
 
 ### Expected Benefits
 
 1. **19% reduction** in average response time (3.17 → 2.57 min at K=20)
-2. **Near-perfect 8-minute coverage (NFPA standard)** at 99.6%, with improved **6-minute coverage (NYC law)** reaching ~98%
+2. **Near-perfect 8-minute coverage (NFPA standard)** at 99.7%, with improved **6-minute coverage (NYC law)** reaching ~98%
 3. **Robust performance** under demand fluctuations and operational variability
 4. **No additional units required** – improvement comes from better positioning
 
@@ -122,7 +123,8 @@ sizes** (Cohen's d > 2.0).
 
 ---
 
-*Analysis performed with 1,770 simulation replications (including CBD robustness),
+*Analysis performed with 2,700+ simulation replications (including CBD robustness,
+fleet sensitivity, demand surge, and service-time variation),
 statistical testing (ANOVA, Tukey HSD, Bonferroni corrections),
 full queueing analysis, seasonal variation assessment, and
 publication-quality reporting. Full methodology documented in

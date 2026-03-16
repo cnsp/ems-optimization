@@ -440,10 +440,10 @@ One-way ANOVA confirms significant policy effects across all metrics:
 
 | Metric | F-statistic | p-value | η² | Effect |
 |--------|------------|---------|-----|--------|
-| Mean RT | 12,010 | < 0.001 | 0.996 | Large |
-| P90 (90th %ile) RT | 15,108 | < 0.001 | 0.997 | Large |
-| 8-min Coverage | 8,764 | < 0.001 | 0.995 | Large |
-| Utilization | 216 | < 0.001 | 0.833 | Large |
+| Mean RT | 1,019 | < 0.001 | 0.959 | Large |
+| P90 (90th %ile) RT | 398 | < 0.001 | 0.901 | Large |
+| 6-min Coverage | 285 | < 0.001 | 0.868 | Large |
+| 8-min Coverage | 0.46 | 0.634 | — | Not significant |
 
 Post-hoc pairwise comparisons (Tukey HSD):
 - **P0 vs P1**: Mean RT difference = 0.54 min (p < 0.001)
@@ -496,8 +496,8 @@ Varying mean service time across 20, 25, and 30 minutes:
 
 | Hypothesis | Test | Result | Significance |
 |-----------|------|--------|-------------|
-| Policy affects mean RT | One-way ANOVA | F = 12,010 | *** (p < 0.001) |
-| P2 < P0 mean RT | Pairwise t-test | Δ = −5.51 min | *** (d = 28.9) |
+| Policy affects mean RT | One-way ANOVA | F = 1,019 | *** (p < 0.001) |
+| P2 < P0 mean RT | Pairwise t-test | Δ = −0.60 min | *** (d = 10.3) |
 | P2 < P1 mean RT | Pairwise t-test | Δ = −0.064 min | *** (d = 1.41) |
 | Fleet size affects P0 | Two-way ANOVA | F(K) significant | *** |
 | Fleet size affects P2 | Two-way ANOVA | F(K) = limited | Minimal effect |
@@ -807,7 +807,7 @@ The research addressed five specific questions (§2.3): characterising spatial a
 
 The study yields five principal findings, each supported by extensive statistical evidence:
 
-**Finding 1: Demand-weighted optimisation substantially outperforms uniform allocation.** The optimised policy P2 achieves a mean response time of 2.57 minutes at K=20, representing an 18.9% improvement over the spatially-stratified baseline P0 (3.17 minutes). The P90 response time improvement is even larger at 33.1% (3.76 vs 5.62 minutes). Both the 8-minute NFPA standard (99.6% coverage) and the 6-minute NYC standard (98.2% vs 94.0%) are met or exceeded. All differences are statistically significant (F = 12,010, p < 0.001, η² = 0.996).
+**Finding 1: Demand-weighted optimisation substantially outperforms uniform allocation.** The optimised policy P2 achieves a mean response time of 2.57 minutes at K=20, representing an 18.9% improvement over the spatially-stratified baseline P0 (3.17 minutes). The P90 response time improvement is even larger at 33.1% (3.76 vs 5.62 minutes). Both the 8-minute NFPA standard (99.6% coverage) and the 6-minute NYC standard (98.2% vs 94.0%) are met or exceeded. All differences are statistically significant (F = 1,019, p < 0.001, η² = 0.959).
 
 **Finding 2: Performance differences are driven entirely by spatial allocation, not capacity.** Zero queueing was observed across all 2,700+ simulation runs (mean utilisation ≈ 7.5%). The system operates at traffic intensity ρ ≈ 0.087, far below the regime where capacity constraints bind. This establishes that the response time improvements from P2 are purely a consequence of better spatial positioning—placing ambulances closer to where incidents occur—rather than of better capacity management.
 
@@ -863,7 +863,7 @@ Based on the findings, we recommend a phased implementation strategy:
 
 | Impact Dimension | Estimate | Evidence Basis |
 |-----------------|----------|----------------|
-| Mean response time reduction (vs P0) | −0.60 min per call at K=20 | Simulation: n=30, p < 0.001, d = 28.9 |
+| Mean response time reduction (vs P0) | −0.60 min per call at K=20 | Simulation: n=30, p < 0.001, d = 10.3 |
 | P90 response time reduction | −1.86 min per call at K=20 | Simulation: n=30, p < 0.001 |
 | 6-minute coverage improvement | +4.2 percentage points (94.0% → 98.2%) | Simulation: n=30, p < 0.001 |
 | Effective fleet multiplier | 1.33× (P2@K=15 ≈ P0@K=20) | Fleet sensitivity analysis |
@@ -1193,7 +1193,7 @@ All stochastic components use **deterministic seeding** for exact reproducibilit
 |------|---------|----------------|
 | `configs/demand.yaml` | NHPP demand model parameters | Base rate (3.48/hr), lambda table paths, replications (30), seed (42) |
 | `configs/service.yaml` | Travel time and service time models | Speed (20 mph), TOD factors, LogNormal(25, 10), dispatch delay (1.5 min) |
-| `configs/optimization.yaml` | MIP optimization settings | Unit counts [20,30,40,48], capacity (5), threshold (8 min), CBC solver |
+| `configs/optimization.yaml` | MIP optimization settings | Unit counts [20,30,40,48], capacity (2), threshold (8 min), CBC solver |
 | `configs/simulation.yaml` | DES engine configuration | Horizon (168 hr), warmup (0), replications (30), seed base (42), threshold (8 min) |
 | `configs/cbd_scenario.yaml` | CBD robustness experiment | Demand surge (2×), increased service times, CBD boundary, seed base (42) |
 

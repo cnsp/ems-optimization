@@ -136,7 +136,7 @@ in the system for the entire simulation horizon.
 Total fleet size **K** is a scenario parameter (default values: 20, 30, 40, 48).
 Units are distributed across 48 Manhattan firehouses subject to:
 
-- Per-firehouse capacity cap: **C = 5** units maximum.
+- Per-firehouse capacity cap: **C = 2** units maximum (default; sensitivity analysis tested C = 1–5).
 - Allocation vector **x** = (x₁, x₂, …, x₄₈) where Σxᵢ = K and 0 ≤ xᵢ ≤ C.
 
 The allocation vector is determined **before** the simulation begins and remains

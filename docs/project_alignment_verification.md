@@ -188,7 +188,7 @@
  - P2: Demand-weighted optimized (`models.py::build_demand_weighted`)
  - Plus P2-alt (p-median) and P2-cov (maximal coverage) alternatives
 - Inputs: demand weights from `demand_lambda_precinct.csv`, travel times from distance matrix at 20mph
-- Constraints: total units K ∈ {15,20,25,30,35,40}, capacity ≤ 5 per firehouse
+- Constraints: total units K ∈ {15,20,25,30,35,40}, capacity ≤ 2 per firehouse
 - Scenario library: `results/optimization/allocations_K20.csv` through `K48.csv`
 - Feasibility: `EMSAllocator` validates constraints; `optimization_formulation.md` documents math
 - `optimization_results.md` summarizes all results
@@ -346,7 +346,7 @@
 
 **Project delivers:**
 - Recommendation: Adopt P2 (demand-weighted optimized) — stated in `technical_report.md` §7
-- Comparison: P2 reduces mean RT by 68.2% vs P0, all differences statistically significant (p < 0.001)
+- Comparison: P2 reduces mean RT by 18.9% vs P0, all differences statistically significant (p < 0.001)
 - Full technical report (`technical_report.md`, 527 lines): Exec Summary, Intro, Lit Review, Methodology, Results, Discussion, Conclusions
 - 35+ figures in `results/figures/`, 20+ tables in `results/tables/`, 3 maps in `results/maps/`
 - Reproducible package:

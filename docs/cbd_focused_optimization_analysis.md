@@ -25,7 +25,7 @@ This analysis compares two optimisation strategies to examine the **equity vs ef
 
 Both formulations:
 - Allocate K=20 total EMS units
-- Maximum 5 units per firehouse
+- Maximum 2 units per firehouse
 - Assign all precincts to exactly one firehouse (feasibility)
 - Use the same Haversine travel-time matrix
 

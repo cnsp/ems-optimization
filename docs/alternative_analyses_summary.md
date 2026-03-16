@@ -26,7 +26,7 @@ Does the choice of distance metric (Haversine vs Manhattan/taxicab) significantl
 
 | Metric | Mean RT (min) | Coverage (≤8 min) | Active Firehouses |
 |--------|--------------|-------------------|-------------------|
-| Haversine P0-spatial | 3.17 | 99.6% | 20 |
+| Haversine P0 | 3.17 | 99.6% | 20 |
 | Haversine P1 | 2.63 | 99.6% | 20 |
 | Haversine P2 | 2.57 | 99.6% | 20 |
 | Manhattan P2 | 2.55 | 99.6% | 20 |
