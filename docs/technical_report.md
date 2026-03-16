@@ -428,11 +428,11 @@ Figure 1 shows the spatial distribution of staging locations for all three polic
 
 *Figure 1: Three-panel comparison of ambulance staging locations under P0 (spatially-stratified baseline), P1 (demand-proportional), and P2 (demand-weighted MIP). Colored circles indicate active stations (sized by unit count); gray squares indicate inactive stations. The dashed blue line marks the CBD boundary. P0 distributes units uniformly along Manhattan's north–south axis; P1 concentrates units near high-demand precincts but uses fewer stations (18 vs 20); P2 achieves the widest geographic spread while weighting placement toward demand.*
 
-Figure 2 compares response time performance across fleet sizes (K=15, 20, 30) for all three policies, showing both mean RT and P95 RT with 95% confidence intervals and 8-minute coverage percentages.
+Figure 2 compares response time performance across fleet sizes (K=15, 20, 30) for all three policies, showing both mean RT and P95 RT with 95% confidence intervals. Both 6-minute (NYC) and 8-minute (NFPA) coverage percentages are annotated above each bar.
 
 ![Response Time Distribution by Policy and Fleet Size](../results/figures/response_time_distribution_by_policy.png)
 
-*Figure 2: Mean and P95 response times by policy and fleet size (capacity=2). Error bars show 95% confidence intervals. Percentages above bars indicate 8-minute coverage. The red dashed line marks the 8-minute standard. P2 achieves the lowest response times across all fleet sizes, though the gap narrows as K increases.*
+*Figure 2: Mean and P95 response times by policy and fleet size (capacity=2, n=30 replications). Error bars show 95% confidence intervals. Percentages above bars indicate both 8-minute (NFPA) and 6-minute (NYC) coverage. The red dashed line marks the 8-minute standard; the orange dotted line marks the 6-minute standard. P2 achieves the lowest response times across all fleet sizes, though the gap narrows as K increases.*
 
 ### 5.2 Policy Comparison Results (ANOVA)
 
@@ -467,11 +467,11 @@ Two-way ANOVA (Policy × K) reveals significant main effects and interactions:
 
 **Critical finding:** P2 consistently outperforms P0 across all fleet sizes, with the largest advantage at small fleet sizes (K < 25).
 
-Figure 3 visualizes the fleet sensitivity analysis (capacity=2), showing mean RT and 8-minute coverage as functions of fleet size for all three policies.
+Figure 3 visualizes the fleet sensitivity analysis (capacity=2), showing mean RT and both 6-minute and 8-minute coverage as functions of fleet size for all three policies.
 
 ![Fleet Sensitivity Analysis](../results/figures/fleet_sensitivity_dual.png)
 
-*Figure 3: Fleet sensitivity analysis (capacity=2). Left: Mean response time vs fleet size with 95% CI bands. Right: Coverage vs fleet size (6-minute NYC requirement and 8-minute NFPA standard). P2 dominates across all fleet sizes. The convergence at K≥35 reflects the saturation of Manhattan's firehouse network. Spatial placement is the primary driver of performance.*
+*Figure 3: Fleet sensitivity analysis (capacity=2, n=30 replications). Left: Mean response time vs fleet size with 95% CI ribbon bands. Right: Coverage vs fleet size showing both 6-minute NYC requirement (dashed lines) and 8-minute NFPA standard (solid lines) with 95% CI. P2 dominates across all fleet sizes. The convergence at K>=35 reflects the saturation of Manhattan's firehouse network. Spatial placement is the primary driver of performance.*
 
 ### 5.4 Demand Sensitivity (Experiment 3)
 
@@ -525,11 +525,11 @@ To assess policy performance under CBD-specific conditions, we conducted 330 add
 - P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD), highlighting the spatial mismatch in upper Manhattan
 - The CBD's high firehouse density creates a natural coverage buffer — performance degrades gracefully under stress
 
-Figure 4 provides an enhanced view of CBD robustness, showing response time and coverage side-by-side across all three CBD stress scenarios.
+Figure 4 provides an enhanced view of CBD robustness, showing response time and coverage (both 6-minute and 8-minute) side-by-side across all three CBD stress scenarios for all three policies (P0, P1, P2).
 
 ![CBD Robustness Enhanced — RT and Coverage by Scenario](../results/figures/cbd_robustness_enhanced.png)
 
-*Figure 4: CBD robustness analysis (capacity=2) comparing P0 and P2 across three stress scenarios (baseline, 2× demand surge, slow service). Left: Mean response time within the CBD. Right: 8-minute coverage within the CBD. Both policies perform well in the CBD due to firehouse density, but P2 consistently maintains a slight edge. The narrow range of outcomes (2.48–2.91 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
+*Figure 4: CBD robustness analysis (K=20, capacity=2, n=30 replications) comparing all three policies (P0, P1, P2) across three stress scenarios (baseline, 2x demand surge, slow service). Panel A: CBD mean response time with 95% CI. Panel B: CBD 8-minute coverage (NFPA) with 95% CI. Panel C: CBD 6-minute coverage (NYC) with 95% CI. Panel D: Non-CBD mean response time with 95% CI (equity perspective). All three policies perform well in the CBD due to firehouse density, with P1 and P2 outperforming P0. The narrow range of outcomes (2.1-2.9 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
 
 
 ### 5.8 Queueing Analysis
@@ -609,7 +609,7 @@ Figure 5 provides a summary view of the equity–efficiency tradeoff, contrastin
 
 ![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)
 
-*Figure 5: Equity–efficiency tradeoff between Manhattan-wide and CBD-focused optimization (capacity=2). Left: Response times disaggregated by CBD, non-CBD, and overall. The CBD-focused strategy fails to improve CBD response time while severely degrading non-CBD performance (6.88 vs 2.66 min). Right: 8-minute coverage drops from 99.2% to 73.6% for non-CBD precincts under the CBD-focused strategy. This confirms that the demand-weighted objective already effectively prioritises CBD precincts without explicit geographic targeting.*
+*Figure 5: Equity-efficiency tradeoff comparing all three policies (P0, P1, P2) and a CBD-focused P2 strategy (capacity=2, 95% CI where available). Left: Response times disaggregated by CBD, non-CBD, and overall. Right: Both 6-minute (NYC, hatched bars) and 8-minute (NFPA, solid bars) coverage. The CBD-focused strategy fails to improve CBD response time while severely degrading non-CBD performance. This confirms that the demand-weighted objective already effectively prioritises CBD precincts without explicit geographic targeting.*
 
 
 ### 5.12 Firehouse Capacity Constraints Analysis
@@ -654,11 +654,11 @@ Performance differences across capacity levels remain small (< 0.15 min mean RT)
 
 **Decision**: Default firehouse capacity updated from 5 to 2 in `configs/optimization.yaml` (see DEC-010).
 
-Figure 6 shows a heatmap view of mean response time across all policy × capacity combinations at K=20 and K=40, making the insensitivity at K=20 and the modest effects at K=40 visually apparent.
+Figure 6 shows a heatmap view of mean response time across all policy x capacity combinations at K=20, K=30, and K=40, making the insensitivity at K=20 and the modest effects at higher fleet sizes visually apparent. Each cell displays the mean response time with its 95% confidence interval.
 
 ![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)
 
-*Figure 6: Capacity sensitivity heatmap showing mean response time by policy and per-firehouse capacity limit at K=20 and K=40. At K=20, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
+*Figure 6: Capacity sensitivity heatmap showing mean response time (with 95% CI) by policy and per-firehouse capacity limit at K=20, K=30, and K=40. At K=20, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=30 and K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
 
 
 ### 5.13 P0 Baseline Design
@@ -942,7 +942,7 @@ The following figures are generated by the analysis pipeline and stored in `resu
 69. `results/figures/fleet_sensitivity_dual.png` — Dual-axis fleet sensitivity: RT and coverage vs K (Figure 3)
 70. `results/figures/cbd_robustness_enhanced.png` — CBD robustness: RT and coverage under stress scenarios (Figure 4)
 71. `results/figures/cbd_equity_tradeoff_summary.png` — CBD equity-efficiency tradeoff summary (Figure 5)
-72. `results/figures/capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap at K=20 and K=40 (Figure 6)
+72. `results/figures/capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap at K=20, K=30, and K=40 with 95% CI (Figure 6)
 
 **Total: 72 analysis figures** generated across EDA, optimization, simulation, alternative analyses, capacity sensitivity, extended fleet analysis, publication workflows, and report inline figures.
 
