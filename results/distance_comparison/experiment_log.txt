@@ -1,94 +1,94 @@
-2026-03-16 05:20:40,791 [INFO] ============================================================
-2026-03-16 05:20:40,791 [INFO] Distance Metric Comparison Experiment
-2026-03-16 05:20:40,791 [INFO] K=20, replications=10
-2026-03-16 05:20:40,791 [INFO] ============================================================
-2026-03-16 05:20:41,630 [INFO] Saved: distance_matrices_heatmap.png
-2026-03-16 05:20:41,751 [INFO] Saved: distance_scatter.png
-2026-03-16 05:20:41,751 [INFO] 
+2026-03-16 05:39:49,971 [INFO] ============================================================
+2026-03-16 05:39:49,971 [INFO] Distance Metric Comparison Experiment
+2026-03-16 05:39:49,972 [INFO] K=20, replications=10
+2026-03-16 05:39:49,972 [INFO] ============================================================
+2026-03-16 05:39:50,790 [INFO] Saved: distance_matrices_heatmap.png
+2026-03-16 05:39:50,909 [INFO] Saved: distance_scatter.png
+2026-03-16 05:39:50,909 [INFO] 
 Solving P2 with Haversine travel times...
-2026-03-16 05:20:41,816 [INFO]   P2-Haversine: 20 units across 20 firehouses
-2026-03-16 05:20:41,817 [INFO] Solving P2 with Manhattan travel times...
-2026-03-16 05:20:41,879 [INFO]   P2-Manhattan: 20 units across 20 firehouses
-2026-03-16 05:20:41,882 [INFO] Allocation differences: 2 firehouses differ
-2026-03-16 05:20:41,882 [INFO] 
+2026-03-16 05:39:50,973 [INFO]   P2-Haversine: 20 units across 20 firehouses
+2026-03-16 05:39:50,974 [INFO] Solving P2 with Manhattan travel times...
+2026-03-16 05:39:51,036 [INFO]   P2-Manhattan: 20 units across 20 firehouses
+2026-03-16 05:39:51,038 [INFO] Allocation differences: 2 firehouses differ
+2026-03-16 05:39:51,038 [INFO] 
 Running simulations with Haversine-optimized allocation...
-2026-03-16 05:20:41,882 [INFO] Running scenario: policy=P2-Haversine, K=20, replications=10, seed_base=42
-2026-03-16 05:20:41,884 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:41,889 [INFO] Starting simulation: horizon=168h, units=20, seed=42
-2026-03-16 05:20:41,982 [INFO] Simulation complete: 578 incidents, coverage=99.8%
-2026-03-16 05:20:41,986 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:41,991 [INFO] Starting simulation: horizon=168h, units=20, seed=43
-2026-03-16 05:20:42,077 [INFO] Simulation complete: 535 incidents, coverage=99.8%
-2026-03-16 05:20:42,081 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,086 [INFO] Starting simulation: horizon=168h, units=20, seed=44
-2026-03-16 05:20:42,176 [INFO] Simulation complete: 565 incidents, coverage=99.8%
-2026-03-16 05:20:42,180 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,185 [INFO] Starting simulation: horizon=168h, units=20, seed=45
-2026-03-16 05:20:42,279 [INFO] Simulation complete: 599 incidents, coverage=99.8%
-2026-03-16 05:20:42,285 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,291 [INFO] Starting simulation: horizon=168h, units=20, seed=46
-2026-03-16 05:20:42,385 [INFO] Simulation complete: 577 incidents, coverage=99.5%
-2026-03-16 05:20:42,390 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,395 [INFO] Starting simulation: horizon=168h, units=20, seed=47
-2026-03-16 05:20:42,483 [INFO] Simulation complete: 547 incidents, coverage=99.8%
-2026-03-16 05:20:42,487 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,492 [INFO] Starting simulation: horizon=168h, units=20, seed=48
-2026-03-16 05:20:42,578 [INFO] Simulation complete: 545 incidents, coverage=99.8%
-2026-03-16 05:20:42,582 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,587 [INFO] Starting simulation: horizon=168h, units=20, seed=49
-2026-03-16 05:20:42,677 [INFO] Simulation complete: 574 incidents, coverage=99.8%
-2026-03-16 05:20:42,681 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,686 [INFO] Starting simulation: horizon=168h, units=20, seed=50
-2026-03-16 05:20:42,773 [INFO] Simulation complete: 532 incidents, coverage=99.6%
-2026-03-16 05:20:42,777 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,782 [INFO] Starting simulation: horizon=168h, units=20, seed=51
-2026-03-16 05:20:42,872 [INFO] Simulation complete: 544 incidents, coverage=99.4%
-2026-03-16 05:20:42,876 [INFO] Running simulations with Manhattan-optimized allocation...
-2026-03-16 05:20:42,876 [INFO] Running scenario: policy=P2-Manhattan, K=20, replications=10, seed_base=42
-2026-03-16 05:20:42,878 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,883 [INFO] Starting simulation: horizon=168h, units=20, seed=42
-2026-03-16 05:20:42,975 [INFO] Simulation complete: 578 incidents, coverage=99.8%
-2026-03-16 05:20:42,979 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:42,984 [INFO] Starting simulation: horizon=168h, units=20, seed=43
-2026-03-16 05:20:43,069 [INFO] Simulation complete: 535 incidents, coverage=99.8%
-2026-03-16 05:20:43,073 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,078 [INFO] Starting simulation: horizon=168h, units=20, seed=44
-2026-03-16 05:20:43,230 [INFO] Simulation complete: 565 incidents, coverage=99.8%
-2026-03-16 05:20:43,234 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,239 [INFO] Starting simulation: horizon=168h, units=20, seed=45
-2026-03-16 05:20:43,333 [INFO] Simulation complete: 599 incidents, coverage=99.8%
-2026-03-16 05:20:43,337 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,342 [INFO] Starting simulation: horizon=168h, units=20, seed=46
-2026-03-16 05:20:43,433 [INFO] Simulation complete: 577 incidents, coverage=99.5%
-2026-03-16 05:20:43,437 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,443 [INFO] Starting simulation: horizon=168h, units=20, seed=47
-2026-03-16 05:20:43,530 [INFO] Simulation complete: 547 incidents, coverage=99.8%
-2026-03-16 05:20:43,534 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,539 [INFO] Starting simulation: horizon=168h, units=20, seed=48
-2026-03-16 05:20:43,626 [INFO] Simulation complete: 545 incidents, coverage=99.8%
-2026-03-16 05:20:43,630 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,635 [INFO] Starting simulation: horizon=168h, units=20, seed=49
-2026-03-16 05:20:43,724 [INFO] Simulation complete: 574 incidents, coverage=99.8%
-2026-03-16 05:20:43,729 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,734 [INFO] Starting simulation: horizon=168h, units=20, seed=50
-2026-03-16 05:20:43,819 [INFO] Simulation complete: 532 incidents, coverage=99.6%
-2026-03-16 05:20:43,823 [INFO] Initialized UnitPool: 20 units across 20 firehouses
-2026-03-16 05:20:43,828 [INFO] Starting simulation: horizon=168h, units=20, seed=51
-2026-03-16 05:20:43,915 [INFO] Simulation complete: 544 incidents, coverage=99.4%
-2026-03-16 05:20:43,922 [INFO] 
+2026-03-16 05:39:51,038 [INFO] Running scenario: policy=P2-Haversine, K=20, replications=10, seed_base=42
+2026-03-16 05:39:51,041 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,046 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-16 05:39:51,138 [INFO] Simulation complete: 578 incidents, coverage=99.8%
+2026-03-16 05:39:51,142 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,147 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-16 05:39:51,232 [INFO] Simulation complete: 535 incidents, coverage=99.8%
+2026-03-16 05:39:51,236 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,241 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-16 05:39:51,331 [INFO] Simulation complete: 565 incidents, coverage=99.8%
+2026-03-16 05:39:51,336 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,341 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-16 05:39:51,434 [INFO] Simulation complete: 599 incidents, coverage=99.8%
+2026-03-16 05:39:51,439 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,444 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-16 05:39:51,535 [INFO] Simulation complete: 577 incidents, coverage=99.5%
+2026-03-16 05:39:51,539 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,544 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-16 05:39:51,631 [INFO] Simulation complete: 547 incidents, coverage=99.8%
+2026-03-16 05:39:51,635 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,640 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-16 05:39:51,727 [INFO] Simulation complete: 545 incidents, coverage=99.8%
+2026-03-16 05:39:51,731 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,736 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-16 05:39:51,826 [INFO] Simulation complete: 574 incidents, coverage=99.8%
+2026-03-16 05:39:51,831 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,835 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-16 05:39:51,921 [INFO] Simulation complete: 532 incidents, coverage=99.6%
+2026-03-16 05:39:51,925 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:51,930 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-16 05:39:52,020 [INFO] Simulation complete: 544 incidents, coverage=99.4%
+2026-03-16 05:39:52,025 [INFO] Running simulations with Manhattan-optimized allocation...
+2026-03-16 05:39:52,025 [INFO] Running scenario: policy=P2-Manhattan, K=20, replications=10, seed_base=42
+2026-03-16 05:39:52,027 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,032 [INFO] Starting simulation: horizon=168h, units=20, seed=42
+2026-03-16 05:39:52,129 [INFO] Simulation complete: 578 incidents, coverage=99.8%
+2026-03-16 05:39:52,133 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,139 [INFO] Starting simulation: horizon=168h, units=20, seed=43
+2026-03-16 05:39:52,234 [INFO] Simulation complete: 535 incidents, coverage=99.8%
+2026-03-16 05:39:52,239 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,244 [INFO] Starting simulation: horizon=168h, units=20, seed=44
+2026-03-16 05:39:52,409 [INFO] Simulation complete: 565 incidents, coverage=99.8%
+2026-03-16 05:39:52,413 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,418 [INFO] Starting simulation: horizon=168h, units=20, seed=45
+2026-03-16 05:39:52,517 [INFO] Simulation complete: 599 incidents, coverage=99.8%
+2026-03-16 05:39:52,522 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,527 [INFO] Starting simulation: horizon=168h, units=20, seed=46
+2026-03-16 05:39:52,621 [INFO] Simulation complete: 577 incidents, coverage=99.5%
+2026-03-16 05:39:52,626 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,632 [INFO] Starting simulation: horizon=168h, units=20, seed=47
+2026-03-16 05:39:52,720 [INFO] Simulation complete: 547 incidents, coverage=99.8%
+2026-03-16 05:39:52,724 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,730 [INFO] Starting simulation: horizon=168h, units=20, seed=48
+2026-03-16 05:39:52,818 [INFO] Simulation complete: 545 incidents, coverage=99.8%
+2026-03-16 05:39:52,822 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,827 [INFO] Starting simulation: horizon=168h, units=20, seed=49
+2026-03-16 05:39:52,918 [INFO] Simulation complete: 574 incidents, coverage=99.8%
+2026-03-16 05:39:52,923 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:52,929 [INFO] Starting simulation: horizon=168h, units=20, seed=50
+2026-03-16 05:39:53,015 [INFO] Simulation complete: 532 incidents, coverage=99.6%
+2026-03-16 05:39:53,019 [INFO] Initialized UnitPool: 20 units across 20 firehouses
+2026-03-16 05:39:53,024 [INFO] Starting simulation: horizon=168h, units=20, seed=51
+2026-03-16 05:39:53,110 [INFO] Simulation complete: 544 incidents, coverage=99.4%
+2026-03-16 05:39:53,117 [INFO] 
 --- Comparison Table ---
               response_time_mean  response_time_median  response_time_p90  coverage_fraction  travel_time_mean  incidents_queued  queue_fraction
 scenario                                                                                                                                        
 P2-Haversine            2.540460              2.240848           3.677553           0.997308          1.040460               0.0             0.0
 P2-Manhattan            2.540187              2.240848           3.663825           0.997308          1.040187               0.0             0.0
-2026-03-16 05:20:44,106 [INFO] Saved: distance_comparison_bar.png
-2026-03-16 05:20:44,278 [INFO] Saved: distance_comparison_boxplot.png
-2026-03-16 05:20:44,278 [INFO] 
+2026-03-16 05:39:53,299 [INFO] Saved: distance_comparison_bar.png
+2026-03-16 05:39:53,470 [INFO] Saved: distance_comparison_boxplot.png
+2026-03-16 05:39:53,470 [INFO] 
 Experiment completed in 3.5s (0.1 min)
-2026-03-16 05:20:44,278 [INFO] Results saved to: /home/ubuntu/ems-optimization/results/distance_comparison
-2026-03-16 05:20:44,278 [INFO] 
+2026-03-16 05:39:53,470 [INFO] Results saved to: /home/ubuntu/ems-optimization/results/distance_comparison
+2026-03-16 05:39:53,470 [INFO] 
 ============================================================
-2026-03-16 05:20:44,278 [INFO] KEY FINDINGS
-2026-03-16 05:20:44,278 [INFO] ============================================================
-2026-03-16 05:20:44,278 [INFO]   P2-Haversine        : RT=2.54 min, Coverage=99.7%
-2026-03-16 05:20:44,278 [INFO]   P2-Manhattan        : RT=2.54 min, Coverage=99.7%
+2026-03-16 05:39:53,470 [INFO] KEY FINDINGS
+2026-03-16 05:39:53,470 [INFO] ============================================================
+2026-03-16 05:39:53,470 [INFO]   P2-Haversine        : RT=2.54 min, Coverage=99.7%
+2026-03-16 05:39:53,470 [INFO]   P2-Manhattan        : RT=2.54 min, Coverage=99.7%

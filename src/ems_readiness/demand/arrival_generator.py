@@ -107,8 +107,9 @@ class NHPPArrivalGenerator:
         hourly, dow, precinct = load_lambda_tables(data_dir)
         hourly_factors = dict(zip(hourly["hour"].astype(int), hourly["factor"]))
         dow_factors = dict(zip(dow["dow"].astype(int), dow["factor"]))
+        rate_col = "crash_rate_per_hour" if "crash_rate_per_hour" in precinct.columns else "lambda_per_hour"
         precinct_rates = dict(
-            zip(precinct["precinct"].astype(int), precinct["crash_rate_per_hour"])
+            zip(precinct["precinct"].astype(int), precinct[rate_col])
         )
         return cls(
             base_rate=base_rate,

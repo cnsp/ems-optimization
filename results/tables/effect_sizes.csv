@@ -14,21 +14,21 @@ exp1_policy_comparison,8-min Coverage (NFPA),P1 vs P2,-0.2352,0.2352,Small,No
 exp1_policy_comparison,Mean Utilization,P0 vs P1,0.4039,0.4039,Small,No
 exp1_policy_comparison,Mean Utilization,P0 vs P2,0.5054,0.5054,Medium,Yes
 exp1_policy_comparison,Mean Utilization,P1 vs P2,0.1135,0.1135,Negligible,No
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P1,1.1206,1.1206,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P2,1.1123,1.1123,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P1 vs P2,-0.101,0.101,Negligible,No
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P1,1.0532,1.0532,Large,Yes
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P2,1.065,1.065,Large,Yes
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P1 vs P2,0.0719,0.0719,Negligible,No
-exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P1,-1.1019,1.1019,Large,Yes
-exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P2,-1.0717,1.0717,Large,Yes
-exp2_fleet_sensitivity,6-min Coverage (NYC),P1 vs P2,0.2954,0.2954,Small,No
+exp2_fleet_sensitivity,Mean RT (min),P0 vs P1,1.1179,1.1179,Large,Yes
+exp2_fleet_sensitivity,Mean RT (min),P0 vs P2,1.0999,1.0999,Large,Yes
+exp2_fleet_sensitivity,Mean RT (min),P1 vs P2,-0.2005,0.2005,Small,No
+exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P1,1.051,1.051,Large,Yes
+exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P2,1.0492,1.0492,Large,Yes
+exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P1 vs P2,-0.046,0.046,Negligible,No
+exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P1,-1.1,1.1,Large,Yes
+exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P2,-1.0764,1.0764,Large,Yes
+exp2_fleet_sensitivity,6-min Coverage (NYC),P1 vs P2,0.2315,0.2315,Small,No
 exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P1,-1.0451,1.0451,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P2,-1.0411,1.0411,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage (NFPA),P1 vs P2,0.1359,0.1359,Negligible,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P1,0.2381,0.2381,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P2,0.2451,0.2451,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P1 vs P2,0.0073,0.0073,Negligible,No
+exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P2,-1.0438,1.0438,Large,Yes
+exp2_fleet_sensitivity,8-min Coverage (NFPA),P1 vs P2,0.044,0.044,Negligible,No
+exp2_fleet_sensitivity,Mean Utilization,P0 vs P1,0.2378,0.2378,Small,No
+exp2_fleet_sensitivity,Mean Utilization,P0 vs P2,0.2432,0.2432,Small,No
+exp2_fleet_sensitivity,Mean Utilization,P1 vs P2,0.0052,0.0052,Negligible,No
 exp3_demand_sensitivity,Mean RT (min),P0 vs P1,4.7342,4.7342,Large,Yes
 exp3_demand_sensitivity,Mean RT (min),P0 vs P2,4.7982,4.7982,Large,Yes
 exp3_demand_sensitivity,Mean RT (min),P1 vs P2,0.378,0.378,Small,No

@@ -1,44 +1,44 @@
-2026-03-16 05:20:20,567 [INFO] ============================================================
-2026-03-16 05:20:20,567 [INFO] CBD-Focused vs Manhattan-Wide Optimization Experiment
-2026-03-16 05:20:20,567 [INFO] K=20, replications=10
-2026-03-16 05:20:20,567 [INFO] ============================================================
-2026-03-16 05:20:20,571 [INFO] Solving Manhattan-wide P2 (demand_weighted)...
-2026-03-16 05:20:20,636 [INFO]   Manhattan-wide: 20 units, 20 firehouses
-2026-03-16 05:20:20,636 [INFO] Solving CBD-focused P2...
-2026-03-16 05:20:20,686 [INFO]   CBD-focused: 20 units, 12 firehouses
-2026-03-16 05:20:20,688 [INFO] 
+2026-03-16 05:39:43,172 [INFO] ============================================================
+2026-03-16 05:39:43,172 [INFO] CBD-Focused vs Manhattan-Wide Optimization Experiment
+2026-03-16 05:39:43,172 [INFO] K=20, replications=10
+2026-03-16 05:39:43,172 [INFO] ============================================================
+2026-03-16 05:39:43,175 [INFO] Solving Manhattan-wide P2 (demand_weighted)...
+2026-03-16 05:39:43,241 [INFO]   Manhattan-wide: 20 units, 20 firehouses
+2026-03-16 05:39:43,241 [INFO] Solving CBD-focused P2...
+2026-03-16 05:39:43,292 [INFO]   CBD-focused: 20 units, 12 firehouses
+2026-03-16 05:39:43,293 [INFO] 
 Running Manhattan-Wide P2 simulations (10 reps)...
-2026-03-16 05:20:21,738 [INFO] 
+2026-03-16 05:39:44,338 [INFO] 
 Running CBD-Focused P2 simulations (10 reps)...
-2026-03-16 05:20:22,612 [INFO] 
+2026-03-16 05:39:45,200 [INFO] 
 Manhattan-Wide P2:
-2026-03-16 05:20:22,612 [INFO]   Overall RT: 2.54 ± 0.04 min
-2026-03-16 05:20:22,612 [INFO]   CBD RT:     2.46 ± 0.04 min
-2026-03-16 05:20:22,612 [INFO]   Non-CBD RT: 2.64 ± 0.08 min
-2026-03-16 05:20:22,612 [INFO]   CBD Coverage (8min): 100.0%
-2026-03-16 05:20:22,612 [INFO]   Non-CBD Coverage (8min): 99.4%
-2026-03-16 05:20:22,612 [INFO]   CBD Coverage (6min): 99.6%
-2026-03-16 05:20:22,612 [INFO]   Non-CBD Coverage (6min): 96.8%
-2026-03-16 05:20:22,622 [INFO] 
+2026-03-16 05:39:45,200 [INFO]   Overall RT: 2.54 ± 0.04 min
+2026-03-16 05:39:45,200 [INFO]   CBD RT:     2.46 ± 0.04 min
+2026-03-16 05:39:45,200 [INFO]   Non-CBD RT: 2.64 ± 0.08 min
+2026-03-16 05:39:45,200 [INFO]   CBD Coverage (8min): 100.0%
+2026-03-16 05:39:45,200 [INFO]   Non-CBD Coverage (8min): 99.4%
+2026-03-16 05:39:45,200 [INFO]   CBD Coverage (6min): 99.6%
+2026-03-16 05:39:45,200 [INFO]   Non-CBD Coverage (6min): 96.8%
+2026-03-16 05:39:45,210 [INFO] 
 CBD-Focused P2:
-2026-03-16 05:20:22,622 [INFO]   Overall RT: 4.36 ± 0.12 min
-2026-03-16 05:20:22,622 [INFO]   CBD RT:     2.48 ± 0.04 min
-2026-03-16 05:20:22,622 [INFO]   Non-CBD RT: 6.71 ± 0.13 min
-2026-03-16 05:20:22,622 [INFO]   CBD Coverage (8min): 100.0%
-2026-03-16 05:20:22,622 [INFO]   Non-CBD Coverage (8min): 73.8%
-2026-03-16 05:20:22,622 [INFO]   CBD Coverage (6min): 99.5%
-2026-03-16 05:20:22,622 [INFO]   Non-CBD Coverage (6min): 50.9%
-2026-03-16 05:20:22,623 [INFO] 
+2026-03-16 05:39:45,211 [INFO]   Overall RT: 4.36 ± 0.12 min
+2026-03-16 05:39:45,211 [INFO]   CBD RT:     2.48 ± 0.04 min
+2026-03-16 05:39:45,211 [INFO]   Non-CBD RT: 6.71 ± 0.13 min
+2026-03-16 05:39:45,211 [INFO]   CBD Coverage (8min): 100.0%
+2026-03-16 05:39:45,211 [INFO]   Non-CBD Coverage (8min): 73.8%
+2026-03-16 05:39:45,211 [INFO]   CBD Coverage (6min): 99.5%
+2026-03-16 05:39:45,211 [INFO]   Non-CBD Coverage (6min): 50.9%
+2026-03-16 05:39:45,211 [INFO] 
 Saved comparison table to /home/ubuntu/ems-optimization/results/cbd_focused_comparison/comparison_table.csv
-2026-03-16 05:20:22,841 [INFO] Saved: cbd_focused_comparison.png
-2026-03-16 05:20:23,132 [INFO] Saved: allocation_comparison.png
-2026-03-16 05:20:23,261 [INFO] Saved: equity_tradeoff.png
-2026-03-16 05:20:23,261 [INFO] 
+2026-03-16 05:39:45,417 [INFO] Saved: cbd_focused_comparison.png
+2026-03-16 05:39:45,701 [INFO] Saved: allocation_comparison.png
+2026-03-16 05:39:45,829 [INFO] Saved: equity_tradeoff.png
+2026-03-16 05:39:45,829 [INFO] 
 Experiment completed in 2.7s (0.0 min)
-2026-03-16 05:20:23,261 [INFO] Results saved to: /home/ubuntu/ems-optimization/results/cbd_focused_comparison
-2026-03-16 05:20:23,261 [INFO] 
+2026-03-16 05:39:45,829 [INFO] Results saved to: /home/ubuntu/ems-optimization/results/cbd_focused_comparison
+2026-03-16 05:39:45,829 [INFO] 
 ============================================================
-2026-03-16 05:20:23,261 [INFO] KEY FINDINGS
-2026-03-16 05:20:23,261 [INFO] ============================================================
-2026-03-16 05:20:23,261 [INFO]   Manhattan-Wide P2        : CBD=2.46, Non-CBD=2.64, Overall=2.54 min
-2026-03-16 05:20:23,261 [INFO]   CBD-Focused P2           : CBD=2.48, Non-CBD=6.71, Overall=4.36 min
+2026-03-16 05:39:45,829 [INFO] KEY FINDINGS
+2026-03-16 05:39:45,829 [INFO] ============================================================
+2026-03-16 05:39:45,829 [INFO]   Manhattan-Wide P2        : CBD=2.46, Non-CBD=2.64, Overall=2.54 min
+2026-03-16 05:39:45,830 [INFO]   CBD-Focused P2           : CBD=2.48, Non-CBD=6.71, Overall=4.36 min
