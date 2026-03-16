@@ -102,7 +102,7 @@ ax2.legend(fontsize=9)
 ax3 = fig.add_subplot(gs[0, 2])
 coverages = []
 for p in policies:
-    row = exp1[(exp1['Policy'] == p) & (exp1['Metric'] == '8-min Coverage')]
+    row = exp1[(exp1['Policy'] == p) & (exp1['Metric'] == '8-min Coverage (NFPA)')]
     coverages.append(row['Mean'].values[0] * 100)
 
 bars3 = ax3.bar(policies, coverages, color=[COLORS[p] for p in policies],
