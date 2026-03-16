@@ -283,6 +283,8 @@ pytest tests/test_reproducibility.py -v
 | [Research Questions Assessment](docs/research_questions_assessment.md) | Evaluation of all 5 research questions with simulation evidence |
 | [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 9 phases |
 | [Conceptual Model Selection](docs/conceptual_model_selection.md) | Analysis of all conceptual models considered, implemented, and deferred |
+| [Figure Trace Guide](docs/figure_trace_guide.md) | Data lineage and downstream usage for every project figure |
+| [Visualization Index](docs/visualization_index.md) | Complete catalog of all ~60 generated figures with generation scripts |
 | [Notebook Guide](docs/notebook_guide.md) | Purpose, scope, and usage guide for Jupyter notebooks |
 
 ## Google Colab Notebooks
