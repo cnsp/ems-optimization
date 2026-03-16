@@ -1,0 +1,21 @@
+K,policy,label,mean_RT_min,coverage_pct,stations_used,status
+20,P0,Spatially-Stratified Uniform,4.752978331434851,100.0,20,Baseline
+20,P1,Demand-Proportional,2.869598966323607,100.0,18,Baseline
+20,P2,Demand-Weighted MIP,2.544166099513237,100.0,20,Optimal
+20,P2b,P-Median MIP,2.544166099513237,100.0,20,Optimal
+20,P2c,Maximal Coverage MIP,3.4821293439096825,100.0,11,Optimal
+30,P0,Spatially-Stratified Uniform,3.7513913652216235,100.0,30,Baseline
+30,P1,Demand-Proportional,2.5199057997813856,100.0,21,Baseline
+30,P2,Demand-Weighted MIP,2.4935133036511465,100.0,25,Optimal
+30,P2b,P-Median MIP,2.4935133036511465,100.0,25,Optimal
+30,P2c,Maximal Coverage MIP,3.4821293439096825,100.0,15,Optimal
+40,P0,Spatially-Stratified Uniform,2.6925462746278708,100.0,40,Baseline
+40,P1,Demand-Proportional,2.493513303651146,100.0,22,Baseline
+40,P2,Demand-Weighted MIP,2.4935133036511465,100.0,29,Optimal
+40,P2b,P-Median MIP,2.4935133036511465,100.0,29,Optimal
+40,P2c,Maximal Coverage MIP,3.4821293439096825,100.0,20,Optimal
+48,P0,Spatially-Stratified Uniform,2.493513303651146,100.0,48,Baseline
+48,P1,Demand-Proportional,2.493513303651146,100.0,27,Baseline
+48,P2,Demand-Weighted MIP,2.4935133036511465,100.0,31,Optimal
+48,P2b,P-Median MIP,2.4935133036511465,100.0,31,Optimal
+48,P2c,Maximal Coverage MIP,3.4821293439096825,100.0,24,Optimal

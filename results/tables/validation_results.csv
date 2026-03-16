@@ -1,0 +1,8 @@
+type,test,passed
+verification,Toy example,True
+verification,Zero demand,True
+verification,Single-unit sat.,True
+verification,Extreme demand,True
+validation,P0 vs P2 (P2 dominates),True
+validation,RT decreases with K,True
+validation,RT increases with demand,True
