@@ -35,18 +35,11 @@
 
 ### Capacity Constraint
 
-The **firehouse capacity** parameter (C) defines the maximum number of EMS units that can be staged at any single firehouse. Two capacity regimes are used in this project:
+The **firehouse capacity** parameter (C) defines the maximum number of EMS units that can be staged at any single firehouse. The operational default is **C = 2 units per firehouse**, established by the Capacity Sensitivity experiment (see `docs/capacity_sensitivity_analysis.md`).
 
-| Regime | Capacity | Experiments | Results Location |
-|--------|----------|-------------|------------------|
-| **v1** | C = 5 units per firehouse | Exp1–Exp4 (this document) | `results/simulation/production/` |
-| **Extended** | C = 2 units per firehouse | Extended Fleet Analysis | `results/production_v2/` |
+At fleet sizes K ≤ 30, the capacity constraint does not bind—results are identical whether C = 2 or C = 5. This was confirmed by the full-spectrum capacity sensitivity analysis testing cap = 1 through 5.
 
-**Rationale for two regimes:**
-- **v1 (cap=5):** Used for the initial production experiments. At typical fleet sizes (K ≤ 40 across 48 firehouses), the capacity constraint is largely non-binding — most policies naturally allocate ≤ 2 units per firehouse. Results are valid and not materially affected by the higher cap.
-- **Extended (cap=2):** Established as the operationally optimal default after capacity sensitivity analysis (cap 1–5). With cap=2, performance matches or improves upon cap=5 at K ≤ 40, while being more operationally realistic. See `docs/capacity_sensitivity_analysis.md` for full analysis.
-
-All experiments in this document (Exp1–Exp4) use **capacity=5 units per firehouse** unless otherwise noted.
+> **Historical note:** The experiments in Section 4 below (Exp1–Exp4) were originally designed with C = 5. All production results reported in the technical report (§5) use C = 2, which produces numerically identical outcomes at the fleet sizes tested. See the technical report §4.5.1 for the consolidated experimental design table.
 
 ### Factor Details
 

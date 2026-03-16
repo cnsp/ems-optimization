@@ -10,7 +10,7 @@
 
 ## Abstract
 
-This study develops a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a spatially-stratified uniform baseline (P0), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 2,700+ production runs across multiple experiment sets—including policy comparison, fleet sensitivity, demand sensitivity, service robustness, CBD-focused stress tests, and capacity sensitivity (cap 1–5)—with 30 replications each using Common Random Numbers for variance reduction. Results show that the optimized policy P2 achieves a mean response time of 2.57 minutes with 99.6% 8-minute coverage at K=20. The P0 baseline achieves 3.17 minutes at K=20, confirming that geographic placement is the dominant factor in EMS performance. Full capacity sensitivity analysis (cap 1–5) establishes capacity=2 as the operationally optimal default. Performance gains hold up under demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments. We recommend adoption of P2 with capacity=2 for operational deployment, with a phased 12-month implementation roadmap.
+This study develops a simulation-based optimization framework for strategic ambulance staging across 48 FDNY firehouses in Manhattan, New York City. Using 2.24 million historical motor vehicle collision (MVC) records from NYC Open Data (2012–2026), we calibrate a Non-Homogeneous Poisson Process (NHPP) demand model with hourly and day-of-week intensity factors (base rate λ₀ = 3.48 calls/hour). Three allocation policies are evaluated: a spatially-stratified uniform baseline (P0), a demand-proportional heuristic (P1), and a demand-weighted Mixed-Integer Programming (MIP) optimized allocation (P2). A discrete-event simulation (DES) engine built with SimPy executes 2,400 production runs across five experiment sets—policy and fleet analysis, demand sensitivity, service robustness, CBD robustness, and capacity sensitivity (cap 1–5)—with 30 replications each using Common Random Numbers for variance reduction. Results show that the optimized policy P2 achieves a mean response time of 2.57 minutes with 99.6% 8-minute coverage at K=20. The P0 baseline achieves 3.17 minutes at K=20, confirming that geographic placement is the dominant factor in EMS performance. Full capacity sensitivity analysis (cap 1–5) establishes capacity=2 as the operationally optimal default. Performance gains hold up under demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific surge scenarios. Queue analysis confirms zero waiting across all experiments. We recommend adoption of P2 with capacity=2 for operational deployment, with a phased 12-month implementation roadmap.
 
 **Keywords:** Emergency Medical Services, ambulance staging, discrete-event simulation, facility location optimization, Non-Homogeneous Poisson Process, Mixed-Integer Programming, SimPy
 
@@ -50,7 +50,7 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
  - **P0** (Spatially-Stratified Uniform): Even geographic distribution via latitude-based selection
  - **P1** (Demand-Proportional): Units allocated proportional to nearby demand
  - **P2** (Demand-Weighted Optimized): MIP-optimized allocation minimizing expected response time
-3. **Discrete-Event Simulation (DES)** with 2,700 production runs across 6 experiment sets (including CBD robustness and capacity sensitivity)
+3. **Discrete-Event Simulation (DES)** with 2,400 production runs across 5 experiment sets (policy and fleet analysis, demand sensitivity, service robustness, CBD robustness, and capacity sensitivity)
 
 ### Key Findings
 
@@ -370,19 +370,18 @@ Built using **SimPy** discrete-event simulation library in Python:
 
 #### 4.5.1 Factorial Design
 
-| Experiment | Factors | Capacity | Levels | Replications | Total Runs |
-|-----------|---------|----------|--------|-------------|------------|
-| Exp1: Policy Comparison | Policy (P0, P1, P2) | cap=5 | 3 | 30 | 90 |
-| Exp2: Fleet Sensitivity | Policy × K (15–40) | cap=5 | 3×6 | 30 | 540 |
-| Exp3: Demand Sensitivity | Policy × Demand (0.5–2.0×) | cap=5 | 3×6 | 30 | 540 |
-| Exp4: Service Robustness | Policy × Service (20,25,30 min) | cap=5 | 3×3 | 30 | 270 |
-| Capacity Sensitivity | Policy × K × Cap (1–5) | cap=1–5 | 3×2×5 | 15 | 450 |
-| Extended Fleet Analysis | Policy × K (10–48) | cap=2 | 3×9 | 30 | 810 |
-| **Total** | | | | | **2,700** |
+| Experiment | Factors | Capacity | Levels | Replications | Total Runs | Report Section |
+|-----------|---------|----------|--------|-------------|------------|----------------|
+| Policy & Fleet Analysis | Policy (P0, P1, P2) × K (10–48) | cap=2 | 3×9 | 30 | 810 | §5.1–5.3 |
+| Demand Sensitivity | Policy × Demand (0.5–2.0×) | cap=2 | 3×6 | 30 | 540 | §5.4 |
+| Service Robustness | Policy × Service (20, 25, 30 min) | cap=2 | 3×3 | 30 | 270 | §5.5 |
+| CBD Robustness | Policy × CBD Scenario (baseline, surge, slow) | cap=2 | ~11 | 30 | 330 | §5.7 |
+| Capacity Sensitivity | Policy × K (20, 40) × Cap (1–5) | cap=1–5 | 3×2×5 | 15 | 450 | §5.12 |
+| **Total** | | | | | **2,400** | |
 
 Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
 
-**Capacity constraint:** Experiments 1–4 use capacity=5 units per firehouse. The Extended Fleet Analysis uses capacity=2 units per firehouse, established as the operationally optimal default by the Capacity Sensitivity experiment.
+**Capacity constraint:** All primary experiments use capacity=2 units per firehouse, established as the operationally optimal default by the Capacity Sensitivity experiment (§5.12). At fleet sizes K ≤ 30, capacity constraints do not bind—results are identical whether cap=2 or cap=5 is used. The Capacity Sensitivity experiment alone varies capacity from 1 to 5 to confirm this finding.
 
 #### 4.5.2 Statistical Analysis Methods
 
@@ -406,7 +405,7 @@ Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Com
 
 ## 5. Results
 
-> **Note on capacity constraint:** All primary results in this section use the operationally optimal default of **capacity=2 units per firehouse**, established by the Capacity Sensitivity experiment (see §5.12). The experimental design table (§4.5.1) records that Experiments 1–4 were originally run at cap=5, but at K≤30 the capacity constraint does not bind and results are numerically identical under both settings. The Extended Fleet Analysis (cap=2, 810 runs) provides the definitive results reported here, with figures and tables drawn from this dataset.
+> **Note on capacity constraint:** All primary results in this section use **capacity=2 units per firehouse**, established as the operationally optimal default by the Capacity Sensitivity experiment (§5.12). At fleet sizes K ≤ 30, capacity constraints do not bind, so results are identical whether cap=2 or higher is used. The Policy & Fleet Analysis experiment (810 runs) provides the primary policy comparison and fleet sensitivity results, with figures and tables drawn from this dataset.
 
 ### 5.1 Descriptive Statistics
 
@@ -452,7 +451,7 @@ Post-hoc pairwise comparisons (Tukey HSD):
 - **P0 vs P2**: Mean RT difference = 0.60 min (p < 0.001)
 - **P1 vs P2**: Mean RT difference = 0.064 min (p < 0.001, d = 1.41)
 
-### 5.3 Fleet Sensitivity Analysis (Experiment 2)
+### 5.3 Fleet Sensitivity Analysis
 
 Two-way ANOVA (Policy × K) reveals significant main effects and interactions:
 
@@ -475,7 +474,7 @@ Figure 3 visualizes the fleet sensitivity analysis (capacity=2), showing mean RT
 
 *Figure 3: Fleet sensitivity analysis (capacity=2, n=30 replications). Left: Mean response time vs fleet size with 95% CI ribbon bands. Right: Coverage vs fleet size showing both 6-minute NYC requirement (dashed lines) and 8-minute NFPA standard (solid lines) with 95% CI. P2 dominates across all fleet sizes. The convergence at K>=35 reflects the saturation of Manhattan's firehouse network. Spatial placement is the primary driver of performance.*
 
-### 5.4 Demand Sensitivity (Experiment 3)
+### 5.4 Demand Sensitivity
 
 Under demand multipliers from 0.5× to 2.0×:
 
@@ -485,7 +484,7 @@ Under demand multipliers from 0.5× to 2.0×:
 
 **Robustness conclusion:** Policy rankings are invariant to demand intensity changes of ±100%. P2 dominates P0 under all tested demand scenarios.
 
-### 5.5 Service Time Robustness (Experiment 4)
+### 5.5 Service Time Robustness
 
 Varying mean service time across 20, 25, and 30 minutes:
 
@@ -536,17 +535,17 @@ Figure 4 provides an enhanced view of CBD robustness, showing response time and 
 
 ### 5.8 Queueing Analysis
 
-Queue metrics were systematically collected across all 1,770 simulation runs (production + CBD experiments). Detailed analysis is provided in `docs/queue_analysis.md`.
+Queue metrics were systematically collected across all 2,400 simulation runs. Detailed analysis is provided in `docs/queue_analysis.md`.
 
 **Finding: Zero queueing across all experiments.** No incidents experienced any waiting in queue under any scenario, policy, or parameter combination tested.
 
 | Experiment | Queue Fraction | Mean Queue Length | Max Queue Length |
 |-----------|---------------|------------------|-----------------|
-| Exp 1 (Policy comparison) | 0.000 | 0.000 | 0 |
-| Exp 2 (Fleet sensitivity) | 0.000 | 0.000 | 0 |
-| Exp 3 (Demand sensitivity) | 0.000 | 0.000 | 0 |
-| Exp 4 (Service robustness) | 0.000 | 0.000 | 0 |
-| CBD experiments | 0.000 | 0.000 | 0 |
+| Policy & Fleet Analysis | 0.000 | 0.000 | 0 |
+| Demand Sensitivity | 0.000 | 0.000 | 0 |
+| Service Robustness | 0.000 | 0.000 | 0 |
+| CBD Robustness | 0.000 | 0.000 | 0 |
+| Capacity Sensitivity | 0.000 | 0.000 | 0 |
 
 **Explanation:** The system operates at ~10-15% utilization. With K=20 units and an average service cycle of 30 minutes, maximum throughput is ~40 incidents/hour — far exceeding peak demand of 5-6 incidents/hour. At this low traffic intensity (ρ ≈ 0.087), waiting is effectively impossible even under stress scenarios.
 
@@ -711,7 +710,7 @@ The central finding of this study is that **spatial intelligence in ambulance al
 
 The performance advantage of P2 arises from a specific mechanism: demand-weighted placement concentrates ambulances near high-demand precincts in Midtown and Lower Manhattan—where Precincts 14, 19, 1, 13, and 18 collectively account for over 30% of Manhattan's crash demand—while retaining sufficient coverage of lower-demand areas through the MIP's assignment constraints. The P0 baseline, by contrast, distributes units uniformly across Manhattan's 13-mile north–south extent, creating systematic under-coverage of the high-demand midtown corridor and over-coverage of northern precincts where crash rates are 3–5× lower.
 
-A second key finding is that **the system operates well below capacity saturation**. Across all 2,700+ simulation runs, no incident experienced any queueing delay. Mean utilization ranges from 7.5% to 7.8%, and even under the most extreme demand scenario (2.0× multiplier), peak throughput capacity exceeds demand by a factor of 7. This finding has a profound implication: response time differences between policies are **entirely attributable to spatial allocation efficiency**, not to congestion or capacity constraints. The optimization problem is therefore purely one of facility location—how to position a fixed fleet so as to minimise expected travel distance—rather than one of fleet sizing or dynamic load balancing. This insight simplifies the operational recommendation: the city need not invest in additional units to achieve performance improvement; it need only reposition existing ones.
+A second key finding is that **the system operates well below capacity saturation**. Across all 2,400 simulation runs, no incident experienced any queueing delay. Mean utilization ranges from 7.5% to 7.8%, and even under the most extreme demand scenario (2.0× multiplier), peak throughput capacity exceeds demand by a factor of 7. This finding has a profound implication: response time differences between policies are **entirely attributable to spatial allocation efficiency**, not to congestion or capacity constraints. The optimization problem is therefore purely one of facility location—how to position a fixed fleet so as to minimise expected travel distance—rather than one of fleet sizing or dynamic load balancing. This insight simplifies the operational recommendation: the city need not invest in additional units to achieve performance improvement; it need only reposition existing ones.
 
 Third, the **robustness analyses provide strong external validity** for the policy ranking. P2 dominates P0 under demand multipliers ranging from 0.5× to 2.0× (η² for the interaction term is 0.0007—practically zero), under service time variations from 20 to 30 minutes (interaction F = 0.14, p = 0.97), and under CBD-specific stress scenarios including 2× demand surge and degraded service conditions. The invariance of the P2 > P1 > P0 ordering across all tested conditions suggests that the result is structural rather than parameter-dependent: demand-weighted placement exploits a persistent spatial mismatch between uniform allocation and heterogeneous demand that no reasonable perturbation of model parameters can eliminate.
 
@@ -739,7 +738,7 @@ This study makes several contributions to the theory and methodology of EMS opti
 
 **Common Random Numbers for policy comparison.** The use of dedicated random number streams for arrivals, precinct assignment, and service times enables CRN-based variance reduction, ensuring that performance differences between policies reflect allocation effects rather than random variation. This methodological choice is critical for detecting the small but significant difference between P1 and P2 (0.064 minutes, d = 1.41), which would likely be obscured by noise in a naïve replication design.
 
-**Comprehensive sensitivity analysis.** The 2,700+ simulation runs across six experiment sets constitute one of the more extensive computational studies in the EMS simulation literature. By systematically varying policy, fleet size, demand intensity, service time, capacity constraints, and geographic scope, we establish that the P2 > P1 > P0 ranking is not an artefact of a particular parameter setting but a robust structural property of the system. The near-zero interaction effects (η² < 0.001 for most policy × factor interactions) provide strong evidence that our conclusions generalise across a wide range of operating conditions.
+**Comprehensive sensitivity analysis.** The 2,400 simulation runs across five experiment sets constitute one of the more extensive computational studies in the EMS simulation literature. By systematically varying policy, fleet size, demand intensity, service time, capacity constraints, and geographic scope, we establish that the P2 > P1 > P0 ranking is not an artefact of a particular parameter setting but a robust structural property of the system. The near-zero interaction effects (η² < 0.001 for most policy × factor interactions) provide strong evidence that our conclusions generalise across a wide range of operating conditions.
 
 **Spatial baseline design.** The spatially-stratified P0 baseline addresses a common weakness in EMS optimization studies, where naïve baselines (random or index-ordered allocation) are used as comparators, inflating apparent optimization gains. By constructing P0 as a latitude-based even-spacing algorithm that guarantees geographic coverage from Battery Park to Inwood, we ensure that the reported P2 improvement (18.9%) reflects gains over a competent baseline rather than over an obviously poor one. This methodological choice strengthens the credibility of the optimisation results.
 
@@ -757,7 +756,7 @@ The findings of this study have direct operational relevance for FDNY and simila
 
 ### 6.5 Policy Recommendations
 
-Based on the comprehensive evidence from 2,700+ simulation runs, we offer the following policy recommendations for Manhattan EMS operations:
+Based on the comprehensive evidence from 2,400 simulation runs, we offer the following policy recommendations for Manhattan EMS operations:
 
 1. **Adopt P2 as the standard allocation policy.** The demand-weighted MIP allocation consistently achieves the lowest mean response time and highest coverage across all tested conditions. At K=20, it delivers 2.57-minute mean response time with 99.6% 8-minute coverage—meeting both the NFPA 8-minute standard and the NYC 6-minute standard at 98.2%.
 
@@ -803,7 +802,7 @@ The findings of this study are directly applicable to Manhattan EMS operations, 
 
 This study set out to answer a fundamental question in urban emergency services management: **can mathematical optimisation of ambulance staging locations meaningfully improve response times compared to geographically uniform deployment?** Motivated by the observation that Manhattan's crash demand is highly heterogeneous across its 30 police precincts—with Midtown and Lower Manhattan generating 3–5× more incidents per capita than Upper Manhattan—we developed an integrated optimisation-simulation framework to design, evaluate, and stress-test alternative allocation policies.
 
-The research addressed five specific questions (§2.3): characterising spatial and temporal demand variation (RQ1), identifying optimal allocations (RQ2), comparing optimised policies against a competent baseline under realistic conditions (RQ3), testing sensitivity to key parameters (RQ4), and determining minimum fleet requirements for target coverage levels (RQ5). The methodological approach combined three components: a Non-Homogeneous Poisson Process (NHPP) demand model calibrated from 2.24 million historical crash records, Mixed-Integer Programming (MIP) models generating three allocation policies (P0, P1, P2), and a discrete-event simulation (DES) engine executing 2,700+ production runs with Common Random Numbers for statistically rigorous policy comparison.
+The research addressed five specific questions (§2.3): characterising spatial and temporal demand variation (RQ1), identifying optimal allocations (RQ2), comparing optimised policies against a competent baseline under realistic conditions (RQ3), testing sensitivity to key parameters (RQ4), and determining minimum fleet requirements for target coverage levels (RQ5). The methodological approach combined three components: a Non-Homogeneous Poisson Process (NHPP) demand model calibrated from 2.24 million historical crash records, Mixed-Integer Programming (MIP) models generating three allocation policies (P0, P1, P2), and a discrete-event simulation (DES) engine executing 2,400 production runs with Common Random Numbers for statistically rigorous policy comparison.
 
 ### 7.2 Principal Findings
 
@@ -811,7 +810,7 @@ The study yields five principal findings, each supported by extensive statistica
 
 **Finding 1: Demand-weighted optimisation substantially outperforms uniform allocation.** The optimised policy P2 achieves a mean response time of 2.57 minutes at K=20, representing an 18.9% improvement over the spatially-stratified baseline P0 (3.17 minutes). The P90 response time improvement is even larger at 33.1% (3.76 vs 5.62 minutes). Both the 8-minute NFPA standard (99.6% coverage) and the 6-minute NYC standard (98.2% vs 94.0%) are met or exceeded. All differences are statistically significant (F = 1,019, p < 0.001, η² = 0.959).
 
-**Finding 2: Performance differences are driven entirely by spatial allocation, not capacity.** Zero queueing was observed across all 2,700+ simulation runs (mean utilisation ≈ 7.5%). The system operates at traffic intensity ρ ≈ 0.087, far below the regime where capacity constraints bind. This establishes that the response time improvements from P2 are purely a consequence of better spatial positioning—placing ambulances closer to where incidents occur—rather than of better capacity management.
+**Finding 2: Performance differences are driven entirely by spatial allocation, not capacity.** Zero queueing was observed across all 2,400 simulation runs (mean utilisation ≈ 7.5%). The system operates at traffic intensity ρ ≈ 0.087, far below the regime where capacity constraints bind. This establishes that the response time improvements from P2 are purely a consequence of better spatial positioning—placing ambulances closer to where incidents occur—rather than of better capacity management.
 
 **Finding 3: Policy rankings are invariant to parameter perturbation.** The ordering P2 > P1 > P0 holds across demand multipliers from 0.5× to 2.0× (η² for interaction < 0.001), service time means from 20 to 30 minutes (interaction p = 0.97), fleet sizes from 15 to 48, capacity limits from 1 to 5, and CBD-specific stress scenarios. This robustness provides strong confidence that the recommendation to adopt P2 is not contingent on precise parameter calibration.
 
@@ -825,7 +824,7 @@ This work makes several contributions to the EMS optimisation and operations res
 
 1. **Integrated optimisation-simulation framework.** The two-stage approach—MIP for allocation design, DES for stochastic evaluation—provides a replicable methodology for ambulance deployment studies that balances prescriptive and descriptive modelling.
 
-2. **Comprehensive sensitivity analysis protocol.** The 2,700+ run factorial design across six experiment sets, with CRN-based variance reduction, establishes a methodological template for rigorous policy comparison in stochastic facility location problems.
+2. **Comprehensive sensitivity analysis protocol.** The 2,400 run factorial design across five experiment sets, with CRN-based variance reduction, establishes a methodological template for rigorous policy comparison in stochastic facility location problems.
 
 3. **Competent baseline design.** The spatially-stratified P0 baseline avoids the common pitfall of comparing optimised allocations against obviously poor baselines, ensuring that reported improvements reflect genuine optimisation gains.
 
@@ -871,7 +870,7 @@ Based on the findings, we recommend a phased implementation strategy:
 | Effective fleet multiplier | 1.33× (P2@K=15 ≈ P0@K=20) | Fleet sensitivity analysis |
 | Annual MVC calls affected | ~30,500 | 3.48 calls/hr × 8,760 hrs |
 | Annual aggregate time savings | ~18,300 minutes | 30,500 calls × 0.60 min |
-| Robustness | Rankings invariant across ±100% demand, ±20% service time | 2,700+ simulation runs |
+| Robustness | Rankings invariant across ±100% demand, ±20% service time | 2,400 simulation runs |
 
 ### 7.6 Future Research Directions
 
@@ -972,10 +971,10 @@ The following figures are generated by the analysis pipeline and stored in `resu
 | 2 | `cbd_response_comparison.png` | Response time comparison between policies under CBD stress scenario |
 | 3 | `cbd_scenario_comparison.png` | CBD vs. Manhattan-wide scenario performance comparison |
 | 4 | `distance_matrix_heatmap.png` | Heatmap of Haversine distance matrix (48 firehouses × 30 precincts) |
-| 5 | `exp1_policy_comparison.png` | Experiment 1: Policy comparison box plots (P0 vs. P1 vs. P2) with 95% CI |
-| 6 | `exp2_fleet_sensitivity.png` | Experiment 2: Response time vs. fleet size by policy with 95% CI |
-| 7 | `exp3_demand_sensitivity.png` | Experiment 3: Response time vs. demand multiplier by policy with 95% CI |
-| 8 | `exp4_service_robustness.png` | Experiment 4: Response time vs. service time mean by policy with 95% CI |
+| 5 | `exp1_policy_comparison.png` | Policy comparison box plots (P0 vs. P1 vs. P2) with 95% CI |
+| 6 | `exp2_fleet_sensitivity.png` | Fleet sensitivity: Response time vs. fleet size by policy with 95% CI |
+| 7 | `exp3_demand_sensitivity.png` | Demand sensitivity: Response time vs. demand multiplier by policy with 95% CI |
+| 8 | `exp4_service_robustness.png` | Service robustness: Response time vs. service time mean by policy with 95% CI |
 | 9 | `fig_cbd_comparison.png` | CBD-focused robustness comparison across policies |
 | 10 | `fig_crash_heatmap.png` | Spatial heatmap of crash incidents across Manhattan precincts |
 | 11 | `fig_daily_demand.png` | Daily crash demand patterns (day-of-week variation) |
@@ -1095,10 +1094,10 @@ The following tables are generated by the analysis pipeline and stored in `resul
 | 4 | `confidence_intervals.csv` | 95% confidence intervals for all policy-metric combinations |
 | 5 | `descriptive_statistics.csv` | Descriptive statistics (mean, std, min, max, quartiles) for all experiments |
 | 6 | `effect_sizes.csv` | Cohen's d effect sizes for all pairwise policy comparisons |
-| 7 | `exp1_summary.csv` | Experiment 1 summary: Policy comparison at K=20 |
-| 8 | `exp2_pivot_rt.csv` | Experiment 2 pivot: Mean response time by policy × fleet size |
-| 9 | `exp3_pivot_rt.csv` | Experiment 3 pivot: Mean response time by policy × demand multiplier |
-| 10 | `exp4_pivot_rt.csv` | Experiment 4 pivot: Mean response time by policy × service time mean |
+| 7 | `exp1_summary.csv` | Policy comparison summary at K=20 |
+| 8 | `exp2_pivot_rt.csv` | Fleet sensitivity pivot: Mean response time by policy × fleet size |
+| 9 | `exp3_pivot_rt.csv` | Demand sensitivity pivot: Mean response time by policy × demand multiplier |
+| 10 | `exp4_pivot_rt.csv` | Service robustness pivot: Mean response time by policy × service time mean |
 | 11 | `optimization_comparison.csv` | Optimization model comparison (demand-weighted, p-median, maximal coverage) |
 | 12 | `posthoc_comparisons.csv` | Tukey HSD post-hoc pairwise comparisons with corrected p-values |
 | 13 | `queue_anova.csv` | ANOVA results for queue metrics across experiments |
