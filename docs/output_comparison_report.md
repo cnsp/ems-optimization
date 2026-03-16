@@ -98,7 +98,7 @@
 - `verification_toy_timeline.png` — Verification: toy example event trace
 
 #### Capacity Sensitivity (2 figures)
-- `capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap (**broken — shows "Data format issue"**)
+- `capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap (P0/P1/P2 × cap=1–5 at K=20 and K=40)
 - `firehouse_capacity_analysis.png` — Firehouse capacity analysis
 
 #### CBD / Robustness Analysis (6 figures)
@@ -191,7 +191,7 @@
 | 10 | **Allocation comparison visualization** (which firehouses get units) | NB 05 | Shows spatial allocation differences between policies |
 | 11 | **Response time distribution by policy** (histograms/violin) | NB 07 | Richer than just mean RT; shows distributional shape |
 | 12 | **Seasonal/monthly patterns** | NB 02 | Shows temporal demand structure beyond hourly/DoW |
-| 13 | **Capacity sensitivity analysis** | Scripts | Shows cap=2 is sufficient (currently broken heatmap in project) |
+| 13 | **Capacity sensitivity analysis** | Scripts | Shows cap=2 is sufficient |
 
 ### Optional Gaps (detailed analysis, fine in specialized notebooks)
 

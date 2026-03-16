@@ -20,10 +20,13 @@ RESULTS_DIR = PROJECT_ROOT / "results" / "capacity_comparison"
 FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
 FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 
-# Policy display names
+# Policy display names — map all known variants to canonical labels
 POLICY_LABELS = {
+    "P0": "P0",
     "P0_spatial": "P0",
+    "P1": "P1",
     "P1_demand": "P1",
+    "P2": "P2",
     "P2_optimised": "P2",
 }
 
@@ -91,8 +94,8 @@ def create_heatmap(df, k_values=(20, 40)):
             aggfunc="mean"
         )
 
-        # Sort policies in order P0, P1, P2
-        policy_order = [v for v in POLICY_LABELS.values() if v in pivot.index]
+        # Sort policies in order P0, P1, P2 (deduplicated)
+        policy_order = list(dict.fromkeys(v for v in POLICY_LABELS.values() if v in pivot.index))
         pivot = pivot.reindex(policy_order)
 
         # Sort columns numerically
