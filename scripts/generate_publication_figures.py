@@ -25,6 +25,7 @@ FIG_DIR = PROJECT / "results" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 DPI = 300
+CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
 PALETTE = {"P0": "#d62728", "P1": "#1f77b4", "P2": "#2ca02c"}
 POLICY_LABELS = {"P0": "P0 (Spatially-Stratified)", "P1": "P1 (Demand-Prop.)", "P2": "P2 (Max Coverage)"}
 sns.set_theme(style="whitegrid", font_scale=1.1, rc={"figure.dpi": DPI})
@@ -90,7 +91,7 @@ def fig1_policy_comparison():
     ax.set_ylabel("Mean Utilization")
     ax.set_title("C. Utilization")
 
-    fig.suptitle("Figure 1: Baseline Policy Comparison (K = 20, 30 replications)", fontsize=13, y=1.02)
+    fig.suptitle(f"Figure 1: Baseline Policy Comparison (K=20, cap={CAPACITY}, 30 replications)", fontsize=13, y=1.02)
     fig.tight_layout()
     path = FIG_DIR / "pub_fig1_policy_comparison.png"
     fig.savefig(path, dpi=DPI, bbox_inches="tight")
@@ -118,7 +119,7 @@ def fig2_fleet_sensitivity():
 
     ax.set_xlabel("Fleet Size (K)")
     ax.set_ylabel("Mean Response Time (min)")
-    ax.set_title("Figure 2: Fleet Size Sensitivity with 95% CI")
+    ax.set_title(f"Figure 2: Fleet Size Sensitivity with 95% CI (cap={CAPACITY})")
     ax.legend()
     ax.axhline(8, ls="--", color="grey", lw=0.8, label="8-min NFPA target")
     ax.axhline(6, ls="--", color="red", lw=0.8, alpha=0.6, label="6-min NYC target")
@@ -168,7 +169,7 @@ def fig3_demand_robustness():
     ax.legend(fontsize=8)
     ax.axhline(90, ls="--", color="grey", lw=0.8)
 
-    fig.suptitle("Figure 3: Demand Robustness (K = 20)", fontsize=13, y=1.02)
+    fig.suptitle(f"Figure 3: Demand Robustness (K=20, cap={CAPACITY})", fontsize=13, y=1.02)
     fig.tight_layout()
     path = FIG_DIR / "pub_fig3_demand_robustness.png"
     fig.savefig(path, dpi=DPI, bbox_inches="tight")
@@ -202,7 +203,7 @@ def fig4_service_sensitivity():
     ax.set_xticklabels([f"{int(s)} min" for s in st_levels])
     ax.set_xlabel("Mean Service Time")
     ax.set_ylabel("Mean Response Time (min)")
-    ax.set_title("Figure 4: Service Time Sensitivity (K = 20)")
+    ax.set_title(f"Figure 4: Service Time Sensitivity (K=20, cap={CAPACITY})")
     ax.legend()
     ax.axhline(8, ls="--", color="grey", lw=0.8)
     fig.tight_layout()
@@ -247,7 +248,7 @@ def fig5_heatmap():
     sns.heatmap(norm_sub, annot=True, fmt=".2f", cmap="RdYlGn_r",
                 linewidths=0.5, ax=ax, vmin=1.0, vmax=norm_sub.max().max(),
                 cbar_kws={"label": "Relative Response Time\n(1.0 = best)"})
-    ax.set_title("Figure 5: Relative Performance Heatmap")
+    ax.set_title(f"Figure 5: Relative Performance Heatmap (cap={CAPACITY})")
     ax.set_ylabel("Scenario")
     ax.set_xlabel("Policy")
     fig.tight_layout()

@@ -32,6 +32,8 @@ OUT     = os.path.join(PROJECT, "results", "figures", "project_summary_dashboard
 desc = pd.read_csv(os.path.join(TABLES, "descriptive_statistics.csv"))
 exp_summary = pd.read_csv(os.path.join(SIM, "experiment_summary.csv"))
 
+CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
+
 # ── Color Palette ──────────────────────────────────────────────────
 COLORS = {
     'P0': '#e74c3c',   # Red
@@ -44,7 +46,7 @@ COLORS = {
 
 # ── Create Figure ──────────────────────────────────────────────────
 fig = plt.figure(figsize=(20, 14), facecolor='white')
-fig.suptitle('EMS Readiness Optimization for Manhattan — Project Summary Dashboard',
+fig.suptitle(f'EMS Readiness Optimization for Manhattan — Project Summary Dashboard (capacity={CAPACITY} units/firehouse)',
              fontsize=22, fontweight='bold', color=COLORS['text'], y=0.98)
 
 gs = gridspec.GridSpec(3, 3, hspace=0.35, wspace=0.3,
@@ -55,7 +57,7 @@ ax1 = fig.add_subplot(gs[0, 0])
 ax1.set_xlim(0, 10)
 ax1.set_ylim(0, 10)
 ax1.axis('off')
-ax1.set_title('Key Results (K=20 units)', fontsize=14, fontweight='bold',
+ax1.set_title(f'Key Results (K=20, cap={CAPACITY})', fontsize=14, fontweight='bold',
               color=COLORS['text'], pad=10)
 
 metrics_data = [
@@ -85,7 +87,7 @@ for p in policies:
 bars = ax2.bar(policies, mean_rts, color=[COLORS[p] for p in policies],
                edgecolor='white', linewidth=2, width=0.6)
 ax2.set_ylabel('Mean Response Time (min)', fontsize=11)
-ax2.set_title('Policy Comparison (Exp 1)', fontsize=14, fontweight='bold',
+ax2.set_title(f'Policy Comparison (Exp 1, cap={CAPACITY})', fontsize=14, fontweight='bold',
               color=COLORS['text'])
 ax2.set_ylim(0, 10)
 for bar, val in zip(bars, mean_rts):
@@ -106,7 +108,7 @@ for p in policies:
 bars3 = ax3.bar(policies, coverages, color=[COLORS[p] for p in policies],
                 edgecolor='white', linewidth=2, width=0.6)
 ax3.set_ylabel('8-min Coverage (%)', fontsize=11)
-ax3.set_title('Coverage Comparison (Exp 1)', fontsize=14, fontweight='bold',
+ax3.set_title(f'Coverage Comparison (Exp 1, cap={CAPACITY})', fontsize=14, fontweight='bold',
               color=COLORS['text'])
 ax3.set_ylim(0, 110)
 for bar, val in zip(bars3, coverages):
@@ -127,7 +129,7 @@ for policy in policies:
 
 ax4.set_xlabel('Fleet Size (K)', fontsize=12)
 ax4.set_ylabel('Mean Response Time (min)', fontsize=12)
-ax4.set_title('Fleet Sensitivity Analysis (Exp 2)', fontsize=14,
+ax4.set_title(f'Fleet Sensitivity Analysis (Exp 2, cap={CAPACITY})', fontsize=14,
               fontweight='bold', color=COLORS['text'])
 ax4.axhline(y=4.0, color='gray', linestyle='--', alpha=0.3)
 ax4.legend(fontsize=11, loc='upper right')
@@ -170,7 +172,7 @@ for policy in policies:
 
 ax6.set_xlabel('Demand Multiplier', fontsize=12)
 ax6.set_ylabel('Mean Response Time (min)', fontsize=12)
-ax6.set_title('Demand Sensitivity Analysis (Exp 3)', fontsize=14,
+ax6.set_title(f'Demand Sensitivity Analysis (Exp 3, cap={CAPACITY})', fontsize=14,
               fontweight='bold', color=COLORS['text'])
 ax6.legend(fontsize=11, loc='upper left')
 ax6.spines['top'].set_visible(False)

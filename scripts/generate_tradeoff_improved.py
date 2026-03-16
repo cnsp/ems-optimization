@@ -24,6 +24,7 @@ warnings.filterwarnings('ignore')
 
 # Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
+CAPACITY = 5  # v1 optimization results used capacity=5 (implicit default)
 RESULTS_DIR = BASE_DIR / 'results' / 'optimization'
 FIGURES_DIR = BASE_DIR / 'results' / 'figures'
 
@@ -158,7 +159,7 @@ legend2 = ax_main.legend(handles=P_handles, title='Policy', loc='lower left',
 
 ax_main.set_xlabel('Expected Response Time (minutes)', fontsize=12)
 ax_main.set_ylabel('% Demand Covered (<=8 min)', fontsize=12)
-ax_main.set_title('Response Time vs Coverage Trade-off', fontsize=14, fontweight='bold')
+ax_main.set_title(f'Response Time vs Coverage Trade-off (cap={CAPACITY})', fontsize=14, fontweight='bold')
 ax_main.grid(True, alpha=0.3)
 
 # Add threshold reference lines
@@ -202,7 +203,7 @@ for i in range(1, len(table_data) + 1):
         if (i - 1) // 5 % 2 == 1:
             table[i, j].set_facecolor('#f0f0f0')
 
-ax_table.set_title('Exact Values', fontsize=11, fontweight='bold', pad=10)
+ax_table.set_title(f'Exact Values (cap={CAPACITY})', fontsize=11, fontweight='bold', pad=10)
 
 plt.tight_layout()
 out_path = FIGURES_DIR / 'response_time_coverage_tradeoff_improved.png'
@@ -260,7 +261,7 @@ ax.legend(handles=P_handles, title='Policy', loc='lower left', fontsize=8, title
 
 ax.set_xlabel('Expected Response Time (minutes)', fontsize=12)
 ax.set_ylabel('% Demand Covered (<=8 min)', fontsize=12)
-ax.set_title('Trade-off Detail: High-Performance Region (RT < 5 min)', fontsize=13, fontweight='bold')
+ax.set_title(f'Trade-off Detail: High-Performance Region (RT < 5 min, cap={CAPACITY})', fontsize=13, fontweight='bold')
 ax.grid(True, alpha=0.3)
 
 plt.tight_layout()

@@ -38,6 +38,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 PROJECT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT / "results" / "simulation" / "production"
+CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
 TABLE_DIR = PROJECT / "results" / "tables"
 TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -411,7 +412,7 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
     t1 = pd.DataFrame(t1_rows)
     t1.to_csv(TABLE_DIR / "table1_baseline_comparison.csv", index=False)
     (TABLE_DIR / "table1_baseline_comparison.tex").write_text(
-        to_latex_table(t1, "Baseline Policy Comparison (Experiment 1, K=20)", "tab:baseline"))
+        to_latex_table(t1, f"Baseline Policy Comparison (Experiment 1, K=20, cap={CAPACITY})", "tab:baseline"))
     print(f"  → Table 1 saved")
 
     # --- Table 2: ANOVA Summary ---
@@ -419,7 +420,7 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
     t2.columns = ["Experiment", "Source", "Metric", "F", "p", "Sig.", "η²", "Effect"]
     t2.to_csv(TABLE_DIR / "table2_anova_summary.csv", index=False)
     (TABLE_DIR / "table2_anova_summary.tex").write_text(
-        to_latex_table(t2, "ANOVA Results Summary", "tab:anova"))
+        to_latex_table(t2, f"ANOVA Results Summary (cap={CAPACITY})", "tab:anova"))
     print(f"  → Table 2 saved")
 
     # --- Table 3: Pairwise Comparisons ---
@@ -430,7 +431,7 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
     t3.columns = ["Metric", "A", "B", "Δ Mean", "CI Lo", "CI Hi", "p (Bonf.)", "Cohen's d", "Sig."]
     t3.to_csv(TABLE_DIR / "table3_pairwise_comparisons.csv", index=False)
     (TABLE_DIR / "table3_pairwise_comparisons.tex").write_text(
-        to_latex_table(t3, "Pairwise Policy Comparisons (Experiment 1)", "tab:pairwise"))
+        to_latex_table(t3, f"Pairwise Policy Comparisons (Experiment 1, cap={CAPACITY})", "tab:pairwise"))
     print(f"  → Table 3 saved")
 
     # --- Table 4: Sensitivity Summary (pivot) ---
@@ -460,7 +461,7 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
     t4 = pd.DataFrame(t4_rows)
     t4.to_csv(TABLE_DIR / "table4_sensitivity_summary.csv", index=False)
     (TABLE_DIR / "table4_sensitivity_summary.tex").write_text(
-        to_latex_table(t4, "Sensitivity Analysis Summary", "tab:sensitivity"))
+        to_latex_table(t4, f"Sensitivity Analysis Summary (cap={CAPACITY})", "tab:sensitivity"))
     print(f"  → Table 4 saved")
 
 
