@@ -15,7 +15,7 @@
 | Optimization | 5 | `run_optimization_comparison.py` |
 | Simulation Experiments | 4 | `07_production_results.ipynb` |
 | Verification & Validation | 4 | `06_simulation_debug.py` |
-| Extended Fleet Analysis & Fleet | 3 | `run_production_v2.py` |
+| Extended Fleet Analysis & Fleet | 3 | `scripts/run_production_v2.py` |
 | CBD Analysis | 6 | `09_cbd_analysis.ipynb`, `run_cbd_focused_optimization.py` |
 | Queue Analysis | 4 | `analyze_queue_metrics.py` |
 | Seasonal Analysis | 3 | `analyze_seasonal_patterns.py` |

@@ -6,7 +6,7 @@
 
 | ID | Research Question |
 |----|-------------------|
-| RQ1 | How do the three allocation policies (P0: Uniform, P1: Demand-Proportional, P2: Demand-Weighted Optimized) compare in terms of mean response time, 90th-percentile response time, and 8-minute coverage? |
+| RQ1 | How do the three allocation policies (P0: Uniform, P1: Demand-Proportional, P2: Demand-Weighted Optimized) compare in terms of mean response time, P90 (90th percentile) response time, 6-minute coverage (NYC law), and 8-minute coverage (NFPA standard)? |
 | RQ2 | How sensitive is each policy's performance to fleet size (K)? |
 | RQ3 | How robust is each policy to changes in demand intensity? |
 | RQ4 | How do service time variations affect policy performance? |
@@ -40,11 +40,11 @@ The **firehouse capacity** parameter (C) defines the maximum number of EMS units
 | Regime | Capacity | Experiments | Results Location |
 |--------|----------|-------------|------------------|
 | **v1** | C = 5 units per firehouse | Exp1–Exp4 (this document) | `results/simulation/production/` |
-| **v2** | C = 2 units per firehouse | Extended Fleet Analysis | `results/production_v2/` |
+| **Extended** | C = 2 units per firehouse | Extended Fleet Analysis | `results/production_v2/` |
 
 **Rationale for two regimes:**
 - **v1 (cap=5):** Used for the initial production experiments. At typical fleet sizes (K ≤ 40 across 48 firehouses), the capacity constraint is largely non-binding — most policies naturally allocate ≤ 2 units per firehouse. Results are valid and not materially affected by the higher cap.
-- **v2 (cap=2):** Established as the operationally optimal default after capacity sensitivity analysis (cap 1–5). With cap=2, performance matches or improves upon cap=5 at K ≤ 40, while being more operationally realistic. See `docs/capacity_sensitivity_analysis.md` for full analysis.
+- **Extended (cap=2):** Established as the operationally optimal default after capacity sensitivity analysis (cap 1–5). With cap=2, performance matches or improves upon cap=5 at K ≤ 40, while being more operationally realistic. See `docs/capacity_sensitivity_analysis.md` for full analysis.
 
 All experiments in this document (Exp1–Exp4) use **capacity=5 units per firehouse** unless otherwise noted.
 
@@ -76,7 +76,7 @@ Standard deviation is held proportional (σ/μ ratio constant).
 | Metric | Symbol | Description |
 |--------|--------|-------------|
 | Mean Response Time | E[RT] | Average time from incident arrival to unit arrival on scene |
-| 90th Percentile RT | RT_90 | Response time exceeded by only 10% of incidents |
+| P90 (90th %ile) RT | RT_90 | 90th percentile response time — exceeded by only 10% of incidents |
 | 95th Percentile RT | RT_95 | Response time exceeded by only 5% of incidents |
 | 8-min Coverage | C_8 | Fraction of incidents with response time ≤ 8 min |
 | 10-min Coverage | C_10 | Fraction of incidents with response time ≤ 10 min |
@@ -159,7 +159,8 @@ K - Fleet size
 demand_multiplier - Demand scaling factor
 service_time_mean - Service time mean (minutes)
 mean_response_time - Mean response time (minutes)
-p90_response_time - 90th percentile response time (minutes)
+p90_response_time - P90 (90th percentile) response time (minutes)
+coverage_6min - fraction of calls with response time ≤ 6 minutes (NYC law)
 p95_response_time - 95th percentile response time (minutes)
 coverage_8min - Fraction with RT ≤ 8 min
 coverage_10min - Fraction with RT ≤ 10 min

@@ -32,7 +32,7 @@ Evaluate how firehouse capacity constraints (cap = 1 through cap = 5) affect EMS
 - **Firehouses used**: Number of stations with ≥ 1 unit (measures geographic dispersion)
 - **Max units per firehouse**: Concentration indicator (binding when = capacity)
 - **Mean response time (RT)**: Demand-weighted average
-- **90th percentile RT**: Tail performance
+- **P90 (90th percentile) RT**: Tail performance
 - **Coverage fraction**: % of incidents within 8-minute threshold
 - **CBD vs non-CBD distribution**: Spatial equity
 - **Proxy weighted RT**: Nearest-firehouse demand-weighted travel time
@@ -65,7 +65,7 @@ Evaluate how firehouse capacity constraints (cap = 1 through cap = 5) affect EMS
 
 #### Simulation Performance (K = 20)
 
-| Policy | Cap | Mean RT (min) | P90 RT (min) | Coverage |
+| Policy | Cap | Mean RT (min) | P90 (90th %ile) RT (min) | Coverage |
 |--------|-----|---------------|--------------|----------|
 | P0-spatial | 1 | 3.111 | 4.054 | 99.66% |
 | P0-spatial | 2–5 | 3.111 | 4.054 | 99.66% |
@@ -100,7 +100,7 @@ At K = 30, the intermediate fleet size reveals the transition point where capaci
 
 #### Simulation Performance (K = 30)
 
-| Policy | Cap | Mean RT (min) | P90 RT (min) | Coverage |
+| Policy | Cap | Mean RT (min) | P90 (90th %ile) RT (min) | Coverage |
 |--------|-----|---------------|--------------|----------|
 | P0-spatial | 1–5 | 2.778 | 3.564 | 99.84% |
 | P1-demand | 1 | 2.472 | 3.391 | 99.74% |
@@ -143,7 +143,7 @@ This is where the capacity analysis becomes critical. With 40 units across 48 ca
 
 #### Simulation Performance (K = 40)
 
-| Policy | Cap | Mean RT (min) | P90 RT (min) | Coverage |
+| Policy | Cap | Mean RT (min) | P90 (90th %ile) RT (min) | Coverage |
 |--------|-----|---------------|--------------|----------|
 | P0-spatial | 1–5 | 2.443 | 3.299 | 99.84% |
 | P1-demand | **1** | **2.392** | **3.170** | **99.74%** |
@@ -210,7 +210,7 @@ The relationship between capacity and response time differs by policy and by fle
 
 **Best overall performance at K = 40:**
 
-| Rank | Policy | Cap | Mean RT | P90 RT | FH Used |
+| Rank | Policy | Cap | Mean RT | P90 (90th %ile) RT | FH Used |
 |------|--------|-----|---------|--------|---------|
 | 1 | P1-demand | 2 | **2.324** | **3.076** | 22 |
 | 2 | P1-demand | 3 | 2.335 | 3.116 | 22 |
@@ -219,7 +219,7 @@ The relationship between capacity and response time differs by policy and by fle
 | 5 | P1-demand | 1 | 2.392 | 3.170 | 40 |
 
 **Best overall at K = 20:**
-- P2-optimised at any capacity: Mean RT = 2.562, P90 = 3.743
+- P2-optimised at any capacity: Mean RT = 2.562, P90 (90th %ile) = 3.743
 
 ---
 

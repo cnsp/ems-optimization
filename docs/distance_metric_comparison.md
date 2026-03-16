@@ -55,7 +55,7 @@ Both optimisations allocated K=20 units across 20 firehouses. Only **2 firehouse
 
 ### 3.2 Simulation Performance
 
-| Scenario | Mean RT (min) | Median RT (min) | P90 RT (min) | Coverage (≤8 min) |
+| Scenario | Mean RT (min) | Median RT (min) | P90 (90th %ile) RT (min) | 8-min Coverage (NFPA) |
 |----------|--------------|----------------|-------------|-------------------|
 | **P2-Haversine** | 2.55 | 2.24 | 3.73 | 99.6% |
 | **P2-Manhattan** | 2.55 | 2.24 | 3.73 | 99.6% |

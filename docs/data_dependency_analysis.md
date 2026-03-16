@@ -192,7 +192,7 @@ TIER 6 — Statistical analysis & figures (depends on Tier 5)
    Step 7: run_optimization_comparison  → optimization results
    Step 8: run_verification.py          → verification results
    Step 9: run_validation_pilots.py     → validation results
-   Step 10: run_production_v2.py        → production results
+   Step 10: run_production_v2.py        → Extended Fleet Analysis results
    ```
 
 5. **Fix the Makefile** — point the `data` target at the actual audit scripts or the new orchestrator.

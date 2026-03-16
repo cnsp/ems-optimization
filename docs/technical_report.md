@@ -57,8 +57,9 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
 | Metric | P0 (Baseline) | P1 (Proportional) | P2 (Optimized) | P2 vs P0 Improvement |
 |--------|--------------|-------------------|-----------------|---------------------|
 | Mean Response Time | 3.17 min | 2.63 min | **2.57 min** | **−18.9%** |
-| P90 Response Time | 5.62 min | 4.03 min | **3.76 min** | **−33.1%** |
-| 8-min Coverage | 99.6% | 99.6% | **99.6%** | 0 pp |
+| P90 (90th %ile) Response Time | 5.62 min | 4.03 min | **3.76 min** | **−33.1%** |
+| 6-min Coverage (NYC law) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
+| 8-min Coverage (NFPA standard) | 99.6% | 99.6% | **99.6%** | 0 pp |
 | Mean Utilization | 7.8% | 7.5% | **7.5%** | −0.3 pp |
 
 All differences are statistically significant (p < 0.001) with meaningful effect sizes. The optimized policy P2 holds up under demand fluctuations (0.5×–2.0× multiplier), service time variations (20–30 min mean), and CBD-specific stress scenarios (2× demand surge, increased service times). Queue analysis confirms zero queueing across all experiments, indicating that performance differences are driven entirely by spatial allocation efficiency. Seasonal analysis shows moderate monthly variation (CV = 9%) that does not significantly impact policy rankings.
@@ -381,7 +382,7 @@ Built using **SimPy** discrete-event simulation library in Python:
 
 Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
 
-**Capacity constraint:** Experiments 1–4 use capacity=5 units per firehouse (v1 regime). The Extended Fleet Analysis uses capacity=2 units per firehouse (v2 regime), established as the operationally optimal default by the Capacity Sensitivity experiment.
+**Capacity constraint:** Experiments 1–4 use capacity=5 units per firehouse. The Extended Fleet Analysis uses capacity=2 units per firehouse, established as the operationally optimal default by the Capacity Sensitivity experiment.
 
 #### 4.5.2 Statistical Analysis Methods
 
@@ -396,8 +397,9 @@ Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Com
 | KPI | Definition | Target |
 |-----|-----------|--------|
 | Mean RT | Average response time (dispatch + travel) | Minimize |
-| P90 RT | 90th percentile response time | < 8 min |
-| 8-min Coverage | Fraction of calls with RT ≤ 8 min | > 95% |
+| P90 (90th %ile) RT | 90th percentile response time | < 8 min |
+| 6-min Coverage (NYC law) | Fraction of calls with RT ≤ 6 min | > 90% |
+| 8-min Coverage (NFPA standard) | Fraction of calls with RT ≤ 8 min | > 95% |
 | Mean Utilization | Average fraction of time units are busy | Monitor |
 
 ---
@@ -408,17 +410,17 @@ Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Com
 
 The primary policy comparison (K=20 units, capacity=5 units per firehouse, n=30 replications each) yields:
 
-| Policy | Mean RT (min) | 95% CI | P90 RT (min) | 8-min Coverage | Utilization |
-|--------|--------------|--------|-------------|----------------|-------------|
-| P0 (Spatially-Stratified) | 3.17 | [3.10, 3.24] | 5.62 | 99.6% | 7.8% |
-| P1 (Proportional) | 2.63 | [2.62, 2.65] | 4.03 | 99.6% | 7.5% |
-| P2 (Optimized) | 2.57 | [2.55, 2.59] | 3.76 | 99.6% | 7.5% |
+| Policy | Mean RT (min) | 95% CI | P90 (90th %ile) RT (min) | 6-min Cov (NYC) | 8-min Cov (NFPA) | Utilization |
+|--------|--------------|--------|--------------------------|-----------------|------------------|-------------|
+| P0 (Spatially-Stratified) | 3.17 | [3.10, 3.24] | 5.62 | 94.0% | 99.6% | 7.8% |
+| P1 (Proportional) | 2.63 | [2.62, 2.65] | 4.03 | 98.0% | 99.6% | 7.5% |
+| P2 (Optimized) | 2.57 | [2.55, 2.59] | 3.76 | 98.2% | 99.6% | 7.5% |
 
 **Key observations:**
 - P2 reduces mean response time by **18.9%** compared to P0 (from 3.17 to 2.57 min)
-- P2 reduces P90 response time by **33.1%** compared to P0 (from 5.62 to 3.76 min)
+- P2 reduces P90 (90th percentile) response time by **33.1%** compared to P0 (from 5.62 to 3.76 min)
 - All policies achieve **99.6%** 8-minute coverage at K=20
-- P2 slightly outperforms P1 in both mean RT (−2.4%) and P90 RT (−6.7%)
+- P2 slightly outperforms P1 in both mean RT (−2.4%) and P90 (90th %ile) RT (−6.7%)
 
 Figure 1 shows the spatial distribution of staging locations for all three policies at K=20, capacity=2. The 3-panel map reveals how each policy selects and allocates ambulances across Manhattan's 48 firehouses, with the CBD boundary (MTA Congestion Relief Zone) shown for reference.
 
@@ -439,7 +441,7 @@ One-way ANOVA confirms significant policy effects across all metrics:
 | Metric | F-statistic | p-value | η² | Effect |
 |--------|------------|---------|-----|--------|
 | Mean RT | 12,010 | < 0.001 | 0.996 | Large |
-| P90 RT | 15,108 | < 0.001 | 0.997 | Large |
+| P90 (90th %ile) RT | 15,108 | < 0.001 | 0.997 | Large |
 | 8-min Coverage | 8,764 | < 0.001 | 0.995 | Large |
 | Utilization | 216 | < 0.001 | 0.833 | Large |
 
@@ -931,7 +933,7 @@ The following figures are generated by the analysis pipeline and stored in `resu
 
 **Extended Fleet Analysis Figures** (§5.13):
 59. `results/production_v2/figures/mean_rt_vs_K.png` — Mean response time vs fleet size
-60. `results/production_v2/figures/coverage_vs_K.png` — 8-minute coverage vs fleet size
+60. `results/production_v2/figures/coverage_vs_K.png` — Coverage vs fleet size (6-min NYC and 8-min NFPA)
 61. `results/production_v2/figures/rt_distribution_K20.png` — Response time distributions at K=20
 62. `results/production_v2/figures/utilization_vs_K.png` — Utilization vs fleet size
 63. `results/production_v2/figures/effect_sizes.png` — Effect sizes across fleet sizes
@@ -939,7 +941,7 @@ The following figures are generated by the analysis pipeline and stored in `resu
 65. `results/production_v2/figures/allocation_map_K30.png` — Allocation map at K=30
 66. `results/production_v2/figures/allocation_map_K40.png` — Allocation map at K=40
 
-**Report Inline Figures** (new in v2.2):
+**Report Inline Figures:**
 67. `results/figures/policy_comparison_panel_K20_cap2.png` — 3-panel policy comparison map: P0, P1, P2 staging locations at K=20, cap=2 (Figure 1)
 68. `results/figures/response_time_distribution_by_policy.png` — Mean & P95 response time bars by policy and fleet size (Figure 2)
 69. `results/figures/fleet_sensitivity_dual.png` — Dual-axis fleet sensitivity: RT and coverage vs K (Figure 3)

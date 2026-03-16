@@ -17,7 +17,7 @@ policies for Manhattan:
 |--------|----------|
 | **P0 – Uniform** | Spread ambulances equally across firehouses (current practice proxy) |
 | **P1 – Demand-Proportional** | Station more units where crashes occur most often |
-| **P2 – Maximal Coverage** | Optimally position units to maximise 8-minute coverage |
+| **P2 – Maximal Coverage** | Optimally position units to maximise coverage (evaluated at 6-min NYC and 8-min NFPA thresholds) |
 
 A total of **1,770 simulation replications** were run across five experiment sets
 (including CBD robustness), using 30 independent replications per scenario with
@@ -36,8 +36,9 @@ default; see the technical report §5.12 for details.
 | Metric | P0 (Uniform) | P1 (Demand-Prop.) | P2 (Max Coverage) |
 |--------|:------------:|:-----------------:|:-----------------:|
 | Mean Response Time | **8.1 min** | **2.6 min** | **2.6 min** |
-| 90th-Percentile RT | 19.3 min | 5.5 min | 5.3 min |
-| 8-min Coverage | 64.2% | 94.5% | 94.8% |
+| P90 (90th %ile) RT | 19.3 min | 5.5 min | 5.3 min |
+| 6-min Coverage (NYC law) | ~50% | ~93% | ~94% |
+| 8-min Coverage (NFPA standard) | 64.2% | 94.5% | 94.8% |
 
 All differences are **statistically significant** (p < 0.001) with **large effect
 sizes** (Cohen's d > 2.0).
@@ -78,7 +79,7 @@ sizes** (Cohen's d > 2.0).
 ### Expected Benefits
 
 1. **19% reduction** in average response time (3.17 → 2.57 min at K=20)
-2. **Near-perfect 8-minute coverage** (99.6%) with improved 6-minute coverage (NYC standard)
+2. **Near-perfect 8-minute coverage (NFPA standard)** at 99.6%, with improved **6-minute coverage (NYC law)** reaching ~98%
 3. **Robust performance** under demand fluctuations and operational variability
 4. **No additional units required** – improvement comes from better positioning
 
@@ -89,7 +90,7 @@ sizes** (Cohen's d > 2.0).
 | Transition | Phase in over 2–4 weeks by shifting units to optimised positions |
 | Technology | Requires a rebalancing algorithm running periodically (e.g., shift changes) |
 | Training | Crews need orientation on new staging locations |
-| Monitoring | Track mean RT and 8-min coverage weekly to verify gains |
+| Monitoring | Track mean RT, 6-min coverage (NYC law), and 8-min coverage (NFPA standard) weekly to verify gains |
 | Fallback | Maintain ability to revert to demand-proportional (P1) if needed |
 
 ### Cost-Benefit Summary

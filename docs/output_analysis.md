@@ -15,7 +15,7 @@ output analysis (Law, 2015; Banks et al., 2010).
 | Metric | Symbol | Definition |
 |--------|--------|-----------|
 | Mean Response Time | $\bar{R}$ | Average minutes from call arrival to unit arrival on scene |
-| P90 Response Time | $R_{90}$ | 90th-percentile response time |
+| P90 (90th %ile) Response Time | $R_{90}$ | 90th percentile response time — time exceeded by only 10% of calls |
 | 8-min Coverage | $C_8$ | Fraction of calls responded to within 8 minutes |
 | Mean Utilization | $\bar{U}$ | Average fraction of time units are busy |
 

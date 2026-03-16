@@ -93,7 +93,7 @@ plausible, sensible outputs.
 | Max queue length | 43 |
 | Time-weighted avg queue | 19.44 |
 | Mean response time | 316.09 min |
-| P90 response time | 633.27 min |
+| P90 (90th %ile) response time | 633.27 min |
 | Coverage (≤8 min) | 0.0% |
 | Unit utilization | 99.5% |
 

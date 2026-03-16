@@ -286,7 +286,7 @@ class MetricsCollector:
  def reset(self)
 ```
 
-**Summary statistics include:** mean/median/P90/max response time, 8-min coverage fraction, mean utilization, queue metrics.
+**Summary statistics include:** mean/median/P90 (90th percentile)/max response time, 6-min coverage (NYC law) and 8-min coverage (NFPA standard) fractions, mean utilization, queue metrics.
 
 ---
 

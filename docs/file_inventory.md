@@ -200,8 +200,8 @@
 | File | Description |
 |------|-------------|
 | `v2_allocations_*.csv` | P0 (spatially-stratified), P1, P2 allocations per K |
-| `v2_simulation_results.csv` | Full simulation results (810 runs) |
-| `v2_summary_statistics.csv` | Summary statistics by policy × K |
+| `v2_simulation_results.csv` | Full Extended Fleet Analysis simulation results (810 runs) |
+| `v2_summary_statistics.csv` | Extended Fleet Analysis summary statistics by policy × K |
 | `comparison_with_v1.csv` | baseline comparison table |
 | `*.png` | Extended Fleet Analysis result figures |
 
@@ -247,7 +247,7 @@ These maps support scenario exploration across the full experimental space and f
 | `verification_log.md/.pdf` | V&V test results |
 | `output_analysis.md/.pdf` | Statistical analysis report |
 | `executive_summary.md/.pdf` | Executive summary |
-| `technical_report.md` | Full final report (v2.1.0) |
+| `technical_report.md` | Full final report |
 | `executive_presentation.md` | Slide deck for stakeholders |
 | `implementation_roadmap.md` | Deployment plan |
 | `project_archive.md` | Project archive & timeline |

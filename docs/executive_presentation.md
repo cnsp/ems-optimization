@@ -22,7 +22,7 @@
 - Distributes ambulances **equally** across 48 firehouses
 - **Ignores** where crashes actually happen
 - Results in **3.17-minute average response time** at K=20
-- **99.6%** of calls get response within 8 minutes; **93.7%** within 6 minutes (NYC standard)
+- **99.6%** of calls get response within 8 minutes (NFPA standard); **93.7%** within 6 minutes (NYC law)
 
 **Why this matters:**
 - Manhattan has ~3.48 MVC calls per hour (30,500+ per year)

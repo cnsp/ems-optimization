@@ -46,7 +46,7 @@ Define the decision problem, research questions, scope, and project infrastructu
 |------|--------|--------|
 | 1.1 | Define the operational decision: optimal staging of K ambulances across 48 firehouses | Problem statement |
 | 1.2 | Formulate 5 research questions (RQ1–RQ5) covering spatial demand, optimal allocation, policy comparison, sensitivity, and fleet sizing | Research questions |
-| 1.3 | Select primary (mean response time) and secondary (P90 RT, 8-min coverage, utilization) performance measures | KPI definitions |
+| 1.3 | Select primary (mean response time) and secondary (P90 (90th %ile) RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization) performance measures | KPI definitions |
 | 1.4 | Define system boundary: Manhattan, MVC incidents, static allocation, Haversine travel proxy | Scope statement |
 | 1.5 | Document assumptions, exclusions, and limitations | Assumptions log |
 | 1.6 | Set up repository structure, Python package, and configuration files | Project skeleton |
@@ -232,7 +232,7 @@ Design the conceptual DES model and implement a modular simulation engine in Pyt
 | 4.1 | Define entities (Incident), resources (EMSUnit), queues (FIFO), and state variables | Conceptual model |
 | 4.2 | Specify 5 event types: Arrival, Dispatch, Service Start, Service Completion, End of Simulation | Event logic |
 | 4.3 | Design nearest-available dispatch logic with Haversine travel-time estimation | Dispatch specification |
-| 4.4 | Define performance measures: mean RT, P90 RT, 8-min coverage, utilization, queue metrics | KPI specification |
+| 4.4 | Define performance measures: mean RT, P90 (90th %ile) RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization, queue metrics | KPI specification |
 | 4.5 | Document random phenomena: NHPP arrivals (Stream 1), precinct assignment (Stream 2), service times (Stream 3) | RNG strategy |
 | 4.6 | Create event flow diagram and single-incident timeline | Flowcharts |
 | 4.7 | Implement `Incident` dataclass with full lifecycle tracking | `entities.py` |
@@ -450,7 +450,7 @@ Compile all findings into a full technical report, executive presentation, and c
 
 | File | Description |
 |------|-------------|
-| `docs/technical_report.md` | Comprehensive technical report (v2.0.0, fully compliant) |
+| `docs/technical_report.md` | Comprehensive technical report (fully compliant) |
 | `docs/technical_report.pdf` | PDF version of technical report |
 | `docs/executive_summary.md` | Standalone executive summary |
 | `docs/executive_presentation.md` | Executive presentation |

@@ -42,7 +42,7 @@
 **Project delivers:**
 - `technical_report.md` §1 (Executive Summary) and §2 (Introduction) clearly frame the decision: how to stage K ambulances across 48 firehouses to minimize response time
 - Three policies defined: P0 (Uniform/baseline), P1 (Demand-Proportional), P2 (Demand-Weighted Optimized)
-- Performance criteria: mean RT, P90 RT, 8-min coverage, utilization — all measured and compared
+- Performance criteria: mean RT, P90 (90th %ile) RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization — all measured and compared
 - `project_charter.md` provides formal problem statement and decision framework
 - `decisions_log.md` records key design choices (DEC-001 through DEC-005)
 
@@ -66,7 +66,7 @@
  - RQ4: Sensitivity to fleet size, demand, service time
  - RQ5: Fleet size for target coverage
 - Four hypotheses (H1–H4) in `experimental_design.md`
-- MOEs defined: Mean RT (primary), P90 RT, 8-min coverage, utilization (secondary)
+- MOEs defined: Mean RT (primary), P90 (90th %ile) RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization (secondary)
 - 8-minute threshold explicitly used throughout (`simulation.yaml`: `response_threshold_minutes: 8.0`)
 - Statistical decision rules: ANOVA + Tukey post-hoc at α=0.05
 
@@ -307,7 +307,7 @@
 **Project delivers:**
 - `experimental_design.md` specifies full factorial design:
  - Factors: Policy (3), Fleet Size (6), Demand Multiplier (6), Service Time Mean (3)
- - Responses: Mean RT, P90 RT, 8-min Coverage, Utilization
+ - Responses: Mean RT, P90 (90th %ile) RT, 6-min Coverage (NYC law), 8-min Coverage (NFPA standard), Utilization
  - Run length: 168 hours (1 week), no warm-up (terminating)
  - 30 replications per scenario
 - 5 experiments totaling 1,770 runs:

@@ -27,7 +27,7 @@ Validate P2 allocation at 5 high-impact firehouses and confirm simulation predic
 | Week | Activity | Owner |
 |------|----------|-------|
 | 1–2 | Briefing for pilot firehouse captains and dispatch supervisors | Operations |
-| 1–2 | Install KPI monitoring dashboard (mean RT, 8-min coverage, utilization) | IT/Analytics |
+| 1–2 | Install KPI monitoring dashboard (mean RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization) | IT/Analytics |
 | 3 | Begin P2 staging at pilot firehouses | Operations |
 | 3–12 | Continuous monitoring and weekly performance reviews | Analytics |
 | 8 | Mid-pilot assessment and adjustment | Leadership |
@@ -35,7 +35,8 @@ Validate P2 allocation at 5 high-impact firehouses and confirm simulation predic
 
 ### Success Criteria
 - ≥15% improvement in mean response time in pilot precincts
-- ≥10 percentage point improvement in 8-min coverage in pilot area
+- ≥10 percentage point improvement in 8-min coverage (NFPA standard) in pilot area
+- ≥5 percentage point improvement in 6-min coverage (NYC law) in pilot area
 - No degradation in non-pilot area response times >5%
 - Positive feedback from dispatch supervisors and crews
 
@@ -82,7 +83,8 @@ Expand P2 allocation to 15–20 firehouses based on pilot learnings, and calibra
 
 ### Success Criteria
 - Consistent ≥30% improvement in mean RT across expanded area
-- ≥90% 8-min coverage across P2-served precincts
+- ≥90% 8-min coverage (NFPA standard) across P2-served precincts
+- ≥85% 6-min coverage (NYC law) across P2-served precincts
 - Model predictions within ±15% of observed response times
 - No reported operational issues from dispatch
 
@@ -164,21 +166,21 @@ Simulation baselines below are from v1 experiments (capacity=5 units per firehou
 | KPI | Baseline (P0, cap=5) | Target (P2, cap=2) | Measurement |
 |-----|---------------------|-------------------|-------------|
 | Mean Response Time | 3.17 min | < 3.0 min | Daily from CAD |
-| 8-min Coverage | 99.6% | > 99% | Weekly calculation |
-| 6-min Coverage (NYC) | ~93.7% | > 95% | Weekly calculation |
-| P90 Response Time | 5.32 min | < 5 min | Weekly calculation |
+| 8-min Coverage (NFPA standard) | 99.6% | > 99% | Weekly calculation |
+| 6-min Coverage (NYC law) | ~93.7% | > 95% | Weekly calculation |
+| P90 (90th %ile) Response Time | 5.32 min | < 5 min | Weekly calculation |
 | Utilization | 7.6% | 7–10% | Weekly calculation |
 | Crew satisfaction | N/A | > 80% positive | Quarterly survey |
 
 ### Monitoring Cadence
-- **Daily**: Mean RT and 8-min coverage
+- **Daily**: Mean RT, 6-min coverage (NYC law), and 8-min coverage (NFPA standard)
 - **Weekly**: Full KPI dashboard review; anomaly detection
 - **Monthly**: Trend analysis and model performance assessment
 - **Quarterly**: Full review with leadership; model recalibration
 
 ### Rollback Criteria
 - If mean RT increases by >20% in any precinct for >2 consecutive weeks
-- If 8-min coverage drops below 50% in any precinct
+- If 8-min coverage (NFPA standard) drops below 50% in any precinct
 - If dispatch supervisors report critical operational issues
 - Rollback procedure: Revert to P0 staging at affected firehouses within 24 hours
 

@@ -25,7 +25,7 @@ In the EMS simulation, a queue forms when an incident arrives but no ambulance i
 | **Max Queue Length** | Maximum simultaneous incidents waiting at any point |
 | **Queue Fraction** | Proportion of all incidents that experienced any waiting |
 | **Queue Wait Time** | Time between incident arrival and unit dispatch (excluding dispatch delay) |
-| **P90 Queue Wait** | 90th percentile of queue wait time |
+| **P90 (90th %ile) Queue Wait** | 90th percentile of queue wait time |
 
 ---
 

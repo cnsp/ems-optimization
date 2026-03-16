@@ -37,7 +37,7 @@ Rather than re-running simulations, filter the existing incident-level logs from
 2. **Create CBD analysis script** — `scripts/analyze_cbd_robustness.py`:
  - Load incident-level logs from production experiments
  - Filter incidents where `precinct` is in the CBD precinct set
- - Recompute: mean RT, P90 RT, 8-min coverage, utilization for CBD-only incidents
+ - Recompute: mean RT, P90 (90th %ile) RT, 6-min coverage (NYC law), 8-min coverage (NFPA standard), utilization for CBD-only incidents
  - Compare P0 vs P1 vs P2 performance in CBD subset
  - Generate comparison table and figure
 

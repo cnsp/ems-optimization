@@ -13,7 +13,7 @@ The **Response Time vs Coverage Trade-off** plot (`fig_tradeoff_curve.png` and i
 | Axis | Metric | Definition |
 |------|--------|------------|
 | X-axis | **Expected Response Time** (minutes) | Demand-weighted average of the minimum travel time from the nearest active firehouse to each precinct. Computed as: `sum(min_tt_j * demand_j)` where `min_tt_j` is the travel time from the closest firehouse with >= 1 unit to precinct j. Lower is better. |
-| Y-axis | **% Demand Covered (<=8 min)** | Percentage of total crash demand (weighted by precinct arrival rate) that falls within 8 minutes of travel time from an active firehouse. The 8-minute threshold follows the NFPA 1710 standard. Higher is better. |
+| Y-axis | **% Demand Covered (<=8 min)** | Percentage of total crash demand (weighted by precinct arrival rate) that falls within 8 minutes of travel time from an active firehouse. The 8-minute threshold follows the NFPA 1710 standard. A complementary 6-minute threshold aligns with NYC local law. Higher is better. |
 
 ### Visual Encodings
 

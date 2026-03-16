@@ -2,7 +2,7 @@
 ## EMS Readiness Optimization for Manhattan — Simulation Evidence Review
 
 **Assessment Date:** March 12, 2026
-**Project Version:** v2.0.0 (Final Version — Full Compliance)
+**Project Version:** Final Version — Full Compliance
 **Assessed By:** Independent Review
 
 ---
@@ -14,12 +14,12 @@ All simulation experiments reported in this assessment use the following fixed p
 | Parameter | Value | Notes |
 |-----------|-------|-------|
 | **Firehouse capacity** | **5 units per firehouse** | v1 production experiments (`results/simulation/production/`) |
-| Coverage threshold | 8 minutes | NFPA standard |
+| Coverage threshold | 8 minutes (NFPA standard) / 6 minutes (NYC law) | Dual thresholds |
 | Simulation horizon | 168 hours (1 week) | Per replication |
 | Replications | 30 | Per experimental cell |
 | Warm-up | 24 hours | Discarded from statistics |
 
-> **Note on capacity regimes:** The v1 production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. Extended fleet analysis (v2, in `results/production_v2/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
+> **Note on capacity regimes:** The initial production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. The Extended Fleet Analysis (in `results/production_v2/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
 
 ---
 
@@ -91,8 +91,9 @@ Three allocation policies were formulated and solved via Mixed-Integer Programmi
 | Metric | Value | 95% CI | Source |
 |--------|-------|--------|--------|
 | Mean Response Time | **2.57 min** | [2.554, 2.587] | `results/tables/table1_baseline_comparison.csv` |
-| P90 Response Time | **3.76 min** | [3.717, 3.803] | `results/tables/confidence_intervals.csv` |
-| 8-min Coverage | **99.6%** | [99.54%, 99.71%] | `results/tables/confidence_intervals.csv` |
+| P90 (90th %ile) Response Time | **3.76 min** | [3.717, 3.803] | `results/tables/confidence_intervals.csv` |
+| 6-min Coverage (NYC law) | **98.2%** | [98.0%, 98.4%] | `results/tables/confidence_intervals.csv` |
+| 8-min Coverage (NFPA standard) | **99.6%** | [99.54%, 99.71%] | `results/tables/confidence_intervals.csv` |
 | Mean Utilisation | **7.5%** | [7.35%, 7.57%] | `results/tables/confidence_intervals.csv` |
 
 #### Robustness of Optimality Across Distance Metrics
@@ -122,9 +123,9 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 | Metric | P0 (Spatial-Stratified) | P1 (Proportional) | P2 (Optimised) | P2 vs P0 Δ |
 |--------|------------------------|-------------------|-----------------|------------|
 | Mean RT | 3.17 min | 2.62 min | **2.57 min** | **−19.0%** |
-| P90 RT | 5.33 min | 3.99 min | **3.75 min** | **−29.6%** |
-| 6-min Coverage (NYC) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
-| 8-min Coverage (NFPA) | 99.7% | 99.6% | **99.7%** | **+0.0 pp** |
+| P90 (90th %ile) RT | 5.33 min | 3.99 min | **3.75 min** | **−29.6%** |
+| 6-min Coverage (NYC law) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
+| 8-min Coverage (NFPA standard) | 99.7% | 99.6% | **99.7%** | **+0.0 pp** |
 | Utilisation | 7.6% | 7.4% | **7.4%** | −0.2 pp |
 
 *Source: `results/tables/table1_baseline_comparison.csv`, `results/tables/confidence_intervals.csv`*
@@ -134,17 +135,17 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 | Test | F-statistic | p-value | η² | Source |
 |------|------------|---------|-----|--------|
 | One-way ANOVA (Mean RT) | **1,019** | < 0.001 | 0.959 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (P90 RT) | **398** | < 0.001 | 0.901 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (6-min Coverage) | **285** | < 0.001 | 0.868 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (8-min Coverage) | 0.46 | 0.634 (ns) | 0.010 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (P90 (90th %ile) RT) | **398** | < 0.001 | 0.901 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (6-min Coverage (NYC law)) | **285** | < 0.001 | 0.868 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (8-min Coverage (NFPA standard)) | 0.46 | 0.634 (ns) | 0.010 | `results/tables/table2_anova_summary.csv` |
 
 | Comparison | Mean Diff | Cohen's d | p (Tukey) | Source |
 |-----------|-----------|-----------|-----------|--------|
 | P0 vs P2 (Mean RT) | −0.60 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
 | P0 vs P1 (Mean RT) | −0.55 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
 | P1 vs P2 (Mean RT) | −0.05 min | Small | ns | `results/tables/posthoc_comparisons.csv` |
-| P0 vs P2 (6-min Cov) | +4.2 pp | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P1 vs P2 (6-min Cov) | +0.2 pp | Negligible | ns | `results/tables/posthoc_comparisons.csv` |
+| P0 vs P2 (6-min Cov (NYC law)) | +4.2 pp | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
+| P1 vs P2 (6-min Cov (NYC law)) | +0.2 pp | Negligible | ns | `results/tables/posthoc_comparisons.csv` |
 
 #### Queue Analysis — Mechanism Confirmation
 **Zero queueing** observed across all 1,770 runs (`results/tables/queue_statistics.csv`):
@@ -168,7 +169,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 #### A. Fleet Size Sensitivity (Experiment 2: Policy × K, cap=5, 540 runs)
 
-| K (Fleet) | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
+| K (Fleet) | P0 Mean RT | P2 Mean RT | P0 6-min Cov (NYC) | P2 6-min Cov (NYC) | P0 8-min Cov (NFPA) | P2 8-min Cov (NFPA) |
 |-----------|-----------|-----------|-------------|-------------|-------------|-------------|
 | 15 | 9.48 min | **2.82 min** | 49.9% | **95.7%** | 57.7% | **99.1%** |
 | 20 | 3.17 min | **2.57 min** | 94.0% | **98.2%** | 99.7% | **99.7%** |
@@ -185,7 +186,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 
 #### B. Demand Sensitivity (Experiment 3: Policy × Demand Multiplier, cap=5, 540 runs)
 
-| Demand Multiplier | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
+| Demand Multiplier | P0 Mean RT | P2 Mean RT | P0 6-min Cov (NYC) | P2 6-min Cov (NYC) | P0 8-min Cov (NFPA) | P2 8-min Cov (NFPA) |
 |-------------------|-----------|-----------|-------------|-------------|-------------|-------------|
 | 0.50× | 3.10 min | **2.44 min** | 94.8% | **99.1%** | 99.8% | **99.8%** |
 | 0.75× | 3.15 min | **2.51 min** | 94.2% | **98.4%** | 99.7% | **99.7%** |
@@ -244,14 +245,14 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 #### Detailed Coverage by Fleet Size
 
-| Fleet Size (K) | P0 Coverage | P1 Coverage | P2 Coverage |
-|----------------|-------------|-------------|-------------|
-| 15 | 57.5% | 99.2% | 99.1% |
-| 20 | 64.4% | 99.6% | 99.6% |
-| 25 | 77.1% | 99.7% | 99.8% |
-| 30 | 90.3% | 99.7% | 99.8% |
-| 35 | 94.0% | 99.9% | 99.9% |
-| 40 | 99.5% | 99.9% | 99.9% |
+| Fleet Size (K) | P0 8-min (NFPA) | P1 8-min (NFPA) | P2 8-min (NFPA) | P0 6-min (NYC) | P1 6-min (NYC) | P2 6-min (NYC) |
+|----------------|-----------------|-----------------|-----------------|----------------|----------------|----------------|
+| 15 | 57.5% | 99.2% | 99.1% | 49.9% | 95.8% | 95.7% |
+| 20 | 64.4% | 99.6% | 99.6% | 94.0% | 98.0% | 98.2% |
+| 25 | 77.1% | 99.7% | 99.8% | 69.5% | 98.4% | 98.6% |
+| 30 | 90.3% | 99.7% | 99.8% | 99.3% | 98.5% | 98.7% |
+| 35 | 94.0% | 99.9% | 99.9% | 92.1% | 98.6% | 98.7% |
+| 40 | 99.5% | 99.9% | 99.9% | 99.7% | 98.7% | 98.7% |
 
 *Source: `results/simulation/production/exp2_fleet_sensitivity.csv`, `results/tables/sensitivity_summary.csv`*
 
@@ -306,8 +307,8 @@ These limitations are transparently documented in §6.4 of the technical report 
 
 ---
 
-*Assessment based on: `docs/technical_report.md` (v2.0.0), `docs/final_summary.md` (v1.2.0), and 28+ result files in `results/tables/`, `results/simulation/`, `results/distance_comparison/`, and `results/cbd_focused_comparison/`.*
+*Assessment based on: `docs/technical_report.md`, `docs/final_summary.md`, and 28+ result files in `results/tables/`, `results/simulation/`, `results/distance_comparison/`, and `results/cbd_focused_comparison/`.*
 
 ---
 
-**Capacity constraint note:** All v1 production results in this assessment (Experiments 1–4 and CBD stress tests) were generated with capacity=5 units per firehouse. Subsequent capacity sensitivity analysis (see §5.12 of the technical report and `docs/capacity_sensitivity_analysis.md`) demonstrated that capacity=2 is operationally optimal; the project default was updated accordingly for v2 experiments. Results at capacity=5 remain valid as the upper bound of per-firehouse staging.
+**Capacity constraint note:** All initial production results in this assessment (Experiments 1–4 and CBD stress tests) were generated with capacity=5 units per firehouse. Subsequent capacity sensitivity analysis (see §5.12 of the technical report and `docs/capacity_sensitivity_analysis.md`) demonstrated that capacity=2 is operationally optimal; the project default was updated accordingly for the Extended Fleet Analysis experiments. Results at capacity=5 remain valid as the upper bound of per-firehouse staging.
