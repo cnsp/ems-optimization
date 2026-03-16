@@ -108,7 +108,7 @@ class NHPPArrivalGenerator:
         hourly_factors = dict(zip(hourly["hour"].astype(int), hourly["factor"]))
         dow_factors = dict(zip(dow["dow"].astype(int), dow["factor"]))
         precinct_rates = dict(
-            zip(precinct["precinct"].astype(int), precinct["lambda_per_hour"])
+            zip(precinct["precinct"].astype(int), precinct["crash_rate_per_hour"])
         )
         return cls(
             base_rate=base_rate,

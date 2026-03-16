@@ -113,7 +113,7 @@ class EMSAllocator:
 
         # Demand
         dl = pd.read_csv(root / "data" / "processed" / "demand_lambda_precinct.csv")
-        demand = dl.set_index(dl["precinct"].astype(str))["lambda_per_hour"]
+        demand = dl.set_index(dl["precinct"].astype(str))["crash_rate_per_hour"]
         demand.index.name = None
         demand.name = "demand"
 
