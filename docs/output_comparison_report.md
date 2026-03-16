@@ -85,11 +85,11 @@
 - `exp4_service_robustness.png` — Experiment 4: service time robustness
 
 #### Publication-Quality Figures (5 figures)
-- `pub_fig1_policy_comparison.png` — Publication Figure 1
-- `pub_fig2_fleet_sensitivity.png` — Publication Figure 2
-- `pub_fig3_demand_robustness.png` — Publication Figure 3
-- `pub_fig4_service_sensitivity.png` — Publication Figure 4
-- `pub_fig5_performance_heatmap.png` — Publication Figure 5
+- `pub_fig1_policy_comparison.png` — Publication: Policy comparison
+- `pub_fig2_fleet_sensitivity.png` — Publication: Fleet sensitivity
+- `pub_fig3_demand_robustness.png` — Publication: Demand robustness
+- `pub_fig4_service_sensitivity.png` — Publication: Service sensitivity
+- `pub_fig5_performance_heatmap.png` — Publication: Performance heatmap
 
 #### Verification & Validation (3 figures)
 - `validation_p0_vs_p2.png` — Validation: P0 vs P2 comparison

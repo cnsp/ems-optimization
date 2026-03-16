@@ -225,11 +225,11 @@
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `pub_fig1_policy_comparison.png` | `results/figures/` | Final Figure 1 | `scripts/generate_publication_figures.py` |
-| `pub_fig2_fleet_sensitivity.png` | `results/figures/` | Final Figure 2 | `scripts/generate_publication_figures.py` |
-| `pub_fig3_demand_robustness.png` | `results/figures/` | Final Figure 3 | `scripts/generate_publication_figures.py` |
-| `pub_fig4_service_sensitivity.png` | `results/figures/` | Final Figure 4 | `scripts/generate_publication_figures.py` |
-| `pub_fig5_performance_heatmap.png` | `results/figures/` | Final Figure 5 | `scripts/generate_publication_figures.py` |
+| `pub_fig1_policy_comparison.png` | `results/figures/` | Publication: Policy comparison | `scripts/generate_publication_figures.py` |
+| `pub_fig2_fleet_sensitivity.png` | `results/figures/` | Publication: Fleet sensitivity | `scripts/generate_publication_figures.py` |
+| `pub_fig3_demand_robustness.png` | `results/figures/` | Publication: Demand robustness | `scripts/generate_publication_figures.py` |
+| `pub_fig4_service_sensitivity.png` | `results/figures/` | Publication: Service sensitivity | `scripts/generate_publication_figures.py` |
+| `pub_fig5_performance_heatmap.png` | `results/figures/` | Publication: Performance heatmap | `scripts/generate_publication_figures.py` |
 
 ## 14  Response Time Trade-off
 
