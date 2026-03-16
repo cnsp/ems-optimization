@@ -69,7 +69,7 @@ def load_data():
     dm_man.columns = dm_man.columns.astype(str)
 
     demand_df = pd.read_csv(PROCESSED_DIR / "demand_lambda_precinct.csv")
-    demand = demand_df.set_index("precinct")["lambda_per_hour"]
+    demand = demand_df.set_index("precinct")["crash_rate_per_hour"]
     demand.index = demand.index.astype(str)
 
     return dm_hav, dm_man, demand

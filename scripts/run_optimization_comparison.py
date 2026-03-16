@@ -124,13 +124,15 @@ for K in K_VALUES:
         alloc_df = result.allocation.to_frame('units')
         alloc_df['policy'] = policy_id
         alloc_df['K'] = K
-        allocation_tables[K].append(alloc_df.reset_index().rename(columns={'index': 'firehouse'}))
+        alloc_reset = alloc_df.reset_index()
+        alloc_reset.columns = ['firehouse' if c not in ('units', 'policy', 'K') else c for c in alloc_reset.columns]
+        allocation_tables[K].append(alloc_reset)
         
         print(f"✓ (Response time: {response_time:.2f}, Coverage: {coverage_metrics['covered_demand_pct']:.1f}%)")
     
     # Save allocation table for this K
     K_table = pd.concat(allocation_tables[K], ignore_index=True)
-    K_table_pivot = K_table.pivot(index='firehouse', columns='policy', values='units')
+    K_table_pivot = K_table.pivot_table(index='firehouse', columns='policy', values='units', aggfunc='first')
     K_table_pivot.to_csv(RESULTS_DIR / f'allocations_K{K}.csv')
     print(f"\nSaved: allocations_K{K}.csv")
 
@@ -289,9 +291,10 @@ demand_df['precinct'] = demand_df['precinct'].astype(str)
 # Merge demand with precincts
 precincts_gdf['Precinct'] = precincts_gdf['Precinct'].astype(str)
 precincts_gdf = precincts_gdf.merge(
-    demand_df[['precinct', 'lambda_per_day']], 
+    demand_df[['precinct', 'crash_rate_per_hour']], 
     left_on='Precinct', right_on='precinct', how='left'
 )
+precincts_gdf['lambda_per_day'] = precincts_gdf['crash_rate_per_hour'] * 24
 
 K_FOR_MAPS = 40
 

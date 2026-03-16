@@ -52,7 +52,7 @@ def make_demand_proportional_allocation(K):
     for fh in all_fhs:
         nearest_precinct = tt.loc[fh].idxmin()
         rate = precinct_rates.loc[
-            precinct_rates["precinct"] == int(nearest_precinct), "lambda_per_hour"
+            precinct_rates["precinct"] == int(nearest_precinct), "crash_rate_per_hour"
         ]
         credit[fh] = float(rate.values[0]) if len(rate) > 0 else 0.0
 

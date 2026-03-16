@@ -1,49 +1,49 @@
-,P0,P1,P2
-Engine 4/Ladder 15,1,0,0
-Engine 6,1,0,0
-Manhattan Borough Command/Battalion 1/Engine 7/Ladder 1,0,0,0
-Ladder 8,1,0,0
-Engine 9/Ladder 6,1,2,1
-Battalion 4/Engine 15/Ladder 18,1,2,1
-Engine 28/Ladder 11,1,2,1
-Engine 5,1,0,0
-Division 1/Ladder 20,0,0,2
-Engine 33/Ladder 9,1,0,0
-Battalion 6/Ladder 3,1,0,1
-Squad 18,1,2,1
-Engine 34/Ladder 21,1,2,1
-Engine 26,0,2,1
-Battalion 7/Engine 3/Ladder 12,1,0,2
-Engine 1/Ladder 24,1,0,2
-Engine 14,0,2,2
-Engine 16/Ladder 7,1,0,2
-Engine 21,1,2,2
-Battalion 9/Engine 54/Ladder 4,1,2,2
-Engine 23,1,0,2
-Engine 40/Ladder 35,1,0,0
-Division 3/Ladder 25,0,2,2
-Engine 74,1,1,1
-Battalion 8/Engine 8/Ladder 2,1,0,2
-Engine 44,1,2,1
-Battalion 10/Engine 22/Ladder 13,1,0,0
-Engine 58/Ladder 26,1,1,1
-Engine 53/Ladder 43,1,2,1
-Engine 91,1,0,0
-Battalion 12/Engine 35/Ladder 14,0,2,1
-Battalion 11/Engine 76/Ladder 22,1,2,1
-Engine 47,1,0,0
-Engine 59/Ladder 30,1,0,0
-Engine 37/Ladder 40,1,1,1
-Engine 84/Ladder 34,0,0,0
-Engine 95/Ladder 36,1,2,1
-Engine 55,1,0,0
-Rescue 1,0,0,0
-Engine 39/Ladder 16,1,0,0
-Battalion 16/Engine 69/Ladder 28,1,2,1
-Engine 80/Ladder 23,1,1,1
-Battalion 13/Engine 93/Ladder 45,1,0,0
-Engine 10/Ladder 10,1,2,2
-Engine 65,1,0,0
-Battalion 2/Engine 24/Ladder 5,1,0,0
-Engine 67,1,2,1
-Marine 1,1,0,0
+firehouse,P0,P1,P2,P2b,P2c
+Battalion 10/Engine 22/Ladder 13,1,0,0,0,5
+Battalion 11/Engine 76/Ladder 22,1,1,1,1,5
+Battalion 12/Engine 35/Ladder 14,0,2,1,1,5
+Battalion 13/Engine 93/Ladder 45,1,0,5,5,3
+Battalion 16/Engine 69/Ladder 28,1,1,5,5,0
+Battalion 2/Engine 24/Ladder 5,1,0,5,5,0
+Battalion 4/Engine 15/Ladder 18,1,1,5,5,0
+Battalion 6/Ladder 3,1,0,0,0,0
+Battalion 7/Engine 3/Ladder 12,1,0,0,0,0
+Battalion 8/Engine 8/Ladder 2,1,0,0,0,5
+Battalion 9/Engine 54/Ladder 4,1,4,1,1,0
+Division 1/Ladder 20,0,0,0,0,1
+Division 3/Ladder 25,0,2,1,1,0
+Engine 1/Ladder 24,1,0,0,0,0
+Engine 10/Ladder 10,1,3,1,1,0
+Engine 14,0,2,1,1,0
+Engine 16/Ladder 7,1,0,0,0,0
+Engine 21,1,3,1,1,0
+Engine 23,1,0,0,0,0
+Engine 26,0,3,1,1,0
+Engine 28/Ladder 11,1,1,1,1,0
+Engine 33/Ladder 9,1,0,0,0,0
+Engine 34/Ladder 21,1,2,1,1,5
+Engine 37/Ladder 40,1,1,1,1,0
+Engine 39/Ladder 16,1,0,0,0,0
+Engine 4/Ladder 15,1,0,0,0,0
+Engine 40/Ladder 35,1,0,0,0,0
+Engine 44,1,4,1,1,0
+Engine 47,1,0,0,0,0
+Engine 5,1,0,0,0,0
+Engine 53/Ladder 43,1,2,1,1,0
+Engine 55,1,0,0,0,0
+Engine 58/Ladder 26,1,1,1,1,0
+Engine 59/Ladder 30,1,0,0,0,0
+Engine 6,1,0,0,0,0
+Engine 65,1,0,0,0,5
+Engine 67,1,1,1,1,0
+Engine 74,1,0,1,1,0
+Engine 80/Ladder 23,1,1,1,1,0
+Engine 84/Ladder 34,0,0,0,0,0
+Engine 9/Ladder 6,1,2,1,1,0
+Engine 91,1,0,0,0,0
+Engine 95/Ladder 36,1,2,1,1,1
+Ladder 8,1,0,0,0,0
+Manhattan Borough Command/Battalion 1/Engine 7/Ladder 1,0,0,0,0,0
+Marine 1,1,0,0,0,0
+Rescue 1,0,0,0,0,5
+Squad 18,1,1,1,1,0

@@ -5538,3 +5538,205 @@ SCENARIO SUMMARY:
 2026-03-16 04:28:49,915 [INFO]   Total runs: 810
 2026-03-16 04:28:49,915 [INFO]   Total time: 4s (0.1 min)
 2026-03-16 04:28:49,915 [INFO] ######################################################################
+2026-03-16 05:16:44,446 [INFO] ######################################################################
+2026-03-16 05:16:44,446 [INFO] EMS Extended Fleet Analysis – 2026-03-16 05:16:44
+2026-03-16 05:16:44,446 [INFO]   Capacity: 2
+2026-03-16 05:16:44,446 [INFO]   K values: [10, 15, 20, 25, 30, 35, 40, 45, 48]
+2026-03-16 05:16:44,446 [INFO]   Policies: ['P0', 'P1', 'P2']
+2026-03-16 05:16:44,446 [INFO]   Replications: 30
+2026-03-16 05:16:44,446 [INFO] ######################################################################
+2026-03-16 05:16:44,446 [INFO] 
+Loading EMSAllocator...
+2026-03-16 05:16:44,452 [INFO] ============================================================
+2026-03-16 05:16:44,452 [INFO] STEP 1: Generating allocations for all K values and policies
+2026-03-16 05:16:44,452 [INFO]   Capacity = 2
+2026-03-16 05:16:44,452 [INFO]   K values = [10, 15, 20, 25, 30, 35, 40, 45, 48]
+2026-03-16 05:16:44,452 [INFO]   Policies = ['P0', 'P1', 'P2']
+2026-03-16 05:16:44,452 [INFO] ============================================================
+2026-03-16 05:16:44,452 [INFO] 
+--- K = 10 ---
+2026-03-16 05:16:44,454 [INFO]   P0: 10 active firehouses, 10 units
+2026-03-16 05:16:44,456 [INFO]   P1: 10 active firehouses, 10 units
+2026-03-16 05:16:44,542 [INFO]   P2: 10 active firehouses, 10 units (obj=4.6661, status=Optimal)
+2026-03-16 05:16:44,543 [INFO] 
+--- K = 15 ---
+2026-03-16 05:16:44,546 [INFO]   P0: 15 active firehouses, 15 units
+2026-03-16 05:16:44,547 [INFO]   P1: 15 active firehouses, 15 units
+2026-03-16 05:16:44,609 [INFO]   P2: 15 active firehouses, 15 units (obj=2.9153, status=Optimal)
+2026-03-16 05:16:44,610 [INFO] 
+--- K = 20 ---
+2026-03-16 05:16:44,612 [INFO]   P0: 20 active firehouses, 20 units
+2026-03-16 05:16:44,613 [INFO]   P1: 18 active firehouses, 20 units
+2026-03-16 05:16:44,675 [INFO]   P2: 20 active firehouses, 20 units (obj=2.5442, status=Optimal)
+2026-03-16 05:16:44,676 [INFO] 
+--- K = 25 ---
+2026-03-16 05:16:44,678 [INFO]   P0: 25 active firehouses, 25 units
+2026-03-16 05:16:44,679 [INFO]   P1: 20 active firehouses, 25 units
+2026-03-16 05:16:44,741 [INFO]   P2: 23 active firehouses, 25 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:44,742 [INFO] 
+--- K = 30 ---
+2026-03-16 05:16:44,744 [INFO]   P0: 30 active firehouses, 30 units
+2026-03-16 05:16:44,745 [INFO]   P1: 21 active firehouses, 30 units
+2026-03-16 05:16:44,806 [INFO]   P2: 25 active firehouses, 30 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:44,807 [INFO] 
+--- K = 35 ---
+2026-03-16 05:16:44,809 [INFO]   P0: 35 active firehouses, 35 units
+2026-03-16 05:16:44,810 [INFO]   P1: 22 active firehouses, 35 units
+2026-03-16 05:16:44,872 [INFO]   P2: 27 active firehouses, 35 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:44,873 [INFO] 
+--- K = 40 ---
+2026-03-16 05:16:44,875 [INFO]   P0: 40 active firehouses, 40 units
+2026-03-16 05:16:44,876 [INFO]   P1: 22 active firehouses, 40 units
+2026-03-16 05:16:44,940 [INFO]   P2: 29 active firehouses, 40 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:44,941 [INFO] 
+--- K = 45 ---
+2026-03-16 05:16:44,943 [INFO]   P0: 45 active firehouses, 45 units
+2026-03-16 05:16:44,944 [INFO]   P1: 24 active firehouses, 45 units
+2026-03-16 05:16:45,009 [INFO]   P2: 30 active firehouses, 45 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:45,010 [INFO] 
+--- K = 48 ---
+2026-03-16 05:16:45,012 [INFO]   P0: 48 active firehouses, 48 units
+2026-03-16 05:16:45,013 [INFO]   P1: 27 active firehouses, 48 units
+2026-03-16 05:16:45,074 [INFO]   P2: 31 active firehouses, 48 units (obj=2.4935, status=Optimal)
+2026-03-16 05:16:45,074 [INFO] 
+All allocations saved to /home/ubuntu/ems-optimization/results/production_v2/allocations
+2026-03-16 05:16:45,074 [INFO] 
+Loading existing results from /home/ubuntu/ems-optimization/results/production_v2/simulation/all_results_raw.csv
+2026-03-16 05:16:45,077 [INFO] 
+============================================================
+2026-03-16 05:16:45,077 [INFO] STEP 3: Statistical analysis
+2026-03-16 05:16:45,077 [INFO] ============================================================
+2026-03-16 05:16:45,092 [INFO]   Descriptive statistics: 27 rows
+2026-03-16 05:16:45,103 [INFO]   ANOVA results: 9 K values tested
+2026-03-16 05:16:45,417 [INFO]   Post-hoc comparisons: 27 pairs
+2026-03-16 05:16:45,424 [INFO]   Effect sizes: 27 pairs
+2026-03-16 05:16:45,444 [INFO] 
+All statistical tables saved to /home/ubuntu/ems-optimization/results/production_v2/tables
+2026-03-16 05:16:45,664 [INFO] 
+============================================================
+2026-03-16 05:16:45,664 [INFO] STEP 4: Generating visualizations
+2026-03-16 05:16:45,664 [INFO] ============================================================
+2026-03-16 05:16:45,782 [INFO]   Saved mean_rt_vs_K.png
+2026-03-16 05:16:46,069 [INFO]   Saved coverage_vs_K.png
+2026-03-16 05:16:46,173 [INFO]   Saved p95_rt_vs_K.png
+2026-03-16 05:16:46,387 [INFO]   Saved rt_distribution_K{20,30,40}.png
+2026-03-16 05:16:46,585 [INFO]   Saved queue_metrics_vs_K.png
+2026-03-16 05:16:46,690 [INFO]   Saved utilization_vs_K.png
+2026-03-16 05:16:47,819 [INFO]   Saved allocation_map_K{20,30,40}.png
+2026-03-16 05:16:47,938 [INFO]   Saved effect_sizes.png
+2026-03-16 05:16:47,938 [INFO] 
+All figures saved to /home/ubuntu/ems-optimization/results/production_v2/figures
+2026-03-16 05:16:47,938 [INFO] 
+============================================================
+2026-03-16 05:16:47,938 [INFO] STEP 5: Comparison with legacy baseline results
+2026-03-16 05:16:47,938 [INFO] ============================================================
+2026-03-16 05:16:47,953 [INFO]   Legacy vs current comparison: 18 rows
+2026-03-16 05:16:47,953 [INFO]   Saved to /home/ubuntu/ems-optimization/results/production_v2/comparison_with_v1.csv
+2026-03-16 05:16:47,953 [INFO] 
+  Legacy vs Current Baseline Summary:
+2026-03-16 05:16:47,953 [INFO]     P0→P0:
+2026-03-16 05:16:47,953 [INFO]       Avg RT change: -1.582 min (-22.4%)
+2026-03-16 05:16:47,953 [INFO]       Avg coverage change: +0.1168
+2026-03-16 05:16:47,953 [INFO]     P1→P1:
+2026-03-16 05:16:47,953 [INFO]       Avg RT change: +0.000 min (+0.0%)
+2026-03-16 05:16:47,953 [INFO]       Avg coverage change: +0.0000
+2026-03-16 05:16:47,954 [INFO]     P2→P2:
+2026-03-16 05:16:47,954 [INFO]       Avg RT change: +0.000 min (+0.0%)
+2026-03-16 05:16:47,954 [INFO]       Avg coverage change: +0.0000
+
+======================================================================
+EXTENDED FLEET ANALYSIS EXPERIMENT LOG
+Timestamp: 2026-03-16 05:16:47
+======================================================================
+
+CONFIGURATION:
+  Firehouse capacity: 2
+  P0 baseline: spatially-stratified (latitude method)
+  P1: demand-proportional with cap=2
+  P2: optimized demand-weighted with cap=2
+  Horizon: 168 hours (1 week)
+  Response threshold: 8.0 minutes
+  Base seed: 42
+  Replications per scenario: 30
+  K values: [10, 15, 20, 25, 30, 35, 40, 45, 48]
+  Policies: ['P0', 'P1', 'P2']
+
+SEED VALUES:
+  Replication 0: seed = 42
+  Replication 1: seed = 43
+  Replication 2: seed = 44
+  Replication 3: seed = 45
+  Replication 4: seed = 46
+  Replication 5: seed = 47
+  Replication 6: seed = 48
+  Replication 7: seed = 49
+  Replication 8: seed = 50
+  Replication 9: seed = 51
+  Replication 10: seed = 52
+  Replication 11: seed = 53
+  Replication 12: seed = 54
+  Replication 13: seed = 55
+  Replication 14: seed = 56
+  Replication 15: seed = 57
+  Replication 16: seed = 58
+  Replication 17: seed = 59
+  Replication 18: seed = 60
+  Replication 19: seed = 61
+  Replication 20: seed = 62
+  Replication 21: seed = 63
+  Replication 22: seed = 64
+  Replication 23: seed = 65
+  Replication 24: seed = 66
+  Replication 25: seed = 67
+  Replication 26: seed = 68
+  Replication 27: seed = 69
+  Replication 28: seed = 70
+  Replication 29: seed = 71
+
+TOTAL SCENARIOS: 27
+TOTAL SIMULATION RUNS: 810
+COMPLETED RUNS: 810
+ERRORS: 0
+
+OUTPUT FILES:
+  Allocations: /home/ubuntu/ems-optimization/results/production_v2/allocations
+  Raw simulation results: /home/ubuntu/ems-optimization/results/production_v2/simulation
+  Statistical tables: /home/ubuntu/ems-optimization/results/production_v2/tables
+  Figures: /home/ubuntu/ems-optimization/results/production_v2/figures
+  V1 comparison: /home/ubuntu/ems-optimization/results/production_v2/comparison_with_v1.csv
+
+SCENARIO SUMMARY:
+  P0_K10: 30 reps, mean_RT=4.398 ± 0.122 min, cov6=0.8215, cov8=0.9409
+  P1_K10: 30 reps, mean_RT=4.370 ± 0.142 min, cov6=0.7942, cov8=0.8919
+  P2_K10: 30 reps, mean_RT=3.744 ± 0.102 min, cov6=0.8606, cov8=0.9566
+  P0_K15: 30 reps, mean_RT=3.684 ± 0.063 min, cov6=0.9242, cov8=0.9915
+  P1_K15: 30 reps, mean_RT=2.943 ± 0.061 min, cov6=0.9550, cov8=0.9923
+  P2_K15: 30 reps, mean_RT=2.825 ± 0.053 min, cov6=0.9566, cov8=0.9910
+  P0_K20: 30 reps, mean_RT=3.165 ± 0.065 min, cov6=0.9396, cov8=0.9967
+  P1_K20: 30 reps, mean_RT=2.619 ± 0.052 min, cov6=0.9801, cov8=0.9964
+  P2_K20: 30 reps, mean_RT=2.567 ± 0.053 min, cov6=0.9817, cov8=0.9970
+  P0_K25: 30 reps, mean_RT=2.807 ± 0.040 min, cov6=0.9901, cov8=0.9974
+  P1_K25: 30 reps, mean_RT=2.467 ± 0.036 min, cov6=0.9900, cov8=0.9974
+  P2_K25: 30 reps, mean_RT=2.496 ± 0.052 min, cov6=0.9856, cov8=0.9975
+  P0_K30: 30 reps, mean_RT=2.811 ± 0.038 min, cov6=0.9934, cov8=0.9976
+  P1_K30: 30 reps, mean_RT=2.390 ± 0.033 min, cov6=0.9912, cov8=0.9975
+  P2_K30: 30 reps, mean_RT=2.451 ± 0.046 min, cov6=0.9870, cov8=0.9975
+  P0_K35: 30 reps, mean_RT=2.563 ± 0.029 min, cov6=0.9963, cov8=0.9984
+  P1_K35: 30 reps, mean_RT=2.343 ± 0.029 min, cov6=0.9966, cov8=0.9985
+  P2_K35: 30 reps, mean_RT=2.435 ± 0.043 min, cov6=0.9870, cov8=0.9975
+  P0_K40: 30 reps, mean_RT=2.445 ± 0.030 min, cov6=0.9971, cov8=0.9984
+  P1_K40: 30 reps, mean_RT=2.328 ± 0.028 min, cov6=0.9966, cov8=0.9985
+  P2_K40: 30 reps, mean_RT=2.429 ± 0.043 min, cov6=0.9870, cov8=0.9975
+  P0_K45: 30 reps, mean_RT=2.396 ± 0.029 min, cov6=0.9972, cov8=0.9984
+  P1_K45: 30 reps, mean_RT=2.325 ± 0.028 min, cov6=0.9966, cov8=0.9985
+  P2_K45: 30 reps, mean_RT=2.424 ± 0.041 min, cov6=0.9870, cov8=0.9975
+  P0_K48: 30 reps, mean_RT=2.374 ± 0.028 min, cov6=0.9972, cov8=0.9984
+  P1_K48: 30 reps, mean_RT=2.324 ± 0.027 min, cov6=0.9968, cov8=0.9985
+  P2_K48: 30 reps, mean_RT=2.420 ± 0.042 min, cov6=0.9870, cov8=0.9975
+2026-03-16 05:16:47,963 [INFO] Experiment log written to /home/ubuntu/ems-optimization/results/production_v2/experiment_log.txt
+2026-03-16 05:16:47,963 [INFO] 
+######################################################################
+2026-03-16 05:16:47,963 [INFO] EXTENDED FLEET ANALYSIS COMPLETE
+2026-03-16 05:16:47,963 [INFO]   Total runs: 810
+2026-03-16 05:16:47,963 [INFO]   Total time: 4s (0.1 min)
+2026-03-16 05:16:47,963 [INFO] ######################################################################

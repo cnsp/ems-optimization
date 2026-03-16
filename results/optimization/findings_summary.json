@@ -12,21 +12,21 @@
     "pct_demand_covered": 100.0,
     "num_firehouses_used": 23,
     "max_units_at_firehouse": 5,
-    "solve_time_sec": 0.041
+    "solve_time_sec": 0.035
   },
   "best_overall_coverage": {
     "K": 20,
-    "policy_id": "P1",
-    "policy_name": "Demand-Proportional",
+    "policy_id": "P0",
+    "policy_name": "Spatially-Stratified Uniform",
     "model_type": "baseline",
     "status": "Baseline",
-    "response_time": 2.8696,
+    "response_time": 4.753,
     "covered_precincts": 25,
     "total_precincts": 25,
     "pct_precincts_covered": 100.0,
     "pct_demand_covered": 100.0,
-    "num_firehouses_used": 18,
-    "max_units_at_firehouse": 2,
+    "num_firehouses_used": 20,
+    "max_units_at_firehouse": 1,
     "solve_time_sec": 0.0
   },
   "policy_rankings_K40": [
@@ -50,8 +50,8 @@
     },
     {
       "policy_id": "P0",
-      "policy_name": "Uniform",
-      "response_time": 3.0194,
+      "policy_name": "Spatially-Stratified Uniform",
+      "response_time": 2.6925,
       "pct_demand_covered": 100.0
     },
     {

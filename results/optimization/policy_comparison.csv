@@ -1,21 +1,21 @@
 K,policy_id,policy_name,model_type,status,response_time,covered_precincts,total_precincts,pct_precincts_covered,pct_demand_covered,num_firehouses_used,max_units_at_firehouse,solve_time_sec
-20,P0,Uniform,baseline,Baseline,18.5461,14,25,56.0,73.0,20,1,0.0
+20,P0,Spatially-Stratified Uniform,baseline,Baseline,4.753,25,25,100.0,100.0,20,1,0.0
 20,P1,Demand-Proportional,baseline,Baseline,2.8696,25,25,100.0,100.0,18,2,0.0
-20,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.5442,25,25,100.0,100.0,20,1,0.038
-20,P2b,P-Median Optimized,p_median,Optimal,2.5442,25,25,100.0,100.0,20,1,0.041
-20,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,7,5,0.007
-30,P0,Uniform,baseline,Baseline,6.9969,21,25,84.0,92.0,30,1,0.0
+20,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.5442,25,25,100.0,100.0,20,1,0.037
+20,P2b,P-Median Optimized,p_median,Optimal,2.5442,25,25,100.0,100.0,20,1,0.035
+20,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,7,5,0.005
+30,P0,Spatially-Stratified Uniform,baseline,Baseline,3.7514,25,25,100.0,100.0,30,1,0.0
 30,P1,Demand-Proportional,baseline,Baseline,2.5199,25,25,100.0,100.0,21,3,0.0
-30,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,23,5,0.041
-30,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,30,1,0.04
-30,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,8,5,0.006
-40,P0,Uniform,baseline,Baseline,3.0194,25,25,100.0,100.0,40,1,0.0
+30,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,23,5,0.035
+30,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,23,5,0.035
+30,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,8,5,0.005
+40,P0,Spatially-Stratified Uniform,baseline,Baseline,2.6925,25,25,100.0,100.0,40,1,0.0
 40,P1,Demand-Proportional,baseline,Baseline,2.5199,25,25,100.0,100.0,21,4,0.0
-40,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,24,5,0.037
-40,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,40,1,0.043
-40,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,10,5,0.006
-48,P0,Uniform,baseline,Baseline,2.4935,25,25,100.0,100.0,48,1,0.0
+40,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,24,5,0.035
+40,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,24,5,0.034
+40,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,10,5,0.005
+48,P0,Spatially-Stratified Uniform,baseline,Baseline,2.4935,25,25,100.0,100.0,48,1,0.0
 48,P1,Demand-Proportional,baseline,Baseline,2.5199,25,25,100.0,100.0,21,5,0.0
-48,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,26,5,0.047
-48,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,48,1,0.026
-48,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,11,5,0.006
+48,P2,Demand-Weighted Optimized,demand_weighted,Optimal,2.4935,25,25,100.0,100.0,26,5,0.034
+48,P2b,P-Median Optimized,p_median,Optimal,2.4935,25,25,100.0,100.0,26,5,0.033
+48,P2c,Maximal Coverage,maximal_coverage,Optimal,3.4821,25,25,100.0,100.0,11,5,0.005

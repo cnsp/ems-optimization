@@ -61,7 +61,7 @@ def load_data():
     dm.columns = dm.columns.astype(str)
 
     dl = pd.read_csv(PROJECT_ROOT / "data" / "processed" / "demand_lambda_precinct.csv")
-    demand = dl.set_index(dl["precinct"].astype(str))["lambda_per_hour"]
+    demand = dl.set_index(dl["precinct"].astype(str))["crash_rate_per_hour"]
     demand.index.name = None
     demand.name = "demand"
 
