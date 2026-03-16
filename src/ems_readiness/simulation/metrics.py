@@ -25,10 +25,14 @@ class MetricsCollector:
     Attributes
     ----------
     response_threshold_minutes : float
-        Target response time for coverage metric (default 8 min).
+        Primary target response time for coverage metric (default 8 min).
+    additional_thresholds : tuple of float
+        Additional coverage thresholds to compute (default includes 6 min
+        per NYC's 6-minute EMS response requirement).
     """
 
     response_threshold_minutes: float = 8.0
+    additional_thresholds: tuple = (6.0,)
 
     # Internal storage
     _incidents: List[Incident] = field(default_factory=list)
@@ -103,10 +107,15 @@ class MetricsCollector:
             stats["response_time_p90"] = float(np.percentile(rt, 90))
             stats["response_time_max"] = float(np.max(rt))
             stats["response_time_std"] = float(np.std(rt))
-            # Coverage: fraction within threshold
+            # Coverage: fraction within primary threshold
             within = np.sum(rt <= self.response_threshold_minutes)
             stats["coverage_fraction"] = float(within / len(rt))
             stats["incidents_within_threshold"] = int(within)
+            # Additional coverage thresholds (e.g., 6-min NYC requirement)
+            for thresh in self.additional_thresholds:
+                key = f"coverage_{int(thresh)}min"
+                within_t = np.sum(rt <= thresh)
+                stats[key] = float(within_t / len(rt))
         else:
             stats["response_time_mean"] = 0.0
             stats["response_time_median"] = 0.0
@@ -115,6 +124,9 @@ class MetricsCollector:
             stats["response_time_std"] = 0.0
             stats["coverage_fraction"] = 0.0
             stats["incidents_within_threshold"] = 0
+            for thresh in self.additional_thresholds:
+                key = f"coverage_{int(thresh)}min"
+                stats[key] = 0.0
 
         # Travel time stats
         if self._travel_times:

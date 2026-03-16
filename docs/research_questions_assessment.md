@@ -103,12 +103,13 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 #### Experiment 1: Direct Policy Comparison (K=20, n=30 replications)
 
-| Metric | P0 (Uniform) | P1 (Proportional) | P2 (Optimised) | P2 vs P0 Δ |
-|--------|-------------|-------------------|-----------------|------------|
-| Mean RT | 8.08 min [7.98, 8.18] | 2.63 min [2.62, 2.65] | **2.57 min** [2.55, 2.59] | **−68.2%** |
-| P90 RT | 19.47 min [19.22, 19.72] | 4.03 min [3.98, 4.09] | **3.76 min** [3.72, 3.80] | **−80.7%** |
-| 8-min Coverage | 64.4% [63.7%, 65.2%] | 99.6% [99.5%, 99.7%] | **99.6%** [99.5%, 99.7%] | **+35.2 pp** |
-| Utilisation | 9.1% | 7.5% | **7.5%** | −1.6 pp |
+| Metric | P0 (Spatial-Stratified) | P1 (Proportional) | P2 (Optimised) | P2 vs P0 Δ |
+|--------|------------------------|-------------------|-----------------|------------|
+| Mean RT | 3.17 min | 2.62 min | **2.57 min** | **−19.0%** |
+| P90 RT | 5.33 min | 3.99 min | **3.75 min** | **−29.6%** |
+| 6-min Coverage (NYC) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
+| 8-min Coverage (NFPA) | 99.7% | 99.6% | **99.7%** | **+0.0 pp** |
+| Utilisation | 7.6% | 7.4% | **7.4%** | −0.2 pp |
 
 *Source: `results/tables/table1_baseline_comparison.csv`, `results/tables/confidence_intervals.csv`*
 
@@ -116,17 +117,18 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 | Test | F-statistic | p-value | η² | Source |
 |------|------------|---------|-----|--------|
-| One-way ANOVA (Mean RT) | **12,010** | < 0.001 | 0.996 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (P90 RT) | **15,108** | < 0.001 | 0.997 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (8-min Coverage) | **8,764** | < 0.001 | 0.995 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (Mean RT) | **1,019** | < 0.001 | 0.959 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (P90 RT) | **398** | < 0.001 | 0.901 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (6-min Coverage) | **285** | < 0.001 | 0.868 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (8-min Coverage) | 0.46 | 0.634 (ns) | 0.010 | `results/tables/table2_anova_summary.csv` |
 
 | Comparison | Mean Diff | Cohen's d | p (Tukey) | Source |
 |-----------|-----------|-----------|-----------|--------|
-| P0 vs P2 (Mean RT) | −5.51 min | **28.88** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P0 vs P1 (Mean RT) | −5.45 min | **28.49** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P1 vs P2 (Mean RT) | −0.064 min | 1.41 | < 0.001 (Tukey p = 0.267) | `results/tables/posthoc_comparisons.csv` |
-| P0 vs P2 (8-min Cov) | +35.19 pp | **24.37** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P1 vs P2 (8-min Cov) | +0.05 pp | 0.19 (negligible) | ns (p = 0.987) | `results/tables/posthoc_comparisons.csv` |
+| P0 vs P2 (Mean RT) | −0.60 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
+| P0 vs P1 (Mean RT) | −0.55 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
+| P1 vs P2 (Mean RT) | −0.05 min | Small | ns | `results/tables/posthoc_comparisons.csv` |
+| P0 vs P2 (6-min Cov) | +4.2 pp | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
+| P1 vs P2 (6-min Cov) | +0.2 pp | Negligible | ns | `results/tables/posthoc_comparisons.csv` |
 
 #### Queue Analysis — Mechanism Confirmation
 **Zero queueing** observed across all 1,770 runs (`results/tables/queue_statistics.csv`):
@@ -150,47 +152,47 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 #### A. Fleet Size Sensitivity (Experiment 2: Policy × K, 540 runs)
 
-| K (Fleet) | P0 Mean RT | P2 Mean RT | P0 Coverage | P2 Coverage |
-|-----------|-----------|-----------|-------------|-------------|
-| 15 | 9.57 min | **2.84 min** | 57.5% | **99.1%** |
-| 20 | 8.08 min | **2.57 min** | 64.4% | **99.6%** |
-| 25 | 5.79 min | **2.51 min** | 77.1% | **99.8%** |
-| 30 | 3.92 min | **2.51 min** | 90.3% | **99.8%** |
-| 35 | 3.26 min | **2.51 min** | 94.0% | **99.9%** |
-| 40 | 2.58 min | **2.50 min** | 99.5% | **99.9%** |
+| K (Fleet) | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
+|-----------|-----------|-----------|-------------|-------------|-------------|-------------|
+| 15 | 9.48 min | **2.82 min** | 49.9% | **95.7%** | 57.7% | **99.1%** |
+| 20 | 3.17 min | **2.57 min** | 94.0% | **98.2%** | 99.7% | **99.7%** |
+| 25 | 5.79 min | **2.50 min** | 69.5% | **98.6%** | 77.2% | **99.8%** |
+| 30 | 2.81 min | **2.45 min** | 99.3% | **98.7%** | 99.8% | **99.7%** |
+| 35 | 3.27 min | **2.43 min** | 92.1% | **98.7%** | 93.8% | **99.7%** |
+| 40 | 2.45 min | **2.43 min** | 99.7% | **98.7%** | 99.8% | **99.7%** |
 
-*Source: `results/tables/exp2_pivot_rt.csv`, `results/simulation/production/exp2_fleet_sensitivity.csv`*
+*Source: `results/simulation/production/exp2_fleet_sensitivity.csv`*
 
-**Key finding:** P0 requires **K ≈ 40 units** to match P2's performance at K = 15. The optimised allocation is equivalent to roughly **tripling effective fleet capacity**.
+**Key finding:** P0 performance varies significantly with K due to spatial firehouse selection. At some K values (K=20, K=30, K=40), the latitude-based stratification selects well-distributed firehouses, yielding strong P0 performance. At others (K=15, K=25, K=35), gaps in coverage emerge. P2 is consistently strong across all K values.
 
-Two-way ANOVA: Policy (F = 40,874, p < 0.001, η² = 0.47), K (F = 7,528, p < 0.001, η² = 0.22), Policy×K interaction (F = 5,351, p < 0.001, η² = 0.31) — `results/tables/table2_anova_summary.csv`
+Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.001, η² = 0.29), Policy×K interaction (F = 6,772, p < 0.001, η² = 0.41) — `results/tables/table2_anova_summary.csv`
 
 #### B. Demand Sensitivity (Experiment 3: Policy × Demand Multiplier, 540 runs)
 
-| Demand Multiplier | P0 Mean RT | P2 Mean RT | P0 Coverage | P2 Coverage |
-|-------------------|-----------|-----------|-------------|-------------|
-| 0.50× | 7.80 min | **2.44 min** | 66.2% | **99.8%** |
-| 0.75× | 8.05 min | **2.52 min** | 64.8% | **99.7%** |
-| 1.00× | 8.08 min | **2.57 min** | 64.4% | **99.6%** |
-| 1.25× | 8.31 min | **2.63 min** | 63.4% | **99.6%** |
-| 1.50× | 8.43 min | **2.71 min** | 62.8% | **99.4%** |
-| 2.00× | 8.58 min | **2.85 min** | 62.5% | **99.1%** |
+| Demand Multiplier | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
+|-------------------|-----------|-----------|-------------|-------------|-------------|-------------|
+| 0.50× | 3.10 min | **2.44 min** | 94.8% | **99.1%** | 99.8% | **99.8%** |
+| 0.75× | 3.15 min | **2.51 min** | 94.2% | **98.4%** | 99.7% | **99.7%** |
+| 1.00× | 3.17 min | **2.57 min** | 94.0% | **98.2%** | 99.7% | **99.7%** |
+| 1.25× | 3.22 min | **2.63 min** | 93.4% | **97.5%** | 99.5% | **99.6%** |
+| 1.50× | 3.28 min | **2.71 min** | 92.6% | **96.8%** | 99.3% | **99.5%** |
+| 2.00× | 3.36 min | **2.84 min** | 91.7% | **95.7%** | 98.9% | **99.1%** |
 
-*Source: `results/tables/exp3_pivot_rt.csv`, `results/simulation/production/exp3_demand_sensitivity.csv`*
+*Source: `results/simulation/production/exp3_demand_sensitivity.csv`*
 
-**Key finding:** Policy rankings are **invariant** to demand intensity changes of ±100%. P2 dominates P0 under all tested scenarios. Policy×demand interaction is statistically significant but practically negligible (η² = 0.0007).
+**Key finding:** Policy rankings are **invariant** to demand intensity changes of ±100%. P2 dominates P0 under all tested scenarios. Policy×demand interaction is statistically significant but practically negligible (η² = 0.004).
 
 #### C. Service Time Robustness (Experiment 4: Policy × Service Time, 270 runs)
 
 | Service Time Mean | P0 Mean RT | P2 Mean RT | Rankings Preserved? |
 |-------------------|-----------|-----------|---------------------|
-| 20 min | 8.02 min | **2.52 min** | P2 ≻ P1 ≻ P0 |
-| 25 min | 8.08 min | **2.57 min** | P2 ≻ P1 ≻ P0 |
-| 30 min | 8.14 min | **2.62 min** | P2 ≻ P1 ≻ P0 |
+| 20 min | 3.14 min | **2.52 min** | P2 ≻ P1 ≻ P0 |
+| 25 min | 3.17 min | **2.57 min** | P2 ≻ P1 ≻ P0 |
+| 30 min | 3.20 min | **2.62 min** | P2 ≻ P1 ≻ P0 |
 
-*Source: `results/tables/exp4_pivot_rt.csv`, `results/simulation/production/exp4_service_robustness.csv`*
+*Source: `results/simulation/production/exp4_service_robustness.csv`*
 
-**Key finding:** Service time has **negligible effect** on response time metrics (η² < 0.001). No significant Policy × Service Time interaction (F = 0.14, p = 0.97). Utilisation is sensitive to service time (η² = 0.67) as expected.
+**Key finding:** Service time has **negligible effect** on response time metrics (η² = 0.013). No significant Policy × Service Time interaction (F = 0.68, p = 0.61). Utilisation is sensitive to service time (η² = 0.93) as expected.
 
 #### D. CBD Stress Testing (330 additional runs)
 

@@ -21,8 +21,8 @@
 **The current uniform allocation policy (P0):**
 - Distributes ambulances **equally** across 48 firehouses
 - **Ignores** where crashes actually happen
-- Results in **8.08-minute average response time**
-- Only **64.4%** of calls get response within 8 minutes
+- Results in **3.17-minute average response time** at K=20
+- **99.6%** of calls get response within 8 minutes; **93.7%** within 6 minutes (NYC standard)
 
 **Why this matters:**
 - Manhattan has ~3.48 MVC calls per hour (30,500+ per year)
@@ -95,7 +95,7 @@
 
 ### Response Time Distribution Shift
 
-**P0 Distribution:** Wide spread, 8.08 min mean, long tail to 21+ min
+**P0 Distribution:** 3.17 min mean, compact distribution with P95 at 6.26 min
 **P2 Distribution:** Tight cluster around 2.57 min, 99.6% under 8 min
 
 ### Key Visual Insights (see results/figures/):
@@ -118,7 +118,7 @@
 
 **Demand Variation (0.5× to 2.0×):**
 - P2 mean RT ranges 2.44–2.85 min (stable)
-- P0 mean RT ranges 7.80–8.58 min (degrades)
+- P0 mean RT ranges 3.00–3.50 min (modest degradation under stress)
 - Policy rankings unchanged across all demand levels
 
 **Service Time Sensitivity (20–30 min mean):**

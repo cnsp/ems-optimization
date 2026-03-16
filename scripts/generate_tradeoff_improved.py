@@ -161,8 +161,9 @@ ax_main.set_ylabel('% Demand Covered (<=8 min)', fontsize=12)
 ax_main.set_title('Response Time vs Coverage Trade-off', fontsize=14, fontweight='bold')
 ax_main.grid(True, alpha=0.3)
 
-# Add the 8-min reference line
-ax_main.axvline(x=8.0, color='red', linestyle=':', alpha=0.4, label='8-min threshold')
+# Add threshold reference lines
+ax_main.axvline(x=6.0, color='orange', linestyle=':', alpha=0.5, label='6-min NYC target')
+ax_main.axvline(x=8.0, color='red', linestyle=':', alpha=0.4, label='8-min NFPA target')
 
 # -- Data table panel --
 ax_table.axis('off')

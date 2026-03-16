@@ -121,7 +121,7 @@
 - `p0_spatial_north_south.png` — P0 north/south comparison
 
 #### Fleet & Trade-off (3 figures)
-- `fleet_sensitivity_v2_dual.png` — Fleet sensitivity v2 dual panel
+- `fleet_sensitivity_dual.png` — Fleet sensitivity v2 dual panel
 - `response_time_coverage_tradeoff_improved.png` — Improved trade-off curve
 - `response_time_coverage_tradeoff_zoomed.png` — Zoomed trade-off curve
 - `response_time_distribution_by_policy.png` — RT distribution by policy

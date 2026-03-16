@@ -1,181 +1,226 @@
 Experiment,Policy,Factor,Level,Metric,Mean,Std,CI_95_lo,CI_95_hi
-exp2_fleet_sensitivity,P0,K,15.0,Mean RT (min),9.5706,0.2655,9.4756,9.6656
-exp2_fleet_sensitivity,P0,K,15.0,P90 RT (min),22.2335,1.1426,21.8246,22.6423
-exp2_fleet_sensitivity,P0,K,15.0,8-min Coverage,0.5753,0.0187,0.5686,0.582
-exp2_fleet_sensitivity,P0,K,15.0,Mean Utilization,0.127,0.0056,0.125,0.129
-exp2_fleet_sensitivity,P0,K,20.0,Mean RT (min),8.0825,0.2663,7.9871,8.1778
-exp2_fleet_sensitivity,P0,K,20.0,P90 RT (min),19.4746,0.6687,19.2353,19.7139
-exp2_fleet_sensitivity,P0,K,20.0,8-min Coverage,0.6444,0.0203,0.6371,0.6516
-exp2_fleet_sensitivity,P0,K,20.0,Mean Utilization,0.0906,0.004,0.0892,0.092
-exp2_fleet_sensitivity,P0,K,25.0,Mean RT (min),5.7895,0.2076,5.7153,5.8638
-exp2_fleet_sensitivity,P0,K,25.0,P90 RT (min),13.5644,0.813,13.2735,13.8554
-exp2_fleet_sensitivity,P0,K,25.0,8-min Coverage,0.7709,0.0146,0.7657,0.7761
-exp2_fleet_sensitivity,P0,K,25.0,Mean Utilization,0.0668,0.0026,0.0659,0.0677
-exp2_fleet_sensitivity,P0,K,30.0,Mean RT (min),3.9179,0.1379,3.8686,3.9673
-exp2_fleet_sensitivity,P0,K,30.0,P90 RT (min),7.8971,0.6399,7.6682,8.1261
-exp2_fleet_sensitivity,P0,K,30.0,8-min Coverage,0.9026,0.0109,0.8986,0.9065
-exp2_fleet_sensitivity,P0,K,30.0,Mean Utilization,0.0516,0.0022,0.0508,0.0524
-exp2_fleet_sensitivity,P0,K,35.0,Mean RT (min),3.2605,0.0965,3.226,3.295
-exp2_fleet_sensitivity,P0,K,35.0,P90 RT (min),4.6062,0.5254,4.4182,4.7942
-exp2_fleet_sensitivity,P0,K,35.0,8-min Coverage,0.9399,0.0095,0.9365,0.9434
+exp2_fleet_sensitivity,P0,K,15.0,Mean RT (min),9.4762,0.319,9.3621,9.5904
+exp2_fleet_sensitivity,P0,K,15.0,P90 RT (min),22.0166,1.0054,21.6568,22.3764
+exp2_fleet_sensitivity,P0,K,15.0,6-min Coverage (NYC),0.4987,0.0214,0.491,0.5064
+exp2_fleet_sensitivity,P0,K,15.0,8-min Coverage (NFPA),0.5767,0.0206,0.5693,0.5841
+exp2_fleet_sensitivity,P0,K,15.0,Mean Utilization,0.1268,0.0058,0.1248,0.1289
+exp2_fleet_sensitivity,P0,K,20.0,Mean RT (min),3.1651,0.065,3.1418,3.1883
+exp2_fleet_sensitivity,P0,K,20.0,P90 RT (min),5.3338,0.3457,5.2101,5.4575
+exp2_fleet_sensitivity,P0,K,20.0,6-min Coverage (NYC),0.9396,0.011,0.9357,0.9436
+exp2_fleet_sensitivity,P0,K,20.0,8-min Coverage (NFPA),0.9967,0.0021,0.9959,0.9974
+exp2_fleet_sensitivity,P0,K,20.0,Mean Utilization,0.0757,0.0032,0.0746,0.0768
+exp2_fleet_sensitivity,P0,K,25.0,Mean RT (min),5.7949,0.1802,5.7304,5.8594
+exp2_fleet_sensitivity,P0,K,25.0,P90 RT (min),13.5908,0.6981,13.341,13.8406
+exp2_fleet_sensitivity,P0,K,25.0,6-min Coverage (NYC),0.6945,0.0178,0.6882,0.7009
+exp2_fleet_sensitivity,P0,K,25.0,8-min Coverage (NFPA),0.7717,0.0137,0.7668,0.7766
+exp2_fleet_sensitivity,P0,K,25.0,Mean Utilization,0.0668,0.0027,0.0658,0.0677
+exp2_fleet_sensitivity,P0,K,30.0,Mean RT (min),2.8106,0.0378,2.7971,2.8241
+exp2_fleet_sensitivity,P0,K,30.0,P90 RT (min),3.8879,0.135,3.8396,3.9362
+exp2_fleet_sensitivity,P0,K,30.0,6-min Coverage (NYC),0.9934,0.0032,0.9922,0.9945
+exp2_fleet_sensitivity,P0,K,30.0,8-min Coverage (NFPA),0.9976,0.0019,0.9969,0.9982
+exp2_fleet_sensitivity,P0,K,30.0,Mean Utilization,0.0499,0.002,0.0492,0.0506
+exp2_fleet_sensitivity,P0,K,35.0,Mean RT (min),3.2737,0.0847,3.2434,3.304
+exp2_fleet_sensitivity,P0,K,35.0,P90 RT (min),4.756,0.5026,4.5761,4.9358
+exp2_fleet_sensitivity,P0,K,35.0,6-min Coverage (NYC),0.9205,0.0093,0.9172,0.9238
+exp2_fleet_sensitivity,P0,K,35.0,8-min Coverage (NFPA),0.9382,0.009,0.935,0.9414
 exp2_fleet_sensitivity,P0,K,35.0,Mean Utilization,0.0434,0.0018,0.0427,0.044
-exp2_fleet_sensitivity,P0,K,40.0,Mean RT (min),2.583,0.0418,2.5681,2.598
-exp2_fleet_sensitivity,P0,K,40.0,P90 RT (min),3.3651,0.0484,3.3478,3.3824
-exp2_fleet_sensitivity,P0,K,40.0,8-min Coverage,0.995,0.0035,0.9937,0.9962
-exp2_fleet_sensitivity,P0,K,40.0,Mean Utilization,0.0371,0.0015,0.0366,0.0377
-exp2_fleet_sensitivity,P1,K,15.0,Mean RT (min),2.9558,0.0502,2.9378,2.9737
-exp2_fleet_sensitivity,P1,K,15.0,P90 RT (min),5.0307,0.1534,4.9758,5.0856
-exp2_fleet_sensitivity,P1,K,15.0,8-min Coverage,0.9918,0.0029,0.9908,0.9929
-exp2_fleet_sensitivity,P1,K,15.0,Mean Utilization,0.1009,0.0041,0.0994,0.1024
-exp2_fleet_sensitivity,P1,K,20.0,Mean RT (min),2.634,0.0468,2.6173,2.6508
-exp2_fleet_sensitivity,P1,K,20.0,P90 RT (min),4.0314,0.1471,3.9787,4.084
-exp2_fleet_sensitivity,P1,K,20.0,8-min Coverage,0.9958,0.0025,0.9949,0.9967
-exp2_fleet_sensitivity,P1,K,20.0,Mean Utilization,0.0747,0.0031,0.0736,0.0758
-exp2_fleet_sensitivity,P1,K,25.0,Mean RT (min),2.4731,0.0417,2.4582,2.488
-exp2_fleet_sensitivity,P1,K,25.0,P90 RT (min),3.4962,0.1325,3.4488,3.5436
-exp2_fleet_sensitivity,P1,K,25.0,8-min Coverage,0.9971,0.0019,0.9964,0.9978
-exp2_fleet_sensitivity,P1,K,25.0,Mean Utilization,0.0594,0.0025,0.0585,0.0603
-exp2_fleet_sensitivity,P1,K,30.0,Mean RT (min),2.3974,0.0379,2.3839,2.411
-exp2_fleet_sensitivity,P1,K,30.0,P90 RT (min),3.2387,0.1097,3.1994,3.2779
-exp2_fleet_sensitivity,P1,K,30.0,8-min Coverage,0.9972,0.002,0.9965,0.9979
-exp2_fleet_sensitivity,P1,K,30.0,Mean Utilization,0.0493,0.002,0.0486,0.0501
-exp2_fleet_sensitivity,P1,K,35.0,Mean RT (min),2.3648,0.0345,2.3525,2.3772
-exp2_fleet_sensitivity,P1,K,35.0,P90 RT (min),3.1867,0.098,3.1516,3.2217
-exp2_fleet_sensitivity,P1,K,35.0,8-min Coverage,0.9986,0.0012,0.9982,0.999
-exp2_fleet_sensitivity,P1,K,35.0,Mean Utilization,0.0422,0.0017,0.0416,0.0429
-exp2_fleet_sensitivity,P1,K,40.0,Mean RT (min),2.3488,0.0321,2.3373,2.3603
-exp2_fleet_sensitivity,P1,K,40.0,P90 RT (min),3.1587,0.0835,3.1288,3.1885
-exp2_fleet_sensitivity,P1,K,40.0,8-min Coverage,0.9986,0.0012,0.9982,0.999
-exp2_fleet_sensitivity,P1,K,40.0,Mean Utilization,0.0369,0.0015,0.0364,0.0375
-exp2_fleet_sensitivity,P2,K,15.0,Mean RT (min),2.835,0.0541,2.8157,2.8544
-exp2_fleet_sensitivity,P2,K,15.0,P90 RT (min),4.494,0.31,4.3831,4.605
-exp2_fleet_sensitivity,P2,K,15.0,8-min Coverage,0.9912,0.0036,0.9899,0.9925
-exp2_fleet_sensitivity,P2,K,15.0,Mean Utilization,0.1005,0.0041,0.099,0.1019
-exp2_fleet_sensitivity,P2,K,20.0,Mean RT (min),2.5702,0.0437,2.5546,2.5859
-exp2_fleet_sensitivity,P2,K,20.0,P90 RT (min),3.7601,0.1148,3.719,3.8011
-exp2_fleet_sensitivity,P2,K,20.0,8-min Coverage,0.9962,0.0024,0.9954,0.9971
-exp2_fleet_sensitivity,P2,K,20.0,Mean Utilization,0.0746,0.0031,0.0735,0.0757
-exp2_fleet_sensitivity,P2,K,25.0,Mean RT (min),2.5127,0.0379,2.4991,2.5262
-exp2_fleet_sensitivity,P2,K,25.0,P90 RT (min),3.5811,0.1096,3.5418,3.6203
-exp2_fleet_sensitivity,P2,K,25.0,8-min Coverage,0.9982,0.0014,0.9977,0.9987
-exp2_fleet_sensitivity,P2,K,25.0,Mean Utilization,0.0595,0.0024,0.0587,0.0604
-exp2_fleet_sensitivity,P2,K,30.0,Mean RT (min),2.5101,0.0382,2.4964,2.5238
-exp2_fleet_sensitivity,P2,K,30.0,P90 RT (min),3.5762,0.1094,3.5371,3.6153
-exp2_fleet_sensitivity,P2,K,30.0,8-min Coverage,0.9982,0.0014,0.9977,0.9987
-exp2_fleet_sensitivity,P2,K,30.0,Mean Utilization,0.0496,0.002,0.0489,0.0503
-exp2_fleet_sensitivity,P2,K,35.0,Mean RT (min),2.5053,0.0371,2.492,2.5186
-exp2_fleet_sensitivity,P2,K,35.0,P90 RT (min),3.5568,0.1146,3.5157,3.5978
-exp2_fleet_sensitivity,P2,K,35.0,8-min Coverage,0.9986,0.0012,0.9981,0.999
-exp2_fleet_sensitivity,P2,K,35.0,Mean Utilization,0.0425,0.0017,0.0419,0.0431
-exp2_fleet_sensitivity,P2,K,40.0,Mean RT (min),2.5021,0.0375,2.4887,2.5155
-exp2_fleet_sensitivity,P2,K,40.0,P90 RT (min),3.5535,0.1144,3.5125,3.5944
-exp2_fleet_sensitivity,P2,K,40.0,8-min Coverage,0.9986,0.0012,0.9981,0.999
-exp2_fleet_sensitivity,P2,K,40.0,Mean Utilization,0.0372,0.0015,0.0367,0.0377
-exp3_demand_sensitivity,P0,demand_multiplier,0.5,Mean RT (min),7.796,0.3546,7.6691,7.9228
-exp3_demand_sensitivity,P0,demand_multiplier,0.5,P90 RT (min),19.0291,1.0735,18.645,19.4133
-exp3_demand_sensitivity,P0,demand_multiplier,0.5,8-min Coverage,0.6616,0.0262,0.6522,0.671
-exp3_demand_sensitivity,P0,demand_multiplier,0.5,Mean Utilization,0.0451,0.003,0.044,0.0462
-exp3_demand_sensitivity,P0,demand_multiplier,0.75,Mean RT (min),8.0479,0.3934,7.9071,8.1887
-exp3_demand_sensitivity,P0,demand_multiplier,0.75,P90 RT (min),19.5251,1.0786,19.1391,19.9111
-exp3_demand_sensitivity,P0,demand_multiplier,0.75,8-min Coverage,0.6478,0.0257,0.6386,0.657
-exp3_demand_sensitivity,P0,demand_multiplier,0.75,Mean Utilization,0.0681,0.0033,0.0669,0.0692
-exp3_demand_sensitivity,P0,demand_multiplier,1.0,Mean RT (min),8.0825,0.2663,7.9871,8.1778
-exp3_demand_sensitivity,P0,demand_multiplier,1.0,P90 RT (min),19.4746,0.6687,19.2353,19.7139
-exp3_demand_sensitivity,P0,demand_multiplier,1.0,8-min Coverage,0.6444,0.0203,0.6371,0.6516
-exp3_demand_sensitivity,P0,demand_multiplier,1.0,Mean Utilization,0.0906,0.004,0.0892,0.092
-exp3_demand_sensitivity,P0,demand_multiplier,1.25,Mean RT (min),8.3094,0.2946,8.204,8.4148
-exp3_demand_sensitivity,P0,demand_multiplier,1.25,P90 RT (min),19.8321,0.8698,19.5209,20.1434
-exp3_demand_sensitivity,P0,demand_multiplier,1.25,8-min Coverage,0.6343,0.0176,0.628,0.6406
-exp3_demand_sensitivity,P0,demand_multiplier,1.25,Mean Utilization,0.1151,0.0049,0.1134,0.1169
-exp3_demand_sensitivity,P0,demand_multiplier,1.5,Mean RT (min),8.4336,0.3649,8.303,8.5642
-exp3_demand_sensitivity,P0,demand_multiplier,1.5,P90 RT (min),20.0806,1.0415,19.7079,20.4533
-exp3_demand_sensitivity,P0,demand_multiplier,1.5,8-min Coverage,0.628,0.0181,0.6215,0.6345
-exp3_demand_sensitivity,P0,demand_multiplier,1.5,Mean Utilization,0.1396,0.0039,0.1382,0.141
-exp3_demand_sensitivity,P0,demand_multiplier,2.0,Mean RT (min),8.5765,0.2966,8.4704,8.6827
-exp3_demand_sensitivity,P0,demand_multiplier,2.0,P90 RT (min),20.3866,0.7383,20.1224,20.6508
-exp3_demand_sensitivity,P0,demand_multiplier,2.0,8-min Coverage,0.6246,0.0155,0.6191,0.6302
-exp3_demand_sensitivity,P0,demand_multiplier,2.0,Mean Utilization,0.187,0.0071,0.1844,0.1895
-exp3_demand_sensitivity,P1,demand_multiplier,0.5,Mean RT (min),2.5292,0.0492,2.5116,2.5469
-exp3_demand_sensitivity,P1,demand_multiplier,0.5,P90 RT (min),3.7458,0.1269,3.7004,3.7912
-exp3_demand_sensitivity,P1,demand_multiplier,0.5,8-min Coverage,0.9977,0.0028,0.9967,0.9987
-exp3_demand_sensitivity,P1,demand_multiplier,0.5,Mean Utilization,0.0372,0.0022,0.0364,0.038
-exp3_demand_sensitivity,P1,demand_multiplier,0.75,Mean RT (min),2.588,0.0606,2.5663,2.6096
-exp3_demand_sensitivity,P1,demand_multiplier,0.75,P90 RT (min),3.8383,0.1555,3.7826,3.8939
-exp3_demand_sensitivity,P1,demand_multiplier,0.75,8-min Coverage,0.9965,0.0035,0.9953,0.9978
-exp3_demand_sensitivity,P1,demand_multiplier,0.75,Mean Utilization,0.0565,0.0024,0.0557,0.0574
-exp3_demand_sensitivity,P1,demand_multiplier,1.0,Mean RT (min),2.634,0.0468,2.6173,2.6508
-exp3_demand_sensitivity,P1,demand_multiplier,1.0,P90 RT (min),4.0314,0.1471,3.9787,4.084
-exp3_demand_sensitivity,P1,demand_multiplier,1.0,8-min Coverage,0.9958,0.0025,0.9949,0.9967
-exp3_demand_sensitivity,P1,demand_multiplier,1.0,Mean Utilization,0.0747,0.0031,0.0736,0.0758
-exp3_demand_sensitivity,P1,demand_multiplier,1.25,Mean RT (min),2.6698,0.0443,2.654,2.6857
-exp3_demand_sensitivity,P1,demand_multiplier,1.25,P90 RT (min),4.1515,0.1953,4.0816,4.2214
-exp3_demand_sensitivity,P1,demand_multiplier,1.25,8-min Coverage,0.9945,0.0026,0.9935,0.9954
-exp3_demand_sensitivity,P1,demand_multiplier,1.25,Mean Utilization,0.0948,0.0043,0.0933,0.0963
-exp3_demand_sensitivity,P1,demand_multiplier,1.5,Mean RT (min),2.7439,0.053,2.725,2.7629
-exp3_demand_sensitivity,P1,demand_multiplier,1.5,P90 RT (min),4.5015,0.2006,4.4297,4.5733
-exp3_demand_sensitivity,P1,demand_multiplier,1.5,8-min Coverage,0.993,0.0037,0.9917,0.9943
-exp3_demand_sensitivity,P1,demand_multiplier,1.5,Mean Utilization,0.1152,0.0033,0.114,0.1164
-exp3_demand_sensitivity,P1,demand_multiplier,2.0,Mean RT (min),2.867,0.0562,2.8469,2.8871
-exp3_demand_sensitivity,P1,demand_multiplier,2.0,P90 RT (min),4.8685,0.1354,4.8201,4.9169
-exp3_demand_sensitivity,P1,demand_multiplier,2.0,8-min Coverage,0.9889,0.0045,0.9872,0.9905
-exp3_demand_sensitivity,P1,demand_multiplier,2.0,Mean Utilization,0.1535,0.0056,0.1515,0.1555
-exp3_demand_sensitivity,P2,demand_multiplier,0.5,Mean RT (min),2.4399,0.0432,2.4245,2.4554
-exp3_demand_sensitivity,P2,demand_multiplier,0.5,P90 RT (min),3.4441,0.1529,3.3893,3.4988
-exp3_demand_sensitivity,P2,demand_multiplier,0.5,8-min Coverage,0.9977,0.0028,0.9967,0.9987
-exp3_demand_sensitivity,P2,demand_multiplier,0.5,Mean Utilization,0.0369,0.0019,0.0362,0.0376
-exp3_demand_sensitivity,P2,demand_multiplier,0.75,Mean RT (min),2.5245,0.0476,2.5075,2.5416
-exp3_demand_sensitivity,P2,demand_multiplier,0.75,P90 RT (min),3.6271,0.1359,3.5785,3.6758
-exp3_demand_sensitivity,P2,demand_multiplier,0.75,8-min Coverage,0.9973,0.003,0.9962,0.9984
+exp2_fleet_sensitivity,P0,K,40.0,Mean RT (min),2.4453,0.0298,2.4346,2.4559
+exp2_fleet_sensitivity,P0,K,40.0,P90 RT (min),3.1951,0.0648,3.1719,3.2183
+exp2_fleet_sensitivity,P0,K,40.0,6-min Coverage (NYC),0.9971,0.0019,0.9964,0.9978
+exp2_fleet_sensitivity,P0,K,40.0,8-min Coverage (NFPA),0.9984,0.0013,0.9979,0.9989
+exp2_fleet_sensitivity,P0,K,40.0,Mean Utilization,0.0369,0.0015,0.0364,0.0375
+exp2_fleet_sensitivity,P1,K,15.0,Mean RT (min),2.943,0.0613,2.9211,2.965
+exp2_fleet_sensitivity,P1,K,15.0,P90 RT (min),4.997,0.1733,4.935,5.059
+exp2_fleet_sensitivity,P1,K,15.0,6-min Coverage (NYC),0.955,0.007,0.9525,0.9575
+exp2_fleet_sensitivity,P1,K,15.0,8-min Coverage (NFPA),0.9923,0.0037,0.991,0.9937
+exp2_fleet_sensitivity,P1,K,15.0,Mean Utilization,0.1002,0.0042,0.0987,0.1017
+exp2_fleet_sensitivity,P1,K,20.0,Mean RT (min),2.6186,0.0519,2.6,2.6371
+exp2_fleet_sensitivity,P1,K,20.0,P90 RT (min),3.9882,0.1741,3.9259,4.0505
+exp2_fleet_sensitivity,P1,K,20.0,6-min Coverage (NYC),0.9801,0.0054,0.9781,0.982
+exp2_fleet_sensitivity,P1,K,20.0,8-min Coverage (NFPA),0.9964,0.0027,0.9955,0.9974
+exp2_fleet_sensitivity,P1,K,20.0,Mean Utilization,0.0745,0.003,0.0734,0.0755
+exp2_fleet_sensitivity,P1,K,25.0,Mean RT (min),2.4673,0.0363,2.4543,2.4803
+exp2_fleet_sensitivity,P1,K,25.0,P90 RT (min),3.4688,0.1155,3.4275,3.5102
+exp2_fleet_sensitivity,P1,K,25.0,6-min Coverage (NYC),0.99,0.0038,0.9887,0.9914
+exp2_fleet_sensitivity,P1,K,25.0,8-min Coverage (NFPA),0.9974,0.0019,0.9967,0.9981
+exp2_fleet_sensitivity,P1,K,25.0,Mean Utilization,0.0592,0.0024,0.0583,0.06
+exp2_fleet_sensitivity,P1,K,30.0,Mean RT (min),2.3898,0.0328,2.378,2.4015
+exp2_fleet_sensitivity,P1,K,30.0,P90 RT (min),3.2107,0.1061,3.1727,3.2487
+exp2_fleet_sensitivity,P1,K,30.0,6-min Coverage (NYC),0.9912,0.0035,0.9899,0.9924
+exp2_fleet_sensitivity,P1,K,30.0,8-min Coverage (NFPA),0.9975,0.0019,0.9968,0.9982
+exp2_fleet_sensitivity,P1,K,30.0,Mean Utilization,0.0492,0.002,0.0484,0.0499
+exp2_fleet_sensitivity,P1,K,35.0,Mean RT (min),2.3426,0.0286,2.3324,2.3528
+exp2_fleet_sensitivity,P1,K,35.0,P90 RT (min),3.0992,0.1139,3.0584,3.1399
+exp2_fleet_sensitivity,P1,K,35.0,6-min Coverage (NYC),0.9966,0.0023,0.9958,0.9974
+exp2_fleet_sensitivity,P1,K,35.0,8-min Coverage (NFPA),0.9985,0.0013,0.998,0.9989
+exp2_fleet_sensitivity,P1,K,35.0,Mean Utilization,0.0421,0.0017,0.0414,0.0427
+exp2_fleet_sensitivity,P1,K,40.0,Mean RT (min),2.3283,0.0279,2.3183,2.3383
+exp2_fleet_sensitivity,P1,K,40.0,P90 RT (min),3.0659,0.103,3.0291,3.1028
+exp2_fleet_sensitivity,P1,K,40.0,6-min Coverage (NYC),0.9966,0.0022,0.9958,0.9974
+exp2_fleet_sensitivity,P1,K,40.0,8-min Coverage (NFPA),0.9985,0.0013,0.998,0.9989
+exp2_fleet_sensitivity,P1,K,40.0,Mean Utilization,0.0368,0.0015,0.0362,0.0373
+exp2_fleet_sensitivity,P2,K,15.0,Mean RT (min),2.8245,0.0531,2.8055,2.8435
+exp2_fleet_sensitivity,P2,K,15.0,P90 RT (min),4.4212,0.2584,4.3288,4.5137
+exp2_fleet_sensitivity,P2,K,15.0,6-min Coverage (NYC),0.9566,0.0085,0.9536,0.9597
+exp2_fleet_sensitivity,P2,K,15.0,8-min Coverage (NFPA),0.991,0.0043,0.9894,0.9925
+exp2_fleet_sensitivity,P2,K,15.0,Mean Utilization,0.0996,0.0039,0.0982,0.101
+exp2_fleet_sensitivity,P2,K,20.0,Mean RT (min),2.5666,0.0528,2.5478,2.5855
+exp2_fleet_sensitivity,P2,K,20.0,P90 RT (min),3.7517,0.1224,3.7079,3.7955
+exp2_fleet_sensitivity,P2,K,20.0,6-min Coverage (NYC),0.9817,0.0054,0.9797,0.9836
+exp2_fleet_sensitivity,P2,K,20.0,8-min Coverage (NFPA),0.997,0.0022,0.9962,0.9978
+exp2_fleet_sensitivity,P2,K,20.0,Mean Utilization,0.0741,0.0031,0.073,0.0752
+exp2_fleet_sensitivity,P2,K,25.0,Mean RT (min),2.4964,0.052,2.4778,2.515
+exp2_fleet_sensitivity,P2,K,25.0,P90 RT (min),3.4759,0.1129,3.4355,3.5163
+exp2_fleet_sensitivity,P2,K,25.0,6-min Coverage (NYC),0.9856,0.0058,0.9835,0.9877
+exp2_fleet_sensitivity,P2,K,25.0,8-min Coverage (NFPA),0.9975,0.0019,0.9968,0.9982
+exp2_fleet_sensitivity,P2,K,25.0,Mean Utilization,0.0591,0.0025,0.0582,0.06
+exp2_fleet_sensitivity,P2,K,30.0,Mean RT (min),2.4509,0.0458,2.4345,2.4673
+exp2_fleet_sensitivity,P2,K,30.0,P90 RT (min),3.3695,0.1217,3.3259,3.413
+exp2_fleet_sensitivity,P2,K,30.0,6-min Coverage (NYC),0.987,0.0052,0.9851,0.9888
+exp2_fleet_sensitivity,P2,K,30.0,8-min Coverage (NFPA),0.9975,0.0019,0.9968,0.9982
+exp2_fleet_sensitivity,P2,K,30.0,Mean Utilization,0.0491,0.0021,0.0484,0.0499
+exp2_fleet_sensitivity,P2,K,35.0,Mean RT (min),2.4349,0.0434,2.4193,2.4504
+exp2_fleet_sensitivity,P2,K,35.0,P90 RT (min),3.2889,0.1239,3.2446,3.3333
+exp2_fleet_sensitivity,P2,K,35.0,6-min Coverage (NYC),0.987,0.0052,0.9851,0.9888
+exp2_fleet_sensitivity,P2,K,35.0,8-min Coverage (NFPA),0.9975,0.0019,0.9968,0.9982
+exp2_fleet_sensitivity,P2,K,35.0,Mean Utilization,0.0421,0.0018,0.0414,0.0427
+exp2_fleet_sensitivity,P2,K,40.0,Mean RT (min),2.4292,0.0426,2.4139,2.4444
+exp2_fleet_sensitivity,P2,K,40.0,P90 RT (min),3.2726,0.1111,3.2328,3.3123
+exp2_fleet_sensitivity,P2,K,40.0,6-min Coverage (NYC),0.987,0.0052,0.9851,0.9888
+exp2_fleet_sensitivity,P2,K,40.0,8-min Coverage (NFPA),0.9975,0.0019,0.9968,0.9982
+exp2_fleet_sensitivity,P2,K,40.0,Mean Utilization,0.0368,0.0016,0.0363,0.0374
+exp3_demand_sensitivity,P0,demand_multiplier,0.5,Mean RT (min),3.1031,0.0795,3.0746,3.1315
+exp3_demand_sensitivity,P0,demand_multiplier,0.5,P90 RT (min),5.1144,0.3865,4.9761,5.2527
+exp3_demand_sensitivity,P0,demand_multiplier,0.5,6-min Coverage (NYC),0.9484,0.0132,0.9436,0.9531
+exp3_demand_sensitivity,P0,demand_multiplier,0.5,8-min Coverage (NFPA),0.998,0.0024,0.9972,0.9989
+exp3_demand_sensitivity,P0,demand_multiplier,0.5,Mean Utilization,0.0379,0.002,0.0372,0.0386
+exp3_demand_sensitivity,P0,demand_multiplier,0.75,Mean RT (min),3.146,0.0624,3.1236,3.1683
+exp3_demand_sensitivity,P0,demand_multiplier,0.75,P90 RT (min),5.2353,0.3856,5.0974,5.3733
+exp3_demand_sensitivity,P0,demand_multiplier,0.75,6-min Coverage (NYC),0.9417,0.013,0.937,0.9463
+exp3_demand_sensitivity,P0,demand_multiplier,0.75,8-min Coverage (NFPA),0.9969,0.0024,0.996,0.9977
+exp3_demand_sensitivity,P0,demand_multiplier,0.75,Mean Utilization,0.0577,0.0026,0.0568,0.0587
+exp3_demand_sensitivity,P0,demand_multiplier,1.0,Mean RT (min),3.1651,0.065,3.1418,3.1883
+exp3_demand_sensitivity,P0,demand_multiplier,1.0,P90 RT (min),5.3338,0.3457,5.2101,5.4575
+exp3_demand_sensitivity,P0,demand_multiplier,1.0,6-min Coverage (NYC),0.9396,0.011,0.9357,0.9436
+exp3_demand_sensitivity,P0,demand_multiplier,1.0,8-min Coverage (NFPA),0.9967,0.0021,0.9959,0.9974
+exp3_demand_sensitivity,P0,demand_multiplier,1.0,Mean Utilization,0.0757,0.0032,0.0746,0.0768
+exp3_demand_sensitivity,P0,demand_multiplier,1.25,Mean RT (min),3.2203,0.0466,3.2036,3.237
+exp3_demand_sensitivity,P0,demand_multiplier,1.25,P90 RT (min),5.5208,0.3307,5.4024,5.6391
+exp3_demand_sensitivity,P0,demand_multiplier,1.25,6-min Coverage (NYC),0.9341,0.0087,0.931,0.9372
+exp3_demand_sensitivity,P0,demand_multiplier,1.25,8-min Coverage (NFPA),0.9949,0.0024,0.994,0.9957
+exp3_demand_sensitivity,P0,demand_multiplier,1.25,Mean Utilization,0.0971,0.0046,0.0954,0.0988
+exp3_demand_sensitivity,P0,demand_multiplier,1.5,Mean RT (min),3.2752,0.0501,3.2573,3.2932
+exp3_demand_sensitivity,P0,demand_multiplier,1.5,P90 RT (min),5.7124,0.2117,5.6367,5.7882
+exp3_demand_sensitivity,P0,demand_multiplier,1.5,6-min Coverage (NYC),0.926,0.009,0.9228,0.9293
+exp3_demand_sensitivity,P0,demand_multiplier,1.5,8-min Coverage (NFPA),0.9929,0.0032,0.9917,0.994
+exp3_demand_sensitivity,P0,demand_multiplier,1.5,Mean Utilization,0.1173,0.0037,0.116,0.1186
+exp3_demand_sensitivity,P0,demand_multiplier,2.0,Mean RT (min),3.3586,0.0524,3.3399,3.3773
+exp3_demand_sensitivity,P0,demand_multiplier,2.0,P90 RT (min),5.854,0.1596,5.7969,5.9111
+exp3_demand_sensitivity,P0,demand_multiplier,2.0,6-min Coverage (NYC),0.9166,0.0095,0.9132,0.92
+exp3_demand_sensitivity,P0,demand_multiplier,2.0,8-min Coverage (NFPA),0.9892,0.0027,0.9882,0.9902
+exp3_demand_sensitivity,P0,demand_multiplier,2.0,Mean Utilization,0.1562,0.0054,0.1542,0.1581
+exp3_demand_sensitivity,P1,demand_multiplier,0.5,Mean RT (min),2.5267,0.0617,2.5046,2.5488
+exp3_demand_sensitivity,P1,demand_multiplier,0.5,P90 RT (min),3.6915,0.1406,3.6412,3.7419
+exp3_demand_sensitivity,P1,demand_multiplier,0.5,6-min Coverage (NYC),0.9864,0.0069,0.9839,0.9888
+exp3_demand_sensitivity,P1,demand_multiplier,0.5,8-min Coverage (NFPA),0.9979,0.0029,0.9969,0.9989
+exp3_demand_sensitivity,P1,demand_multiplier,0.5,Mean Utilization,0.0371,0.002,0.0364,0.0378
+exp3_demand_sensitivity,P1,demand_multiplier,0.75,Mean RT (min),2.5699,0.0532,2.5508,2.5889
+exp3_demand_sensitivity,P1,demand_multiplier,0.75,P90 RT (min),3.842,0.1902,3.7739,3.9101
+exp3_demand_sensitivity,P1,demand_multiplier,0.75,6-min Coverage (NYC),0.9822,0.0062,0.98,0.9844
+exp3_demand_sensitivity,P1,demand_multiplier,0.75,8-min Coverage (NFPA),0.9971,0.0027,0.9961,0.9981
+exp3_demand_sensitivity,P1,demand_multiplier,0.75,Mean Utilization,0.0565,0.0024,0.0556,0.0574
+exp3_demand_sensitivity,P1,demand_multiplier,1.0,Mean RT (min),2.6186,0.0519,2.6,2.6371
+exp3_demand_sensitivity,P1,demand_multiplier,1.0,P90 RT (min),3.9882,0.1741,3.9259,4.0505
+exp3_demand_sensitivity,P1,demand_multiplier,1.0,6-min Coverage (NYC),0.9801,0.0054,0.9781,0.982
+exp3_demand_sensitivity,P1,demand_multiplier,1.0,8-min Coverage (NFPA),0.9964,0.0027,0.9955,0.9974
+exp3_demand_sensitivity,P1,demand_multiplier,1.0,Mean Utilization,0.0745,0.003,0.0734,0.0755
+exp3_demand_sensitivity,P1,demand_multiplier,1.25,Mean RT (min),2.6789,0.0394,2.6648,2.6931
+exp3_demand_sensitivity,P1,demand_multiplier,1.25,P90 RT (min),4.1701,0.2215,4.0908,4.2494
+exp3_demand_sensitivity,P1,demand_multiplier,1.25,6-min Coverage (NYC),0.974,0.007,0.9715,0.9765
+exp3_demand_sensitivity,P1,demand_multiplier,1.25,8-min Coverage (NFPA),0.9947,0.0029,0.9937,0.9957
+exp3_demand_sensitivity,P1,demand_multiplier,1.25,Mean Utilization,0.095,0.0046,0.0933,0.0966
+exp3_demand_sensitivity,P1,demand_multiplier,1.5,Mean RT (min),2.7427,0.0491,2.7252,2.7603
+exp3_demand_sensitivity,P1,demand_multiplier,1.5,P90 RT (min),4.4657,0.1903,4.3976,4.5338
+exp3_demand_sensitivity,P1,demand_multiplier,1.5,6-min Coverage (NYC),0.9668,0.0053,0.9649,0.9687
+exp3_demand_sensitivity,P1,demand_multiplier,1.5,8-min Coverage (NFPA),0.993,0.0028,0.992,0.994
+exp3_demand_sensitivity,P1,demand_multiplier,1.5,Mean Utilization,0.1153,0.0035,0.1141,0.1166
+exp3_demand_sensitivity,P1,demand_multiplier,2.0,Mean RT (min),2.8672,0.0477,2.8502,2.8843
+exp3_demand_sensitivity,P1,demand_multiplier,2.0,P90 RT (min),4.913,0.1308,4.8662,4.9598
+exp3_demand_sensitivity,P1,demand_multiplier,2.0,6-min Coverage (NYC),0.9566,0.0061,0.9544,0.9588
+exp3_demand_sensitivity,P1,demand_multiplier,2.0,8-min Coverage (NFPA),0.9886,0.0032,0.9875,0.9897
+exp3_demand_sensitivity,P1,demand_multiplier,2.0,Mean Utilization,0.1536,0.0052,0.1517,0.1555
+exp3_demand_sensitivity,P2,demand_multiplier,0.5,Mean RT (min),2.4435,0.0592,2.4223,2.4647
+exp3_demand_sensitivity,P2,demand_multiplier,0.5,P90 RT (min),3.4044,0.1611,3.3467,3.462
+exp3_demand_sensitivity,P2,demand_multiplier,0.5,6-min Coverage (NYC),0.9915,0.005,0.9897,0.9933
+exp3_demand_sensitivity,P2,demand_multiplier,0.5,8-min Coverage (NFPA),0.9983,0.0024,0.9974,0.9991
+exp3_demand_sensitivity,P2,demand_multiplier,0.5,Mean Utilization,0.037,0.002,0.0363,0.0377
+exp3_demand_sensitivity,P2,demand_multiplier,0.75,Mean RT (min),2.5113,0.0464,2.4947,2.5279
+exp3_demand_sensitivity,P2,demand_multiplier,0.75,P90 RT (min),3.5827,0.1106,3.5431,3.6223
+exp3_demand_sensitivity,P2,demand_multiplier,0.75,6-min Coverage (NYC),0.9844,0.0071,0.9818,0.9869
+exp3_demand_sensitivity,P2,demand_multiplier,0.75,8-min Coverage (NFPA),0.9972,0.0025,0.9964,0.9981
 exp3_demand_sensitivity,P2,demand_multiplier,0.75,Mean Utilization,0.0564,0.0024,0.0555,0.0572
-exp3_demand_sensitivity,P2,demand_multiplier,1.0,Mean RT (min),2.5702,0.0437,2.5546,2.5859
-exp3_demand_sensitivity,P2,demand_multiplier,1.0,P90 RT (min),3.7601,0.1148,3.719,3.8011
-exp3_demand_sensitivity,P2,demand_multiplier,1.0,8-min Coverage,0.9962,0.0024,0.9954,0.9971
-exp3_demand_sensitivity,P2,demand_multiplier,1.0,Mean Utilization,0.0746,0.0031,0.0735,0.0757
-exp3_demand_sensitivity,P2,demand_multiplier,1.25,Mean RT (min),2.6284,0.0422,2.6133,2.6435
-exp3_demand_sensitivity,P2,demand_multiplier,1.25,P90 RT (min),3.9158,0.0907,3.8833,3.9483
-exp3_demand_sensitivity,P2,demand_multiplier,1.25,8-min Coverage,0.9957,0.002,0.995,0.9964
-exp3_demand_sensitivity,P2,demand_multiplier,1.25,Mean Utilization,0.0948,0.0046,0.0932,0.0965
-exp3_demand_sensitivity,P2,demand_multiplier,1.5,Mean RT (min),2.7084,0.0529,2.6894,2.7273
-exp3_demand_sensitivity,P2,demand_multiplier,1.5,P90 RT (min),4.1813,0.2233,4.1014,4.2612
-exp3_demand_sensitivity,P2,demand_multiplier,1.5,8-min Coverage,0.994,0.0033,0.9929,0.9952
-exp3_demand_sensitivity,P2,demand_multiplier,1.5,Mean Utilization,0.115,0.0034,0.1138,0.1162
-exp3_demand_sensitivity,P2,demand_multiplier,2.0,Mean RT (min),2.8517,0.0519,2.8332,2.8703
-exp3_demand_sensitivity,P2,demand_multiplier,2.0,P90 RT (min),4.7508,0.1392,4.701,4.8006
-exp3_demand_sensitivity,P2,demand_multiplier,2.0,8-min Coverage,0.9915,0.0036,0.9902,0.9928
-exp3_demand_sensitivity,P2,demand_multiplier,2.0,Mean Utilization,0.1534,0.0056,0.1514,0.1554
-exp4_service_robustness,P0,service_time_mean,20.0,Mean RT (min),8.0184,0.2616,7.9248,8.112
-exp4_service_robustness,P0,service_time_mean,20.0,P90 RT (min),19.3006,0.7116,19.0459,19.5552
-exp4_service_robustness,P0,service_time_mean,20.0,8-min Coverage,0.6477,0.0196,0.6407,0.6547
-exp4_service_robustness,P0,service_time_mean,20.0,Mean Utilization,0.0761,0.0034,0.0749,0.0773
-exp4_service_robustness,P0,service_time_mean,25.0,Mean RT (min),8.0825,0.2663,7.9871,8.1778
-exp4_service_robustness,P0,service_time_mean,25.0,P90 RT (min),19.4746,0.6687,19.2353,19.7139
-exp4_service_robustness,P0,service_time_mean,25.0,8-min Coverage,0.6444,0.0203,0.6371,0.6516
-exp4_service_robustness,P0,service_time_mean,25.0,Mean Utilization,0.0906,0.004,0.0892,0.092
-exp4_service_robustness,P0,service_time_mean,30.0,Mean RT (min),8.1386,0.2518,8.0485,8.2287
-exp4_service_robustness,P0,service_time_mean,30.0,P90 RT (min),19.5528,0.6329,19.3263,19.7793
-exp4_service_robustness,P0,service_time_mean,30.0,8-min Coverage,0.6426,0.0172,0.6364,0.6487
-exp4_service_robustness,P0,service_time_mean,30.0,Mean Utilization,0.1051,0.0046,0.1034,0.1067
-exp4_service_robustness,P1,service_time_mean,20.0,Mean RT (min),2.595,0.0436,2.5794,2.6106
-exp4_service_robustness,P1,service_time_mean,20.0,P90 RT (min),3.9115,0.0949,3.8775,3.9454
-exp4_service_robustness,P1,service_time_mean,20.0,8-min Coverage,0.9965,0.0022,0.9957,0.9973
-exp4_service_robustness,P1,service_time_mean,20.0,Mean Utilization,0.0603,0.0025,0.0594,0.0612
-exp4_service_robustness,P1,service_time_mean,25.0,Mean RT (min),2.634,0.0468,2.6173,2.6508
-exp4_service_robustness,P1,service_time_mean,25.0,P90 RT (min),4.0314,0.1471,3.9787,4.084
-exp4_service_robustness,P1,service_time_mean,25.0,8-min Coverage,0.9958,0.0025,0.9949,0.9967
-exp4_service_robustness,P1,service_time_mean,25.0,Mean Utilization,0.0747,0.0031,0.0736,0.0758
-exp4_service_robustness,P1,service_time_mean,30.0,Mean RT (min),2.6739,0.045,2.6578,2.6901
-exp4_service_robustness,P1,service_time_mean,30.0,P90 RT (min),4.1782,0.1925,4.1094,4.2471
-exp4_service_robustness,P1,service_time_mean,30.0,8-min Coverage,0.9948,0.0026,0.9939,0.9957
-exp4_service_robustness,P1,service_time_mean,30.0,Mean Utilization,0.0891,0.0037,0.0877,0.0904
-exp4_service_robustness,P2,service_time_mean,20.0,Mean RT (min),2.5217,0.0382,2.508,2.5354
-exp4_service_robustness,P2,service_time_mean,20.0,P90 RT (min),3.651,0.1025,3.6143,3.6877
-exp4_service_robustness,P2,service_time_mean,20.0,8-min Coverage,0.9969,0.0022,0.9961,0.9977
-exp4_service_robustness,P2,service_time_mean,20.0,Mean Utilization,0.0602,0.0025,0.0593,0.061
-exp4_service_robustness,P2,service_time_mean,25.0,Mean RT (min),2.5702,0.0437,2.5546,2.5859
-exp4_service_robustness,P2,service_time_mean,25.0,P90 RT (min),3.7601,0.1148,3.719,3.8011
-exp4_service_robustness,P2,service_time_mean,25.0,8-min Coverage,0.9962,0.0024,0.9954,0.9971
-exp4_service_robustness,P2,service_time_mean,25.0,Mean Utilization,0.0746,0.0031,0.0735,0.0757
-exp4_service_robustness,P2,service_time_mean,30.0,Mean RT (min),2.6202,0.0505,2.6021,2.6383
-exp4_service_robustness,P2,service_time_mean,30.0,P90 RT (min),3.9085,0.1851,3.8423,3.9748
-exp4_service_robustness,P2,service_time_mean,30.0,8-min Coverage,0.9957,0.0025,0.9948,0.9966
-exp4_service_robustness,P2,service_time_mean,30.0,Mean Utilization,0.089,0.0037,0.0877,0.0903
+exp3_demand_sensitivity,P2,demand_multiplier,1.0,Mean RT (min),2.5666,0.0528,2.5478,2.5855
+exp3_demand_sensitivity,P2,demand_multiplier,1.0,P90 RT (min),3.7517,0.1224,3.7079,3.7955
+exp3_demand_sensitivity,P2,demand_multiplier,1.0,6-min Coverage (NYC),0.9817,0.0054,0.9797,0.9836
+exp3_demand_sensitivity,P2,demand_multiplier,1.0,8-min Coverage (NFPA),0.997,0.0022,0.9962,0.9978
+exp3_demand_sensitivity,P2,demand_multiplier,1.0,Mean Utilization,0.0741,0.0031,0.073,0.0752
+exp3_demand_sensitivity,P2,demand_multiplier,1.25,Mean RT (min),2.63,0.0354,2.6173,2.6427
+exp3_demand_sensitivity,P2,demand_multiplier,1.25,P90 RT (min),3.9058,0.086,3.875,3.9365
+exp3_demand_sensitivity,P2,demand_multiplier,1.25,6-min Coverage (NYC),0.9755,0.0055,0.9735,0.9775
+exp3_demand_sensitivity,P2,demand_multiplier,1.25,8-min Coverage (NFPA),0.9956,0.0027,0.9946,0.9965
+exp3_demand_sensitivity,P2,demand_multiplier,1.25,Mean Utilization,0.0948,0.0046,0.0931,0.0964
+exp3_demand_sensitivity,P2,demand_multiplier,1.5,Mean RT (min),2.7078,0.0468,2.691,2.7246
+exp3_demand_sensitivity,P2,demand_multiplier,1.5,P90 RT (min),4.2016,0.199,4.1304,4.2728
+exp3_demand_sensitivity,P2,demand_multiplier,1.5,6-min Coverage (NYC),0.9681,0.0071,0.9656,0.9707
+exp3_demand_sensitivity,P2,demand_multiplier,1.5,8-min Coverage (NFPA),0.9947,0.0023,0.9939,0.9955
+exp3_demand_sensitivity,P2,demand_multiplier,1.5,Mean Utilization,0.115,0.0034,0.1137,0.1162
+exp3_demand_sensitivity,P2,demand_multiplier,2.0,Mean RT (min),2.8436,0.054,2.8243,2.863
+exp3_demand_sensitivity,P2,demand_multiplier,2.0,P90 RT (min),4.7526,0.1766,4.6894,4.8158
+exp3_demand_sensitivity,P2,demand_multiplier,2.0,6-min Coverage (NYC),0.9567,0.0076,0.954,0.9595
+exp3_demand_sensitivity,P2,demand_multiplier,2.0,8-min Coverage (NFPA),0.9912,0.0028,0.9902,0.9922
+exp3_demand_sensitivity,P2,demand_multiplier,2.0,Mean Utilization,0.1535,0.0053,0.1516,0.1554
+exp4_service_robustness,P0,service_time_mean,20.0,Mean RT (min),3.1391,0.0679,3.1148,3.1633
+exp4_service_robustness,P0,service_time_mean,20.0,P90 RT (min),5.2622,0.3525,5.136,5.3883
+exp4_service_robustness,P0,service_time_mean,20.0,6-min Coverage (NYC),0.9421,0.0111,0.9381,0.9461
+exp4_service_robustness,P0,service_time_mean,20.0,8-min Coverage (NFPA),0.9974,0.0019,0.9967,0.9981
+exp4_service_robustness,P0,service_time_mean,20.0,Mean Utilization,0.0615,0.0026,0.0606,0.0624
+exp4_service_robustness,P0,service_time_mean,25.0,Mean RT (min),3.1651,0.065,3.1418,3.1883
+exp4_service_robustness,P0,service_time_mean,25.0,P90 RT (min),5.3338,0.3457,5.2101,5.4575
+exp4_service_robustness,P0,service_time_mean,25.0,6-min Coverage (NYC),0.9396,0.011,0.9357,0.9436
+exp4_service_robustness,P0,service_time_mean,25.0,8-min Coverage (NFPA),0.9967,0.0021,0.9959,0.9974
+exp4_service_robustness,P0,service_time_mean,25.0,Mean Utilization,0.0757,0.0032,0.0746,0.0768
+exp4_service_robustness,P0,service_time_mean,30.0,Mean RT (min),3.1986,0.0659,3.175,3.2222
+exp4_service_robustness,P0,service_time_mean,30.0,P90 RT (min),5.4355,0.344,5.3124,5.5586
+exp4_service_robustness,P0,service_time_mean,30.0,6-min Coverage (NYC),0.9356,0.0117,0.9314,0.9398
+exp4_service_robustness,P0,service_time_mean,30.0,8-min Coverage (NFPA),0.9957,0.0026,0.9948,0.9966
+exp4_service_robustness,P0,service_time_mean,30.0,Mean Utilization,0.09,0.0037,0.0886,0.0913
+exp4_service_robustness,P1,service_time_mean,20.0,Mean RT (min),2.5811,0.0496,2.5634,2.5989
+exp4_service_robustness,P1,service_time_mean,20.0,P90 RT (min),3.8829,0.1634,3.8244,3.9414
+exp4_service_robustness,P1,service_time_mean,20.0,6-min Coverage (NYC),0.9825,0.0048,0.9808,0.9843
+exp4_service_robustness,P1,service_time_mean,20.0,8-min Coverage (NFPA),0.9973,0.002,0.9966,0.998
+exp4_service_robustness,P1,service_time_mean,20.0,Mean Utilization,0.0601,0.0024,0.0593,0.061
+exp4_service_robustness,P1,service_time_mean,25.0,Mean RT (min),2.6186,0.0519,2.6,2.6371
+exp4_service_robustness,P1,service_time_mean,25.0,P90 RT (min),3.9882,0.1741,3.9259,4.0505
+exp4_service_robustness,P1,service_time_mean,25.0,6-min Coverage (NYC),0.9801,0.0054,0.9781,0.982
+exp4_service_robustness,P1,service_time_mean,25.0,8-min Coverage (NFPA),0.9964,0.0027,0.9955,0.9974
+exp4_service_robustness,P1,service_time_mean,25.0,Mean Utilization,0.0745,0.003,0.0734,0.0755
+exp4_service_robustness,P1,service_time_mean,30.0,Mean RT (min),2.6644,0.0582,2.6436,2.6852
+exp4_service_robustness,P1,service_time_mean,30.0,P90 RT (min),4.1384,0.2138,4.0619,4.2149
+exp4_service_robustness,P1,service_time_mean,30.0,6-min Coverage (NYC),0.9759,0.0056,0.9739,0.9779
+exp4_service_robustness,P1,service_time_mean,30.0,8-min Coverage (NFPA),0.9954,0.0028,0.9944,0.9964
+exp4_service_robustness,P1,service_time_mean,30.0,Mean Utilization,0.0888,0.0036,0.0876,0.0901
+exp4_service_robustness,P2,service_time_mean,20.0,Mean RT (min),2.5236,0.0469,2.5068,2.5404
+exp4_service_robustness,P2,service_time_mean,20.0,P90 RT (min),3.641,0.1103,3.6015,3.6804
+exp4_service_robustness,P2,service_time_mean,20.0,6-min Coverage (NYC),0.9846,0.005,0.9828,0.9864
+exp4_service_robustness,P2,service_time_mean,20.0,8-min Coverage (NFPA),0.9974,0.0018,0.9967,0.998
+exp4_service_robustness,P2,service_time_mean,20.0,Mean Utilization,0.0598,0.0025,0.0589,0.0607
+exp4_service_robustness,P2,service_time_mean,25.0,Mean RT (min),2.5666,0.0528,2.5478,2.5855
+exp4_service_robustness,P2,service_time_mean,25.0,P90 RT (min),3.7517,0.1224,3.7079,3.7955
+exp4_service_robustness,P2,service_time_mean,25.0,6-min Coverage (NYC),0.9817,0.0054,0.9797,0.9836
+exp4_service_robustness,P2,service_time_mean,25.0,8-min Coverage (NFPA),0.997,0.0022,0.9962,0.9978
+exp4_service_robustness,P2,service_time_mean,25.0,Mean Utilization,0.0741,0.0031,0.073,0.0752
+exp4_service_robustness,P2,service_time_mean,30.0,Mean RT (min),2.6169,0.0563,2.5968,2.6371
+exp4_service_robustness,P2,service_time_mean,30.0,P90 RT (min),3.8938,0.1557,3.8381,3.9495
+exp4_service_robustness,P2,service_time_mean,30.0,6-min Coverage (NYC),0.9775,0.0059,0.9754,0.9796
+exp4_service_robustness,P2,service_time_mean,30.0,8-min Coverage (NFPA),0.9961,0.0024,0.9952,0.9969
+exp4_service_robustness,P2,service_time_mean,30.0,Mean Utilization,0.0885,0.0037,0.0871,0.0898

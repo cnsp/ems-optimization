@@ -159,10 +159,11 @@ Month: 1 2 3 4 5 6 7 8 9 10 11 12
 
 | KPI | Baseline (P0) | Target | Measurement |
 |-----|--------------|--------|-------------|
-| Mean Response Time | 8.08 min | < 3.5 min | Daily from CAD |
-| 8-min Coverage | 64.4% | > 95% | Weekly calculation |
-| P90 Response Time | 19.47 min | < 5 min | Weekly calculation |
-| Utilization | 9.1% | 7–10% | Weekly calculation |
+| Mean Response Time | 3.17 min | < 3.0 min | Daily from CAD |
+| 8-min Coverage | 99.6% | > 99% | Weekly calculation |
+| 6-min Coverage (NYC) | ~93.7% | > 95% | Weekly calculation |
+| P90 Response Time | 5.32 min | < 5 min | Weekly calculation |
+| Utilization | 7.6% | 7–10% | Weekly calculation |
 | Crew satisfaction | N/A | > 80% positive | Quarterly survey |
 
 ### Monitoring Cadence

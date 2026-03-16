@@ -70,7 +70,9 @@ def load_data():
     dm.columns = dm.columns.astype(str)
 
     dl = pd.read_csv(PROJECT_ROOT / "data" / "processed" / "demand_lambda_precinct.csv")
-    demand = dl.set_index(dl["precinct"].astype(str))["lambda_per_hour"]
+    # Handle both column naming conventions
+    rate_col = "lambda_per_hour" if "lambda_per_hour" in dl.columns else "crash_rate_per_hour"
+    demand = dl.set_index(dl["precinct"].astype(str))[rate_col]
     demand.index.name = None
     demand.name = "demand"
 

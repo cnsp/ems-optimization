@@ -125,6 +125,7 @@ def run_single_replication(
         "horizon_hours": horizon_hours,
         "warmup_hours": 0,
         "response_threshold_minutes": 8.0,
+        "additional_thresholds": [6.0],
         "trace_mode": False,
     }
 
@@ -173,6 +174,7 @@ def run_single_replication(
         "p90_response_time": summary.get("response_time_p90", np.nan),
         "p95_response_time": summary.get("response_time_p95",
                                           summary.get("response_time_p90", np.nan)),
+        "coverage_6min": summary.get("coverage_6min", np.nan),
         "coverage_8min": summary.get("coverage_fraction", np.nan),
         "coverage_10min": _compute_coverage_10(results),
         "mean_utilization": mean_util,
@@ -292,7 +294,7 @@ def run_experiment(
         "experiment_id", "scenario_id", "replication", "policy", "K",
         "demand_multiplier", "service_time_mean",
         "mean_response_time", "p90_response_time", "p95_response_time",
-        "coverage_8min", "coverage_10min",
+        "coverage_6min", "coverage_8min", "coverage_10min",
         "mean_utilization", "max_utilization",
         "mean_queue_length", "max_queue_length", "queue_fraction",
         "total_incidents", "incidents_queued", "random_seed",

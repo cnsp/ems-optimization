@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Production V2 experiment runner – capacity=2, spatially-stratified P0.
+"""Extended fleet analysis experiment runner – capacity=2, spatially-stratified P0.
 
-Re-runs the full production experiment suite with:
+Runs the full production experiment suite with:
   - Capacity = 2 (proven optimal from sensitivity analysis)
-  - New P0 baseline (latitude-based stratification)
+  - P0 baseline (latitude-based spatial stratification)
   - P1 demand-proportional (with capacity=2)
   - P2 optimized demand-weighted (with capacity=2)
+  - Both 6-minute (NYC requirement) and 8-minute (NFPA) coverage thresholds
 
 K values: 10, 15, 20, 25, 30, 35, 40, 45, 48
 30 replications per scenario, base seed = 42
@@ -147,6 +148,7 @@ def run_single_replication(
         "horizon_hours": horizon_hours,
         "warmup_hours": 0,
         "response_threshold_minutes": RESPONSE_THRESHOLD,
+        "additional_thresholds": [6.0],
         "trace_mode": False,
     }
 
@@ -173,7 +175,7 @@ def run_single_replication(
     mean_util = float(np.mean(unit_utils)) if unit_utils else 0.0
     max_util = float(np.max(unit_utils)) if unit_utils else 0.0
 
-    # 10-min coverage from incident log
+    # Additional coverages from incident log
     log = results.get("incident_log")
     if log is not None and not log.empty and "response_time_minutes" in log.columns:
         coverage_10 = float((log["response_time_minutes"] <= 10.0).mean())
@@ -187,6 +189,7 @@ def run_single_replication(
         "median_response_time": summary.get("response_time_median", np.nan),
         "p90_response_time": summary.get("response_time_p90", np.nan),
         "p95_response_time": p95_rt,
+        "coverage_6min": summary.get("coverage_6min", np.nan),
         "coverage_8min": summary.get("coverage_fraction", np.nan),
         "coverage_10min": coverage_10,
         "mean_utilization": mean_util,
@@ -267,7 +270,7 @@ def run_full_simulation_suite(
         "policy", "K", "scenario_id", "replication", "capacity",
         "mean_response_time", "median_response_time",
         "p90_response_time", "p95_response_time",
-        "coverage_8min", "coverage_10min",
+        "coverage_6min", "coverage_8min", "coverage_10min",
         "mean_utilization", "max_utilization",
         "mean_queue_length", "max_queue_length", "queue_fraction",
         "total_incidents", "incidents_queued", "random_seed",
@@ -316,6 +319,7 @@ def perform_statistical_analysis(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
                 "ci95_upper": pdf["mean_response_time"].mean() + 1.96 * pdf["mean_response_time"].std() / np.sqrt(len(pdf)),
                 "median_RT": pdf["median_response_time"].mean() if "median_response_time" in pdf.columns else np.nan,
                 "p95_RT": pdf["p95_response_time"].mean(),
+                "coverage_6min": pdf["coverage_6min"].mean() if "coverage_6min" in pdf.columns else np.nan,
                 "coverage_8min": pdf["coverage_8min"].mean(),
                 "coverage_10min": pdf["coverage_10min"].mean(),
                 "mean_util": pdf["mean_utilization"].mean(),
@@ -488,7 +492,7 @@ def perform_statistical_analysis(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
 # =====================================================================
 
 def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
-    """Generate all production v2 figures."""
+    """Generate all production figures."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -513,7 +517,7 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
                      capsize=4, linewidth=2, markersize=6)
     ax.set_xlabel("Number of EMS Units (K)")
     ax.set_ylabel("Mean Response Time (minutes)")
-    ax.set_title("Policy Comparison: Mean Response Time vs Fleet Size\n(Production V2 – Capacity=2, P0 baseline)")
+    ax.set_title("Policy Comparison: Mean Response Time vs Fleet Size\n(Capacity=2, P0 Baseline)")
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_xticks(K_VALUES)
@@ -522,15 +526,22 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
     plt.close()
     logger.info("  Saved mean_rt_vs_K.png")
 
-    # --- 4b. Coverage vs K ---
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    # --- 4b. Coverage vs K (6-min, 8-min, 10-min) ---
+    fig, (ax0, ax1, ax2) = plt.subplots(1, 3, figsize=(18, 6))
     for policy in POLICIES:
         pdf = desc[desc["policy"] == policy].sort_values("K")
+        if "coverage_6min" in pdf.columns:
+            ax0.plot(pdf["K"], pdf["coverage_6min"], marker="D",
+                     label=policy, color=colors[policy], linewidth=2, markersize=6)
         ax1.plot(pdf["K"], pdf["coverage_8min"], marker="o",
                  label=policy, color=colors[policy], linewidth=2, markersize=6)
         ax2.plot(pdf["K"], pdf["coverage_10min"], marker="s",
                  label=policy, color=colors[policy], linewidth=2, markersize=6)
-    ax1.set_title("8-Minute Coverage vs K")
+    ax0.set_title("6-Minute Coverage vs K (NYC Requirement)")
+    ax0.set_xlabel("K"); ax0.set_ylabel("Coverage Fraction")
+    ax0.legend(); ax0.grid(True, alpha=0.3); ax0.set_xticks(K_VALUES)
+    ax0.yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
+    ax1.set_title("8-Minute Coverage vs K (NFPA Standard)")
     ax1.set_xlabel("K"); ax1.set_ylabel("Coverage Fraction")
     ax1.legend(); ax1.grid(True, alpha=0.3); ax1.set_xticks(K_VALUES)
     ax1.yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
@@ -538,7 +549,7 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
     ax2.set_xlabel("K"); ax2.set_ylabel("Coverage Fraction")
     ax2.legend(); ax2.grid(True, alpha=0.3); ax2.set_xticks(K_VALUES)
     ax2.yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
-    fig.suptitle("Coverage vs Fleet Size (Production V2)", fontsize=13, y=1.02)
+    fig.suptitle("Coverage vs Fleet Size by Threshold", fontsize=13, y=1.02)
     fig.tight_layout()
     fig.savefig(FIG_DIR / "coverage_vs_K.png", bbox_inches="tight")
     plt.close()
@@ -596,7 +607,7 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
     ax2.set_title("Mean Queue Length vs K")
     ax2.set_xlabel("K"); ax2.set_ylabel("Mean Queue Length")
     ax2.legend(); ax2.grid(True, alpha=0.3); ax2.set_xticks(K_VALUES)
-    fig.suptitle("Queue Metrics (Production V2)", fontsize=13, y=1.02)
+    fig.suptitle("Queue Metrics by Fleet Size", fontsize=13, y=1.02)
     fig.tight_layout()
     fig.savefig(FIG_DIR / "queue_metrics_vs_K.png", bbox_inches="tight")
     plt.close()
@@ -698,9 +709,9 @@ def _generate_allocation_maps():
 # =====================================================================
 
 def create_v1_comparison(df_v2: pd.DataFrame):
-    """Compare V2 results with original V1 production results."""
+    """Compare current results with original (legacy P0) production results."""
     logger.info("\n" + "=" * 60)
-    logger.info("STEP 5: Comparison with V1 (original production results)")
+    logger.info("STEP 5: Comparison with legacy baseline results")
     logger.info("=" * 60)
 
     v1_path = PROJECT_ROOT / "results" / "simulation" / "production" / "exp2_fleet_sensitivity.csv"
@@ -790,7 +801,7 @@ def write_experiment_log(df: pd.DataFrame):
     log_path = OUT_ROOT / "experiment_log.txt"
     with open(log_path, "a") as f:
         f.write("\n" + "=" * 70 + "\n")
-        f.write(f"PRODUCTION V2 EXPERIMENT LOG\n")
+        f.write(f"EXTENDED FLEET ANALYSIS EXPERIMENT LOG\n")
         f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write("=" * 70 + "\n\n")
 
@@ -829,9 +840,11 @@ def write_experiment_log(df: pd.DataFrame):
             for policy in POLICIES:
                 kpdf = df[(df["K"] == K) & (df["policy"] == policy)]
                 if not kpdf.empty:
+                    cov6 = kpdf['coverage_6min'].mean() if 'coverage_6min' in kpdf.columns else float('nan')
                     f.write(f"  {policy}_K{K}: {len(kpdf)} reps, "
                             f"mean_RT={kpdf['mean_response_time'].mean():.3f} ± "
                             f"{kpdf['mean_response_time'].std():.3f} min, "
+                            f"cov6={cov6:.4f}, "
                             f"cov8={kpdf['coverage_8min'].mean():.4f}\n")
 
     logger.info(f"Experiment log written to {log_path}")
@@ -842,7 +855,7 @@ def write_experiment_log(df: pd.DataFrame):
 # =====================================================================
 
 def main():
-    parser = argparse.ArgumentParser(description="Run Production V2 experiments")
+    parser = argparse.ArgumentParser(description="Run extended fleet analysis experiments")
     parser.add_argument("--reps", type=int, default=NUM_REPLICATIONS,
                         help=f"Replications per scenario (default: {NUM_REPLICATIONS})")
     parser.add_argument("--skip-sim", action="store_true",
@@ -850,7 +863,7 @@ def main():
     args = parser.parse_args()
 
     logger.info("#" * 70)
-    logger.info(f"EMS Production V2 Experiments – {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    logger.info(f"EMS Extended Fleet Analysis – {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     logger.info(f"  Capacity: {CAPACITY}")
     logger.info(f"  K values: {K_VALUES}")
     logger.info(f"  Policies: {POLICIES}")
@@ -891,7 +904,7 @@ def main():
 
     total_time = time.time() - t_start
     logger.info("\n" + "#" * 70)
-    logger.info(f"PRODUCTION V2 COMPLETE")
+    logger.info(f"EXTENDED FLEET ANALYSIS COMPLETE")
     logger.info(f"  Total runs: {len(df)}")
     logger.info(f"  Total time: {total_time:.0f}s ({total_time/60:.1f} min)")
     logger.info("#" * 70)

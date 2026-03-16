@@ -120,7 +120,8 @@ def fig2_fleet_sensitivity():
     ax.set_ylabel("Mean Response Time (min)")
     ax.set_title("Figure 2: Fleet Size Sensitivity with 95% CI")
     ax.legend()
-    ax.axhline(8, ls="--", color="grey", lw=0.8, label="8-min target")
+    ax.axhline(8, ls="--", color="grey", lw=0.8, label="8-min NFPA target")
+    ax.axhline(6, ls="--", color="red", lw=0.8, alpha=0.6, label="6-min NYC target")
     fig.tight_layout()
     path = FIG_DIR / "pub_fig2_fleet_sensitivity.png"
     fig.savefig(path, dpi=DPI, bbox_inches="tight")

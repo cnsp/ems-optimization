@@ -73,8 +73,8 @@ sizes** (Cohen's d > 2.0).
 
 ### Expected Benefits
 
-1. **68% reduction** in average response time (8.1 → 2.6 min)
-2. **30 percentage-point increase** in 8-minute coverage (64% → 95%)
+1. **19% reduction** in average response time (3.17 → 2.57 min at K=20)
+2. **Near-perfect 8-minute coverage** (99.6%) with improved 6-minute coverage (NYC standard)
 3. **Robust performance** under demand fluctuations and operational variability
 4. **No additional units required** – improvement comes from better positioning
 

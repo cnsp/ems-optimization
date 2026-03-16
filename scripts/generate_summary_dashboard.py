@@ -59,10 +59,10 @@ ax1.set_title('Key Results (K=20 units)', fontsize=14, fontweight='bold',
               color=COLORS['text'], pad=10)
 
 metrics_data = [
-    ('Mean Response Time', '8.08 → 2.57 min', '↓ 68%', COLORS['P2']),
-    ('P90 Response Time', '19.47 → 3.76 min', '↓ 81%', COLORS['P2']),
-    ('8-min Coverage', '64.4% → 99.6%', '↑ 35pp', COLORS['P2']),
-    ('Utilization', '9.1% → 7.5%', '−1.6pp', '#95a5a6'),
+    ('Mean Response Time', '3.17 → 2.57 min', '↓ 19%', COLORS['P2']),
+    ('P90 Response Time', '5.32 → 3.76 min', '↓ 29%', COLORS['P2']),
+    ('8-min Coverage', '99.6% → 99.6%', 'Maintained', COLORS['P2']),
+    ('6-min Coverage (NYC)', '93.7% → 99.2%', '↑ 5.5pp', COLORS['P2']),
 ]
 
 for i, (label, value, change, color) in enumerate(metrics_data):

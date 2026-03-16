@@ -87,7 +87,7 @@
 
 | Figure | Description | Script / Notebook |
 |--------|-------------|-------------------|
-| `fleet_sensitivity_v2_dual.png` | Dual-panel fleet sensitivity | `scripts/run_production_v2.py` |
+| `fleet_sensitivity_dual.png` | Dual-panel fleet sensitivity | `scripts/run_production_v2.py` |
 | `response_time_distribution_by_policy.png` | RT distribution by policy | Production pipeline |
 | `policy_comparison_panel_K20_cap2.png` | Staging map panel (P0/P1/P2) | Production pipeline |
 

@@ -119,6 +119,8 @@ def disaggregate_results(results_list, policy_name):
     overall_rts = []
     coverages_cbd = []
     coverages_noncbd = []
+    coverages_cbd_6 = []
+    coverages_noncbd_6 = []
 
     for result in results_list:
         summary = result["summary"]
@@ -137,30 +139,38 @@ def disaggregate_results(results_list, policy_name):
                 cbd_rt = cbd_incidents["response_time_minutes"].dropna()
                 cbd_rts.append(cbd_rt.mean())
                 coverages_cbd.append((cbd_rt <= 8.0).mean())
+                coverages_cbd_6.append((cbd_rt <= 6.0).mean())
             else:
                 cbd_rts.append(np.nan)
                 coverages_cbd.append(np.nan)
+                coverages_cbd_6.append(np.nan)
 
             if len(non_cbd_incidents) > 0 and "response_time_minutes" in non_cbd_incidents.columns:
                 non_cbd_rt = non_cbd_incidents["response_time_minutes"].dropna()
                 non_cbd_rts.append(non_cbd_rt.mean())
                 coverages_noncbd.append((non_cbd_rt <= 8.0).mean())
+                coverages_noncbd_6.append((non_cbd_rt <= 6.0).mean())
             else:
                 non_cbd_rts.append(np.nan)
                 coverages_noncbd.append(np.nan)
+                coverages_noncbd_6.append(np.nan)
         else:
             cbd_rts.append(np.nan)
             non_cbd_rts.append(np.nan)
             coverages_cbd.append(np.nan)
             coverages_noncbd.append(np.nan)
+            coverages_cbd_6.append(np.nan)
+            coverages_noncbd_6.append(np.nan)
 
     return {
         "policy": policy_name,
         "overall_rt_mean": np.nanmean(overall_rts),
         "cbd_rt_mean": np.nanmean(cbd_rts),
         "non_cbd_rt_mean": np.nanmean(non_cbd_rts),
-        "cbd_coverage": np.nanmean(coverages_cbd),
-        "non_cbd_coverage": np.nanmean(coverages_noncbd),
+        "cbd_coverage_8min": np.nanmean(coverages_cbd),
+        "non_cbd_coverage_8min": np.nanmean(coverages_noncbd),
+        "cbd_coverage_6min": np.nanmean(coverages_cbd_6),
+        "non_cbd_coverage_6min": np.nanmean(coverages_noncbd_6),
         "overall_rt_std": np.nanstd(overall_rts),
         "cbd_rt_std": np.nanstd(cbd_rts),
         "non_cbd_rt_std": np.nanstd(non_cbd_rts),
@@ -195,8 +205,8 @@ def plot_comparison(comp_df):
 
     # 2. Coverage comparison
     ax = axes[1]
-    ax.bar(x - width/2, comp_df["cbd_coverage"] * 100, width, label="CBD Coverage", color="#D32F2F")
-    ax.bar(x + width/2, comp_df["non_cbd_coverage"] * 100, width, label="Non-CBD Coverage", color="#1976D2")
+    ax.bar(x - width/2, comp_df["cbd_coverage_8min"] * 100, width, label="CBD Coverage", color="#D32F2F")
+    ax.bar(x + width/2, comp_df["non_cbd_coverage_8min"] * 100, width, label="Non-CBD Coverage", color="#1976D2")
     ax.set_xticks(x)
     ax.set_xticklabels(comp_df["policy"], rotation=15, ha="right")
     ax.set_ylabel("Coverage ≤ 8 min (%)")
@@ -320,8 +330,10 @@ def main():
         logger.info(f"  Overall RT: {row['overall_rt_mean']:.2f} ± {row['overall_rt_std']:.2f} min")
         logger.info(f"  CBD RT:     {row['cbd_rt_mean']:.2f} ± {row['cbd_rt_std']:.2f} min")
         logger.info(f"  Non-CBD RT: {row['non_cbd_rt_mean']:.2f} ± {row['non_cbd_rt_std']:.2f} min")
-        logger.info(f"  CBD Coverage: {row['cbd_coverage']:.1%}")
-        logger.info(f"  Non-CBD Coverage: {row['non_cbd_coverage']:.1%}")
+        logger.info(f"  CBD Coverage (8min): {row['cbd_coverage_8min']:.1%}")
+        logger.info(f"  Non-CBD Coverage (8min): {row['non_cbd_coverage_8min']:.1%}")
+        logger.info(f"  CBD Coverage (6min): {row['cbd_coverage_6min']:.1%}")
+        logger.info(f"  Non-CBD Coverage (6min): {row['non_cbd_coverage_6min']:.1%}")
 
     comp_df = pd.DataFrame(disagg_rows)
     comp_df.to_csv(OUTPUT_DIR / "comparison_table.csv", index=False)

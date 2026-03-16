@@ -1,89 +1,111 @@
 Experiment,Metric,Comparison,Cohens_d,Abs_d,Interpretation,Practical_Significance
-exp1_policy_comparison,Mean RT (min),P0 vs P1,28.4948,28.4948,Large,Yes
-exp1_policy_comparison,Mean RT (min),P0 vs P2,28.8841,28.8841,Large,Yes
-exp1_policy_comparison,Mean RT (min),P1 vs P2,1.4089,1.4089,Large,Yes
-exp1_policy_comparison,P90 RT (min),P0 vs P1,31.896,31.896,Large,Yes
-exp1_policy_comparison,P90 RT (min),P0 vs P2,32.7532,32.7532,Large,Yes
-exp1_policy_comparison,P90 RT (min),P1 vs P2,2.0565,2.0565,Large,Yes
-exp1_policy_comparison,8-min Coverage,P0 vs P1,-24.3189,24.3189,Large,Yes
-exp1_policy_comparison,8-min Coverage,P0 vs P2,-24.3734,24.3734,Large,Yes
-exp1_policy_comparison,8-min Coverage,P1 vs P2,-0.1894,0.1894,Negligible,No
-exp1_policy_comparison,Mean Utilization,P0 vs P1,4.4194,4.4194,Large,Yes
-exp1_policy_comparison,Mean Utilization,P0 vs P2,4.4728,4.4728,Large,Yes
-exp1_policy_comparison,Mean Utilization,P1 vs P2,0.0295,0.0295,Negligible,No
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P1,1.6448,1.6448,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P2,1.6247,1.6247,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P1 vs P2,-0.2447,0.2447,Small,No
-exp2_fleet_sensitivity,P90 RT (min),P0 vs P1,1.5901,1.5901,Large,Yes
-exp2_fleet_sensitivity,P90 RT (min),P0 vs P2,1.5827,1.5827,Large,Yes
-exp2_fleet_sensitivity,P90 RT (min),P1 vs P2,-0.1147,0.1147,Negligible,No
-exp2_fleet_sensitivity,8-min Coverage,P0 vs P1,-1.7419,1.7419,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage,P0 vs P2,-1.7447,1.7447,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage,P1 vs P2,-0.0984,0.0984,Negligible,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P1,0.326,0.326,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P2,0.3246,0.3246,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P1 vs P2,-0.0033,0.0033,Negligible,No
-exp3_demand_sensitivity,Mean RT (min),P0 vs P1,17.9627,17.9627,Large,Yes
-exp3_demand_sensitivity,Mean RT (min),P0 vs P2,17.8889,17.8889,Large,Yes
-exp3_demand_sensitivity,Mean RT (min),P1 vs P2,0.3916,0.3916,Small,No
-exp3_demand_sensitivity,P90 RT (min),P0 vs P1,19.9981,19.9981,Large,Yes
-exp3_demand_sensitivity,P90 RT (min),P0 vs P2,20.0864,20.0864,Large,Yes
-exp3_demand_sensitivity,P90 RT (min),P1 vs P2,0.556,0.556,Medium,Yes
-exp3_demand_sensitivity,8-min Coverage,P0 vs P1,-20.3327,20.3327,Large,Yes
-exp3_demand_sensitivity,8-min Coverage,P0 vs P2,-20.5027,20.5027,Large,Yes
-exp3_demand_sensitivity,8-min Coverage,P1 vs P2,-0.2554,0.2554,Small,No
-exp3_demand_sensitivity,Mean Utilization,P0 vs P1,0.4391,0.4391,Small,No
-exp3_demand_sensitivity,Mean Utilization,P0 vs P2,0.4416,0.4416,Small,No
-exp3_demand_sensitivity,Mean Utilization,P1 vs P2,0.0031,0.0031,Negligible,No
-exp4_service_robustness,Mean RT (min),P0 vs P1,28.7898,28.7898,Large,Yes
-exp4_service_robustness,Mean RT (min),P0 vs P2,29.0213,29.0213,Large,Yes
-exp4_service_robustness,Mean RT (min),P1 vs P2,1.1065,1.1065,Large,Yes
-exp4_service_robustness,P90 RT (min),P0 vs P1,31.2261,31.2261,Large,Yes
-exp4_service_robustness,P90 RT (min),P0 vs P2,31.8974,31.8974,Large,Yes
-exp4_service_robustness,P90 RT (min),P1 vs P2,1.4907,1.4907,Large,Yes
-exp4_service_robustness,8-min Coverage,P0 vs P1,-25.9215,25.9215,Large,Yes
-exp4_service_robustness,8-min Coverage,P0 vs P2,-25.9926,25.9926,Large,Yes
-exp4_service_robustness,8-min Coverage,P1 vs P2,-0.2454,0.2454,Small,No
-exp4_service_robustness,Mean Utilization,P0 vs P1,1.2839,1.2839,Large,Yes
-exp4_service_robustness,Mean Utilization,P0 vs P2,1.29,1.29,Large,Yes
-exp4_service_robustness,Mean Utilization,P1 vs P2,0.0074,0.0074,Negligible,No
+exp1_policy_comparison,Mean RT (min),P0 vs P1,9.2925,9.2925,Large,Yes
+exp1_policy_comparison,Mean RT (min),P0 vs P2,10.1059,10.1059,Large,Yes
+exp1_policy_comparison,Mean RT (min),P1 vs P2,0.992,0.992,Large,Yes
+exp1_policy_comparison,P90 RT (min),P0 vs P1,4.9163,4.9163,Large,Yes
+exp1_policy_comparison,P90 RT (min),P0 vs P2,6.1008,6.1008,Large,Yes
+exp1_policy_comparison,P90 RT (min),P1 vs P2,1.571,1.571,Large,Yes
+exp1_policy_comparison,6-min Coverage (NYC),P0 vs P1,-4.6697,4.6697,Large,Yes
+exp1_policy_comparison,6-min Coverage (NYC),P0 vs P2,-4.8576,4.8576,Large,Yes
+exp1_policy_comparison,6-min Coverage (NYC),P1 vs P2,-0.293,0.293,Small,No
+exp1_policy_comparison,8-min Coverage (NFPA),P0 vs P1,0.0972,0.0972,Negligible,No
+exp1_policy_comparison,8-min Coverage (NFPA),P0 vs P2,-0.1579,0.1579,Negligible,No
+exp1_policy_comparison,8-min Coverage (NFPA),P1 vs P2,-0.2352,0.2352,Small,No
+exp1_policy_comparison,Mean Utilization,P0 vs P1,0.4039,0.4039,Small,No
+exp1_policy_comparison,Mean Utilization,P0 vs P2,0.5054,0.5054,Medium,Yes
+exp1_policy_comparison,Mean Utilization,P1 vs P2,0.1135,0.1135,Negligible,No
+exp2_fleet_sensitivity,Mean RT (min),P0 vs P1,1.1206,1.1206,Large,Yes
+exp2_fleet_sensitivity,Mean RT (min),P0 vs P2,1.1123,1.1123,Large,Yes
+exp2_fleet_sensitivity,Mean RT (min),P1 vs P2,-0.101,0.101,Negligible,No
+exp2_fleet_sensitivity,P90 RT (min),P0 vs P1,1.0532,1.0532,Large,Yes
+exp2_fleet_sensitivity,P90 RT (min),P0 vs P2,1.065,1.065,Large,Yes
+exp2_fleet_sensitivity,P90 RT (min),P1 vs P2,0.0719,0.0719,Negligible,No
+exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P1,-1.1019,1.1019,Large,Yes
+exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P2,-1.0717,1.0717,Large,Yes
+exp2_fleet_sensitivity,6-min Coverage (NYC),P1 vs P2,0.2954,0.2954,Small,No
+exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P1,-1.0451,1.0451,Large,Yes
+exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P2,-1.0411,1.0411,Large,Yes
+exp2_fleet_sensitivity,8-min Coverage (NFPA),P1 vs P2,0.1359,0.1359,Negligible,No
+exp2_fleet_sensitivity,Mean Utilization,P0 vs P1,0.2381,0.2381,Small,No
+exp2_fleet_sensitivity,Mean Utilization,P0 vs P2,0.2451,0.2451,Small,No
+exp2_fleet_sensitivity,Mean Utilization,P1 vs P2,0.0073,0.0073,Negligible,No
+exp3_demand_sensitivity,Mean RT (min),P0 vs P1,4.7342,4.7342,Large,Yes
+exp3_demand_sensitivity,Mean RT (min),P0 vs P2,4.7982,4.7982,Large,Yes
+exp3_demand_sensitivity,Mean RT (min),P1 vs P2,0.378,0.378,Small,No
+exp3_demand_sensitivity,P90 RT (min),P0 vs P1,3.0049,3.0049,Large,Yes
+exp3_demand_sensitivity,P90 RT (min),P0 vs P2,3.4878,3.4878,Large,Yes
+exp3_demand_sensitivity,P90 RT (min),P1 vs P2,0.5362,0.5362,Medium,Yes
+exp3_demand_sensitivity,6-min Coverage (NYC),P0 vs P1,-2.954,2.954,Large,Yes
+exp3_demand_sensitivity,6-min Coverage (NYC),P0 vs P2,-2.9816,2.9816,Large,Yes
+exp3_demand_sensitivity,6-min Coverage (NYC),P1 vs P2,-0.1587,0.1587,Negligible,No
+exp3_demand_sensitivity,8-min Coverage (NFPA),P0 vs P1,0.0317,0.0317,Negligible,No
+exp3_demand_sensitivity,8-min Coverage (NFPA),P0 vs P2,-0.2529,0.2529,Small,No
+exp3_demand_sensitivity,8-min Coverage (NFPA),P1 vs P2,-0.2757,0.2757,Small,No
+exp3_demand_sensitivity,Mean Utilization,P0 vs P1,0.0425,0.0425,Negligible,No
+exp3_demand_sensitivity,Mean Utilization,P0 vs P2,0.048,0.048,Negligible,No
+exp3_demand_sensitivity,Mean Utilization,P1 vs P2,0.0055,0.0055,Negligible,No
+exp4_service_robustness,Mean RT (min),P0 vs P1,8.213,8.213,Large,Yes
+exp4_service_robustness,Mean RT (min),P0 vs P2,8.9116,8.9116,Large,Yes
+exp4_service_robustness,Mean RT (min),P1 vs P2,0.8226,0.8226,Large,Yes
+exp4_service_robustness,P90 RT (min),P0 vs P1,4.6298,4.6298,Large,Yes
+exp4_service_robustness,P90 RT (min),P0 vs P2,5.7624,5.7624,Large,Yes
+exp4_service_robustness,P90 RT (min),P1 vs P2,1.2687,1.2687,Large,Yes
+exp4_service_robustness,6-min Coverage (NYC),P0 vs P1,-4.4296,4.4296,Large,Yes
+exp4_service_robustness,6-min Coverage (NYC),P0 vs P2,-4.5879,4.5879,Large,Yes
+exp4_service_robustness,6-min Coverage (NYC),P1 vs P2,-0.2919,0.2919,Small,No
+exp4_service_robustness,8-min Coverage (NFPA),P0 vs P1,0.0963,0.0963,Negligible,No
+exp4_service_robustness,8-min Coverage (NFPA),P0 vs P2,-0.0993,0.0993,Negligible,No
+exp4_service_robustness,8-min Coverage (NFPA),P1 vs P2,-0.1914,0.1914,Negligible,No
+exp4_service_robustness,Mean Utilization,P0 vs P1,0.1024,0.1024,Negligible,No
+exp4_service_robustness,Mean Utilization,P0 vs P2,0.1314,0.1314,Negligible,No
+exp4_service_robustness,Mean Utilization,P1 vs P2,0.029,0.029,Negligible,No
 Exp1,Mean RT (min),ANOVA: Policy,,,Large,Yes
 Exp1,P90 RT (min),ANOVA: Policy,,,Large,Yes
-Exp1,8-min Coverage,ANOVA: Policy,,,Large,Yes
-Exp1,Mean Utilization,ANOVA: Policy,,,Large,Yes
+Exp1,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
+Exp1,8-min Coverage (NFPA),ANOVA: Policy,,,Small,No
+Exp1,Mean Utilization,ANOVA: Policy,,,Small,No
 Exp2,Mean RT (min),ANOVA: Policy,,,Large,Yes
 Exp2,Mean RT (min),ANOVA: K,,,Large,Yes
 Exp2,Mean RT (min),ANOVA: Policy × K,,,Large,Yes
 Exp2,P90 RT (min),ANOVA: Policy,,,Large,Yes
 Exp2,P90 RT (min),ANOVA: K,,,Large,Yes
 Exp2,P90 RT (min),ANOVA: Policy × K,,,Large,Yes
-Exp2,8-min Coverage,ANOVA: Policy,,,Large,Yes
-Exp2,8-min Coverage,ANOVA: K,,,Large,Yes
-Exp2,8-min Coverage,ANOVA: Policy × K,,,Large,Yes
+Exp2,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
+Exp2,6-min Coverage (NYC),ANOVA: K,,,Large,Yes
+Exp2,6-min Coverage (NYC),ANOVA: Policy × K,,,Large,Yes
+Exp2,8-min Coverage (NFPA),ANOVA: Policy,,,Large,Yes
+Exp2,8-min Coverage (NFPA),ANOVA: K,,,Large,Yes
+Exp2,8-min Coverage (NFPA),ANOVA: Policy × K,,,Large,Yes
 Exp2,Mean Utilization,ANOVA: Policy,,,Small,No
 Exp2,Mean Utilization,ANOVA: K,,,Large,Yes
 Exp2,Mean Utilization,ANOVA: Policy × K,,,Small,No
 Exp3,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp3,Mean RT (min),ANOVA: demand_multiplier,,,Negligible,No
+Exp3,Mean RT (min),ANOVA: demand_multiplier,,,Medium,Yes
 Exp3,Mean RT (min),ANOVA: Policy × demand_multiplier,,,Negligible,No
 Exp3,P90 RT (min),ANOVA: Policy,,,Large,Yes
-Exp3,P90 RT (min),ANOVA: demand_multiplier,,,Negligible,No
-Exp3,P90 RT (min),ANOVA: Policy × demand_multiplier,,,Negligible,No
-Exp3,8-min Coverage,ANOVA: Policy,,,Large,Yes
-Exp3,8-min Coverage,ANOVA: demand_multiplier,,,Negligible,No
-Exp3,8-min Coverage,ANOVA: Policy × demand_multiplier,,,Negligible,No
-Exp3,Mean Utilization,ANOVA: Policy,,,Small,No
+Exp3,P90 RT (min),ANOVA: demand_multiplier,,,Large,Yes
+Exp3,P90 RT (min),ANOVA: Policy × demand_multiplier,,,Small,No
+Exp3,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
+Exp3,6-min Coverage (NYC),ANOVA: demand_multiplier,,,Large,Yes
+Exp3,6-min Coverage (NYC),ANOVA: Policy × demand_multiplier,,,Negligible,No
+Exp3,8-min Coverage (NFPA),ANOVA: Policy,,,Small,No
+Exp3,8-min Coverage (NFPA),ANOVA: demand_multiplier,,,Large,Yes
+Exp3,8-min Coverage (NFPA),ANOVA: Policy × demand_multiplier,,,Small,No
+Exp3,Mean Utilization,ANOVA: Policy,,,Negligible,No
 Exp3,Mean Utilization,ANOVA: demand_multiplier,,,Large,Yes
 Exp3,Mean Utilization,ANOVA: Policy × demand_multiplier,,,Negligible,No
 Exp4,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp4,Mean RT (min),ANOVA: service_time_mean,,,Negligible,No
+Exp4,Mean RT (min),ANOVA: service_time_mean,,,Small,No
 Exp4,Mean RT (min),ANOVA: Policy × service_time_mean,,,Negligible,No
 Exp4,P90 RT (min),ANOVA: Policy,,,Large,Yes
-Exp4,P90 RT (min),ANOVA: service_time_mean,,,Negligible,No
+Exp4,P90 RT (min),ANOVA: service_time_mean,,,Small,No
 Exp4,P90 RT (min),ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,8-min Coverage,ANOVA: Policy,,,Large,Yes
-Exp4,8-min Coverage,ANOVA: service_time_mean,,,Negligible,No
-Exp4,8-min Coverage,ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,Mean Utilization,ANOVA: Policy,,,Large,Yes
+Exp4,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
+Exp4,6-min Coverage (NYC),ANOVA: service_time_mean,,,Small,No
+Exp4,6-min Coverage (NYC),ANOVA: Policy × service_time_mean,,,Negligible,No
+Exp4,8-min Coverage (NFPA),ANOVA: Policy,,,Negligible,No
+Exp4,8-min Coverage (NFPA),ANOVA: service_time_mean,,,Medium,Yes
+Exp4,8-min Coverage (NFPA),ANOVA: Policy × service_time_mean,,,Negligible,No
+Exp4,Mean Utilization,ANOVA: Policy,,,Negligible,No
 Exp4,Mean Utilization,ANOVA: service_time_mean,,,Large,Yes
 Exp4,Mean Utilization,ANOVA: Policy × service_time_mean,,,Negligible,No

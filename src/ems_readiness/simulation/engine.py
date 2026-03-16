@@ -108,8 +108,10 @@ class EMSSimulation:
         self.dispatcher = self._init_dispatcher()
 
         # Metrics collector
+        additional_thresholds = tuple(config.get("additional_thresholds", [6.0]))
         self.metrics = MetricsCollector(
-            response_threshold_minutes=self.response_threshold
+            response_threshold_minutes=self.response_threshold,
+            additional_thresholds=additional_thresholds,
         )
 
         # Internal state – FIFO queue of (incident, simpy.Event) pairs
@@ -134,6 +136,7 @@ class EMSSimulation:
             "num_replications": 30,
             "seed_base": 42,
             "response_threshold_minutes": 8.0,
+            "additional_thresholds": [6.0],
             "trace_mode": False,
         }
 

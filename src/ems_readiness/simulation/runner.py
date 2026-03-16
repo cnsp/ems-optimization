@@ -170,11 +170,18 @@ class BatchRunner:
             "response_time_std",
             "coverage_fraction",
             "incidents_within_threshold",
+            "coverage_6min",
+            "coverage_8min",
             "travel_time_mean",
             "service_time_mean",
             "queue_length_max",
             "queue_length_tw_avg",
         ]
+        # Dynamically add any additional coverage_*min columns from data
+        if rep_summaries:
+            for key in rep_summaries[0]:
+                if key.startswith("coverage_") and key.endswith("min") and key not in metrics:
+                    metrics.append(key)
 
         for metric in metrics:
             if metric in df.columns:

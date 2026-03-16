@@ -24,6 +24,10 @@ seed_base: 42
 # Fraction of incidents with response_time ≤ threshold is "coverage".
 response_threshold_minutes: 8.0
 
+# Additional coverage thresholds (minutes).
+# NYC law requires 6-minute EMS response time; both are tracked.
+additional_thresholds: [6.0]
+
 # Trace mode: if true, log every event to console (slow, for debugging).
 trace_mode: false
 
