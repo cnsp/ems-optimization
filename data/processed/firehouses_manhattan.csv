@@ -1,0 +1,49 @@
+FacilityName,FacilityAddress,Borough,Postcode,Latitude,Longitude,Community Board,Community Council ,Census Tract,BIN,BBL,NTA,in_manhattan,in_cbd
+Engine 4/Ladder 15,42 South Street,Manhattan,10005,40.703694,-74.007717,101,1,7,"1,000,867","1,000,350,001",Battery Park City-Lower Manhattan,True,True
+Engine 6,49 Beekman Street,Manhattan,10038,40.709971,-74.005395,101,1,"1,501","1,001,287","1,000,930,030",Battery Park City-Lower Manhattan,True,True
+Manhattan Borough Command/Battalion 1/Engine 7/Ladder 1,100 Duane Street,Manhattan,10007,40.715339,-74.0063,101,1,33,"1,001,647","1,001,500,025",SoHo-TriBeCa-Civic Center-Little Italy,True,True
+Ladder 8,14 N. Moore Street,Manhattan,10013,40.719574,-74.00662,101,1,33,"1,002,150","1,001,890,035",SoHo-TriBeCa-Civic Center-Little Italy,True,True
+Engine 9/Ladder 6,75 Canal Street,Manhattan,10002,40.715408,-73.992834,103,1,16,"1,003,898","1,003,000,030",Chinatown,True,True
+Battalion 4/Engine 15/Ladder 18,25 Pitt Street,Manhattan,10002,40.716439,-73.983927,103,1,12,"1,004,078","1,003,420,060",Lower East Side,True,True
+Engine 28/Ladder 11,222 East 2 Street,Manhattan,10009,40.721879,-73.982526,103,2,"2,202","1,004,608","1,003,850,058",Lower East Side,True,True
+Engine 5,340 East 14 Street,Manhattan,10003,40.731494,-73.983407,103,2,40,"1,006,520","1,004,550,028",East Village,True,True
+Division 1/Ladder 20,253 Lafayette Street,Manhattan,10012,40.723026,-73.996571,102,1,43,"1,007,523","1,004,950,007",SoHo-TriBeCa-Civic Center-Little Italy,True,True
+Engine 33/Ladder 9,42 Great Jones Street,Manhattan,10012,40.726986,-73.992526,102,1,"5,502","1,008,526","1,005,310,049",West Village,True,True
+Battalion 6/Ladder 3,108 East 13 Street,Manhattan,10003,40.733093,-73.989443,103,2,42,"1,009,010","1,005,580,011",East Village,True,True
+Squad 18,132 West 10 Street,Manhattan,10014,40.734518,-74.000381,102,3,71,"1,010,686","1,006,100,051",West Village,True,True
+Engine 34/Ladder 21,440 West 38th Street,Manhattan,10018,40.756593,-73.996471,104,3,111,"1,012,982","1,007,350,061",Hudson Yards-Chelsea-Flatiron-Union Square,True,True
+Engine 26,220 West 37 Street,Manhattan,10018,40.753107,-73.990376,105,3,109,"1,014,447","1,007,860,061",Midtown-Midtown South,True,True
+Battalion 7/Engine 3/Ladder 12,150 West 19 Street,Manhattan,10011,40.741196,-73.996868,104,3,87,"1,014,724","1,007,940,066",Hudson Yards-Chelsea-Flatiron-Union Square,True,True
+Engine 1/Ladder 24,142 West 31 Street,Manhattan,10001,40.748474,-73.991188,105,3,101,"1,015,173","1,008,060,066",Midtown-Midtown South,True,True
+Engine 14,14 East 18 Street,Manhattan,10003,40.737948,-73.991035,105,2,52,"1,016,141","1,008,460,066",Hudson Yards-Chelsea-Flatiron-Union Square,True,True
+Engine 16/Ladder 7,234 East 29 Street,Manhattan,10016,40.741676,-73.97888,106,2,66,"1,019,903","1,009,090,035",Murray Hill-Kips Bay,True,True
+Engine 21,238 East 40 Street,Manhattan,10016,40.748642,-73.974027,106,4,88,"1,020,385","1,009,200,042",Turtle Bay-East Midtown,True,True
+Battalion 9/Engine 54/Ladder 4,782 Eighth Avenue,Manhattan,10036,40.76072,-73.986793,105,3,125,"1,024,767","1,010,190,061",Midtown-Midtown South,True,True
+Engine 23,215 W 58th Street,Manhattan,10019,40.766699,-73.980368,105,4,137,"1,024,915","1,010,300,023",Midtown-Midtown South,True,False
+Engine 40/Ladder 35,131 Amsterdam Avenue,Manhattan,10023,40.774562,-73.984225,107,6,149,"1,028,836","1,011,370,061",Lincoln Square,True,False
+Division 3/Ladder 25,207 West 77th Street,Manhattan,10024,40.78223,-73.979841,107,6,163,"1,030,885","1,011,690,026",Upper West Side,True,False
+Engine 74,120 West 83 Street,Manhattan,10024,40.784697,-73.974602,107,6,169,"1,032,079","1,012,130,041",Upper West Side,True,False
+Battalion 8/Engine 8/Ladder 2,165 East 51 Street,Manhattan,10022,40.756891,-73.970805,106,4,100,"1,036,462","1,013,060,033",Turtle Bay-East Midtown,True,True
+Engine 44,221 East 75 Street,Manhattan,10021,40.771454,-73.958154,108,4,134,"1,044,059","1,014,300,010",Lenox Hill-Roosevelt Island,True,False
+Battalion 10/Engine 22/Ladder 13,159 East 85 Street,Manhattan,10028,40.778622,-73.955311,108,5,"14,801","1,047,937","1,015,140,027",Upper East Side-Carnegie Hill,True,False
+Engine 58/Ladder 26,1367 Fifth Avenue,Manhattan,10029,40.798913,-73.947333,111,9,184,"1,051,632","1,016,180,014",East Harlem North,True,False
+Engine 53/Ladder 43,1836 Third Avenue,Manhattan,10029,40.788923,-73.946985,111,8,166,"1,051,850","1,016,290,040",East Harlem South,True,False
+Engine 91,242 East 111 Street,Manhattan,10029,40.793843,-73.940791,111,8,180,"1,052,473","1,016,600,030",East Harlem North,True,False
+Battalion 12/Engine 35/Ladder 14,2282 Third Avenue,Manhattan,10035,40.803297,-73.936522,111,8,196,"1,054,465","1,017,730,033",East Harlem North,True,False
+Battalion 11/Engine 76/Ladder 22,145 West 100th St.,Manhattan,10025,40.796449,-73.967261,107,7,189,"1,055,910","1,018,550,005",Upper West Side,True,False
+Engine 47,500 West 113 Street,Manhattan,10025,40.804946,-73.962932,109,7,199,"1,056,999","1,018,840,038",Morningside Heights,True,False
+Engine 59/Ladder 30,111 West 133 Street,Manhattan,10030,40.813332,-73.94245,110,9,226,"1,058,225","1,019,180,024",Central Harlem North-Polo Grounds,True,False
+Engine 37/Ladder 40,415 West 125 Street,Manhattan,10027,40.811921,-73.9546,109,7,"20,901","1,059,547","1,019,660,061",Morningside Heights,True,False
+Engine 84/Ladder 34,513 West 161 Street,Manhattan,10032,40.835918,-73.940959,112,7,245,"1,062,872","1,021,200,046",Washington Heights South,True,False
+Engine 95/Ladder 36,29 Vermilyea Avenue,Manhattan,10034,40.864897,-73.925154,112,10,291,"1,064,801","1,022,240,015",Marble Hill-Inwood,True,False
+Engine 55,363 Broome Street,Manhattan,10013,40.719841,-73.99576,102,1,41,"1,066,722","1,004,700,012",SoHo-TriBeCa-Civic Center-Little Italy,True,True
+Rescue 1,530 West 43 Street,Manhattan,10036,40.760727,-73.996616,104,3,129,"1,070,109","1,010,710,049",Clinton,True,True
+Engine 39/Ladder 16,157 E 67th St,Manhattan,10065,40.767062,-73.963612,108,4,120,"1,072,190","1,014,020,029",Upper East Side-Carnegie Hill,True,False
+Battalion 16/Engine 69/Ladder 28,248 West 143 Street,Manhattan,10030,40.820847,-73.941821,110,9,232,"1,075,491","1,020,280,051",Central Harlem North-Polo Grounds,True,False
+Engine 80/Ladder 23,503 West 139 Street,Manhattan,10031,40.821948,-73.950762,109,7,225,"1,075,504","1,020,710,027",Hamilton Heights,True,False
+Battalion 13/Engine 93/Ladder 45,515 West 181 Street,Manhattan,10033,40.848722,-73.931662,112,10,269,"1,075,518","1,021,550,030",Washington Heights North,True,False
+Engine 10/Ladder 10,124 Liberty Street,Manhattan,10006,40.709819,-74.012608,101,1,13,"1,075,700","1,000,520,022",Battery Park City-Lower Manhattan,True,True
+Engine 65,33 West 43 Street,Manhattan,10036,40.754975,-73.981979,105,4,96,"1,076,256","1,012,590,018",Midtown-Midtown South,True,True
+Battalion 2/Engine 24/Ladder 5,227 Sixth Avenue,Manhattan,10014,40.728041,-74.003434,102,3,37,"1,080,044","1,005,200,037",SoHo-TriBeCa-Civic Center-Little Italy,True,True
+Engine 67,518 West 170 Street,Manhattan,10032,40.841279,-73.937195,112,10,253,"1,085,743","1,021,260,035",Washington Heights South,True,False
+Marine 1,20 Rear Bloomfield Street,Manhattan,10014,40.740647,-74.011815,102,3,79,"1,086,681","1,006,510,105",West Village,True,True

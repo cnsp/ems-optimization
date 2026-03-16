@@ -1,0 +1,35 @@
+{
+  "total_crashes": 416434,
+  "date_range": "2012-07-01 to 2026-02-20",
+  "total_hours": 119591.76666666666,
+  "lambda_overall": 3.482129343909684,
+  "lambda_overall_per_day": 83.57110425383242,
+  "chi2_stat": 723713.090417837,
+  "chi2_pvalue": 0.0,
+  "dispersion": 2.4259606171435713,
+  "validation_rmse": 3667.7935537700846,
+  "validation_mape": 99.76570350158374,
+  "cbd_pct": 55.65972038786459,
+  "lambda_cbd": 1.9381434563639137,
+  "lambda_non_cbd": 1.5439858875457704,
+  "peak_hour": 16,
+  "peak_dow": "Friday",
+  "high_demand_precincts": [
+    19,
+    18,
+    14,
+    1,
+    17,
+    13,
+    10
+  ],
+  "low_demand_precincts": [
+    28,
+    30,
+    26,
+    22,
+    50,
+    52,
+    114
+  ]
+}

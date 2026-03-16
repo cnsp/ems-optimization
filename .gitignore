@@ -63,6 +63,14 @@ data/processed/cache/
 data/processed/.cache_manifest.json
 data/processed/.data_manifest.json
 
+# Track small, essential processed data (exceptions to above)
+!data/processed/demand_lambda_*.csv
+!data/processed/distance_matrix_*.csv
+!data/processed/firehouses_*.csv
+!data/processed/precincts_manhattan.geojson
+!data/processed/demand_model_summary.json
+# NOTE: crashes_manhattan.csv (109MB) and .parquet (16MB) remain ignored — too large / regenerable
+
 # Generated intermediates in raw/
 data/raw/*.pkl
 
@@ -72,14 +80,12 @@ data/manifests/*.csv
 # Don't ignore .gitkeep files
 !.gitkeep
 
-# Results (can be regenerated)
-results/figures/*.png
-results/figures/*.pdf
-results/figures/*.svg
-results/maps/*.html
-results/maps/*.png
-results/tables/*.csv
-results/tables/*.xlsx
+# Results — figures and maps are already tracked; heatmaps are bulk-generated
+results/heatmaps/
+# NOTE: results/tables/, results/figures/, results/maps/, results/optimization/,
+#       results/production_v2/, results/simulation/, results/capacity_comparison/,
+#       results/cbd_focused_comparison/, results/distance_comparison/
+#       are all TRACKED (important project artifacts)
 
 # Logs
 *.log

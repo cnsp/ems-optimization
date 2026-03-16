@@ -1,0 +1,4 @@
+policy,mean_response_time,cbd_mean_rt,non_cbd_mean_rt,coverage_8min,cbd_coverage_8min,non_cbd_coverage_8min
+P0,8.0825,2.73,14.7599,0.6444,0.9987,0.2026
+P1,2.634,2.4417,2.8803,0.9958,0.9994,0.9912
+P2,2.5702,2.4821,2.6828,0.9962,0.9994,0.9922
