@@ -125,19 +125,32 @@ pip install -e .
 
 ### Data Setup
 
-Raw data files and all processed/intermediate data are **not** tracked in Git. The pipeline regenerates everything from raw inputs.
+Large raw data files are tracked via **Git LFS**. Ensure Git LFS is installed before cloning:
 
-1. Download large files from [NYC Open Data](https://data.cityofnewyork.us/):
-   - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
-   - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
+```bash
+git lfs install   # one-time setup
+git clone https://github.com/cnsp/ems-optimization.git
+```
 
-   See [`data/raw/README.md`](data/raw/README.md) for download links and verification instructions.
+The following files are pulled automatically via LFS on clone:
+- `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv` (536 MB)
+- `data/raw/Police_Precincts_20260223.csv` (3.6 MB)
 
-   > **Note:** The Colab notebooks (`notebooks/colab_standalone/`) include self-contained data
-   > processing cells that generate `crashes_manhattan.csv` from the raw crash CSV on first run.
-   > All other processed files are tracked in Git and require no extra setup.
+All other raw files (boundary GeoJSONs, firehouse listings, data dictionaries) and key processed
+files (distance matrices, demand lambdas, firehouse lists) are tracked directly in Git.
 
-2. Generate all processed data (single command):
+If LFS files were not pulled (e.g., shallow clone), run:
+```bash
+git lfs pull
+```
+
+See [`data/raw/README.md`](data/raw/README.md) for original NYC Open Data download links.
+
+> **Note:** The Colab notebooks (`notebooks/colab_standalone/`) include self-contained data
+> processing cells that generate `crashes_manhattan.csv` from the raw crash CSV on first run.
+> All other processed files are tracked in Git and require no extra setup.
+
+Generate all processed data (single command):
 ```bash
 make data
 # Or: python scripts/generate_all_data.py

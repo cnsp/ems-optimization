@@ -41,10 +41,9 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Data files (large files - track with Git LFS or exclude)
-# Large CSV files excluded (>100MB GitHub limit)
-data/raw/Motor_Vehicle_Collisions_-_Crashes_*.csv
-data/raw/Police_Precincts_*.csv
+# Data files — large raw CSVs tracked via Git LFS (see .gitattributes)
+# data/raw/Motor_Vehicle_Collisions_-_Crashes_*.csv  # Now tracked via Git LFS
+# data/raw/Police_Precincts_*.csv                     # Now tracked via Git LFS
 # Keep smaller files tracked
 # data/raw/*.xlsx  # Data dictionaries - tracked
 # data/raw/*.geojson  # Boundary files - tracked

@@ -14,9 +14,13 @@ All files in this directory are **inputs** to the data processing pipeline. They
 | `Motor_Vehicle_Collisions_Data_Dictionary.xlsx` | Field definitions for crash data |
 | `Police_Precincts_Data_Dictionary.xlsx` | Field definitions for precinct data |
 
-## Must Download Manually
+## Tracked via Git LFS
 
-These files are too large for Git and must be downloaded before running the pipeline.
+These large files are tracked via [Git LFS](https://git-lfs.github.com/). They are pulled
+automatically when cloning with LFS installed (`git lfs install`). If they are missing,
+run `git lfs pull`.
+
+**Original NYC Open Data sources** (for reference or re-download):
 
 ### Motor Vehicle Collisions (~536 MB)
 
