@@ -158,7 +158,7 @@ legend2 = ax_main.legend(handles=P_handles, title='Policy', loc='lower left',
                           fontsize=8, title_fontsize=9)
 
 ax_main.set_xlabel('Expected Response Time (minutes)', fontsize=12)
-ax_main.set_ylabel('% Demand Covered (<=8 min)', fontsize=12)
+ax_main.set_ylabel('% Demand Covered (<=8 min, NFPA)', fontsize=12)
 ax_main.set_title(f'Response Time vs Coverage Trade-off (cap={CAPACITY})', fontsize=14, fontweight='bold')
 ax_main.grid(True, alpha=0.3)
 
@@ -260,7 +260,7 @@ P_handles = [Line2D([0], [0], marker=info['marker'], color='w', markerfacecolor=
 ax.legend(handles=P_handles, title='Policy', loc='lower left', fontsize=8, title_fontsize=9)
 
 ax.set_xlabel('Expected Response Time (minutes)', fontsize=12)
-ax.set_ylabel('% Demand Covered (<=8 min)', fontsize=12)
+ax.set_ylabel('% Demand Covered (<=8 min, NFPA)', fontsize=12)
 ax.set_title(f'Trade-off Detail: High-Performance Region (RT < 5 min, cap={CAPACITY})', fontsize=13, fontweight='bold')
 ax.grid(True, alpha=0.3)
 

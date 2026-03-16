@@ -45,7 +45,7 @@ TABLE_DIR.mkdir(parents=True, exist_ok=True)
 METRICS = ["mean_response_time", "p90_response_time", "coverage_6min", "coverage_8min", "mean_utilization"]
 METRIC_LABELS = {
     "mean_response_time": "Mean RT (min)",
-    "p90_response_time": "P90 RT (min)",
+    "p90_response_time": "P90 Response Time (90th percentile, min)",
     "coverage_6min": "6-min Coverage (NYC)",
     "coverage_8min": "8-min Coverage (NFPA)",
     "mean_utilization": "Mean Utilization",
@@ -403,9 +403,9 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
         t1_rows.append({
             "Policy": pol,
             "Mean RT (95% CI)": f"{grp['mean_response_time'].mean():.2f} ({ci_lo}, {ci_hi})",
-            "P90 RT": f"{grp['p90_response_time'].mean():.2f}",
-            "6-min Coverage": f"{grp['coverage_6min'].mean():.1%}" if 'coverage_6min' in grp.columns else "N/A",
-            "8-min Coverage": f"{grp['coverage_8min'].mean():.1%}",
+            "P90 Response Time (90th pctl)": f"{grp['p90_response_time'].mean():.2f}",
+            "6-min Coverage (NYC)": f"{grp['coverage_6min'].mean():.1%}" if 'coverage_6min' in grp.columns else "N/A",
+            "8-min Coverage (NFPA)": f"{grp['coverage_8min'].mean():.1%}",
             "Utilization": f"{grp['mean_utilization'].mean():.3f}",
             "N": len(grp),
         })
@@ -454,8 +454,9 @@ def generate_publication_tables(all_data: pd.DataFrame, df_anova: pd.DataFrame,
                                       .replace("exp4_service_robustness", "Service Time"),
                     "Factor Level": lvl, "Policy": pol,
                     "Mean RT": f"{grp['mean_response_time'].mean():.2f}",
-                    "6-min Cov": f"{grp['coverage_6min'].mean():.1%}" if 'coverage_6min' in grp.columns else "N/A",
-                    "8-min Cov": f"{grp['coverage_8min'].mean():.1%}",
+                    "P90 RT (90th pctl)": f"{grp['p90_response_time'].mean():.2f}" if 'p90_response_time' in grp.columns else "N/A",
+                    "6-min Coverage (NYC)": f"{grp['coverage_6min'].mean():.1%}" if 'coverage_6min' in grp.columns else "N/A",
+                    "8-min Coverage (NFPA)": f"{grp['coverage_8min'].mean():.1%}",
                     "Utilization": f"{grp['mean_utilization'].mean():.3f}",
                 })
     t4 = pd.DataFrame(t4_rows)

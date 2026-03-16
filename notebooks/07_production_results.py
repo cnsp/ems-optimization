@@ -118,7 +118,7 @@ for pa, pb in [("P0", "P1"), ("P0", "P2"), ("P1", "P2")]:
 
 # %%
 # Box plot – response time by policy
-fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+fig, axes = plt.subplots(1, 4, figsize=(20, 5))
 
 # Response time
 sns.boxplot(data=exp1, x="policy", y="mean_response_time", palette=PALETTE, ax=axes[0])
@@ -126,17 +126,24 @@ axes[0].set_title("Mean Response Time")
 axes[0].set_ylabel("Minutes")
 axes[0].set_xlabel("Policy")
 
-# Coverage
-sns.boxplot(data=exp1, x="policy", y="coverage_8min", palette=PALETTE, ax=axes[1])
-axes[1].set_title("8-Minute Coverage")
+# 6-min coverage (NYC)
+if "coverage_6min" in exp1.columns:
+    sns.boxplot(data=exp1, x="policy", y="coverage_6min", palette=PALETTE, ax=axes[1])
+axes[1].set_title("6-Minute Coverage (NYC)")
 axes[1].set_ylabel("Fraction")
 axes[1].set_xlabel("Policy")
 
-# P90 response time
-sns.boxplot(data=exp1, x="policy", y="p90_response_time", palette=PALETTE, ax=axes[2])
-axes[2].set_title("90th Percentile Response Time")
-axes[2].set_ylabel("Minutes")
+# 8-min coverage (NFPA)
+sns.boxplot(data=exp1, x="policy", y="coverage_8min", palette=PALETTE, ax=axes[2])
+axes[2].set_title("8-Minute Coverage (NFPA)")
+axes[2].set_ylabel("Fraction")
 axes[2].set_xlabel("Policy")
+
+# P90 response time (90th percentile)
+sns.boxplot(data=exp1, x="policy", y="p90_response_time", palette=PALETTE, ax=axes[3])
+axes[3].set_title("P90 Response Time (90th percentile)")
+axes[3].set_ylabel("Minutes")
+axes[3].set_xlabel("Policy")
 
 fig.suptitle("Experiment 1: Baseline Policy Comparison (K=20)", fontsize=14, y=1.02)
 plt.tight_layout()
@@ -155,7 +162,7 @@ print(exp2_rt.round(3).to_string())
 
 # %%
 # Line plot: mean RT vs K
-fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig, axes = plt.subplots(1, 4, figsize=(20, 5))
 
 for policy in ["P0", "P1", "P2"]:
     sub = exp2[exp2["policy"] == policy]
@@ -171,32 +178,48 @@ axes[0].set_ylabel("Mean Response Time (min)")
 axes[0].set_title("Mean Response Time vs Fleet Size")
 axes[0].legend()
 
-# Coverage vs K
+# 6-min Coverage (NYC) vs K
+if "coverage_6min" in exp2.columns:
+    for policy in ["P0", "P1", "P2"]:
+        sub = exp2[exp2["policy"] == policy]
+        grp = sub.groupby("K")["coverage_6min"].agg(["mean", "std", "count"]).reset_index()
+        t_crit = stats.t.ppf(0.975, df=grp["count"] - 1)
+        grp["ci"] = t_crit * grp["std"] / np.sqrt(grp["count"])
+        axes[1].errorbar(grp["K"], grp["mean"], yerr=grp["ci"], marker="D",
+                         label=policy, color=PALETTE[policy], capsize=4)
+
+axes[1].set_xlabel("Fleet Size (K)")
+axes[1].set_ylabel("6-min Coverage (NYC)")
+axes[1].set_title("6-min Coverage vs Fleet Size")
+axes[1].legend()
+axes[1].set_ylim(0, 1.05)
+
+# 8-min Coverage (NFPA) vs K
 for policy in ["P0", "P1", "P2"]:
     sub = exp2[exp2["policy"] == policy]
     grp = sub.groupby("K")["coverage_8min"].agg(["mean", "std", "count"]).reset_index()
     t_crit = stats.t.ppf(0.975, df=grp["count"] - 1)
     grp["ci"] = t_crit * grp["std"] / np.sqrt(grp["count"])
 
-    axes[1].errorbar(grp["K"], grp["mean"], yerr=grp["ci"], marker="s",
+    axes[2].errorbar(grp["K"], grp["mean"], yerr=grp["ci"], marker="s",
                      label=policy, color=PALETTE[policy], capsize=4)
 
-axes[1].set_xlabel("Fleet Size (K)")
-axes[1].set_ylabel("8-min Coverage")
-axes[1].set_title("Coverage vs Fleet Size")
-axes[1].legend()
-axes[1].set_ylim(0, 1.05)
+axes[2].set_xlabel("Fleet Size (K)")
+axes[2].set_ylabel("8-min Coverage (NFPA)")
+axes[2].set_title("C. 8-min Coverage (NFPA) vs Fleet Size")
+axes[2].legend()
+axes[2].set_ylim(0, 1.05)
 
 # Utilization vs K
 for policy in ["P0", "P1", "P2"]:
     sub = exp2[exp2["policy"] == policy]
     grp = sub.groupby("K")["mean_utilization"].agg(["mean"]).reset_index()
-    axes[2].plot(grp["K"], grp["mean"], marker="^", label=policy, color=PALETTE[policy])
+    axes[3].plot(grp["K"], grp["mean"], marker="^", label=policy, color=PALETTE[policy])
 
-axes[2].set_xlabel("Fleet Size (K)")
-axes[2].set_ylabel("Mean Utilization")
-axes[2].set_title("Utilization vs Fleet Size")
-axes[2].legend()
+axes[3].set_xlabel("Fleet Size (K)")
+axes[3].set_ylabel("Mean Utilization")
+axes[3].set_title("Utilization vs Fleet Size")
+axes[3].legend()
 
 fig.suptitle("Experiment 2: Fleet Size Sensitivity", fontsize=14, y=1.02)
 plt.tight_layout()
@@ -214,7 +237,7 @@ print("Mean Response Time by Policy × Demand Multiplier:")
 print(exp3_rt.round(3).to_string())
 
 # %%
-fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig, axes = plt.subplots(1, 4, figsize=(20, 5))
 
 # RT vs demand multiplier
 for policy in ["P0", "P1", "P2"]:
@@ -230,29 +253,42 @@ axes[0].set_ylabel("Mean Response Time (min)")
 axes[0].set_title("Response Time vs Demand")
 axes[0].legend()
 
-# Coverage vs demand
+# 6-min Coverage (NYC) vs demand
+if "coverage_6min" in exp3.columns:
+    for policy in ["P0", "P1", "P2"]:
+        sub = exp3[exp3["policy"] == policy]
+        grp = sub.groupby("demand_multiplier")["coverage_6min"].agg(["mean"]).reset_index()
+        axes[1].plot(grp["demand_multiplier"], grp["mean"], marker="D",
+                     label=policy, color=PALETTE[policy])
+
+axes[1].set_xlabel("Demand Multiplier")
+axes[1].set_ylabel("6-min Coverage (NYC)")
+axes[1].set_title("6-min Coverage vs Demand")
+axes[1].legend()
+
+# 8-min Coverage (NFPA) vs demand
 for policy in ["P0", "P1", "P2"]:
     sub = exp3[exp3["policy"] == policy]
     grp = sub.groupby("demand_multiplier")["coverage_8min"].agg(["mean"]).reset_index()
-    axes[1].plot(grp["demand_multiplier"], grp["mean"], marker="s",
+    axes[2].plot(grp["demand_multiplier"], grp["mean"], marker="s",
                  label=policy, color=PALETTE[policy])
 
-axes[1].set_xlabel("Demand Multiplier")
-axes[1].set_ylabel("8-min Coverage")
-axes[1].set_title("Coverage vs Demand")
-axes[1].legend()
+axes[2].set_xlabel("Demand Multiplier")
+axes[2].set_ylabel("8-min Coverage (NFPA)")
+axes[2].set_title("C. 8-min Coverage (NFPA) vs Demand")
+axes[2].legend()
 
 # Queue fraction vs demand
 for policy in ["P0", "P1", "P2"]:
     sub = exp3[exp3["policy"] == policy]
     grp = sub.groupby("demand_multiplier")["queue_fraction"].agg(["mean"]).reset_index()
-    axes[2].plot(grp["demand_multiplier"], grp["mean"], marker="^",
+    axes[3].plot(grp["demand_multiplier"], grp["mean"], marker="^",
                  label=policy, color=PALETTE[policy])
 
-axes[2].set_xlabel("Demand Multiplier")
-axes[2].set_ylabel("Queue Fraction")
-axes[2].set_title("Queueing vs Demand")
-axes[2].legend()
+axes[3].set_xlabel("Demand Multiplier")
+axes[3].set_ylabel("Queue Fraction")
+axes[3].set_title("Queueing vs Demand")
+axes[3].legend()
 
 fig.suptitle("Experiment 3: Demand Scaling Sensitivity (K=20)", fontsize=14, y=1.02)
 plt.tight_layout()
@@ -270,7 +306,7 @@ print("Mean Response Time by Policy × Service Time Mean:")
 print(exp4_rt.round(3).to_string())
 
 # %%
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
 # RT by service time
 for policy in ["P0", "P1", "P2"]:
@@ -283,20 +319,32 @@ for policy in ["P0", "P1", "P2"]:
 
 axes[0].set_xlabel("Service Time Mean (min)")
 axes[0].set_ylabel("Mean Response Time (min)")
-axes[0].set_title("Response Time vs Service Duration")
+axes[0].set_title("A. Response Time vs Service Duration")
 axes[0].legend()
 
-# Coverage by service time
+# 6-min Coverage (NYC) by service time
 for policy in ["P0", "P1", "P2"]:
     sub = exp4[exp4["policy"] == policy]
-    grp = sub.groupby("service_time_mean")["coverage_8min"].agg(["mean"]).reset_index()
+    grp = sub.groupby("service_time_mean")["coverage_6min"].agg(["mean"]).reset_index()
     axes[1].plot(grp["service_time_mean"], grp["mean"], marker="s",
                  label=policy, color=PALETTE[policy])
 
 axes[1].set_xlabel("Service Time Mean (min)")
-axes[1].set_ylabel("8-min Coverage")
-axes[1].set_title("Coverage vs Service Duration")
+axes[1].set_ylabel("6-min Coverage (NYC)")
+axes[1].set_title("B. 6-min Coverage (NYC) vs Service Duration")
 axes[1].legend()
+
+# 8-min Coverage (NFPA) by service time
+for policy in ["P0", "P1", "P2"]:
+    sub = exp4[exp4["policy"] == policy]
+    grp = sub.groupby("service_time_mean")["coverage_8min"].agg(["mean"]).reset_index()
+    axes[2].plot(grp["service_time_mean"], grp["mean"], marker="s",
+                 label=policy, color=PALETTE[policy])
+
+axes[2].set_xlabel("Service Time Mean (min)")
+axes[2].set_ylabel("8-min Coverage (NFPA)")
+axes[2].set_title("C. 8-min Coverage (NFPA) vs Service Duration")
+axes[2].legend()
 
 fig.suptitle("Experiment 4: Service Time Robustness (K=20)", fontsize=14, y=1.02)
 plt.tight_layout()
@@ -317,8 +365,9 @@ def build_summary_table(df, exp_name, extra_cols=None):
 
     metrics = {
         "mean_response_time": "Mean RT (min)",
-        "p90_response_time": "P90 RT (min)",
-        "coverage_8min": "8-min Coverage",
+        "p90_response_time": "P90 Response Time (90th pctl, min)",
+        "coverage_6min": "6-min Coverage (NYC)",
+        "coverage_8min": "8-min Coverage (NFPA)",
         "mean_utilization": "Mean Utilization",
         "queue_fraction": "Queue Fraction",
     }

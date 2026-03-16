@@ -216,9 +216,11 @@ def run_single_cbd_replication(
     # Try to compute CBD-specific metrics from incident log
     log = results.get("incident_log")
     cbd_rt_mean = np.nan
-    cbd_coverage = np.nan
+    cbd_coverage_8 = np.nan
+    cbd_coverage_6 = np.nan
     non_cbd_rt_mean = np.nan
-    non_cbd_coverage = np.nan
+    non_cbd_coverage_8 = np.nan
+    non_cbd_coverage_6 = np.nan
 
     if log is not None and not log.empty and "precinct" in log.columns:
         cbd_mask = log["precinct"].isin(CBD_PRECINCTS)
@@ -227,15 +229,18 @@ def run_single_cbd_replication(
 
         if not cbd_log.empty and "response_time_minutes" in cbd_log.columns:
             cbd_rt_mean = cbd_log["response_time_minutes"].mean()
-            cbd_coverage = (cbd_log["response_time_minutes"] <= 8.0).mean()
+            cbd_coverage_8 = (cbd_log["response_time_minutes"] <= 8.0).mean()
+            cbd_coverage_6 = (cbd_log["response_time_minutes"] <= 6.0).mean()
 
         if not non_cbd_log.empty and "response_time_minutes" in non_cbd_log.columns:
             non_cbd_rt_mean = non_cbd_log["response_time_minutes"].mean()
-            non_cbd_coverage = (non_cbd_log["response_time_minutes"] <= 8.0).mean()
+            non_cbd_coverage_8 = (non_cbd_log["response_time_minutes"] <= 8.0).mean()
+            non_cbd_coverage_6 = (non_cbd_log["response_time_minutes"] <= 6.0).mean()
 
     row = {
         "mean_response_time": summary.get("response_time_mean", np.nan),
         "p90_response_time": summary.get("response_time_p90", np.nan),
+        "coverage_6min": summary.get("coverage_6min", np.nan),
         "coverage_8min": summary.get("coverage_fraction", np.nan),
         "mean_utilization": mean_util,
         "max_utilization": max_util,
@@ -245,9 +250,11 @@ def run_single_cbd_replication(
         "total_incidents": summary.get("total_incidents", 0),
         "incidents_queued": summary.get("incidents_queued", 0),
         "cbd_mean_rt": cbd_rt_mean,
-        "cbd_coverage_8min": cbd_coverage,
+        "cbd_coverage_6min": cbd_coverage_6,
+        "cbd_coverage_8min": cbd_coverage_8,
         "non_cbd_mean_rt": non_cbd_rt_mean,
-        "non_cbd_coverage_8min": non_cbd_coverage,
+        "non_cbd_coverage_6min": non_cbd_coverage_6,
+        "non_cbd_coverage_8min": non_cbd_coverage_8,
         "random_seed": seed,
     }
     return row
@@ -402,8 +409,10 @@ def main():
     # Summary by scenario type and policy
     summary = df.groupby(["scenario_type", "policy"]).agg({
         "mean_response_time": ["mean", "std"],
+        "coverage_6min": ["mean", "std"],
         "coverage_8min": ["mean", "std"],
         "cbd_mean_rt": "mean",
+        "cbd_coverage_6min": "mean",
         "cbd_coverage_8min": "mean",
         "queue_fraction": "mean",
     }).round(4)
@@ -412,10 +421,13 @@ def main():
     # Save summary
     summary_flat = df.groupby(["scenario_type", "policy"]).agg({
         "mean_response_time": "mean",
+        "coverage_6min": "mean",
         "coverage_8min": "mean",
         "cbd_mean_rt": "mean",
+        "cbd_coverage_6min": "mean",
         "cbd_coverage_8min": "mean",
         "non_cbd_mean_rt": "mean",
+        "non_cbd_coverage_6min": "mean",
         "non_cbd_coverage_8min": "mean",
         "queue_fraction": "mean",
         "total_incidents": "mean",

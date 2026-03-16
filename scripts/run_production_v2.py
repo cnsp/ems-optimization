@@ -561,8 +561,8 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
         pdf = desc[desc["policy"] == policy].sort_values("K")
         ax.plot(pdf["K"], pdf["p95_RT"], marker="^",
                 label=policy, color=colors[policy], linewidth=2, markersize=6)
-    ax.set_xlabel("K"); ax.set_ylabel("95th Percentile Response Time (min)")
-    ax.set_title(f"95th Percentile Response Time vs Fleet Size (cap={CAPACITY})")
+    ax.set_xlabel("K"); ax.set_ylabel("P95 Response Time (95th percentile, min)")
+    ax.set_title(f"P95 Response Time (95th percentile) vs Fleet Size (cap={CAPACITY})")
     ax.legend(); ax.grid(True, alpha=0.3); ax.set_xticks(K_VALUES)
     fig.tight_layout()
     fig.savefig(FIG_DIR / "p95_rt_vs_K.png")
@@ -775,11 +775,11 @@ def create_v1_comparison(df_v2: pd.DataFrame):
 
     comp_df = pd.DataFrame(rows)
     comp_df.to_csv(OUT_ROOT / "comparison_with_v1.csv", index=False)
-    logger.info(f"  V1 vs V2 comparison: {len(comp_df)} rows")
+    logger.info(f"  Legacy vs current comparison: {len(comp_df)} rows")
     logger.info(f"  Saved to {OUT_ROOT / 'comparison_with_v1.csv'}")
 
     # Print summary
-    logger.info("\n  V1 vs V2 Summary:")
+    logger.info("\n  Legacy vs Current Baseline Summary:")
     for policy_v1, policy_v2 in policy_map.items():
         pcomp = comp_df[comp_df["v1_policy"] == policy_v1]
         if pcomp.empty:

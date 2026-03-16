@@ -42,7 +42,7 @@ def fig1_policy_comparison():
     print("  Figure 1: Policy Comparison …")
     df = load("exp1_policy_comparison")
 
-    fig, axes = plt.subplots(1, 3, figsize=(14, 5))
+    fig, axes = plt.subplots(1, 4, figsize=(18, 5))
 
     # Panel A – Response Time Box Plot
     ax = axes[0]
@@ -66,30 +66,46 @@ def fig1_policy_comparison():
         ax.plot([pA, pA, pB, pB], [y, y + y_max*0.02, y + y_max*0.02, y], lw=1, c="k")
         ax.text((pA + pB) / 2, y + y_max*0.02, stars, ha="center", va="bottom", fontsize=9)
 
-    # Panel B – Coverage Bar Chart with Error Bars
+    # Panel B – 6-min Coverage (NYC) Bar Chart
     ax = axes[1]
-    means = df.groupby("policy")["coverage_8min"].mean().reindex(order)
-    sems = df.groupby("policy")["coverage_8min"].sem().reindex(order)
-    bars = ax.bar(range(3), means * 100, yerr=sems * 100 * 1.96, capsize=4,
-                  color=[PALETTE[p] for p in order], edgecolor="black", linewidth=0.5)
-    ax.set_xticks(range(3))
+    x_pos = np.arange(3)
+    if "coverage_6min" in df.columns:
+        means_6 = df.groupby("policy")["coverage_6min"].mean().reindex(order)
+        sems_6 = df.groupby("policy")["coverage_6min"].sem().reindex(order)
+        ax.bar(x_pos, means_6 * 100, yerr=sems_6 * 100 * 1.96, capsize=4,
+               color=[PALETTE[p] for p in order], edgecolor="black", linewidth=0.5)
+    ax.set_xticks(x_pos)
     ax.set_xticklabels([POLICY_LABELS[p] for p in order], rotation=15, ha="right")
-    ax.set_ylabel("8-min Coverage (%)")
-    ax.set_title("B. Coverage")
+    ax.set_ylabel("6-min Coverage (%)")
+    ax.set_title("B. 6-min Coverage (NYC)")
     ax.set_ylim(0, 105)
     ax.axhline(90, ls="--", color="grey", lw=0.8, label="90% target")
     ax.legend(fontsize=8)
 
-    # Panel C – Utilization
+    # Panel C – 8-min Coverage (NFPA) Bar Chart
     ax = axes[2]
+    means = df.groupby("policy")["coverage_8min"].mean().reindex(order)
+    sems = df.groupby("policy")["coverage_8min"].sem().reindex(order)
+    ax.bar(x_pos, means * 100, yerr=sems * 100 * 1.96, capsize=4,
+           color=[PALETTE[p] for p in order], edgecolor="black", linewidth=0.5)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([POLICY_LABELS[p] for p in order], rotation=15, ha="right")
+    ax.set_ylabel("8-min Coverage (NFPA) (%)")
+    ax.set_title("C. 8-min Coverage (NFPA)")
+    ax.set_ylim(0, 105)
+    ax.axhline(90, ls="--", color="grey", lw=0.8, label="90% target")
+    ax.legend(fontsize=8)
+
+    # Panel D – Utilization
+    ax = axes[3]
     means_u = df.groupby("policy")["mean_utilization"].mean().reindex(order)
     sems_u = df.groupby("policy")["mean_utilization"].sem().reindex(order)
-    ax.bar(range(3), means_u, yerr=sems_u * 1.96, capsize=4,
+    ax.bar(x_pos, means_u, yerr=sems_u * 1.96, capsize=4,
            color=[PALETTE[p] for p in order], edgecolor="black", linewidth=0.5)
-    ax.set_xticks(range(3))
+    ax.set_xticks(x_pos)
     ax.set_xticklabels([POLICY_LABELS[p] for p in order], rotation=15, ha="right")
     ax.set_ylabel("Mean Utilization")
-    ax.set_title("C. Utilization")
+    ax.set_title("D. Utilization")
 
     fig.suptitle(f"Figure 1: Baseline Policy Comparison (K=20, cap={CAPACITY}, 30 replications)", fontsize=13, y=1.02)
     fig.tight_layout()
@@ -137,7 +153,7 @@ def fig3_demand_robustness():
     print("  Figure 3: Demand Robustness …")
     df = load("exp3_demand_sensitivity")
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
     # Panel A – Response Time
     ax = axes[0]
@@ -154,8 +170,25 @@ def fig3_demand_robustness():
     ax.legend(fontsize=8)
     ax.axhline(8, ls="--", color="grey", lw=0.8)
 
-    # Panel B – Coverage
+    # Panel B – 6-min Coverage (NYC)
     ax = axes[1]
+    has_6min = "coverage_6min" in df.columns
+    for pol in ["P0", "P1", "P2"]:
+        sub = df[df["policy"] == pol]
+        if has_6min:
+            g = sub.groupby("demand_multiplier")["coverage_6min"]
+            means, sems = g.mean(), g.sem()
+            ax.plot(means.index, means.values * 100, "D-", color=PALETTE[pol], label=POLICY_LABELS[pol])
+            ax.fill_between(means.index, (means - 1.96*sems).values * 100, (means + 1.96*sems).values * 100,
+                            alpha=0.15, color=PALETTE[pol])
+    ax.set_xlabel("Demand Multiplier")
+    ax.set_ylabel("6-min Coverage (NYC) (%)")
+    ax.set_title("B. 6-min Coverage vs Demand")
+    ax.legend(fontsize=8)
+    ax.axhline(90, ls="--", color="grey", lw=0.8)
+
+    # Panel C – 8-min Coverage (NFPA)
+    ax = axes[2]
     for pol in ["P0", "P1", "P2"]:
         sub = df[df["policy"] == pol]
         g = sub.groupby("demand_multiplier")["coverage_8min"]
@@ -164,8 +197,8 @@ def fig3_demand_robustness():
         ax.fill_between(means.index, (means - 1.96*sems).values * 100, (means + 1.96*sems).values * 100,
                         alpha=0.15, color=PALETTE[pol])
     ax.set_xlabel("Demand Multiplier")
-    ax.set_ylabel("8-min Coverage (%)")
-    ax.set_title("B. Coverage vs Demand")
+    ax.set_ylabel("8-min Coverage (NFPA) (%)")
+    ax.set_title("C. 8-min Coverage (NFPA) vs Demand")
     ax.legend(fontsize=8)
     ax.axhline(90, ls="--", color="grey", lw=0.8)
 

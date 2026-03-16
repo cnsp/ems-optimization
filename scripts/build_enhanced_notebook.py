@@ -852,6 +852,7 @@ prod_agg = prod_df.groupby(['policy_clean', 'K']).agg(
     std_rt=('mean_response_time', 'std'),
     n=('mean_response_time', 'count'),
     p95_rt=('mean_response_time', lambda x: np.percentile(x, 95)),
+    coverage_6=('coverage_6min', 'mean'),
     coverage=('coverage_8min', 'mean'),
     mean_util=('mean_utilization', 'mean'),
     mean_queue=('mean_queue_length', 'mean'),
@@ -876,7 +877,15 @@ print(pivot_prod.round(3).to_string())
 pivot_cov_prod = prod_agg.pivot(index='K', columns='policy_clean', values='coverage')
 if 'P0' in pivot_cov_prod.columns:
     pivot_cov_prod = pivot_cov_prod[[c for c in ['P0', 'P1', 'P2'] if c in pivot_cov_prod.columns]]
-print('\\nProduction Simulation: 8-min Coverage')
+# 6-min Coverage pivot
+pivot_cov6_prod = prod_agg.pivot(index='K', columns='policy_clean', values='coverage_6')
+if 'P0' in pivot_cov6_prod.columns:
+    pivot_cov6_prod = pivot_cov6_prod[[c for c in ['P0', 'P1', 'P2'] if c in pivot_cov6_prod.columns]]
+print('\\nProduction Simulation: 6-min Coverage (NYC)')
+print('=' * 55)
+print((pivot_cov6_prod * 100).round(1).to_string())
+
+print('\\nProduction Simulation: 8-min Coverage (NFPA)')
 print('=' * 55)
 print((pivot_cov_prod * 100).round(1).to_string())
 
@@ -886,7 +895,7 @@ print(f'\\nSaved: {TABLES_DIR / "production_results.csv"}')"""))
 
 cells.append(md("### 6.2 Fleet sensitivity visualization (production)"))
 
-cells.append(code("""fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+cells.append(code("""fig, axes = plt.subplots(1, 4, figsize=(22, 5))
 
 prod_colors = {'P0': '#3498db', 'P1': '#e67e22', 'P2': '#2ecc71'}
 
@@ -900,23 +909,35 @@ for pid in ['P0', 'P1', 'P2']:
     ax.fill_between(sub['K'], sub['ci_lo'], sub['ci_hi'], alpha=0.15, color=prod_colors[pid])
 ax.set_xlabel('Fleet Size (K)')
 ax.set_ylabel('Mean Response Time (min)')
-ax.set_title('Response Time vs Fleet Size')
+ax.set_title('A. Response Time vs Fleet Size')
 ax.legend()
 
-# Coverage
+# 6-min Coverage (NYC)
 ax = axes[1]
+for pid in ['P0', 'P1', 'P2']:
+    sub = prod_agg[prod_agg['policy_clean'] == pid].sort_values('K')
+    if len(sub) == 0:
+        continue
+    ax.plot(sub['K'], sub['coverage_6'] * 100, 's-', color=prod_colors[pid], label=pid, linewidth=2, markersize=6)
+ax.set_xlabel('Fleet Size (K)')
+ax.set_ylabel('6-min Coverage (NYC) (%)')
+ax.set_title('B. 6-min Coverage (NYC) vs Fleet Size')
+ax.legend()
+
+# 8-min Coverage (NFPA)
+ax = axes[2]
 for pid in ['P0', 'P1', 'P2']:
     sub = prod_agg[prod_agg['policy_clean'] == pid].sort_values('K')
     if len(sub) == 0:
         continue
     ax.plot(sub['K'], sub['coverage'] * 100, 's-', color=prod_colors[pid], label=pid, linewidth=2, markersize=6)
 ax.set_xlabel('Fleet Size (K)')
-ax.set_ylabel('8-min Coverage (%)')
-ax.set_title('Coverage vs Fleet Size')
+ax.set_ylabel('8-min Coverage (NFPA) (%)')
+ax.set_title('C. 8-min Coverage (NFPA) vs Fleet Size')
 ax.legend()
 
 # Utilization
-ax = axes[2]
+ax = axes[3]
 for pid in ['P0', 'P1', 'P2']:
     sub = prod_agg[prod_agg['policy_clean'] == pid].sort_values('K')
     if len(sub) == 0:
@@ -924,7 +945,7 @@ for pid in ['P0', 'P1', 'P2']:
     ax.plot(sub['K'], sub['mean_util'] * 100, 'D-', color=prod_colors[pid], label=pid, linewidth=2, markersize=6)
 ax.set_xlabel('Fleet Size (K)')
 ax.set_ylabel('Mean Utilization (%)')
-ax.set_title('Utilization vs Fleet Size')
+ax.set_title('D. Utilization vs Fleet Size')
 ax.legend()
 
 fig.suptitle('Production Simulation Results (30 replications per scenario)', fontsize=14, y=1.02)
@@ -1247,13 +1268,16 @@ cells.append(code("""if cbd_precomp.exists():
     # Coverage comparison
     ax = axes[1]
     if 'cbd_coverage_8min' in cbd_comp.columns:
-        ax.bar(x - w/2, cbd_comp['cbd_coverage_8min'] * 100, w, label='CBD', color='#e74c3c', edgecolor='black')
-        ax.bar(x + w/2, cbd_comp['non_cbd_coverage_8min'] * 100, w, label='Non-CBD', color='#3498db', edgecolor='black')
+        ax.bar(x - w/2, cbd_comp['cbd_coverage_8min'] * 100, w, label='CBD (8-min NFPA)', color='#e74c3c', edgecolor='black')
+        ax.bar(x + w/2, cbd_comp['non_cbd_coverage_8min'] * 100, w, label='Non-CBD (8-min NFPA)', color='#3498db', edgecolor='black')
+        if 'cbd_coverage_6min' in cbd_comp.columns:
+            ax.bar(x - w/2, cbd_comp['cbd_coverage_6min'] * 100, w, label='CBD (6-min NYC)', color='#e74c3c', edgecolor='black', alpha=0.5, hatch='//')
+            ax.bar(x + w/2, cbd_comp['non_cbd_coverage_6min'] * 100, w, label='Non-CBD (6-min NYC)', color='#3498db', edgecolor='black', alpha=0.5, hatch='//')
         ax.set_xticks(x)
         ax.set_xticklabels(cbd_comp['policy'])
-        ax.set_ylabel('8-min Coverage (%)')
+        ax.set_ylabel('Coverage (%)')
         ax.set_title('Coverage: CBD vs Non-CBD')
-        ax.legend()
+        ax.legend(fontsize=8)
     
     fig.suptitle('CBD Robustness Analysis', fontsize=14, y=1.02)
     fig.tight_layout()

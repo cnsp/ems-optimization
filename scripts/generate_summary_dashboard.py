@@ -62,8 +62,8 @@ ax1.set_title(f'Key Results (K=20, cap={CAPACITY})', fontsize=14, fontweight='bo
 
 metrics_data = [
     ('Mean Response Time', '3.17 → 2.57 min', '↓ 19%', COLORS['P2']),
-    ('P90 Response Time', '5.32 → 3.76 min', '↓ 29%', COLORS['P2']),
-    ('8-min Coverage', '99.6% → 99.6%', 'Maintained', COLORS['P2']),
+    ('P90 Response Time (90th pctl)', '5.32 → 3.76 min', '↓ 29%', COLORS['P2']),
+    ('8-min Coverage (NFPA)', '99.6% → 99.6%', 'Maintained', COLORS['P2']),
     ('6-min Coverage (NYC)', '93.7% → 99.2%', '↑ 5.5pp', COLORS['P2']),
 ]
 
@@ -98,24 +98,36 @@ ax2.spines['right'].set_visible(False)
 ax2.axhline(y=8.0, color='gray', linestyle='--', alpha=0.5, label='8-min target')
 ax2.legend(fontsize=9)
 
-# ── Panel 3: Coverage Comparison (Top Right) ───────────────────────
+# ── Panel 3: Coverage Comparison (Top Right) — both 6-min & 8-min ──
 ax3 = fig.add_subplot(gs[0, 2])
-coverages = []
+coverages_8 = []
+coverages_6 = []
 for p in policies:
-    row = exp1[(exp1['Policy'] == p) & (exp1['Metric'] == '8-min Coverage (NFPA)')]
-    coverages.append(row['Mean'].values[0] * 100)
+    row8 = exp1[(exp1['Policy'] == p) & (exp1['Metric'] == '8-min Coverage (NFPA)')]
+    coverages_8.append(row8['Mean'].values[0] * 100 if len(row8) else 0)
+    row6 = exp1[(exp1['Policy'] == p) & (exp1['Metric'] == '6-min Coverage (NYC)')]
+    coverages_6.append(row6['Mean'].values[0] * 100 if len(row6) else 0)
 
-bars3 = ax3.bar(policies, coverages, color=[COLORS[p] for p in policies],
-                edgecolor='white', linewidth=2, width=0.6)
-ax3.set_ylabel('8-min Coverage (%)', fontsize=11)
+x_pos = np.arange(len(policies))
+w = 0.35
+bars_6 = ax3.bar(x_pos - w/2, coverages_6, w, color=[COLORS[p] for p in policies],
+                 edgecolor='white', linewidth=2, alpha=0.6, label='6-min (NYC)')
+bars_8 = ax3.bar(x_pos + w/2, coverages_8, w, color=[COLORS[p] for p in policies],
+                 edgecolor='black', linewidth=1, label='8-min (NFPA)')
+ax3.set_xticks(x_pos)
+ax3.set_xticklabels(policies)
+ax3.set_ylabel('Coverage (%)', fontsize=11)
 ax3.set_title(f'Coverage Comparison (Exp 1, cap={CAPACITY})', fontsize=14, fontweight='bold',
               color=COLORS['text'])
 ax3.set_ylim(0, 110)
-for bar, val in zip(bars3, coverages):
-    ax3.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
-             f'{val:.1f}%', ha='center', fontsize=12, fontweight='bold')
-ax3.axhline(y=95, color='gray', linestyle='--', alpha=0.5, label='95% target')
-ax3.legend(fontsize=9)
+for bar, val in zip(bars_6, coverages_6):
+    ax3.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
+             f'{val:.1f}%', ha='center', fontsize=8, fontweight='bold')
+for bar, val in zip(bars_8, coverages_8):
+    ax3.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
+             f'{val:.1f}%', ha='center', fontsize=8, fontweight='bold')
+ax3.axhline(y=90, color='gray', linestyle='--', alpha=0.5, label='90% target')
+ax3.legend(fontsize=7, loc='lower right')
 ax3.spines['top'].set_visible(False)
 ax3.spines['right'].set_visible(False)
 

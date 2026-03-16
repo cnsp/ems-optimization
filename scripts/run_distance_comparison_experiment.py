@@ -130,8 +130,8 @@ def plot_comparison(comp_df):
 
     metrics_to_plot = [
         ("response_time_mean", "Mean Response Time (min)"),
-        ("response_time_p90", "P90 Response Time (min)"),
-        ("coverage_fraction", "Coverage Fraction (≤8 min)"),
+        ("response_time_p90", "P90 Response Time (90th percentile, min)"),
+        ("coverage_fraction", "Coverage Fraction (≤8 min, NFPA)"),
     ]
 
     for ax, (metric, ylabel) in zip(axes, metrics_to_plot):
@@ -172,7 +172,7 @@ def plot_replication_distributions(results_dict):
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
     for ax, metric, title in zip(axes,
                                   ["response_time_mean", "response_time_p90"],
-                                  ["Mean Response Time", "P90 Response Time"]):
+                                  ["Mean Response Time", "P90 Response Time (90th pctl)"]):
         sns.boxplot(data=df, x="scenario", y=metric, ax=ax,
                     palette=["#2196F3", "#FF5722"])
         ax.set_title(title)
