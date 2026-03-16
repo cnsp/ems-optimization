@@ -144,7 +144,7 @@ def main():
     print("=" * 60)
 
     df = load_simulation_data()
-    output = create_heatmap(df, k_values=(20, 40))
+    output = create_heatmap(df, k_values=(20, 30, 40))
     print(f"\nDone! Output: {output}")
 
 

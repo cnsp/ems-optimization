@@ -161,9 +161,9 @@ Month: 1 2 3 4 5 6 7 8 9 10 11 12
 
 ### Key Performance Indicators
 
-Simulation baselines below are from v1 experiments (capacity=5 units per firehouse). Operational deployment targets use capacity=2 units per firehouse (the recommended default from capacity sensitivity analysis).
+Simulation baselines below are from the current P0 (spatially-stratified) at K=20. Operational deployment targets use P2 with capacity=2 units per firehouse (the recommended default from capacity sensitivity analysis).
 
-| KPI | Baseline (P0, cap=5) | Target (P2, cap=2) | Measurement |
+| KPI | Baseline (P0, cap=2) | Target (P2, cap=2) | Measurement |
 |-----|---------------------|-------------------|-------------|
 | Mean Response Time | 3.17 min | < 3.0 min | Daily from CAD |
 | 8-min Coverage (NFPA standard) | 99.6% | > 99% | Weekly calculation |

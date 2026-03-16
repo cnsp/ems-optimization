@@ -169,7 +169,7 @@ def spatially_stratified_allocation(firehouses, K, capacity=2, n_bands=None) -> 
 def spatial_stratification_analysis(firehouses, K_values, capacity=2) -> pd.DataFrame
 ```
 
-**Added in v1.3.0:** `spatially_stratified_allocation()` divides firehouses into latitude bands and round-robins units across bands to ensure geographic coverage. This replaces index-based P0 as the standard baseline (P0-spatial). `spatial_stratification_analysis()` evaluates stratification quality across multiple K values.
+**Added in v1.3.0:** `spatially_stratified_allocation()` divides firehouses into latitude bands and round-robins units across bands to ensure geographic coverage. This replaces the legacy index-based uniform allocation as the standard P0 baseline. `spatial_stratification_analysis()` evaluates stratification quality across multiple K values.
 
 ---
 

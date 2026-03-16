@@ -38,17 +38,17 @@
 
 ## Key Metrics Achieved (cap=2, K=20)
 
-| Metric | P0-spatial (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
+| Metric | P0 (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
 |--------|----------------------|--------------------------|-----------------|
 | Mean Response Time | 3.17 min | 2.63 min | **2.57 min** |
 | P95 Response Time | 6.26 min | 5.05 min | **4.66 min** |
 | 8-min Coverage | 99.6% | 99.6% | **99.6%** |
 | Mean Utilization | 7.6% | 7.5% | 7.5% |
 
-**Key Observation:** P1 (demand-proportional allocation) captures most of the improvement over P0-spatial, indicating that matching supply to demand patterns is the primary driver of performance gains. P2's additional optimization yields a further 2.3% reduction in mean response time beyond P1.
+**Key Observation:** P1 (demand-proportional allocation) captures most of the improvement over P0, indicating that matching supply to demand patterns is the primary driver of performance gains. P2's additional optimization yields a further 2.3% reduction in mean response time beyond P1.
 
 
-**Statistical Significance:** All results p < 0.001. P0-spatial improvement driven by geographic placement.
+**Statistical Significance:** All results p < 0.001. P0 improvement driven by geographic placement.
 
 ## Phase Completion Status
 

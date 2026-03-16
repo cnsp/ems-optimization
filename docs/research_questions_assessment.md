@@ -27,7 +27,7 @@ All simulation experiments reported in this assessment use the following fixed p
 
 The EMS Optimization project defines five primary research questions in **§2.3 Research Objectives** of the technical report (`docs/technical_report.md`). This document evaluates whether each question was answered with concrete, simulation-based evidence by cross-referencing the technical report results (§5), final summary (`docs/final_summary.md`), and raw result files in `results/`.
 
-**Simulation Scale:** 1,770 production runs + 330 CBD experiments across 5 experiment sets, 30 replications per cell, 168 simulated hours per run (with 24-hour warm-up). Total simulated time: ~296,520 hours (~33.8 years).
+**Simulation Scale:** 2,700+ total simulation runs across production experiments, CBD robustness, extended fleet analysis, and capacity sensitivity, with 30 replications per cell, 168 simulated hours per run (with 24-hour warm-up).
 
 ---
 
@@ -239,27 +239,29 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 | Policy | K for ≥95% 8-min Coverage | K for ≥99% 8-min Coverage | Source |
 |--------|---------------------------|---------------------------|--------|
-| **P0 (Uniform)** | **K ≈ 35–40** (94.0% at K=35, 99.5% at K=40) | **K ≈ 40** | `results/tables/exp2_pivot_rt.csv` |
-| **P1 (Proportional)** | **K ≈ 15** (99.2% at K=15) | **K ≈ 15** | `results/simulation/production/exp2_fleet_sensitivity.csv` |
-| **P2 (Optimised)** | **K ≈ 15** (99.1% at K=15) | **K ≈ 20** (99.6%) | `results/simulation/production/exp2_fleet_sensitivity.csv` |
+| **P0 (Spatially-Stratified)** | **K = 15** (99.1% at K=15) | **K = 15** | `results/production_v2/tables/descriptive_statistics.csv` |
+| **P1 (Proportional)** | **K = 15** (99.2% at K=15) | **K = 15** | `results/production_v2/tables/descriptive_statistics.csv` |
+| **P2 (Optimised)** | **K = 15** (99.1% at K=15) | **K = 20** (99.7%) | `results/production_v2/tables/descriptive_statistics.csv` |
+
+All three policies achieve ≥99% 8-min coverage at K=15 or above. The primary differentiation is in **6-minute coverage** and **mean response time**, not 8-min coverage.
 
 #### Detailed Coverage by Fleet Size
 
 | Fleet Size (K) | P0 8-min (NFPA) | P1 8-min (NFPA) | P2 8-min (NFPA) | P0 6-min (NYC) | P1 6-min (NYC) | P2 6-min (NYC) |
 |----------------|-----------------|-----------------|-----------------|----------------|----------------|----------------|
-| 15 | 57.5% | 99.2% | 99.1% | 49.9% | 95.8% | 95.7% |
-| 20 | 64.4% | 99.6% | 99.6% | 94.0% | 98.0% | 98.2% |
-| 25 | 77.1% | 99.7% | 99.8% | 69.5% | 98.4% | 98.6% |
-| 30 | 90.3% | 99.7% | 99.8% | 99.3% | 98.5% | 98.7% |
-| 35 | 94.0% | 99.9% | 99.9% | 92.1% | 98.6% | 98.7% |
-| 40 | 99.5% | 99.9% | 99.9% | 99.7% | 98.7% | 98.7% |
+| 15 | 99.1% | 99.2% | 99.1% | 92.4% | 95.5% | 95.7% |
+| 20 | 99.7% | 99.6% | 99.7% | 94.0% | 98.0% | 98.2% |
+| 25 | 99.7% | 99.7% | 99.8% | 99.0% | 99.0% | 98.6% |
+| 30 | 99.8% | 99.7% | 99.7% | 99.3% | 99.1% | 98.7% |
+| 35 | 99.8% | 99.8% | 99.7% | 99.6% | 99.7% | 98.7% |
+| 40 | 99.8% | 99.8% | 99.7% | 99.7% | 99.7% | 98.7% |
 
-*Source: `results/simulation/production/exp2_fleet_sensitivity.csv`, `results/tables/sensitivity_summary.csv`*
+*Source: `results/production_v2/tables/descriptive_statistics.csv`*
 
 **Key findings:**
-1. Under **P0**, achieving 95% coverage requires **K ≈ 35–40 units** — nearly the maximum tested
-2. Under **P2**, 95% coverage is achieved with just **K = 15 units** — the minimum tested
-3. **P2 with K=15 outperforms P0 with K=40** (99.1% vs 99.5% coverage, but P2 at 2.84 min mean RT vs P0 at 2.58 min — nearly equivalent)
+1. All policies achieve **≥99% 8-minute coverage** even at the minimum fleet size K=15, confirming that Manhattan's firehouse network provides excellent geographic reach under the spatially-stratified baseline
+2. The meaningful differentiation is in **6-minute coverage**: P2 achieves 95.7% at K=15 while P0 reaches 92.4% — a 3.3 pp improvement
+3. **P2 with K=15** (mean RT 2.84 min) outperforms **P0 with K=20** (mean RT 3.17 min), implying an effective fleet multiplier of ~1.33×
 4. The tradeoff curve (Fig 20, `fig_tradeoff_curve.png`) visualises the coverage frontier across fleet sizes
 
 ### Supporting Figures & Tables
@@ -274,9 +276,9 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 |----|----------|--------|-----------------|------------|----------------|-------------------|
 | **RQ1** | Spatiotemporal demand variation | Fully Answered | **Strong** — 628K records, NHPP model, seasonal analysis | Hourly factor range 0.40–1.40; Precinct share range 2–8%; Seasonal CV = 9% | N/A (data analysis) | Chi-square (p < 0.001), ANOVA (p < 0.001) |
 | **RQ2** | Optimal ambulance allocation | Fully Answered | **Strong** — MIP solved to optimality, validated with 2 distance metrics | P2: 2.57 min mean RT, 99.6% coverage (K=20) | 90 (Exp1) + 60 (distance) + 60 (CBD-focused) | MIP optimality gap = 0%; Haversine vs Manhattan: identical |
-| **RQ3** | Policy comparison under realistic conditions | Fully Answered | **Very Strong** — 1,770 replicated runs, ANOVA/Tukey/Cohen's d | P2 vs P0: −68.2% RT, +35.2 pp coverage; Cohen's d = 28.9 | 1,770 (all experiments) | ANOVA F = 12,010 (p < 0.001, η² = 0.996); Tukey HSD all p < 0.001 |
+| **RQ3** | Policy comparison under realistic conditions | Fully Answered | **Very Strong** — 2,700+ replicated runs, ANOVA/Tukey/Cohen's d | P2 vs P0: −18.9% RT, +4.2 pp 6-min coverage; Cohen's d = 10.3 | 2,700+ (all experiments) | ANOVA F = 1,019 (p < 0.001, η² = 0.959); Tukey HSD all p < 0.001 |
 | **RQ4** | Sensitivity to fleet/demand/service | Fully Answered | **Very Strong** — Full factorial + CBD stress testing | Rankings invariant across all 1,350 sensitivity runs; η² < 0.001 for interactions | 1,350 (Exp2–4) + 330 (CBD) | Two-way ANOVA; interaction η² = 0.0007 (demand), 0 (service time) |
-| **RQ5** | Fleet size for target coverage | Fully Answered | **Strong** — 6-level fleet sweep with 30 reps each | P2 achieves 95% at K=15; P0 needs K≈40 (2.7× more) | 540 (Exp2) | 95% CIs for each K-level; monotonicity confirmed |
+| **RQ5** | Fleet size for target coverage | Fully Answered | **Strong** — 6-level fleet sweep with 30 reps each | All policies achieve ≥99% 8-min at K=15; P2 leads on 6-min coverage and mean RT | 540 (Exp2) | 95% CIs for each K-level; monotonicity confirmed |
 
 ---
 
@@ -286,11 +288,11 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 ### Strengths of the Evidence Base
 
-1. **Statistical rigour:** Every policy comparison backed by ANOVA, post-hoc tests (Tukey HSD with family-wise error control), effect sizes (Cohen's d), and 95% confidence intervals. Results are not merely "significant" — they have extraordinarily large effect sizes (d > 28 for the primary comparison).
+1. **Statistical rigour:** Every policy comparison backed by ANOVA, post-hoc tests (Tukey HSD with family-wise error control), effect sizes (Cohen's d), and 95% confidence intervals. Results are not merely "significant" — they have large effect sizes (d = 10.3 for the primary P0 vs P2 comparison at K=20).
 
 2. **Replication depth:** 30 replications per experimental cell with Common Random Numbers (CRN) for variance reduction ensure narrow confidence intervals and reliable inference.
 
-3. **Comprehensive sensitivity analysis:** Four-dimensional robustness testing (fleet size × demand intensity × service time × CBD stress) with 1,770+ total runs eliminates concerns about parameter dependence.
+3. **Comprehensive sensitivity analysis:** Four-dimensional robustness testing (fleet size × demand intensity × service time × CBD stress) with 2,700+ total runs eliminates concerns about parameter dependence.
 
 4. **Mechanism identification:** Queue analysis (zero queueing across all runs) shows that performance differentials are driven entirely by spatial allocation, not capacity constraints.
 
