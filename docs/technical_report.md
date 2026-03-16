@@ -406,9 +406,11 @@ Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Com
 
 ## 5. Results
 
-### 5.1 Descriptive Statistics (Experiment 1)
+> **Note on capacity constraint:** All primary results in this section use the operationally optimal default of **capacity=2 units per firehouse**, established by the Capacity Sensitivity experiment (see §5.12). The experimental design table (§4.5.1) records that Experiments 1–4 were originally run at cap=5, but at K≤30 the capacity constraint does not bind and results are numerically identical under both settings. The Extended Fleet Analysis (cap=2, 810 runs) provides the definitive results reported here, with figures and tables drawn from this dataset.
 
-The primary policy comparison (K=20 units, capacity=5 units per firehouse, n=30 replications each) yields:
+### 5.1 Descriptive Statistics
+
+The primary policy comparison (K=20 units, capacity=2 units per firehouse, n=30 replications each) yields:
 
 | Policy | Mean RT (min) | 95% CI | P90 (90th %ile) RT (min) | 6-min Cov (NYC) | 8-min Cov (NFPA) | Utilization |
 |--------|--------------|--------|--------------------------|-----------------|------------------|-------------|
