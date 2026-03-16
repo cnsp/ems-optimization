@@ -91,8 +91,13 @@ with open("results/run_metadata.json", "w") as f:
 
 1. Find the `master_seed` from the run's metadata or config.
 2. Set it in `configs/reproducibility.yaml` or `EMS_MASTER_SEED`.
-3. Run the same code version (check the git commit hash).
-4. Results will be bit-for-bit identical.
+3. **Set the correct capacity parameter** for the experiment regime:
+   - **v1 experiments** (`results/simulation/production/`): use `capacity=5` in `configs/optimization.yaml`
+   - **v2 experiments** (`results/production_v2/`): use `capacity=2` in `configs/optimization.yaml` (current default)
+4. Run the same code version (check the git commit hash).
+5. Results will be bit-for-bit identical.
+
+> **Important:** The project default capacity was changed from 5 to 2 during development. To reproduce v1 results, you must temporarily set `firehouse_capacity: 5` in `configs/optimization.yaml`.
 
 ## Integration with Existing Code
 

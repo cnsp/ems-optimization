@@ -7,6 +7,22 @@
 
 ---
 
+## Fixed Parameters
+
+All simulation experiments reported in this assessment use the following fixed parameters unless otherwise noted:
+
+| Parameter | Value | Notes |
+|-----------|-------|-------|
+| **Firehouse capacity** | **5 units per firehouse** | v1 production experiments (`results/simulation/production/`) |
+| Coverage threshold | 8 minutes | NFPA standard |
+| Simulation horizon | 168 hours (1 week) | Per replication |
+| Replications | 30 | Per experimental cell |
+| Warm-up | 24 hours | Discarded from statistics |
+
+> **Note on capacity regimes:** The v1 production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. Extended fleet analysis (v2, in `results/production_v2/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
+
+---
+
 ## Overview
 
 The EMS Optimization project defines five primary research questions in **§2.3 Research Objectives** of the technical report (`docs/technical_report.md`). This document evaluates whether each question was answered with concrete, simulation-based evidence by cross-referencing the technical report results (§5), final summary (`docs/final_summary.md`), and raw result files in `results/`.
@@ -71,7 +87,7 @@ Three allocation policies were formulated and solved via Mixed-Integer Programmi
 | **P1 (Demand-Proportional)** | x_i ∝ nearby demand | Heuristic |
 | **P2 (Demand-Weighted MIP)** | min Σ d_j · t_ij · y_ij s.t. fleet/capacity/assignment constraints | **Optimal** (solved to optimality, all instances) |
 
-#### P2 Optimal Allocation Performance (K=20)
+#### P2 Optimal Allocation Performance (K=20, cap=5)
 | Metric | Value | 95% CI | Source |
 |--------|-------|--------|--------|
 | Mean Response Time | **2.57 min** | [2.554, 2.587] | `results/tables/table1_baseline_comparison.csv` |
@@ -101,7 +117,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 ### Concrete Evidence
 
-#### Experiment 1: Direct Policy Comparison (K=20, n=30 replications)
+#### Experiment 1: Direct Policy Comparison (K=20, cap=5, n=30 replications)
 
 | Metric | P0 (Spatial-Stratified) | P1 (Proportional) | P2 (Optimised) | P2 vs P0 Δ |
 |--------|------------------------|-------------------|-----------------|------------|
@@ -150,7 +166,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 ### Concrete Evidence
 
-#### A. Fleet Size Sensitivity (Experiment 2: Policy × K, 540 runs)
+#### A. Fleet Size Sensitivity (Experiment 2: Policy × K, cap=5, 540 runs)
 
 | K (Fleet) | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
 |-----------|-----------|-----------|-------------|-------------|-------------|-------------|
@@ -167,7 +183,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.001, η² = 0.29), Policy×K interaction (F = 6,772, p < 0.001, η² = 0.41) — `results/tables/table2_anova_summary.csv`
 
-#### B. Demand Sensitivity (Experiment 3: Policy × Demand Multiplier, 540 runs)
+#### B. Demand Sensitivity (Experiment 3: Policy × Demand Multiplier, cap=5, 540 runs)
 
 | Demand Multiplier | P0 Mean RT | P2 Mean RT | P0 6-min Cov | P2 6-min Cov | P0 8-min Cov | P2 8-min Cov |
 |-------------------|-----------|-----------|-------------|-------------|-------------|-------------|
@@ -182,7 +198,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 
 **Key finding:** Policy rankings are **invariant** to demand intensity changes of ±100%. P2 dominates P0 under all tested scenarios. Policy×demand interaction is statistically significant but practically negligible (η² = 0.004).
 
-#### C. Service Time Robustness (Experiment 4: Policy × Service Time, 270 runs)
+#### C. Service Time Robustness (Experiment 4: Policy × Service Time, cap=5, 270 runs)
 
 | Service Time Mean | P0 Mean RT | P2 Mean RT | Rankings Preserved? |
 |-------------------|-----------|-----------|---------------------|
@@ -194,7 +210,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 
 **Key finding:** Service time has **negligible effect** on response time metrics (η² = 0.013). No significant Policy × Service Time interaction (F = 0.68, p = 0.61). Utilisation is sensitive to service time (η² = 0.93) as expected.
 
-#### D. CBD Stress Testing (330 additional runs)
+#### D. CBD Stress Testing (cap=5, 330 additional runs)
 
 | Scenario | P0 RT | P2 RT | P2 Coverage |
 |----------|-------|-------|-------------|
@@ -291,3 +307,7 @@ These limitations are transparently documented in §6.4 of the technical report 
 ---
 
 *Assessment based on: `docs/technical_report.md` (v2.0.0), `docs/final_summary.md` (v1.2.0), and 28+ result files in `results/tables/`, `results/simulation/`, `results/distance_comparison/`, and `results/cbd_focused_comparison/`.*
+
+---
+
+**Capacity constraint note:** All v1 production results in this assessment (Experiments 1–4 and CBD stress tests) were generated with capacity=5 units per firehouse. Subsequent capacity sensitivity analysis (see §5.12 of the technical report and `docs/capacity_sensitivity_analysis.md`) demonstrated that capacity=2 is operationally optimal; the project default was updated accordingly for v2 experiments. Results at capacity=5 remain valid as the upper bound of per-firehouse staging.

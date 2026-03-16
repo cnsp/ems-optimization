@@ -369,17 +369,19 @@ Built using **SimPy** discrete-event simulation library in Python:
 
 #### 4.5.1 Factorial Design
 
-| Experiment | Factors | Levels | Replications | Total Runs |
-|-----------|---------|--------|-------------|------------|
-| Exp1: Policy Comparison | Policy (P0, P1, P2) | 3 | 30 | 90 |
-| Exp2: Fleet Sensitivity | Policy × K (15–40) | 3×6 | 30 | 540 |
-| Exp3: Demand Sensitivity | Policy × Demand (0.5–2.0×) | 3×6 | 30 | 540 |
-| Exp4: Service Robustness | Policy × Service (20,25,30 min) | 3×3 | 30 | 270 |
-| Capacity Sensitivity | Policy × K × Cap (1–5) | 3×2×5 | 15 | 450 |
-| Extended Fleet Analysis | Policy × K (10–48, cap=2) | 3×9 | 30 | 810 |
-| **Total** | | | | **2,700** |
+| Experiment | Factors | Capacity | Levels | Replications | Total Runs |
+|-----------|---------|----------|--------|-------------|------------|
+| Exp1: Policy Comparison | Policy (P0, P1, P2) | cap=5 | 3 | 30 | 90 |
+| Exp2: Fleet Sensitivity | Policy × K (15–40) | cap=5 | 3×6 | 30 | 540 |
+| Exp3: Demand Sensitivity | Policy × Demand (0.5–2.0×) | cap=5 | 3×6 | 30 | 540 |
+| Exp4: Service Robustness | Policy × Service (20,25,30 min) | cap=5 | 3×3 | 30 | 270 |
+| Capacity Sensitivity | Policy × K × Cap (1–5) | cap=1–5 | 3×2×5 | 15 | 450 |
+| Extended Fleet Analysis | Policy × K (10–48) | cap=2 | 3×9 | 30 | 810 |
+| **Total** | | | | | **2,700** |
 
 Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
+
+**Capacity constraint:** Experiments 1–4 use capacity=5 units per firehouse (v1 regime). The Extended Fleet Analysis uses capacity=2 units per firehouse (v2 regime), established as the operationally optimal default by the Capacity Sensitivity experiment.
 
 #### 4.5.2 Statistical Analysis Methods
 
@@ -404,7 +406,7 @@ Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Com
 
 ### 5.1 Descriptive Statistics (Experiment 1)
 
-The primary policy comparison (K=20 units, n=30 replications each) yields:
+The primary policy comparison (K=20 units, capacity=5 units per firehouse, n=30 replications each) yields:
 
 | Policy | Mean RT (min) | 95% CI | P90 RT (min) | 8-min Coverage | Utilization |
 |--------|--------------|--------|-------------|----------------|-------------|
@@ -527,7 +529,7 @@ Figure 4 provides an enhanced view of CBD robustness, showing response time and 
 
 ![CBD Robustness Enhanced — RT and Coverage by Scenario](../results/figures/cbd_robustness_enhanced.png)
 
-*Figure 4: CBD robustness analysis comparing P0 and P2 across three stress scenarios (baseline, 2× demand surge, slow service). Left: Mean response time within the CBD. Right: 8-minute coverage within the CBD. Both policies perform well in the CBD due to firehouse density, but P2 consistently maintains a slight edge. The narrow range of outcomes (2.48–2.91 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
+*Figure 4: CBD robustness analysis (capacity=5) comparing P0 and P2 across three stress scenarios (baseline, 2× demand surge, slow service). Left: Mean response time within the CBD. Right: 8-minute coverage within the CBD. Both policies perform well in the CBD due to firehouse density, but P2 consistently maintains a slight edge. The narrow range of outcomes (2.48–2.91 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
 
 ### 5.8 Queueing Analysis
 
@@ -608,7 +610,7 @@ Figure 5 provides a summary view of the equity–efficiency tradeoff, contrastin
 
 ![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)
 
-*Figure 5: Equity–efficiency tradeoff between Manhattan-wide and CBD-focused optimization. Left: Response times disaggregated by CBD, non-CBD, and overall. The CBD-focused strategy fails to improve CBD response time while severely degrading non-CBD performance (6.88 vs 2.66 min). Right: 8-minute coverage drops from 99.2% to 73.6% for non-CBD precincts under the CBD-focused strategy. This confirms that the demand-weighted objective already effectively prioritises CBD precincts without explicit geographic targeting.*
+*Figure 5: Equity–efficiency tradeoff between Manhattan-wide and CBD-focused optimization (capacity=5). Left: Response times disaggregated by CBD, non-CBD, and overall. The CBD-focused strategy fails to improve CBD response time while severely degrading non-CBD performance (6.88 vs 2.66 min). Right: 8-minute coverage drops from 99.2% to 73.6% for non-CBD precincts under the CBD-focused strategy. This confirms that the demand-weighted objective already effectively prioritises CBD precincts without explicit geographic targeting.*
 
 
 ### 5.12 Firehouse Capacity Constraints Analysis

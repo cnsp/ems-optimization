@@ -33,6 +33,21 @@
 | Demand Multiplier | δ | 6 | 0.5, 0.75, 1.0, 1.25, 1.5, 2.0 |
 | Service Time Mean | μ_s | 3 | 20 min (−20%), 25 min (baseline), 30 min (+20%) |
 
+### Capacity Constraint
+
+The **firehouse capacity** parameter (C) defines the maximum number of EMS units that can be staged at any single firehouse. Two capacity regimes are used in this project:
+
+| Regime | Capacity | Experiments | Results Location |
+|--------|----------|-------------|------------------|
+| **v1** | C = 5 units per firehouse | Exp1–Exp4 (this document) | `results/simulation/production/` |
+| **v2** | C = 2 units per firehouse | Extended Fleet Analysis | `results/production_v2/` |
+
+**Rationale for two regimes:**
+- **v1 (cap=5):** Used for the initial production experiments. At typical fleet sizes (K ≤ 40 across 48 firehouses), the capacity constraint is largely non-binding — most policies naturally allocate ≤ 2 units per firehouse. Results are valid and not materially affected by the higher cap.
+- **v2 (cap=2):** Established as the operationally optimal default after capacity sensitivity analysis (cap 1–5). With cap=2, performance matches or improves upon cap=5 at K ≤ 40, while being more operationally realistic. See `docs/capacity_sensitivity_analysis.md` for full analysis.
+
+All experiments in this document (Exp1–Exp4) use **capacity=5 units per firehouse** unless otherwise noted.
+
 ### Factor Details
 
 #### Allocation Policies
@@ -79,25 +94,25 @@ Standard deviation is held proportional (σ/μ ratio constant).
 
 ### Experiment 1: Baseline Policy Comparison
 - **Objective**: Compare P0, P1, P2 at baseline conditions
-- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s = 25
+- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s = 25, **C = 5**
 - **Runs**: 3 policies × 30 replications = **90 runs**
 - **Output**: `results/simulation/production/exp1_policy_comparison.csv`
 
 ### Experiment 2: Fleet Size Sensitivity
 - **Objective**: Evaluate performance across fleet sizes
-- **Factors**: π ∈ {P0, P1, P2}, K ∈ {15, 20, 25, 30, 35, 40}, δ = 1.0, μ_s = 25
+- **Factors**: π ∈ {P0, P1, P2}, K ∈ {15, 20, 25, 30, 35, 40}, δ = 1.0, μ_s = 25, **C = 5**
 - **Runs**: 3 × 6 × 30 = **540 runs**
 - **Output**: `results/simulation/production/exp2_fleet_sensitivity.csv`
 
 ### Experiment 3: Demand Scaling Sensitivity
 - **Objective**: Assess robustness to demand changes
-- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0}, μ_s = 25
+- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0}, μ_s = 25, **C = 5**
 - **Runs**: 3 × 6 × 30 = **540 runs**
 - **Output**: `results/simulation/production/exp3_demand_sensitivity.csv`
 
 ### Experiment 4: Service Time Robustness
 - **Objective**: Test sensitivity to on-scene service duration
-- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s ∈ {20, 25, 30}
+- **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s ∈ {20, 25, 30}, **C = 5**
 - **Runs**: 3 × 3 × 30 = **270 runs**
 - **Output**: `results/simulation/production/exp4_service_robustness.csv`
 

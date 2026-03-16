@@ -23,6 +23,10 @@ A total of **1,770 simulation replications** were run across five experiment set
 (including CBD robustness), using 30 independent replications per scenario with
 Common Random Numbers (CRN) for fair comparisons.
 
+**All analyses use capacity=5 units per firehouse unless otherwise noted.** Capacity
+sensitivity analysis (cap 1–5) confirmed that capacity=2 is the operationally optimal
+default; see the technical report §5.12 for details.
+
 ---
 
 ## Key Findings
