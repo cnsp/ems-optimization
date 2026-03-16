@@ -525,13 +525,12 @@ To assess policy performance under CBD-specific conditions, we conducted 330 add
 - P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD), highlighting the spatial mismatch in upper Manhattan
 - The CBD's high firehouse density creates a natural coverage buffer — performance degrades gracefully under stress
 
-![CBD Scenario Comparison](../results/figures/cbd_scenario_comparison.png)
-
 Figure 4 provides an enhanced view of CBD robustness, showing response time and coverage side-by-side across all three CBD stress scenarios.
 
 ![CBD Robustness Enhanced — RT and Coverage by Scenario](../results/figures/cbd_robustness_enhanced.png)
 
 *Figure 4: CBD robustness analysis (capacity=2) comparing P0 and P2 across three stress scenarios (baseline, 2× demand surge, slow service). Left: Mean response time within the CBD. Right: 8-minute coverage within the CBD. Both policies perform well in the CBD due to firehouse density, but P2 consistently maintains a slight edge. The narrow range of outcomes (2.48–2.91 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
+
 
 ### 5.8 Queueing Analysis
 
@@ -606,8 +605,6 @@ To evaluate the equity–efficiency tradeoff, we implemented a **CBD-focused dem
 
 The Manhattan-wide P2 allocation is strongly preferred as it achieves both efficiency and equity. See `docs/cbd_focused_optimization_analysis.md` for the full report.
 
-![CBD-Focused Comparison](../results/cbd_focused_comparison/cbd_focused_comparison.png)
-
 Figure 5 provides a summary view of the equity–efficiency tradeoff, contrasting the Manhattan-wide and CBD-focused optimization strategies across both response time and coverage metrics.
 
 ![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)
@@ -657,13 +654,11 @@ Performance differences across capacity levels remain small (< 0.15 min mean RT)
 
 **Decision**: Default firehouse capacity updated from 5 to 2 in `configs/optimization.yaml` (see DEC-010).
 
-![Full Spectrum Capacity Summary](../results/capacity_comparison/full_spectrum_summary.png)
-
 Figure 6 shows a heatmap view of mean response time across all policy × capacity combinations at K=20 and K=40, making the insensitivity at K=20 and the modest effects at K=40 visually apparent.
 
 ![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)
 
-*Figure 6: Capacity sensitivity heatmap showing mean response time by policy and per-firehouse capacity limit at K=20 and K=40. At K=20 and K=30, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
+*Figure 6: Capacity sensitivity heatmap showing mean response time by policy and per-firehouse capacity limit at K=20 and K=40. At K=20, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
 
 
 ### 5.13 P0 Baseline Design
