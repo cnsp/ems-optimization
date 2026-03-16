@@ -131,7 +131,15 @@ Raw data files and all processed/intermediate data are **not** tracked in Git. T
    - Motor Vehicle Collisions — Crashes → `data/raw/Motor_Vehicle_Collisions_-_Crashes_20260223.csv`
    - Police Precincts → `data/raw/Police_Precincts_20260223.csv`
 
-   See [`data/raw/README.md`](data/raw/README.md) for download links and verification instructions.
+   **Automated download** (crash data only):
+   ```bash
+   python scripts/download_crash_data.py
+   # Or with a row limit for testing: python scripts/download_crash_data.py --limit 500000
+   ```
+
+   See [`data/raw/README.md`](data/raw/README.md) for manual download links and verification instructions.
+
+   > **Note:** The Colab notebooks automatically download and process crash data on first run.
 
 2. Generate all processed data (single command):
 ```bash
