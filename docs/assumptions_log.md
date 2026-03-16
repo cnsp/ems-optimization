@@ -88,11 +88,17 @@ This document logs the assumptions made during the EMS Readiness Optimization pr
 **Risk**: A different multiplier (e.g., 2× or 5×) might yield different conclusions.
 **Mitigation**: Results show that even with 3× weight, CBD RT does not improve (2.50 vs. 2.47 min), while non-CBD RT degrades dramatically (+159%). This confirms that the Manhattan-wide P2 is robust and any CBD-focused up-weighting is counterproductive.
 
-### A14: Spatially-Stratified Baseline (P0-spatial) *(Added v1.3.0)*
+### A14: Spatially-Stratified Baseline (P0)
 **Assumption**: The baseline uniform allocation policy (P0) distributes units across firehouses using latitude-based spatial stratification rather than arbitrary index-based ordering.
-**Rationale**: Index-based allocation (original P0) assigned units to firehouses in database-order, producing geographically biased clusters. Latitude-based stratification divides Manhattan into equal-width latitude bands and round-robins units across bands, ensuring even north–south geographic coverage regardless of firehouse ordering in the dataset.
+**Rationale**: Latitude-based stratification divides Manhattan into equal-width latitude bands and round-robins units across bands, ensuring even north–south geographic coverage regardless of firehouse ordering in the dataset. This produces a fair, geographically representative baseline.
 **Risk**: Latitude-only stratification does not account for east–west variation or local demand density.
-**Mitigation**: Manhattan's elongated north–south geometry makes latitude the dominant spatial axis. P0-spatial is a *baseline* comparator; optimized policies (P1, P2) already account for demand. Simulation confirms P0-spatial reduces mean response time by ~61% vs. original P0 (3.17 vs. 8.08 min at K=20).
+**Mitigation**: Manhattan's elongated north–south geometry makes latitude the dominant spatial axis. P0 is a *baseline* comparator; optimized policies (P1, P2) already account for demand. Simulation confirms P0 achieves 3.17 min mean RT at K=20 with 99.6% 8-minute coverage.
+
+### A15: P0 Nomenclature (Internal Reference)
+**Assumption**: The project uses a single, standardized P0 definition (spatially-stratified allocation) throughout all public-facing documents. An earlier index-based implementation (deprecated) exists in code for backward compatibility but is not referenced in the technical report.
+**Rationale**: The original index-based P0 was inadvertently biased toward CBD firehouses due to database ordering. This produced misleadingly poor baseline performance (8.08 min mean RT at K=20). The spatially-stratified P0 corrects this bias and provides a fairer comparison point for P1 and P2. See `docs/decisions_log.md` (DEC-012) and `docs/nomenclature_migration.md` for the full evolution history.
+**Risk**: Readers of older project artifacts may encounter inconsistent P0 definitions.
+**Mitigation**: Internal migration guide (`docs/nomenclature_migration.md`) explains the evolution. Code retains `uniform_allocation()` with `DeprecationWarning`.
 
 ---
 

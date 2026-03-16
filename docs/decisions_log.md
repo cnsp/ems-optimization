@@ -456,3 +456,38 @@ After comparing 5 policies, need to recommend best allocation strategy for Manha
 - Concentrated allocation may face political resistance (some firehouses get 0 units)
 - Recommend phased implementation: Start with P1, transition to P2
 - Quarterly reallocation based on updated demand patterns
+
+---
+
+### [DEC-012] P0 Nomenclature Standardization
+
+**Date**: 2026-03-15
+**Decision Maker**: Technical Lead
+**Status**: Approved
+
+**Context**:
+During development, the P0 baseline evolved through two implementations:
+- **Original P0 (deprecated)**: Index-based round-robin allocation across all 48 firehouses in database order. This inadvertently created a CBD-biased allocation because firehouses in the CSV are clustered by geography, producing mean RT of 8.08 min at K=20 with only 64.4% 8-minute coverage.
+- **Current P0**: Spatially-stratified uniform allocation using latitude-based firehouse selection, achieving 3.17 min mean RT at K=20 with 99.6% coverage — a 61% improvement.
+
+Earlier documentation referred to these as "P0 (V1)" and "P0 (V2)" or "P0-legacy" and "P0-spatial", creating confusion in the technical report.
+
+**Decision**:
+Standardize nomenclature:
+- **P0** = spatially-stratified uniform allocation (the only P0 going forward)
+- The original index-based allocation is fully deprecated and removed from all public-facing documentation
+- Historical context (V1 → V2 evolution) is retained only in internal documentation (this decisions log, `docs/assumptions_log.md`, and `docs/nomenclature_migration.md`)
+- The technical report presents only the current methodology with no V1/V2 references
+
+**Rationale**:
+- The technical report is a publication-quality deliverable and should not contain development history
+- External readers should see a clean, coherent methodology presentation
+- Internal documentation provides the full audit trail for the team
+- The deprecated `uniform_allocation()` function remains in code with a `DeprecationWarning` for backward compatibility
+
+**Consequences**:
+- Technical report uses "P0" exclusively to mean spatially-stratified allocation
+- Code retains `uniform_allocation()` with deprecation warning for backward compatibility
+- `baseline_p0()` in `EMSAllocator` calls `spatially_stratified_allocation()`
+- All performance metrics in the technical report reflect the current P0 implementation
+- Migration guide (`docs/nomenclature_migration.md`) available for interpreting older documents

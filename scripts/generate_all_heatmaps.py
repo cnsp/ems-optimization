@@ -4,7 +4,7 @@
 Combinations: 9 K values × 3 policies × 4 capacity levels = 108 maps.
 
 K values: 5, 10, 15, 20, 25, 30, 35, 40, 45
-Policies: P0-spatial, P1 (demand-proportional), P2 (demand-weighted optimisation)
+Policies: P0 (spatially-stratified), P1 (demand-proportional), P2 (demand-weighted optimisation)
 Capacities: 1, 2, 3, 5
 
 For each combination, generates the allocation if not already cached,
@@ -47,9 +47,9 @@ log = logging.getLogger("heatmaps")
 # ── Configuration ────────────────────────────────────────────────────
 K_VALUES = [5, 10, 15, 20, 25, 30, 35, 40, 45]
 CAPACITY_VALUES = [1, 2, 3, 5]
-POLICY_NAMES = ["P0-spatial", "P1", "P2"]  # display names
+POLICY_NAMES = ["P0", "P1", "P2"]  # display names
 POLICY_INTERNAL = {
-    "P0-spatial": "P0_spatial",
+    "P0": "P0",
     "P1": "P1_demand",
     "P2": "P2_optimised",
 }
@@ -99,7 +99,7 @@ def generate_allocation(policy_display: str, K: int, capacity: int,
     """Generate allocation for a given policy, K, and capacity."""
     internal = POLICY_INTERNAL[policy_display]
 
-    if internal == "P0_spatial":
+    if internal == "P0":
         alloc = policies.spatially_stratified_allocation(
             K=K, method="maximin", capacity=capacity,
             data_dir=PROJECT_ROOT / "data" / "processed",
@@ -134,7 +134,7 @@ def try_load_existing_allocation(policy_display: str, K: int, capacity: int) -> 
         prod_file = PROJECT_ROOT / "results" / "production_v2" / "allocations" / f"allocations_K{K}.csv"
         if prod_file.exists():
             df = pd.read_csv(prod_file, index_col=0)
-            col_map = {"P0-spatial": "P0-spatial", "P1": "P1", "P2": "P2"}
+            col_map = {"P0": "P0", "P1": "P1", "P2": "P2"}
             col = col_map.get(policy_display)
             if col and col in df.columns:
                 return df[col]

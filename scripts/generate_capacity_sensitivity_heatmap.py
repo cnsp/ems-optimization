@@ -22,9 +22,9 @@ FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 
 # Policy display names
 POLICY_LABELS = {
-    "P0_spatial": "P0 (Spatial)",
-    "P1_demand": "P1 (Demand)",
-    "P2_optimised": "P2 (Optimised)",
+    "P0_spatial": "P0",
+    "P1_demand": "P1",
+    "P2_optimised": "P2",
 }
 
 
@@ -81,6 +81,7 @@ def create_heatmap(df, k_values=(20, 40)):
         # Map policy names to display labels
         subset["Policy"] = subset["policy"].map(POLICY_LABELS)
         subset = subset.dropna(subset=["Policy"])
+        subset = subset.drop_duplicates(subset=["Policy", "capacity"])
 
         # Pivot to get policies (rows) × capacity (columns)
         pivot = subset.pivot_table(

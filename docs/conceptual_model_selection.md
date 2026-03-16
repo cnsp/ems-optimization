@@ -30,7 +30,7 @@ The project addresses a **facility location / resource allocation** problem: giv
 |---|----------|----------|--------|
 | 11 | **Uniform Allocation (P0)** | Non-optimized — equal distribution | Yes Implemented |
 | 12 | **Demand-Proportional Allocation (P1)** | Non-optimized — units proportional to nearest demand | Yes Implemented |
-| 13 | **Spatially-Stratified P0 (P0-spatial, latitude)** | Non-optimized — even geographic coverage | Yes Implemented (replaced original P0 in V2) |
+| 13 | **Spatially-Stratified P0 (P0 (spatially-stratified), latitude)** | Non-optimized — even geographic coverage | Yes Implemented (replaced original P0 in current version) |
 | 14 | **Spatially-Stratified P0 (grid)** | Non-optimized — grid-based firehouse selection | Yes Implemented |
 | 15 | **Spatially-Stratified P0 (maximin)** | Non-optimized — greedy farthest-point heuristic | Yes Implemented |
 | 16 | **Random allocation** | Non-optimized — random with seed | No Not implemented (non-reproducibility concerns) |
@@ -74,9 +74,9 @@ The project addresses a **facility location / resource allocation** problem: giv
 |----------|-------------|--------|
 | `uniform_allocation()` | P0 (original) | Equal distribution, round-robin remainder |
 | `demand_proportional_allocation()` | P1 | Units proportional to nearest-firehouse demand credit |
-| `spatially_stratified_allocation()` | P0-spatial | Three sub-methods: latitude, grid, maximin |
+| `spatially_stratified_allocation()` | P0 (spatially-stratified) | Three sub-methods: latitude, grid, maximin |
 
-**Total: 3 baseline allocation functions** (with P0-spatial offering 3 sub-variants).
+**Total: 3 baseline allocation functions** (with P0 (spatially-stratified) offering 3 sub-variants).
 
 ### 2.3 Mapping to Conceptual Framework
 
@@ -84,7 +84,7 @@ The conceptual model document (§1.1) defines **5 candidate policies** for simul
 
 | Code | Policy | Implementation |
 |------|--------|----------------|
-| P0 | Uniform allocation | `uniform_allocation()` → replaced by `spatially_stratified_allocation(method='latitude')` in V2 |
+| P0 | Uniform allocation | `uniform_allocation()` → replaced by `spatially_stratified_allocation(method='latitude')` in current version |
 | P1 | Demand-proportional | `demand_proportional_allocation()` |
 | P2 | Demand-weighted optimisation | `build_demand_weighted()` |
 | P2-alt | P-median selection | `build_p_median()` |
@@ -123,7 +123,7 @@ These three represent the **canonical facility location models** in the operatio
 - **P0 (Uniform):** A naïve lower bound — distributes units without any demand information. Answers "how much does intelligence in allocation actually matter?"
 - **P1 (Demand-Proportional):** A practical heuristic requiring no solver — answers "can a simple rule-of-thumb approach the optimal?"
 
-The **P0-spatial** upgrade (DEC-011) was motivated by discovering that the original P0 was artificially weak due to database-order bias, not a genuine "uniform" allocation. The latitude-based stratification corrected this, providing a fairer baseline (mean RT dropped from 8.08 → 3.17 min at K=20).
+The **P0 (spatially-stratified)** upgrade (DEC-011) was motivated by discovering that the original P0 was artificially weak due to database-order bias, not a genuine "uniform" allocation. The latitude-based stratification corrected this, providing a fairer baseline (mean RT dropped from 8.08 → 3.17 min at K=20).
 
 ### 3.4 Why CBD-Focused Models?
 
@@ -191,7 +191,7 @@ Beyond the core experiments, the following were conducted:
 ### Key Methodological Strengths
 
 1. **Canonical models:** The three MIP formulations (demand-weighted, p-median, maximal coverage) represent the standard operations research toolkit for facility location problems.
-2. **Fair baselines:** The P0-spatial upgrade ensures the baseline is a genuine geographic benchmark, not an artifact of database ordering.
+2. **Fair baselines:** The P0 (spatially-stratified) upgrade ensures the baseline is a genuine geographic benchmark, not an artifact of database ordering.
 3. **Robustness via multiple dimensions:** Distance metric, capacity, demand intensity, service time, and geographic focus are all tested.
 4. **Practical scoping:** Excluded models (metaheuristics, road network, dynamic reallocation) are justified and documented rather than silently omitted.
 5. **Simulation validation:** All optimization solutions are evaluated through DES, not just static objective values — this captures queueing dynamics that MIP alone cannot.

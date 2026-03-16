@@ -15,7 +15,7 @@
 | Optimization | 5 | `run_optimization_comparison.py` |
 | Simulation Experiments | 4 | `07_production_results.ipynb` |
 | Verification & Validation | 4 | `06_simulation_debug.py` |
-| Production V2 & Fleet | 3 | `run_production_v2.py` |
+| Extended Fleet Analysis & Fleet | 3 | `run_production_v2.py` |
 | CBD Analysis | 6 | `09_cbd_analysis.ipynb`, `run_cbd_focused_optimization.py` |
 | Queue Analysis | 4 | `analyze_queue_metrics.py` |
 | Seasonal Analysis | 3 | `analyze_seasonal_patterns.py` |
@@ -83,7 +83,7 @@
 | `validation_sensitivity_K.png` | Pilot 2: RT vs K | `notebooks/06_simulation_debug.py` |
 | `validation_sensitivity_demand.png` | Pilot 3: RT vs demand | `notebooks/06_simulation_debug.py` |
 
-## 6  Production V2 & Fleet
+## 6  Extended Fleet Analysis & Fleet
 
 | Figure | Description | Script / Notebook |
 |--------|-------------|-------------------|
@@ -138,7 +138,7 @@
 
 | Figure | Description | Script / Notebook |
 |--------|-------------|-------------------|
-| `p0_spatial_map.png` | P0-spatial firehouse selections | `scripts/p0_spatial_analysis.py` |
+| `p0_spatial_map.png` | P0 (spatially-stratified) firehouse selections | `scripts/p0_spatial_analysis.py` |
 | `p0_spatial_metrics.png` | Stratification comparison metrics | `scripts/p0_spatial_analysis.py` |
 | `p0_spatial_north_south.png` | North-south distribution | `scripts/p0_spatial_analysis.py` |
 

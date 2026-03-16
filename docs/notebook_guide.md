@@ -103,4 +103,4 @@ The `.py` files in `notebooks/` (e.g., `05_optimization.py`) are **Jupytext perc
 
 ## Maintenance Status
 
-All notebooks reflect the final project state (V2 with spatially-stratified P0, capacity=2 default, CBD robustness analysis). They are maintained as documentation and presentation artifacts. For any future model changes, update the scripts first, re-run experiments, then refresh notebook outputs.
+All notebooks reflect the final project state (current version with spatially-stratified P0, capacity=2 default, CBD robustness analysis). They are maintained as documentation and presentation artifacts. For any future model changes, update the scripts first, re-run experiments, then refresh notebook outputs.

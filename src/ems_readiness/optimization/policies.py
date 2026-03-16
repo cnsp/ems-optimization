@@ -1,11 +1,25 @@
 """Baseline (non-optimised) allocation policies.
 
 These do *not* require a solver and serve as reference benchmarks.
+
+Nomenclature (standardised v2.0):
+    P0  — Spatially-stratified uniform allocation (``spatially_stratified_allocation``).
+           This is the **canonical baseline** used in all Production V2 results and the
+           final technical report.  Firehouses are selected via latitude-based spatial
+           stratification to ensure even geographic coverage across Manhattan.
+    P1  — Demand-proportional allocation (``demand_proportional_allocation``).
+    P2  — Demand-weighted MIP-optimised allocation (see ``models.py``).
+
+The legacy ``uniform_allocation`` function (round-robin across *all* 48 firehouses
+without geographic awareness) is retained for backward-compatibility but is **deprecated**
+as a baseline comparator.  It was the original P0 in Production V1; that role has been
+superseded by ``spatially_stratified_allocation`` in Production V2.
 """
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+import warnings
 from pathlib import Path
 from typing import Optional, Literal
 from itertools import combinations
@@ -16,10 +30,17 @@ def uniform_allocation(
     K: int,
     capacity: int = 5,
 ) -> pd.Series:
-    """P0 – Uniform allocation: distribute K units as evenly as possible.
+    """Legacy uniform allocation (DEPRECATED — use ``spatially_stratified_allocation`` for P0).
 
-    Any remainder after integer division is distributed round-robin
-    (first firehouses get one extra unit each).
+    Distributes K units as evenly as possible across *all* firehouses via
+    round-robin.  This was the original P0 in Production V1 but is
+    **deprecated** as a baseline because it lacks geographic awareness and
+    produces CBD-biased placement when firehouses are ordered by database
+    index.  Retained for backward-compatibility and historical comparisons.
+
+    .. deprecated:: 2.0
+        Use :func:`spatially_stratified_allocation` (the canonical P0 baseline)
+        instead.
 
     Parameters
     ----------
@@ -35,6 +56,12 @@ def uniform_allocation(
     pd.Series
         Firehouse -> number of units.
     """
+    warnings.warn(
+        "uniform_allocation() is deprecated as the P0 baseline. "
+        "Use spatially_stratified_allocation() instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
     n = len(firehouses)
     base = min(K // n, capacity)
     remainder = K - base * n
@@ -279,11 +306,12 @@ def spatially_stratified_allocation(
     capacity: int = 5,
     data_dir: Optional[str | Path] = None,
 ) -> pd.Series:
-    """P0-spatial – Spatially-stratified baseline allocation.
+    """P0 — Spatially-stratified uniform allocation (canonical baseline).
 
     Selects firehouses at roughly regular spatial intervals across
     Manhattan's geography, then distributes K units evenly among them.
-    This avoids the CBD bias of index-based round-robin.
+    This ensures geographic coverage and avoids the CBD bias of the legacy
+    index-based round-robin (``uniform_allocation``).
 
     Parameters
     ----------

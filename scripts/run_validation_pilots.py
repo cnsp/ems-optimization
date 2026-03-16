@@ -32,15 +32,13 @@ dm.columns = dm.columns.astype(str)
 all_fhs = dm.index.tolist()
 
 
-def make_uniform_allocation(K):
-    """Distribute K units uniformly across 48 firehouses."""
-    n = len(all_fhs)
-    base = K // n
-    remainder = K % n
-    alloc = {fh: base for fh in all_fhs}
-    for i in range(remainder):
-        alloc[all_fhs[i]] += 1
-    return pd.Series(alloc)
+def make_p0_allocation(K):
+    """P0: Spatially-stratified uniform allocation (canonical baseline)."""
+    from ems_readiness.optimization.policies import spatially_stratified_allocation
+    import warnings
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        return spatially_stratified_allocation(K=K, method="latitude", capacity=2)
 
 
 def make_demand_proportional_allocation(K):
@@ -60,7 +58,7 @@ def make_demand_proportional_allocation(K):
 
     total_credit = sum(credit.values())
     if total_credit == 0:
-        return make_uniform_allocation(K)
+        return make_p0_allocation(K)
 
     # Proportional allocation with rounding
     alloc = {}
@@ -124,14 +122,14 @@ def save_pilot_result(name, data):
 def run_p0_vs_p2():
     """Compare uniform (P0) vs demand-proportional (P2) allocations."""
     logger.info("\n" + "=" * 60)
-    logger.info("PILOT 1: P0 (Uniform) vs P2 (Demand-Proportional), K=20")
+    logger.info("PILOT 1: P0 (Spatially-Stratified) vs P2 (Demand-Proportional), K=20")
     logger.info("=" * 60)
 
     K = 20
     N_REPS = 30
     HORIZON = 168  # 1 week
 
-    alloc_p0 = make_uniform_allocation(K)
+    alloc_p0 = make_p0_allocation(K)
     alloc_p2 = make_demand_proportional_allocation(K)
 
     logger.info(f"P0 active firehouses: {(alloc_p0 > 0).sum()}")
@@ -144,7 +142,7 @@ def run_p0_vs_p2():
     agg_p0 = runner.run_scenario(
         policy_allocation=alloc_p0, K=K,
         num_replications=N_REPS, seed_base=100,
-        horizon_hours=HORIZON, policy_name="P0_uniform",
+        horizon_hours=HORIZON, policy_name="P0",
     )
 
     logger.info(f"\nRunning P2 ({N_REPS} replications, {HORIZON}h)...")
@@ -161,7 +159,7 @@ def run_p0_vs_p2():
         "num_replications": N_REPS,
     }
 
-    for name, agg in [("P0_uniform", agg_p0), ("P2_demand_proportional", agg_p2)]:
+    for name, agg in [("P0", agg_p0), ("P2_demand_proportional", agg_p2)]:
         metrics = {}
         for metric in ["response_time_mean", "coverage_fraction", "queue_fraction",
                        "total_incidents", "dispatch_delay_mean", "response_time_p90"]:
@@ -172,7 +170,7 @@ def run_p0_vs_p2():
     # Log comparison
     logger.info("\n--- P0 vs P2 Comparison ---")
     for metric in ["response_time_mean", "coverage_fraction", "queue_fraction"]:
-        p0_val = comparison["P0_uniform"].get(metric, {}).get("mean", "N/A")
+        p0_val = comparison["P0"].get(metric, {}).get("mean", "N/A")
         p2_val = comparison["P2_demand_proportional"].get(metric, {}).get("mean", "N/A")
         logger.info(f"  {metric}: P0={p0_val:.4f}, P2={p2_val:.4f}")
 

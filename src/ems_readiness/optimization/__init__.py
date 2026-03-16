@@ -6,6 +6,12 @@ models     – LP / MIP formulations (demand-weighted, p-median, maximal-coverag
              CBD-focused demand-weighted, CBD-focused coverage)
 allocator  – High-level interface that loads data, builds models, and solves
 policies   – Baseline (non-optimized) allocation policies
+
+Policy nomenclature (v2.0):
+    P0  – spatially_stratified_allocation (canonical baseline)
+    P1  – demand_proportional_allocation
+    P2  – demand-weighted MIP (via models.build_demand_weighted)
+    uniform_allocation is DEPRECATED (legacy P0 from Production V1).
 """
 
 from .allocator import EMSAllocator          # noqa: F401

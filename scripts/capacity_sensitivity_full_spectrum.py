@@ -86,12 +86,12 @@ def generate_allocations(tt, demand, K, capacity, fh_df):
     results = {}
 
     # P0 – spatially-stratified baseline (maximin method)
-    log.info(f"  P0-spatial (maximin) K={K}, capacity={capacity}")
+    log.info(f"  P0 (spatially-stratified, maximin) K={K}, capacity={capacity}")
     alloc_p0 = policies.spatially_stratified_allocation(
         K=K, method="maximin", capacity=capacity,
         data_dir=PROJECT_ROOT / "data" / "processed",
     )
-    results["P0_spatial"] = alloc_p0
+    results["P0"] = alloc_p0
 
     # P1 – demand-proportional
     log.info(f"  P1 (demand-proportional) K={K}, capacity={capacity}")
@@ -267,9 +267,9 @@ def merge_results(new_alloc_df, new_sim_df):
 # PHASE 3: Comprehensive Visualisations
 # ═══════════════════════════════════════════════════════════════════
 
-POLICY_COLORS = {"P0_spatial": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
-POLICY_LABELS = {"P0_spatial": "P0 (Spatial)", "P1_demand": "P1 (Demand)", "P2_optimised": "P2 (Optimised)"}
-POLICY_MARKERS = {"P0_spatial": "s", "P1_demand": "^", "P2_optimised": "o"}
+POLICY_COLORS = {"P0": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
+POLICY_LABELS = {"P0": "P0 (Uniform-Spatial)", "P1_demand": "P1 (Demand)", "P2_optimised": "P2 (Optimised)"}
+POLICY_MARKERS = {"P0": "s", "P1_demand": "^", "P2_optimised": "o"}
 
 
 def plot_performance_vs_capacity(full_df):
@@ -292,7 +292,7 @@ def plot_performance_vs_capacity(full_df):
                 ax.text(0.5, 0.5, f"{metric}\nnot available", ha="center", va="center", transform=ax.transAxes)
                 continue
 
-            for policy in ["P0_spatial", "P1_demand", "P2_optimised"]:
+            for policy in ["P0", "P1_demand", "P2_optimised"]:
                 pdf = kdf[kdf["policy"] == policy].sort_values("capacity")
                 if pdf.empty:
                     continue
@@ -333,7 +333,7 @@ def plot_tradeoff_analysis(full_df):
         fig, ax = plt.subplots(figsize=(10, 7))
         ax.set_title(f"Trade-off: Dispersion vs Performance (K={K})", fontsize=14, fontweight="bold")
 
-        for policy in ["P0_spatial", "P1_demand", "P2_optimised"]:
+        for policy in ["P0", "P1_demand", "P2_optimised"]:
             pdf = kdf[kdf["policy"] == policy].sort_values("capacity")
             if pdf.empty:
                 continue
@@ -371,7 +371,7 @@ def plot_max_units_vs_capacity(alloc_df):
         bar_width = 0.25
         x = np.arange(len(ALL_CAPACITY_VALUES))
 
-        for pidx, policy in enumerate(["P0_spatial", "P1_demand", "P2_optimised"]):
+        for pidx, policy in enumerate(["P0", "P1_demand", "P2_optimised"]):
             pdf = kdf[kdf["policy"] == policy].sort_values("capacity")
             if pdf.empty:
                 continue
@@ -403,7 +403,7 @@ def plot_comprehensive_heatmap(full_df):
             continue
 
         pivot = kdf.pivot_table(index="policy", columns="capacity", values="response_time_mean")
-        pivot = pivot.reindex(["P0_spatial", "P1_demand", "P2_optimised"])
+        pivot = pivot.reindex(["P0", "P1_demand", "P2_optimised"])
         pivot = pivot.reindex(columns=ALL_CAPACITY_VALUES)
 
         fig, ax = plt.subplots(figsize=(10, 4))
@@ -451,7 +451,7 @@ def plot_comprehensive_summary(full_df):
         for metric, ylabel, ax in panel_defs:
             if metric not in kdf.columns:
                 continue
-            for policy in ["P0_spatial", "P1_demand", "P2_optimised"]:
+            for policy in ["P0", "P1_demand", "P2_optimised"]:
                 pdf = kdf[kdf["policy"] == policy].sort_values("capacity")
                 if pdf.empty:
                     continue
@@ -563,7 +563,7 @@ def main():
         "new_capacity_values": NEW_CAPACITY_VALUES,
         "num_replications": NUM_REPLICATIONS,
         "horizon_hours": HORIZON_HOURS,
-        "policies": ["P0_spatial", "P1_demand", "P2_optimised"],
+        "policies": ["P0", "P1_demand", "P2_optimised"],
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
         "runtime_seconds": round(time.time() - t_start, 1),
         "total_scenarios": len(K_VALUES) * len(ALL_CAPACITY_VALUES) * 3,

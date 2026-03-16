@@ -32,11 +32,11 @@
 | Simulation duration per run | 168 hours (1 week) |
 | Warm-up period per run | 24 hours |
 | Total simulated time | ~450,000 hours (~51 years) |
-| Total experiments | 8 (factorial + CBD + capacity + V2) |
+| Total experiments | 8 (factorial + CBD + capacity + extended fleet) |
 | Verification tests | 4 (all passed) |
 | Validation pilots | 3 (all passed) |
 
-## Key Metrics Achieved (Production V2 — cap=2, P0-spatial, K=20)
+## Key Metrics Achieved (cap=2, K=20)
 
 | Metric | P0-spatial (Baseline) | P1 (Demand-Proportional) | P2 (Optimized) |
 |--------|----------------------|--------------------------|-----------------|
@@ -47,12 +47,6 @@
 
 **Key Observation:** P1 (demand-proportional allocation) captures most of the improvement over P0-spatial, indicating that matching supply to demand patterns is the primary driver of performance gains. P2's additional optimization yields a further 2.3% reduction in mean response time beyond P1.
 
-**P0 Baseline Improvement (V1 → V2):**
-
-| Metric | P0-index (V1) | P0-spatial (V2) | Improvement |
-|--------|--------------|-----------------|-------------|
-| Mean Response Time | 8.08 min | **3.17 min** | **−60.7%** |
-| 8-min Coverage | 64.4% | **99.6%** | **+35.2 pp** |
 
 **Statistical Significance:** All results p < 0.001. P0-spatial improvement driven by geographic placement.
 
@@ -68,7 +62,7 @@
 | Phase 6 | Statistical Analysis | Complete | ANOVA, post-hoc, 5 pub figures, 4 tables |
 | Phase 7 | Final Report & Docs | Complete | Technical report, presentation, roadmap |
 | Phase 8 | Alternative Analyses | Complete | Distance metric comparison, CBD-focused analysis |
-| Phase 9 | Capacity & Baseline Improvements | Complete | Capacity sensitivity (cap 1–5), P0-spatial, Production V2 |
+| Phase 9 | Capacity & Baseline Improvements | Complete | Capacity sensitivity (cap 1–5), P0 spatially-stratified, extended fleet analysis |
 
 **All 9 phases complete. Project delivered.**
 
@@ -138,18 +132,18 @@
 **Key changes:**
 - **Firehouse capacity constraint reduced from 5 to 2** — Full sensitivity analysis (cap 1–5) shows that cap=2 is operationally realistic and optimal for typical fleet sizes
 - **Spatially-stratified P0 baseline** — Replaced index-based P0 with latitude-sorted selection ensuring geographic coverage; P0 mean RT improved by 61% (8.08 → 3.17 min at K=20)
-- **Production V2 re-run** — Complete 810-run production experiment with cap=2 and P0-spatial across 9 fleet sizes (K=10–48) × 3 policies × 30 replications
+- **Extended fleet analysis** — Complete 810-run production experiment with cap=2 and P0 (spatially-stratified) across 9 fleet sizes (K=10–48) × 3 policies × 30 replications
 - **38% narrowing of P0-P2 gap** — Spatial stratification shows geographic placement is the dominant factor in EMS response performance
 
 **New scripts:**
 - `scripts/capacity_sensitivity_analysis.py` — Initial cap=2 vs cap=5 comparison
 - `scripts/capacity_sensitivity_full_spectrum.py` — Full-spectrum cap 1–5 sensitivity analysis
 - `scripts/p0_spatial_analysis.py` — Spatial stratification analysis and visualization
-- `scripts/run_production_v2.py` — Production V2 experiment runner (810 runs)
+- `scripts/run_production_v2.py` — Extended fleet analysis runner (810 runs)
 
 **New results:**
 - `results/capacity_comparison/` — 60+ files: allocations, figures, tables for cap 1–5
-- `results/production_v2/` — Complete V2 results: allocations, simulation, figures, tables
+- `results/production_v2/` — Complete extended fleet results: allocations, simulation, figures, tables
 
 **New documentation:**
 - `docs/firehouse_capacity_analysis.md` — Firehouse capacity methodology and initial analysis
@@ -164,4 +158,4 @@
 
 ---
 
-*Project complete. Tagged as v1.3.0 — capacity & baseline improvements with Production V2 results.*
+*Project complete. Tagged as v1.3.0 — capacity & baseline improvements with extended fleet analysis results.*

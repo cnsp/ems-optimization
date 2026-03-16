@@ -547,7 +547,7 @@ Conduct alternative analyses to test the robustness of modelling choices and com
 ## 10. Phase 9 — Capacity & Baseline Improvements
 
 ### Objective
-Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stratified P0 baseline, and re-run all production experiments as Production V2 with updated defaults (capacity=2, P0-spatial).
+Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stratified P0 baseline, and re-run all production experiments as Extended Fleet Analysis with updated defaults (capacity=2, P0 (spatially-stratified)).
 
 ### Step-by-Step Procedure
 
@@ -560,9 +560,9 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 | 9.5 | Document capacity sensitivity findings | Capacity analysis reports |
 | 9.6 | Implement spatially-stratified allocation: `spatially_stratified_allocation()` with latitude, grid, and maximin methods | Updated policies module |
 | 9.7 | Implement `spatial_stratification_analysis()` for comparing stratification methods | Analysis function |
-| 9.8 | Run P0-spatial analysis: evaluate latitude-based stratification vs index-based P0 | P0 spatial comparison |
+| 9.8 | Run P0 (spatially-stratified) analysis: evaluate latitude-based stratification vs index-based P0 | P0 spatial comparison |
 | 9.9 | Update `configs/optimization.yaml` default capacity from 5 to 2 | Updated config |
-| 9.10 | Run Production V2 experiments: 9 fleet sizes × 3 policies × 30 replications = 810 runs (cap=2, P0-spatial) | Production V2 results |
+| 9.10 | Run Extended Fleet Analysis experiments: 9 fleet sizes × 3 policies × 30 replications = 810 runs (cap=2, P0 (spatially-stratified)) | Extended Fleet Analysis results |
 | 9.11 | Update all documentation: technical report, README, WBS, file inventory, decisions log, assumptions log, code docs, final summary | Updated documentation (v1.3.0) |
 
 ### Input Files
@@ -581,7 +581,7 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 | File | Description |
 |------|-------------|
 | `results/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
-| `results/production_v2/` | Complete V2 results: allocations, simulation data, figures, tables |
+| `results/production_v2/` | Complete analysis results: allocations, simulation data, figures, tables |
 | `docs/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
 | `docs/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
 | `src/ems_readiness/optimization/policies.py` | Updated with `spatially_stratified_allocation()` |
@@ -595,10 +595,10 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 | `scripts/capacity_sensitivity_analysis.py` | Initial cap=2 vs cap=5 comparison |
 | `scripts/capacity_sensitivity_full_spectrum.py` | Full-spectrum cap 1–5 sensitivity (450 runs) |
 | `scripts/p0_spatial_analysis.py` | Spatial stratification analysis and visualization |
-| `scripts/run_production_v2.py` | Production V2 experiment runner (810 runs) |
+| `scripts/run_production_v2.py` | Extended Fleet Analysis experiment runner (810 runs) |
 
 ### Dependencies
-- **Depends on:** Phase 2 (distance matrix, demand data), Phase 3 (optimization models), Phase 4–5 (simulation engine), Phase 6 (production V1 results for comparison)
+- **Depends on:** Phase 2 (distance matrix, demand data), Phase 3 (optimization models), Phase 4–5 (simulation engine), Phase 6 (initial production results for comparison)
 
 ---
 
@@ -671,7 +671,7 @@ Phase 9: Capacity & Baseline Improvements
 | M5: Experiments Complete | Week 9 | 1,770 production runs with statistical analysis |
 | M6: Final Submission | Week 11 | Complete report, presentation, and reproducible archive |
 | M7: Alternative Analyses | Week 12 | Distance metric & CBD-focused comparison reports |
-| M8: Capacity & Baseline | Week 13 | Capacity sensitivity (cap 1–5), P0-spatial, Production V2 (810 runs) |
+| M8: Capacity & Baseline | Week 13 | Capacity sensitivity (cap 1–5), P0 (spatially-stratified), Extended Fleet Analysis (810 runs) |
 
 ---
 
@@ -701,7 +701,7 @@ Phase 9: Capacity & Baseline Improvements
 | `scripts/capacity_sensitivity_analysis.py` | 9 | Initial cap=2 vs cap=5 comparison | K∈{20,40} |
 | `scripts/capacity_sensitivity_full_spectrum.py` | 9 | Full-spectrum cap 1–5 sensitivity | cap∈{1,2,3,5,∞}, K∈{10–48} |
 | `scripts/p0_spatial_analysis.py` | 9 | P0 spatial stratification analysis | latitude, grid, maximin |
-| `scripts/run_production_v2.py` | 9 | Production V2 experiments | cap=2, P0-spatial, 810 runs |
+| `scripts/run_production_v2.py` | 9 | Extended Fleet Analysis experiments | cap=2, P0 (spatially-stratified), 810 runs |
 
 ---
 

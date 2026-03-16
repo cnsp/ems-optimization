@@ -37,7 +37,7 @@ print(results_df[['K', 'policy_id', 'response_time', 'pct_demand_covered']].to_s
 # Policy display configuration
 # ============================================================================
 POLICY_INFO = {
-    'P0':  {'name': 'P0: Uniform Baseline',         'marker': 's', 'zorder': 5},
+    'P0':  {'name': 'P0: Spatially-Stratified Baseline',         'marker': 's', 'zorder': 5},
     'P1':  {'name': 'P1: Demand-Proportional',       'marker': '^', 'zorder': 6},
     'P2':  {'name': 'P2: Demand-Weighted Opt.',      'marker': 'o', 'zorder': 7},
     'P2b': {'name': 'P2b: P-Median Opt.',            'marker': 'D', 'zorder': 7},

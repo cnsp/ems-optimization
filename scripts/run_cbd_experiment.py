@@ -53,7 +53,7 @@ logger = logging.getLogger(__name__)
 SEED_BASE = 42
 HORIZON_HOURS = 168
 DEFAULT_K = 20
-POLICIES = ["P0", "P1", "P2"]
+POLICIES = ["P0", "P1", "P2"]  # P0 = spatially-stratified uniform
 
 # CBD precincts (from spatial analysis - see docs/cbd_definition.md)
 CBD_PRECINCTS = [1, 5, 6, 7, 9, 10, 13, 14, 17, 18]
@@ -80,7 +80,7 @@ def get_allocation(allocator: EMSAllocator, policy: str, K: int) -> pd.Series:
             return df[policy]
 
     if policy == "P0":
-        result = allocator.baseline_uniform(K=K)
+        result = allocator.baseline_p0(K=K)
     elif policy == "P1":
         result = allocator.baseline_demand_proportional(K=K)
     elif policy == "P2":

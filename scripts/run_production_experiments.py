@@ -55,7 +55,7 @@ DEFAULT_K = 20
 DEFAULT_DEMAND_MULT = 1.0
 DEFAULT_SERVICE_MEAN = 25.0
 DEFAULT_SERVICE_STD = 10.0
-POLICIES = ["P0", "P1", "P2"]
+POLICIES = ["P0", "P1", "P2"]  # P0 = spatially-stratified uniform
 
 
 # ── Allocation helpers ───────────────────────────────────────────────
@@ -78,7 +78,7 @@ def get_allocation(allocator: EMSAllocator, policy: str, K: int) -> pd.Series:
 
     # Generate dynamically
     if policy == "P0":
-        result = allocator.baseline_uniform(K=K)
+        result = allocator.baseline_p0(K=K)
     elif policy == "P1":
         result = allocator.baseline_demand_proportional(K=K)
     elif policy == "P2":

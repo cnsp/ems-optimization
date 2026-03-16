@@ -94,7 +94,7 @@
 | `capacity_sensitivity_analysis.py` | 9 | Initial cap=2 vs cap=5 comparison |
 | `capacity_sensitivity_full_spectrum.py` | 9 | Full-spectrum cap 1–5 sensitivity (450 runs) |
 | `p0_spatial_analysis.py` | 9 | P0 spatial stratification analysis and visualization |
-| `run_production_v2.py` | 9 | Production V2 experiment runner (810 runs) |
+| `run_production_v2.py` | 9 | Extended Fleet Analysis experiment runner (810 runs) |
 | `generate_all_heatmaps.py` | 9 | Generates 108 staging location heat maps (9K × 3 policies × 4 capacities) |
 
 ### `tests/` — Test Suite (39 tests)
@@ -133,7 +133,7 @@
 | Distance Comparison | 4 | Haversine vs Manhattan figures |
 | CBD-Focused Comparison | 3 | CBD-focused vs Manhattan-wide figures |
 | Capacity Sensitivity | 10+ | Cap 1–5 sensitivity figures |
-| Production V2 | 10+ | V2 result figures |
+| Extended Fleet Analysis | 10+ | analysis result figures |
 
 ### `results/tables/` — Statistical Tables (55+ files)
 | File | Description |
@@ -196,14 +196,14 @@
 | `capacity_*_figures.png` | Capacity sensitivity visualization figures |
 | `experiment_log.txt` | Experiment execution log |
 
-### `results/production_v2/` — Production V2 Results (Phase 9)
+### `results/production_v2/` — Extended Fleet Analysis Results (Phase 9)
 | File | Description |
 |------|-------------|
-| `v2_allocations_*.csv` | P0-spatial, P1, P2 allocations per K |
+| `v2_allocations_*.csv` | P0 (spatially-stratified), P1, P2 allocations per K |
 | `v2_simulation_results.csv` | Full simulation results (810 runs) |
 | `v2_summary_statistics.csv` | Summary statistics by policy × K |
-| `comparison_with_v1.csv` | V1 vs V2 comparison table |
-| `v2_*.png` | Production V2 result figures |
+| `comparison_with_v1.csv` | baseline comparison table |
+| `*.png` | Extended Fleet Analysis result figures |
 
 ### `results/heatmaps/` — Staging Location Heat Map Collection (108 maps)
 
@@ -214,7 +214,7 @@ A systematic collection of **108 heat maps** visualizing ambulance staging locat
 | Parameter | Values | Count |
 |-----------|--------|-------|
 | Fleet size (K) | 5, 10, 15, 20, 25, 30, 35, 40, 45 | 9 |
-| Policy | P0-spatial, P1, P2 | 3 |
+| Policy | P0 (spatially-stratified), P1, P2 | 3 |
 | Capacity | 1, 2, 3, 5 | 4 |
 | **Total** | **9 × 3 × 4** | **108** |
 
@@ -279,7 +279,7 @@ These maps support scenario exploration across the full experimental space and f
 | Total figures | 72+ (analysis) + 108 (staging heat maps) |
 | Total CSV result files | 55+ |
 | Total documentation files | 32+ |
-| Total simulation runs | 2,700+ (production V1 + V2 + CBD + capacity + alternatives) |
+| Total simulation runs | 2,700+ (production + CBD + capacity + alternatives) |
 | Tracked files in Git | 230+ |
 | Project size (excl. raw data) | ~160 MB |
 

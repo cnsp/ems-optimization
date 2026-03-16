@@ -3,7 +3,7 @@
 
 Re-runs the full production experiment suite with:
   - Capacity = 2 (proven optimal from sensitivity analysis)
-  - New P0-spatial baseline (latitude-based stratification)
+  - New P0 baseline (latitude-based stratification)
   - P1 demand-proportional (with capacity=2)
   - P2 optimized demand-weighted (with capacity=2)
 
@@ -65,7 +65,7 @@ SEED_BASE = 42
 HORIZON_HOURS = 168
 CAPACITY = 2
 K_VALUES = [10, 15, 20, 25, 30, 35, 40, 45, 48]
-POLICIES = ["P0-spatial", "P1", "P2"]
+POLICIES = ["P0", "P1", "P2"]
 NUM_REPLICATIONS = 30
 RESPONSE_THRESHOLD = 8.0
 
@@ -86,19 +86,19 @@ def generate_all_allocations(allocator: EMSAllocator) -> Dict[str, Dict[int, pd.
     logger.info(f"  Policies = {POLICIES}")
     logger.info("=" * 60)
 
-    allocations = {"P0-spatial": {}, "P1": {}, "P2": {}}
+    allocations = {"P0": {}, "P1": {}, "P2": {}}
 
     for K in K_VALUES:
         logger.info(f"\n--- K = {K} ---")
 
-        # P0-spatial: latitude-based stratified allocation
+        # P0: latitude-based stratified allocation
         alloc_p0 = spatially_stratified_allocation(
             K=K, method="latitude", capacity=CAPACITY,
             data_dir=str(PROJECT_ROOT / "data" / "processed"),
         )
-        allocations["P0-spatial"][K] = alloc_p0
+        allocations["P0"][K] = alloc_p0
         n_active_p0 = (alloc_p0 > 0).sum()
-        logger.info(f"  P0-spatial: {n_active_p0} active firehouses, {alloc_p0.sum()} units")
+        logger.info(f"  P0: {n_active_p0} active firehouses, {alloc_p0.sum()} units")
 
         # P1: demand-proportional allocation
         alloc_p1 = demand_proportional_allocation(
@@ -123,7 +123,7 @@ def generate_all_allocations(allocator: EMSAllocator) -> Dict[str, Dict[int, pd.
 
         # Save combined allocation CSV for this K
         alloc_df = pd.DataFrame({
-            "P0-spatial": alloc_p0,
+            "P0": alloc_p0,
             "P1": alloc_p1,
             "P2": alloc_p2,
         })
@@ -501,7 +501,7 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
     logger.info("=" * 60)
 
     desc = tables["descriptive"]
-    colors = {"P0-spatial": "#2196F3", "P1": "#FF9800", "P2": "#4CAF50"}
+    colors = {"P0": "#2196F3", "P1": "#FF9800", "P2": "#4CAF50"}
 
     # --- 4a. Mean Response Time vs K ---
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -513,7 +513,7 @@ def generate_visualizations(df: pd.DataFrame, tables: Dict[str, pd.DataFrame]):
                      capsize=4, linewidth=2, markersize=6)
     ax.set_xlabel("Number of EMS Units (K)")
     ax.set_ylabel("Mean Response Time (minutes)")
-    ax.set_title("Policy Comparison: Mean Response Time vs Fleet Size\n(Production V2 – Capacity=2, P0-spatial baseline)")
+    ax.set_title("Policy Comparison: Mean Response Time vs Fleet Size\n(Production V2 – Capacity=2, P0 baseline)")
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_xticks(K_VALUES)
@@ -719,7 +719,7 @@ def create_v1_comparison(df_v2: pd.DataFrame):
         v1_mean_util=("mean_utilization", "mean"),
     ).reset_index()
 
-    # Map V1 policy names: P0 -> P0-index, P1 -> P1-v1, P2 -> P2-v1
+    # Map V1 policy names: P0 -> P0-legacy, P1 -> P1-v1, P2 -> P2-v1
     v1_agg["policy_v1"] = v1_agg["policy"]
 
     # Aggregate V2
@@ -732,8 +732,8 @@ def create_v1_comparison(df_v2: pd.DataFrame):
     ).reset_index()
     v2_agg["policy_v2"] = v2_agg["policy"]
 
-    # Build comparison: match V1-P0 with V2-P0-spatial, V1-P1 with V2-P1, V1-P2 with V2-P2
-    policy_map = {"P0": "P0-spatial", "P1": "P1", "P2": "P2"}
+    # Build comparison: match V1-P0 with V2-P0, V1-P1 with V2-P1, V1-P2 with V2-P2
+    policy_map = {"P0": "P0", "P1": "P1", "P2": "P2"}
     rows = []
     for _, v1_row in v1_agg.iterrows():
         v2_policy = policy_map.get(v1_row["policy"])
@@ -747,8 +747,8 @@ def create_v1_comparison(df_v2: pd.DataFrame):
             "K": v1_row["K"],
             "v1_policy": v1_row["policy"],
             "v2_policy": v2_policy,
-            "v1_config": "cap=5, P0-index",
-            "v2_config": "cap=2, P0-spatial",
+            "v1_config": "cap=5, P0-legacy",
+            "v2_config": "cap=2, P0",
             "v1_mean_RT": v1_row["v1_mean_RT"],
             "v2_mean_RT": v2_row["v2_mean_RT"],
             "RT_change": v2_row["v2_mean_RT"] - v1_row["v1_mean_RT"],

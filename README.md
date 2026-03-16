@@ -7,21 +7,14 @@
 
 ---
 
-## Key Findings (Production V2 — cap=2, P0-spatial)
+## Key Findings
 
-| Metric | P0-spatial (Baseline) | P2 (Optimized) | Improvement |
+| Metric | P0 (Baseline) | P2 (Optimized) | Improvement |
 |--------|----------------------|-----------------|-------------|
 | Mean Response Time | 3.17 min | **2.57 min** | **−19.0%** |
 | P95 Response Time | 6.26 min | **4.66 min** | **−25.6%** |
 | 8-min Coverage | 99.6% | **99.6%** | +0.0 pp |
 | Mean Utilization | 7.6% | 7.5% | −0.1 pp |
-
-**P0 Baseline Improvement (V1 → V2):**
-
-| Metric | P0-index (V1) | P0-spatial (V2) | Improvement |
-|--------|--------------|-----------------|-------------|
-| Mean Response Time | 8.08 min | **3.17 min** | **−60.7%** |
-| 8-min Coverage | 64.4% | **99.6%** | **+35.2 pp** |
 
 Results based on 2,700+ simulation experiments with 30 replications each (p < 0.001).
 Capacity sensitivity analysis (cap 1–5) confirms cap=2 as operationally optimal default.
@@ -91,7 +84,7 @@ ems-optimization/
 │ ├── distance_comparison/ # Haversine vs Manhattan metric results
 │ ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
 │ ├── capacity_comparison/ # Capacity sensitivity (cap 1–5) results
-│ ├── production_v2/ # Production V2 results (cap=2, P0-spatial)
+│ ├── production_v2/ # Extended fleet analysis results (cap=2)
 │ └── maps/ # Allocation map visualizations
 ├── scripts/ # Automation & analysis scripts (23+)
 ├── src/ems_readiness/ # Core Python package (v0.6.0)
@@ -221,7 +214,7 @@ python scripts/capacity_sensitivity_full_spectrum.py
 # 11. Run P0 spatial stratification analysis
 python scripts/p0_spatial_analysis.py
 
-# 12. Run Production V2 experiments (810 simulations — cap=2, P0-spatial)
+# 12. Run extended fleet analysis experiments (810 simulations — cap=2)
 python scripts/run_production_v2.py
 ```
 
@@ -336,4 +329,4 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-*Built with Python, SimPy, PuLP, pandas, and matplotlib. 8,500+ lines of code across 14 modules, tested with 39 unit tests and 2,700+ simulation experiments. Covers capacity sensitivity (cap 1–5), spatially-stratified P0 baseline, Production V2 results, and alternative distance metric and CBD-focused optimization analyses (v1.3.0).*
+*Built with Python, SimPy, PuLP, pandas, and matplotlib. 8,500+ lines of code across 14 modules, tested with 176 unit tests and 2,700+ simulation experiments. Covers capacity sensitivity (cap 1–5), spatially-stratified P0 baseline, and alternative distance metric and CBD-focused optimization analyses.*

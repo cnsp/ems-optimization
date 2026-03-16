@@ -61,12 +61,12 @@ def load_data():
 
 def generate_allocations(tt, demand, capacity, fh_df):
     results = {}
-    log.info(f"  P0-spatial (maximin) K={K}, capacity={capacity}")
+    log.info(f"  P0 (spatially-stratified, maximin) K={K}, capacity={capacity}")
     alloc_p0 = policies.spatially_stratified_allocation(
         K=K, method="maximin", capacity=capacity,
         data_dir=PROJECT_ROOT / "data" / "processed",
     )
-    results["P0_spatial"] = alloc_p0
+    results["P0"] = alloc_p0
 
     log.info(f"  P1 (demand-proportional) K={K}, capacity={capacity}")
     alloc_p1 = policies.demand_proportional_allocation(

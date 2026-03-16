@@ -151,7 +151,7 @@ def plot_queue_comparison_by_policy(qdf: pd.DataFrame, save_path: Path):
             bp["boxes"][0].set_alpha(0.7)
 
         ax.set_xticks(range(3))
-        ax.set_xticklabels(["P0\n(Uniform)", "P1\n(Proportional)", "P2\n(Optimized)"])
+        ax.set_xticklabels(["P0\n(Spatial)", "P1\n(Proportional)", "P2\n(Optimized)"])
         ax.set_title(title, fontweight="bold")
         ax.set_ylabel(title)
         ax.grid(axis="y", alpha=0.3)

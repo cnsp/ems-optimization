@@ -4,7 +4,7 @@
 This script runs a full comparative analysis of EMS unit allocation
 under two capacity constraints (realistic cap=2 vs. unrealistic cap=5)
 across all three policy families:
-  - P0-spatial (spatially-stratified baseline, maximin method)
+  - P0 (spatially-stratified baseline, maximin method)
   - P1 (demand-proportional)
   - P2 (demand-weighted optimisation)
 
@@ -100,12 +100,12 @@ def generate_allocations(tt, demand, K, capacity, fh_df):
     results = {}
 
     # P0 – spatially-stratified baseline (maximin method)
-    log.info(f"  P0-spatial (maximin) K={K}, capacity={capacity}")
+    log.info(f"  P0 (spatially-stratified, maximin) K={K}, capacity={capacity}")
     alloc_p0 = policies.spatially_stratified_allocation(
         K=K, method="maximin", capacity=capacity,
         data_dir=PROJECT_ROOT / "data" / "processed",
     )
-    results["P0_spatial"] = alloc_p0
+    results["P0"] = alloc_p0
 
     # P1 – demand-proportional
     log.info(f"  P1 (demand-proportional) K={K}, capacity={capacity}")
@@ -220,7 +220,7 @@ def plot_allocation_comparison(all_allocs: dict, fh_df: pd.DataFrame, suffix: st
         axes = [axes]
 
     policy_names = list(next(iter(all_allocs.values())).keys())
-    colors = {"P0_spatial": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
+    colors = {"P0": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
     bar_width = 0.25
 
     for ax_idx, cap in enumerate(CAPACITY_VALUES):
@@ -268,7 +268,7 @@ def plot_performance_comparison(comparison_df: pd.DataFrame, suffix: str = ""):
         axes = [axes]
 
     colors_cap = {2: "#1976D2", 5: "#F57C00"}
-    hatches_policy = {"P0_spatial": "///", "P1_demand": "...", "P2_optimised": ""}
+    hatches_policy = {"P0": "///", "P1_demand": "...", "P2_optimised": ""}
 
     for ax_idx, (metric, label, is_pct) in enumerate(available_metrics):
         ax = axes[ax_idx]
@@ -320,7 +320,7 @@ def plot_concentration_analysis(all_allocs: dict, suffix: str = ""):
         axes = [axes]
 
     policy_names = list(next(iter(all_allocs.values())).keys())
-    colors = {"P0_spatial": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
+    colors = {"P0": "#4CAF50", "P1_demand": "#2196F3", "P2_optimised": "#FF5722"}
 
     for ax_idx, cap in enumerate(CAPACITY_VALUES):
         ax = axes[ax_idx]

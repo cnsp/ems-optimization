@@ -61,7 +61,7 @@ COVERAGE_THRESHOLD = 8.0  # minutes
 
 # Policy definitions
 POLICIES = {
-    'P0': {'name': 'Uniform', 'type': 'baseline'},
+    'P0': {'name': 'Spatially-Stratified Uniform', 'type': 'baseline'},
     'P1': {'name': 'Demand-Proportional', 'type': 'baseline'},
     'P2': {'name': 'Demand-Weighted Optimized', 'type': 'demand_weighted'},
     'P2b': {'name': 'P-Median Optimized', 'type': 'p_median'},
@@ -80,7 +80,7 @@ for K in K_VALUES:
         
         if policy_info['type'] == 'baseline':
             if policy_id == 'P0':
-                result = allocator.baseline_uniform(K, CAPACITY)
+                result = allocator.baseline_p0(K, CAPACITY)
             else:  # P1
                 result = allocator.baseline_demand_proportional(K, CAPACITY)
         else:

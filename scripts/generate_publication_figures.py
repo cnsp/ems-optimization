@@ -26,7 +26,7 @@ FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 DPI = 300
 PALETTE = {"P0": "#d62728", "P1": "#1f77b4", "P2": "#2ca02c"}
-POLICY_LABELS = {"P0": "P0 (Uniform)", "P1": "P1 (Demand-Prop.)", "P2": "P2 (Max Coverage)"}
+POLICY_LABELS = {"P0": "P0 (Spatially-Stratified)", "P1": "P1 (Demand-Prop.)", "P2": "P2 (Max Coverage)"}
 sns.set_theme(style="whitegrid", font_scale=1.1, rc={"figure.dpi": DPI})
 
 

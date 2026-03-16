@@ -219,13 +219,32 @@ class EMSAllocator:
     # ------------------------------------------------------------------
     # Baseline policies (no solver)
     # ------------------------------------------------------------------
-    def baseline_uniform(self, K: int = 40, capacity: int = 5) -> AllocationResult:
-        alloc = policies.uniform_allocation(
-            self.travel_time.index, K, capacity
-        )
+    def baseline_p0(self, K: int = 40, capacity: int = 2,
+                    method: str = "latitude") -> "AllocationResult":
+        """P0 — Spatially-stratified uniform allocation (canonical baseline)."""
+        import warnings
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            alloc = policies.spatially_stratified_allocation(
+                K=K, method=method, capacity=capacity,
+            )
         obj = self._evaluate_response_time(alloc)
         return AllocationResult(
-            model_name="uniform", K=K, status="Baseline",
+            model_name="P0_spatially_stratified", K=K, status="Baseline",
+            objective_value=obj, allocation=alloc,
+        )
+
+    def baseline_uniform(self, K: int = 40, capacity: int = 5) -> AllocationResult:
+        """Legacy uniform allocation (DEPRECATED — use baseline_p0 instead)."""
+        import warnings
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            alloc = policies.uniform_allocation(
+                self.travel_time.index, K, capacity
+            )
+        obj = self._evaluate_response_time(alloc)
+        return AllocationResult(
+            model_name="uniform_legacy", K=K, status="Baseline (deprecated)",
             objective_value=obj, allocation=alloc,
         )
 
