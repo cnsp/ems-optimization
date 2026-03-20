@@ -297,6 +297,26 @@ pytest tests/test_reproducibility.py -v
 | [Visualization Index](docs/visualization_index.md) | Complete catalog of all ~60 generated figures with generation scripts |
 | [Notebook Guide](docs/notebook_guide.md) | Purpose, scope, and usage guide for Jupyter notebooks |
 
+## Navigating Results
+
+The `results/` folder contains output from multiple project phases. Each subfolder has its own `README.md` explaining what's there and whether it's current or legacy.
+
+| Folder | Status | What's Inside |
+|--------|--------|---------------|
+| `results/production_v2/` | ✅ **Source of Truth** | Canonical simulation results (cap=2, spatial P0, 30 reps) |
+| `results/simulation/` | ✅ Current | Verification tests, validation pilots, production experiments |
+| `results/tables/` | ✅ Mostly Current | Publication tables + experiment pivots ([see README](results/tables/README.md)) |
+| `results/figures/` | ✅ Mostly Current | Publication figures (`pub_fig*`) + technical plots |
+| `results/capacity_comparison/` | ✅ Current | Full capacity sweep (cap 1–5) |
+| `results/heatmaps/` | ✅ Current | Allocation heatmaps across K × cap × policy |
+| `results/cbd_focused_comparison/` | ✅ Current | CBD-focused optimization experiment |
+| `results/distance_comparison/` | ✅ Current | Manhattan vs Haversine comparison |
+| `results/maps/` | ✅ Current | Allocation maps at K=40 |
+| `results/optimization/` | ⚠️ Legacy (cap=5) | Phase 3 historical — see [README](results/optimization/README.md) |
+
+**Quick reference**: [`results/WHICH_FILES_TO_USE.md`](results/WHICH_FILES_TO_USE.md)  
+**Full guide**: [`docs/data_usage_guide.md`](docs/data_usage_guide.md)
+
 ## Google Colab Notebooks
 
 For external verification and reproduction, standalone Google Colab notebooks are available in `notebooks/colab_standalone/`. These require no local setup — just open in Colab and run.
