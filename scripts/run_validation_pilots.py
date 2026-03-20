@@ -2,9 +2,14 @@
 """Run validation pilot runs and save results.
 
 Pilots:
-1. Baseline P0 (uniform) vs P2 (demand-weighted): K=20, 1 week, 30 reps
+1. Baseline P0 (spatially-stratified) vs P2 (demand-weighted MIP): K=20, 1 week, 30 reps
 2. Sensitivity to K: P2 with K=[10, 20, 30, 40]
 3. Sensitivity to demand: P2 K=20 with demand scaled [0.5x, 1x, 2x]
+
+Policy nomenclature (v2.0):
+  P0 = spatially_stratified_allocation (latitude-based baseline)
+  P1 = demand_proportional_allocation
+  P2 = demand-weighted MIP (build_demand_weighted)
 """
 
 import json
@@ -41,51 +46,25 @@ def make_p0_allocation(K):
         return spatially_stratified_allocation(K=K, method="latitude", capacity=2)
 
 
-def make_demand_proportional_allocation(K):
-    """Distribute K units proportional to demand near each firehouse."""
+def make_p2_allocation(K, capacity=2):
+    """P2: Demand-weighted MIP optimized allocation."""
+    from ems_readiness.optimization.allocator import EMSAllocator
+    allocator = EMSAllocator(project_root=str(PROJECT_ROOT))
+    result = allocator.solve(K=K, model="demand_weighted", capacity=capacity)
+    return result["allocation"]
+
+
+def make_p1_allocation(K, capacity=2):
+    """P1: Demand-proportional allocation."""
+    from ems_readiness.optimization.policies import demand_proportional_allocation
+    from ems_readiness.service.travel_time import build_travel_time_matrix
+    tt = build_travel_time_matrix(dm)
     precinct_rates = pd.read_csv(
         PROJECT_ROOT / "data/processed/demand_lambda_precinct.csv"
     )
-    # Credit each firehouse with demand from its nearest precinct
-    tt = dm.copy()
-    credit = {}
-    for fh in all_fhs:
-        nearest_precinct = tt.loc[fh].idxmin()
-        rate = precinct_rates.loc[
-            precinct_rates["precinct"] == int(nearest_precinct), "crash_rate_per_hour"
-        ]
-        credit[fh] = float(rate.values[0]) if len(rate) > 0 else 0.0
-
-    total_credit = sum(credit.values())
-    if total_credit == 0:
-        return make_p0_allocation(K)
-
-    # Proportional allocation with rounding
-    alloc = {}
-    remaining = K
-    sorted_fhs = sorted(credit.keys(), key=lambda x: credit[x], reverse=True)
-    for fh in sorted_fhs:
-        share = int(round(credit[fh] / total_credit * K))
-        share = min(share, remaining, 5)  # capacity limit
-        alloc[fh] = share
-        remaining -= share
-        if remaining <= 0:
-            break
-
-    # Distribute any remaining units
-    for fh in sorted_fhs:
-        if remaining <= 0:
-            break
-        if alloc.get(fh, 0) < 5:
-            alloc[fh] = alloc.get(fh, 0) + 1
-            remaining -= 1
-
-    # Fill zeros
-    for fh in all_fhs:
-        if fh not in alloc:
-            alloc[fh] = 0
-
-    return pd.Series(alloc)
+    demand = precinct_rates.set_index("precinct")["crash_rate_per_hour"]
+    demand.index = demand.index.astype(str)
+    return demand_proportional_allocation(tt, demand, K=K, capacity=capacity)
 
 
 def save_pilot_result(name, data):
@@ -120,9 +99,9 @@ def save_pilot_result(name, data):
 # ── Pilot 1: Baseline P0 vs P2 ──────────────────────────────────
 
 def run_p0_vs_p2():
-    """Compare uniform (P0) vs demand-proportional (P2) allocations."""
+    """Compare P0 (spatially-stratified) vs P2 (demand-weighted MIP) allocations."""
     logger.info("\n" + "=" * 60)
-    logger.info("PILOT 1: P0 (Spatially-Stratified) vs P2 (Demand-Proportional), K=20")
+    logger.info("PILOT 1: P0 (Spatially-Stratified) vs P2 (Demand-Weighted MIP), K=20")
     logger.info("=" * 60)
 
     K = 20
@@ -130,7 +109,7 @@ def run_p0_vs_p2():
     HORIZON = 168  # 1 week
 
     alloc_p0 = make_p0_allocation(K)
-    alloc_p2 = make_demand_proportional_allocation(K)
+    alloc_p2 = make_p2_allocation(K)
 
     logger.info(f"P0 active firehouses: {(alloc_p0 > 0).sum()}")
     logger.info(f"P2 active firehouses: {(alloc_p2 > 0).sum()}")
@@ -149,7 +128,7 @@ def run_p0_vs_p2():
     agg_p2 = runner.run_scenario(
         policy_allocation=alloc_p2, K=K,
         num_replications=N_REPS, seed_base=100,
-        horizon_hours=HORIZON, policy_name="P2_demand_proportional",
+        horizon_hours=HORIZON, policy_name="P2",
     )
 
     comparison = {
@@ -159,7 +138,7 @@ def run_p0_vs_p2():
         "num_replications": N_REPS,
     }
 
-    for name, agg in [("P0", agg_p0), ("P2_demand_proportional", agg_p2)]:
+    for name, agg in [("P0", agg_p0), ("P2", agg_p2)]:
         metrics = {}
         for metric in ["response_time_mean", "coverage_fraction", "queue_fraction",
                        "total_incidents", "dispatch_delay_mean", "response_time_p90"]:
@@ -171,7 +150,7 @@ def run_p0_vs_p2():
     logger.info("\n--- P0 vs P2 Comparison ---")
     for metric in ["response_time_mean", "coverage_fraction", "queue_fraction"]:
         p0_val = comparison["P0"].get(metric, {}).get("mean", "N/A")
-        p2_val = comparison["P2_demand_proportional"].get(metric, {}).get("mean", "N/A")
+        p2_val = comparison["P2"].get(metric, {}).get("mean", "N/A")
         logger.info(f"  {metric}: P0={p0_val:.4f}, P2={p2_val:.4f}")
 
     save_pilot_result("pilot1_p0_vs_p2", comparison)
@@ -200,7 +179,7 @@ def run_sensitivity_K():
 
     for K in K_values:
         logger.info(f"\n  K={K}...")
-        alloc = make_demand_proportional_allocation(K)
+        alloc = make_p2_allocation(K)
         agg = runner.run_scenario(
             policy_allocation=alloc, K=K,
             num_replications=N_REPS, seed_base=200,
@@ -268,7 +247,7 @@ def run_sensitivity_demand():
     N_REPS = 15
     HORIZON = 168
     demand_scales = [0.5, 1.0, 2.0]
-    alloc = make_demand_proportional_allocation(K)
+    alloc = make_p2_allocation(K)
     results = {}
 
     for scale in demand_scales:

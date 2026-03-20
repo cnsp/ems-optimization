@@ -18,7 +18,7 @@
 
 ### Current EMS Response Performance is Unacceptable
 
-**The current uniform allocation policy (P0):**
+**The spatially-stratified baseline allocation policy (P0):**
 - Distributes ambulances **equally** across 48 firehouses
 - **Ignores** where crashes actually happen
 - Results in **3.17-minute average response time** at K=20

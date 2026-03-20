@@ -72,7 +72,7 @@ The P-Median model uses **binary** `x_i` (open/close), so each opened firehouse 
 - **P2c (Maximal Coverage)** always concentrates at the cap of 5, regardless of K.
 - **P2 (Demand-Weighted)** starts concentrating once K > 20 (reaches cap at K=30+).
 - **P1 (Demand-Proportional)** gradually concentrates as K grows.
-- **P0 and P2b** never exceed 1 unit/firehouse (by design: uniform and binary p-median).
+- **P0 and P2b** never exceed 1 unit/firehouse (by design: spatially-stratified baseline and binary p-median).
 
 ---
 

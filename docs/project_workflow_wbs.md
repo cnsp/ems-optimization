@@ -29,7 +29,7 @@
 
 This document provides the complete Work Breakdown Structure (WBS) for the EMS Readiness Optimization project. The project follows a seven-phase methodology, progressing from problem definition through data engineering, optimization, simulation, experimentation, and final reporting. Each phase is documented with its objectives, step-by-step procedures, input/output files, scripts used, and dependencies.
 
-**Project Scope:** Evaluate strategic EMS ambulance staging policies across 48 FDNY firehouses in Manhattan using discrete-event simulation, comparing uniform (P0), demand-proportional (P1), and MIP-optimized (P2) allocation strategies.
+**Project Scope:** Evaluate strategic EMS ambulance staging policies across 48 FDNY firehouses in Manhattan using discrete-event simulation, comparing spatially-stratified (P0), demand-proportional (P1), and demand-weighted MIP (P2) allocation strategies.
 
 **Total Deliverables:** 14 Python modules, 23 scripts, 9 notebooks, 66+ figures, 55+ tables, 32+ documentation files.
 
@@ -172,7 +172,7 @@ Formulate and solve MIP allocation models to generate candidate staging policies
 
 | Step | Action | Output |
 |------|--------|--------|
-| 3.1 | Define P0 (uniform) baseline allocation: K / 48 with round-robin remainder | Baseline policy |
+| 3.1 | Define P0 (spatially-stratified) baseline allocation: latitude-based firehouse selection with even spacing | Baseline policy |
 | 3.2 | Implement P1 (demand-proportional) heuristic: allocate proportional to nearest-firehouse demand credit | Heuristic policy |
 | 3.3 | Formulate demand-weighted MIP (P2): minimize Σ dⱼ·tᵢⱼ·yᵢⱼ subject to unit total, capacity, and assignment constraints | P2 formulation |
 | 3.4 | Formulate P-median model (P2-alt): select K firehouses to minimize weighted distance | P2-alt formulation |

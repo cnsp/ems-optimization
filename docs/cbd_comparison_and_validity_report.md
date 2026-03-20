@@ -12,11 +12,11 @@ This table directly compares **overall Manhattan** metrics against **CBD-specifi
 
 | Policy | Overall Mean RT | CBD Mean RT | Non-CBD Mean RT | Overall Coverage (8 min) | CBD Coverage | Non-CBD Coverage |
 |--------|:-:|:-:|:-:|:-:|:-:|:-:|
-| **P0** (status quo) | 8.08 min | 2.73 min | 14.76 min | 64.4% | 99.9% | 20.3% |
-| **P1** (nearest) | 2.63 min | 2.44 min | 2.88 min | 99.6% | 99.9% | 99.1% |
-| **P2** (optimized) | 2.57 min | 2.48 min | 2.68 min | 99.6% | 99.9% | 99.2% |
+| **P0** (spatially-stratified) | 3.17 min | 2.75 min | 3.69 min | 99.7% | 100.0% | 99.3% |
+| **P1** (demand-proportional) | 2.62 min | 2.44 min | 2.84 min | 99.6% | 100.0% | 99.3% |
+| **P2** (demand-weighted MIP) | 2.57 min | 2.48 min | 2.67 min | 99.7% | 100.0% | 99.4% |
 
-**Key insight**: Under P0, the CBD enjoys excellent service (2.73 min, 99.9% coverage) while non-CBD areas suffer catastrophically (14.76 min, 20.3% coverage). P1 and P2 equalize performance across both subregions.
+**Key insight**: All three policies achieve excellent CBD coverage (100.0%). P0 has slightly higher non-CBD response times (3.69 min) due to its uniform geographic distribution. P2 achieves the most balanced performance across both subregions.
 
 ### 1.2 Full Scenario Comparison (`results/tables/cbd_summary_all.csv`)
 
@@ -24,17 +24,17 @@ This table extends the comparison across all 4 CBD stress-test scenarios:
 
 | Scenario | Policy | Overall RT | CBD RT | Non-CBD RT | Overall Cov. | CBD Cov. | Non-CBD Cov. | Incidents |
 |----------|--------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **baseline** | P0 | 8.08 | 2.73 | 14.76 | 64.4% | 99.9% | 20.3% | 576.9 |
-| **baseline** | P1 | 2.63 | 2.44 | 2.88 | 99.6% | 99.9% | 99.1% | 574.1 |
-| **baseline** | P2 | 2.57 | 2.48 | 2.68 | 99.6% | 99.9% | 99.2% | 574.7 |
-| **cbd_surge** (2× demand) | P0 | 8.35 | 2.91 | 15.13 | 63.1% | 99.5% | 17.9% | 909.6 |
-| **cbd_surge** | P1 | 2.75 | 2.53 | 3.02 | 99.2% | 99.8% | 98.4% | 907.8 |
-| **cbd_surge** | P2 | 2.73 | 2.61 | 2.87 | 99.3% | 99.8% | 98.7% | 906.8 |
-| **cbd_slow_service** (35 min) | P0 | 8.15 | 2.77 | 14.88 | 64.2% | 99.9% | 19.6% | 576.6 |
-| **cbd_slow_service** | P1 | 2.68 | 2.47 | 2.94 | 99.5% | 99.9% | 98.9% | 574.0 |
-| **cbd_slow_service** | P2 | 2.63 | 2.53 | 2.75 | 99.6% | 99.9% | 99.2% | 574.6 |
-| **cbd_only** | CBD_ONLY | 8.35 | 2.97 | 15.05 | 63.5% | 99.9% | 18.1% | 576.9 |
-| **mixed** | MIXED | 8.35 | 2.97 | 15.05 | 63.5% | 99.9% | 18.1% | 576.9 |
+| **baseline** | P0 | 3.17 | 2.75 | 3.69 | 99.7% | 100.0% | 99.3% | 570.6 |
+| **baseline** | P1 | 2.62 | 2.44 | 2.84 | 99.6% | 100.0% | 99.3% | 572.8 |
+| **baseline** | P2 | 2.57 | 2.48 | 2.67 | 99.7% | 100.0% | 99.4% | 571.4 |
+| **cbd_surge** (2× demand) | P0 | 3.28 | 2.83 | 3.85 | 99.2% | 99.9% | 98.4% | 906.5 |
+| **cbd_surge** | P1 | 2.78 | 2.54 | 3.06 | 99.2% | 99.9% | 98.4% | 908.6 |
+| **cbd_surge** | P2 | 2.73 | 2.61 | 2.87 | 99.4% | 99.8% | 98.8% | 906.8 |
+| **cbd_slow_service** (35 min) | P0 | 3.20 | 2.77 | 3.74 | 99.6% | 100.0% | 99.0% | 570.5 |
+| **cbd_slow_service** | P1 | 2.67 | 2.47 | 2.91 | 99.5% | 99.9% | 99.1% | 572.7 |
+| **cbd_slow_service** | P2 | 2.62 | 2.53 | 2.74 | 99.6% | 99.9% | 99.2% | 571.2 |
+| **cbd_only** | CBD_ONLY | 8.32 | 2.97 | 15.06 | 63.2% | 99.8% | 17.0% | 578.0 |
+| **mixed** | MIXED | 8.32 | 2.97 | 15.06 | 63.2% | 99.8% | 17.0% | 578.0 |
 
 ### 1.3 Figures Showing the Comparison
 

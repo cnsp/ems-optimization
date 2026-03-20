@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-This document presents the results of CBD-specific robustness experiments designed to assess how EMS allocation policies perform under CBD-focused conditions. The analysis tests all three policies (P0: Uniform, P1: Demand-Proportional, P2: Optimized) under four scenarios that stress-test CBD performance.
+This document presents the results of CBD-specific robustness experiments designed to assess how EMS allocation policies perform under CBD-focused conditions. The analysis tests all three policies (P0: Spatially-Stratified Baseline, P1: Demand-Proportional, P2: Demand-Weighted MIP) under four scenarios that stress-test CBD performance.
 
 **Key Finding:** P2 (Optimized) maintains its performance advantage across all CBD scenarios, including 2× demand surges and increased service times. CBD response times are consistently lower than Manhattan-wide averages due to the concentration of firehouses in the CBD area.
 
@@ -40,23 +40,23 @@ This document presents the results of CBD-specific robustness experiments design
 
 | Policy | Overall RT (min) | CBD RT (min) | Non-CBD RT (min) | Overall Coverage | CBD Coverage |
 |--------|-----------------|-------------|-----------------|-----------------|-------------|
-| P0 | 8.08 | 2.73 | 12.81 | 64.4% | 99.9% |
-| P1 | 2.63 | 2.44 | 2.80 | 99.6% | 99.9% |
-| P2 | 2.57 | 2.48 | 2.65 | 99.6% | 99.9% |
+| P0 | 3.17 | 2.75 | 3.69 | 99.7% | 100.0% |
+| P1 | 2.62 | 2.44 | 2.84 | 99.6% | 100.0% |
+| P2 | 2.57 | 2.48 | 2.67 | 99.7% | 100.0% |
 
 **Key observations:**
 - CBD response times are notably lower than Manhattan-wide averages for all policies
-- P0's poor overall performance is driven by non-CBD precincts (12.81 min vs 2.73 min in CBD)
-- P1 and P2 achieve near-universal CBD coverage (99.9%)
+- P0 (spatially-stratified baseline) achieves good overall performance (3.17 min) with slightly higher non-CBD response times (3.69 min)
+- P1 and P2 achieve near-universal CBD coverage (100.0%)
 - P2 provides the most balanced performance between CBD and non-CBD areas
 
 ### CBD Demand Surge (Scenario A)
 
 | Policy | Overall RT | CBD RT | Overall Coverage | CBD Coverage |
 |--------|-----------|--------|-----------------|-------------|
-| P0 | 8.35 | 2.91 | 63.1% | 99.5% |
-| P1 | 2.75 | 2.53 | 99.2% | 99.8% |
-| P2 | 2.73 | 2.61 | 99.3% | 99.8% |
+| P0 | 3.28 | 2.83 | 99.2% | 99.9% |
+| P1 | 2.78 | 2.54 | 99.2% | 99.9% |
+| P2 | 2.73 | 2.61 | 99.4% | 99.8% |
 
 Even under 2× CBD demand, P2 maintains near-complete CBD coverage. The degradation from baseline is minimal (~0.13 min increase in CBD RT for P2).
 
@@ -64,9 +64,9 @@ Even under 2× CBD demand, P2 maintains near-complete CBD coverage. The degradat
 
 | Policy | Overall RT | CBD RT | Overall Coverage | CBD Coverage |
 |--------|-----------|--------|-----------------|-------------|
-| P0 | 8.15 | 2.77 | 64.2% | 99.9% |
-| P1 | 2.68 | 2.47 | 99.5% | 99.9% |
-| P2 | 2.63 | 2.53 | 99.6% | 99.9% |
+| P0 | 3.20 | 2.77 | 99.6% | 100.0% |
+| P1 | 2.67 | 2.47 | 99.5% | 99.9% |
+| P2 | 2.62 | 2.53 | 99.6% | 99.9% |
 
 Increased CBD service times (35 min vs 25 min) have minimal impact on response times and coverage. This indicates the system has sufficient capacity to absorb longer on-scene durations.
 
@@ -91,7 +91,7 @@ Increased CBD service times (35 min vs 25 min) have minimal impact on response t
 2. **CBD naturally well-served**: Due to firehouse concentration, CBD precincts have inherently shorter response times
 3. **Demand surge resilience**: Even doubling CBD demand produces minimal degradation
 4. **No queuing under any scenario**: The K=20 fleet provides sufficient capacity
-5. **P0's weakness is non-CBD**: The uniform allocation's poor performance is concentrated in outer precincts, not CBD
+5. **P0's weakness is non-CBD**: The spatially-stratified baseline's relatively higher response times are concentrated in outer precincts, not CBD
 
 ---
 

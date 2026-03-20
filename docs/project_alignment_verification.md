@@ -183,7 +183,7 @@
 
 **Project delivers:**
 - Three policies:
- - P0: Uniform allocation (`policies.py::uniform_allocation`)
+ - P0: Spatially-stratified allocation (`policies.py::spatially_stratified_allocation`)
  - P1: Demand-proportional (`policies.py::demand_proportional_allocation`)
  - P2: Demand-weighted optimized (`models.py::build_demand_weighted`)
  - Plus P2-alt (p-median) and P2-cov (maximal coverage) alternatives

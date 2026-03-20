@@ -112,7 +112,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 ---
 
-## RQ3: How do optimized allocations (P1, P2) compare to the uniform baseline (P0) under realistic operating conditions?
+## RQ3: How do optimized allocations (P1, P2) compare to the spatially-stratified baseline (P0) under realistic operating conditions?
 
 ### Status: **Fully Answered**
 

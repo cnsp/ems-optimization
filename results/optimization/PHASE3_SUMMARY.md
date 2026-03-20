@@ -14,12 +14,12 @@
 - **P2 (Demand-Weighted Optimized)** with **K=20-30 units**
 - Response time: **2.54 min** (at K=20)
 - Coverage: **100%** (all demand within 8 minutes)
-- **86% faster** than uniform allocation at K=20
+- **46% faster** than spatially-stratified baseline (P0) at K=20
 
 ### Resource Efficiency
 - Optimized allocation achieves near-optimal with **just 20 units**
-- Uniform allocation requires **48 units** to match performance
-- **Savings**: ~$500K-$1M annually (28 fewer units × $25-35K/unit/year)
+- P0 baseline requires **K≥40** to approach P2 performance
+- **Savings**: significant operational efficiency through smarter placement
 
 ### Diminishing Returns
 **P2 gains are front-loaded**:
@@ -28,11 +28,11 @@
 - K=40: 2.49 min (no improvement)
 - K=48: 2.49 min (no improvement)
 
-**P0 requires all resources to match**:
-- K=20: 18.55 min
-- K=30: 7.00 min
-- K=40: 3.02 min
-- K=48: 2.49 min ← finally matches P2
+**P0 (spatially-stratified) converges as K grows**:
+- K=20: 4.75 min
+- K=30: 3.75 min
+- K=40: 2.69 min
+- K=48: 2.49 min ← matches P2
 
 ## Files Generated
 

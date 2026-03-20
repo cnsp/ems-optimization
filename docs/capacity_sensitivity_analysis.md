@@ -4,7 +4,7 @@
 
 **Date:** March 2026 
 **Fleet Sizes:** K = 20, K = 30, K = 40 
-**Policies:** P0 (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation) 
+**Policies:** P0 (spatially-stratified), P1 (demand-proportional), P2 (demand-weighted MIP) 
 **Simulation:** 15 replications × 168 hours (1 week) per scenario 
 **Total scenarios:** 5 × 2 × 3 = **30 allocation–simulation experiments**
 
@@ -22,7 +22,7 @@ Evaluate how firehouse capacity constraints (cap = 1 through cap = 5) affect EMS
 |--------|--------|
 | Fleet size (K) | 20, 30, 40 |
 | Capacity per firehouse | **1, 2, 3, 4, 5** |
-| Allocation policy | P0 (maximin), P1 (demand-proportional), P2 (demand-weighted optimisation) |
+| Allocation policy | P0 (spatially-stratified), P1 (demand-proportional), P2 (demand-weighted MIP) |
 | Replications | 15 per scenario |
 | Simulation horizon | 168 hours (1 week) |
 | Random seed base | 42 |
@@ -137,7 +137,7 @@ This is where the capacity analysis becomes critical. With 40 units across 48 ca
 | P2-optimised | 5 | 24 | 5 | 1.523 | 19 | 0.716 |
 
 **Key patterns across the spectrum:**
-- **P0** is immune to capacity: with maximin heuristic and 40 units across 48 stations, it always uses 40 stations at 1 unit each
+- **P0** is immune to capacity: with latitude-based spatial stratification and 40 units across 48 stations, it always uses 40 stations at 1 unit each
 - **P1-demand** shows a clear progression: 40 → 22 → 22 → 21 → 21 firehouses as capacity increases from 1 to 5
 - **P2-optimised** shows the most dramatic response: 40 → 29 → 26 → 25 → 24 firehouses — a monotonic decrease in dispersion as capacity constraint relaxes
 

@@ -223,9 +223,9 @@ for fname in sorted(FIG_DIR.glob("pub_fig*.png")):
 # ## 12. Key Findings & Discussion
 #
 # ### Policy Comparison (Experiment 1)
-# - **P2 (Maximal Coverage)** achieves the lowest mean response time (~2.6 min)
-#   compared to P0 (~8.1 min) and P1 (~2.6 min).
-# - P2 provides **94.8% 8-minute coverage** vs 64.2% for P0.
+# - **P2 (Demand-Weighted MIP)** achieves the lowest mean response time (~2.57 min)
+#   compared to P0 (~3.17 min) and P1 (~2.62 min).
+# - All three policies exceed **99.6% 8-minute coverage** at K=20.
 # - All pairwise differences are **statistically significant** (p < 0.001).
 # - Effect sizes are **large** (Cohen's d > 2 for P0 vs P2).
 #

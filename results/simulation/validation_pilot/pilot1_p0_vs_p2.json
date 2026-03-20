@@ -53,7 +53,7 @@
       "max": 5.892374602398846
     }
   },
-  "P2_demand_proportional": {
+  "P2": {
     "response_time_mean": {
       "mean": 5.444278215366177,
       "std": 0.260459901105946,

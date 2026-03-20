@@ -209,7 +209,7 @@ The three-colour scheme communicates demand intensity at a glance:
    `crash_rate_per_hour` column drives per-precinct NHPP arrival intensity.
    High-demand precincts generate more incidents, stressing nearby units.
 
-3. **Policy Evaluation**: Comparing P0 (uniform) with P2 (demand-weighted)
+3. **Policy Evaluation**: Comparing P0 (spatially-stratified) with P2 (demand-weighted)
    reveals how much response time improves when allocation follows the
    demand distribution shown in these figures.
 

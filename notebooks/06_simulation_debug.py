@@ -104,13 +104,13 @@ labels = ["Mean Response Time\n(min)", "Coverage Fraction\n(≤8 min)", "Mean Di
 
 fig, axes = plt.subplots(1, 3, figsize=(14, 5))
 for ax, metric, label in zip(axes, metrics, labels):
-    p0_mean = p0p2["P0_uniform"][metric]["mean"]
-    p2_mean = p0p2["P2_demand_proportional"][metric]["mean"]
-    p0_ci = [p0p2["P0_uniform"][metric]["ci_lower"], p0p2["P0_uniform"][metric]["ci_upper"]]
-    p2_ci = [p0p2["P2_demand_proportional"][metric]["ci_lower"],
-             p0p2["P2_demand_proportional"][metric]["ci_upper"]]
+    p0_mean = p0p2["P0"][metric]["mean"]
+    p2_mean = p0p2["P2"][metric]["mean"]
+    p0_ci = [p0p2["P0"][metric]["ci_lower"], p0p2["P0"][metric]["ci_upper"]]
+    p2_ci = [p0p2["P2"][metric]["ci_lower"],
+             p0p2["P2"][metric]["ci_upper"]]
 
-    bars = ax.bar(["P0\n(Uniform)", "P2\n(Demand-Prop)"], [p0_mean, p2_mean],
+    bars = ax.bar(["P0\n(Spatial-Stratified)", "P2\n(Demand-Weighted)"], [p0_mean, p2_mean],
                   color=["#d35400", "#2980b9"], alpha=0.8)
     ax.errorbar(
         [0, 1], [p0_mean, p2_mean],
@@ -126,8 +126,8 @@ plt.tight_layout()
 plt.savefig(FIG_DIR / "validation_p0_vs_p2.png", bbox_inches="tight")
 plt.show()
 
-print(f"P2 reduces mean response time by {(1 - p0p2['P2_demand_proportional']['response_time_mean']['mean'] / p0p2['P0_uniform']['response_time_mean']['mean'])*100:.1f}%")
-print(f"P2 increases coverage from {p0p2['P0_uniform']['coverage_fraction']['mean']:.1%} to {p0p2['P2_demand_proportional']['coverage_fraction']['mean']:.1%}")
+print(f"P2 reduces mean response time by {(1 - p0p2['P2']['response_time_mean']['mean'] / p0p2['P0']['response_time_mean']['mean'])*100:.1f}%")
+print(f"P2 increases coverage from {p0p2['P0']['coverage_fraction']['mean']:.1%} to {p0p2['P2']['coverage_fraction']['mean']:.1%}")
 
 # %% [markdown]
 # ## 5. Pilot 2: Sensitivity to K
