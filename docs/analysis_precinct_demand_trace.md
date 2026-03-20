@@ -1,3 +1,8 @@
+---
+status: 📋 REFERENCE
+last_updated: "2026-03-20"
+verified: "Specialized analysis document. Cross-reference with current production results."
+---
 # Precinct-Level Demand Rates: Analysis & Downstream Trace
 
 ## Part 1: What the Visualization Shows

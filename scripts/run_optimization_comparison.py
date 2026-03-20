@@ -56,7 +56,7 @@ print("### 2. RUNNING OPTIMIZATIONS ###")
 print("=" * 80)
 
 K_VALUES = [20, 30, 40, 48]
-CAPACITY = 5
+CAPACITY = 2  # Changed from 5 → 2 per DEC-010 / capacity sensitivity analysis
 COVERAGE_THRESHOLD = 8.0  # minutes
 
 # Policy definitions

@@ -1,3 +1,8 @@
+---
+status: ✅ CURRENT
+last_updated: "2026-03-20"
+verified: "All metrics, code references, and nomenclature are current as of March 2026"
+---
 # Figure Trace Guide
 
 > How every figure in `results/figures/` was generated, what data it uses,

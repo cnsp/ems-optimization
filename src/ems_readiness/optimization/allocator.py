@@ -113,7 +113,9 @@ class EMSAllocator:
 
         # Demand
         dl = pd.read_csv(root / "data" / "processed" / "demand_lambda_precinct.csv")
-        demand = dl.set_index(dl["precinct"].astype(str))["crash_rate_per_hour"]
+        # Support both column names: "crash_rate_per_hour" or "lambda_per_hour"
+        rate_col = "crash_rate_per_hour" if "crash_rate_per_hour" in dl.columns else "lambda_per_hour"
+        demand = dl.set_index(dl["precinct"].astype(str))[rate_col]
         demand.index.name = None
         demand.name = "demand"
 
@@ -171,7 +173,7 @@ class EMSAllocator:
 
         cfg = self.config
         K = K or cfg.get("default_K") or 40
-        capacity = capacity or cfg.get("firehouse_capacity", 5)
+        capacity = capacity or cfg.get("firehouse_capacity", 2)  # Default 2 per DEC-010
         coverage_threshold = coverage_threshold or cfg.get("coverage_threshold_minutes", 8.0)
 
         builder = self.MODEL_BUILDERS[model]
@@ -234,7 +236,7 @@ class EMSAllocator:
             objective_value=obj, allocation=alloc,
         )
 
-    def baseline_uniform(self, K: int = 40, capacity: int = 5) -> AllocationResult:
+    def baseline_uniform(self, K: int = 40, capacity: int = 2) -> AllocationResult:
         """Legacy uniform allocation (DEPRECATED — use baseline_p0 instead)."""
         import warnings
         with warnings.catch_warnings():
@@ -248,7 +250,7 @@ class EMSAllocator:
             objective_value=obj, allocation=alloc,
         )
 
-    def baseline_demand_proportional(self, K: int = 40, capacity: int = 5) -> AllocationResult:
+    def baseline_demand_proportional(self, K: int = 40, capacity: int = 2) -> AllocationResult:
         alloc = policies.demand_proportional_allocation(
             self.travel_time, self.demand, K, capacity
         )
@@ -304,7 +306,7 @@ class EMSAllocator:
     def compare_models(
         self,
         K: int = 40,
-        capacity: int = 5,
+        capacity: int = 2,  # Changed from 5 → 2 per DEC-010
         coverage_threshold: float = 8.0,
         models_to_run: Optional[List[str]] = None,
     ) -> pd.DataFrame:

@@ -49,9 +49,9 @@ def make_p0_allocation(K):
 def make_p2_allocation(K, capacity=2):
     """P2: Demand-weighted MIP optimized allocation."""
     from ems_readiness.optimization.allocator import EMSAllocator
-    allocator = EMSAllocator(project_root=str(PROJECT_ROOT))
+    allocator = EMSAllocator.from_project(PROJECT_ROOT)
     result = allocator.solve(K=K, model="demand_weighted", capacity=capacity)
-    return result["allocation"]
+    return result.allocation
 
 
 def make_p1_allocation(K, capacity=2):
@@ -62,7 +62,8 @@ def make_p1_allocation(K, capacity=2):
     precinct_rates = pd.read_csv(
         PROJECT_ROOT / "data/processed/demand_lambda_precinct.csv"
     )
-    demand = precinct_rates.set_index("precinct")["crash_rate_per_hour"]
+    rate_col = "crash_rate_per_hour" if "crash_rate_per_hour" in precinct_rates.columns else "lambda_per_hour"
+    demand = precinct_rates.set_index("precinct")[rate_col]
     demand.index = demand.index.astype(str)
     return demand_proportional_allocation(tt, demand, K=K, capacity=capacity)
 

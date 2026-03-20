@@ -1,3 +1,8 @@
+---
+status: 🔄 HISTORICAL
+last_updated: "2026-03-20"
+note: "Preserved for project history. Contains old metrics/references in historical context. Do not use as current reference."
+---
 # Policy Trade-off Analysis
 
 > **⚠️ Historical Context Note:** This analysis uses the **original index-based uniform P0** (deprecated), not the current spatially-stratified P0 baseline. The original P0 distributed units round-robin by firehouse index, resulting in poor geographic coverage (mean RT ≈ 18.5 min at K=20). The current P0 uses latitude-based spatial stratification and achieves 3.17 min mean RT at K=20. See [`docs/nomenclature_migration.md`](nomenclature_migration.md) for the full nomenclature history and [`docs/decisions_log.md`](decisions_log.md) DEC-011/DEC-012 for the rationale. The plots and tables below are retained for historical reference but should not be compared directly to production results that use the current P0 baseline.

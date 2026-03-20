@@ -1,3 +1,8 @@
+---
+status: 📋 REFERENCE
+last_updated: "2026-03-20"
+verified: "Specialized analysis document. Cross-reference with current production results."
+---
 # Investigation Report: `fleet_sensitivity_dual.png` and Related Figure Issues
 
 ## Summary

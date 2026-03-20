@@ -1,0 +1,202 @@
+{
+  "timestamp": "2026-03-20T21:14:57",
+  "summary": {
+    "passed": 35,
+    "failed": 0,
+    "warnings": 3,
+    "total": 38,
+    "status": "PASS"
+  },
+  "checks": [
+    {
+      "status": "pass",
+      "category": "config",
+      "message": "firehouse_capacity == 2"
+    },
+    {
+      "status": "pass",
+      "category": "config",
+      "message": "unit_counts OK"
+    },
+    {
+      "status": "pass",
+      "category": "config",
+      "message": "default_model OK"
+    },
+    {
+      "status": "pass",
+      "category": "config",
+      "message": "base_rate_per_hour OK"
+    },
+    {
+      "status": "pass",
+      "category": "config",
+      "message": "average_speed_mph OK"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 label OK at K=20"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 RT OK at K=20"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 label OK at K=30"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 RT OK at K=30"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 label OK at K=40"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 RT OK at K=40"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 label OK at K=48"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P0 RT OK at K=48"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P2 \u2264 P0 at K=20"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P2 \u2264 P0 at K=30"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "P2 \u2264 P0 at K=40"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "Sim P0 K=20 RT plausible"
+    },
+    {
+      "status": "pass",
+      "category": "results",
+      "message": "max_units sanity OK"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "No stale uniform_allocation calls"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "DeprecationWarning present"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "spatially_stratified_allocation defined"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "baseline_p0 method exists"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "build_demand_weighted has capacity param"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "build_p_median has capacity param"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "build_maximal_coverage has capacity param"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "build_cbd_focused_demand_weighted has capacity param"
+    },
+    {
+      "status": "pass",
+      "category": "code",
+      "message": "build_cbd_focused_coverage has capacity param"
+    },
+    {
+      "status": "warn",
+      "category": "docs",
+      "message": "technical_report.md may have stale P0 refs at lines [711, 817]"
+    },
+    {
+      "status": "pass",
+      "category": "docs",
+      "message": "executive_summary.md nomenclature OK"
+    },
+    {
+      "status": "warn",
+      "category": "docs",
+      "message": "experimental_design.md may have stale P0 refs at lines [9, 20, 31, 47]"
+    },
+    {
+      "status": "pass",
+      "category": "docs",
+      "message": "optimization_results.md nomenclature OK"
+    },
+    {
+      "status": "warn",
+      "category": "docs",
+      "message": "optimization_formulation.md may have stale P0 refs at lines [121, 172]"
+    },
+    {
+      "status": "pass",
+      "category": "docs",
+      "message": "policy_tradeoff_analysis.md has warning banner"
+    },
+    {
+      "status": "pass",
+      "category": "docs",
+      "message": "nomenclature_migration.md exists"
+    },
+    {
+      "status": "pass",
+      "category": "deprecated",
+      "message": "policy_comparison.csv clean"
+    },
+    {
+      "status": "pass",
+      "category": "deprecated",
+      "message": "cap != 5 in config"
+    },
+    {
+      "status": "pass",
+      "category": "deprecated",
+      "message": "Documented 2 deprecated functions"
+    },
+    {
+      "status": "pass",
+      "category": "deprecated",
+      "message": "All old-data docs marked"
+    }
+  ]
+}
