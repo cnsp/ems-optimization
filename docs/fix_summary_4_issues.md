@@ -1,3 +1,8 @@
+---
+status: 🔄 HISTORICAL
+last_updated: "2026-03-20"
+note: "Preserved for project history. Contains old metrics/references in historical context. Do not use as current reference."
+---
 # Fix Summary: 4 Critical Issues Resolved
 
 ## Issue 1: Pilot 1 — P2 Showed Worse RT Than P0 (CRITICAL)

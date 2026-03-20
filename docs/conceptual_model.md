@@ -1,3 +1,8 @@
+---
+status: ✅ CURRENT
+last_updated: "2026-03-20"
+verified: "All metrics, code references, and nomenclature are current as of March 2026"
+---
 # Conceptual Model — EMS Discrete-Event Simulation
 
 > **Document version:** 1.0 
@@ -333,7 +338,7 @@ time. They are updated exclusively by the event routines described in § 5.
 |-----------|--------|---------|--------|
 | Simulation horizon | *T* | 168 h (1 week) | `configs/demand.yaml` |
 | Total EMS units | *K* | 40 | `configs/optimization.yaml` |
-| Per-firehouse capacity | *C* | 5 | `configs/optimization.yaml` |
+| Per-firehouse capacity | *C* | 2 | `configs/optimization.yaml` |
 | Base arrival rate | λ₀ | 3.48 /hr | `configs/demand.yaml` |
 | Average EMS speed | *v* | 20 mph | `configs/service.yaml` |
 | Service time mean | μ_s | 25 min | `configs/service.yaml` |
@@ -639,7 +644,7 @@ available (depends on prior random service completions).
 | A-9 | Static allocation: unit positions fixed for the entire replication. | Evaluates strategic staging; dynamic relocation is a separate problem. | Cannot capture real-time repositioning benefits. |
 | A-10 | Empty-and-idle initial conditions at *t = 0*. | Natural for a fresh deployment cycle start. | Brief transient at start; negligible over 168 h horizon. |
 | A-11 | No balking, reneging, or abandonment from the queue. | All crashes require response regardless of wait. | Queue may over-accumulate under extreme load; realistic for emergency services. |
-| A-12 | Firehouses have a maximum capacity of 5 units. | Physical space constraint from optimisation model. | May restrict optimal solutions; configurable parameter. |
+| A-12 | Firehouses have a maximum capacity of **2** units (default; sensitivity tested 1–5). | Physical space constraint from optimisation model (DEC-010). | May restrict optimal solutions; configurable parameter. |
 
 ### 12.2 Limitations and Exclusions
 

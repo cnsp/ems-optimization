@@ -1,3 +1,8 @@
+---
+status: 🔄 HISTORICAL
+last_updated: "2026-03-20"
+note: "Preserved for project history. Contains old metrics/references in historical context. Do not use as current reference."
+---
 # EMS Optimization — Phase Comparison Summary
 
 ## TL;DR: **12 phases originally planned, 7 phases implemented**

@@ -1,3 +1,8 @@
+---
+status: 📋 REFERENCE
+last_updated: "2026-03-20"
+verified: "Specialized analysis document. Cross-reference with current production results."
+---
 # EMS Optimization: EDA & Data Split Methodology Summary
 
 ## Part 1 — EDA of Crash Counts by Dimension

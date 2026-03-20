@@ -52,7 +52,7 @@ ems-optimization/
 │ ├── raw/ # Original data files (NYC Open Data)
 │ ├── processed/ # Generated data (not in Git — run `make data`)
 │ └── manifests/ # Data audit records
-├── docs/ # Project documentation (32+ files)
+├── docs/ # Project documentation (62+ .md files, see DOCUMENTATION_INDEX.md)
 │ ├── technical_report.md # Full final report (v2.1.0)
 │ ├── executive_presentation.md # Stakeholder slide deck
 │ ├── implementation_roadmap.md # Deployment plan
@@ -269,33 +269,45 @@ pytest tests/test_reproducibility.py -v
 
 ## Documentation Index
 
+> 📖 **Full index:** [`docs/DOCUMENTATION_INDEX.md`](docs/DOCUMENTATION_INDEX.md) — master list of all 62 docs with status badges (✅ Current / 🔄 Historical / 📋 Reference)
+
+### Key Documents
+
 | Document | Description |
 |----------|-------------|
 | [Technical Report](docs/technical_report.md) | Full final report (v2.1.0) with all findings |
+| [Executive Summary](docs/executive_summary.md) | One-page executive summary |
 | [Executive Presentation](docs/executive_presentation.md) | 10-slide stakeholder presentation |
-| [Implementation Roadmap](docs/implementation_roadmap.md) | Phased deployment plan |
+| [Data Usage Guide](docs/data_usage_guide.md) | Which data/results files to use and why |
+| [Reproducibility Guide](docs/reproducibility_guide.md) | How to reproduce all results |
+
+### Model & Methods
+
+| Document | Description |
+|----------|-------------|
 | [Conceptual Model](docs/conceptual_model.md) | DES model specification |
 | [Optimization Formulation](docs/optimization_formulation.md) | MIP mathematical formulations |
 | [Experimental Design](docs/experimental_design.md) | Factorial experiment specification |
-| [Output Analysis](docs/output_analysis.md) | Statistical analysis report |
-| [Verification Log](docs/verification_log.md) | V&V test results |
-| [Code Documentation](docs/code_documentation.md) | Architecture and API guide |
-| [File Inventory](docs/file_inventory.md) | Complete project file listing |
-| [Project Archive](docs/project_archive.md) | Timeline and lessons learned |
-| [CBD Robustness Analysis](docs/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
-| [Queue Analysis](docs/queue_analysis.md) | Queueing performance analysis |
-| [Gap Closure Report](docs/gap_closure_report.md) | Verification of 100% alignment |
+| [Optimization Results](docs/optimization_results.md) | Current optimization results (cap=2) |
+
+### Analysis & Robustness
+
+| Document | Description |
+|----------|-------------|
+| [Capacity Sensitivity](docs/capacity_sensitivity_analysis.md) | Full-spectrum capacity (cap 1–5) analysis |
+| [CBD Robustness](docs/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
 | [Distance Metric Comparison](docs/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
-| [CBD-Focused Optimization](docs/cbd_focused_optimization_analysis.md) | CBD-focused vs. Manhattan-wide comparison |
-| [Alternative Analyses Summary](docs/alternative_analyses_summary.md) | Combined Phase 8 alternative analyses |
-| [Capacity Sensitivity Analysis](docs/capacity_sensitivity_analysis.md) | Full-spectrum capacity (cap 1–5) analysis |
-| [Firehouse Capacity Analysis](docs/firehouse_capacity_analysis.md) | Capacity methodology and initial findings |
-| [Research Questions Assessment](docs/research_questions_assessment.md) | Evaluation of all 5 research questions with simulation evidence |
-| [Work Breakdown Structure](docs/project_workflow_wbs.md) | Complete WBS across all 9 phases |
-| [Conceptual Model Selection](docs/conceptual_model_selection.md) | Analysis of all conceptual models considered, implemented, and deferred |
-| [Figure Trace Guide](docs/figure_trace_guide.md) | Data lineage and downstream usage for every project figure |
-| [Visualization Index](docs/visualization_index.md) | Complete catalog of all ~60 generated figures with generation scripts |
-| [Notebook Guide](docs/notebook_guide.md) | Purpose, scope, and usage guide for Jupyter notebooks |
+| [Research Questions](docs/research_questions_assessment.md) | Evaluation of all 5 research questions |
+
+### Guides
+
+| Document | Description |
+|----------|-------------|
+| [Code Documentation](docs/code_documentation.md) | Architecture and API guide |
+| [Notebook Guide](docs/notebook_guide.md) | Notebook descriptions and execution order |
+| [Testing Guide](docs/testing_guide.md) | Testing framework and how to run tests |
+| [Figure Trace Guide](docs/figure_trace_guide.md) | Figure-to-source traceability |
+| [Visualization Index](docs/visualization_index.md) | Complete catalog of all generated figures |
 
 ## Navigating Results
 

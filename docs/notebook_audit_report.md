@@ -1,3 +1,8 @@
+---
+status: 🔄 HISTORICAL
+last_updated: "2026-03-20"
+note: "Preserved for project history. Contains old metrics/references in historical context. Do not use as current reference."
+---
 # Notebook Nomenclature & Data Consistency Audit Report
 
 > **⚠️ Note:** This audit report documents changes made during the P0 nomenclature migration. It references old metric values (e.g., 8.08 min) to describe *what was changed*. These are not current results. See [`nomenclature_migration.md`](nomenclature_migration.md).

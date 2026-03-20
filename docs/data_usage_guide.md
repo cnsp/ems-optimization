@@ -1,3 +1,8 @@
+---
+status: ✅ CURRENT
+last_updated: "2026-03-20"
+verified: "All metrics, code references, and nomenclature are current as of March 2026"
+---
 # Data Usage Guide — EMS Readiness Optimization
 
 > **Last updated**: 2026-03-20  

@@ -1,3 +1,8 @@
+---
+status: ✅ CURRENT
+last_updated: "2026-03-20"
+verified: "All metrics, code references, and nomenclature are current as of March 2026"
+---
 # Final Project Summary
 
 > **⚠️ Note:** This summary references historical before→after comparisons (e.g., "8.08 → 3.17 min") to document the P0 migration improvement. Current production metrics use the spatially-stratified P0 baseline. See [`nomenclature_migration.md`](nomenclature_migration.md).

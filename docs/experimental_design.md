@@ -1,3 +1,8 @@
+---
+status: ✅ CURRENT
+last_updated: "2026-03-20"
+verified: "All metrics, code references, and nomenclature are current as of March 2026"
+---
 # Experimental Design – EMS Readiness Simulation Study
 
 ## 1. Research Questions and Hypotheses
