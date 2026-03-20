@@ -28,7 +28,7 @@ from itertools import combinations
 def uniform_allocation(
     firehouses: pd.Index,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
 ) -> pd.Series:
     """Legacy uniform allocation (DEPRECATED — use ``spatially_stratified_allocation`` for P0).
 
@@ -82,7 +82,7 @@ def demand_proportional_allocation(
     travel_time: pd.DataFrame,
     demand: pd.Series,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
 ) -> pd.Series:
     """P1 – Demand-proportional allocation.
 
@@ -303,7 +303,7 @@ def _select_maximin(df: pd.DataFrame, K: int) -> list[str]:
 def spatially_stratified_allocation(
     K: int,
     method: Literal["latitude", "grid", "maximin"] = "latitude",
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     data_dir: Optional[str | Path] = None,
 ) -> pd.Series:
     """P0 — Spatially-stratified uniform allocation (canonical baseline).

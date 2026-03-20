@@ -31,7 +31,7 @@ def build_demand_weighted(
     travel_time: pd.DataFrame,
     demand: pd.Series,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010 / capacity sensitivity analysis
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
     """Minimise demand-weighted expected response time.
@@ -93,7 +93,7 @@ def build_p_median(
     travel_time: pd.DataFrame,
     demand: pd.Series,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
     """Capacity-aware p-median: allocate K units across firehouses.
@@ -152,7 +152,7 @@ def build_maximal_coverage(
     travel_time: pd.DataFrame,
     demand: pd.Series,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     coverage_threshold: float = 8.0,
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
@@ -211,7 +211,7 @@ def build_cbd_focused_demand_weighted(
     demand: pd.Series,
     K: int,
     cbd_precincts: list | None = None,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
     """Minimise demand-weighted response time for **CBD precincts only**.
@@ -283,7 +283,7 @@ def build_cbd_focused_coverage(
     demand: pd.Series,
     K: int,
     cbd_precincts: list | None = None,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     coverage_threshold: float = 8.0,
     solver_time_limit: int = 300,
 ) -> pulp.LpProblem:
@@ -341,7 +341,7 @@ def solve_model(
     travel_time: pd.DataFrame,
     demand: pd.Series,
     K: int,
-    capacity: int = 5,
+    capacity: int = 2,  # Changed from 5 → 2 per DEC-010
     coverage_threshold: float = 8.0,
     solver_time_limit: int = 300,
     cbd_precincts: list | None = None,
