@@ -1,5 +1,7 @@
 # Conceptual Model Selection Analysis — EMS Readiness Optimization
 
+> **⚠️ Note:** This document references historical P0 metrics (e.g., 8.08 min) in narrative context to explain the rationale for the nomenclature migration (DEC-011/DEC-012). The **current** P0 baseline is spatially-stratified (mean RT ≈ 3.17 min at K=20). See [`nomenclature_migration.md`](nomenclature_migration.md) for details.
+
 > **Date:** March 15, 2026
 > **Purpose:** Comprehensive review of the conceptual model landscape, what was implemented, and the rationale behind selection decisions.
 

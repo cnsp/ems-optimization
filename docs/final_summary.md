@@ -1,4 +1,7 @@
 # Final Project Summary
+
+> **⚠️ Note:** This summary references historical before→after comparisons (e.g., "8.08 → 3.17 min") to document the P0 migration improvement. Current production metrics use the spatially-stratified P0 baseline. See [`nomenclature_migration.md`](nomenclature_migration.md).
+
 ## EMS Readiness Optimization for Manhattan — v1.3.0
 
 **Completion Date:** March 15, 2026 

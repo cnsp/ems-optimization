@@ -1,5 +1,7 @@
 # Project Workflow & Work Breakdown Structure (WBS)
 
+> **⚠️ Note:** This WBS is a historical task log and references some deprecated terminology (e.g., "index-based P0"). Current nomenclature uses spatially-stratified P0. See [`nomenclature_migration.md`](nomenclature_migration.md).
+
 ## EMS Readiness Optimization for Manhattan
 
 **Date:** March 15, 2026 
