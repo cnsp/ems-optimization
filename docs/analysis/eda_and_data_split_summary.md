@@ -17,9 +17,9 @@ The project contains thorough EDA across all four dimensions. Here's what exists
 |--------|-----------------|
 | `notebooks/02_eda_spatiotemporal.ipynb` (Cells 9–12) | Bar charts of hourly crash distribution (overall + CBD vs Non-CBD split); summary table of hourly counts and percentages |
 | `notebooks/03_input_modeling.ipynb` (Cells 5, 7) | Hourly factor table display and visualization; bar chart of hourly rate factors with reference line at 1.0 |
-| `docs/demand_model_spec.md` §3.1 | Full 24-row table of λ per hour, multiplicative factors, and annotations (peak at 4 PM = 1.52, trough at 5 AM = 0.45) |
-| **Figures** | `results/figures/fig_hourly_demand.png` — hourly distribution (overall + CBD/non-CBD) |
-| | `results/figures/fig_hourly_rates.png` — CBD vs Non-CBD hourly rate comparison |
+| `docs/core/demand_model_spec.md` §3.1 | Full 24-row table of λ per hour, multiplicative factors, and annotations (peak at 4 PM = 1.52, trough at 5 AM = 0.45) |
+| **Figures** | `results/baseline/figures/fig_hourly_demand.png` — hourly distribution (overall + CBD/non-CBD) |
+| | `results/baseline/figures/fig_hourly_rates.png` — CBD vs Non-CBD hourly rate comparison |
 
 **Key finding:** Peak 2–6 PM (factors >1.3), trough 3–6 AM (factors <0.5). CBD peaks at 2 PM; Non-CBD peaks at 4 PM.
 
@@ -31,8 +31,8 @@ The project contains thorough EDA across all four dimensions. Here's what exists
 |--------|-----------------|
 | `notebooks/02_eda_spatiotemporal.ipynb` (Cells 13–16) | Bar charts of DOW crash counts (overall + CBD/Non-CBD); weekday vs weekend comparison statistics |
 | `notebooks/03_input_modeling.ipynb` (Cell 6) | Day-of-week factor table |
-| `docs/demand_model_spec.md` §3.2 | 7-row factor table — Friday highest (1.15), Sunday lowest (0.81); "Friday has 41% more crashes than Sunday" |
-| **Figures** | `results/figures/fig_daily_demand.png` — DOW distribution with CBD comparison |
+| `docs/core/demand_model_spec.md` §3.2 | 7-row factor table — Friday highest (1.15), Sunday lowest (0.81); "Friday has 41% more crashes than Sunday" |
+| **Figures** | `results/baseline/figures/fig_daily_demand.png` — DOW distribution with CBD comparison |
 
 **Key finding:** Weekdays > weekends. Friday peak (95.8/day), Sunday trough (67.9/day). CBD shows sharper weekday concentration.
 
@@ -44,11 +44,11 @@ The project contains thorough EDA across all four dimensions. Here's what exists
 |--------|-----------------|
 | `notebooks/02_eda_spatiotemporal.ipynb` (Cells 17–19) | Monthly distribution bar chart across all years; yearly trend line; seasonal grouping summary |
 | `scripts/analyze_seasonal_patterns.py` | Dedicated script computing monthly factors, statistical tests (chi-square, ANOVA, Kruskal-Wallis), decomposition, and heatmaps |
-| `docs/demand_model_spec.md` §8 | Full 12-month factor table (October peak = 1.103, February trough = 0.822); statistical test results (all p < 0.001); amplitude analysis (28% peak-to-trough) |
-| **Figures** | `results/figures/fig_temporal_trends.png` — monthly + yearly trend |
-| | `results/figures/seasonal_patterns.png` — seasonal pattern visualization |
-| | `results/figures/seasonal_decomposition.png` — time-series decomposition |
-| | `results/figures/seasonal_heatmap.png` — month × year heatmap |
+| `docs/core/demand_model_spec.md` §8 | Full 12-month factor table (October peak = 1.103, February trough = 0.822); statistical test results (all p < 0.001); amplitude analysis (28% peak-to-trough) |
+| **Figures** | `results/baseline/figures/fig_temporal_trends.png` — monthly + yearly trend |
+| | `results/analysis/figures/seasonal_patterns.png` — seasonal pattern visualization |
+| | `results/analysis/figures/seasonal_decomposition.png` — time-series decomposition |
+| | `results/analysis/figures/seasonal_heatmap.png` — month × year heatmap |
 
 **Key finding:** Seasonal variation is statistically significant but **moderate** (CV = 9%, amplitude 28%) compared to hourly variation (amplitude ~110%). October is the peak; February is the trough. The NHPP model uses annual averages, justified because seasonal amplitude is far below the demand-multiplier robustness range tested (up to 2.0×).
 
@@ -60,11 +60,11 @@ The project contains thorough EDA across all four dimensions. Here's what exists
 |--------|-----------------|
 | `notebooks/02_eda_spatiotemporal.ipynb` (Cells 20–34) | Hexbin crash heatmap over Manhattan; choropleth by precinct crash count; firehouse overlay on density map; CBD vs Non-CBD pie/bar comparison (55.7% vs 44.3%); top-10 precincts table |
 | `notebooks/03_input_modeling.ipynb` (Cells 9–12) | Precinct-level rate table; CBD vs Non-CBD rate comparison |
-| `docs/demand_model_spec.md` §4–5 | Full precinct-level λ table (Precinct 19 highest at 9.9%); high-demand vs low-demand zone breakdown; CBD vs Non-CBD overall rates and temporal pattern differences |
-| **Figures** | `results/figures/fig_crash_heatmap.png` — hexbin density map |
-| | `results/figures/fig_precinct_demand.png` — precinct-level bar chart |
-| | `results/figures/fig_precinct_density.png` — choropleth density |
-| | `results/figures/fig_firehouses_map.png` — firehouses overlaid on crash density |
+| `docs/core/demand_model_spec.md` §4–5 | Full precinct-level λ table (Precinct 19 highest at 9.9%); high-demand vs low-demand zone breakdown; CBD vs Non-CBD overall rates and temporal pattern differences |
+| **Figures** | `results/baseline/figures/fig_crash_heatmap.png` — hexbin density map |
+| | `results/baseline/figures/fig_precinct_demand.png` — precinct-level bar chart |
+| | `results/baseline/figures/fig_precinct_density.png` — choropleth density |
+| | `results/baseline/figures/fig_firehouses_map.png` — firehouses overlaid on crash density |
 
 **Key finding:** Top 7 precincts (Midtown, Financial District, Lower East Side, Chelsea) account for 55.9% of demand. CBD captures 55.7% of all crashes. Precinct 19 (Midtown East) is the single highest-demand zone at 9.9%.
 
@@ -117,7 +117,7 @@ Historical Crash Data (416,434 records, 2012–2026)
 
 ### 2.2 NHPP Demand Model Calibration
 
-From `docs/demand_model_spec.md` and `scripts/demand_modeling.py`:
+From `docs/core/demand_model_spec.md` and `scripts/demand_modeling.py`:
 
 1. **All 416,434 Manhattan crash records** were used to compute empirical rates — no holdout
 2. **Hourly factors** `f_hour(h)`: Computed as (observed crashes in hour h) / (expected under uniform), yielding 24 multiplicative factors
@@ -130,7 +130,7 @@ The homogeneous Poisson model was **rejected** via chi-square (stat = 723,713, p
 
 ### 2.3 How Staging Allocations Were Determined
 
-From `docs/experimental_design.md`:
+From `docs/core/experimental_design.md`:
 
 - **No data split for training/testing** — instead, robustness is established through **experimental design**:
  - **Experiment 1** (90 runs): Compare 3 policies at baseline (K=20, δ=1.0)
@@ -159,8 +159,8 @@ The demand model has only **53 free parameters** (24 hourly + 7 DOW + 22 precinc
 |---------|------|
 | EDA notebook | `notebooks/02_eda_spatiotemporal.ipynb` |
 | Input modeling notebook | `notebooks/03_input_modeling.ipynb` |
-| Demand model specification | `docs/demand_model_spec.md` |
-| Experimental design | `docs/experimental_design.md` |
+| Demand model specification | `docs/core/demand_model_spec.md` |
+| Experimental design | `docs/core/experimental_design.md` |
 | Seasonal analysis script | `scripts/analyze_seasonal_patterns.py` |
 | Demand modeling script | `scripts/demand_modeling.py` |
 | Processed hourly rates | `data/processed/demand_lambda_hourly.csv` |

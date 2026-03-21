@@ -5,7 +5,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 ---
 # Phase 21 Assessment: Technical Report Completeness Audit
 
-**File assessed:** `docs/technical_report.md` (588 lines) 
+**File assessed:** `docs/core/technical_report.md` (588 lines) 
 **Date:** March 12, 2026
 
 ---

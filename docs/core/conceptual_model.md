@@ -501,7 +501,7 @@ being added to the simulation clock.
 | **Target moments** | Mean = 25 min, Std = 10 min |
 | **LogNormal parameters** | μ = ln(25² / √(25² + 10²)) ≈ 3.136, σ = √(ln(1 + (10/25)²)) ≈ 0.385 |
 | **Support** | (0, ∞) — strictly positive |
-| **Justification** | Right-skewed, positive, matches empirical EMS service-time profiles (see `docs/service_model_spec.md`) |
+| **Justification** | Right-skewed, positive, matches empirical EMS service-time profiles (see `docs/core/service_model_spec.md`) |
 
 ### 10.3 Travel Times — Deterministic Given State
 
@@ -703,5 +703,5 @@ will be varied in sensitivity experiments:
 ---
 
 *Document prepared as part of the EMS Readiness Optimization project, Phase 4.* 
-*Cross-references: `docs/project_charter.md`, `docs/assumptions_log.md`,
-`docs/service_model_spec.md`, `docs/optimization_formulation.md`.*
+*Cross-references: `docs/core/project_charter.md`, `docs/core/assumptions_log.md`,
+`docs/core/service_model_spec.md`, `docs/core/optimization_formulation.md`.*

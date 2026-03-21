@@ -24,13 +24,13 @@ All simulation experiments reported in this assessment use the following fixed p
 | Replications | 30 | Per experimental cell |
 | Warm-up | 24 hours | Discarded from statistics |
 
-> **Note on capacity regimes:** The initial production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. The Extended Fleet Analysis (in `results/baseline/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
+> **Note on capacity regimes:** The initial production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. The Extended Fleet Analysis (in `results/baseline/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/analysis/capacity_sensitivity_analysis.md` for the full comparison.
 
 ---
 
 ## Overview
 
-The EMS Optimization project defines five primary research questions in **§2.3 Research Objectives** of the technical report (`docs/technical_report.md`). This document evaluates whether each question was answered with concrete, simulation-based evidence by cross-referencing the technical report results (§5), final summary (`docs/final_summary.md`), and raw result files in `results/`.
+The EMS Optimization project defines five primary research questions in **§2.3 Research Objectives** of the technical report (`docs/core/technical_report.md`). This document evaluates whether each question was answered with concrete, simulation-based evidence by cross-referencing the technical report results (§5), final summary (`docs/archive/final_summary.md`), and raw result files in `results/`.
 
 **Simulation Scale:** 2,700+ total simulation runs across production experiments, CBD robustness, extended fleet analysis, and capacity sensitivity, with 30 replications per cell, 168 simulated hours per run (with 24-hour warm-up).
 
@@ -47,13 +47,13 @@ The NHPP demand model was calibrated from **2,237,814** historical motor vehicle
 
 | Dimension | Range | Peak | Trough | Source |
 |-----------|-------|------|--------|--------|
-| **Hourly** | 0.40–1.40× base rate | 5 PM (factor = 1.40, λ = 4.87/hr) | 4 AM (factor = 0.40, λ = 1.39/hr) | `docs/technical_report.md` §4.2.2; Fig 14 (`fig_hourly_demand.png`) |
-| **Day-of-week** | 0.88–1.12× base rate | Friday (factor = 1.12) | Sunday (factor = 0.88) | `docs/technical_report.md` §4.2.2; Fig 11 (`fig_daily_demand.png`) |
-| **Seasonal** | 0.822–1.103× annual avg | October (factor = 1.103) | February (factor = 0.822) | `results/tables/seasonal_analysis.csv`; Fig 37 (`seasonal_patterns.png`) |
+| **Hourly** | 0.40–1.40× base rate | 5 PM (factor = 1.40, λ = 4.87/hr) | 4 AM (factor = 0.40, λ = 1.39/hr) | `docs/core/technical_report.md` §4.2.2; Fig 14 (`fig_hourly_demand.png`) |
+| **Day-of-week** | 0.88–1.12× base rate | Friday (factor = 1.12) | Sunday (factor = 0.88) | `docs/core/technical_report.md` §4.2.2; Fig 11 (`fig_daily_demand.png`) |
+| **Seasonal** | 0.822–1.103× annual avg | October (factor = 1.103) | February (factor = 0.822) | `results/baseline/tables/seasonal_analysis.csv`; Fig 37 (`seasonal_patterns.png`) |
 
 - **Base rate:** λ₀ = 3.48 calls/hour (annual average)
 - **Seasonal CV:** 9% (moderate); amplitude 28% peak-to-trough
-- **Chi-square test for monthly uniformity:** Rejected (p < 0.001) — `results/tables/seasonal_analysis.csv`
+- **Chi-square test for monthly uniformity:** Rejected (p < 0.001) — `results/baseline/tables/seasonal_analysis.csv`
 - **Hourly variation dominates:** Factor range 0.40–1.60 vs. seasonal 0.82–1.10
 
 #### Spatial Variation
@@ -67,14 +67,14 @@ Demand is distributed across **30 police precincts** with clear spatial heteroge
 | Precinct 13 | 5.7% | Chelsea |
 | Precinct 18 | 5.5% | Midtown North |
 
-- Midtown precincts generate **3–5× more calls** than Upper Manhattan precincts (`docs/technical_report.md` §2.2)
-- The CBD (10 precincts) accounts for **55.7%** of total Manhattan crash demand (`docs/technical_report.md` §5.7)
+- Midtown precincts generate **3–5× more calls** than Upper Manhattan precincts (`docs/core/technical_report.md` §2.2)
+- The CBD (10 precincts) accounts for **55.7%** of total Manhattan crash demand (`docs/core/technical_report.md` §5.7)
 - Spatial distribution visualised in Figs 10, 17, 18 (`fig_crash_heatmap.png`, `fig_precinct_demand.png`, `fig_precinct_density.png`)
 
 ### Supporting Figures & Tables
 - **Figures:** 10, 11, 14, 17, 18, 35, 36, 37 (8 figures)
 - **Tables:** `seasonal_analysis.csv`, `demand_lambda_precinct.csv`, `demand_lambda_hourly.csv`, `demand_lambda_dow.csv`
-- **Model specification:** `docs/demand_model_spec.md`, `data/processed/demand_model_summary.json`
+- **Model specification:** `docs/core/demand_model_spec.md`, `data/processed/demand_model_summary.json`
 
 ---
 
@@ -95,11 +95,11 @@ Three allocation policies were formulated and solved via Mixed-Integer Programmi
 #### P2 Optimal Allocation Performance (K=20, cap=5)
 | Metric | Value | 95% CI | Source |
 |--------|-------|--------|--------|
-| Mean Response Time | **2.57 min** | [2.554, 2.587] | `results/tables/table1_baseline_comparison.csv` |
-| P90 (90th %ile) Response Time | **3.76 min** | [3.717, 3.803] | `results/tables/confidence_intervals.csv` |
-| 6-min Coverage (NYC law) | **98.2%** | [98.0%, 98.4%] | `results/tables/confidence_intervals.csv` |
-| 8-min Coverage (NFPA standard) | **99.6%** | [99.54%, 99.71%] | `results/tables/confidence_intervals.csv` |
-| Mean Utilisation | **7.5%** | [7.35%, 7.57%] | `results/tables/confidence_intervals.csv` |
+| Mean Response Time | **2.57 min** | [2.554, 2.587] | `results/baseline/tables/table1_baseline_comparison.csv` |
+| P90 (90th %ile) Response Time | **3.76 min** | [3.717, 3.803] | `results/baseline/tables/confidence_intervals.csv` |
+| 6-min Coverage (NYC law) | **98.2%** | [98.0%, 98.4%] | `results/baseline/tables/confidence_intervals.csv` |
+| 8-min Coverage (NFPA standard) | **99.6%** | [99.54%, 99.71%] | `results/baseline/tables/confidence_intervals.csv` |
+| Mean Utilisation | **7.5%** | [7.35%, 7.57%] | `results/baseline/tables/confidence_intervals.csv` |
 
 #### Robustness of Optimality Across Distance Metrics
 The allocation was validated under both **Haversine** and **Manhattan (taxicab)** distance:
@@ -113,7 +113,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 ### Supporting Figures & Tables
 - **Figures:** 22, 23, 24, Maps in `results/analysis/maps/` (3 allocation maps for P0/P1/P2 at K=40)
 - **Tables:** `optimization_comparison.csv`, `results/analysis/distance_comparison/allocation_comparison.csv`, `results/analysis/cbd_focused_comparison/allocations.csv`
-- **Formulation details:** `docs/optimization_formulation.md`, `docs/technical_report.md` §4.3
+- **Formulation details:** `docs/core/optimization_formulation.md`, `docs/core/technical_report.md` §4.3
 
 ---
 
@@ -133,27 +133,27 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 | 8-min Coverage (NFPA standard) | 99.7% | 99.6% | **99.7%** | **+0.0 pp** |
 | Utilisation | 7.6% | 7.4% | **7.4%** | −0.2 pp |
 
-*Source: `results/tables/table1_baseline_comparison.csv`, `results/tables/confidence_intervals.csv`*
+*Source: `results/baseline/tables/table1_baseline_comparison.csv`, `results/baseline/tables/confidence_intervals.csv`*
 
 #### Statistical Significance (ANOVA + Post-Hoc)
 
 | Test | F-statistic | p-value | η² | Source |
 |------|------------|---------|-----|--------|
-| One-way ANOVA (Mean RT) | **1,019** | < 0.001 | 0.959 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (P90 (90th %ile) RT) | **398** | < 0.001 | 0.901 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (6-min Coverage (NYC law)) | **285** | < 0.001 | 0.868 | `results/tables/table2_anova_summary.csv` |
-| One-way ANOVA (8-min Coverage (NFPA standard)) | 0.46 | 0.634 (ns) | 0.010 | `results/tables/table2_anova_summary.csv` |
+| One-way ANOVA (Mean RT) | **1,019** | < 0.001 | 0.959 | `results/baseline/tables/table2_anova_summary.csv` |
+| One-way ANOVA (P90 (90th %ile) RT) | **398** | < 0.001 | 0.901 | `results/baseline/tables/table2_anova_summary.csv` |
+| One-way ANOVA (6-min Coverage (NYC law)) | **285** | < 0.001 | 0.868 | `results/baseline/tables/table2_anova_summary.csv` |
+| One-way ANOVA (8-min Coverage (NFPA standard)) | 0.46 | 0.634 (ns) | 0.010 | `results/baseline/tables/table2_anova_summary.csv` |
 
 | Comparison | Mean Diff | Cohen's d | p (Tukey) | Source |
 |-----------|-----------|-----------|-----------|--------|
-| P0 vs P2 (Mean RT) | −0.60 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P0 vs P1 (Mean RT) | −0.55 min | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P1 vs P2 (Mean RT) | −0.05 min | Small | ns | `results/tables/posthoc_comparisons.csv` |
-| P0 vs P2 (6-min Cov (NYC law)) | +4.2 pp | **Large** | < 0.001 | `results/tables/posthoc_comparisons.csv` |
-| P1 vs P2 (6-min Cov (NYC law)) | +0.2 pp | Negligible | ns | `results/tables/posthoc_comparisons.csv` |
+| P0 vs P2 (Mean RT) | −0.60 min | **Large** | < 0.001 | `results/baseline/tables/posthoc_comparisons.csv` |
+| P0 vs P1 (Mean RT) | −0.55 min | **Large** | < 0.001 | `results/baseline/tables/posthoc_comparisons.csv` |
+| P1 vs P2 (Mean RT) | −0.05 min | Small | ns | `results/baseline/tables/posthoc_comparisons.csv` |
+| P0 vs P2 (6-min Cov (NYC law)) | +4.2 pp | **Large** | < 0.001 | `results/baseline/tables/posthoc_comparisons.csv` |
+| P1 vs P2 (6-min Cov (NYC law)) | +0.2 pp | Negligible | ns | `results/baseline/tables/posthoc_comparisons.csv` |
 
 #### Queue Analysis — Mechanism Confirmation
-**Zero queueing** observed across all 1,770 runs (`results/tables/queue_statistics.csv`):
+**Zero queueing** observed across all 1,770 runs (`results/baseline/tables/queue_statistics.csv`):
 - Mean queue length: 0.000 across every experiment/policy/parameter combination
 - Max queue length: 0 in every replication
 - System utilisation: ~7–9% (traffic intensity ρ ≈ 0.087)
@@ -187,7 +187,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 
 **Key finding:** P0 performance varies significantly with K due to spatial firehouse selection. At some K values (K=20, K=30, K=40), the latitude-based stratification selects well-distributed firehouses, yielding strong P0 performance. At others (K=15, K=25, K=35), gaps in coverage emerge. P2 is consistently strong across all K values.
 
-Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.001, η² = 0.29), Policy×K interaction (F = 6,772, p < 0.001, η² = 0.41) — `results/tables/table2_anova_summary.csv`
+Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.001, η² = 0.29), Policy×K interaction (F = 6,772, p < 0.001, η² = 0.41) — `results/baseline/tables/table2_anova_summary.csv`
 
 #### B. Demand Sensitivity (Experiment 3: Policy × Demand Multiplier, cap=5, 540 runs)
 
@@ -224,7 +224,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 | CBD Surge (2× demand) | 2.91 min | **2.61 min** | 99.8% |
 | CBD Slow Service | 2.77 min | **2.53 min** | 99.9% |
 
-*Source: `docs/technical_report.md` §5.7; `results/analysis/simulation/cbd_experiment/`*
+*Source: `docs/core/technical_report.md` §5.7; `results/analysis/simulation/cbd_experiment/`*
 
 **Key finding:** P2 maintains its advantage across all CBD stress scenarios. Even under 2× CBD demand, P2 achieves 99.3% overall Manhattan coverage.
 
@@ -314,8 +314,8 @@ These limitations are transparently documented in §6.4 of the technical report 
 
 ---
 
-*Assessment based on: `docs/technical_report.md`, `docs/final_summary.md`, and 28+ result files in `results/tables/`, `results/simulation/`, `results/analysis/distance_comparison/`, and `results/analysis/cbd_focused_comparison/`.*
+*Assessment based on: `docs/core/technical_report.md`, `docs/archive/final_summary.md`, and 28+ result files in `results/tables/`, `results/simulation/`, `results/analysis/distance_comparison/`, and `results/analysis/cbd_focused_comparison/`.*
 
 ---
 
-**Capacity constraint note:** All initial production results in this assessment (Experiments 1–4 and CBD stress tests) were generated with capacity=5 units per firehouse. Subsequent capacity sensitivity analysis (see §5.12 of the technical report and `docs/capacity_sensitivity_analysis.md`) demonstrated that capacity=2 is operationally optimal; the project default was updated accordingly for the Extended Fleet Analysis experiments. Results at capacity=5 remain valid as the upper bound of per-firehouse staging.
+**Capacity constraint note:** All initial production results in this assessment (Experiments 1–4 and CBD stress tests) were generated with capacity=5 units per firehouse. Subsequent capacity sensitivity analysis (see §5.12 of the technical report and `docs/analysis/capacity_sensitivity_analysis.md`) demonstrated that capacity=2 is operationally optimal; the project default was updated accordingly for the Extended Fleet Analysis experiments. Results at capacity=5 remain valid as the upper bound of per-firehouse staging.

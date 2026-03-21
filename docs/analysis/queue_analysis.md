@@ -128,9 +128,9 @@ The hypothesis "P2 reduces queueing vs P0" cannot be tested because neither poli
 
 | File | Description |
 |------|-------------|
-| `results/tables/queue_statistics.csv` | Comprehensive queue statistics |
-| `results/tables/queue_anova.csv` | ANOVA test results |
-| `results/figures/queue_comparison_by_policy.png` | Policy comparison box plots |
-| `results/figures/queue_vs_fleet_size.png` | Fleet size sensitivity |
-| `results/figures/queue_vs_demand.png` | Demand sensitivity |
-| `results/figures/queue_heatmap.png` | Cross-scenario heatmap |
+| `results/baseline/tables/queue_statistics.csv` | Comprehensive queue statistics |
+| `results/baseline/tables/queue_anova.csv` | ANOVA test results |
+| `results/analysis/figures/queue_comparison_by_policy.png` | Policy comparison box plots |
+| `results/analysis/figures/queue_vs_fleet_size.png` | Fleet size sensitivity |
+| `results/analysis/figures/queue_vs_demand.png` | Demand sensitivity |
+| `results/analysis/figures/queue_heatmap.png` | Cross-scenario heatmap |

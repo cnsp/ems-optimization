@@ -347,7 +347,7 @@ Clean tiered architecture: `tier1_boundaries` → `tier2_crashes/firehouses/prec
 ## Issues Found and Status
 
 ### Issue 1: Broken Capacity Sensitivity Heatmap (FIXED)
-- **File**: `results/figures/capacity_sensitivity_heatmap.png`
+- **File**: `results/archive/figures/capacity_sensitivity_heatmap.png`
 - **Problem**: Showed "Data format issue" placeholder (visible in user's screenshot)
 - **Status**: ✅ **Fixed today** (2026-03-20 21:34) — regenerated with correct data
 - **Evidence**: Re-ran `generate_capacity_sensitivity_heatmap.py`, now shows proper heatmap with values
@@ -364,7 +364,7 @@ Clean tiered architecture: `tier1_boundaries` → `tier2_crashes/firehouses/prec
 - **Status**: ⚠️ **Acceptable** — Intentional for comparison. Most produce identical allocations.
 
 ### Issue 4: Consistency Report Warnings (DOCS ONLY)
-- **Files**: `docs/technical_report.md`, `docs/experimental_design.md`, `docs/optimization_formulation.md`
+- **Files**: `docs/core/technical_report.md`, `docs/core/experimental_design.md`, `docs/core/optimization_formulation.md`
 - **Details**: Some docs still reference P0 as "Uniform" in places
 - **Status**: ⚠️ **Non-blocking** — These are documentation references, not result data files
 

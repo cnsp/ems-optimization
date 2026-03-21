@@ -55,7 +55,7 @@ K=48, P2,  max_units_at_firehouse=2
 
 ## Issue 3: exp2_pivot_rt.csv — Erratic P0 Without Legacy Label
 
-**Problem:** `results/tables/exp2_pivot_rt.csv` had P0 values jumping erratically:
+**Problem:** `results/baseline/tables/exp2_pivot_rt.csv` had P0 values jumping erratically:
 ```
 K=15: P0=9.48  (very high)
 K=20: P0=3.17
@@ -112,5 +112,5 @@ P0 now uses spatially-stratified allocation and decreases monotonically with K. 
 6. `results/simulation/validation_pilot/pilot1_p0_vs_p2.json` — regenerated
 7. `results/archive/optimization/policy_comparison.csv` — regenerated
 8. `results/simulation/production/exp2_fleet_sensitivity.csv` — legacy relabeled + new P0 added
-9. `results/tables/exp2_pivot_rt.csv` — regenerated with correct P0
-10. `results/tables/exp2_pivot_rt_with_legacy.csv` — new reference file
+9. `results/baseline/tables/exp2_pivot_rt.csv` — regenerated with correct P0
+10. `results/analysis/tables/exp2_pivot_rt_with_legacy.csv` — new reference file

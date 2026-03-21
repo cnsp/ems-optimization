@@ -101,9 +101,9 @@ This document logs the assumptions made during the EMS Readiness Optimization pr
 
 ### A15: P0 Nomenclature (Internal Reference)
 **Assumption**: The project uses a single, standardized P0 definition (spatially-stratified allocation) throughout all public-facing documents. An earlier index-based implementation (deprecated) exists in code for backward compatibility but is not referenced in the technical report.
-**Rationale**: The original index-based P0 was inadvertently biased toward CBD firehouses due to database ordering. This produced misleadingly poor baseline performance (8.08 min mean RT at K=20). The spatially-stratified P0 corrects this bias and provides a fairer comparison point for P1 and P2. See `docs/decisions_log.md` (DEC-012) and `docs/nomenclature_migration.md` for the full evolution history.
+**Rationale**: The original index-based P0 was inadvertently biased toward CBD firehouses due to database ordering. This produced misleadingly poor baseline performance (8.08 min mean RT at K=20). The spatially-stratified P0 corrects this bias and provides a fairer comparison point for P1 and P2. See `docs/core/decisions_log.md` (DEC-012) and `docs/core/nomenclature_migration.md` for the full evolution history.
 **Risk**: Readers of older project artifacts may encounter inconsistent P0 definitions.
-**Mitigation**: Internal migration guide (`docs/nomenclature_migration.md`) explains the evolution. Code retains `uniform_allocation()` with `DeprecationWarning`.
+**Mitigation**: Internal migration guide (`docs/core/nomenclature_migration.md`) explains the evolution. Code retains `uniform_allocation()` with `DeprecationWarning`.
 
 ---
 

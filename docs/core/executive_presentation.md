@@ -195,7 +195,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 **Contact:** EMS Optimization Research Team 
 **Repository:** github.com/cnsp/ems-optimization 
-**Full Technical Report:** docs/technical_report.md
+**Full Technical Report:** docs/core/technical_report.md
 
 ---
 

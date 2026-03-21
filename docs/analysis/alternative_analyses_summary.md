@@ -43,7 +43,7 @@ Does the choice of distance metric (Haversine vs Manhattan/taxicab) significantl
 ### Recommendation
 Haversine is adequate for this study. Both metrics preserve the same relative distance ordering. Real road-network distances would provide more meaningful improvement.
 
-**Full report:** `docs/distance_metric_comparison.md`
+**Full report:** `docs/analysis/distance_metric_comparison.md`
 
 ---
 
@@ -72,7 +72,7 @@ Would optimising EMS allocation specifically for CBD precincts improve CBD respo
 ### Recommendation
 The Manhattan-wide P2 allocation is strongly preferred. It achieves near-identical CBD performance while maintaining equitable service across all communities. The demand-weighted formulation is a self-balancing approach.
 
-**Full report:** `docs/cbd_focused_optimization_analysis.md`
+**Full report:** `docs/analysis/cbd_focused_optimization_analysis.md`
 
 ---
 
@@ -98,9 +98,9 @@ The Manhattan-wide P2 allocation is strongly preferred. It achieves near-identic
 - `results/analysis/cbd_focused_comparison/` — CBD-focused comparison figures and tables
 
 ### Documentation
-- `docs/distance_metric_comparison.md` — Distance metric comparison report
-- `docs/cbd_focused_optimization_analysis.md` — CBD-focused analysis report
-- `docs/alternative_analyses_summary.md` — This summary document
+- `docs/analysis/distance_metric_comparison.md` — Distance metric comparison report
+- `docs/analysis/cbd_focused_optimization_analysis.md` — CBD-focused analysis report
+- `docs/analysis/alternative_analyses_summary.md` — This summary document
 
 ### Modified Files
 - `src/ems_readiness/utils/distance.py` — Added `manhattan_distance()` function

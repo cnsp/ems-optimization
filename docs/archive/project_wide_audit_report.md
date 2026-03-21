@@ -127,14 +127,14 @@ A comprehensive audit of all project folders was conducted to ensure consistency
 
 The following files contain historical references to old nomenclature **by design** (they document the migration or serve as reference):
 
-- `docs/nomenclature_migration.md` — Documents the P0 migration history
-- `docs/decisions_log.md` — Records DEC-011/DEC-012 decisions
-- `docs/documentation_audit_report.md` — Documents what was changed
-- `docs/notebook_audit_report.md` — Records notebook fixes
-- `docs/policy_tradeoff_analysis.md` — Has explicit "⚠️ Historical Context Note"
-- `docs/conceptual_model_selection.md` — Shows evolution of P0 with migration arrows
+- `docs/core/nomenclature_migration.md` — Documents the P0 migration history
+- `docs/core/decisions_log.md` — Records DEC-011/DEC-012 decisions
+- `docs/archive/documentation_audit_report.md` — Documents what was changed
+- `docs/archive/notebook_audit_report.md` — Records notebook fixes
+- `docs/analysis/policy_tradeoff_analysis.md` — Has explicit "⚠️ Historical Context Note"
+- `docs/core/conceptual_model_selection.md` — Shows evolution of P0 with migration arrows
 - `scripts/fix_notebook_nomenclature.py` — The migration script itself
-- `docs/final_summary.md` — Line 134 shows "8.08 → 3.17" as improvement narrative
+- `docs/archive/final_summary.md` — Line 134 shows "8.08 → 3.17" as improvement narrative
 
 ---
 
@@ -161,7 +161,7 @@ The following files contain historical references to old nomenclature **by desig
 | P2 Improvement vs P0 | 18.9% | ✅ Consistent |
 
 ### Remaining Known Items (Acceptable)
-1. `results/tables/optimization_comparison.csv` uses model-type labels (spatially_stratified, demand_proportional, demand_weighted) rather than P0/P1/P2 — this is by design for the optimization module
+1. `results/archive/tables/optimization_comparison.csv` uses model-type labels (spatially_stratified, demand_proportional, demand_weighted) rather than P0/P1/P2 — this is by design for the optimization module
 2. Historical P0 data in `policy_tradeoff_analysis.md` is marked with a prominent warning banner
 3. `uniform_allocation()` exists in codebase with DeprecationWarning — retained for backward compatibility
 

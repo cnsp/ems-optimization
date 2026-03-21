@@ -14,7 +14,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 This roadmap describes the phased deployment of the demand-weighted optimized ambulance allocation policy (P2) across Manhattan's 48 FDNY firehouses. The plan is designed to be low-risk, evidence-based, and incrementally validated.
 
-**Capacity assumption:** All deployment scenarios use capacity=2 units per firehouse (the operationally optimal default established by capacity sensitivity analysis). This means no single firehouse stages more than 2 ambulances. See `docs/capacity_sensitivity_analysis.md` for supporting evidence.
+**Capacity assumption:** All deployment scenarios use capacity=2 units per firehouse (the operationally optimal default established by capacity sensitivity analysis). This means no single firehouse stages more than 2 ambulances. See `docs/analysis/capacity_sensitivity_analysis.md` for supporting evidence.
 
 ---
 
@@ -247,4 +247,4 @@ Simulation baselines below are from the current P0 (spatially-stratified) at K=2
 
 ---
 
-*Prepared by the EMS Optimization Research Team. For questions, contact the project lead or refer to the full technical report (docs/technical_report.md).*
+*Prepared by the EMS Optimization Research Team. For questions, contact the project lead or refer to the full technical report (docs/core/technical_report.md).*

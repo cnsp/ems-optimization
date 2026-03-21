@@ -6,7 +6,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 # Technical Report Gap Analysis & Fix Report
 
 **Date:** 2026-03-16  
-**Scope:** Comprehensive audit of `docs/technical_report.md` — figures, captions, and image references  
+**Scope:** Comprehensive audit of `docs/core/technical_report.md` — figures, captions, and image references  
 **Status:** All issues resolved
 
 ---
@@ -73,19 +73,19 @@ Removed the incorrect K=30 reference since the heatmap panels are K=20 and K=40 
 
 | Figure | Image File | Caption Present | Unique |
 |--------|-----------|----------------|--------|
-| Figure 1 | `results/figures/policy_comparison_panel_K20_cap2.png` | Yes | Yes |
-| Figure 2 | `results/figures/response_time_distribution_by_policy.png` | Yes | Yes |
-| Figure 3 | `results/figures/fleet_sensitivity_dual.png` | Yes | Yes |
-| Figure 4 | `results/figures/cbd_robustness_enhanced.png` | Yes | Yes |
-| Figure 5 | `results/figures/cbd_equity_tradeoff_summary.png` | Yes | Yes |
-| Figure 6 | `results/figures/capacity_sensitivity_heatmap.png` | Yes | Yes |
+| Figure 1 | `results/baseline/figures/policy_comparison_panel_K20_cap2.png` | Yes | Yes |
+| Figure 2 | `results/baseline/figures/response_time_distribution_by_policy.png` | Yes | Yes |
+| Figure 3 | `results/archive/figures/fleet_sensitivity_dual.png` | Yes | Yes |
+| Figure 4 | `results/analysis/figures/cbd_robustness_enhanced.png` | Yes | Yes |
+| Figure 5 | `results/analysis/figures/cbd_equity_tradeoff_summary.png` | Yes | Yes |
+| Figure 6 | `results/archive/figures/capacity_sensitivity_heatmap.png` | Yes | Yes |
 
 ### Supporting (unnumbered) Images
 
 | Section | Image File | Purpose |
 |---------|-----------|---------|
-| §5.8 Queueing | `results/figures/queue_comparison_by_policy.png` | Supplementary |
-| §5.9 Seasonal | `results/figures/seasonal_patterns.png` | Supplementary |
+| §5.8 Queueing | `results/analysis/figures/queue_comparison_by_policy.png` | Supplementary |
+| §5.9 Seasonal | `results/analysis/figures/seasonal_patterns.png` | Supplementary |
 | §5.10 Distance | `results/analysis/distance_comparison/distance_comparison_bar.png` | Supplementary |
 
 ### Image File Existence Check

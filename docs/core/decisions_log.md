@@ -481,7 +481,7 @@ Earlier documentation referred to these as "P0 (V1)" and "P0 (V2)" or "P0-legacy
 Standardize nomenclature:
 - **P0** = spatially-stratified uniform allocation (the only P0 going forward)
 - The original index-based allocation is fully deprecated and removed from all public-facing documentation
-- Historical context (V1 → V2 evolution) is retained only in internal documentation (this decisions log, `docs/assumptions_log.md`, and `docs/nomenclature_migration.md`)
+- Historical context (V1 → V2 evolution) is retained only in internal documentation (this decisions log, `docs/core/assumptions_log.md`, and `docs/core/nomenclature_migration.md`)
 - The technical report presents only the current methodology with no V1/V2 references
 
 **Rationale**:
@@ -495,4 +495,4 @@ Standardize nomenclature:
 - Code retains `uniform_allocation()` with deprecation warning for backward compatibility
 - `baseline_p0()` in `EMSAllocator` calls `spatially_stratified_allocation()`
 - All performance metrics in the technical report reflect the current P0 implementation
-- Migration guide (`docs/nomenclature_migration.md`) available for interpreting older documents
+- Migration guide (`docs/core/nomenclature_migration.md`) available for interpreting older documents

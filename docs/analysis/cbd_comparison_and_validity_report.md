@@ -11,7 +11,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 ## 1. Manhattan-Wide vs CBD Comparison Data
 
-### 1.1 Primary Comparison Table (`results/tables/cbd_comparison.csv`)
+### 1.1 Primary Comparison Table (`results/analysis/tables/cbd_comparison.csv`)
 
 This table directly compares **overall Manhattan** metrics against **CBD-specific** and **non-CBD** subregions under baseline conditions:
 
@@ -23,7 +23,7 @@ This table directly compares **overall Manhattan** metrics against **CBD-specifi
 
 **Key insight**: All three policies achieve excellent CBD coverage (100.0%). P0 has slightly higher non-CBD response times (3.69 min) due to its uniform geographic distribution. P2 achieves the most balanced performance across both subregions.
 
-### 1.2 Full Scenario Comparison (`results/tables/cbd_summary_all.csv`)
+### 1.2 Full Scenario Comparison (`results/analysis/tables/cbd_summary_all.csv`)
 
 This table extends the comparison across all 4 CBD stress-test scenarios:
 
@@ -45,15 +45,15 @@ This table extends the comparison across all 4 CBD stress-test scenarios:
 
 Three figures visualize the CBD vs Manhattan comparison:
 
-- **`results/figures/fig_cbd_comparison.png`** — Side-by-side bar chart of CBD vs non-CBD response times
-- **`results/figures/cbd_response_comparison.png`** — Response time distributions by subregion
-- **`results/figures/cbd_scenario_comparison.png`** — Performance across all CBD stress scenarios
-- **`results/figures/cbd_heatmap.png`** — Spatial heatmap of CBD performance
+- **`results/baseline/figures/fig_cbd_comparison.png`** — Side-by-side bar chart of CBD vs non-CBD response times
+- **`results/analysis/figures/cbd_response_comparison.png`** — Response time distributions by subregion
+- **`results/analysis/figures/cbd_scenario_comparison.png`** — Performance across all CBD stress scenarios
+- **`results/analysis/figures/cbd_heatmap.png`** — Spatial heatmap of CBD performance
 
 ### 1.4 Documentation
 
-- **`docs/cbd_robustness_analysis.pdf`** — Full written analysis with interpretation
-- **`docs/cbd_definition.pdf`** — Geographic definition of the CBD (10 precincts with ≥30% overlap with MTA Congestion Relief Zone)
+- **`docs/analysis/cbd_robustness_analysis.pdf`** — Full written analysis with interpretation
+- **`docs/core/cbd_definition.pdf`** — Geographic definition of the CBD (10 precincts with ≥30% overlap with MTA Congestion Relief Zone)
 
 ---
 
@@ -92,10 +92,10 @@ results/simulation/
 - Total project runs: 1,440 + 330 = **1,770 runs**
 
 ### 2.3 Queue Analysis: Based on SAME Data — PASS
-The queue analysis (`results/tables/queue_statistics.csv`) references both production and CBD experiment data. It **reads** from the existing CSVs without modifying them. Key finding confirmed across all 1,770 runs: **queue_fraction = 0.0** everywhere.
+The queue analysis (`results/baseline/tables/queue_statistics.csv`) references both production and CBD experiment data. It **reads** from the existing CSVs without modifying them. Key finding confirmed across all 1,770 runs: **queue_fraction = 0.0** everywhere.
 
 ### 2.4 Seasonal Analysis: Based on SAME Underlying Data — PASS
-The seasonal analysis (`results/tables/seasonal_analysis.csv`) is based on the **original 416,434 crash records** — the same demand dataset used throughout the project. It performs a temporal decomposition of the input data, not the simulation outputs.
+The seasonal analysis (`results/baseline/tables/seasonal_analysis.csv`) is based on the **original 416,434 crash records** — the same demand dataset used throughout the project. It performs a temporal decomposition of the input data, not the simulation outputs.
 
 ### 2.5 All Previous Deliverables: VALID — PASS
 | Category | Status | Notes |
@@ -110,6 +110,6 @@ The seasonal analysis (`results/tables/seasonal_analysis.csv`) is based on the *
 
 ## 3. Summary
 
-1. **The CBD vs Manhattan comparison data** is in `results/tables/cbd_comparison.csv` and `results/tables/cbd_summary_all.csv`, with visualizations in `results/figures/cbd_*.png` and full analysis in `docs/cbd_robustness_analysis.pdf`.
+1. **The CBD vs Manhattan comparison data** is in `results/analysis/tables/cbd_comparison.csv` and `results/analysis/tables/cbd_summary_all.csv`, with visualizations in `results/figures/cbd_*.png` and full analysis in `docs/analysis/cbd_robustness_analysis.pdf`.
 
 2. **All previous results remain 100% valid.** The gap resolution was purely additive — 330 new CBD runs in a separate directory, plus new analysis scripts and documentation. The original 1,440 production runs, all figures, tables, and findings are untouched and unchanged.

@@ -47,11 +47,11 @@ This report documents the resolution of all three gaps identified in the project
 - No queuing observed in any CBD scenario
 
 ### Deliverables
-- `docs/cbd_definition.md` — CBD geographic definition
+- `docs/core/cbd_definition.md` — CBD geographic definition
 - `configs/cbd_scenario.yaml` — Scenario configuration
 - `scripts/run_cbd_experiment.py` — Experiment runner
 - `notebooks/09_cbd_analysis.ipynb` — Analysis notebook
-- `docs/cbd_robustness_analysis.md` — Findings document
+- `docs/analysis/cbd_robustness_analysis.md` — Findings document
 - `results/analysis/simulation/cbd_experiment/` — Experiment data
 - `results/figures/cbd_*.png` — 3 figures
 - `results/tables/cbd_*.csv` — 2 tables
@@ -76,10 +76,10 @@ This report documents the resolution of all three gaps identified in the project
 
 ### Deliverables
 - `scripts/analyze_queue_metrics.py` — Analysis script
-- `docs/queue_analysis.md` — Detailed analysis document
+- `docs/analysis/queue_analysis.md` — Detailed analysis document
 - `results/figures/queue_*.png` — 4 figures
-- `results/tables/queue_statistics.csv` — Statistics table
-- `results/tables/queue_anova.csv` — ANOVA results
+- `results/baseline/tables/queue_statistics.csv` — Statistics table
+- `results/baseline/tables/queue_anova.csv` — ANOVA results
 
 ---
 
@@ -104,10 +104,10 @@ This report documents the resolution of all three gaps identified in the project
 
 ### Deliverables
 - `scripts/analyze_seasonal_patterns.py` — Analysis script
-- `results/figures/seasonal_patterns.png` — Monthly bar chart
-- `results/figures/seasonal_decomposition.png` — Decomposition plot
-- `results/figures/seasonal_heatmap.png` — Month × Hour heatmap
-- `results/tables/seasonal_analysis.csv` — Monthly statistics
+- `results/analysis/figures/seasonal_patterns.png` — Monthly bar chart
+- `results/analysis/figures/seasonal_decomposition.png` — Decomposition plot
+- `results/analysis/figures/seasonal_heatmap.png` — Month × Hour heatmap
+- `results/baseline/tables/seasonal_analysis.csv` — Monthly statistics
 
 ---
 

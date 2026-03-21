@@ -19,11 +19,11 @@ Found in **5 documentation files**:
 
 | File | Reference Type |
 |------|---------------|
-| `docs/technical_report.md` (line 472) | `![Fleet Sensitivity Analysis](../../results/archive/figures/fleet_sensitivity_dual.png)` |
-| `docs/technical_report.md` (line 947) | Listed as Figure 3 in artifact index |
-| `docs/visualization_index.md` (line 105) | Catalog entry with source script `run_production_v2.py` |
-| `docs/figure_trace_guide.md` (line 91) | Trace entry #30 linking to technical report Section 5.6 |
-| `docs/output_comparison_report.md` (line 124) | Listed under fleet sensitivity figures |
+| `docs/core/technical_report.md` (line 472) | `![Fleet Sensitivity Analysis](../../results/archive/figures/fleet_sensitivity_dual.png)` |
+| `docs/core/technical_report.md` (line 947) | Listed as Figure 3 in artifact index |
+| `docs/core/visualization_index.md` (line 105) | Catalog entry with source script `run_production_v2.py` |
+| `docs/core/figure_trace_guide.md` (line 91) | Trace entry #30 linking to technical report Section 5.6 |
+| `docs/archive/output_comparison_report.md` (line 124) | Listed under fleet sensitivity figures |
 
 All references use the **correct path**: `results/archive/figures/fleet_sensitivity_dual.png`.
 
@@ -111,7 +111,7 @@ While investigating, I found **44 images referenced in docs** that exist in subd
 | File | Change |
 |------|--------|
 | `scripts/generate_capacity_sensitivity_heatmap.py` | Fixed POLICY_LABELS mapping + deduplicated reindex |
-| `results/figures/capacity_sensitivity_heatmap.png` | Regenerated with all 3 policies |
-| `docs/output_comparison_report.md` | Removed "broken" annotations |
+| `results/archive/figures/capacity_sensitivity_heatmap.png` | Regenerated with all 3 policies |
+| `docs/archive/output_comparison_report.md` | Removed "broken" annotations |
 
 **Commit:** `fix: capacity_sensitivity_heatmap missing P0 due to policy label mismatch`

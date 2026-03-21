@@ -60,9 +60,9 @@ management**, and **documentation**.
 
 | Document | Path | Contents |
 |----------|------|---------|
-| Testing Guide | `docs/testing_guide.md` | How to run, add, and organise tests; coverage goals |
-| Reproducibility Guide | `docs/reproducibility_guide.md` | Seed architecture, usage, best practices |
-| This Summary | `docs/engineering_hygiene_summary.md` | Change log and rationale |
+| Testing Guide | `docs/core/testing_guide.md` | How to run, add, and organise tests; coverage goals |
+| Reproducibility Guide | `docs/core/reproducibility_guide.md` | Seed architecture, usage, best practices |
+| This Summary | `docs/archive/engineering_hygiene_summary.md` | Change log and rationale |
 
 ## 4. Files Changed
 
@@ -79,9 +79,9 @@ tests/test_properties.py
 tests/test_regression.py
 tests/test_performance.py
 tests/test_seed_manager.py
-docs/testing_guide.md
-docs/reproducibility_guide.md
-docs/engineering_hygiene_summary.md
+docs/core/testing_guide.md
+docs/core/reproducibility_guide.md
+docs/archive/engineering_hygiene_summary.md
 ```
 
 ### Modified Files (1)

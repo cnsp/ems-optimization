@@ -102,7 +102,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Included: stochastic arrivals, firehouse staging, nearest-available dispatch, multi-server queueing, replication-based analysis
 - Excluded: dynamic relocation, network routing, preemption, hospital turnaround (documented in `technical_report.md` §2.4)
 - `assumptions_log.md` with 12+ categorized assumptions (Data, Model, Geographic, Operational)
-- CBD robustness comparison: Dedicated CBD DES experiment with 330 simulation runs across 11 scenarios. CBD precincts identified via spatial intersection (10 precincts ≥30% overlap with MTA Congestion Relief Zone). Results in `docs/cbd_robustness_analysis.md`, `results/analysis/simulation/cbd_experiment/`, and `technical_report.md` §5.7.
+- CBD robustness comparison: Dedicated CBD DES experiment with 330 simulation runs across 11 scenarios. CBD precincts identified via spatial intersection (10 precincts ≥30% overlap with MTA Congestion Relief Zone). Results in `docs/analysis/cbd_robustness_analysis.md`, `results/analysis/simulation/cbd_experiment/`, and `technical_report.md` §5.7.
 
 **Status: Fully Covered (100%)**
 
@@ -325,14 +325,14 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Production: `scripts/run_production_experiments.py`
 - Statistical analysis: `scripts/analyze_production_results.py`, `notebooks/08_statistical_analysis.ipynb`
 - Results:
- - ANOVA results: `results/tables/anova_results.csv`
- - Post-hoc: `results/tables/posthoc_comparisons.csv`
- - Confidence intervals: `results/tables/confidence_intervals.csv`
- - Effect sizes: `results/tables/effect_sizes.csv`
+ - ANOVA results: `results/baseline/tables/anova_results.csv`
+ - Post-hoc: `results/baseline/tables/posthoc_comparisons.csv`
+ - Confidence intervals: `results/baseline/tables/confidence_intervals.csv`
+ - Effect sizes: `results/baseline/tables/effect_sizes.csv`
  - Publication tables: `table1–4` in CSV + LaTeX format
  - Publication figures: `pub_fig1–5` in `results/figures/`
-- CBD robustness: Dedicated CBD DES experiment (Exp5) with 330 runs comparing Manhattan-wide vs CBD-focused results across 11 scenarios. Documented in `docs/cbd_robustness_analysis.md` and `technical_report.md` §5.7.
-- Queue metrics: Full analysis across all 1,770 runs in `docs/queue_analysis.md` and `technical_report.md` §5.8.
+- CBD robustness: Dedicated CBD DES experiment (Exp5) with 330 runs comparing Manhattan-wide vs CBD-focused results across 11 scenarios. Documented in `docs/analysis/cbd_robustness_analysis.md` and `technical_report.md` §5.7.
+- Queue metrics: Full analysis across all 1,770 runs in `docs/analysis/queue_analysis.md` and `technical_report.md` §5.8.
 - Seasonal analysis: Monthly/seasonal patterns analyzed in `technical_report.md` §5.9 and `demand_model_spec.md` §8.
 
 **Status: Fully Covered (100%)**
@@ -382,7 +382,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | G2 | Queue-focused metrics in technical report | §2 | Resolved | Queue analysis across 1,770 runs, 4 figures, 2 tables |
 | G3 | Seasonal analysis depth | §6 | Resolved | Monthly/seasonal analysis, 3 figures, 1 table |
 
-See `docs/gap_remediation_plan.md` and `docs/gap_closure_report.md` for full details.
+See `docs/archive/gap_remediation_plan.md` and `docs/archive/gap_closure_report.md` for full details.
 
 ### Enhancements (Beyond Requirements)
 
@@ -417,7 +417,7 @@ The project includes several deliverables that **exceed** the outline requiremen
 9. **Seasonal analysis**: Monthly/seasonal decomposition with statistical testing
 
 ### Gaps
-All three previously identified minor gaps (G1: CBD robustness, G2: Queue metrics, G3: Seasonal analysis) have been **fully resolved** in v1.1.0. See `docs/gap_closure_report.md` for verification.
+All three previously identified minor gaps (G1: CBD robustness, G2: Queue metrics, G3: Seasonal analysis) have been **fully resolved** in v1.1.0. See `docs/archive/gap_closure_report.md` for verification.
 
 ### Recommendation
 The project achieves **100% alignment** with the project outline and is ready for submission. All 12 outline sections are fully covered with 1,770 simulation runs, 47+ figures, 18+ tables, and thorough documentation.

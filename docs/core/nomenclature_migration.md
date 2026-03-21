@@ -35,7 +35,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 - **Implementation**: `policies.spatially_stratified_allocation()` — latitude-based spatial stratification
 - **Improvement**: Mean RT = 3.17 min at K=20, 99.6% 8-minute coverage (61% improvement)
 - **Rationale**: Fair geographic baseline that eliminates CSV-ordering bias
-- **Decision Reference**: DEC-011 in `docs/decisions_log.md`
+- **Decision Reference**: DEC-011 in `docs/core/decisions_log.md`
 - **Period**: Phase 9 onwards
 
 ### Phase 3: Nomenclature Standardization ("V3")
@@ -43,7 +43,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 - **Change**: Removed all V1/V2 terminology from public-facing documents
 - **P0 now always means**: spatially-stratified allocation
 - **Original uniform allocation**: Retained in code with `DeprecationWarning`, not referenced in technical report
-- **Decision Reference**: DEC-012 in `docs/decisions_log.md`
+- **Decision Reference**: DEC-012 in `docs/core/decisions_log.md`
 - **Period**: Phase 11 (current)
 
 ---
@@ -98,4 +98,4 @@ The 61% improvement from the old to current P0 confirms that **geographic placem
 
 ---
 
-*This document is for internal team reference only. The technical report (`docs/technical_report.md`) presents only the current methodology without historical evolution.*
+*This document is for internal team reference only. The technical report (`docs/core/technical_report.md`) presents only the current methodology without historical evolution.*

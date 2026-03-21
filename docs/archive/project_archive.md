@@ -184,7 +184,7 @@ verified: "Specialized analysis document. Cross-reference with current productio
 - All source code in `src/ems_readiness/` with 39 unit tests
 - Run `pytest tests/ -v` before any deployment
 - Follow PEP 8 style conventions
-- Update `docs/code_documentation.md` for API changes
+- Update `docs/core/code_documentation.md` for API changes
 
 ---
 

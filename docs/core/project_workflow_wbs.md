@@ -66,11 +66,11 @@ Define the decision problem, research questions, scope, and project infrastructu
 
 | File | Description |
 |------|-------------|
-| `docs/project_charter.md` | Project charter with objectives, scope, and timeline |
-| `docs/assumptions_log.md` | Documented assumptions (12 items) with rationale and risk |
-| `docs/decisions_log.md` | Key decisions (DEC-001 through DEC-005) |
-| `docs/blocker_log.md` | Blocker tracking template |
-| `docs/source_manifest.md` | Data source inventory |
+| `docs/core/project_charter.md` | Project charter with objectives, scope, and timeline |
+| `docs/core/assumptions_log.md` | Documented assumptions (12 items) with rationale and risk |
+| `docs/core/decisions_log.md` | Key decisions (DEC-001 through DEC-005) |
+| `docs/core/blocker_log.md` | Blocker tracking template |
+| `docs/core/source_manifest.md` | Data source inventory |
 | `requirements.txt` | Python dependency specification |
 | `Makefile` | Build automation targets |
 | `README.md` | Project overview and setup instructions |
@@ -133,23 +133,23 @@ Acquire, clean, and transform raw data into analysis-ready datasets; build spati
 | `src/ems_readiness/demand/arrival_generator.py` | NHPP arrival generator (Lewis-Shedler thinning) |
 | `configs/demand.yaml` | Demand model configuration |
 | `configs/service.yaml` | Service model configuration |
-| `docs/demand_model_spec.md` | Demand model specification document |
-| `docs/service_model_spec.md` | Service & travel proxy specification |
-| `docs/eda_and_data_split_summary.md` | EDA summary and data split documentation |
-| `results/figures/fig_crash_heatmap.png` | Crash heatmap |
-| `results/figures/fig_hourly_demand.png` | Hourly demand profile |
-| `results/figures/fig_daily_demand.png` | Daily demand profile |
-| `results/figures/fig_firehouses_map.png` | Manhattan firehouses map |
-| `results/figures/fig_precinct_demand.png` | Precinct demand bar chart |
-| `results/figures/fig_precinct_density.png` | Precinct density choropleth |
-| `results/figures/fig_temporal_trends.png` | Long-term temporal trends |
-| `results/figures/fig_hourly_rates.png` | NHPP hourly rate factors |
-| `results/figures/fig_demand_model_fit.png` | Demand model fit diagnostics |
-| `results/figures/distance_matrix_heatmap.png` | Distance matrix heatmap |
-| `results/figures/travel_time_by_tod.png` | Travel time by time-of-day |
-| `results/figures/tod_speed_factors.png` | TOD speed factor profile |
-| `results/figures/service_time_distribution.png` | Service time distribution |
-| `results/figures/nhpp_arrivals_demo.png` | NHPP arrival demo |
+| `docs/core/demand_model_spec.md` | Demand model specification document |
+| `docs/core/service_model_spec.md` | Service & travel proxy specification |
+| `docs/analysis/eda_and_data_split_summary.md` | EDA summary and data split documentation |
+| `results/baseline/figures/fig_crash_heatmap.png` | Crash heatmap |
+| `results/baseline/figures/fig_hourly_demand.png` | Hourly demand profile |
+| `results/baseline/figures/fig_daily_demand.png` | Daily demand profile |
+| `results/baseline/figures/fig_firehouses_map.png` | Manhattan firehouses map |
+| `results/baseline/figures/fig_precinct_demand.png` | Precinct demand bar chart |
+| `results/baseline/figures/fig_precinct_density.png` | Precinct density choropleth |
+| `results/baseline/figures/fig_temporal_trends.png` | Long-term temporal trends |
+| `results/baseline/figures/fig_hourly_rates.png` | NHPP hourly rate factors |
+| `results/baseline/figures/fig_demand_model_fit.png` | Demand model fit diagnostics |
+| `results/analysis/figures/distance_matrix_heatmap.png` | Distance matrix heatmap |
+| `results/analysis/figures/travel_time_by_tod.png` | Travel time by time-of-day |
+| `results/analysis/figures/tod_speed_factors.png` | TOD speed factor profile |
+| `results/analysis/figures/service_time_distribution.png` | Service time distribution |
+| `results/analysis/figures/nhpp_arrivals_demo.png` | NHPP arrival demo |
 
 ### Scripts / Notebooks Used
 
@@ -207,12 +207,12 @@ Formulate and solve MIP allocation models to generate candidate staging policies
 | `src/ems_readiness/optimization/policies.py` | Baseline policies (uniform, demand-proportional) |
 | `src/ems_readiness/optimization/allocator.py` | High-level `EMSAllocator` solver class |
 | `configs/optimization.yaml` | Optimization configuration |
-| `docs/optimization_formulation.md` | Mathematical specification of all models |
-| `docs/optimization_results.md` | Optimization results and comparison |
-| `results/tables/optimization_comparison.csv` | Model comparison table |
-| `results/figures/opt_allocation_comparison.png` | Allocation comparison visualization |
-| `results/figures/opt_inputs.png` | Optimization inputs visualization |
-| `results/figures/opt_sensitivity.png` | Sensitivity analysis figure |
+| `docs/core/optimization_formulation.md` | Mathematical specification of all models |
+| `docs/analysis/optimization_results.md` | Optimization results and comparison |
+| `results/archive/tables/optimization_comparison.csv` | Model comparison table |
+| `results/analysis/figures/opt_allocation_comparison.png` | Allocation comparison visualization |
+| `results/analysis/figures/opt_inputs.png` | Optimization inputs visualization |
+| `results/analysis/figures/opt_sensitivity.png` | Sensitivity analysis figure |
 
 ### Scripts / Notebooks Used
 
@@ -273,8 +273,8 @@ Design the conceptual DES model and implement a modular simulation engine in Pyt
 | `src/ems_readiness/simulation/engine.py` | `EMSSimulation` main DES engine |
 | `src/ems_readiness/simulation/runner.py` | `BatchRunner` for experiment execution |
 | `configs/simulation.yaml` | DES engine configuration |
-| `docs/conceptual_model.md` | Complete conceptual model specification |
-| `docs/code_documentation.md` | Code architecture and module documentation |
+| `docs/core/conceptual_model.md` | Complete conceptual model specification |
+| `docs/core/code_documentation.md` | Code architecture and module documentation |
 | `tests/` | 39 unit tests across 4 test modules |
 
 ### Scripts / Notebooks Used
@@ -320,11 +320,11 @@ Verify that the simulation code correctly implements the conceptual model and va
 
 | File | Description |
 |------|-------------|
-| `docs/verification_log.md` | Complete V&V results documentation |
-| `results/figures/verification_toy_timeline.png` | Toy example event timeline |
-| `results/figures/validation_p0_vs_p2.png` | Validation: P0 vs. P2 comparison |
-| `results/figures/validation_sensitivity_K.png` | Validation: Fleet sensitivity |
-| `results/figures/validation_sensitivity_demand.png` | Validation: Demand sensitivity |
+| `docs/core/verification_log.md` | Complete V&V results documentation |
+| `results/baseline/figures/verification_toy_timeline.png` | Toy example event timeline |
+| `results/baseline/figures/validation_p0_vs_p2.png` | Validation: P0 vs. P2 comparison |
+| `results/baseline/figures/validation_sensitivity_K.png` | Validation: Fleet sensitivity |
+| `results/baseline/figures/validation_sensitivity_demand.png` | Validation: Demand sensitivity |
 
 ### Scripts / Notebooks Used
 
@@ -375,32 +375,32 @@ Execute production simulation experiments, perform statistical analysis, and gen
 
 | File | Description |
 |------|-------------|
-| `results/tables/descriptive_statistics.csv` | Full descriptive statistics |
-| `results/tables/anova_results.csv` | ANOVA results |
-| `results/tables/posthoc_comparisons.csv` | Tukey HSD post-hoc tests |
-| `results/tables/confidence_intervals.csv` | 95% confidence intervals |
-| `results/tables/effect_sizes.csv` | Cohen's d effect sizes |
-| `results/tables/exp1_summary.csv` | Experiment 1 summary |
-| `results/tables/exp2_pivot_rt.csv` | Experiment 2 pivot table |
-| `results/tables/exp3_pivot_rt.csv` | Experiment 3 pivot table |
-| `results/tables/exp4_pivot_rt.csv` | Experiment 4 pivot table |
-| `results/tables/sensitivity_summary.csv` | Overall sensitivity summary |
-| `results/tables/cbd_comparison.csv` | CBD comparison table |
-| `results/tables/cbd_summary_all.csv` | CBD full summary |
-| `results/tables/queue_statistics.csv` | Queue statistics |
-| `results/tables/queue_anova.csv` | Queue ANOVA results |
-| `results/tables/seasonal_analysis.csv` | Seasonal variation analysis |
+| `results/baseline/tables/descriptive_statistics.csv` | Full descriptive statistics |
+| `results/baseline/tables/anova_results.csv` | ANOVA results |
+| `results/baseline/tables/posthoc_comparisons.csv` | Tukey HSD post-hoc tests |
+| `results/baseline/tables/confidence_intervals.csv` | 95% confidence intervals |
+| `results/baseline/tables/effect_sizes.csv` | Cohen's d effect sizes |
+| `results/baseline/tables/exp1_summary.csv` | Experiment 1 summary |
+| `results/baseline/tables/exp2_pivot_rt.csv` | Experiment 2 pivot table |
+| `results/baseline/tables/exp3_pivot_rt.csv` | Experiment 3 pivot table |
+| `results/baseline/tables/exp4_pivot_rt.csv` | Experiment 4 pivot table |
+| `results/baseline/tables/sensitivity_summary.csv` | Overall sensitivity summary |
+| `results/analysis/tables/cbd_comparison.csv` | CBD comparison table |
+| `results/analysis/tables/cbd_summary_all.csv` | CBD full summary |
+| `results/baseline/tables/queue_statistics.csv` | Queue statistics |
+| `results/baseline/tables/queue_anova.csv` | Queue ANOVA results |
+| `results/baseline/tables/seasonal_analysis.csv` | Seasonal variation analysis |
 | `results/tables/table1–4_*.csv` and `.tex` | Publication tables (CSV + LaTeX) |
 | `results/figures/exp1–4_*.png` | Experiment result figures |
 | `results/figures/pub_fig1–5_*.png` | Publication-quality figures |
 | `results/figures/queue_*.png` | Queue analysis figures |
 | `results/figures/seasonal_*.png` | Seasonal analysis figures |
-| `results/figures/project_summary_dashboard.png` | Summary dashboard |
-| `docs/experimental_design.md` | Experimental design specification |
-| `docs/output_analysis.md` | Output analysis documentation |
-| `docs/cbd_robustness_analysis.md` | CBD robustness analysis report |
-| `docs/queue_analysis.md` | Queue analysis report |
-| `docs/gap_closure_report.md` | Gap closure report |
+| `results/baseline/figures/project_summary_dashboard.png` | Summary dashboard |
+| `docs/core/experimental_design.md` | Experimental design specification |
+| `docs/core/output_analysis.md` | Output analysis documentation |
+| `docs/analysis/cbd_robustness_analysis.md` | CBD robustness analysis report |
+| `docs/analysis/queue_analysis.md` | Queue analysis report |
+| `docs/archive/gap_closure_report.md` | Gap closure report |
 
 ### Scripts / Notebooks Used
 
@@ -457,20 +457,20 @@ Compile all findings into a full technical report, executive presentation, and c
 
 | File | Description |
 |------|-------------|
-| `docs/technical_report.md` | Comprehensive technical report (fully compliant) |
-| `docs/technical_report.pdf` | PDF version of technical report |
-| `docs/executive_summary.md` | Standalone executive summary |
-| `docs/executive_presentation.md` | Executive presentation |
-| `docs/implementation_roadmap.md` | Implementation roadmap |
-| `docs/final_summary.md` | Final project summary |
-| `docs/file_inventory.md` | Complete file inventory |
-| `docs/project_archive.md` | Archive documentation |
-| `docs/phase21_assessment.md` | compliance assessment |
-| `docs/gap_remediation_plan.md` | Gap remediation plan |
-| `docs/phase_comparison_summary.md` | Phase comparison summary |
-| `docs/project_workflow_wbs.md` | This WBS document |
-| `docs/cbd_comparison_and_validity_report.md` | CBD comparison and validity report |
-| `docs/cbd_definition.md` | CBD definition and boundary documentation |
+| `docs/core/technical_report.md` | Comprehensive technical report (fully compliant) |
+| `docs/core/technical_report.pdf` | PDF version of technical report |
+| `docs/core/executive_summary.md` | Standalone executive summary |
+| `docs/core/executive_presentation.md` | Executive presentation |
+| `docs/core/implementation_roadmap.md` | Implementation roadmap |
+| `docs/archive/final_summary.md` | Final project summary |
+| `docs/archive/file_inventory.md` | Complete file inventory |
+| `docs/archive/project_archive.md` | Archive documentation |
+| `docs/archive/phase21_assessment.md` | compliance assessment |
+| `docs/archive/gap_remediation_plan.md` | Gap remediation plan |
+| `docs/archive/phase_comparison_summary.md` | Phase comparison summary |
+| `docs/core/project_workflow_wbs.md` | This WBS document |
+| `docs/analysis/cbd_comparison_and_validity_report.md` | CBD comparison and validity report |
+| `docs/core/cbd_definition.md` | CBD definition and boundary documentation |
 | All PDF versions of above documents | Generated PDFs |
 | `README.md` (updated) | Final project README |
 
@@ -534,9 +534,9 @@ Conduct alternative analyses to test the robustness of modelling choices and com
 | `results/analysis/cbd_focused_comparison/cbd_focused_comparison.png` | RT comparison bar chart |
 | `results/analysis/cbd_focused_comparison/allocation_comparison.png` | Allocation map comparison |
 | `results/analysis/cbd_focused_comparison/equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
-| `docs/distance_metric_comparison.md` | Distance metric comparison report |
-| `docs/cbd_focused_optimization_analysis.md` | CBD-focused optimization report |
-| `docs/alternative_analyses_summary.md` | Combined alternative analyses summary |
+| `docs/analysis/distance_metric_comparison.md` | Distance metric comparison report |
+| `docs/analysis/cbd_focused_optimization_analysis.md` | CBD-focused optimization report |
+| `docs/analysis/alternative_analyses_summary.md` | Combined alternative analyses summary |
 
 ### Scripts / Notebooks Used
 
@@ -589,8 +589,8 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 |------|-------------|
 | `results/analysis/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
 | `results/baseline/` | Complete analysis results: allocations, simulation data, figures, tables |
-| `docs/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
-| `docs/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
+| `docs/analysis/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
+| `docs/analysis/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
 | `src/ems_readiness/optimization/policies.py` | Updated with `spatially_stratified_allocation()` |
 | `src/ems_readiness/optimization/models.py` | Updated `build_p_median` + `solve_model()` |
 | `configs/optimization.yaml` | Default capacity updated to 2 |
