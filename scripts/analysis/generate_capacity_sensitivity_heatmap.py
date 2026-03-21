@@ -5,9 +5,10 @@ Generate capacity sensitivity heatmap for the technical report.
 Creates a side-by-side heatmap showing mean response time by policy
 and per-firehouse capacity limit at K=20 and K=40.
 
-Output: results/figures/capacity_sensitivity_heatmap.png
+Default output: results/analysis/figures/capacity_sensitivity_heatmap.png
 """
 
+import argparse
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,8 +18,7 @@ from pathlib import Path
 # Project root
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 RESULTS_DIR = PROJECT_ROOT / "results" / "analysis" / "capacity_comparison"
-FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+DEFAULT_FIGURES_DIR = PROJECT_ROOT / "results" / "analysis" / "figures"
 
 # Policy display names — map all known variants to canonical labels
 POLICY_LABELS = {
@@ -63,8 +63,10 @@ def load_simulation_data():
     return combined
 
 
-def create_heatmap(df, k_values=(20, 40)):
+def create_heatmap(df, k_values=(20, 40), figures_dir=None):
     """Create side-by-side heatmaps for specified K values."""
+    figures_dir = Path(figures_dir) if figures_dir else DEFAULT_FIGURES_DIR
+    figures_dir.mkdir(parents=True, exist_ok=True)
     fig, axes = plt.subplots(1, len(k_values), figsize=(6 * len(k_values), 4.5),
                              sharey=True)
     if len(k_values) == 1:
@@ -131,7 +133,7 @@ def create_heatmap(df, k_values=(20, 40)):
 
     plt.tight_layout()
 
-    output_path = FIGURES_DIR / "capacity_sensitivity_heatmap.png"
+    output_path = figures_dir / "capacity_sensitivity_heatmap.png"
     fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"\nSaved: {output_path}")
@@ -139,12 +141,17 @@ def create_heatmap(df, k_values=(20, 40)):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate capacity sensitivity heatmap")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help=f"Output directory for figures (default: {DEFAULT_FIGURES_DIR})")
+    args = parser.parse_args()
+
     print("=" * 60)
     print("Generating Capacity Sensitivity Heatmap")
     print("=" * 60)
 
     df = load_simulation_data()
-    output = create_heatmap(df, k_values=(20, 30, 40))
+    output = create_heatmap(df, k_values=(20, 30, 40), figures_dir=args.output_dir)
     print(f"\nDone! Output: {output}")
 
 

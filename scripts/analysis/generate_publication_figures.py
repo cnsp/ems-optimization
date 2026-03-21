@@ -4,8 +4,11 @@ Phase 6 – Publication-Quality Figures
 ======================================
 
 Reads production experiment CSVs and generates five publication figures (300 DPI).
+
+Default output: results/analysis/figures/
 """
 from __future__ import annotations
+import argparse
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -21,8 +24,8 @@ from scipy import stats
 # ---------------------------------------------------------------------------
 PROJECT = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = PROJECT / "results" / "analysis" / "simulation" / "production"
-FIG_DIR = PROJECT / "results" / "figures"
-FIG_DIR.mkdir(parents=True, exist_ok=True)
+DEFAULT_FIG_DIR = PROJECT / "results" / "analysis" / "figures"
+FIG_DIR = DEFAULT_FIG_DIR  # overridden by --output-dir
 
 DPI = 300
 CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
@@ -295,6 +298,18 @@ def fig5_heatmap():
 # Main
 # ===================================================================
 def main():
+    global FIG_DIR
+    parser = argparse.ArgumentParser(description="Generate publication-quality figures")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help=f"Output directory for figures (default: {DEFAULT_FIG_DIR})")
+    args = parser.parse_args()
+
+    if args.output_dir:
+        FIG_DIR = Path(args.output_dir)
+    else:
+        FIG_DIR = DEFAULT_FIG_DIR
+    FIG_DIR.mkdir(parents=True, exist_ok=True)
+
     print("=" * 60)
     print("Generating publication-quality figures …")
     print("=" * 60)
@@ -303,7 +318,7 @@ def main():
     fig3_demand_robustness()
     fig4_service_sensitivity()
     fig5_heatmap()
-    print("\nAll figures saved to results/figures/")
+    print(f"\nAll figures saved to {FIG_DIR}")
 
 
 if __name__ == "__main__":

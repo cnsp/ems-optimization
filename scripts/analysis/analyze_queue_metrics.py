@@ -4,19 +4,20 @@
 Extracts, analyzes, and visualizes queue-related metrics from all
 production experiment results and CBD experiments.
 
-Generates:
-  - results/figures/queue_comparison_by_policy.png
-  - results/figures/queue_vs_fleet_size.png
-  - results/figures/queue_vs_demand.png
-  - results/figures/queue_heatmap.png
-  - results/tables/queue_statistics.csv
+Default outputs:
+  - results/analysis/figures/queue_comparison_by_policy.png
+  - results/analysis/figures/queue_vs_fleet_size.png
+  - results/analysis/figures/queue_vs_demand.png
+  - results/analysis/figures/queue_heatmap.png
+  - results/analysis/tables/queue_statistics.csv
 
 Usage:
-    python scripts/analysis/analyze_queue_metrics.py
+    python scripts/analysis/analyze_queue_metrics.py [--output-dir DIR]
 """
 
 from __future__ import annotations
 
+import argparse
 import logging
 import sys
 from pathlib import Path
@@ -35,10 +36,8 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
-TABLES_DIR = PROJECT_ROOT / "results" / "tables"
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
-TABLES_DIR.mkdir(parents=True, exist_ok=True)
+DEFAULT_FIGURES_DIR = PROJECT_ROOT / "results" / "analysis" / "figures"
+DEFAULT_TABLES_DIR = PROJECT_ROOT / "results" / "analysis" / "tables"
 
 # Publication style
 plt.rcParams.update({
@@ -328,6 +327,23 @@ def perform_queue_anova(qdf: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Queue Metrics Analysis")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help="Base output directory (figures/ and tables/ sub-dirs created beneath it). "
+                             f"Default: {PROJECT_ROOT / 'results' / 'analysis'}")
+    args = parser.parse_args()
+
+    if args.output_dir:
+        base = Path(args.output_dir)
+        figures_dir = base / "figures"
+        tables_dir = base / "tables"
+    else:
+        figures_dir = DEFAULT_FIGURES_DIR
+        tables_dir = DEFAULT_TABLES_DIR
+
+    figures_dir.mkdir(parents=True, exist_ok=True)
+    tables_dir.mkdir(parents=True, exist_ok=True)
+
     logger.info("=" * 60)
     logger.info("QUEUE METRICS ANALYSIS")
     logger.info("=" * 60)
@@ -345,19 +361,19 @@ def main():
 
     # Compute statistics
     stats_df = compute_queue_statistics(qdf)
-    stats_df.to_csv(TABLES_DIR / "queue_statistics.csv", index=False)
+    stats_df.to_csv(tables_dir / "queue_statistics.csv", index=False)
     logger.info(f"Saved queue statistics: {len(stats_df)} rows")
 
     # ANOVA
     anova_df = perform_queue_anova(qdf)
-    anova_df.to_csv(TABLES_DIR / "queue_anova.csv", index=False)
+    anova_df.to_csv(tables_dir / "queue_anova.csv", index=False)
     logger.info(f"Saved queue ANOVA results")
 
     # Generate visualizations
-    plot_queue_comparison_by_policy(qdf, FIGURES_DIR / "queue_comparison_by_policy.png")
-    plot_queue_vs_fleet_size(qdf, FIGURES_DIR / "queue_vs_fleet_size.png")
-    plot_queue_vs_demand(qdf, FIGURES_DIR / "queue_vs_demand.png")
-    plot_queue_heatmap(stats_df, FIGURES_DIR / "queue_heatmap.png")
+    plot_queue_comparison_by_policy(qdf, figures_dir / "queue_comparison_by_policy.png")
+    plot_queue_vs_fleet_size(qdf, figures_dir / "queue_vs_fleet_size.png")
+    plot_queue_vs_demand(qdf, figures_dir / "queue_vs_demand.png")
+    plot_queue_heatmap(stats_df, figures_dir / "queue_heatmap.png")
 
     # Print summary
     logger.info("\n" + "=" * 60)
