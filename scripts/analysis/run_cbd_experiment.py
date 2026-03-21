@@ -55,7 +55,7 @@ HORIZON_HOURS = 168
 DEFAULT_K = 20
 POLICIES = ["P0", "P1", "P2"]  # P0 = spatially-stratified uniform
 
-# CBD precincts (from spatial analysis - see docs/cbd_definition.md)
+# CBD precincts (from spatial analysis - see docs/core/cbd_definition.md)
 CBD_PRECINCTS = [1, 5, 6, 7, 9, 10, 13, 14, 17, 18]
 
 

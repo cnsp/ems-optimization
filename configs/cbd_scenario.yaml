@@ -2,7 +2,7 @@
 # CBD-Specific Scenario Configuration
 # ============================================================
 # Used by: scripts/run_cbd_experiment.py
-# Reference: docs/cbd_definition.md
+# Reference: docs/core/cbd_definition.md
 # ============================================================
 
 # CBD precinct list (≥30% overlap with MTA Congestion Relief Zone)

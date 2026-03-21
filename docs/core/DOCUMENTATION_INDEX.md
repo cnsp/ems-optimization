@@ -16,10 +16,10 @@ verified: "Master index of all 62 documentation files"
 | **Project overview** | [`technical_report.md`](technical_report.md) or [`executive_summary.md`](executive_summary.md) |
 | **Which results files to use** | [`data_usage_guide.md`](data_usage_guide.md) |
 | **How to reproduce results** | [`reproducibility_guide.md`](reproducibility_guide.md) |
-| **Current metrics & numbers** | [`optimization_results.md`](optimization_results.md) |
+| **Current metrics & numbers** | [`optimization_results.md`](../analysis/optimization_results.md) |
 | **Math formulations** | [`optimization_formulation.md`](optimization_formulation.md) |
 | **Why P0 changed** | [`nomenclature_migration.md`](nomenclature_migration.md) (🔄 historical) |
-| **Why capacity=2** | [`capacity_sensitivity_analysis.md`](capacity_sensitivity_analysis.md) |
+| **Why capacity=2** | [`capacity_sensitivity_analysis.md`](../analysis/capacity_sensitivity_analysis.md) |
 | **All project decisions** | [`decisions_log.md`](decisions_log.md) |
 | **Notebook execution order** | [`notebook_guide.md`](notebook_guide.md) |
 | **Figure traceability** | [`figure_trace_guide.md`](figure_trace_guide.md) |
@@ -51,13 +51,13 @@ verified: "Master index of all 62 documentation files"
 | Document | Description |
 |----------|-------------|
 | [`experimental_design.md`](experimental_design.md) | Experimental design: 5 experiment sets, 2,400 runs |
-| [`optimization_results.md`](optimization_results.md) | Optimization results summary (cap=2, current P0) |
-| [`capacity_sensitivity_analysis.md`](capacity_sensitivity_analysis.md) | Full-spectrum capacity sensitivity (cap 1–5) |
-| [`cbd_robustness_analysis.md`](cbd_robustness_analysis.md) | CBD robustness analysis with current metrics |
-| [`cbd_comparison_and_validity_report.md`](cbd_comparison_and_validity_report.md) | CBD comparison and model validity |
+| [`optimization_results.md`](../analysis/optimization_results.md) | Optimization results summary (cap=2, current P0) |
+| [`capacity_sensitivity_analysis.md`](../analysis/capacity_sensitivity_analysis.md) | Full-spectrum capacity sensitivity (cap 1–5) |
+| [`cbd_robustness_analysis.md`](../analysis/cbd_robustness_analysis.md) | CBD robustness analysis with current metrics |
+| [`cbd_comparison_and_validity_report.md`](../analysis/cbd_comparison_and_validity_report.md) | CBD comparison and model validity |
 | [`cbd_definition.md`](cbd_definition.md) | CBD geographic boundary definition |
-| [`distance_metric_comparison.md`](distance_metric_comparison.md) | Haversine vs Manhattan distance analysis |
-| [`queue_analysis.md`](queue_analysis.md) | Queue analysis confirming zero waiting |
+| [`distance_metric_comparison.md`](../analysis/distance_metric_comparison.md) | Haversine vs Manhattan distance analysis |
+| [`queue_analysis.md`](../analysis/queue_analysis.md) | Queue analysis confirming zero waiting |
 
 ### Reports & Summaries
 | Document | Description |
@@ -65,9 +65,9 @@ verified: "Master index of all 62 documentation files"
 | [`technical_report.md`](technical_report.md) | Full technical report (journal-style, ~600 lines) |
 | [`executive_summary.md`](executive_summary.md) | One-page executive summary |
 | [`executive_presentation.md`](executive_presentation.md) | Slide-style executive presentation |
-| [`final_summary.md`](final_summary.md) | Comprehensive project final summary |
-| [`research_questions_assessment.md`](research_questions_assessment.md) | Assessment against original research questions |
-| [`project_alignment_verification.md`](project_alignment_verification.md) | Alignment verification with project outline |
+| [`final_summary.md`](../archive/final_summary.md) | Comprehensive project final summary |
+| [`research_questions_assessment.md`](../analysis/research_questions_assessment.md) | Assessment against original research questions |
+| [`project_alignment_verification.md`](../archive/project_alignment_verification.md) | Alignment verification with project outline |
 
 ### Guides & References
 | Document | Description |
@@ -83,7 +83,7 @@ verified: "Master index of all 62 documentation files"
 ### Engineering & Quality
 | Document | Description |
 |----------|-------------|
-| [`engineering_hygiene_summary.md`](engineering_hygiene_summary.md) | Engineering quality practices summary |
+| [`engineering_hygiene_summary.md`](../archive/engineering_hygiene_summary.md) | Engineering quality practices summary |
 | [`project_workflow_wbs.md`](project_workflow_wbs.md) | Work breakdown structure |
 | [`implementation_roadmap.md`](implementation_roadmap.md) | 12-month implementation roadmap |
 
@@ -98,30 +98,30 @@ verified: "Master index of all 62 documentation files"
 |----------|-------------|
 | [`nomenclature_migration.md`](nomenclature_migration.md) | P0 nomenclature migration history (old→new P0) |
 | [`historical_data_policy.md`](historical_data_policy.md) | Policy for handling historical vs current data |
-| [`policy_tradeoff_analysis.md`](policy_tradeoff_analysis.md) | Trade-off analysis using ORIGINAL index-based P0 (deprecated) |
-| [`firehouse_capacity_analysis.md`](firehouse_capacity_analysis.md) | Pre-DEC-010 capacity analysis (cap=5 era) |
+| [`policy_tradeoff_analysis.md`](../analysis/policy_tradeoff_analysis.md) | Trade-off analysis using ORIGINAL index-based P0 (deprecated) |
+| [`firehouse_capacity_analysis.md`](../analysis/firehouse_capacity_analysis.md) | Pre-DEC-010 capacity analysis (cap=5 era) |
 
 ### Audit & Migration Records
 | Document | Description |
 |----------|-------------|
-| [`documentation_audit_report.md`](documentation_audit_report.md) | Record of documentation audit and fixes applied |
-| [`notebook_audit_report.md`](notebook_audit_report.md) | Record of notebook audit and fixes applied |
-| [`project_wide_audit_report.md`](project_wide_audit_report.md) | Comprehensive project-wide audit record |
-| [`honest_audit_assessment.md`](honest_audit_assessment.md) | Honest assessment of project state |
-| [`gap_analysis_report.md`](gap_analysis_report.md) | Gap analysis and identified issues |
-| [`gap_closure_report.md`](gap_closure_report.md) | Gap closure progress report |
-| [`gap_remediation_plan.md`](gap_remediation_plan.md) | Remediation plan for identified gaps |
-| [`fix_summary_4_issues.md`](fix_summary_4_issues.md) | Summary of 4 critical fixes (cap=5→2, etc.) |
-| [`filename_mismatch_fix_report.md`](filename_mismatch_fix_report.md) | Filename mismatch fixes |
-| [`output_comparison_report.md`](output_comparison_report.md) | Before/after comparison of regenerated outputs |
-| [`migration_plan.md`](migration_plan.md) | Data and results migration plan |
+| [`documentation_audit_report.md`](../archive/documentation_audit_report.md) | Record of documentation audit and fixes applied |
+| [`notebook_audit_report.md`](../archive/notebook_audit_report.md) | Record of notebook audit and fixes applied |
+| [`project_wide_audit_report.md`](../archive/project_wide_audit_report.md) | Comprehensive project-wide audit record |
+| [`honest_audit_assessment.md`](../archive/honest_audit_assessment.md) | Honest assessment of project state |
+| [`gap_analysis_report.md`](../archive/gap_analysis_report.md) | Gap analysis and identified issues |
+| [`gap_closure_report.md`](../archive/gap_closure_report.md) | Gap closure progress report |
+| [`gap_remediation_plan.md`](../archive/gap_remediation_plan.md) | Remediation plan for identified gaps |
+| [`fix_summary_4_issues.md`](../archive/fix_summary_4_issues.md) | Summary of 4 critical fixes (cap=5→2, etc.) |
+| [`filename_mismatch_fix_report.md`](../archive/filename_mismatch_fix_report.md) | Filename mismatch fixes |
+| [`output_comparison_report.md`](../archive/output_comparison_report.md) | Before/after comparison of regenerated outputs |
+| [`migration_plan.md`](../archive/migration_plan.md) | Data and results migration plan |
 
 ### Phase History
 | Document | Description |
 |----------|-------------|
-| [`phase_comparison_summary.md`](phase_comparison_summary.md) | Phase-by-phase comparison summary |
-| [`phase21_assessment.md`](phase21_assessment.md) | Phase 2.1 assessment |
-| [`final_status.md`](final_status.md) | Status snapshot at a point in time |
+| [`phase_comparison_summary.md`](../archive/phase_comparison_summary.md) | Phase-by-phase comparison summary |
+| [`phase21_assessment.md`](../archive/phase21_assessment.md) | Phase 2.1 assessment |
+| [`final_status.md`](../archive/final_status.md) | Status snapshot at a point in time |
 
 ---
 
@@ -132,20 +132,20 @@ verified: "Master index of all 62 documentation files"
 ### Specialized Analysis
 | Document | Description |
 |----------|-------------|
-| [`alternative_analyses_summary.md`](alternative_analyses_summary.md) | Summary of CBD/distance alternative analyses |
-| [`analysis_precinct_demand_trace.md`](analysis_precinct_demand_trace.md) | Precinct-level demand analysis trace |
-| [`cbd_focused_optimization_analysis.md`](cbd_focused_optimization_analysis.md) | CBD-focused optimization deep-dive |
-| [`fleet_sensitivity_dual_investigation.md`](fleet_sensitivity_dual_investigation.md) | Fleet sensitivity dual investigation |
+| [`alternative_analyses_summary.md`](../analysis/alternative_analyses_summary.md) | Summary of CBD/distance alternative analyses |
+| [`analysis_precinct_demand_trace.md`](../analysis/analysis_precinct_demand_trace.md) | Precinct-level demand analysis trace |
+| [`cbd_focused_optimization_analysis.md`](../analysis/cbd_focused_optimization_analysis.md) | CBD-focused optimization deep-dive |
+| [`fleet_sensitivity_dual_investigation.md`](../analysis/fleet_sensitivity_dual_investigation.md) | Fleet sensitivity dual investigation |
 | [`output_analysis.md`](output_analysis.md) | Output analysis methodology |
-| [`eda_and_data_split_summary.md`](eda_and_data_split_summary.md) | EDA and data split summary |
+| [`eda_and_data_split_summary.md`](../analysis/eda_and_data_split_summary.md) | EDA and data split summary |
 | [`verification_log.md`](verification_log.md) | V&V verification log |
 
 ### Project Management
 | Document | Description |
 |----------|-------------|
-| [`data_dependency_analysis.md`](data_dependency_analysis.md) | Data dependency and lineage analysis |
-| [`file_inventory.md`](file_inventory.md) | Complete file inventory |
-| [`project_archive.md`](project_archive.md) | Project archive structure |
+| [`data_dependency_analysis.md`](../archive/data_dependency_analysis.md) | Data dependency and lineage analysis |
+| [`file_inventory.md`](../archive/file_inventory.md) | Complete file inventory |
+| [`project_archive.md`](../archive/project_archive.md) | Project archive structure |
 
 ---
 

@@ -52,17 +52,15 @@ ems-optimization/
 │ ├── raw/ # Original data files (NYC Open Data)
 │ ├── processed/ # Generated data (not in Git — run `make data`)
 │ └── manifests/ # Data audit records
-├── docs/ # Project documentation (62+ .md files, see DOCUMENTATION_INDEX.md)
-│ ├── technical_report.md # Full final report (v2.1.0)
-│ ├── executive_presentation.md # Stakeholder slide deck
-│ ├── implementation_roadmap.md # Deployment plan
-│ ├── conceptual_model.md # DES model specification
-│ ├── optimization_formulation.md # MIP formulations
-│ ├── experimental_design.md # Factorial experiment design
-│ ├── output_analysis.md # Statistical analysis report
-│ ├── capacity_sensitivity_analysis.md # Cap 1–5 sensitivity report
-│ ├── firehouse_capacity_analysis.md # Capacity methodology
-│ └── ... # Additional documentation
+├── docs/ # Project documentation (62+ .md files, see docs/core/DOCUMENTATION_INDEX.md)
+│ ├── core/ # Key deliverables, specs, guides
+│ │ ├── technical_report.md # Full final report (v2.1.0)
+│ │ ├── executive_presentation.md # Stakeholder slide deck
+│ │ └── ... # Additional core docs
+│ ├── analysis/ # Robustness & sensitivity analyses
+│ │ ├── capacity_sensitivity_analysis.md
+│ │ └── ... # Additional analysis docs
+│ └── archive/ # Historical/superseded docs
 ├── notebooks/ # Jupyter analysis notebooks
 │ ├── 02_eda_spatiotemporal.ipynb
 │ ├── 03_input_modeling.ipynb
@@ -268,45 +266,45 @@ pytest tests/test_reproducibility.py -v
 
 ## Documentation Index
 
-> 📖 **Full index:** [`docs/DOCUMENTATION_INDEX.md`](docs/DOCUMENTATION_INDEX.md) — master list of all 62 docs with status badges (✅ Current / 🔄 Historical / 📋 Reference)
+> 📖 **Full index:** [`docs/core/DOCUMENTATION_INDEX.md`](docs/core/DOCUMENTATION_INDEX.md) — master list of all 62 docs with status badges (✅ Current / 🔄 Historical / 📋 Reference)
 
 ### Key Documents
 
 | Document | Description |
 |----------|-------------|
-| [Technical Report](docs/technical_report.md) | Full final report (v2.1.0) with all findings |
-| [Executive Summary](docs/executive_summary.md) | One-page executive summary |
-| [Executive Presentation](docs/executive_presentation.md) | 10-slide stakeholder presentation |
-| [Data Usage Guide](docs/data_usage_guide.md) | Which data/results files to use and why |
-| [Reproducibility Guide](docs/reproducibility_guide.md) | How to reproduce all results |
+| [Technical Report](docs/core/technical_report.md) | Full final report (v2.1.0) with all findings |
+| [Executive Summary](docs/core/executive_summary.md) | One-page executive summary |
+| [Executive Presentation](docs/core/executive_presentation.md) | 10-slide stakeholder presentation |
+| [Data Usage Guide](docs/core/data_usage_guide.md) | Which data/results files to use and why |
+| [Reproducibility Guide](docs/core/reproducibility_guide.md) | How to reproduce all results |
 
 ### Model & Methods
 
 | Document | Description |
 |----------|-------------|
-| [Conceptual Model](docs/conceptual_model.md) | DES model specification |
-| [Optimization Formulation](docs/optimization_formulation.md) | MIP mathematical formulations |
-| [Experimental Design](docs/experimental_design.md) | Factorial experiment specification |
-| [Optimization Results](docs/optimization_results.md) | Current optimization results (cap=2) |
+| [Conceptual Model](docs/core/conceptual_model.md) | DES model specification |
+| [Optimization Formulation](docs/core/optimization_formulation.md) | MIP mathematical formulations |
+| [Experimental Design](docs/core/experimental_design.md) | Factorial experiment specification |
+| [Optimization Results](docs/analysis/optimization_results.md) | Current optimization results (cap=2) |
 
 ### Analysis & Robustness
 
 | Document | Description |
 |----------|-------------|
-| [Capacity Sensitivity](docs/capacity_sensitivity_analysis.md) | Full-spectrum capacity (cap 1–5) analysis |
-| [CBD Robustness](docs/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
-| [Distance Metric Comparison](docs/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
-| [Research Questions](docs/research_questions_assessment.md) | Evaluation of all 5 research questions |
+| [Capacity Sensitivity](docs/analysis/capacity_sensitivity_analysis.md) | Full-spectrum capacity (cap 1–5) analysis |
+| [CBD Robustness](docs/analysis/cbd_robustness_analysis.md) | CBD-specific DES experiment findings |
+| [Distance Metric Comparison](docs/analysis/distance_metric_comparison.md) | Haversine vs. Manhattan distance analysis |
+| [Research Questions](docs/analysis/research_questions_assessment.md) | Evaluation of all 5 research questions |
 
 ### Guides
 
 | Document | Description |
 |----------|-------------|
-| [Code Documentation](docs/code_documentation.md) | Architecture and API guide |
-| [Notebook Guide](docs/notebook_guide.md) | Notebook descriptions and execution order |
-| [Testing Guide](docs/testing_guide.md) | Testing framework and how to run tests |
-| [Figure Trace Guide](docs/figure_trace_guide.md) | Figure-to-source traceability |
-| [Visualization Index](docs/visualization_index.md) | Complete catalog of all generated figures |
+| [Code Documentation](docs/core/code_documentation.md) | Architecture and API guide |
+| [Notebook Guide](docs/core/notebook_guide.md) | Notebook descriptions and execution order |
+| [Testing Guide](docs/core/testing_guide.md) | Testing framework and how to run tests |
+| [Figure Trace Guide](docs/core/figure_trace_guide.md) | Figure-to-source traceability |
+| [Visualization Index](docs/core/visualization_index.md) | Complete catalog of all generated figures |
 
 ## Navigating Results
 
@@ -325,7 +323,7 @@ The `results/` folder contains output from multiple project phases. Each subfold
 | `results/optimization/` | ⚠️ Legacy (cap=5) | Phase 3 historical — see [README](results/optimization/README.md) |
 
 **Quick reference**: [`results/WHICH_FILES_TO_USE.md`](results/WHICH_FILES_TO_USE.md)  
-**Full guide**: [`docs/data_usage_guide.md`](docs/data_usage_guide.md)
+**Full guide**: [`docs/core/data_usage_guide.md`](docs/core/data_usage_guide.md)
 
 ## Google Colab Notebooks
 
