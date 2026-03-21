@@ -12,7 +12,7 @@ Fixes overlapping labels from the original fig_tradeoff_curve.png by:
 
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 import pandas as pd
 import numpy as np
@@ -23,7 +23,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Paths
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 CAPACITY = 5  # v1 optimization results used capacity=5 (implicit default)
 RESULTS_DIR = BASE_DIR / 'results' / 'optimization'
 FIGURES_DIR = BASE_DIR / 'results' / 'figures'

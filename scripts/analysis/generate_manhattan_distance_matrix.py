@@ -9,7 +9,7 @@ where travel follows north–south / east–west streets rather than
 great-circle arcs.
 
 Usage:
-    python scripts/generate_manhattan_distance_matrix.py
+    python scripts/analysis/generate_manhattan_distance_matrix.py
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 from shapely import wkt
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from ems_readiness.utils.distance import (

@@ -6,7 +6,7 @@ Phase 3: Generate allocation policies and compare performance
 
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 import pandas as pd
 import numpy as np
@@ -26,7 +26,7 @@ plt.rcParams['figure.figsize'] = (14, 10)
 plt.rcParams['font.size'] = 11
 
 # Paths
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 RESULTS_DIR = BASE_DIR / 'results' / 'optimization'
 MAPS_DIR = BASE_DIR / 'results' / 'maps'
 FIGURES_DIR = BASE_DIR / 'results' / 'figures'

@@ -32,7 +32,7 @@ from scipy import stats
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-PROJECT = Path(__file__).resolve().parent.parent
+PROJECT = Path(__file__).resolve().parent.parent.parent
 FIG_DIR = PROJECT / "results" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 

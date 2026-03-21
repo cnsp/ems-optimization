@@ -36,7 +36,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROJECT = Path(__file__).resolve().parent.parent
+PROJECT = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = PROJECT / "results" / "simulation" / "production"
 CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
 TABLE_DIR = PROJECT / "results" / "tables"

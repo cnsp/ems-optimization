@@ -12,7 +12,7 @@ Creates results/figures/project_summary_dashboard.png with:
 
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import pandas as pd
 import numpy as np
@@ -23,7 +23,7 @@ import matplotlib.gridspec as gridspec
 from matplotlib.patches import FancyBboxPatch
 
 # ── Paths ──────────────────────────────────────────────────────────
-PROJECT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TABLES  = os.path.join(PROJECT, "results", "tables")
 SIM     = os.path.join(PROJECT, "results", "simulation", "production")
 OUT     = os.path.join(PROJECT, "results", "figures", "project_summary_dashboard.png")

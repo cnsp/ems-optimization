@@ -21,7 +21,7 @@ Colour‐tier definitions
 
 Usage
 -----
-    python scripts/generate_precinct_demand_visualizations.py
+    python scripts/analysis/generate_precinct_demand_visualizations.py
 
 Outputs are saved to ``results/figures/``.
 """
@@ -43,7 +43,7 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 DATA_RAW = PROJECT_ROOT / "data" / "raw"
 FIGURES_DIR = PROJECT_ROOT / "results" / "figures"

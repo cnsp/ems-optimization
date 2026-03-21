@@ -16,7 +16,7 @@ Output:
     results/analysis/cbd_focused_comparison/
 
 Usage:
-    python scripts/run_cbd_focused_optimization.py [--reps 10]
+    python scripts/analysis/run_cbd_focused_optimization.py [--reps 10]
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ import pandas as pd
 import seaborn as sns
 import pulp
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from ems_readiness.optimization.models import (

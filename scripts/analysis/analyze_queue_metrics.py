@@ -12,7 +12,7 @@ Generates:
   - results/tables/queue_statistics.csv
 
 Usage:
-    python scripts/analyze_queue_metrics.py
+    python scripts/analysis/analyze_queue_metrics.py
 """
 
 from __future__ import annotations
@@ -29,7 +29,7 @@ import pandas as pd
 import seaborn as sns
 from scipy import stats
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")

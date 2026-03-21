@@ -15,7 +15,7 @@ Output:
     results/analysis/distance_comparison/   (figures + tables)
 
 Usage:
-    python scripts/run_distance_comparison_experiment.py [--reps 10]
+    python scripts/analysis/run_distance_comparison_experiment.py [--reps 10]
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from ems_readiness.optimization.models import build_demand_weighted, extract_allocation

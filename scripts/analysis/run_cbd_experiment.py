@@ -10,7 +10,7 @@ Tests all three policies (P0, P1, P2) under CBD-specific conditions:
 30 replications per scenario × 3 policies × 4 scenarios = 360 runs.
 
 Usage:
-    python scripts/run_cbd_experiment.py [--reps 30]
+    python scripts/analysis/run_cbd_experiment.py [--reps 30]
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ import pandas as pd
 import yaml
 
 # ── Project imports ──────────────────────────────────────────────────
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from ems_readiness.simulation.engine import EMSSimulation

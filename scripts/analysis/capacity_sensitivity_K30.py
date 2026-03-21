@@ -20,7 +20,7 @@ import pandas as pd
 import pulp
 import yaml
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from ems_readiness.optimization import models, policies
