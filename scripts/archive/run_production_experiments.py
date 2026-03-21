@@ -35,7 +35,7 @@ from ems_readiness.simulation.engine import EMSSimulation
 from ems_readiness.optimization.allocator import EMSAllocator
 
 # ── Logging ──────────────────────────────────────────────────────────
-LOG_DIR = PROJECT_ROOT / "results" / "simulation" / "production"
+LOG_DIR = PROJECT_ROOT / "results" / "analysis" / "simulation" / "production"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(
@@ -70,7 +70,7 @@ def get_allocation(allocator: EMSAllocator, policy: str, K: int) -> pd.Series:
 
     Tries to load from pre-computed CSV first; falls back to solving.
     """
-    csv_path = PROJECT_ROOT / "results" / "optimization" / f"allocations_K{K}.csv"
+    csv_path = PROJECT_ROOT / "results" / "baseline" / "allocations" / f"allocations_K{K}.csv"
     if csv_path.exists():
         df = pd.read_csv(csv_path, index_col=0)
         if policy in df.columns:

@@ -23,7 +23,7 @@ plt.rcParams['font.size'] = 11
 # Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROCESSED_DIR = BASE_DIR / 'data/processed'
-RESULTS_DIR = BASE_DIR / 'results/figures'
+RESULTS_DIR = BASE_DIR / 'results/baseline/figures'
 
 print("=" * 80)
 print("EMS OPTIMIZATION - DEMAND MODELING")

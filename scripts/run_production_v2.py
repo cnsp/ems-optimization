@@ -714,7 +714,7 @@ def create_v1_comparison(df_v2: pd.DataFrame):
     logger.info("STEP 5: Comparison with legacy baseline results")
     logger.info("=" * 60)
 
-    v1_path = PROJECT_ROOT / "results" / "simulation" / "production" / "exp2_fleet_sensitivity.csv"
+    v1_path = PROJECT_ROOT / "results" / "analysis" / "simulation" / "production" / "exp2_fleet_sensitivity.csv"
     if not v1_path.exists():
         logger.warning(f"V1 results not found at {v1_path}; skipping comparison")
         return

@@ -36,7 +36,7 @@ from ems_readiness.optimization.allocator import EMSAllocator
 from ems_readiness.service.service_time import ServiceTimeModel
 
 # ── Logging ──────────────────────────────────────────────────────────
-OUTPUT_DIR = PROJECT_ROOT / "results" / "simulation" / "cbd_experiment"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "analysis" / "simulation" / "cbd_experiment"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(
@@ -73,7 +73,7 @@ def get_allocator() -> EMSAllocator:
 
 def get_allocation(allocator: EMSAllocator, policy: str, K: int) -> pd.Series:
     """Get allocation for a given policy and fleet size."""
-    csv_path = PROJECT_ROOT / "results" / "optimization" / f"allocations_K{K}.csv"
+    csv_path = PROJECT_ROOT / "results" / "baseline" / "allocations" / f"allocations_K{K}.csv"
     if csv_path.exists():
         df = pd.read_csv(csv_path, index_col=0)
         if policy in df.columns:

@@ -29,7 +29,7 @@ from ems_readiness.simulation.runner import BatchRunner
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 logger = logging.getLogger(__name__)
 
-OUT_DIR = PROJECT_ROOT / "results" / "simulation" / "validation_pilot"
+OUT_DIR = PROJECT_ROOT / "results" / "baseline" / "simulation" / "validation_pilot"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 dm = pd.read_csv(PROJECT_ROOT / "data/processed/distance_matrix_firehouse_precinct.csv", index_col=0)
