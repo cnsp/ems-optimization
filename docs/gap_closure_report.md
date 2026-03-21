@@ -52,7 +52,7 @@ This report documents the resolution of all three gaps identified in the project
 - `scripts/run_cbd_experiment.py` — Experiment runner
 - `notebooks/09_cbd_analysis.ipynb` — Analysis notebook
 - `docs/cbd_robustness_analysis.md` — Findings document
-- `results/simulation/cbd_experiment/` — Experiment data
+- `results/analysis/simulation/cbd_experiment/` — Experiment data
 - `results/figures/cbd_*.png` — 3 figures
 - `results/tables/cbd_*.csv` — 2 tables
 

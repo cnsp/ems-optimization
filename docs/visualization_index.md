@@ -21,21 +21,21 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | Simulation Experiments | 4 | `results/figures/` | `07_production_results.ipynb` |
 | Verification & Validation | 4 | `results/figures/` | `06_simulation_debug.py` |
 | Extended Fleet Analysis | 7 | `results/figures/` | `scripts/run_production_v2.py` |
-| Extended Fleet Analysis (V2) | 12 | `results/production_v2/figures/` | `scripts/run_production_v2.py` |
+| Extended Fleet Analysis (V2) | 12 | `results/baseline/production_v2/figures/` | `scripts/run_production_v2.py` |
 | CBD Analysis | 5 | `results/figures/` | `09_cbd_analysis.ipynb` |
-| CBD Focused Comparison | 3 | `results/cbd_focused_comparison/` | `run_cbd_focused_optimization.py` |
+| CBD Focused Comparison | 3 | `results/analysis/cbd_focused_comparison/` | `run_cbd_focused_optimization.py` |
 | Queue Analysis | 5 | `results/figures/` | `analyze_queue_metrics.py` |
 | Seasonal Analysis | 3 | `results/figures/` | `analyze_seasonal_patterns.py` |
 | Capacity Sensitivity | 2 | `results/figures/` | `capacity_sensitivity_analysis.py`, `generate_capacity_sensitivity_heatmap.py` |
-| Capacity Comparison | 21 | `results/capacity_comparison/` | `capacity_sensitivity_analysis.py` |
-| Distance Comparison | 4 | `results/distance_comparison/` | `run_distance_comparison_experiment.py` |
+| Capacity Comparison | 21 | `results/analysis/capacity_comparison/` | `capacity_sensitivity_analysis.py` |
+| Distance Comparison | 4 | `results/analysis/distance_comparison/` | `run_distance_comparison_experiment.py` |
 | P0 Spatial Baseline | 4 | `results/figures/` | `p0_spatial_analysis.py` |
 | Publication Quality | 5 | `results/figures/` | `generate_publication_figures.py` |
 | Dashboard | 1 | `results/figures/` | `generate_summary_dashboard.py` |
 | Response Time Trade-off | 3 | `results/figures/` | `generate_publication_figures.py` |
-| Allocation Maps | 3 | `results/maps/` | Production pipeline |
+| Allocation Maps | 3 | `results/analysis/maps/` | Production pipeline |
 | Statistical | 1 | `results/figures/` | Production pipeline |
-| Heatmaps (parametric grid) | ~160 | `results/heatmaps/` | `generate_capacity_sensitivity_heatmap.py` |
+| Heatmaps (parametric grid) | ~160 | `results/analysis/heatmaps/` | `generate_capacity_sensitivity_heatmap.py` |
 | **Total** | **~280** | | |
 
 ---
@@ -116,22 +116,22 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | `policy_comparison_panel_K20_cap2.png` | `results/figures/` | Staging map panel (P0/P1/P2) | Production pipeline |
 | `allocation_comparison_K20.png` | `results/figures/` | Allocation comparison for K=20 | Production pipeline |
 
-### 6b  Extended fleet detail (`results/production_v2/figures/`)
+### 6b  Extended fleet detail (`results/baseline/production_v2/figures/`)
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `allocation_map_K20.png` | `results/production_v2/figures/` | Allocation map at K=20 | `scripts/run_production_v2.py` |
-| `allocation_map_K30.png` | `results/production_v2/figures/` | Allocation map at K=30 | `scripts/run_production_v2.py` |
-| `allocation_map_K40.png` | `results/production_v2/figures/` | Allocation map at K=40 | `scripts/run_production_v2.py` |
-| `coverage_vs_K.png` | `results/production_v2/figures/` | Coverage vs fleet size | `scripts/run_production_v2.py` |
-| `effect_sizes.png` | `results/production_v2/figures/` | Statistical effect sizes | `scripts/run_production_v2.py` |
-| `mean_rt_vs_K.png` | `results/production_v2/figures/` | Mean response time vs fleet size | `scripts/run_production_v2.py` |
-| `p95_rt_vs_K.png` | `results/production_v2/figures/` | P95 response time vs fleet size | `scripts/run_production_v2.py` |
-| `queue_metrics_vs_K.png` | `results/production_v2/figures/` | Queue metrics vs fleet size | `scripts/run_production_v2.py` |
-| `rt_distribution_K20.png` | `results/production_v2/figures/` | RT distribution at K=20 | `scripts/run_production_v2.py` |
-| `rt_distribution_K30.png` | `results/production_v2/figures/` | RT distribution at K=30 | `scripts/run_production_v2.py` |
-| `rt_distribution_K40.png` | `results/production_v2/figures/` | RT distribution at K=40 | `scripts/run_production_v2.py` |
-| `utilization_vs_K.png` | `results/production_v2/figures/` | Unit utilization vs fleet size | `scripts/run_production_v2.py` |
+| `allocation_map_K20.png` | `results/baseline/production_v2/figures/` | Allocation map at K=20 | `scripts/run_production_v2.py` |
+| `allocation_map_K30.png` | `results/baseline/production_v2/figures/` | Allocation map at K=30 | `scripts/run_production_v2.py` |
+| `allocation_map_K40.png` | `results/baseline/production_v2/figures/` | Allocation map at K=40 | `scripts/run_production_v2.py` |
+| `coverage_vs_K.png` | `results/baseline/production_v2/figures/` | Coverage vs fleet size | `scripts/run_production_v2.py` |
+| `effect_sizes.png` | `results/baseline/production_v2/figures/` | Statistical effect sizes | `scripts/run_production_v2.py` |
+| `mean_rt_vs_K.png` | `results/baseline/production_v2/figures/` | Mean response time vs fleet size | `scripts/run_production_v2.py` |
+| `p95_rt_vs_K.png` | `results/baseline/production_v2/figures/` | P95 response time vs fleet size | `scripts/run_production_v2.py` |
+| `queue_metrics_vs_K.png` | `results/baseline/production_v2/figures/` | Queue metrics vs fleet size | `scripts/run_production_v2.py` |
+| `rt_distribution_K20.png` | `results/baseline/production_v2/figures/` | RT distribution at K=20 | `scripts/run_production_v2.py` |
+| `rt_distribution_K30.png` | `results/baseline/production_v2/figures/` | RT distribution at K=30 | `scripts/run_production_v2.py` |
+| `rt_distribution_K40.png` | `results/baseline/production_v2/figures/` | RT distribution at K=40 | `scripts/run_production_v2.py` |
+| `utilization_vs_K.png` | `results/baseline/production_v2/figures/` | Unit utilization vs fleet size | `scripts/run_production_v2.py` |
 
 ## 7  CBD Analysis
 
@@ -146,13 +146,13 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | `cbd_robustness_enhanced.png` | `results/figures/` | Enhanced CBD robustness | Production pipeline |
 | `cbd_equity_tradeoff_summary.png` | `results/figures/` | CBD equity-efficiency trade-off summary | `scripts/run_cbd_focused_optimization.py` |
 
-### 7b  CBD focused comparison (`results/cbd_focused_comparison/`)
+### 7b  CBD focused comparison (`results/analysis/cbd_focused_comparison/`)
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `cbd_focused_comparison.png` | `results/cbd_focused_comparison/` | CBD-focused RT comparison bar chart | `scripts/run_cbd_focused_optimization.py` |
-| `allocation_comparison.png` | `results/cbd_focused_comparison/` | CBD allocation distribution comparison | `scripts/run_cbd_focused_optimization.py` |
-| `equity_tradeoff.png` | `results/cbd_focused_comparison/` | CBD vs non-CBD equity trade-off | `scripts/run_cbd_focused_optimization.py` |
+| `cbd_focused_comparison.png` | `results/analysis/cbd_focused_comparison/` | CBD-focused RT comparison bar chart | `scripts/run_cbd_focused_optimization.py` |
+| `allocation_comparison.png` | `results/analysis/cbd_focused_comparison/` | CBD allocation distribution comparison | `scripts/run_cbd_focused_optimization.py` |
+| `equity_tradeoff.png` | `results/analysis/cbd_focused_comparison/` | CBD vs non-CBD equity trade-off | `scripts/run_cbd_focused_optimization.py` |
 
 ## 8  Queue Analysis
 
@@ -182,40 +182,40 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | `capacity_sensitivity_heatmap_notebook.png` | `results/figures/` | RT heatmap (notebook variant) | Notebook pipeline |
 | `firehouse_capacity_analysis.png` | `results/figures/` | Capacity analysis detail | `scripts/capacity_sensitivity_analysis.py` |
 
-### 10b  Capacity comparison detail (`results/capacity_comparison/`)
+### 10b  Capacity comparison detail (`results/analysis/capacity_comparison/`)
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `allocation_comparison.png` | `results/capacity_comparison/` | Allocation comparison overview | `scripts/capacity_sensitivity_analysis.py` |
-| `allocation_comparison_K20.png` | `results/capacity_comparison/` | Allocation comparison at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `allocation_comparison_K40.png` | `results/capacity_comparison/` | Allocation comparison at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `cbd_distribution.png` | `results/capacity_comparison/` | CBD unit distribution | `scripts/capacity_sensitivity_analysis.py` |
-| `cbd_distribution_K20.png` | `results/capacity_comparison/` | CBD distribution at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `cbd_distribution_K40.png` | `results/capacity_comparison/` | CBD distribution at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `concentration_analysis.png` | `results/capacity_comparison/` | Unit concentration analysis | `scripts/capacity_sensitivity_analysis.py` |
-| `concentration_analysis_K20.png` | `results/capacity_comparison/` | Concentration at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `concentration_analysis_K40.png` | `results/capacity_comparison/` | Concentration at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `full_spectrum_summary.png` | `results/capacity_comparison/` | Combined 6-panel summary figure | `scripts/capacity_sensitivity_analysis.py` |
-| `max_units_vs_capacity_K20.png` | `results/capacity_comparison/` | Max units per firehouse at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `max_units_vs_capacity_K40.png` | `results/capacity_comparison/` | Max units per firehouse at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `performance_comparison.png` | `results/capacity_comparison/` | Performance comparison overview | `scripts/capacity_sensitivity_analysis.py` |
-| `performance_comparison_K20.png` | `results/capacity_comparison/` | Performance at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `performance_comparison_K40.png` | `results/capacity_comparison/` | Performance at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `performance_vs_capacity_K20.png` | `results/capacity_comparison/` | Performance metric curves at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `performance_vs_capacity_K40.png` | `results/capacity_comparison/` | Performance metric curves at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `rt_heatmap_K20.png` | `results/capacity_comparison/` | Policy x capacity RT heatmap at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `rt_heatmap_K40.png` | `results/capacity_comparison/` | Policy x capacity RT heatmap at K=40 | `scripts/capacity_sensitivity_analysis.py` |
-| `tradeoff_dispersion_rt_K20.png` | `results/capacity_comparison/` | Firehouses used vs mean RT at K=20 | `scripts/capacity_sensitivity_analysis.py` |
-| `tradeoff_dispersion_rt_K40.png` | `results/capacity_comparison/` | Firehouses used vs mean RT at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `allocation_comparison.png` | `results/analysis/capacity_comparison/` | Allocation comparison overview | `scripts/capacity_sensitivity_analysis.py` |
+| `allocation_comparison_K20.png` | `results/analysis/capacity_comparison/` | Allocation comparison at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `allocation_comparison_K40.png` | `results/analysis/capacity_comparison/` | Allocation comparison at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `cbd_distribution.png` | `results/analysis/capacity_comparison/` | CBD unit distribution | `scripts/capacity_sensitivity_analysis.py` |
+| `cbd_distribution_K20.png` | `results/analysis/capacity_comparison/` | CBD distribution at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `cbd_distribution_K40.png` | `results/analysis/capacity_comparison/` | CBD distribution at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `concentration_analysis.png` | `results/analysis/capacity_comparison/` | Unit concentration analysis | `scripts/capacity_sensitivity_analysis.py` |
+| `concentration_analysis_K20.png` | `results/analysis/capacity_comparison/` | Concentration at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `concentration_analysis_K40.png` | `results/analysis/capacity_comparison/` | Concentration at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `full_spectrum_summary.png` | `results/analysis/capacity_comparison/` | Combined 6-panel summary figure | `scripts/capacity_sensitivity_analysis.py` |
+| `max_units_vs_capacity_K20.png` | `results/analysis/capacity_comparison/` | Max units per firehouse at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `max_units_vs_capacity_K40.png` | `results/analysis/capacity_comparison/` | Max units per firehouse at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `performance_comparison.png` | `results/analysis/capacity_comparison/` | Performance comparison overview | `scripts/capacity_sensitivity_analysis.py` |
+| `performance_comparison_K20.png` | `results/analysis/capacity_comparison/` | Performance at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `performance_comparison_K40.png` | `results/analysis/capacity_comparison/` | Performance at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `performance_vs_capacity_K20.png` | `results/analysis/capacity_comparison/` | Performance metric curves at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `performance_vs_capacity_K40.png` | `results/analysis/capacity_comparison/` | Performance metric curves at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `rt_heatmap_K20.png` | `results/analysis/capacity_comparison/` | Policy x capacity RT heatmap at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `rt_heatmap_K40.png` | `results/analysis/capacity_comparison/` | Policy x capacity RT heatmap at K=40 | `scripts/capacity_sensitivity_analysis.py` |
+| `tradeoff_dispersion_rt_K20.png` | `results/analysis/capacity_comparison/` | Firehouses used vs mean RT at K=20 | `scripts/capacity_sensitivity_analysis.py` |
+| `tradeoff_dispersion_rt_K40.png` | `results/analysis/capacity_comparison/` | Firehouses used vs mean RT at K=40 | `scripts/capacity_sensitivity_analysis.py` |
 
 ## 11  Distance Comparison
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `distance_matrices_heatmap.png` | `results/distance_comparison/` | Side-by-side distance heatmaps | `scripts/run_distance_comparison_experiment.py` |
-| `distance_scatter.png` | `results/distance_comparison/` | Haversine vs Manhattan scatter | `scripts/run_distance_comparison_experiment.py` |
-| `distance_comparison_bar.png` | `results/distance_comparison/` | Performance bar chart | `scripts/run_distance_comparison_experiment.py` |
-| `distance_comparison_boxplot.png` | `results/distance_comparison/` | Replication box plots | `scripts/run_distance_comparison_experiment.py` |
+| `distance_matrices_heatmap.png` | `results/analysis/distance_comparison/` | Side-by-side distance heatmaps | `scripts/run_distance_comparison_experiment.py` |
+| `distance_scatter.png` | `results/analysis/distance_comparison/` | Haversine vs Manhattan scatter | `scripts/run_distance_comparison_experiment.py` |
+| `distance_comparison_bar.png` | `results/analysis/distance_comparison/` | Performance bar chart | `scripts/run_distance_comparison_experiment.py` |
+| `distance_comparison_boxplot.png` | `results/analysis/distance_comparison/` | Replication box plots | `scripts/run_distance_comparison_experiment.py` |
 
 ## 12  P0 Spatial Baseline
 
@@ -254,9 +254,9 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `map_allocation_P0_K40.png` | `results/maps/` | P0 allocation map at K=40 | Production pipeline |
-| `map_allocation_P1_K40.png` | `results/maps/` | P1 allocation map at K=40 | Production pipeline |
-| `map_allocation_P2_K40.png` | `results/maps/` | P2 allocation map at K=40 | Production pipeline |
+| `map_allocation_P0_K40.png` | `results/analysis/maps/` | P0 allocation map at K=40 | Production pipeline |
+| `map_allocation_P1_K40.png` | `results/analysis/maps/` | P1 allocation map at K=40 | Production pipeline |
+| `map_allocation_P2_K40.png` | `results/analysis/maps/` | P2 allocation map at K=40 | Production pipeline |
 
 ## 17  Dashboard
 
@@ -268,7 +268,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 Systematic allocation heatmaps covering all combinations of fleet size, policy, and capacity.
 
-**Location:** `results/heatmaps/`
+**Location:** `results/analysis/heatmaps/`
 
 **Naming convention:** `heatmap_K{k}_policy{policy}_cap{capacity}.png`
 
@@ -282,7 +282,7 @@ Systematic allocation heatmaps covering all combinations of fleet size, policy, 
 | `heatmap_K10_policyP0_spatial_cap1.png` | Spatial baseline (P0), 10 units, capacity 1 |
 | `heatmap_K40_policyP1_cap5.png` | Demand-proportional (P1), 40 units, capacity 5 |
 
-Corresponding allocation CSVs are stored in `results/heatmaps/allocations/`.
+Corresponding allocation CSVs are stored in `results/analysis/heatmaps/allocations/`.
 
 ---
 

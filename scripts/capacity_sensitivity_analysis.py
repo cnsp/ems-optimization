@@ -14,7 +14,7 @@ For each (capacity, policy) combination it:
   3. Collects performance metrics (mean RT, p95 RT, coverage, etc.)
   4. Saves allocation files and comparison artefacts
 
-Outputs go to  results/capacity_comparison/
+Outputs go to  results/analysis/capacity_comparison/
 """
 
 from __future__ import annotations

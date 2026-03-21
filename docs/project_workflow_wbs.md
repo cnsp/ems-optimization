@@ -523,17 +523,17 @@ Conduct alternative analyses to test the robustness of modelling choices and com
 | File | Description |
 |------|-------------|
 | `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` | 48×30 Manhattan distance matrix (miles) |
-| `results/distance_comparison/comparison_table.csv` | Haversine vs. Manhattan metric comparison |
-| `results/distance_comparison/allocation_comparison.csv` | Side-by-side allocations |
-| `results/distance_comparison/distance_matrices_heatmap.png` | Dual-panel heatmap |
-| `results/distance_comparison/distance_scatter.png` | Scatter: Manhattan vs. Haversine |
-| `results/distance_comparison/distance_comparison_bar.png` | RT comparison bar chart |
-| `results/distance_comparison/distance_comparison_boxplot.png` | RT distribution boxplot |
-| `results/cbd_focused_comparison/comparison_table.csv` | CBD-focused vs. Manhattan-wide metrics |
-| `results/cbd_focused_comparison/allocations.csv` | Side-by-side allocations |
-| `results/cbd_focused_comparison/cbd_focused_comparison.png` | RT comparison bar chart |
-| `results/cbd_focused_comparison/allocation_comparison.png` | Allocation map comparison |
-| `results/cbd_focused_comparison/equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
+| `results/analysis/distance_comparison/comparison_table.csv` | Haversine vs. Manhattan metric comparison |
+| `results/analysis/distance_comparison/allocation_comparison.csv` | Side-by-side allocations |
+| `results/analysis/distance_comparison/distance_matrices_heatmap.png` | Dual-panel heatmap |
+| `results/analysis/distance_comparison/distance_scatter.png` | Scatter: Manhattan vs. Haversine |
+| `results/analysis/distance_comparison/distance_comparison_bar.png` | RT comparison bar chart |
+| `results/analysis/distance_comparison/distance_comparison_boxplot.png` | RT distribution boxplot |
+| `results/analysis/cbd_focused_comparison/comparison_table.csv` | CBD-focused vs. Manhattan-wide metrics |
+| `results/analysis/cbd_focused_comparison/allocations.csv` | Side-by-side allocations |
+| `results/analysis/cbd_focused_comparison/cbd_focused_comparison.png` | RT comparison bar chart |
+| `results/analysis/cbd_focused_comparison/allocation_comparison.png` | Allocation map comparison |
+| `results/analysis/cbd_focused_comparison/equity_tradeoff.png` | CBD vs. non-CBD equity trade-off |
 | `docs/distance_metric_comparison.md` | Distance metric comparison report |
 | `docs/cbd_focused_optimization_analysis.md` | CBD-focused optimization report |
 | `docs/alternative_analyses_summary.md` | Combined alternative analyses summary |
@@ -587,8 +587,8 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 
 | File | Description |
 |------|-------------|
-| `results/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
-| `results/production_v2/` | Complete analysis results: allocations, simulation data, figures, tables |
+| `results/analysis/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
+| `results/baseline/production_v2/` | Complete analysis results: allocations, simulation data, figures, tables |
 | `docs/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
 | `docs/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
 | `src/ems_readiness/optimization/policies.py` | Updated with `spatially_stratified_allocation()` |

@@ -300,7 +300,7 @@ python scripts/capacity_sensitivity_analysis.py
 
 ## 7. Output Files
 
-All outputs are in `results/capacity_comparison/`:
+All outputs are in `results/analysis/capacity_comparison/`:
 
 | File | Description |
 |------|-------------|
@@ -322,13 +322,13 @@ All outputs are in `results/capacity_comparison/`:
 ## 8. Visualisations
 
 ### Performance vs Capacity (K = 40)
-![Performance vs Capacity K40](../results/capacity_comparison/performance_vs_capacity_K40.png)
+![Performance vs Capacity K40](../results/analysis/capacity_comparison/performance_vs_capacity_K40.png)
 
 ### Trade-off: Dispersion vs Performance (K = 40)
-![Trade-off K40](../results/capacity_comparison/tradeoff_dispersion_rt_K40.png)
+![Trade-off K40](../results/analysis/capacity_comparison/tradeoff_dispersion_rt_K40.png)
 
 ### Mean RT Heatmap (K = 40)
-![RT Heatmap K40](../results/capacity_comparison/rt_heatmap_K40.png)
+![RT Heatmap K40](../results/analysis/capacity_comparison/rt_heatmap_K40.png)
 
 ### Full Spectrum Summary
-![Full Spectrum](../results/capacity_comparison/full_spectrum_summary.png)
+![Full Spectrum](../results/analysis/capacity_comparison/full_spectrum_summary.png)

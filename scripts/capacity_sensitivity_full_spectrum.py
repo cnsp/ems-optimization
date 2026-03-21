@@ -5,7 +5,7 @@ Runs optimization + simulation for capacity values 1, 3, 4 (the missing ones),
 then merges with existing cap=2 and cap=5 results to produce a unified analysis
 across all five capacity levels.
 
-Outputs go to results/capacity_comparison/
+Outputs go to results/analysis/capacity_comparison/
 """
 
 from __future__ import annotations

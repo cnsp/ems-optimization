@@ -12,7 +12,7 @@ Experiment design:
     - Compare mean response time, coverage, and P90
 
 Output:
-    results/distance_comparison/   (figures + tables)
+    results/analysis/distance_comparison/   (figures + tables)
 
 Usage:
     python scripts/run_distance_comparison_experiment.py [--reps 10]

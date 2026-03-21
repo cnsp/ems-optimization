@@ -13,7 +13,7 @@ For each allocation, simulations are run and results are disaggregated into:
 This reveals the equity vs efficiency tradeoff.
 
 Output:
-    results/cbd_focused_comparison/
+    results/analysis/cbd_focused_comparison/
 
 Usage:
     python scripts/run_cbd_focused_optimization.py [--reps 10]

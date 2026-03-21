@@ -772,7 +772,7 @@ cells.append(md("""---
 Full-scale simulation experiments across 3 policies (P0, P1, P2) and 9 fleet sizes
 (K=10 to 48), with 30 replications each. This produces 810 simulation runs.
 
-**Runtime note:** If pre-computed results exist in `results/production_v2/simulation/`,
+**Runtime note:** If pre-computed results exist in `results/baseline/production_v2/simulation/`,
 they will be loaded directly. Otherwise, the full simulation runs (~10-20 minutes)."""))
 
 cells.append(code("""t0 = time.time()

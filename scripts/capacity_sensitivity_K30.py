@@ -2,7 +2,7 @@
 """Capacity Sensitivity Analysis at K=30.
 
 Runs simulation for K=30 across capacities 1, 2, 3, 5 and all 3 policies.
-Appends results to results/capacity_comparison/simulation_results.csv
+Appends results to results/analysis/capacity_comparison/simulation_results.csv
 """
 
 from __future__ import annotations

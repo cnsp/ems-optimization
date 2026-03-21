@@ -10,7 +10,7 @@ Capacities: 1, 2, 3, 5
 For each combination, generates the allocation if not already cached,
 then produces a Manhattan heat map with staging location positions.
 
-Output: results/heatmaps/heatmap_K{k}_policy{policy}_cap{capacity}.png
+Output: results/analysis/heatmaps/heatmap_K{k}_policy{policy}_cap{capacity}.png
 """
 
 from __future__ import annotations

@@ -79,10 +79,10 @@ The similarity of results occurs because:
 
 | Figure | Description |
 |--------|-------------|
-| `results/distance_comparison/distance_matrices_heatmap.png` | Side-by-side heatmaps of Haversine and Manhattan distance matrices |
-| `results/distance_comparison/distance_scatter.png` | Scatter plot showing linear relationship between metrics |
-| `results/distance_comparison/distance_comparison_bar.png` | Bar chart comparing simulation performance |
-| `results/distance_comparison/distance_comparison_boxplot.png` | Box plots of per-replication response time distributions |
+| `results/analysis/distance_comparison/distance_matrices_heatmap.png` | Side-by-side heatmaps of Haversine and Manhattan distance matrices |
+| `results/analysis/distance_comparison/distance_scatter.png` | Scatter plot showing linear relationship between metrics |
+| `results/analysis/distance_comparison/distance_comparison_bar.png` | Bar chart comparing simulation performance |
+| `results/analysis/distance_comparison/distance_comparison_boxplot.png` | Box plots of per-replication response time distributions |
 
 ## 5. Discussion
 
@@ -113,7 +113,7 @@ However, if the model were extended to use **real road network distances** (e.g.
 | File | Description |
 |------|-------------|
 | `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` | Manhattan distance matrix (48×30) |
-| `results/distance_comparison/comparison_table.csv` | Simulation performance comparison |
-| `results/distance_comparison/allocation_comparison.csv` | Firehouse allocation comparison |
+| `results/analysis/distance_comparison/comparison_table.csv` | Simulation performance comparison |
+| `results/analysis/distance_comparison/allocation_comparison.csv` | Firehouse allocation comparison |
 | `scripts/generate_manhattan_distance_matrix.py` | Matrix generation script |
 | `scripts/run_distance_comparison_experiment.py` | Experiment script |

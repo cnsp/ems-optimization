@@ -91,9 +91,9 @@ The following documents were reviewed and found to be accurate in context:
 ## Verification
 
 All corrected values were cross-referenced against:
-- `results/production_v2/tables/descriptive_statistics.csv` (primary source of truth)
-- `results/production_v2/tables/anova_results.csv`
-- `results/production_v2/tables/effect_sizes.csv`
+- `results/baseline/production_v2/tables/descriptive_statistics.csv` (primary source of truth)
+- `results/baseline/production_v2/tables/anova_results.csv`
+- `results/baseline/production_v2/tables/effect_sizes.csv`
 - `configs/optimization.yaml` (firehouse_capacity: 2)
 
 ---

@@ -14,8 +14,8 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 | Rule | Details |
 |------|---------|
-| **Source of truth for simulation** | `results/production_v2/` — cap=2, spatially-stratified P0, 30 replications |
-| **Source of truth for optimization** | `results/optimization/` — cap=5 (Phase 3 historical), but metrics are correct |
+| **Source of truth for simulation** | `results/baseline/production_v2/` — cap=2, spatially-stratified P0, 30 replications |
+| **Source of truth for optimization** | `results/archive/optimization/` — cap=5 (Phase 3 historical), but metrics are correct |
 | **Source of truth for publication tables** | `results/tables/table1_*` through `table4_*` |
 | **Default capacity assumption** | **cap=2** (see DEC-010). Files with cap=5 are either legacy or part of capacity sweeps |
 | **P0 means** | Spatially-stratified uniform (latitude-based). Files with `P0` without `_spatial` suffix in `capacity_comparison/` or `heatmaps/` refer to the **deprecated** index-based P0 |
@@ -25,7 +25,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 ## Folder-by-Folder File Inventory
 
-### `results/production_v2/` — ✅ PRIMARY SOURCE OF TRUTH
+### `results/baseline/production_v2/` — ✅ PRIMARY SOURCE OF TRUTH
 
 This is the canonical simulation output. All files use **cap=2**, **spatially-stratified P0**, and **30 Monte Carlo replications**.
 
@@ -46,7 +46,7 @@ This is the canonical simulation output. All files use **cap=2**, **spatially-st
 
 ---
 
-### `results/optimization/` — ⚠️ PHASE 3 HISTORICAL (cap=5)
+### `results/archive/optimization/` — ⚠️ PHASE 3 HISTORICAL (cap=5)
 
 These are the original Phase 3 optimization-only results. They use **cap=5** (the old default before DEC-010). The optimization metrics (objective values, coverage) are mathematically correct for cap=5 but **do not reflect the current cap=2 default**. Use `production_v2/` for cap=2 results.
 
@@ -129,7 +129,7 @@ All figures were regenerated or verified during the Phase 10 audit. Publication-
 
 ---
 
-### `results/capacity_comparison/` — ✅ CURRENT (Capacity Sweep)
+### `results/analysis/capacity_comparison/` — ✅ CURRENT (Capacity Sweep)
 
 Full capacity sensitivity sweep across cap={1,2,3,4,5} × K={20,30,40} × {P0, P0_spatial, P1, P2}. All data is current and correct.
 
@@ -149,7 +149,7 @@ Full capacity sensitivity sweep across cap={1,2,3,4,5} × K={20,30,40} × {P0, P
 
 ---
 
-### `results/heatmaps/` — ✅ CURRENT (Comprehensive Sweep)
+### `results/analysis/heatmaps/` — ✅ CURRENT (Comprehensive Sweep)
 
 Heatmap visualizations across K={5,10,15,20,25,30,35,40,45} × cap={1,2,3,5} × {P0, P0_spatial, P1, P2}. All generated from a single consistent run.
 
@@ -166,7 +166,7 @@ Heatmap visualizations across K={5,10,15,20,25,30,35,40,45} × cap={1,2,3,5} × 
 
 ---
 
-### `results/cbd_focused_comparison/` — ✅ CURRENT
+### `results/analysis/cbd_focused_comparison/` — ✅ CURRENT
 
 CBD-focused optimization experiment results. Demonstrates that CBD weighting does not improve CBD RT but degrades non-CBD RT.
 
@@ -179,7 +179,7 @@ CBD-focused optimization experiment results. Demonstrates that CBD weighting doe
 
 ---
 
-### `results/distance_comparison/` — ✅ CURRENT
+### `results/analysis/distance_comparison/` — ✅ CURRENT
 
 Manhattan vs Haversine distance metric comparison. Shows P2 is robust to distance metric choice.
 
@@ -215,7 +215,7 @@ Simulation verification, validation pilots, and production experiment results.
 
 ---
 
-### `results/maps/` — ✅ CURRENT
+### `results/analysis/maps/` — ✅ CURRENT
 
 Static allocation maps at K=40.
 
@@ -240,7 +240,7 @@ Static allocation maps at K=40.
 ## Decision Tree: "Which File Should I Use?"
 
 ### For baseline policy comparison (P0 vs P1 vs P2):
-→ **`results/production_v2/tables/descriptive_statistics.csv`**  
+→ **`results/baseline/production_v2/tables/descriptive_statistics.csv`**  
 → Or publication-ready: **`results/tables/table1_baseline_comparison.csv`**
 
 ### For fleet size sensitivity (how does RT change with K?):
@@ -254,14 +254,14 @@ Static allocation maps at K=40.
 → **`results/tables/exp4_pivot_rt.csv`**
 
 ### For statistical significance:
-→ **`results/production_v2/tables/anova_results.csv`** + **`posthoc_comparisons.csv`** + **`effect_sizes.csv`**
+→ **`results/baseline/production_v2/tables/anova_results.csv`** + **`posthoc_comparisons.csv`** + **`effect_sizes.csv`**
 
 ### For capacity sensitivity analysis:
-→ **`results/capacity_comparison/full_comparison.csv`**  
-→ Heatmaps: **`results/heatmaps/heatmap_K*_policyP*_spatial_cap*.png`**
+→ **`results/analysis/capacity_comparison/full_comparison.csv`**  
+→ Heatmaps: **`results/analysis/heatmaps/heatmap_K*_policyP*_spatial_cap*.png`**
 
 ### For CBD analysis:
-→ **`results/cbd_focused_comparison/comparison_table.csv`**  
+→ **`results/analysis/cbd_focused_comparison/comparison_table.csv`**  
 → Or: **`results/tables/cbd_comparison.csv`**
 
 ### For verification & validation:
@@ -272,8 +272,8 @@ Static allocation maps at K=40.
 → **`results/figures/pub_fig*.png`**
 
 ### For allocation maps:
-→ **`results/production_v2/figures/allocation_map_K*.png`** (cap=2)  
-→ Or: **`results/maps/map_allocation_P*_K40.png`**
+→ **`results/baseline/production_v2/figures/allocation_map_K*.png`** (cap=2)  
+→ Or: **`results/analysis/maps/map_allocation_P*_K40.png`**
 
 ---
 

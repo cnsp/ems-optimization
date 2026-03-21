@@ -61,6 +61,6 @@ simulation:
 
 # Output configuration
 output:
-  directory: "results/simulation/cbd_experiment"
+  directory: "results/analysis/simulation/cbd_experiment"
   figures_directory: "results/figures"
   tables_directory: "results/tables"

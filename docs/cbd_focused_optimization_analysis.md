@@ -86,9 +86,9 @@ The CBD-focused allocation:
 
 | Figure | Description |
 |--------|-------------|
-| `results/cbd_focused_comparison/cbd_focused_comparison.png` | Grouped bar chart of CBD vs non-CBD response times and coverage |
-| `results/cbd_focused_comparison/allocation_comparison.png` | Horizontal bar chart showing unit placement for each strategy |
-| `results/cbd_focused_comparison/equity_tradeoff.png` | Scatter plot of CBD RT vs non-CBD RT tradeoff |
+| `results/analysis/cbd_focused_comparison/cbd_focused_comparison.png` | Grouped bar chart of CBD vs non-CBD response times and coverage |
+| `results/analysis/cbd_focused_comparison/allocation_comparison.png` | Horizontal bar chart showing unit placement for each strategy |
+| `results/analysis/cbd_focused_comparison/equity_tradeoff.png` | Scatter plot of CBD RT vs non-CBD RT tradeoff |
 
 ## 5. Discussion
 
@@ -140,6 +140,6 @@ The results confirm that the demand-weighted formulation is an effective "self-b
 |------|-------------|
 | `src/ems_readiness/optimization/models.py` | New functions: `build_cbd_focused_demand_weighted()`, `build_cbd_focused_coverage()` |
 | `scripts/run_cbd_focused_optimization.py` | Experiment script |
-| `results/cbd_focused_comparison/comparison_table.csv` | Performance comparison data |
-| `results/cbd_focused_comparison/allocations.csv` | Allocation comparison |
-| `results/cbd_focused_comparison/*.png` | Comparison figures |
+| `results/analysis/cbd_focused_comparison/comparison_table.csv` | Performance comparison data |
+| `results/analysis/cbd_focused_comparison/allocations.csv` | Allocation comparison |
+| `results/analysis/cbd_focused_comparison/*.png` | Comparison figures |

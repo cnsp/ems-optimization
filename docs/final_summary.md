@@ -103,7 +103,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - `docs/cbd_robustness_analysis.md` (.pdf) — CBD findings document
 - `docs/queue_analysis.md` (.pdf) — Queue metrics analysis document
 - `docs/gap_closure_report.md` (.pdf) — Gap closure verification report
-- `results/simulation/cbd_experiment/` — 330 CBD simulation runs
+- `results/analysis/simulation/cbd_experiment/` — 330 CBD simulation runs
 - `results/figures/cbd_*.png` — 3 CBD figures
 - `results/figures/queue_*.png` — 4 queue analysis figures
 - `results/figures/seasonal_*.png` — 3 seasonal analysis figures
@@ -125,8 +125,8 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - `docs/distance_metric_comparison.md` (.pdf) — Distance metric comparison report
 - `docs/cbd_focused_optimization_analysis.md` (.pdf) — CBD-focused analysis report
 - `docs/alternative_analyses_summary.md` (.pdf) — Combined summary of alternative analyses
-- `results/distance_comparison/` — 4 figures + 2 tables
-- `results/cbd_focused_comparison/` — 3 figures + 2 tables
+- `results/analysis/distance_comparison/` — 4 figures + 2 tables
+- `results/analysis/cbd_focused_comparison/` — 3 figures + 2 tables
 
 **Modified files:**
 - `src/ems_readiness/utils/distance.py` — Added `manhattan_distance()` function
@@ -150,8 +150,8 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - `scripts/run_production_v2.py` — Extended fleet analysis runner (810 runs)
 
 **New results:**
-- `results/capacity_comparison/` — 60+ files: allocations, figures, tables for cap 1–5
-- `results/production_v2/` — Complete extended fleet results: allocations, simulation, figures, tables
+- `results/analysis/capacity_comparison/` — 60+ files: allocations, figures, tables for cap 1–5
+- `results/baseline/production_v2/` — Complete extended fleet results: allocations, simulation, figures, tables
 
 **New documentation:**
 - `docs/firehouse_capacity_analysis.md` — Firehouse capacity methodology and initial analysis

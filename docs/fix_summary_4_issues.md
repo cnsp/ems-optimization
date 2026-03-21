@@ -29,7 +29,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 
 ## Issue 2: policy_comparison.csv — max_units=5 Instead of capacity=2
 
-**Problem:** `results/optimization/policy_comparison.csv` showed `max_units_at_firehouse=5` for K≥30, contradicting the capacity=2 decision (DEC-010).
+**Problem:** `results/archive/optimization/policy_comparison.csv` showed `max_units_at_firehouse=5` for K≥30, contradicting the capacity=2 decision (DEC-010).
 
 **Root cause:** `scripts/run_optimization_comparison.py` hardcoded `CAPACITY = 5` instead of reading from config.
 
@@ -110,7 +110,7 @@ P0 now uses spatially-stratified allocation and decreases monotonically with K. 
 4. `scripts/run_optimization_comparison.py` — CAPACITY constant
 5. `scripts/run_validation_pilots.py` — constructor + column name fixes
 6. `results/simulation/validation_pilot/pilot1_p0_vs_p2.json` — regenerated
-7. `results/optimization/policy_comparison.csv` — regenerated
+7. `results/archive/optimization/policy_comparison.csv` — regenerated
 8. `results/simulation/production/exp2_fleet_sensitivity.csv` — legacy relabeled + new P0 added
 9. `results/tables/exp2_pivot_rt.csv` — regenerated with correct P0
 10. `results/tables/exp2_pivot_rt_with_legacy.csv` — new reference file
