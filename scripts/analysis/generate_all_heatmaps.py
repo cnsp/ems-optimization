@@ -131,9 +131,9 @@ def try_load_existing_allocation(policy_display: str, K: int, capacity: int) -> 
         df = pd.read_csv(cap_file, index_col=0)
         return df.iloc[:, 0]
 
-    # Check production_v2 (only cap=2)
+    # Check baseline (only cap=2)
     if capacity == 2:
-        prod_file = PROJECT_ROOT / "results" / "production_v2" / "allocations" / f"allocations_K{K}.csv"
+        prod_file = PROJECT_ROOT / "results" / "baseline" / "allocations" / f"allocations_K{K}.csv"
         if prod_file.exists():
             df = pd.read_csv(prod_file, index_col=0)
             col_map = {"P0": "P0", "P1": "P1", "P2": "P2"}

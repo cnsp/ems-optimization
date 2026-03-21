@@ -94,7 +94,7 @@ TIER 5 — Simulation results (depends on Tier 3 + Tier 4)
   └── results/simulation/*
 
 TIER 6 — Statistical analysis & figures (depends on Tier 5)
-  └── results/tables/*, results/figures/*, results/baseline/production_v2/*
+  └── results/tables/*, results/figures/*, results/baseline/*
 ```
 
 ---

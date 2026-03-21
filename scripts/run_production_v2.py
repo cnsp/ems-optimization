@@ -42,7 +42,7 @@ from ems_readiness.optimization.policies import (
 )
 
 # ── Output directories ──────────────────────────────────────────────
-OUT_ROOT = PROJECT_ROOT / "results" / "production_v2"
+OUT_ROOT = PROJECT_ROOT / "results" / "baseline"
 ALLOC_DIR = OUT_ROOT / "allocations"
 SIM_DIR = OUT_ROOT / "simulation"
 TABLE_DIR = OUT_ROOT / "tables"

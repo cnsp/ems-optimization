@@ -151,7 +151,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 **New results:**
 - `results/analysis/capacity_comparison/` — 60+ files: allocations, figures, tables for cap 1–5
-- `results/baseline/production_v2/` — Complete extended fleet results: allocations, simulation, figures, tables
+- `results/baseline/` — Complete extended fleet results: allocations, simulation, figures, tables
 
 **New documentation:**
 - `docs/firehouse_capacity_analysis.md` — Firehouse capacity methodology and initial analysis

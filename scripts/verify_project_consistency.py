@@ -182,7 +182,7 @@ def check_results():
         record("warn", "results", "policy_comparison.csv missing")
 
     # 2b. Simulation descriptive stats — check P0 at K=20
-    ds_path = ROOT / "results" / "production_v2" / "tables" / "descriptive_statistics.csv"
+    ds_path = ROOT / "results" / "baseline" / "tables" / "descriptive_statistics.csv"
     if ds_path.exists():
         with open(ds_path) as f:
             reader = csv.DictReader(f)

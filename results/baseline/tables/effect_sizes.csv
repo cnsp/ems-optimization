@@ -1,111 +1,28 @@
-Experiment,Metric,Comparison,Cohens_d,Abs_d,Interpretation,Practical_Significance
-exp1_policy_comparison,Mean RT (min),P0 vs P1,9.2925,9.2925,Large,Yes
-exp1_policy_comparison,Mean RT (min),P0 vs P2,10.1059,10.1059,Large,Yes
-exp1_policy_comparison,Mean RT (min),P1 vs P2,0.992,0.992,Large,Yes
-exp1_policy_comparison,"P90 Response Time (90th percentile, min)",P0 vs P1,4.9163,4.9163,Large,Yes
-exp1_policy_comparison,"P90 Response Time (90th percentile, min)",P0 vs P2,6.1008,6.1008,Large,Yes
-exp1_policy_comparison,"P90 Response Time (90th percentile, min)",P1 vs P2,1.571,1.571,Large,Yes
-exp1_policy_comparison,6-min Coverage (NYC),P0 vs P1,-4.6697,4.6697,Large,Yes
-exp1_policy_comparison,6-min Coverage (NYC),P0 vs P2,-4.8576,4.8576,Large,Yes
-exp1_policy_comparison,6-min Coverage (NYC),P1 vs P2,-0.293,0.293,Small,No
-exp1_policy_comparison,8-min Coverage (NFPA),P0 vs P1,0.0972,0.0972,Negligible,No
-exp1_policy_comparison,8-min Coverage (NFPA),P0 vs P2,-0.1579,0.1579,Negligible,No
-exp1_policy_comparison,8-min Coverage (NFPA),P1 vs P2,-0.2352,0.2352,Small,No
-exp1_policy_comparison,Mean Utilization,P0 vs P1,0.4039,0.4039,Small,No
-exp1_policy_comparison,Mean Utilization,P0 vs P2,0.5054,0.5054,Medium,Yes
-exp1_policy_comparison,Mean Utilization,P1 vs P2,0.1135,0.1135,Negligible,No
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P1,1.1179,1.1179,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P0 vs P2,1.0999,1.0999,Large,Yes
-exp2_fleet_sensitivity,Mean RT (min),P1 vs P2,-0.2005,0.2005,Small,No
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P1,1.051,1.051,Large,Yes
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P2,1.0492,1.0492,Large,Yes
-exp2_fleet_sensitivity,"P90 Response Time (90th percentile, min)",P1 vs P2,-0.046,0.046,Negligible,No
-exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P1,-1.1,1.1,Large,Yes
-exp2_fleet_sensitivity,6-min Coverage (NYC),P0 vs P2,-1.0764,1.0764,Large,Yes
-exp2_fleet_sensitivity,6-min Coverage (NYC),P1 vs P2,0.2315,0.2315,Small,No
-exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P1,-1.0451,1.0451,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage (NFPA),P0 vs P2,-1.0438,1.0438,Large,Yes
-exp2_fleet_sensitivity,8-min Coverage (NFPA),P1 vs P2,0.044,0.044,Negligible,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P1,0.2378,0.2378,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P0 vs P2,0.2432,0.2432,Small,No
-exp2_fleet_sensitivity,Mean Utilization,P1 vs P2,0.0052,0.0052,Negligible,No
-exp3_demand_sensitivity,Mean RT (min),P0 vs P1,4.7342,4.7342,Large,Yes
-exp3_demand_sensitivity,Mean RT (min),P0 vs P2,4.7982,4.7982,Large,Yes
-exp3_demand_sensitivity,Mean RT (min),P1 vs P2,0.378,0.378,Small,No
-exp3_demand_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P1,3.0049,3.0049,Large,Yes
-exp3_demand_sensitivity,"P90 Response Time (90th percentile, min)",P0 vs P2,3.4878,3.4878,Large,Yes
-exp3_demand_sensitivity,"P90 Response Time (90th percentile, min)",P1 vs P2,0.5362,0.5362,Medium,Yes
-exp3_demand_sensitivity,6-min Coverage (NYC),P0 vs P1,-2.954,2.954,Large,Yes
-exp3_demand_sensitivity,6-min Coverage (NYC),P0 vs P2,-2.9816,2.9816,Large,Yes
-exp3_demand_sensitivity,6-min Coverage (NYC),P1 vs P2,-0.1587,0.1587,Negligible,No
-exp3_demand_sensitivity,8-min Coverage (NFPA),P0 vs P1,0.0317,0.0317,Negligible,No
-exp3_demand_sensitivity,8-min Coverage (NFPA),P0 vs P2,-0.2529,0.2529,Small,No
-exp3_demand_sensitivity,8-min Coverage (NFPA),P1 vs P2,-0.2757,0.2757,Small,No
-exp3_demand_sensitivity,Mean Utilization,P0 vs P1,0.0425,0.0425,Negligible,No
-exp3_demand_sensitivity,Mean Utilization,P0 vs P2,0.048,0.048,Negligible,No
-exp3_demand_sensitivity,Mean Utilization,P1 vs P2,0.0055,0.0055,Negligible,No
-exp4_service_robustness,Mean RT (min),P0 vs P1,8.213,8.213,Large,Yes
-exp4_service_robustness,Mean RT (min),P0 vs P2,8.9116,8.9116,Large,Yes
-exp4_service_robustness,Mean RT (min),P1 vs P2,0.8226,0.8226,Large,Yes
-exp4_service_robustness,"P90 Response Time (90th percentile, min)",P0 vs P1,4.6298,4.6298,Large,Yes
-exp4_service_robustness,"P90 Response Time (90th percentile, min)",P0 vs P2,5.7624,5.7624,Large,Yes
-exp4_service_robustness,"P90 Response Time (90th percentile, min)",P1 vs P2,1.2687,1.2687,Large,Yes
-exp4_service_robustness,6-min Coverage (NYC),P0 vs P1,-4.4296,4.4296,Large,Yes
-exp4_service_robustness,6-min Coverage (NYC),P0 vs P2,-4.5879,4.5879,Large,Yes
-exp4_service_robustness,6-min Coverage (NYC),P1 vs P2,-0.2919,0.2919,Small,No
-exp4_service_robustness,8-min Coverage (NFPA),P0 vs P1,0.0963,0.0963,Negligible,No
-exp4_service_robustness,8-min Coverage (NFPA),P0 vs P2,-0.0993,0.0993,Negligible,No
-exp4_service_robustness,8-min Coverage (NFPA),P1 vs P2,-0.1914,0.1914,Negligible,No
-exp4_service_robustness,Mean Utilization,P0 vs P1,0.1024,0.1024,Negligible,No
-exp4_service_robustness,Mean Utilization,P0 vs P2,0.1314,0.1314,Negligible,No
-exp4_service_robustness,Mean Utilization,P1 vs P2,0.029,0.029,Negligible,No
-Exp1,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp1,"P90 Response Time (90th percentile, min)",ANOVA: Policy,,,Large,Yes
-Exp1,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
-Exp1,8-min Coverage (NFPA),ANOVA: Policy,,,Small,No
-Exp1,Mean Utilization,ANOVA: Policy,,,Small,No
-Exp2,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp2,Mean RT (min),ANOVA: K,,,Large,Yes
-Exp2,Mean RT (min),ANOVA: Policy × K,,,Large,Yes
-Exp2,"P90 Response Time (90th percentile, min)",ANOVA: Policy,,,Large,Yes
-Exp2,"P90 Response Time (90th percentile, min)",ANOVA: K,,,Large,Yes
-Exp2,"P90 Response Time (90th percentile, min)",ANOVA: Policy × K,,,Large,Yes
-Exp2,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
-Exp2,6-min Coverage (NYC),ANOVA: K,,,Large,Yes
-Exp2,6-min Coverage (NYC),ANOVA: Policy × K,,,Large,Yes
-Exp2,8-min Coverage (NFPA),ANOVA: Policy,,,Large,Yes
-Exp2,8-min Coverage (NFPA),ANOVA: K,,,Large,Yes
-Exp2,8-min Coverage (NFPA),ANOVA: Policy × K,,,Large,Yes
-Exp2,Mean Utilization,ANOVA: Policy,,,Small,No
-Exp2,Mean Utilization,ANOVA: K,,,Large,Yes
-Exp2,Mean Utilization,ANOVA: Policy × K,,,Small,No
-Exp3,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp3,Mean RT (min),ANOVA: demand_multiplier,,,Medium,Yes
-Exp3,Mean RT (min),ANOVA: Policy × demand_multiplier,,,Negligible,No
-Exp3,"P90 Response Time (90th percentile, min)",ANOVA: Policy,,,Large,Yes
-Exp3,"P90 Response Time (90th percentile, min)",ANOVA: demand_multiplier,,,Large,Yes
-Exp3,"P90 Response Time (90th percentile, min)",ANOVA: Policy × demand_multiplier,,,Small,No
-Exp3,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
-Exp3,6-min Coverage (NYC),ANOVA: demand_multiplier,,,Large,Yes
-Exp3,6-min Coverage (NYC),ANOVA: Policy × demand_multiplier,,,Negligible,No
-Exp3,8-min Coverage (NFPA),ANOVA: Policy,,,Small,No
-Exp3,8-min Coverage (NFPA),ANOVA: demand_multiplier,,,Large,Yes
-Exp3,8-min Coverage (NFPA),ANOVA: Policy × demand_multiplier,,,Small,No
-Exp3,Mean Utilization,ANOVA: Policy,,,Negligible,No
-Exp3,Mean Utilization,ANOVA: demand_multiplier,,,Large,Yes
-Exp3,Mean Utilization,ANOVA: Policy × demand_multiplier,,,Negligible,No
-Exp4,Mean RT (min),ANOVA: Policy,,,Large,Yes
-Exp4,Mean RT (min),ANOVA: service_time_mean,,,Small,No
-Exp4,Mean RT (min),ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,"P90 Response Time (90th percentile, min)",ANOVA: Policy,,,Large,Yes
-Exp4,"P90 Response Time (90th percentile, min)",ANOVA: service_time_mean,,,Small,No
-Exp4,"P90 Response Time (90th percentile, min)",ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,6-min Coverage (NYC),ANOVA: Policy,,,Large,Yes
-Exp4,6-min Coverage (NYC),ANOVA: service_time_mean,,,Small,No
-Exp4,6-min Coverage (NYC),ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,8-min Coverage (NFPA),ANOVA: Policy,,,Negligible,No
-Exp4,8-min Coverage (NFPA),ANOVA: service_time_mean,,,Medium,Yes
-Exp4,8-min Coverage (NFPA),ANOVA: Policy × service_time_mean,,,Negligible,No
-Exp4,Mean Utilization,ANOVA: Policy,,,Negligible,No
-Exp4,Mean Utilization,ANOVA: service_time_mean,,,Large,Yes
-Exp4,Mean Utilization,ANOVA: Policy × service_time_mean,,,Negligible,No
+K,comparison,cohens_d,magnitude
+10,P0 vs P1,0.21281916443991525,small
+10,P0 vs P2,5.899878887169356,large
+10,P1 vs P2,5.138848541182018,large
+15,P0 vs P1,12.143126438674138,large
+15,P0 vs P2,15.036636253392698,large
+15,P1 vs P2,2.1013943842364604,large
+20,P0 vs P1,9.451341316448607,large
+20,P0 vs P2,10.27862935812053,large
+20,P1 vs P2,1.009000544461527,large
+25,P0 vs P1,9.089018791907597,large
+25,P0 vs P2,6.83576347862203,large
+25,P1 vs P2,-0.6613076205826713,medium
+30,P0 vs P1,12.088296536295276,large
+30,P0 vs P2,8.706895697598812,large
+30,P1 vs P2,-1.5600994102681813,large
+35,P0 vs P1,7.812696475989255,large
+35,P0 vs P2,3.534275253859185,large
+35,P1 vs P2,-2.5550027149233414,large
+40,P0 vs P1,4.121547058811327,large
+40,P0 vs P2,0.4452882292260441,small
+40,P1 vs P2,-2.850739695836486,large
+45,P0 vs P1,2.5465005463107344,large
+45,P0 vs P2,-0.8125941534786746,large
+45,P1 vs P2,-2.8695130594892158,large
+48,P0 vs P1,1.8889777384537947,large
+48,P0 vs P2,-1.3100302836750295,large
+48,P1 vs P2,-2.7910643235024137,large

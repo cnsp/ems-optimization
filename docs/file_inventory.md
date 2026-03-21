@@ -201,7 +201,7 @@ verified: "Specialized analysis document. Cross-reference with current productio
 | `capacity_*_figures.png` | Capacity sensitivity visualization figures |
 | `experiment_log.txt` | Experiment execution log |
 
-### `results/baseline/production_v2/` — Extended Fleet Analysis Results (Phase 9)
+### `results/baseline/` — Extended Fleet Analysis Results (Phase 9)
 | File | Description |
 |------|-------------|
 | `v2_allocations_*.csv` | P0 (spatially-stratified), P1, P2 allocations per K |

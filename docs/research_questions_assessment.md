@@ -24,7 +24,7 @@ All simulation experiments reported in this assessment use the following fixed p
 | Replications | 30 | Per experimental cell |
 | Warm-up | 24 hours | Discarded from statistics |
 
-> **Note on capacity regimes:** The initial production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. The Extended Fleet Analysis (in `results/baseline/production_v2/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
+> **Note on capacity regimes:** The initial production experiments (Experiments 1–4, CBD stress tests) use capacity=5 units per firehouse. The Extended Fleet Analysis (in `results/baseline/`) uses capacity=2 units per firehouse, which was later established as the operationally optimal default. See `docs/capacity_sensitivity_analysis.md` for the full comparison.
 
 ---
 
@@ -244,9 +244,9 @@ The fleet sensitivity experiment (Experiment 2) directly quantifies coverage as 
 
 | Policy | K for ≥95% 8-min Coverage | K for ≥99% 8-min Coverage | Source |
 |--------|---------------------------|---------------------------|--------|
-| **P0 (Spatially-Stratified)** | **K = 15** (99.1% at K=15) | **K = 15** | `results/baseline/production_v2/tables/descriptive_statistics.csv` |
-| **P1 (Proportional)** | **K = 15** (99.2% at K=15) | **K = 15** | `results/baseline/production_v2/tables/descriptive_statistics.csv` |
-| **P2 (Optimised)** | **K = 15** (99.1% at K=15) | **K = 20** (99.7%) | `results/baseline/production_v2/tables/descriptive_statistics.csv` |
+| **P0 (Spatially-Stratified)** | **K = 15** (99.1% at K=15) | **K = 15** | `results/baseline/tables/descriptive_statistics.csv` |
+| **P1 (Proportional)** | **K = 15** (99.2% at K=15) | **K = 15** | `results/baseline/tables/descriptive_statistics.csv` |
+| **P2 (Optimised)** | **K = 15** (99.1% at K=15) | **K = 20** (99.7%) | `results/baseline/tables/descriptive_statistics.csv` |
 
 All three policies achieve ≥99% 8-min coverage at K=15 or above. The primary differentiation is in **6-minute coverage** and **mean response time**, not 8-min coverage.
 
@@ -261,7 +261,7 @@ All three policies achieve ≥99% 8-min coverage at K=15 or above. The primary d
 | 35 | 99.8% | 99.8% | 99.7% | 99.6% | 99.7% | 98.7% |
 | 40 | 99.8% | 99.8% | 99.7% | 99.7% | 99.7% | 98.7% |
 
-*Source: `results/baseline/production_v2/tables/descriptive_statistics.csv`*
+*Source: `results/baseline/tables/descriptive_statistics.csv`*
 
 **Key findings:**
 1. All policies achieve **≥99% 8-minute coverage** even at the minimum fleet size K=15, confirming that Manhattan's firehouse network provides excellent geographic reach under the spatially-stratified baseline

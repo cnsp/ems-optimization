@@ -84,7 +84,6 @@ ems-optimization/
 │ ├── distance_comparison/ # Haversine vs Manhattan metric results
 │ ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
 │ ├── capacity_comparison/ # Capacity sensitivity (cap 1–5) results
-│ ├── production_v2/ # Extended fleet analysis results (cap=2)
 │ └── maps/ # Allocation map visualizations
 ├── scripts/ # Automation & analysis scripts (23+)
 ├── src/ems_readiness/ # Core Python package (v0.6.0)
@@ -315,7 +314,6 @@ The `results/` folder contains output from multiple project phases. Each subfold
 
 | Folder | Status | What's Inside |
 |--------|--------|---------------|
-| `results/production_v2/` | ✅ **Source of Truth** | Canonical simulation results (cap=2, spatial P0, 30 reps) |
 | `results/simulation/` | ✅ Current | Verification tests, validation pilots, production experiments |
 | `results/tables/` | ✅ Mostly Current | Publication tables + experiment pivots ([see README](results/tables/README.md)) |
 | `results/figures/` | ✅ Mostly Current | Publication figures (`pub_fig*`) + technical plots |

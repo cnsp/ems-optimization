@@ -102,7 +102,7 @@ After the fix, the heatmap correctly shows all three policies:
 
 ## Step 5: Other Referenced Files — Path Mismatch Audit
 
-While investigating, I found **44 images referenced in docs** that exist in subdirectories of `results/` but not in `results/figures/`. These are not broken — the docs reference them with correct relative paths to their actual locations (e.g., `results/baseline/production_v2/figures/`, `results/analysis/capacity_comparison/`, etc.). No action needed for these.
+While investigating, I found **44 images referenced in docs** that exist in subdirectories of `results/` but not in `results/figures/`. These are not broken — the docs reference them with correct relative paths to their actual locations (e.g., `results/baseline/figures/`, `results/analysis/capacity_comparison/`, etc.). No action needed for these.
 
 **No other scripts** had the `P0_spatial` vs `P0` label mismatch.
 

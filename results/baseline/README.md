@@ -1,4 +1,4 @@
-# production_v2/ — ✅ SOURCE OF TRUTH
+# baseline/ — ✅ SOURCE OF TRUTH
 
 > **This folder contains the canonical simulation results for the project.**
 
@@ -12,7 +12,7 @@
 ## Structure
 
 ```
-production_v2/
+baseline/
 ├── allocations/          # Unit allocations per (K, policy)
 │   └── allocations_K{N}.csv
 ├── simulation/           # Raw simulation output

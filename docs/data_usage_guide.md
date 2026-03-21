@@ -14,7 +14,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 | Rule | Details |
 |------|---------|
-| **Source of truth for simulation** | `results/baseline/production_v2/` — cap=2, spatially-stratified P0, 30 replications |
+| **Source of truth for simulation** | `results/baseline/` — cap=2, spatially-stratified P0, 30 replications |
 | **Source of truth for optimization** | `results/archive/optimization/` — cap=5 (Phase 3 historical), but metrics are correct |
 | **Source of truth for publication tables** | `results/tables/table1_*` through `table4_*` |
 | **Default capacity assumption** | **cap=2** (see DEC-010). Files with cap=5 are either legacy or part of capacity sweeps |
@@ -25,7 +25,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 ## Folder-by-Folder File Inventory
 
-### `results/baseline/production_v2/` — ✅ PRIMARY SOURCE OF TRUTH
+### `results/baseline/` — ✅ PRIMARY SOURCE OF TRUTH
 
 This is the canonical simulation output. All files use **cap=2**, **spatially-stratified P0**, and **30 Monte Carlo replications**.
 
@@ -48,7 +48,7 @@ This is the canonical simulation output. All files use **cap=2**, **spatially-st
 
 ### `results/archive/optimization/` — ⚠️ PHASE 3 HISTORICAL (cap=5)
 
-These are the original Phase 3 optimization-only results. They use **cap=5** (the old default before DEC-010). The optimization metrics (objective values, coverage) are mathematically correct for cap=5 but **do not reflect the current cap=2 default**. Use `production_v2/` for cap=2 results.
+These are the original Phase 3 optimization-only results. They use **cap=5** (the old default before DEC-010). The optimization metrics (objective values, coverage) are mathematically correct for cap=5 but **do not reflect the current cap=2 default**. Use `results/baseline/` for cap=2 results.
 
 | Path | Status | Description |
 |------|--------|-------------|
@@ -88,7 +88,7 @@ These are the original Phase 3 optimization-only results. They use **cap=5** (th
 | `queue_statistics.csv` | ✅ CURRENT | Queue descriptive stats |
 | `seasonal_analysis.csv` | ✅ CURRENT | Seasonal demand patterns |
 | `validation_results.csv` | ✅ CURRENT | V&V validation results |
-| `anova_results.csv` | ✅ CURRENT | ANOVA (duplicate of production_v2 copy) |
+| `anova_results.csv` | ✅ CURRENT | ANOVA (production results, cap=2) |
 | `confidence_intervals.csv` | ✅ CURRENT | CIs (from production run) |
 | `confidence_intervals_notebook.csv` | ⚠️ LEGACY | CIs from older notebook run |
 | `descriptive_statistics.csv` | ✅ CURRENT | Descriptive stats |
@@ -240,7 +240,7 @@ Static allocation maps at K=40.
 ## Decision Tree: "Which File Should I Use?"
 
 ### For baseline policy comparison (P0 vs P1 vs P2):
-→ **`results/baseline/production_v2/tables/descriptive_statistics.csv`**  
+→ **`results/baseline/tables/descriptive_statistics.csv`**  
 → Or publication-ready: **`results/tables/table1_baseline_comparison.csv`**
 
 ### For fleet size sensitivity (how does RT change with K?):
@@ -254,7 +254,7 @@ Static allocation maps at K=40.
 → **`results/tables/exp4_pivot_rt.csv`**
 
 ### For statistical significance:
-→ **`results/baseline/production_v2/tables/anova_results.csv`** + **`posthoc_comparisons.csv`** + **`effect_sizes.csv`**
+→ **`results/baseline/tables/anova_results.csv`** + **`posthoc_comparisons.csv`** + **`effect_sizes.csv`**
 
 ### For capacity sensitivity analysis:
 → **`results/analysis/capacity_comparison/full_comparison.csv`**  
@@ -272,7 +272,7 @@ Static allocation maps at K=40.
 → **`results/figures/pub_fig*.png`**
 
 ### For allocation maps:
-→ **`results/baseline/production_v2/figures/allocation_map_K*.png`** (cap=2)  
+→ **`results/baseline/figures/allocation_map_K*.png`** (cap=2)  
 → Or: **`results/analysis/maps/map_allocation_P*_K40.png`**
 
 ---
@@ -297,6 +297,6 @@ Static allocation maps at K=40.
 
 | Decision | Impact on Files |
 |----------|----------------|
-| **DEC-010**: Capacity changed from 5 → 2 | `production_v2/` uses cap=2; `optimization/` still shows cap=5 |
+| **DEC-010**: Capacity changed from 5 → 2 | `results/baseline/` uses cap=2; `optimization/` still shows cap=5 |
 | **DEC-011**: P0 changed to spatially-stratified | All current P0 is spatial; old index-based P0 appears as `P0_legacy` or `P0` without `_spatial` in sweeps |
 | **DEC-012**: P0 nomenclature standardized | "P0" in any public/current document = spatially-stratified |

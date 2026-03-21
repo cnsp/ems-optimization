@@ -57,7 +57,7 @@ def ci95(series):
 
 def load_production_raw():
     """Load raw production v2 simulation results (30 reps per cell)."""
-    path = PROJECT / "results" / "production_v2" / "simulation" / "all_results_raw.csv"
+    path = PROJECT / "results" / "baseline" / "simulation" / "all_results_raw.csv"
     df = pd.read_csv(path)
     # Normalize policy names
     df["policy"] = df["policy"].replace({"P0_spatial": "P0", "P1_demand": "P1", "P2_optimised": "P2"})

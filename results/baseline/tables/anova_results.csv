@@ -1,51 +1,10 @@
-Experiment,Factor(s),Metric,F,p_value,Significance,Eta_squared,Effect,Shapiro_p,Levene_p
-Exp1,Policy,Mean RT (min),1019.252,0.0,***,0.9591,Large,0.0862,0.5493
-Exp1,Policy,"P90 Response Time (90th percentile, min)",397.689,0.0,***,0.9014,Large,0.0004,0.0
-Exp1,Policy,6-min Coverage (NYC),284.798,0.0,***,0.8675,Large,0.0008,0.004
-Exp1,Policy,8-min Coverage (NFPA),0.458,0.634032,ns,0.0104,Small,0.0011,0.5336
-Exp1,Policy,Mean Utilization,2.186,0.118471,ns,0.0479,Small,0.0392,0.9483
-Exp2,Policy,Mean RT (min),23825.093,0.0,***,0.2909,Large,,
-Exp2,K,Mean RT (min),9539.262,0.0,***,0.2911,Large,,
-Exp2,Policy × K,Mean RT (min),6795.976,0.0,***,0.4148,Large,,
-Exp2,Policy,"P90 Response Time (90th percentile, min)",13195.839,0.0,***,0.2686,Large,,
-Exp2,K,"P90 Response Time (90th percentile, min)",5954.308,0.0,***,0.303,Large,,
-Exp2,Policy × K,"P90 Response Time (90th percentile, min)",4157.835,0.0,***,0.4231,Large,,
-Exp2,Policy,6-min Coverage (NYC),16635.466,0.0,***,0.2831,Large,,
-Exp2,K,6-min Coverage (NYC),6898.243,0.0,***,0.2935,Large,,
-Exp2,Policy × K,6-min Coverage (NYC),4924.251,0.0,***,0.419,Large,,
-Exp2,Policy,8-min Coverage (NFPA),19101.404,0.0,***,0.2677,Large,,
-Exp2,K,8-min Coverage (NFPA),7285.427,0.0,***,0.2552,Large,,
-Exp2,Policy × K,8-min Coverage (NFPA),6757.352,0.0,***,0.4735,Large,,
-Exp2,Policy,Mean Utilization,302.68,0.0,***,0.0143,Small,,
-Exp2,K,Mean Utilization,7983.949,0.0,***,0.941,Large,,
-Exp2,Policy × K,Mean Utilization,137.462,0.0,***,0.0324,Small,,
-Exp3,Policy,Mean RT (min),6736.837,0.0,***,0.8255,Large,,
-Exp3,demand_multiplier,Mean RT (min),451.441,0.0,***,0.1383,Medium,,
-Exp3,Policy × demand_multiplier,Mean RT (min),6.907,0.0,***,0.0042,Negligible,,
-Exp3,Policy,"P90 Response Time (90th percentile, min)",2380.947,0.0,***,0.699,Large,,
-Exp3,demand_multiplier,"P90 Response Time (90th percentile, min)",289.68,0.0,***,0.2126,Large,,
-Exp3,Policy × demand_multiplier,"P90 Response Time (90th percentile, min)",8.044,0.0,***,0.0118,Small,,
-Exp3,Policy,6-min Coverage (NYC),1531.677,0.0,***,0.6777,Large,,
-Exp3,demand_multiplier,6-min Coverage (NYC),186.266,0.0,***,0.206,Large,,
-Exp3,Policy × demand_multiplier,6-min Coverage (NYC),0.373,0.957968,ns,0.0008,Negligible,,
-Exp3,Policy,8-min Coverage (NFPA),8.541,0.000224,***,0.0147,Small,,
-Exp3,demand_multiplier,8-min Coverage (NFPA),122.735,0.0,***,0.5269,Large,,
-Exp3,Policy × demand_multiplier,8-min Coverage (NFPA),1.192,0.293663,ns,0.0102,Small,,
-Exp3,Policy,Mean Utilization,13.934,1e-06,***,0.0005,Negligible,,
-Exp3,demand_multiplier,Mean Utilization,11885.898,0.0,***,0.9908,Large,,
-Exp3,Policy × demand_multiplier,Mean Utilization,0.35,0.966467,ns,0.0001,Negligible,,
-Exp4,Policy,Mean RT (min),2979.858,0.0,***,0.9448,Large,,
-Exp4,service_time_mean,Mean RT (min),42.13,0.0,***,0.0134,Small,,
-Exp4,Policy × service_time_mean,Mean RT (min),0.68,0.606625,ns,0.0004,Negligible,,
-Exp4,Policy,"P90 Response Time (90th percentile, min)",1139.379,0.0,***,0.8826,Large,,
-Exp4,service_time_mean,"P90 Response Time (90th percentile, min)",20.409,0.0,***,0.0158,Small,,
-Exp4,Policy × service_time_mean,"P90 Response Time (90th percentile, min)",0.288,0.885514,ns,0.0004,Negligible,,
-Exp4,Policy,6-min Coverage (NYC),831.005,0.0,***,0.8494,Large,,
-Exp4,service_time_mean,6-min Coverage (NYC),16.84,0.0,***,0.0172,Small,,
-Exp4,Policy × service_time_mean,6-min Coverage (NYC),0.012,0.999702,ns,0.0,Negligible,,
-Exp4,Policy,8-min Coverage (NFPA),0.902,0.407042,ns,0.0063,Negligible,,
-Exp4,service_time_mean,8-min Coverage (NFPA),11.422,1.8e-05,***,0.0798,Medium,,
-Exp4,Policy × service_time_mean,8-min Coverage (NFPA),0.153,0.961463,ns,0.0021,Negligible,,
-Exp4,Policy,Mean Utilization,6.477,0.001797,**,0.0032,Negligible,,
-Exp4,service_time_mean,Mean Utilization,1887.261,0.0,***,0.9323,Large,,
-Exp4,Policy × service_time_mean,Mean Utilization,0.008,0.999884,ns,0.0,Negligible,,
+K,F_statistic,p_value,significant_005,significant_001
+10,269.67953340562366,5.096487501476109e-38,True,True
+15,1856.0323977001915,4.4993627140421803e-72,True,True
+20,1019.2518608524246,4.2120755769759e-61,True,True
+25,570.8685059171968,9.497812442466993e-51,True,True
+30,1009.5728335968281,6.271073240095871e-61,True,True
+35,312.09129520066807,2.0319308045767543e-40,True,True
+40,103.95063708689844,8.67267870126733e-24,True,True
+45,71.23761122144627,4.754230238932199e-19,True,True
+48,64.63192543401,6.270273007742914e-18,True,True

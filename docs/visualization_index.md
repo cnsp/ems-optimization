@@ -21,7 +21,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | Simulation Experiments | 4 | `results/figures/` | `07_production_results.ipynb` |
 | Verification & Validation | 4 | `results/figures/` | `06_simulation_debug.py` |
 | Extended Fleet Analysis | 7 | `results/figures/` | `scripts/run_production_v2.py` |
-| Extended Fleet Analysis (V2) | 12 | `results/baseline/production_v2/figures/` | `scripts/run_production_v2.py` |
+| Extended Fleet Analysis (V2) | 12 | `results/baseline/figures/` | `scripts/run_production_v2.py` |
 | CBD Analysis | 5 | `results/figures/` | `09_cbd_analysis.ipynb` |
 | CBD Focused Comparison | 3 | `results/analysis/cbd_focused_comparison/` | `run_cbd_focused_optimization.py` |
 | Queue Analysis | 5 | `results/figures/` | `analyze_queue_metrics.py` |
@@ -116,22 +116,22 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | `policy_comparison_panel_K20_cap2.png` | `results/figures/` | Staging map panel (P0/P1/P2) | Production pipeline |
 | `allocation_comparison_K20.png` | `results/figures/` | Allocation comparison for K=20 | Production pipeline |
 
-### 6b  Extended fleet detail (`results/baseline/production_v2/figures/`)
+### 6b  Extended fleet detail (`results/baseline/figures/`)
 
 | Figure | Path | Description | Script / Notebook |
 |--------|------|-------------|-------------------|
-| `allocation_map_K20.png` | `results/baseline/production_v2/figures/` | Allocation map at K=20 | `scripts/run_production_v2.py` |
-| `allocation_map_K30.png` | `results/baseline/production_v2/figures/` | Allocation map at K=30 | `scripts/run_production_v2.py` |
-| `allocation_map_K40.png` | `results/baseline/production_v2/figures/` | Allocation map at K=40 | `scripts/run_production_v2.py` |
-| `coverage_vs_K.png` | `results/baseline/production_v2/figures/` | Coverage vs fleet size | `scripts/run_production_v2.py` |
-| `effect_sizes.png` | `results/baseline/production_v2/figures/` | Statistical effect sizes | `scripts/run_production_v2.py` |
-| `mean_rt_vs_K.png` | `results/baseline/production_v2/figures/` | Mean response time vs fleet size | `scripts/run_production_v2.py` |
-| `p95_rt_vs_K.png` | `results/baseline/production_v2/figures/` | P95 response time vs fleet size | `scripts/run_production_v2.py` |
-| `queue_metrics_vs_K.png` | `results/baseline/production_v2/figures/` | Queue metrics vs fleet size | `scripts/run_production_v2.py` |
-| `rt_distribution_K20.png` | `results/baseline/production_v2/figures/` | RT distribution at K=20 | `scripts/run_production_v2.py` |
-| `rt_distribution_K30.png` | `results/baseline/production_v2/figures/` | RT distribution at K=30 | `scripts/run_production_v2.py` |
-| `rt_distribution_K40.png` | `results/baseline/production_v2/figures/` | RT distribution at K=40 | `scripts/run_production_v2.py` |
-| `utilization_vs_K.png` | `results/baseline/production_v2/figures/` | Unit utilization vs fleet size | `scripts/run_production_v2.py` |
+| `allocation_map_K20.png` | `results/baseline/figures/` | Allocation map at K=20 | `scripts/run_production_v2.py` |
+| `allocation_map_K30.png` | `results/baseline/figures/` | Allocation map at K=30 | `scripts/run_production_v2.py` |
+| `allocation_map_K40.png` | `results/baseline/figures/` | Allocation map at K=40 | `scripts/run_production_v2.py` |
+| `coverage_vs_K.png` | `results/baseline/figures/` | Coverage vs fleet size | `scripts/run_production_v2.py` |
+| `effect_sizes.png` | `results/baseline/figures/` | Statistical effect sizes | `scripts/run_production_v2.py` |
+| `mean_rt_vs_K.png` | `results/baseline/figures/` | Mean response time vs fleet size | `scripts/run_production_v2.py` |
+| `p95_rt_vs_K.png` | `results/baseline/figures/` | P95 response time vs fleet size | `scripts/run_production_v2.py` |
+| `queue_metrics_vs_K.png` | `results/baseline/figures/` | Queue metrics vs fleet size | `scripts/run_production_v2.py` |
+| `rt_distribution_K20.png` | `results/baseline/figures/` | RT distribution at K=20 | `scripts/run_production_v2.py` |
+| `rt_distribution_K30.png` | `results/baseline/figures/` | RT distribution at K=30 | `scripts/run_production_v2.py` |
+| `rt_distribution_K40.png` | `results/baseline/figures/` | RT distribution at K=40 | `scripts/run_production_v2.py` |
+| `utilization_vs_K.png` | `results/baseline/figures/` | Unit utilization vs fleet size | `scripts/run_production_v2.py` |
 
 ## 7  CBD Analysis
 

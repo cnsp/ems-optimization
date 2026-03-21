@@ -588,7 +588,7 @@ Conduct full capacity sensitivity analysis (cap 1–5), implement spatially-stra
 | File | Description |
 |------|-------------|
 | `results/analysis/capacity_comparison/` | 60+ files: allocations, figures, tables for cap 1–5 sensitivity |
-| `results/baseline/production_v2/` | Complete analysis results: allocations, simulation data, figures, tables |
+| `results/baseline/` | Complete analysis results: allocations, simulation data, figures, tables |
 | `docs/firehouse_capacity_analysis.md` | Firehouse capacity methodology and initial analysis |
 | `docs/capacity_sensitivity_analysis.md` | Full-spectrum capacity sensitivity report |
 | `src/ems_readiness/optimization/policies.py` | Updated with `spatially_stratified_allocation()` |

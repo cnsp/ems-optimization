@@ -772,13 +772,13 @@ cells.append(md("""---
 Full-scale simulation experiments across 3 policies (P0, P1, P2) and 9 fleet sizes
 (K=10 to 48), with 30 replications each. This produces 810 simulation runs.
 
-**Runtime note:** If pre-computed results exist in `results/baseline/production_v2/simulation/`,
+**Runtime note:** If pre-computed results exist in `results/baseline/simulation/`,
 they will be loaded directly. Otherwise, the full simulation runs (~10-20 minutes)."""))
 
 cells.append(code("""t0 = time.time()
 
 # Check for pre-computed production results
-prod_results_path = RESULTS_DIR / 'production_v2' / 'simulation' / 'all_results_raw.csv'
+prod_results_path = RESULTS_DIR / 'simulation' / 'all_results_raw.csv'
 
 if prod_results_path.exists():
     print('Loading pre-computed production results...')
@@ -831,7 +831,7 @@ else:
     
     prod_df = pd.DataFrame(prod_rows)
     # Save for future use
-    out_dir = RESULTS_DIR / 'production_v2' / 'simulation'
+    out_dir = RESULTS_DIR / 'simulation'
     out_dir.mkdir(parents=True, exist_ok=True)
     prod_df.to_csv(out_dir / 'all_results_raw.csv', index=False)
 
