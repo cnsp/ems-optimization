@@ -38,6 +38,40 @@ The analysis combines:
 5. **Capacity Sensitivity Analysis** — Full spectrum (cap 1–5) across 9 fleet sizes
 6. **Alternative Analyses** — Manhattan distance metric comparison + CBD-focused optimization evaluation
 
+## Start Here
+
+If you're new to the project:
+
+1. Read the [Technical Report](docs/core/technical_report.md)
+2. Run the baseline pipeline:
+   ```bash
+   python scripts/run_production_v2.py
+   ```
+3. View canonical outputs in: `results/baseline/`
+
+For supporting analyses, see:
+- `results/analysis/`
+- `docs/analysis/`
+
+## Repository Architecture
+
+The repository is organized to eliminate ambiguity:
+
+**Results:**
+- **Baseline** → canonical results (`results/baseline/`)
+- **Analysis** → robustness & sensitivity (`results/analysis/`)
+- **Archive** → historical artifacts (`results/archive/`)
+
+**Scripts:**
+- **Scripts (root)** → production entry points
+- **scripts/analysis/** → supporting analyses
+- **scripts/archive/** → legacy utilities
+
+**Documentation:**
+- **docs/core/** → primary documentation
+- **docs/analysis/** → supporting analyses
+- **docs/archive/** → historical records
+
 ## Repository Structure
 
 ```
@@ -75,14 +109,26 @@ ems-optimization/
 │     ├── EMS_Optimization_Complete_Pipeline.ipynb
 │     └── README.md
 ├── results/
-│ ├── figures/ # 66+ visualization PNGs
-│ ├── tables/ # Statistical tables (CSV + LaTeX)
-│ ├── simulation/ # Simulation output data
-│ ├── optimization/ # Optimization results
-│ ├── distance_comparison/ # Haversine vs Manhattan metric results
-│ ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
-│ ├── capacity_comparison/ # Capacity sensitivity (cap 1–5) results
-│ └── maps/ # Allocation map visualizations
+│ ├── baseline/ # Canonical production results (cap=2)
+│ │ ├── allocations/ # Policy allocation CSVs
+│ │ ├── figures/ # Publication-ready figures
+│ │ ├── simulation/ # Verification & validation output
+│ │ └── tables/ # Statistical summary tables
+│ ├── analysis/ # Supporting robustness & sensitivity
+│ │ ├── capacity_comparison/ # Capacity sensitivity (cap 1–5) results
+│ │ ├── cbd_focused_comparison/ # CBD-focused vs Manhattan-wide results
+│ │ ├── distance_comparison/ # Haversine vs Manhattan metric results
+│ │ ├── heatmaps/ # Allocation heatmaps (K × cap × policy)
+│ │ ├── maps/ # Allocation map visualizations
+│ │ ├── simulation/ # CBD & production DES output
+│ │ └── tables/ # Analysis summary tables
+│ ├── archive/ # Legacy/historical artifacts (cap=5 era)
+│ │ ├── figures/ # Superseded figures
+│ │ ├── optimization/ # Phase 3 historical optimization results
+│ │ └── tables/ # Superseded tables
+│ ├── figures/ # Top-level visualization PNGs
+│ ├── tables/ # Top-level statistical tables (CSV + LaTeX)
+│ └── simulation/ # Top-level simulation output data
 ├── scripts/ # Automation & analysis scripts (23+)
 ├── src/ems_readiness/ # Core Python package (v0.6.0)
 │ ├── demand/ # NHPP arrival generator
@@ -310,17 +356,21 @@ pytest tests/test_reproducibility.py -v
 
 The `results/` folder contains output from multiple project phases. Each subfolder has its own `README.md` explaining what's there and whether it's current or legacy.
 
-| Folder | Status | What's Inside |
-|--------|--------|---------------|
-| `results/simulation/` | ✅ Current | Verification tests, validation pilots, production experiments |
-| `results/tables/` | ✅ Mostly Current | Publication tables + experiment pivots ([see README](results/tables/README.md)) |
-| `results/figures/` | ✅ Mostly Current | Publication figures (`pub_fig*`) + technical plots |
-| `results/capacity_comparison/` | ✅ Current | Full capacity sweep (cap 1–5) |
-| `results/heatmaps/` | ✅ Current | Allocation heatmaps across K × cap × policy |
-| `results/cbd_focused_comparison/` | ✅ Current | CBD-focused optimization experiment |
-| `results/distance_comparison/` | ✅ Current | Manhattan vs Haversine comparison |
-| `results/maps/` | ✅ Current | Allocation maps at K=40 |
-| `results/optimization/` | ⚠️ Legacy (cap=5) | Phase 3 historical — see [README](results/optimization/README.md) |
+| Folder | Label | Status | What's Inside |
+|--------|-------|--------|---------------|
+| `results/baseline/` | Canonical | ✅ Current | Production allocations, figures, simulation verification/validation, tables |
+| `results/baseline/simulation/` | Canonical | ✅ Current | Verification tests, validation pilots |
+| `results/analysis/` | Supporting | ✅ Current | All robustness & sensitivity analyses |
+| `results/analysis/capacity_comparison/` | Supporting | ✅ Current | Full capacity sweep (cap 1–5) |
+| `results/analysis/cbd_focused_comparison/` | Supporting | ✅ Current | CBD-focused optimization experiment |
+| `results/analysis/distance_comparison/` | Supporting | ✅ Current | Manhattan vs Haversine comparison |
+| `results/analysis/heatmaps/` | Supporting | ✅ Current | Allocation heatmaps across K × cap × policy |
+| `results/analysis/maps/` | Supporting | ✅ Current | Allocation maps at K=40 |
+| `results/archive/` | Legacy | ⚠️ Historical | Phase 3 historical artifacts (cap=5 era) |
+| `results/archive/optimization/` | Legacy | ⚠️ Historical | Superseded optimization results |
+| `results/figures/` | — | ✅ Mostly Current | Publication figures (`pub_fig*`) + technical plots |
+| `results/tables/` | — | ✅ Mostly Current | Publication tables + experiment pivots ([see README](results/tables/README.md)) |
+| `results/simulation/` | — | ✅ Current | Top-level simulation output data |
 
 **Quick reference**: [`results/WHICH_FILES_TO_USE.md`](results/WHICH_FILES_TO_USE.md)  
 **Full guide**: [`docs/core/data_usage_guide.md`](docs/core/data_usage_guide.md)
