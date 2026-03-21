@@ -1185,7 +1185,7 @@ All stochastic components use **deterministic seeding** for exact reproducibilit
 | Component | Seed / Strategy | Configuration |
 |-----------|----------------|---------------|
 | **Base seed** | `42` | `configs/demand.yaml → simulation.seed`, `configs/simulation.yaml → seed_base` |
-| **Production experiments** | `SEED_BASE = 42`; replication *i* uses seed `42 + i` | `scripts/run_production_experiments.py` (line 52) |
+| **Production experiments** | `SEED_BASE = 42`; replication *i* uses seed `42 + i` | `scripts/run_production_v2.py` (line 52) |
 | **CBD experiments** | `SEED_BASE = 42`; replication *i* uses seed `42 + i` | `scripts/run_cbd_experiment.py` (line 53) |
 | **Verification tests** | Fixed seed `42` for all 4 tests | `scripts/run_verification.py` |
 | **Validation pilots** | Pilot 1–2: seed base `100`; Pilot 3: seed base `200`; Pilot 4: `300 + rep` | `scripts/run_validation_pilots.py` |
@@ -1230,7 +1230,7 @@ python scripts/run_verification.py
 python scripts/run_validation_pilots.py
 
 # 7. Execute production experiments (1,440 runs)
-python scripts/run_production_experiments.py
+python scripts/run_production_v2.py
 
 # 8. Analyze production results
 python scripts/analyze_production_results.py

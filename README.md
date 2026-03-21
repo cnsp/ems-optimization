@@ -206,7 +206,7 @@ python scripts/run_verification.py
 python scripts/run_validation_pilots.py
 
 # 5. Run production experiments (1,440 simulations — takes ~2-4 hours)
-python scripts/run_production_experiments.py
+python scripts/run_production_v2.py
 
 # 6. Analyze results and generate figures
 python scripts/analyze_production_results.py

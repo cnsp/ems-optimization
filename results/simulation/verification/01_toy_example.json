@@ -1,0 +1,83 @@
+{
+  "scenario": "toy_example",
+  "K": 2,
+  "firehouses": [
+    "Engine 4/Ladder 15",
+    "Engine 6"
+  ],
+  "total_incidents": 5,
+  "incidents_queued": 0,
+  "event_trace": [
+    {
+      "incident_id": 1,
+      "arrival_time_h": 0.5,
+      "precinct": 1,
+      "assigned_unit": "Engine 6_unit_0",
+      "assigned_firehouse": "Engine 6",
+      "dispatch_time_h": 0.525,
+      "service_start_h": 0.5385,
+      "completion_h": 0.7976,
+      "travel_time_min": 0.81,
+      "service_time_min": 15.55,
+      "response_time_min": 2.31,
+      "queued": false
+    },
+    {
+      "incident_id": 2,
+      "arrival_time_h": 1.0,
+      "precinct": 5,
+      "assigned_unit": "Engine 6_unit_0",
+      "assigned_firehouse": "Engine 6",
+      "dispatch_time_h": 1.025,
+      "service_start_h": 1.0489,
+      "completion_h": 1.5654,
+      "travel_time_min": 1.43,
+      "service_time_min": 30.99,
+      "response_time_min": 2.93,
+      "queued": false
+    },
+    {
+      "incident_id": 3,
+      "arrival_time_h": 1.5,
+      "precinct": 1,
+      "assigned_unit": "Engine 4/Ladder 15_unit_0",
+      "assigned_firehouse": "Engine 4/Ladder 15",
+      "dispatch_time_h": 1.525,
+      "service_start_h": 1.5434,
+      "completion_h": 2.0992,
+      "travel_time_min": 1.11,
+      "service_time_min": 33.35,
+      "response_time_min": 2.61,
+      "queued": false
+    },
+    {
+      "incident_id": 4,
+      "arrival_time_h": 2.0,
+      "precinct": 5,
+      "assigned_unit": "Engine 6_unit_0",
+      "assigned_firehouse": "Engine 6",
+      "dispatch_time_h": 2.025,
+      "service_start_h": 2.0489,
+      "completion_h": 2.2313,
+      "travel_time_min": 1.43,
+      "service_time_min": 10.95,
+      "response_time_min": 2.93,
+      "queued": false
+    },
+    {
+      "incident_id": 5,
+      "arrival_time_h": 2.5,
+      "precinct": 1,
+      "assigned_unit": "Engine 6_unit_0",
+      "assigned_firehouse": "Engine 6",
+      "dispatch_time_h": 2.525,
+      "service_start_h": 2.5385,
+      "completion_h": 2.7727,
+      "travel_time_min": 0.81,
+      "service_time_min": 14.06,
+      "response_time_min": 2.31,
+      "queued": false
+    }
+  ],
+  "event_ordering_valid": true
+}
