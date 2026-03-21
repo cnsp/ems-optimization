@@ -94,8 +94,8 @@ The Manhattan-wide P2 allocation is strongly preferred. It achieves near-identic
 - `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` — Manhattan distance matrix
 
 ### Results
-- `results/distance_comparison/` — Distance comparison figures and tables
-- `results/cbd_focused_comparison/` — CBD-focused comparison figures and tables
+- `results/analysis/distance_comparison/` — Distance comparison figures and tables
+- `results/analysis/cbd_focused_comparison/` — CBD-focused comparison figures and tables
 
 ### Documentation
 - `docs/distance_metric_comparison.md` — Distance metric comparison report

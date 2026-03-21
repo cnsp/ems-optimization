@@ -88,13 +88,13 @@ TIER 3 — Distance matrices (depends on Tier 2)
   └── distance_matrix_firehouse_precinct_manhattan.csv ← generate_manhattan_distance_matrix.py
 
 TIER 4 — Optimization results (depends on Tier 3)
-  └── results/optimization/*
+  └── results/archive/optimization/*
 
 TIER 5 — Simulation results (depends on Tier 3 + Tier 4)
   └── results/simulation/*
 
 TIER 6 — Statistical analysis & figures (depends on Tier 5)
-  └── results/tables/*, results/figures/*, results/production_v2/*
+  └── results/tables/*, results/figures/*, results/baseline/*
 ```
 
 ---
@@ -106,11 +106,11 @@ TIER 6 — Statistical analysis & figures (depends on Tier 5)
 | **02_eda_spatiotemporal** | `processed/crashes_manhattan.parquet`, `processed/firehouses_clean.csv`, `processed/precincts_manhattan.geojson`, `raw/manhattan_boundary.geojson`, `raw/cbd_boundary.geojson` | `results/figures/fig_*.png` |
 | **03_input_modeling** | `processed/demand_lambda_hourly.csv`, `processed/demand_lambda_dow.csv`, `processed/demand_lambda_precinct.csv`, `processed/demand_model_summary.json` | (visualization only) |
 | **04_service_travel_proxy** | `processed/distance_matrix_firehouse_precinct.csv` | `results/figures/*.png` |
-| **05_optimization** | `results/optimization/policy_comparison.csv`, `results/optimization/sensitivity_analysis.csv`, `results/optimization/findings_summary.json`, `results/optimization/allocations_K40.csv` | (visualization only) |
+| **05_optimization** | `results/archive/optimization/policy_comparison.csv`, `results/archive/optimization/sensitivity_analysis.csv`, `results/archive/optimization/findings_summary.json`, `results/archive/optimization/allocations_K40.csv` | (visualization only) |
 | **06_simulation_debug** | `results/simulation/verification/*.json`, `results/simulation/validation_pilot/*.json` | `results/figures/*.png` |
 | **07_production_results** | `results/simulation/production/exp1-4*.csv` | `results/figures/*.png`, `results/tables/exp*_pivot_rt.csv` |
 | **08_statistical_analysis** | `results/simulation/production/exp*.csv`, `results/tables/table*.csv` | (visualization only) |
-| **09_cbd_analysis** | `results/simulation/cbd_experiment/*.csv` | `results/figures/*.png` |
+| **09_cbd_analysis** | `results/analysis/simulation/cbd_experiment/*.csv` | `results/figures/*.png` |
 | **Colab Pipeline** | All `processed/*.csv`, `processed/*.geojson`, `configs/*.yaml` | `results/*` (full pipeline) |
 
 ---

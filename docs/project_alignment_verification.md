@@ -23,7 +23,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | 4 | Data Strategy & Engineering Plan | Fully Covered | 100% | `source_manifest.md`, `data/processed/`, `scripts/data_audit.py`, notebook `02_eda_spatiotemporal` |
 | 5 | GIS & Spatial Analysis Plan | Fully Covered | 100% | Distance matrix, firehouse/precinct mapping, heatmaps, allocation maps, CBD spatial analysis |
 | 6 | Input Modeling & Demand Estimation | Fully Covered | 100% | `demand_model_spec.md` (incl. §8 Seasonal Patterns), NHPP model, seasonal analysis |
-| 7 | Allocation Policy Design & Scenario Library | Fully Covered | 100% | 3 policies (P0/P1/P2), `optimization/models.py`, `optimization/policies.py`, `results/optimization/allocations_K*.csv` |
+| 7 | Allocation Policy Design & Scenario Library | Fully Covered | 100% | 3 policies (P0/P1/P2), `optimization/models.py`, `optimization/policies.py`, `results/archive/optimization/allocations_K*.csv` |
 | 8 | Conceptual Simulation Model | Fully Covered | 100% | `conceptual_model.md` (702 lines): entities, resources, queues, events, state vars, flowchart, assumptions |
 | 9 | Simulation Implementation Plan | Fully Covered | 100% | `simulation/` package: `engine.py`, `entities.py`, `resources.py`, `dispatcher.py`, `metrics.py`, `runner.py` |
 | 10 | Verification & Validation Plan | Fully Covered | 100% | 39 unit tests, `verification_log.md`, `scripts/run_verification.py`, `scripts/run_validation_pilots.py`, toy examples |
@@ -102,7 +102,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Included: stochastic arrivals, firehouse staging, nearest-available dispatch, multi-server queueing, replication-based analysis
 - Excluded: dynamic relocation, network routing, preemption, hospital turnaround (documented in `technical_report.md` §2.4)
 - `assumptions_log.md` with 12+ categorized assumptions (Data, Model, Geographic, Operational)
-- CBD robustness comparison: Dedicated CBD DES experiment with 330 simulation runs across 11 scenarios. CBD precincts identified via spatial intersection (10 precincts ≥30% overlap with MTA Congestion Relief Zone). Results in `docs/cbd_robustness_analysis.md`, `results/simulation/cbd_experiment/`, and `technical_report.md` §5.7.
+- CBD robustness comparison: Dedicated CBD DES experiment with 330 simulation runs across 11 scenarios. CBD precincts identified via spatial intersection (10 precincts ≥30% overlap with MTA Congestion Relief Zone). Results in `docs/cbd_robustness_analysis.md`, `results/analysis/simulation/cbd_experiment/`, and `technical_report.md` §5.7.
 
 **Status: Fully Covered (100%)**
 
@@ -147,7 +147,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Hotspot visualizations: `fig_crash_heatmap.png`, `fig_precinct_density.png`, `fig_precinct_demand.png`
 - Firehouse mapping: `fig_firehouses_map.png`, `firehouses_manhattan.csv` linked to geography
 - Distance matrix: `distance_matrix_firehouse_precinct.csv` + `distance_matrix_heatmap.png`
-- Allocation maps: `results/maps/map_allocation_P0_K40.png`, `P1_K40.png`, `P2_K40.png`
+- Allocation maps: `results/analysis/maps/map_allocation_P0_K40.png`, `P1_K40.png`, `P2_K40.png`
 - Travel time proxy validated in notebook `04_service_travel_proxy.ipynb`
 
 **Status: Fully Covered (100%)**
@@ -194,7 +194,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
  - Plus P2-alt (p-median) and P2-cov (maximal coverage) alternatives
 - Inputs: demand weights from `demand_lambda_precinct.csv`, travel times from distance matrix at 20mph
 - Constraints: total units K ∈ {15,20,25,30,35,40}, capacity ≤ 2 per firehouse
-- Scenario library: `results/optimization/allocations_K20.csv` through `K48.csv`
+- Scenario library: `results/archive/optimization/allocations_K20.csv` through `K48.csv`
 - Feasibility: `EMSAllocator` validates constraints; `optimization_formulation.md` documents math
 - `optimization_results.md` summarizes all results
 
@@ -353,7 +353,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Recommendation: Adopt P2 (demand-weighted optimized) — stated in `technical_report.md` §7
 - Comparison: P2 reduces mean RT by 18.9% vs P0, all differences statistically significant (p < 0.001)
 - Full technical report (`technical_report.md`, 527 lines): Exec Summary, Intro, Lit Review, Methodology, Results, Discussion, Conclusions
-- 35+ figures in `results/figures/`, 20+ tables in `results/tables/`, 3 maps in `results/maps/`
+- 35+ figures in `results/figures/`, 20+ tables in `results/tables/`, 3 maps in `results/analysis/maps/`
 - Reproducible package:
  - `Makefile` with `setup`, `data`, `analysis`, `test`, `clean` targets
  - `requirements.txt` with all dependencies

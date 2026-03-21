@@ -104,8 +104,8 @@ Increased CBD service times (35 min vs 25 min) have minimal impact on response t
 
 | File | Description |
 |------|-------------|
-| `results/simulation/cbd_experiment/cbd_experiment_results.csv` | Full experiment results (330 runs) |
-| `results/simulation/cbd_experiment/cbd_experiment_summary.csv` | Aggregated summary |
+| `results/analysis/simulation/cbd_experiment/cbd_experiment_results.csv` | Full experiment results (330 runs) |
+| `results/analysis/simulation/cbd_experiment/cbd_experiment_summary.csv` | Aggregated summary |
 | `results/figures/cbd_response_comparison.png` | CBD vs Non-CBD comparison |
 | `results/figures/cbd_scenario_comparison.png` | Scenario analysis |
 | `results/figures/cbd_heatmap.png` | Performance heatmap |

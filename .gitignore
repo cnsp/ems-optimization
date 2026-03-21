@@ -17,8 +17,12 @@ sdist/
 var/
 wheels/
 *.egg-info/
+src/ems_readiness.egg-info/
 .installed.cfg
 *.egg
+
+# Platform artifacts
+.abacus.donotdelete
 
 # Virtual environments
 venv/

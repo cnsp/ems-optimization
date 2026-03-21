@@ -1,33 +1,9 @@
-# figures/ — Mostly Current
+# figures/ — Reorganized
 
-All figures were regenerated or verified during the Phase 10 audit (2026-03-20).
+Figures have been redistributed into the new results structure:
 
-## ✅ Publication Figures (use these for papers/reports)
-- `pub_fig1_policy_comparison.png`
-- `pub_fig2_fleet_sensitivity.png`
-- `pub_fig3_demand_robustness.png`
-- `pub_fig4_service_sensitivity.png`
-- `pub_fig5_performance_heatmap.png`
+- **`baseline/figures/`** — Publication figures (`pub_fig*`), technical report figures (`fig_*`), experiment plots (`exp*`), V&V figures, and other canonical results figures.
+- **`analysis/figures/`** — CBD analysis, capacity sensitivity, queue analysis, spatial P0, seasonal patterns, distance metrics, and other scholarly analysis figures.
+- **`archive/figures/`** — Legacy figures (superseded versions, old optimization plots with cap=5).
 
-## ✅ Technical Report Figures
-- `fig_*` prefix — crash heatmap, demand patterns, firehouses, policy comparison, etc.
-- `exp1_*` through `exp4_*` — experiment result plots
-- `validation_*` / `verification_*` — V&V output
-
-## ✅ Current Analysis Figures
-- `cbd_*` — CBD analysis
-- `queue_*` — Queue analysis
-- `seasonal_*` — Seasonal patterns
-- `p0_spatial_*` — Spatial P0 analysis
-- `fleet_sensitivity_v2_dual.png` — Fleet sensitivity (v2, cap=2)
-- `policy_comparison_panel_K20_cap2.png` — Panel at K=20, cap=2
-- `production_fleet_sensitivity.png` — Production fleet sensitivity
-- `project_summary_dashboard.png` — Overview dashboard
-
-## ⚠️ Known Issues
-- `capacity_sensitivity_heatmap.png` — Shows "Data format issue" placeholder. Use `capacity_sensitivity_heatmap_notebook.png` instead.
-
-## ⚠️ Legacy
-- `fleet_sensitivity_dual.png` — Older version (superseded by `fleet_sensitivity_v2_dual.png`)
-- `fleet_sensitivity_curve.png` — Older single-axis version
-- `optimization/*.png` — Phase 3 optimization visualizations (cap=5)
+This directory retains only `.gitkeep` and this README.

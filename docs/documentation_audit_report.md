@@ -36,7 +36,7 @@ The most pervasive issue. When P0 was redefined from index-based uniform to spat
 | `technical_report.md` §7.2 | Finding 1 cited F=12,010 | Corrected to F=1,019 |
 | `technical_report.md` §7.5 | Impact table: d=28.9 | Corrected to d=10.3 |
 | `research_questions_assessment.md` RQ3 | −68.2% RT, d=28.9, F=12,010 | Corrected to −18.9%, d=10.3, F=1,019 |
-| `research_questions_assessment.md` RQ5 | P0 8-min coverage: 57.5%–99.5% (old uniform) | Regenerated from production_v2: 99.1%–99.8% |
+| `research_questions_assessment.md` RQ5 | P0 8-min coverage: 57.5%–99.5% (old uniform) | Regenerated from baseline: 99.1%–99.8% |
 | `project_alignment_verification.md` | "P2 reduces mean RT by 68.2% vs P0" | Corrected to 18.9% |
 
 ### Category 2: P0-Spatial → P0 Naming
@@ -91,9 +91,9 @@ The following documents were reviewed and found to be accurate in context:
 ## Verification
 
 All corrected values were cross-referenced against:
-- `results/production_v2/tables/descriptive_statistics.csv` (primary source of truth)
-- `results/production_v2/tables/anova_results.csv`
-- `results/production_v2/tables/effect_sizes.csv`
+- `results/baseline/tables/descriptive_statistics.csv` (primary source of truth)
+- `results/baseline/tables/anova_results.csv`
+- `results/baseline/tables/effect_sizes.csv`
 - `configs/optimization.yaml` (firehouse_capacity: 2)
 
 ---

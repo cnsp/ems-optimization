@@ -66,9 +66,9 @@ decisions were made and provides an audit trail:
 
 | File | Contains old data? | Status |
 |------|-------------------|--------|
-| `results/production_v2/simulation/all_results_raw.csv` | Yes — contains K = 10 rows where P0 RT > 4 min | **Expected** — small fleet sizes legitimately have higher RT |
-| `results/tables/posthoc_comparisons.csv` | References to old statistical tests | Legacy from v1 production run; superseded by `results/production_v2/tables/` |
-| `results/optimization/policy_comparison.csv` | No old data | ✓ Clean — all P0 labels are "Spatially-Stratified Uniform" |
+| `results/baseline/simulation/all_results_raw.csv` | Yes — contains K = 10 rows where P0 RT > 4 min | **Expected** — small fleet sizes legitimately have higher RT |
+| `results/tables/posthoc_comparisons.csv` | References to old statistical tests | Legacy from v1 production run; superseded by `results/baseline/tables/` |
+| `results/archive/optimization/policy_comparison.csv` | No old data | ✓ Clean — all P0 labels are "Spatially-Stratified Uniform" |
 
 ---
 

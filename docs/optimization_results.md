@@ -157,7 +157,7 @@ Both achieve **identical response times**, but differ in allocation strategy:
 - **Non-CBD (44.3% of demand)**: P2 allocates 30% of units
 - **P0 allocates evenly**: 83% of units in CBD (48 firehouses × 1 unit)
 
-**Maps available**: `results/maps/map_allocation_P*_K40.png`
+**Maps available**: `results/analysis/maps/map_allocation_P*_K40.png`
 
 ---
 

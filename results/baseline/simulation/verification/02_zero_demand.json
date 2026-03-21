@@ -1,0 +1,9 @@
+{
+  "scenario": "zero_demand",
+  "K": 10,
+  "horizon_hours": 24,
+  "total_incidents": 0,
+  "all_units_idle": true,
+  "zero_utilization": true,
+  "no_queue": true
+}

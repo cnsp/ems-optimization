@@ -57,7 +57,7 @@ POLICY_LABELS = {
 }
 ```
 
-But the simulation CSV (`results/capacity_comparison/simulation_results.csv`) stores the policy as **`"P0"`**, not `"P0_spatial"`. This caused:
+But the simulation CSV (`results/analysis/capacity_comparison/simulation_results.csv`) stores the policy as **`"P0"`**, not `"P0_spatial"`. This caused:
 1. P0 rows failed the `map()` → returned `NaN`
 2. `dropna(subset=["Policy"])` silently removed all P0 data
 3. Heatmap rendered with only P1 and P2 (or showed "Data format issue" in earlier versions)
@@ -102,7 +102,7 @@ After the fix, the heatmap correctly shows all three policies:
 
 ## Step 5: Other Referenced Files — Path Mismatch Audit
 
-While investigating, I found **44 images referenced in docs** that exist in subdirectories of `results/` but not in `results/figures/`. These are not broken — the docs reference them with correct relative paths to their actual locations (e.g., `results/production_v2/figures/`, `results/capacity_comparison/`, etc.). No action needed for these.
+While investigating, I found **44 images referenced in docs** that exist in subdirectories of `results/` but not in `results/figures/`. These are not broken — the docs reference them with correct relative paths to their actual locations (e.g., `results/baseline/figures/`, `results/analysis/capacity_comparison/`, etc.). No action needed for these.
 
 **No other scripts** had the `P0_spatial` vs `P0` label mismatch.
 

@@ -100,7 +100,7 @@ Most points for K >= 30 cluster in the upper-left corner (RT ~ 2.5 min, coverage
 | `results/figures/fig_tradeoff_curve.png` | Original plot (has overlapping labels) |
 | `results/figures/response_time_coverage_tradeoff_improved.png` | Improved main plot with data table |
 | `results/figures/response_time_coverage_tradeoff_zoomed.png` | Zoomed view of high-performance region |
-| `results/optimization/policy_comparison.csv` | Source data |
+| `results/archive/optimization/policy_comparison.csv` | Source data |
 
 ---
 

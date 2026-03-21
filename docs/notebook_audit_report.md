@@ -28,7 +28,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 
 | Notebook | Changes | Details |
 |----------|---------|---------|
-| `01_end_to_end_workflow.ipynb` | Cleared outputs | 33 stale output cells cleared (already used correct code with `spatially_stratified_allocation` and `production_v2`) |
+| `01_end_to_end_workflow.ipynb` | Cleared outputs | 33 stale output cells cleared (already used correct code with `spatially_stratified_allocation` and baseline) |
 | `02_eda_spatiotemporal.ipynb` | Cleared outputs | 20 output cells cleared |
 | `03_input_modeling.ipynb` | No changes | Already consistent |
 | `04_service_travel_proxy.ipynb` | Cleared outputs | 11 output cells cleared |

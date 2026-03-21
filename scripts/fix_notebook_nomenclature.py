@@ -7,7 +7,7 @@ Correct nomenclature (DEC-012):
 - P1: Demand-proportional allocation
 - P2: Demand-weighted optimized allocation (MIP)
 
-Data source: production_v2 (spatial P0), NOT old production (index-based P0)
+Data source: baseline (spatial P0), NOT old production (index-based P0)
 """
 
 import json
@@ -150,7 +150,7 @@ def fix_05_optimization():
 
 
 def fix_07_production_results():
-    """Fix 07_production_results.ipynb - update to production_v2 data and clear stale outputs."""
+    """Fix 07_production_results.ipynb - update to baseline data and clear stale outputs."""
     path = NB_DIR / "07_production_results.ipynb"
     nb = load_notebook(path)
     changes = []
@@ -159,7 +159,7 @@ def fix_07_production_results():
         src = ''.join(cell['source'])
         new_src = src
 
-        # Update RESULTS_DIR from production to production_v2
+        # Update RESULTS_DIR from production to baseline
         if 'results" / "simulation" / "production"' in new_src:
             new_src = new_src.replace(
                 'results" / "simulation" / "production"',
@@ -381,7 +381,7 @@ def fix_01_end_to_end():
     nb = load_notebook(path)
     changes = []
 
-    # This notebook already uses spatially_stratified_allocation and production_v2
+    # This notebook already uses spatially_stratified_allocation and baseline
     # Just need to clear stale outputs
     cleared = clear_outputs(nb)
     if cleared:

@@ -127,7 +127,7 @@ verified: "Master index of all 62 documentation files"
 
 ## 📋 REFERENCE — Specialized Analysis (10 docs)
 
-> These are supplementary analysis documents. They are current but specialized — cross-reference with production results in `results/production_v2/`.
+> These are supplementary analysis documents. They are current but specialized — cross-reference with production results in `results/baseline/`.
 
 ### Specialized Analysis
 | Document | Description |

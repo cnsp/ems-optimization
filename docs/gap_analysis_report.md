@@ -28,7 +28,7 @@ The unlabeled image appeared immediately before the Figure 4 introduction paragr
 ### Issue 2: Duplicate Images in Figure 5 Section (§5.11 CBD-Focused vs Manhattan-Wide)
 
 **Problem:** Two images were displayed in the Figure 5 area:
-1. **Unlabeled** `![CBD-Focused Comparison](../results/cbd_focused_comparison/cbd_focused_comparison.png)` — a raw comparison chart from the analysis subdirectory
+1. **Unlabeled** `![CBD-Focused Comparison](../results/analysis/cbd_focused_comparison/cbd_focused_comparison.png)` — a raw comparison chart from the analysis subdirectory
 2. **Labeled** `![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)` — the actual Figure 5
 
 **Fix:** Removed the unlabeled `cbd_focused_comparison.png` reference. Figure 5 now shows only `cbd_equity_tradeoff_summary.png` with its caption.
@@ -38,7 +38,7 @@ The unlabeled image appeared immediately before the Figure 4 introduction paragr
 ### Issue 3: Duplicate Images in Figure 6 Section (§5.12 Capacity Constraints)
 
 **Problem:** Two images were displayed in the Figure 6 area:
-1. **Unlabeled** `![Full Spectrum Capacity Summary](../results/capacity_comparison/full_spectrum_summary.png)` — a multi-panel summary from the capacity comparison subdirectory
+1. **Unlabeled** `![Full Spectrum Capacity Summary](../results/analysis/capacity_comparison/full_spectrum_summary.png)` — a multi-panel summary from the capacity comparison subdirectory
 2. **Labeled** `![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)` — the actual Figure 6
 
 **Fix:** Removed the unlabeled `full_spectrum_summary.png` reference. Figure 6 now shows only `capacity_sensitivity_heatmap.png` with its caption.
@@ -86,7 +86,7 @@ Removed the incorrect K=30 reference since the heatmap panels are K=20 and K=40 
 |---------|-----------|---------|
 | §5.8 Queueing | `results/figures/queue_comparison_by_policy.png` | Supplementary |
 | §5.9 Seasonal | `results/figures/seasonal_patterns.png` | Supplementary |
-| §5.10 Distance | `results/distance_comparison/distance_comparison_bar.png` | Supplementary |
+| §5.10 Distance | `results/analysis/distance_comparison/distance_comparison_bar.png` | Supplementary |
 
 ### Image File Existence Check
 
