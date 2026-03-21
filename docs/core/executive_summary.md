@@ -133,4 +133,4 @@ fleet sensitivity, demand surge, and service-time variation),
 statistical testing (ANOVA, Tukey HSD, Bonferroni corrections),
 full queueing analysis, seasonal variation assessment, and
 publication-quality reporting. Full methodology documented in
-`docs/output_analysis.md` and `docs/technical_report.md`.*
+`docs/core/output_analysis.md` and `docs/core/technical_report.md`.*

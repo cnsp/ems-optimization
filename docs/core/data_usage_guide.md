@@ -241,17 +241,17 @@ Static allocation maps at K=40.
 
 ### For baseline policy comparison (P0 vs P1 vs P2):
 → **`results/baseline/tables/descriptive_statistics.csv`**  
-→ Or publication-ready: **`results/tables/table1_baseline_comparison.csv`**
+→ Or publication-ready: **`results/baseline/tables/table1_baseline_comparison.csv`**
 
 ### For fleet size sensitivity (how does RT change with K?):
-→ **`results/tables/exp2_pivot_rt.csv`** (current P0 only)  
-→ Or with legacy comparison: **`results/tables/exp2_pivot_rt_with_legacy.csv`**
+→ **`results/baseline/tables/exp2_pivot_rt.csv`** (current P0 only)  
+→ Or with legacy comparison: **`results/analysis/tables/exp2_pivot_rt_with_legacy.csv`**
 
 ### For demand sensitivity:
-→ **`results/tables/exp3_pivot_rt.csv`**
+→ **`results/baseline/tables/exp3_pivot_rt.csv`**
 
 ### For service time robustness:
-→ **`results/tables/exp4_pivot_rt.csv`**
+→ **`results/baseline/tables/exp4_pivot_rt.csv`**
 
 ### For statistical significance:
 → **`results/baseline/tables/anova_results.csv`** + **`posthoc_comparisons.csv`** + **`effect_sizes.csv`**
@@ -262,7 +262,7 @@ Static allocation maps at K=40.
 
 ### For CBD analysis:
 → **`results/analysis/cbd_focused_comparison/comparison_table.csv`**  
-→ Or: **`results/tables/cbd_comparison.csv`**
+→ Or: **`results/analysis/tables/cbd_comparison.csv`**
 
 ### For verification & validation:
 → **`results/simulation/verification/*.json`**  

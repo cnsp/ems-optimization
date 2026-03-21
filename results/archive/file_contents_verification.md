@@ -296,7 +296,7 @@ The config correctly overrides at runtime for production_v2, but any caller that
 
 ```yaml
 firehouse_capacity: 2
-# Capacity sensitivity analysis (docs/capacity_sensitivity_analysis.md)
+# Capacity sensitivity analysis (docs/analysis/capacity_sensitivity_analysis.md)
 # shows cap=2 matches or improves upon cap=5 at K≤40.
 ```
 

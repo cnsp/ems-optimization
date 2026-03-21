@@ -25,7 +25,7 @@ During Phases 8–10 the project underwent a major **nomenclature migration**
 | P0 8-min coverage (K = 20) | ~64 % | ~99.7 % |
 
 The migration touched **38 files** across configs, source code, results,
-notebooks, and documentation (see `docs/project_wide_audit_report.md`).
+notebooks, and documentation (see `docs/archive/project_wide_audit_report.md`).
 
 ---
 
@@ -51,14 +51,14 @@ decisions were made and provides an audit trail:
 
 | Document | Old content retained | How it is marked |
 |----------|---------------------|-----------------|
-| `docs/policy_tradeoff_analysis.md` | Full analysis using original index-based P0 | **⚠️ Historical Context Note** banner at top of file |
-| `docs/nomenclature_migration.md` | Complete before/after comparison of old vs new P0 | Entire document is the migration record |
-| `docs/decisions_log.md` (DEC-011, DEC-012) | Rationale for replacing old P0 | Entries clearly dated and labelled "NEW" |
-| `docs/assumptions_log.md` (A14, A15) | Reference to deprecated original P0 | Labelled "(Internal Reference)" and links to migration docs |
-| `docs/conceptual_model_selection.md` | Mentions "original P0" RT of 8.08 min | In narrative context explaining the migration rationale |
-| `docs/final_summary.md` | "8.08 → 3.17 min" improvement narrative | Presented as a before→after comparison |
-| `docs/notebook_audit_report.md` | Audit log documenting what was changed | Meta-document describing the audit itself |
-| `docs/project_workflow_wbs.md` | Task entry for P0 spatial analysis | Historical task log |
+| `docs/analysis/policy_tradeoff_analysis.md` | Full analysis using original index-based P0 | **⚠️ Historical Context Note** banner at top of file |
+| `docs/core/nomenclature_migration.md` | Complete before/after comparison of old vs new P0 | Entire document is the migration record |
+| `docs/core/decisions_log.md` (DEC-011, DEC-012) | Rationale for replacing old P0 | Entries clearly dated and labelled "NEW" |
+| `docs/core/assumptions_log.md` (A14, A15) | Reference to deprecated original P0 | Labelled "(Internal Reference)" and links to migration docs |
+| `docs/core/conceptual_model_selection.md` | Mentions "original P0" RT of 8.08 min | In narrative context explaining the migration rationale |
+| `docs/archive/final_summary.md` | "8.08 → 3.17 min" improvement narrative | Presented as a before→after comparison |
+| `docs/archive/notebook_audit_report.md` | Audit log documenting what was changed | Meta-document describing the audit itself |
+| `docs/core/project_workflow_wbs.md` | Task entry for P0 spatial analysis | Historical task log |
 | `src/ems_readiness/optimization/policies.py` | `uniform_allocation()` function body | `DeprecationWarning` emitted at runtime; docstring says DEPRECATED |
 | `src/ems_readiness/optimization/allocator.py` | `baseline_uniform()` method | Status = "Baseline (deprecated)"; docstring recommends `baseline_p0()` |
 
@@ -67,7 +67,7 @@ decisions were made and provides an audit trail:
 | File | Contains old data? | Status |
 |------|-------------------|--------|
 | `results/baseline/simulation/all_results_raw.csv` | Yes — contains K = 10 rows where P0 RT > 4 min | **Expected** — small fleet sizes legitimately have higher RT |
-| `results/tables/posthoc_comparisons.csv` | References to old statistical tests | Legacy from v1 production run; superseded by `results/baseline/tables/` |
+| `results/baseline/tables/posthoc_comparisons.csv` | References to old statistical tests | Legacy from v1 production run; superseded by `results/baseline/tables/` |
 | `results/archive/optimization/policy_comparison.csv` | No old data | ✓ Clean — all P0 labels are "Spatially-Stratified Uniform" |
 
 ---
@@ -81,7 +81,7 @@ Historical documents that retain old data carry a blockquote banner:
 ```markdown
 > **⚠️ Historical Context Note:** This analysis uses the **original
 > index-based uniform P0** (deprecated), not the current spatially-stratified
-> P0 baseline. See [`docs/nomenclature_migration.md`](nomenclature_migration.md)
+> P0 baseline. See [`docs/core/nomenclature_migration.md`](nomenclature_migration.md)
 > for the full nomenclature history.
 ```
 
@@ -98,7 +98,7 @@ warnings.warn(
 ### 3.3 Config comments
 
 ```yaml
-# Capacity sensitivity analysis (docs/capacity_sensitivity_analysis.md)
+# Capacity sensitivity analysis (docs/analysis/capacity_sensitivity_analysis.md)
 # shows cap=2 matches or improves upon cap=5 at K≤40.
 firehouse_capacity: 2
 ```
@@ -113,9 +113,9 @@ firehouse_capacity: 2
 | Docstring flags | `policies.py`, `allocator.py` | "DEPRECATED" in first line of docstring |
 | Verification script | `scripts/verify_project_consistency.py` | Automated 41-check scan for stale metrics, labels, and config values |
 | Deprecated function registry | Verification script §5 | Lists all deprecated functions and their replacements |
-| JSON verification report | `results/consistency_verification_report.json` | Machine-readable audit trail |
+| JSON verification report | `results/archive/consistency_verification_report.json` | Machine-readable audit trail |
 | Historical banner requirement | This document §3.1 | All docs with old data must carry ⚠️ banner |
-| Nomenclature migration guide | `docs/nomenclature_migration.md` | Canonical mapping of old → new names |
+| Nomenclature migration guide | `docs/core/nomenclature_migration.md` | Canonical mapping of old → new names |
 
 ---
 

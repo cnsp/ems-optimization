@@ -38,7 +38,7 @@ The CBD-focused model uses `build_cbd_focused_demand_weighted()` from `src/ems_r
 
 ### 2.2 CBD Precincts
 
-Per `docs/cbd_definition.md`, the 10 CBD precincts are: 1, 5, 6, 7, 9, 10, 13, 14, 17, 18.
+Per `docs/core/cbd_definition.md`, the 10 CBD precincts are: 1, 5, 6, 7, 9, 10, 13, 14, 17, 18.
 
 ### 2.3 Experiment Design
 

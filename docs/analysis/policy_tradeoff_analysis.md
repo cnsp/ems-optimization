@@ -5,7 +5,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 ---
 # Policy Trade-off Analysis
 
-> **⚠️ Historical Context Note:** This analysis uses the **original index-based uniform P0** (deprecated), not the current spatially-stratified P0 baseline. The original P0 distributed units round-robin by firehouse index, resulting in poor geographic coverage (mean RT ≈ 18.5 min at K=20). The current P0 uses latitude-based spatial stratification and achieves 3.17 min mean RT at K=20. See [`docs/nomenclature_migration.md`](../core/nomenclature_migration.md) for the full nomenclature history and [`docs/decisions_log.md`](../core/decisions_log.md) DEC-011/DEC-012 for the rationale. The plots and tables below are retained for historical reference but should not be compared directly to production results that use the current P0 baseline.
+> **⚠️ Historical Context Note:** This analysis uses the **original index-based uniform P0** (deprecated), not the current spatially-stratified P0 baseline. The original P0 distributed units round-robin by firehouse index, resulting in poor geographic coverage (mean RT ≈ 18.5 min at K=20). The current P0 uses latitude-based spatial stratification and achieves 3.17 min mean RT at K=20. See [`docs/core/nomenclature_migration.md`](../core/nomenclature_migration.md) for the full nomenclature history and [`docs/core/decisions_log.md`](../core/decisions_log.md) DEC-011/DEC-012 for the rationale. The plots and tables below are retained for historical reference but should not be compared directly to production results that use the current P0 baseline.
 
 ## Overview
 
@@ -97,9 +97,9 @@ Most points for K >= 30 cluster in the upper-left corner (RT ~ 2.5 min, coverage
 |------|-------------|
 | `scripts/run_optimization_comparison.py` (lines 253-273) | Original generation code |
 | `scripts/generate_tradeoff_improved.py` | Improved visualization script |
-| `results/figures/fig_tradeoff_curve.png` | Original plot (has overlapping labels) |
-| `results/figures/response_time_coverage_tradeoff_improved.png` | Improved main plot with data table |
-| `results/figures/response_time_coverage_tradeoff_zoomed.png` | Zoomed view of high-performance region |
+| `results/baseline/figures/fig_tradeoff_curve.png` | Original plot (has overlapping labels) |
+| `results/analysis/figures/response_time_coverage_tradeoff_improved.png` | Improved main plot with data table |
+| `results/analysis/figures/response_time_coverage_tradeoff_zoomed.png` | Zoomed view of high-performance region |
 | `results/archive/optimization/policy_comparison.csv` | Source data |
 
 ---

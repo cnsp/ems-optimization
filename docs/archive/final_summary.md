@@ -82,27 +82,27 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Pushed successfully to origin/main
 
 ### Part 2: Phase 7 Deliverables
-- `docs/technical_report.md` (.pdf) — 25-page full report
-- `docs/executive_presentation.md` (.pdf) — 10-slide stakeholder deck
-- `docs/implementation_roadmap.md` (.pdf) — 3-phase deployment plan
-- `docs/project_archive.md` (.pdf) — Timeline, decisions, lessons learned
-- `docs/code_documentation.md` (.pdf) — Architecture & API guide
-- `docs/file_inventory.md` (.pdf) — Complete file listing
+- `docs/core/technical_report.md` (.pdf) — 25-page full report
+- `docs/core/executive_presentation.md` (.pdf) — 10-slide stakeholder deck
+- `docs/core/implementation_roadmap.md` (.pdf) — 3-phase deployment plan
+- `docs/archive/project_archive.md` (.pdf) — Timeline, decisions, lessons learned
+- `docs/core/code_documentation.md` (.pdf) — Architecture & API guide
+- `docs/archive/file_inventory.md` (.pdf) — Complete file listing
 - `README.md` — Enhanced with key findings and full documentation
 - `scripts/generate_summary_dashboard.py` — Dashboard generator
-- `results/figures/project_summary_dashboard.png` — Visual summary
-- `docs/final_summary.md` — This file
+- `results/baseline/figures/project_summary_dashboard.png` — Visual summary
+- `docs/archive/final_summary.md` — This file
 
 ### Part 3: Gap Closure (v1.1.0)
-- `docs/cbd_definition.md` — CBD geographic definition (10 precincts)
+- `docs/core/cbd_definition.md` — CBD geographic definition (10 precincts)
 - `configs/cbd_scenario.yaml` — CBD experiment configuration
 - `scripts/run_cbd_experiment.py` — CBD DES experiment runner (330 runs)
 - `scripts/analyze_queue_metrics.py` — Queue metrics analysis script
 - `scripts/analyze_seasonal_patterns.py` — Seasonal pattern analysis script
 - `notebooks/09_cbd_analysis.ipynb` — CBD analysis notebook
-- `docs/cbd_robustness_analysis.md` (.pdf) — CBD findings document
-- `docs/queue_analysis.md` (.pdf) — Queue metrics analysis document
-- `docs/gap_closure_report.md` (.pdf) — Gap closure verification report
+- `docs/analysis/cbd_robustness_analysis.md` (.pdf) — CBD findings document
+- `docs/analysis/queue_analysis.md` (.pdf) — Queue metrics analysis document
+- `docs/archive/gap_closure_report.md` (.pdf) — Gap closure verification report
 - `results/analysis/simulation/cbd_experiment/` — 330 CBD simulation runs
 - `results/figures/cbd_*.png` — 3 CBD figures
 - `results/figures/queue_*.png` — 4 queue analysis figures
@@ -122,16 +122,16 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - `scripts/run_distance_comparison_experiment.py` — Distance metric comparison experiment
 - `scripts/run_cbd_focused_optimization.py` — CBD-focused optimisation experiment
 - `data/processed/distance_matrix_firehouse_precinct_manhattan.csv` — Manhattan distance matrix
-- `docs/distance_metric_comparison.md` (.pdf) — Distance metric comparison report
-- `docs/cbd_focused_optimization_analysis.md` (.pdf) — CBD-focused analysis report
-- `docs/alternative_analyses_summary.md` (.pdf) — Combined summary of alternative analyses
+- `docs/analysis/distance_metric_comparison.md` (.pdf) — Distance metric comparison report
+- `docs/analysis/cbd_focused_optimization_analysis.md` (.pdf) — CBD-focused analysis report
+- `docs/analysis/alternative_analyses_summary.md` (.pdf) — Combined summary of alternative analyses
 - `results/analysis/distance_comparison/` — 4 figures + 2 tables
 - `results/analysis/cbd_focused_comparison/` — 3 figures + 2 tables
 
 **Modified files:**
 - `src/ems_readiness/utils/distance.py` — Added `manhattan_distance()` function
 - `src/ems_readiness/optimization/models.py` — Added `build_cbd_focused_demand_weighted()` and `build_cbd_focused_coverage()`
-- `docs/technical_report.md` — Added §5.10 and §5.11; updated figures/tables lists
+- `docs/core/technical_report.md` — Added §5.10 and §5.11; updated figures/tables lists
 
 ### v1.3.0 – Capacity & Baseline Improvements (March 15, 2026)
 
@@ -154,8 +154,8 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - `results/baseline/` — Complete extended fleet results: allocations, simulation, figures, tables
 
 **New documentation:**
-- `docs/firehouse_capacity_analysis.md` — Firehouse capacity methodology and initial analysis
-- `docs/capacity_sensitivity_analysis.md` — Full-spectrum capacity sensitivity report
+- `docs/analysis/firehouse_capacity_analysis.md` — Firehouse capacity methodology and initial analysis
+- `docs/analysis/capacity_sensitivity_analysis.md` — Full-spectrum capacity sensitivity report
 
 **Modified files:**
 - `src/ems_readiness/optimization/policies.py` — Added `spatially_stratified_allocation()` and `spatial_stratification_analysis()`

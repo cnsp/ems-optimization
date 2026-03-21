@@ -277,7 +277,7 @@ The DES models the following process for each EMS call:
 4. **On-Scene Service**: LogNormal(μ=25 min, σ=10 min)
 5. **Return to Station**: Unit returns to home firehouse (travel time)
 
-**Event Flow Diagram** (extracted from `docs/conceptual_model.md`):
+**Event Flow Diagram** (extracted from `docs/core/conceptual_model.md`):
 
 ```
  ┌─────────────────────────┐
@@ -348,7 +348,7 @@ The DES models the following process for each EMS call:
  ├──────────────── total_time ───────────────────────────────────┤
 ```
 
-> *Full conceptual model specification: see `docs/conceptual_model.md`*
+> *Full conceptual model specification: see `docs/core/conceptual_model.md`*
 
 #### 4.4.2 Implementation
 
@@ -430,13 +430,13 @@ The primary policy comparison (K=20 units, capacity=2 units per firehouse, n=30 
 
 Figure 1 shows the spatial distribution of staging locations for all three policies at K=20, capacity=2. The 3-panel map reveals how each policy selects and allocates ambulances across Manhattan's 48 firehouses, with the CBD boundary (MTA Congestion Relief Zone) shown for reference.
 
-![Policy Comparison Panel — P0, P1, P2 Staging Locations at K=20, Capacity=2](../results/figures/policy_comparison_panel_K20_cap2.png)
+![Policy Comparison Panel — P0, P1, P2 Staging Locations at K=20, Capacity=2](../../results/baseline/figures/policy_comparison_panel_K20_cap2.png)
 
 *Figure 1: Three-panel comparison of ambulance staging locations under P0 (spatially-stratified baseline), P1 (demand-proportional), and P2 (demand-weighted MIP). Colored circles indicate active stations (sized by unit count); gray squares indicate inactive stations. The dashed blue line marks the CBD boundary. P0 distributes units uniformly along Manhattan's north–south axis; P1 concentrates units near high-demand precincts but uses fewer stations (18 vs 20); P2 achieves the widest geographic spread while weighting placement toward demand.*
 
 Figure 2 compares response time performance across fleet sizes (K=15, 20, 30) for all three policies, showing both mean RT and P95 RT with 95% confidence intervals. Both 6-minute (NYC) and 8-minute (NFPA) coverage percentages are annotated above each bar.
 
-![Response Time Distribution by Policy and Fleet Size](../results/figures/response_time_distribution_by_policy.png)
+![Response Time Distribution by Policy and Fleet Size](../../results/baseline/figures/response_time_distribution_by_policy.png)
 
 *Figure 2: Mean and P95 response times by policy and fleet size (capacity=2, n=30 replications). Error bars show 95% confidence intervals. Percentages above bars indicate both 8-minute (NFPA) and 6-minute (NYC) coverage. The red dashed line marks the 8-minute standard; the orange dotted line marks the 6-minute standard. P2 achieves the lowest response times across all fleet sizes, though the gap narrows as K increases.*
 
@@ -475,7 +475,7 @@ Two-way ANOVA (Policy × K) reveals significant main effects and interactions:
 
 Figure 3 visualizes the fleet sensitivity analysis (capacity=2), showing mean RT and both 6-minute and 8-minute coverage as functions of fleet size for all three policies.
 
-![Fleet Sensitivity Analysis](../results/figures/fleet_sensitivity_dual.png)
+![Fleet Sensitivity Analysis](../../results/archive/figures/fleet_sensitivity_dual.png)
 
 *Figure 3: Fleet sensitivity analysis (capacity=2, n=30 replications). Left: Mean response time vs fleet size with 95% CI ribbon bands. Right: Coverage vs fleet size showing both 6-minute NYC requirement (dashed lines) and 8-minute NFPA standard (solid lines) with 95% CI. P2 dominates across all fleet sizes. The convergence at K>=35 reflects the saturation of Manhattan's firehouse network. Spatial placement is the primary driver of performance.*
 
@@ -514,7 +514,7 @@ Varying mean service time across 20, 25, and 30 minutes:
 
 ### 5.7 CBD Robustness Analysis
 
-To assess policy performance under CBD-specific conditions, we conducted 330 additional simulation runs across four CBD-focused scenarios (see `docs/cbd_robustness_analysis.md` for full details).
+To assess policy performance under CBD-specific conditions, we conducted 330 additional simulation runs across four CBD-focused scenarios (see `docs/analysis/cbd_robustness_analysis.md` for full details).
 
 **CBD Definition:** The CBD comprises 10 precincts (1, 5, 6, 7, 9, 10, 13, 14, 17, 18) overlapping ≥30% with the MTA Congestion Relief Zone, accounting for 55.7% of Manhattan crash demand.
 
@@ -533,14 +533,14 @@ To assess policy performance under CBD-specific conditions, we conducted 330 add
 
 Figure 4 provides an enhanced view of CBD robustness, showing response time and coverage (both 6-minute and 8-minute) side-by-side across all three CBD stress scenarios for all three policies (P0, P1, P2).
 
-![CBD Robustness Enhanced — RT and Coverage by Scenario](../results/figures/cbd_robustness_enhanced.png)
+![CBD Robustness Enhanced — RT and Coverage by Scenario](../../results/analysis/figures/cbd_robustness_enhanced.png)
 
 *Figure 4: CBD robustness analysis (K=20, capacity=2, n=30 replications) comparing all three policies (P0, P1, P2) across three stress scenarios (baseline, 2x demand surge, slow service). Panel A: CBD mean response time with 95% CI. Panel B: CBD 8-minute coverage (NFPA) with 95% CI. Panel C: CBD 6-minute coverage (NYC) with 95% CI. Panel D: Non-CBD mean response time with 95% CI (equity perspective). All three policies perform well in the CBD due to firehouse density, with P1 and P2 outperforming P0. The narrow range of outcomes (2.1-2.9 min) across stress scenarios confirms that the CBD is well-served under all conditions tested.*
 
 
 ### 5.8 Queueing Analysis
 
-Queue metrics were systematically collected across all 2,400 simulation runs. Detailed analysis is provided in `docs/queue_analysis.md`.
+Queue metrics were systematically collected across all 2,400 simulation runs. Detailed analysis is provided in `docs/analysis/queue_analysis.md`.
 
 **Finding: Zero queueing across all experiments.** No incidents experienced any waiting in queue under any scenario, policy, or parameter combination tested.
 
@@ -556,7 +556,7 @@ Queue metrics were systematically collected across all 2,400 simulation runs. De
 
 **Implication:** Since queuing is negligible, response time differences between policies are **entirely due to spatial allocation** (travel distances), not capacity constraints. This supports the focus on optimization-based allocation (P2) as the primary mechanism for service improvement.
 
-![Queue Metrics by Policy](../results/figures/queue_comparison_by_policy.png)
+![Queue Metrics by Policy](../../results/analysis/figures/queue_comparison_by_policy.png)
 
 *Figure 5: Queue metrics comparison across policies P0, P1, and P2 (K=20, capacity=2, n=30 replications). All policies show zero queueing (queue fraction = 0.000, mean queue length = 0.000) across all experiments, confirming that at the observed traffic intensity (ρ ≈ 0.087) the system is capacity-unconstrained and response time differences are driven entirely by spatial allocation, not congestion.*
 
@@ -579,7 +579,7 @@ Monthly crash demand patterns were analyzed using 416,434 Manhattan crash record
 
 **Interpretation:** While statistically significant, seasonal variation is moderate (CV = 9%). The peak month (October, factor = 1.103) has only 10.3% more demand than average. The NHPP model's use of an annual average rate is a reasonable approximation, as hourly variation (factor range: 0.5–1.6) and day-of-week variation (0.85–1.15) dominate seasonal effects. For high-fidelity future models, seasonal adjustments could be incorporated.
 
-![Seasonal Patterns](../results/figures/seasonal_patterns.png)
+![Seasonal Patterns](../../results/analysis/figures/seasonal_patterns.png)
 
 *Figure 6: Seasonal variation in Manhattan crash demand (2012–2026, N=416,434 crashes). Monthly demand factors range from 0.822 (February) to 1.103 (October), yielding a seasonal amplitude of 28% and coefficient of variation of 9%. While statistically significant (χ² test, p < 0.001), seasonal effects are modest compared to hourly (factor range 0.5–1.6) and day-of-week (0.85–1.15) variation, supporting the NHPP model's use of an annual average rate.*
 
@@ -593,9 +593,9 @@ To assess the sensitivity of allocation decisions to the distance metric, we imp
 - Simulation performance is **effectively identical** (mean RT: 2.55 min for both)
 - The uniform scaling preserves relative distance ordering, so the same firehouses remain nearest to each precinct
 
-The analysis shows that Haversine distance is adequate for this study, as both metrics produce equivalent optimisation solutions. See `docs/distance_metric_comparison.md` for the full report.
+The analysis shows that Haversine distance is adequate for this study, as both metrics produce equivalent optimisation solutions. See `docs/analysis/distance_metric_comparison.md` for the full report.
 
-![Distance Metrics Comparison](../results/analysis/distance_comparison/distance_comparison_bar.png)
+![Distance Metrics Comparison](../../results/analysis/distance_comparison/distance_comparison_bar.png)
 
 *Figure 7: Performance comparison between Haversine (great-circle) and Manhattan (taxicab) distance metrics for P2 allocation at K=20, capacity=2 (n=30 replications). Mean response times are effectively identical (2.55 min for both metrics). Manhattan distances average 27.3% longer than Haversine, but the uniform scaling preserves relative ordering — allocations differ at only 2 of 48 firehouses, confirming that Haversine is adequate for this study.*
 
@@ -614,18 +614,18 @@ To evaluate the equity–efficiency tradeoff, we implemented a **CBD-focused dem
 - Non-CBD coverage drops from **99.2% to 73.6%**
 - The demand-weighted objective already effectively prioritises high-demand CBD precincts
 
-The Manhattan-wide P2 allocation is strongly preferred as it achieves both efficiency and equity. See `docs/cbd_focused_optimization_analysis.md` for the full report.
+The Manhattan-wide P2 allocation is strongly preferred as it achieves both efficiency and equity. See `docs/analysis/cbd_focused_optimization_analysis.md` for the full report.
 
 Figure 8 provides a summary view of the equity–efficiency tradeoff, contrasting the Manhattan-wide and CBD-focused optimization strategies across both response time and coverage metrics.
 
-![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)
+![CBD Equity-Efficiency Tradeoff Summary](../../results/analysis/figures/cbd_equity_tradeoff_summary.png)
 
 *Figure 8: Equity-efficiency tradeoff comparing all three policies (P0, P1, P2) and a CBD-focused P2 strategy (capacity=2, 95% CI where available). Left: Response times disaggregated by CBD, non-CBD, and overall. Right: Both 6-minute (NYC, hatched bars) and 8-minute (NFPA, solid bars) coverage. The CBD-focused strategy fails to improve CBD response time while severely degrading non-CBD performance. This confirms that the demand-weighted objective already effectively prioritises CBD precincts without explicit geographic targeting.*
 
 
 ### 5.12 Firehouse Capacity Constraints Analysis
 
-To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20, K=30, and K=40 for all three policies (P0, P1, P2). 45 allocation–simulation experiments were executed (5 capacity levels × 3 K values × 3 policies, 15 replications each). See `docs/capacity_sensitivity_analysis.md` for the full report.
+To assess the sensitivity of allocation decisions to per-firehouse capacity limits, we conducted a **full-spectrum capacity sensitivity analysis** varying the maximum units per firehouse from 1 to 5 across fleet sizes K=20, K=30, and K=40 for all three policies (P0, P1, P2). 45 allocation–simulation experiments were executed (5 capacity levels × 3 K values × 3 policies, 15 replications each). See `docs/analysis/capacity_sensitivity_analysis.md` for the full report.
 
 #### K = 20: Capacity Does Not Bind
 
@@ -667,7 +667,7 @@ Performance differences across capacity levels remain small (< 0.15 min mean RT)
 
 Figure 9 shows a heatmap view of mean response time across all policy x capacity combinations at K=20, K=30, and K=40, making the insensitivity at K=20 and the modest effects at higher fleet sizes visually apparent. Each cell displays the mean response time with its 95% confidence interval.
 
-![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)
+![Capacity Sensitivity Heatmap](../../results/archive/figures/capacity_sensitivity_heatmap.png)
 
 *Figure 9: Capacity sensitivity heatmap showing mean response time (with 95% CI) by policy and per-firehouse capacity limit at K=20, K=30, and K=40. At K=20, capacity is non-binding for all policies — performance is essentially identical across cap=1 through cap=5. At K=30 and K=40, higher capacity allows concentration into fewer stations, with marginal RT effects (< 0.15 min). This supports the decision to use capacity=2 as the operational default.*
 
@@ -703,7 +703,7 @@ This confirms that **geographic placement is the dominant factor** in EMS respon
 - At K ≥ 40, all three policies converge to similar performance (< 0.15 min difference)
 - The primary advantage of P2 is concentrated in the small-fleet regime (K < 25)
 
-See `docs/firehouse_capacity_analysis.md` for the spatial stratification methodology details.
+See `docs/analysis/firehouse_capacity_analysis.md` for the spatial stratification methodology details.
 
 
 
@@ -937,15 +937,15 @@ This study demonstrates that meaningful improvements in emergency response perfo
 
 ### Appendix A: Mathematical Formulations
 
-See `docs/optimization_formulation.md` for complete mathematical specifications of P0, P1, and P2 formulations, including decision variables, constraints, and solution properties.
+See `docs/core/optimization_formulation.md` for complete mathematical specifications of P0, P1, and P2 formulations, including decision variables, constraints, and solution properties.
 
 ### Appendix B: Simulation Model Specification
 
-See `docs/conceptual_model.md` for the complete DES conceptual model, including entity definitions, event logic, and state transitions.
+See `docs/core/conceptual_model.md` for the complete DES conceptual model, including entity definitions, event logic, and state transitions.
 
 ### Appendix C: Additional Statistical Tables
 
-All statistical tables are available in `results/tables/`:
+All statistical tables are available in `results/baseline/tables/` and `results/analysis/tables/`:
 - `descriptive_statistics.csv` — Full descriptive statistics for all experiments
 - `anova_results.csv` — Complete ANOVA results with assumptions tests
 - `posthoc_comparisons.csv` — All pairwise comparisons with corrections
@@ -954,21 +954,21 @@ All statistical tables are available in `results/tables/`:
 
 ### Appendix D: Experimental Design Details
 
-See `docs/experimental_design.md` for the complete factorial design specification, including factor levels, common random numbers (CRN) strategy, and warm-up period analysis.
+See `docs/core/experimental_design.md` for the complete factorial design specification, including factor levels, common random numbers (CRN) strategy, and warm-up period analysis.
 
 ### Appendix E: Verification & Validation Log
 
-See `docs/verification_log.md` for detailed results of all 4 verification tests, 3 validation pilots, and 39 unit tests.
+See `docs/core/verification_log.md` for detailed results of all 4 verification tests, 3 validation pilots, and 39 unit tests.
 
 ### Appendix F: Code Documentation
 
-See `docs/code_documentation.md` for architecture overview, module descriptions, and extension guide. All source code is in `src/ems_readiness/` with 7,134 total lines across 14 modules.
+See `docs/core/code_documentation.md` for architecture overview, module descriptions, and extension guide. All source code is in `src/ems_readiness/` with 7,134 total lines across 14 modules.
 
 ---
 
 ## 10. List of Figures
 
-The following figures are generated by the analysis pipeline and stored in `results/figures/`. Each figure is referenced in the relevant section of this report or in supporting documentation.
+The following figures are generated by the analysis pipeline and stored across `results/baseline/figures/`, `results/analysis/figures/`, and `results/archive/figures/`. Each figure is referenced in the relevant section of this report or in supporting documentation.
 
 | # | Filename | Caption / Description |
 |---|----------|----------------------|
@@ -1050,20 +1050,20 @@ The following figures are generated by the analysis pipeline and stored in `resu
 66. `results/baseline/figures/allocation_map_K40.png` — Allocation map at K=40
 
 **Report Inline Figures:**
-67. `results/figures/policy_comparison_panel_K20_cap2.png` — 3-panel policy comparison map: P0, P1, P2 staging locations at K=20, cap=2 (Figure 1)
-68. `results/figures/response_time_distribution_by_policy.png` — Mean & P95 response time bars by policy and fleet size with 95% CI and dual coverage annotations (Figure 2)
-69. `results/figures/fleet_sensitivity_dual.png` — Dual-axis fleet sensitivity: RT with 95% CI ribbon bands and coverage (6-min NYC, 8-min NFPA) vs K (Figure 3)
-70. `results/figures/cbd_robustness_enhanced.png` — CBD robustness: P0, P1, P2 RT and coverage (6-min, 8-min) under stress scenarios with 95% CI (Figure 4)
-71. `results/figures/cbd_equity_tradeoff_summary.png` — CBD equity-efficiency tradeoff: RT and dual-standard coverage with 95% CI (Figure 8)
-72. `results/figures/capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap at K=20, K=30, and K=40 with 95% CI annotations (Figure 9)
-73. `results/figures/queue_comparison_by_policy.png` — Queue metrics by policy confirming zero queueing across all experiments (Figure 5)
-74. `results/figures/seasonal_patterns.png` — Seasonal variation analysis with monthly demand factors (Figure 6)
+67. `results/baseline/figures/policy_comparison_panel_K20_cap2.png` — 3-panel policy comparison map: P0, P1, P2 staging locations at K=20, cap=2 (Figure 1)
+68. `results/baseline/figures/response_time_distribution_by_policy.png` — Mean & P95 response time bars by policy and fleet size with 95% CI and dual coverage annotations (Figure 2)
+69. `results/archive/figures/fleet_sensitivity_dual.png` — Dual-axis fleet sensitivity: RT with 95% CI ribbon bands and coverage (6-min NYC, 8-min NFPA) vs K (Figure 3)
+70. `results/analysis/figures/cbd_robustness_enhanced.png` — CBD robustness: P0, P1, P2 RT and coverage (6-min, 8-min) under stress scenarios with 95% CI (Figure 4)
+71. `results/analysis/figures/cbd_equity_tradeoff_summary.png` — CBD equity-efficiency tradeoff: RT and dual-standard coverage with 95% CI (Figure 8)
+72. `results/archive/figures/capacity_sensitivity_heatmap.png` — Capacity sensitivity heatmap at K=20, K=30, and K=40 with 95% CI annotations (Figure 9)
+73. `results/analysis/figures/queue_comparison_by_policy.png` — Queue metrics by policy confirming zero queueing across all experiments (Figure 5)
+74. `results/analysis/figures/seasonal_patterns.png` — Seasonal variation analysis with monthly demand factors (Figure 6)
 75. `results/analysis/distance_comparison/distance_comparison_bar.png` — Distance metric comparison: Haversine vs Manhattan performance (Figure 7)
 
 **Enhanced Figures** (regenerated with scientific rigor improvements):
-76. `results/figures/response_time_coverage_tradeoff.png` — Response time vs coverage trade-off with dual standards (6-min NYC, 8-min NFPA) and 95% CI
-77. `results/figures/precinct_demand_rates_improved.png` — Precinct demand rates with Q25/Q75 annotations and demand-tier colour coding
-78. `results/figures/precinct_demand_heatmap.png` — Spatial choropleth of precinct demand rates with CBD boundary overlay
+76. `results/analysis/figures/response_time_coverage_tradeoff.png` — Response time vs coverage trade-off with dual standards (6-min NYC, 8-min NFPA) and 95% CI
+77. `results/analysis/figures/precinct_demand_rates_improved.png` — Precinct demand rates with Q25/Q75 annotations and demand-tier colour coding
+78. `results/analysis/figures/precinct_demand_heatmap.png` — Spatial choropleth of precinct demand rates with CBD boundary overlay
 
 **Total: 78 analysis figures** generated across EDA, optimization, simulation, alternative analyses, capacity sensitivity, extended fleet analysis, publication workflows, and report inline figures.
 
@@ -1089,7 +1089,7 @@ Each map displays active staging locations (sized and colored by unit count) ove
 
 ## 11. List of Tables
 
-The following tables are generated by the analysis pipeline and stored in `results/tables/`. CSV files are used for data interchange; LaTeX (`.tex`) files are provided for publication-quality typesetting.
+The following tables are generated by the analysis pipeline and stored in `results/baseline/tables/` and `results/analysis/tables/`. CSV files are used for data interchange; LaTeX (`.tex`) files are provided for publication-quality typesetting.
 
 | # | Filename | Caption / Description |
 |---|----------|----------------------|
@@ -1214,7 +1214,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # 2. Process raw data (requires raw data files in data/raw/)
-python src/ems_readiness/data_processing.py
+python scripts/generate_all_data.py
 # Alternatively: make data
 
 # 3. Run demand modeling
@@ -1268,9 +1268,9 @@ python scripts/run_cbd_focused_optimization.py --reps 10
 ### 12.6 Expected Outputs
 
 Successful reproduction generates:
-- **~78 figures** in `results/figures/` (see [`docs/figure_trace_guide.md`](figure_trace_guide.md) and [`docs/visualization_index.md`](visualization_index.md) for a complete catalog)
-- **24 table files** in `results/tables/`
-- **Simulation logs** in `results/simulation/`
+- **~78 figures** across `results/baseline/figures/`, `results/analysis/figures/`, and `results/archive/figures/` (see [`docs/core/figure_trace_guide.md`](figure_trace_guide.md) and [`docs/core/visualization_index.md`](visualization_index.md) for a complete catalog)
+- **24 table files** in `results/baseline/tables/` and `results/analysis/tables/`
+- **Simulation logs** in `results/baseline/simulation/` and `results/analysis/simulation/`
 - All statistical results should match to within floating-point tolerance (< 10⁻⁶ relative error) when using identical seeds and Python/NumPy versions.
 
 ---

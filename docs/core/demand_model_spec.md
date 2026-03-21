@@ -338,7 +338,7 @@ For **high-fidelity future models**, monthly factors could be incorporated as an
 
 ### Seasonal Visualizations
 
-See `results/figures/seasonal_patterns.png`, `seasonal_decomposition.png`, and `seasonal_heatmap.png` for detailed seasonal analysis plots.
+See `results/analysis/figures/seasonal_patterns.png`, `seasonal_decomposition.png`, and `seasonal_heatmap.png` for detailed seasonal analysis plots.
 
 ---
 

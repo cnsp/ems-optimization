@@ -14,7 +14,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 ## 1. Full Conceptual Landscape
 
-The project addresses a **facility location / resource allocation** problem: given K ambulance units and 48 candidate FDNY firehouses in Manhattan, determine the allocation that minimises response time and maximises coverage. The conceptual model document (`docs/conceptual_model.md`) and decisions log identify the following approaches that were **considered** during the project design:
+The project addresses a **facility location / resource allocation** problem: given K ambulance units and 48 candidate FDNY firehouses in Manhattan, determine the allocation that minimises response time and maximises coverage. The conceptual model document (`docs/core/conceptual_model.md`) and decisions log identify the following approaches that were **considered** during the project design:
 
 ### 1.1 Optimization Models Considered
 
@@ -210,4 +210,4 @@ The project considered **~20+ distinct conceptual approaches** across optimizati
 ---
 
 *Analysis prepared: March 15, 2026*
-*Sources: `docs/conceptual_model.md`, `docs/decisions_log.md`, `docs/experimental_design.md`, `docs/optimization_formulation.md`, `docs/assumptions_log.md`, `src/ems_readiness/optimization/models.py`, `src/ems_readiness/optimization/policies.py`*
+*Sources: `docs/core/conceptual_model.md`, `docs/core/decisions_log.md`, `docs/core/experimental_design.md`, `docs/core/optimization_formulation.md`, `docs/core/assumptions_log.md`, `src/ems_readiness/optimization/models.py`, `src/ems_readiness/optimization/policies.py`*

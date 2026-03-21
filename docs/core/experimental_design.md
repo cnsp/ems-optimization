@@ -40,7 +40,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 ### Capacity Constraint
 
-The **firehouse capacity** parameter (C) defines the maximum number of EMS units that can be staged at any single firehouse. The operational default is **C = 2 units per firehouse**, established by the Capacity Sensitivity experiment (see `docs/capacity_sensitivity_analysis.md`).
+The **firehouse capacity** parameter (C) defines the maximum number of EMS units that can be staged at any single firehouse. The operational default is **C = 2 units per firehouse**, established by the Capacity Sensitivity experiment (see `docs/analysis/capacity_sensitivity_analysis.md`).
 
 At fleet sizes K ≤ 30, the capacity constraint does not bind—results are identical whether C = 2 or C = 5. This was confirmed by the full-spectrum capacity sensitivity analysis testing cap = 1 through 5.
 

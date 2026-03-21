@@ -7,7 +7,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 
 **Project:** EMS Readiness Optimization for Manhattan
 **Date:** March 12, 2026
-**Reference:** `docs/project_alignment_verification.md`
+**Reference:** `docs/archive/project_alignment_verification.md`
 
 ---
 
@@ -64,14 +64,14 @@ Rather than re-running simulations, filter the existing incident-level logs from
 
 **Implementation:**
 - Identified 10 CBD precincts via spatial intersection (≥30% overlap with MTA Congestion Relief Zone): precincts 1, 5, 6, 7, 9, 10, 13, 14, 17, 18
-- Created `docs/cbd_definition.md` documenting CBD precinct selection methodology
+- Created `docs/core/cbd_definition.md` documenting CBD precinct selection methodology
 - Created `configs/cbd_scenario.yaml` with CBD-specific scenario parameters
 - Built `scripts/run_cbd_experiment.py` — full factorial CBD experiment:
  - 11 scenarios × 3 policies × 30 replications = **330 dedicated CBD simulation runs**
  - Scenarios: baseline, high-demand CBD, low-demand non-CBD, fleet variations (K=15,20,25,30), service time variations
 - Created `notebooks/09_cbd_analysis.ipynb` for interactive CBD analysis
-- Created `docs/cbd_robustness_analysis.md` with full findings
-- Added §5.7 "CBD Robustness Analysis" to `docs/technical_report.md`
+- Created `docs/analysis/cbd_robustness_analysis.md` with full findings
+- Added §5.7 "CBD Robustness Analysis" to `docs/core/technical_report.md`
 
 **Key findings:** P2 dominates across all CBD scenarios. CBD response times are 2.5–2.9 min for all policies due to firehouse concentration. P0 degrades to 12.81 min in non-CBD areas. P2's advantage is most pronounced in mixed CBD/non-CBD scenarios.
 
@@ -104,8 +104,8 @@ Add queue metrics to the results section.
 **Implementation:**
 - Created `scripts/analyze_queue_metrics.py` — queue analysis across all 1,770 simulation runs
 - Analyzed queue metrics: mean queue length, max queue length, queue fraction, incidents queued
-- Created `docs/queue_analysis.md` with full findings
-- Added §5.8 "Queueing Performance Analysis" to `docs/technical_report.md`
+- Created `docs/analysis/queue_analysis.md` with full findings
+- Added §5.8 "Queueing Performance Analysis" to `docs/core/technical_report.md`
 
 **Key findings:** Queue metrics are **zero across all 1,770 runs**. System utilization is 10–15%, far below queueing thresholds. This is a legitimate and important finding — the fleet is sufficiently sized that no incidents experience queueing delays under any tested scenario. This confirms that response time differences between policies are driven by spatial allocation, not capacity constraints.
 
@@ -137,8 +137,8 @@ Add a brief seasonal note to the demand model documentation.
 **Implementation:**
 - Created `scripts/analyze_seasonal_patterns.py` — monthly/seasonal pattern analysis from 2.24M crash records
 - Computed monthly demand factors, seasonal decomposition, and statistical tests
-- Created `docs/demand_model_spec.md` §8 "Seasonal Patterns" with monthly factors and chi-square results
-- Added §5.9 "Seasonal Variation Analysis" to `docs/technical_report.md`
+- Created `docs/core/demand_model_spec.md` §8 "Seasonal Patterns" with monthly factors and chi-square results
+- Added §5.9 "Seasonal Variation Analysis" to `docs/core/technical_report.md`
 
 **Key findings:** Monthly coefficient of variation is **9%** — moderate seasonal variation. Peak month is October (factor 1.103), trough is February (factor 0.822). Chi-square test rejects strict uniformity (p < 0.001), but the 9% CV indicates variation is small relative to hourly (CV ~60%) and DOW patterns. The NHPP model using annual averages remains appropriate, with seasonal factors documented for future refinement.
 

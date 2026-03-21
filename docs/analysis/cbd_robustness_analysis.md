@@ -80,13 +80,13 @@ Increased CBD service times (35 min vs 25 min) have minimal impact on response t
 ## Visualizations
 
 ### CBD Response Time Comparison
-![CBD Response Comparison](../results/figures/cbd_response_comparison.png)
+![CBD Response Comparison](../../results/analysis/figures/cbd_response_comparison.png)
 
 ### CBD Scenario Analysis
-![CBD Scenario Comparison](../results/figures/cbd_scenario_comparison.png)
+![CBD Scenario Comparison](../../results/analysis/figures/cbd_scenario_comparison.png)
 
 ### CBD Performance Heatmap
-![CBD Heatmap](../results/figures/cbd_heatmap.png)
+![CBD Heatmap](../../results/analysis/figures/cbd_heatmap.png)
 
 ---
 
@@ -106,8 +106,8 @@ Increased CBD service times (35 min vs 25 min) have minimal impact on response t
 |------|-------------|
 | `results/analysis/simulation/cbd_experiment/cbd_experiment_results.csv` | Full experiment results (330 runs) |
 | `results/analysis/simulation/cbd_experiment/cbd_experiment_summary.csv` | Aggregated summary |
-| `results/figures/cbd_response_comparison.png` | CBD vs Non-CBD comparison |
-| `results/figures/cbd_scenario_comparison.png` | Scenario analysis |
-| `results/figures/cbd_heatmap.png` | Performance heatmap |
-| `results/tables/cbd_summary_all.csv` | Summary across all scenarios |
-| `results/tables/cbd_comparison.csv` | CBD-specific comparison |
+| `results/analysis/figures/cbd_response_comparison.png` | CBD vs Non-CBD comparison |
+| `results/analysis/figures/cbd_scenario_comparison.png` | Scenario analysis |
+| `results/analysis/figures/cbd_heatmap.png` | Performance heatmap |
+| `results/analysis/tables/cbd_summary_all.csv` | Summary across all scenarios |
+| `results/analysis/tables/cbd_comparison.csv` | CBD-specific comparison |
