@@ -1,6 +1,6 @@
 # Which Files Should I Use?
 
-> Quick reference card. For full details, see [`docs/data_usage_guide.md`](../docs/data_usage_guide.md).
+> Quick reference card. For full details, see [`docs/core/data_usage_guide.md`](../docs/core/data_usage_guide.md).
 
 ---
 

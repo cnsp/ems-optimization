@@ -7,7 +7,7 @@ verified: "Specialized analysis document. Cross-reference with current productio
 
 ## Summary
 
-**`fleet_sensitivity_dual.png` is NOT broken.** It exists at the correct path (`results/figures/fleet_sensitivity_dual.png`), contains valid dual-panel chart content (Mean Response Time vs Fleet Size + Coverage vs Fleet Size), and is correctly referenced in all documentation files.
+**`fleet_sensitivity_dual.png` is NOT broken.** It exists at the correct path (`results/archive/figures/fleet_sensitivity_dual.png`), contains valid dual-panel chart content (Mean Response Time vs Fleet Size + Coverage vs Fleet Size), and is correctly referenced in all documentation files.
 
 The **actual broken figure** was `capacity_sensitivity_heatmap.png`, which had a **policy label mapping bug** causing P0 data to be silently dropped. This has been fixed.
 
@@ -19,13 +19,13 @@ Found in **5 documentation files**:
 
 | File | Reference Type |
 |------|---------------|
-| `docs/technical_report.md` (line 472) | `![Fleet Sensitivity Analysis](../results/figures/fleet_sensitivity_dual.png)` |
+| `docs/technical_report.md` (line 472) | `![Fleet Sensitivity Analysis](../../results/archive/figures/fleet_sensitivity_dual.png)` |
 | `docs/technical_report.md` (line 947) | Listed as Figure 3 in artifact index |
 | `docs/visualization_index.md` (line 105) | Catalog entry with source script `run_production_v2.py` |
 | `docs/figure_trace_guide.md` (line 91) | Trace entry #30 linking to technical report Section 5.6 |
 | `docs/output_comparison_report.md` (line 124) | Listed under fleet sensitivity figures |
 
-All references use the **correct path**: `results/figures/fleet_sensitivity_dual.png`.
+All references use the **correct path**: `results/archive/figures/fleet_sensitivity_dual.png`.
 
 ## Step 2: Actual Files Found
 

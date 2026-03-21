@@ -16,8 +16,8 @@ note: "Preserved for project history. Contains old metrics/references in histori
 ### Issue 1: Duplicate Images in Figure 4 Section (§5.7 CBD Robustness)
 
 **Problem:** Two images were displayed in the Figure 4 area:
-1. **Unlabeled** `![CBD Scenario Comparison](../results/figures/cbd_scenario_comparison.png)` — a summary bar chart from EDA
-2. **Labeled** `![CBD Robustness Enhanced](../results/figures/cbd_robustness_enhanced.png)` — the actual Figure 4
+1. **Unlabeled** `![CBD Scenario Comparison](../../results/analysis/figures/cbd_scenario_comparison.png)` — a summary bar chart from EDA
+2. **Labeled** `![CBD Robustness Enhanced](../../results/analysis/figures/cbd_robustness_enhanced.png)` — the actual Figure 4
 
 The unlabeled image appeared immediately before the Figure 4 introduction paragraph, creating confusion about which image was Figure 4.
 
@@ -28,8 +28,8 @@ The unlabeled image appeared immediately before the Figure 4 introduction paragr
 ### Issue 2: Duplicate Images in Figure 5 Section (§5.11 CBD-Focused vs Manhattan-Wide)
 
 **Problem:** Two images were displayed in the Figure 5 area:
-1. **Unlabeled** `![CBD-Focused Comparison](../results/analysis/cbd_focused_comparison/cbd_focused_comparison.png)` — a raw comparison chart from the analysis subdirectory
-2. **Labeled** `![CBD Equity-Efficiency Tradeoff Summary](../results/figures/cbd_equity_tradeoff_summary.png)` — the actual Figure 5
+1. **Unlabeled** `![CBD-Focused Comparison](../../results/analysis/cbd_focused_comparison/cbd_focused_comparison.png)` — a raw comparison chart from the analysis subdirectory
+2. **Labeled** `![CBD Equity-Efficiency Tradeoff Summary](../../results/analysis/figures/cbd_equity_tradeoff_summary.png)` — the actual Figure 5
 
 **Fix:** Removed the unlabeled `cbd_focused_comparison.png` reference. Figure 5 now shows only `cbd_equity_tradeoff_summary.png` with its caption.
 
@@ -38,8 +38,8 @@ The unlabeled image appeared immediately before the Figure 4 introduction paragr
 ### Issue 3: Duplicate Images in Figure 6 Section (§5.12 Capacity Constraints)
 
 **Problem:** Two images were displayed in the Figure 6 area:
-1. **Unlabeled** `![Full Spectrum Capacity Summary](../results/analysis/capacity_comparison/full_spectrum_summary.png)` — a multi-panel summary from the capacity comparison subdirectory
-2. **Labeled** `![Capacity Sensitivity Heatmap](../results/figures/capacity_sensitivity_heatmap.png)` — the actual Figure 6
+1. **Unlabeled** `![Full Spectrum Capacity Summary](../../results/analysis/capacity_comparison/full_spectrum_summary.png)` — a multi-panel summary from the capacity comparison subdirectory
+2. **Labeled** `![Capacity Sensitivity Heatmap](../../results/archive/figures/capacity_sensitivity_heatmap.png)` — the actual Figure 6
 
 **Fix:** Removed the unlabeled `full_spectrum_summary.png` reference. Figure 6 now shows only `capacity_sensitivity_heatmap.png` with its caption.
 
