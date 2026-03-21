@@ -55,8 +55,8 @@
 - `map_allocation_P2_K40.png` - Optimized allocation map
 
 ### Documentation
-- `../docs/optimization_results.md` - Full technical report (19 pages)
-- `../notebooks/05_optimization.ipynb` - Interactive analysis
+- `../../../docs/optimization_results.md` - Full technical report (19 pages)
+- `../../../notebooks/05_optimization.ipynb` - Interactive analysis
 
 ## Comparison Table (K=40)
 
@@ -112,4 +112,4 @@
 
 ---
 
-*For full details, see `../docs/optimization_results.md`*
+*For full details, see `../../../docs/optimization_results.md`*

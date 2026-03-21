@@ -1,7 +1,7 @@
 # optimization/ — ⚠️ PHASE 3 HISTORICAL (cap=5)
 
 > **These results use the OLD default capacity of 5 units per firehouse.**  
-> For current results with cap=2, see `../production_v2/`.
+> For current results with cap=2, see `../../baseline/production_v2/`.
 
 ## Context
 Generated during Phase 3 (March 12, 2026) as the first optimization output.  
@@ -19,4 +19,4 @@ The capacity default was later changed from 5 → 2 (DEC-010) based on sensitivi
 
 ## ⚠️ Do NOT use these files as current results
 The optimization objectives and allocations are correct *for cap=5*, but the project now defaults to cap=2.  
-For current allocations and metrics, use `../production_v2/`.
+For current allocations and metrics, use `../../baseline/production_v2/`.
