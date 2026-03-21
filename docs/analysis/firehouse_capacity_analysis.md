@@ -5,7 +5,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 ---
 # Firehouse Capacity Analysis – EMS Optimization Model
 
-> **⚠️ HISTORICAL DOCUMENT (Pre-DEC-010):** This analysis was written when the project default was `capacity=5`. The default has since been changed to **capacity=2** per DEC-010 (see [`capacity_sensitivity_analysis.md`](capacity_sensitivity_analysis.md) and [`decisions_log.md`](decisions_log.md)). Code references to `capacity=5` in this document reflect the state at the time of writing. For current capacity analysis, refer to `capacity_sensitivity_analysis.md`.
+> **⚠️ HISTORICAL DOCUMENT (Pre-DEC-010):** This analysis was written when the project default was `capacity=5`. The default has since been changed to **capacity=2** per DEC-010 (see [`capacity_sensitivity_analysis.md`](capacity_sensitivity_analysis.md) and [`decisions_log.md`](../core/decisions_log.md)). Code references to `capacity=5` in this document reflect the state at the time of writing. For current capacity analysis, refer to `capacity_sensitivity_analysis.md`.
 
 **Date:** March 15, 2026 
 **Scope:** Capacity constraints in the MIP formulations allocating K EMS units across 48 Manhattan firehouses
