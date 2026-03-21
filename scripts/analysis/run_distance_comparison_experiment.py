@@ -41,7 +41,7 @@ from ems_readiness.service.travel_time import build_travel_time_matrix
 from ems_readiness.simulation.runner import BatchRunner
 
 # ── Config ───────────────────────────────────────────────────────────
-OUTPUT_DIR = PROJECT_ROOT / "results" / "distance_comparison"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "analysis" / "distance_comparison"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 

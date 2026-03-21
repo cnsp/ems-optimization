@@ -79,7 +79,7 @@ ax.set_ylabel("λ per hour")
 ax.set_xlabel("Precinct")
 
 plt.tight_layout()
-plt.savefig(PROJECT_ROOT / "results" / "figures" / "opt_inputs.png", dpi=150)
+plt.savefig(PROJECT_ROOT / "results" / "baseline" / "figures" / "opt_inputs.png", dpi=150)
 plt.show()
 
 # %% [markdown]
@@ -181,7 +181,7 @@ axes[2].set_xlabel("Total units (K)")
 axes[2].legend(fontsize=8)
 
 plt.tight_layout()
-plt.savefig(PROJECT_ROOT / "results" / "figures" / "opt_sensitivity.png", dpi=150)
+plt.savefig(PROJECT_ROOT / "results" / "baseline" / "figures" / "opt_sensitivity.png", dpi=150)
 plt.show()
 
 # %% [markdown]
@@ -212,7 +212,7 @@ ax.set_ylabel("Units allocated")
 ax.set_xlabel("Firehouse")
 plt.xticks(rotation=45, ha="right")
 plt.tight_layout()
-plt.savefig(PROJECT_ROOT / "results" / "figures" / "opt_allocation_comparison.png", dpi=150)
+plt.savefig(PROJECT_ROOT / "results" / "baseline" / "figures" / "opt_allocation_comparison.png", dpi=150)
 plt.show()
 
 # %% [markdown]
@@ -225,11 +225,11 @@ plt.show()
 # | Coverage at K=40 | See table above |
 # | Recommended next phase | P3 – time-varying staging using hourly λ tables |
 #
-# All results saved to `results/figures/` and `results/tables/`.
+# All results saved to `results/baseline/figures/` and `results/baseline/tables/`.
 
 # %%
 # Save comparison table
-(PROJECT_ROOT / "results" / "tables").mkdir(parents=True, exist_ok=True)
-sensitivity.to_csv(PROJECT_ROOT / "results" / "tables" / "optimization_comparison.csv", index=False)
-print("Saved: results/tables/optimization_comparison.csv")
+(PROJECT_ROOT / "results" / "baseline" / "tables").mkdir(parents=True, exist_ok=True)
+sensitivity.to_csv(PROJECT_ROOT / "results" / "baseline" / "tables" / "optimization_comparison.csv", index=False)
+print("Saved: results/baseline/tables/optimization_comparison.csv")
 print("Done!")

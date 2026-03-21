@@ -31,9 +31,9 @@ import seaborn as sns
 
 # Setup
 PROJECT_ROOT = Path("..").resolve()
-RESULTS_DIR = PROJECT_ROOT / "results" / "simulation" / "production"
-FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
-TABLES_DIR = PROJECT_ROOT / "results" / "tables"
+RESULTS_DIR = PROJECT_ROOT / "results" / "analysis" / "simulation" / "production"
+FIGURES_DIR = PROJECT_ROOT / "results" / "analysis" / "figures"
+TABLES_DIR = PROJECT_ROOT / "results" / "analysis" / "tables"
 FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 TABLES_DIR.mkdir(parents=True, exist_ok=True)
 

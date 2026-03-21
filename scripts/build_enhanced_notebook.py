@@ -1298,7 +1298,7 @@ cells.append(md("""---
 ## 9. Results Visualization
 <a id='9-results-visualization'></a>
 
-Key figures summarizing the project findings. All figures are saved to `results/figures/`."""))
+Key figures summarizing the project findings. All figures are saved to `results/baseline/figures/`."""))
 
 cells.append(md("### 9.1 Simulation: P0 vs P2 response time"))
 

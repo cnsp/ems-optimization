@@ -4,13 +4,13 @@ Phase 6 – Comprehensive Statistical Analysis of Production Results
 ===================================================================
 
 Reads the four experiment CSVs produced by Phase 5 and generates:
-    • Descriptive statistics          → results/tables/descriptive_statistics.csv
-    • ANOVA results                   → results/tables/anova_results.csv
-    • Post-hoc pairwise comparisons   → results/tables/posthoc_comparisons.csv
-    • Confidence intervals            → results/tables/confidence_intervals.csv
-    • Effect sizes (Cohen's d, η²)    → results/tables/effect_sizes.csv
-    • Sensitivity analysis summary    → results/tables/sensitivity_summary.csv
-    • Publication tables 1–4          → results/tables/table{1..4}_*.csv / .tex
+    • Descriptive statistics          → results/analysis/tables/descriptive_statistics.csv
+    • ANOVA results                   → results/analysis/tables/anova_results.csv
+    • Post-hoc pairwise comparisons   → results/analysis/tables/posthoc_comparisons.csv
+    • Confidence intervals            → results/analysis/tables/confidence_intervals.csv
+    • Effect sizes (Cohen's d, η²)    → results/analysis/tables/effect_sizes.csv
+    • Sensitivity analysis summary    → results/analysis/tables/sensitivity_summary.csv
+    • Publication tables 1–4          → results/analysis/tables/table{1..4}_*.csv / .tex
 """
 from __future__ import annotations
 import os, sys, warnings, itertools, textwrap
@@ -37,9 +37,9 @@ except ImportError:
 # Paths
 # ---------------------------------------------------------------------------
 PROJECT = Path(__file__).resolve().parent.parent.parent
-DATA_DIR = PROJECT / "results" / "simulation" / "production"
+DATA_DIR = PROJECT / "results" / "analysis" / "simulation" / "production"
 CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
-TABLE_DIR = PROJECT / "results" / "tables"
+TABLE_DIR = PROJECT / "results" / "analysis" / "tables"
 TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
 METRICS = ["mean_response_time", "p90_response_time", "coverage_6min", "coverage_8min", "mean_utilization"]
@@ -492,7 +492,7 @@ def main():
     generate_publication_tables(all_data, df_anova, df_posthoc, df_ci)
 
     print("\n" + "=" * 70)
-    print("Analysis complete. All outputs in results/tables/")
+    print("Analysis complete. All outputs in results/analysis/tables/")
     print("=" * 70)
 
 

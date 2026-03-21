@@ -137,7 +137,7 @@ def check_results():
     print(header("2. Result-File Metric Sanity"))
 
     # 2a. policy_comparison.csv — P0 names and RT
-    pc_path = ROOT / "results" / "optimization" / "policy_comparison.csv"
+    pc_path = ROOT / "results" / "archive" / "optimization" / "policy_comparison.csv"
     if pc_path.exists():
         with open(pc_path) as f:
             reader = csv.DictReader(f)
@@ -377,7 +377,7 @@ def check_deprecated():
     # 5a. Scan for "8.08" or "18.5" in authoritative result files
     stale_metrics = ["8.08", "18.5"]
     auth_result_files = [
-        ROOT / "results" / "optimization" / "policy_comparison.csv",
+        ROOT / "results" / "archive" / "optimization" / "policy_comparison.csv",
     ]
     for rp in auth_result_files:
         if not rp.exists():

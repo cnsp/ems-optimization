@@ -57,7 +57,7 @@ CAPACITY_VALUES = [2, 5]
 NUM_REPLICATIONS = 15          # balance runtime vs statistical power
 HORIZON_HOURS = 168            # 1 week
 SEED_BASE = 42
-OUTPUT_DIR = PROJECT_ROOT / "results" / "capacity_comparison"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "analysis" / "capacity_comparison"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Load shared data ────────────────────────────────────────────────
