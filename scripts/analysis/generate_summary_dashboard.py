@@ -24,8 +24,8 @@ from matplotlib.patches import FancyBboxPatch
 
 # ── Paths ──────────────────────────────────────────────────────────
 PROJECT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-TABLES  = os.path.join(PROJECT, "results", "tables")
-SIM     = os.path.join(PROJECT, "results", "simulation", "production")
+TABLES  = os.path.join(PROJECT, "results", "analysis", "tables")
+SIM     = os.path.join(PROJECT, "results", "analysis", "simulation", "production")
 OUT     = os.path.join(PROJECT, "results", "figures", "project_summary_dashboard.png")
 
 # ── Load Data ──────────────────────────────────────────────────────

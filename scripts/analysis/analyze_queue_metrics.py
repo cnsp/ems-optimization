@@ -50,7 +50,7 @@ POLICY_COLORS = {"P0": "#e74c3c", "P1": "#f39c12", "P2": "#27ae60"}
 
 def load_all_production_results() -> dict:
     """Load all production experiment CSVs."""
-    prod_dir = PROJECT_ROOT / "results" / "simulation" / "production"
+    prod_dir = PROJECT_ROOT / "results" / "analysis" / "simulation" / "production"
     data = {}
     for f in sorted(prod_dir.glob("exp*.csv")):
         name = f.stem
@@ -65,7 +65,7 @@ def load_all_production_results() -> dict:
 
 def load_cbd_results() -> pd.DataFrame:
     """Load CBD experiment results if available."""
-    cbd_path = PROJECT_ROOT / "results" / "simulation" / "cbd_experiment" / "cbd_experiment_results.csv"
+    cbd_path = PROJECT_ROOT / "results" / "analysis" / "simulation" / "cbd_experiment" / "cbd_experiment_results.csv"
     if cbd_path.exists():
         df = pd.read_csv(cbd_path)
         logger.info(f"Loaded CBD results: {len(df)} rows")

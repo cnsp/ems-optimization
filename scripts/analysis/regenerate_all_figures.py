@@ -66,7 +66,7 @@ def load_production_raw():
 
 def load_cbd_experiment():
     """Load CBD experiment results."""
-    path = PROJECT / "results" / "simulation" / "cbd_experiment" / "cbd_experiment_results.csv"
+    path = PROJECT / "results" / "analysis" / "simulation" / "cbd_experiment" / "cbd_experiment_results.csv"
     df = pd.read_csv(path)
     return df
 
@@ -74,10 +74,10 @@ def load_cbd_experiment():
 def load_capacity_comparison():
     """Load capacity comparison aggregated results."""
     frames = []
-    main_file = PROJECT / "results" / "capacity_comparison" / "simulation_results.csv"
+    main_file = PROJECT / "results" / "analysis" / "capacity_comparison" / "simulation_results.csv"
     if main_file.exists():
         frames.append(pd.read_csv(main_file))
-    k30_file = PROJECT / "results" / "capacity_comparison" / "simulation_results_K30.csv"
+    k30_file = PROJECT / "results" / "analysis" / "capacity_comparison" / "simulation_results_K30.csv"
     if k30_file.exists():
         frames.append(pd.read_csv(k30_file))
     df = pd.concat(frames, ignore_index=True)
@@ -404,7 +404,7 @@ def fig4_cbd_robustness():
 def fig5_cbd_equity_tradeoff():
     print("  Figure 5: CBD Equity-Efficiency Tradeoff ...")
     # Load from cbd_focused_comparison (Manhattan-wide P2 vs CBD-focused P2)
-    comp_path = PROJECT / "results" / "cbd_focused_comparison" / "comparison_table.csv"
+    comp_path = PROJECT / "results" / "analysis" / "cbd_focused_comparison" / "comparison_table.csv"
     df_comp = pd.read_csv(comp_path)
 
     # Also get P0 and P1 baseline from CBD experiment

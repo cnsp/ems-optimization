@@ -16,7 +16,7 @@ from pathlib import Path
 
 # Project root
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-RESULTS_DIR = PROJECT_ROOT / "results" / "capacity_comparison"
+RESULTS_DIR = PROJECT_ROOT / "results" / "analysis" / "capacity_comparison"
 FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
 FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 

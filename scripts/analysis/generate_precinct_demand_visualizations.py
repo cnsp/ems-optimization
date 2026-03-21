@@ -64,7 +64,7 @@ MEDIAN_COLOUR = "#E67E22"
 def load_demand() -> pd.DataFrame:
     """Load precinct demand data and compute daily crash rate."""
     df = pd.read_csv(DATA_PROCESSED / "demand_lambda_precinct.csv")
-    df["crashes_per_day"] = df["crash_rate_per_hour"] * 24
+    df["crashes_per_day"] = df["lambda_per_hour"] * 24
     return df.sort_values("crashes_per_day", ascending=True).reset_index(drop=True)
 
 
