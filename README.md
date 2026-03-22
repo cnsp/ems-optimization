@@ -42,16 +42,63 @@ The analysis combines:
 
 If you're new to the project:
 
-1. Read the [Technical Report](docs/core/technical_report.md)
-2. Run the baseline pipeline:
+1. **Read** the [Technical Report](docs/core/technical_report.md) §1 (Executive Summary)
+2. **Browse** `results/baseline/` — this is the canonical source of truth
+3. **Run** the baseline pipeline (optional — results are pre-committed):
    ```bash
    python scripts/run_production_v2.py
    ```
-3. View canonical outputs in: `results/baseline/`
+4. **Understand the tier system**: Canonical → Supporting → Historical (see below)
 
-For supporting analyses, see:
-- `results/analysis/`
-- `docs/analysis/`
+For supporting analyses: `results/analysis/` and `docs/analysis/`  
+For architecture deep-dive: [`docs/core/ARCHITECTURAL_MAP.md`](docs/core/ARCHITECTURAL_MAP.md)  
+For artifact governance: [`docs/core/artifact_governance_map.md`](docs/core/artifact_governance_map.md)
+
+## Source of Truth
+
+All results and documentation follow a three-tier governance system:
+
+| Tier | Label | Location | Status |
+|------|-------|----------|--------|
+| **Canonical** | ✅ Current | `results/baseline/`, `docs/core/` | Authoritative — cited in technical report and README |
+| **Supporting** | 🔬 Analysis | `results/analysis/`, `docs/analysis/` | Robustness and sensitivity analyses that strengthen canonical findings |
+| **Historical** | ⚠️ Archive | `results/archive/`, `docs/archive/`, `scripts/archive/` | Superseded artifacts (e.g., cap=5 era). Retained for audit trail only |
+
+**Canonical values used throughout this project:**
+
+| Parameter | Value | Source |
+|-----------|-------|--------|
+| Base arrival rate (λ₀) | 3.48 crashes/hour | `configs/demand.yaml` |
+| Firehouse capacity (C) | 2 units/firehouse | `configs/optimization.yaml`, DEC-010 |
+| Simulation horizon | 168 hours (1 week) | `configs/simulation.yaml` |
+| Replications per scenario | 30 | `configs/simulation.yaml` |
+| Master seed | 42 | `configs/demand.yaml` |
+| Coverage threshold | 8 minutes (NFPA) / 6 minutes (NYC) | `configs/simulation.yaml` |
+| Average EMS speed | 20 mph | `configs/service.yaml` |
+| Service time mean | 25 min (LogNormal) | `configs/service.yaml` |
+| Canonical K set | {10, 15, 20, 25, 30, 35, 40, 45, 48} | `configs/optimization.yaml` |
+
+> **Full governance details**: [`docs/core/artifact_governance_map.md`](docs/core/artifact_governance_map.md)
+> **Figure/table provenance**: [`docs/core/figure_table_traceability.md`](docs/core/figure_table_traceability.md)
+
+## Experimental Scope
+
+The study comprises **4 core experiments** and **4 supporting analyses**, totalling 2,700+ simulation runs:
+
+| Experiment | Factors | Scope | Generator |
+|------------|---------|-------|-----------|
+| **Exp1** — Policy Comparison | P0, P1, P2 at K=20 | 3 × 30 reps = 90 runs | `scripts/run_production_v2.py` |
+| **Exp2** — Fleet Sensitivity | 9 K-values × 3 policies | 27 × 30 reps = 810 runs | `scripts/run_production_v2.py` |
+| **Exp3** — Demand Sensitivity | 6 demand multipliers × 2 policies | 12 × 30 reps = 360 runs | `scripts/run_production_v2.py` |
+| **Exp4** — Service Robustness | 3 service means × 2 policies | 6 × 30 reps = 180 runs | `scripts/run_production_v2.py` |
+| **Capacity** — Cap Sensitivity | cap {1–5} × K {20,40} × 3 policies | Supporting | `scripts/analysis/capacity_sensitivity_*.py` |
+| **CBD** — CBD Robustness | CBD surge scenarios | 330 runs | `scripts/analysis/run_cbd_experiment.py` |
+| **Distance** — Metric Comparison | Haversine vs Manhattan | Supporting | `scripts/analysis/run_distance_comparison_experiment.py` |
+| **Queue/Seasonal** — Derived | Post-hoc analysis of Exp1–4 | Supporting | `scripts/analysis/analyze_queue_metrics.py`, `analyze_seasonal_patterns.py` |
+
+All experiments use Common Random Numbers (CRN) for variance reduction. Verification (4 tests) and validation (3 pilots) are documented in the [technical report](docs/core/technical_report.md) §4.4.3.
+
+> **Full experimental design**: [`docs/core/experimental_design.md`](docs/core/experimental_design.md)
 
 ## Repository Architecture
 
@@ -241,7 +288,7 @@ python scripts/generate_all_data.py --no-validate
 make data
 
 # 2. Run optimization comparison
-python scripts/run_optimization_comparison.py
+python scripts/analysis/run_optimization_comparison.py
 
 # 3. Run simulation verification
 python scripts/run_verification.py
@@ -253,26 +300,26 @@ python scripts/run_validation_pilots.py
 python scripts/run_production_v2.py
 
 # 6. Analyze results and generate figures
-python scripts/analyze_production_results.py
-python scripts/generate_publication_figures.py
+python scripts/analysis/analyze_production_results.py
+python scripts/analysis/generate_publication_figures.py
 
 # 7. Run CBD robustness experiment (330 simulations)
-python scripts/run_cbd_experiment.py --reps 30
+python scripts/analysis/run_cbd_experiment.py --reps 30
 
 # 8. Run gap closure analyses
-python scripts/analyze_queue_metrics.py
-python scripts/analyze_seasonal_patterns.py
+python scripts/analysis/analyze_queue_metrics.py
+python scripts/analysis/analyze_seasonal_patterns.py
 
 # 9. Run alternative analyses (Phase 8)
-python scripts/generate_manhattan_distance_matrix.py
-python scripts/run_distance_comparison_experiment.py --reps 10
-python scripts/run_cbd_focused_optimization.py --reps 10
+python scripts/analysis/generate_manhattan_distance_matrix.py
+python scripts/analysis/run_distance_comparison_experiment.py --reps 10
+python scripts/analysis/run_cbd_focused_optimization.py --reps 10
 
 # 10. Run capacity sensitivity analysis (Phase 9)
-python scripts/capacity_sensitivity_full_spectrum.py
+python scripts/analysis/capacity_sensitivity_full_spectrum.py
 
 # 11. Run P0 spatial stratification analysis
-python scripts/p0_spatial_analysis.py
+python scripts/analysis/p0_spatial_analysis.py
 
 # 12. Run extended fleet analysis experiments (810 simulations — cap=2)
 python scripts/run_production_v2.py
