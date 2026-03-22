@@ -14,7 +14,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 This document provides a thorough analysis of queueing behavior in the EMS simulation experiments. Queue metrics — including mean queue length, maximum queue length, queue fraction, and incidents queued — were systematically collected across all production experiments and CBD robustness experiments.
 
-**Key Finding:** Under all tested scenarios with K ≥ 15 units, queueing is essentially non-existent (queue fraction = 0.0). This indicates that the Manhattan EMS system, even with the minimum fleet size tested, has sufficient capacity to handle demand without queuing delays.
+**Key Finding:** Under all tested scenarios in the Exp2 subset (K = 15–40) with K ≥ 15 units, queueing is essentially non-existent (queue fraction = 0.0). This indicates that the Manhattan EMS system, even with the minimum fleet size tested in Exp2, has sufficient capacity to handle demand without queuing delays. (Note: the full canonical experimental design spans K = 10–48; queue analysis here covers the Exp2 subset K = 15–40.)
 
 ---
 
@@ -45,7 +45,7 @@ Across all 1,440 production simulation runs:
 
 This holds across:
 - All three policies (P0, P1, P2)
-- All fleet sizes K ∈ {15, 20, 25, 30, 35, 40}
+- Exp2 fleet sizes K ∈ {15, 20, 25, 30, 35, 40} (subset of full canonical design K = 10–48)
 - All demand multipliers δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0}
 - All service time means μ ∈ {20, 25, 30} minutes
 

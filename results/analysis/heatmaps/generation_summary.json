@@ -1,17 +1,9 @@
 {
-  "total_expected": 108,
-  "total_generated": 108,
+  "total_expected": 12,
+  "total_generated": 12,
   "total_failed": 0,
   "K_values": [
-    5,
-    10,
-    15,
-    20,
-    25,
-    30,
-    35,
-    40,
-    45
+    48
   ],
   "policies": [
     "P0",
