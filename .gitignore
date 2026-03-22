@@ -110,5 +110,24 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# Temporary directories
+tmp/
+
+# Root-level audit/validation artifacts (archived in docs/archive/)
+AUDIT_*.md
+AUDIT_*.pdf
+FIGURE_PROVENANCE_AUDIT.*
+PHASE1_VALIDATION_REPORT.*
+PR11_VERIFICATION_REPORT.*
+PROVENANCE_AUDIT_*.*
+REGENERATION_PLAN.*
+KEY_FINDINGS_AUDIT.*
+PR*_FINAL_REVIEW.*
+PR*_VERIFICATION_REPORT.*
+
+# Temporary regeneration outputs
+regenerate_*.py
+*_regeneration_*.py
+
 # mypy
 .mypy_cache/

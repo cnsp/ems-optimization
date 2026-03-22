@@ -61,7 +61,7 @@ This study employs a three-pronged approach combining **demand modeling**, **mat
 
 | Metric | P0 (Baseline) | P1 (Proportional) | P2 (Optimized) | P2 vs P0 Improvement |
 |--------|--------------|-------------------|-----------------|---------------------|
-| Mean Response Time | 3.17 min | 2.63 min | **2.57 min** | **−18.9%** |
+| Mean Response Time | 3.17 min | 2.62 min | **2.57 min** | **−18.9%** |
 | P90 (90th %ile) Response Time | 5.33 min | 3.99 min | **3.75 min** | **−29.7%** |
 | 6-min Coverage (NYC law) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
 | 8-min Coverage (NFPA standard) | 99.7% | 99.6% | **99.7%** | 0 pp |
