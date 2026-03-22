@@ -288,7 +288,7 @@ python scripts/generate_all_data.py --no-validate
 make data
 
 # 2. Run optimization comparison
-python scripts/run_optimization_comparison.py
+python scripts/analysis/run_optimization_comparison.py
 
 # 3. Run simulation verification
 python scripts/run_verification.py
@@ -300,26 +300,26 @@ python scripts/run_validation_pilots.py
 python scripts/run_production_v2.py
 
 # 6. Analyze results and generate figures
-python scripts/analyze_production_results.py
-python scripts/generate_publication_figures.py
+python scripts/analysis/analyze_production_results.py
+python scripts/analysis/generate_publication_figures.py
 
 # 7. Run CBD robustness experiment (330 simulations)
-python scripts/run_cbd_experiment.py --reps 30
+python scripts/analysis/run_cbd_experiment.py --reps 30
 
 # 8. Run gap closure analyses
-python scripts/analyze_queue_metrics.py
-python scripts/analyze_seasonal_patterns.py
+python scripts/analysis/analyze_queue_metrics.py
+python scripts/analysis/analyze_seasonal_patterns.py
 
 # 9. Run alternative analyses (Phase 8)
-python scripts/generate_manhattan_distance_matrix.py
-python scripts/run_distance_comparison_experiment.py --reps 10
-python scripts/run_cbd_focused_optimization.py --reps 10
+python scripts/analysis/generate_manhattan_distance_matrix.py
+python scripts/analysis/run_distance_comparison_experiment.py --reps 10
+python scripts/analysis/run_cbd_focused_optimization.py --reps 10
 
 # 10. Run capacity sensitivity analysis (Phase 9)
-python scripts/capacity_sensitivity_full_spectrum.py
+python scripts/analysis/capacity_sensitivity_full_spectrum.py
 
 # 11. Run P0 spatial stratification analysis
-python scripts/p0_spatial_analysis.py
+python scripts/analysis/p0_spatial_analysis.py
 
 # 12. Run extended fleet analysis experiments (810 simulations — cap=2)
 python scripts/run_production_v2.py

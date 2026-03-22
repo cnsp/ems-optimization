@@ -39,7 +39,7 @@ These scripts produce the artifacts cited in `README.md`, `docs/core/technical_r
 | G2 | `scripts/run_production_v2.py` | Canonical | `results/baseline/simulation/`, `results/baseline/tables/`, `results/baseline/figures/`, `results/baseline/allocations/` | Production experiments (Exp1–4, fleet analysis): 810 runs, 3 policies × 9 K-values × 30 reps |
 | G3 | `scripts/run_verification.py` | Canonical | `results/baseline/simulation/verification/01–04_*.json` | 4 verification tests (toy, zero-demand, single-unit, extreme) |
 | G4 | `scripts/run_validation_pilots.py` | Canonical | `results/baseline/simulation/validation_pilot/pilot1–3_*.json` | 3 validation pilots (P0 vs P2, fleet sensitivity, demand sensitivity) |
-| G5 | `scripts/run_optimization_comparison.py` | Canonical | `results/figures/fig_policy_comparison.png`, `results/figures/fig_tradeoff_curve.png`, allocation CSVs | Static optimization comparison across K-values |
+| G5 | `scripts/analysis/run_optimization_comparison.py` | Canonical | `results/figures/fig_policy_comparison.png`, `results/figures/fig_tradeoff_curve.png`, allocation CSVs | Static optimization comparison across K-values |
 | G6 | `scripts/demand_modeling.py` | Canonical | `data/processed/demand_lambda_*.csv`, `results/figures/fig_precinct_demand.png`, `results/figures/fig_demand_model_fit.png` | NHPP demand calibration |
 | G7 | `scripts/analysis/analyze_production_results.py` | Canonical | `results/baseline/tables/` (ANOVA, CIs, effect sizes, descriptive stats) | Statistical analysis of production results |
 | G8 | `scripts/analysis/generate_publication_figures.py` | Canonical | `results/figures/pub_fig1–5_*.png` | Publication-quality figures for technical report |
