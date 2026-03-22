@@ -473,7 +473,7 @@ After comparing 5 policies, need to recommend best allocation strategy for Manha
 **Context**:
 During development, the P0 baseline evolved through two implementations:
 - **Original P0 (deprecated)**: Index-based round-robin allocation across all 48 firehouses in database order. This inadvertently created a CBD-biased allocation because firehouses in the CSV are clustered by geography, producing mean RT of 8.08 min at K=20 with only 64.4% 8-minute coverage.
-- **Current P0**: Spatially-stratified uniform allocation using latitude-based firehouse selection, achieving 3.17 min mean RT at K=20 with 99.6% coverage — a 61% improvement.
+- **Current P0**: Spatially-stratified uniform allocation using latitude-based firehouse selection, achieving 3.17 min mean RT at K=20 with 99.7% coverage — a 61% improvement.
 
 Earlier documentation referred to these as "P0 (V1)" and "P0 (V2)" or "P0-legacy" and "P0-spatial", creating confusion in the technical report.
 

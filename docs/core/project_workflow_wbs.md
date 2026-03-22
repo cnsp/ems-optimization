@@ -248,7 +248,7 @@ Design the conceptual DES model and implement a modular simulation engine in Pyt
 | 4.10 | Implement `MetricsCollector` for KPI tracking | `metrics.py` |
 | 4.11 | Implement `EMSSimulation` main engine with SimPy process-interaction | `engine.py` |
 | 4.12 | Implement `BatchRunner` for replicated experiments with CRN support | `runner.py` |
-| 4.13 | Write unit tests (39 tests across 4 modules) | Test suite |
+| 4.13 | Write unit tests (176 tests across 13 modules) | Test suite |
 | 4.14 | Document conceptual model and code architecture | Documentation |
 
 ### Input Files
@@ -275,7 +275,7 @@ Design the conceptual DES model and implement a modular simulation engine in Pyt
 | `configs/simulation.yaml` | DES engine configuration |
 | `docs/core/conceptual_model.md` | Complete conceptual model specification |
 | `docs/core/code_documentation.md` | Code architecture and module documentation |
-| `tests/` | 39 unit tests across 4 test modules |
+| `tests/` | 176 unit tests across 13 test modules |
 
 ### Scripts / Notebooks Used
 
@@ -305,7 +305,7 @@ Verify that the simulation code correctly implements the conceptual model and va
 | 5.5 | **Validation Pilot 1 — Directional:** Compare P0 vs. P2 and confirm P2 dominates on mean RT | Directional validation |
 | 5.6 | **Validation Pilot 2 — Fleet Sensitivity:** Verify response time decreases monotonically with increasing K | Monotonicity check |
 | 5.7 | **Validation Pilot 3 — Demand Sensitivity:** Verify response time increases with demand intensity | Demand response check |
-| 5.8 | Run all 39 unit tests and confirm 100% pass rate | Test results |
+| 5.8 | Run all 176 unit tests and confirm 100% pass rate | Test results |
 | 5.9 | Document all V&V findings, corrections, and acceptance criteria | V&V log |
 
 ### Input Files

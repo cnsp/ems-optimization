@@ -1,0 +1,51 @@
+Experiment,Source,Metric,F,p,Sig.,η²,Effect
+Exp1,Policy,Mean RT (min),1019.252,0.0,***,0.9591,Large
+Exp1,Policy,"P90 Response Time (90th percentile, min)",397.689,0.0,***,0.9014,Large
+Exp1,Policy,6-min Coverage (NYC),284.798,0.0,***,0.8675,Large
+Exp1,Policy,8-min Coverage (NFPA),0.458,0.634032,ns,0.0104,Small
+Exp1,Policy,Mean Utilization,2.186,0.118471,ns,0.0479,Small
+Exp2,Policy,Mean RT (min),20146.983,0.0,***,0.2895,Large
+Exp2,K,Mean RT (min),11321.648,0.0,***,0.2711,Large
+Exp2,Policy × K,Mean RT (min),6068.802,0.0,***,0.436,Large
+Exp2,Policy,"P90 Response Time (90th percentile, min)",11522.797,0.0,***,0.2757,Large
+Exp2,K,"P90 Response Time (90th percentile, min)",6513.051,0.0,***,0.2597,Large
+Exp2,Policy × K,"P90 Response Time (90th percentile, min)",3836.26,0.0,***,0.459,Large
+Exp2,Policy,6-min Coverage (NYC),12532.837,0.0,***,0.2931,Large
+Exp2,K,6-min Coverage (NYC),6565.93,0.0,***,0.2559,Large
+Exp2,Policy × K,6-min Coverage (NYC),3810.835,0.0,***,0.4456,Large
+Exp2,Policy,8-min Coverage (NFPA),17945.197,0.0,***,0.2907,Large
+Exp2,K,8-min Coverage (NFPA),7075.478,0.0,***,0.191,Large
+Exp2,Policy × K,8-min Coverage (NFPA),6352.984,0.0,***,0.5145,Large
+Exp2,Policy,Mean Utilization,88270.403,0.0,***,0.8636,Large
+Exp2,K,Mean Utilization,0.0,1.0,ns,0.0,Negligible
+Exp2,Policy × K,Mean Utilization,2752.958,0.0,***,0.1347,Medium
+Exp3,Policy,Mean RT (min),6736.837,0.0,***,0.8255,Large
+Exp3,demand_multiplier,Mean RT (min),451.441,0.0,***,0.1383,Medium
+Exp3,Policy × demand_multiplier,Mean RT (min),6.907,0.0,***,0.0042,Negligible
+Exp3,Policy,"P90 Response Time (90th percentile, min)",2380.947,0.0,***,0.699,Large
+Exp3,demand_multiplier,"P90 Response Time (90th percentile, min)",289.68,0.0,***,0.2126,Large
+Exp3,Policy × demand_multiplier,"P90 Response Time (90th percentile, min)",8.044,0.0,***,0.0118,Small
+Exp3,Policy,6-min Coverage (NYC),1531.677,0.0,***,0.6777,Large
+Exp3,demand_multiplier,6-min Coverage (NYC),186.266,0.0,***,0.206,Large
+Exp3,Policy × demand_multiplier,6-min Coverage (NYC),0.373,0.957968,ns,0.0008,Negligible
+Exp3,Policy,8-min Coverage (NFPA),8.541,0.000224,***,0.0147,Small
+Exp3,demand_multiplier,8-min Coverage (NFPA),122.735,0.0,***,0.5269,Large
+Exp3,Policy × demand_multiplier,8-min Coverage (NFPA),1.192,0.293663,ns,0.0102,Small
+Exp3,Policy,Mean Utilization,13.934,1e-06,***,0.0005,Negligible
+Exp3,demand_multiplier,Mean Utilization,11885.898,0.0,***,0.9908,Large
+Exp3,Policy × demand_multiplier,Mean Utilization,0.35,0.966467,ns,0.0001,Negligible
+Exp4,Policy,Mean RT (min),2979.858,0.0,***,0.9448,Large
+Exp4,service_time_mean,Mean RT (min),42.13,0.0,***,0.0134,Small
+Exp4,Policy × service_time_mean,Mean RT (min),0.68,0.606625,ns,0.0004,Negligible
+Exp4,Policy,"P90 Response Time (90th percentile, min)",1139.379,0.0,***,0.8826,Large
+Exp4,service_time_mean,"P90 Response Time (90th percentile, min)",20.409,0.0,***,0.0158,Small
+Exp4,Policy × service_time_mean,"P90 Response Time (90th percentile, min)",0.288,0.885514,ns,0.0004,Negligible
+Exp4,Policy,6-min Coverage (NYC),831.005,0.0,***,0.8494,Large
+Exp4,service_time_mean,6-min Coverage (NYC),16.84,0.0,***,0.0172,Small
+Exp4,Policy × service_time_mean,6-min Coverage (NYC),0.012,0.999702,ns,0.0,Negligible
+Exp4,Policy,8-min Coverage (NFPA),0.902,0.407042,ns,0.0063,Negligible
+Exp4,service_time_mean,8-min Coverage (NFPA),11.422,1.8e-05,***,0.0798,Medium
+Exp4,Policy × service_time_mean,8-min Coverage (NFPA),0.153,0.961463,ns,0.0021,Negligible
+Exp4,Policy,Mean Utilization,6.477,0.001797,**,0.0032,Negligible
+Exp4,service_time_mean,Mean Utilization,1887.261,0.0,***,0.9323,Large
+Exp4,Policy × service_time_mean,Mean Utilization,0.008,0.999884,ns,0.0,Negligible

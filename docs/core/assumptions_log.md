@@ -97,7 +97,7 @@ This document logs the assumptions made during the EMS Readiness Optimization pr
 **Assumption**: The baseline uniform allocation policy (P0) distributes units across firehouses using latitude-based spatial stratification rather than arbitrary index-based ordering.
 **Rationale**: Latitude-based stratification divides Manhattan into equal-width latitude bands and round-robins units across bands, ensuring even north–south geographic coverage regardless of firehouse ordering in the dataset. This produces a fair, geographically representative baseline.
 **Risk**: Latitude-only stratification does not account for east–west variation or local demand density.
-**Mitigation**: Manhattan's elongated north–south geometry makes latitude the dominant spatial axis. P0 is a *baseline* comparator; optimized policies (P1, P2) already account for demand. Simulation confirms P0 achieves 3.17 min mean RT at K=20 with 99.6% 8-minute coverage.
+**Mitigation**: Manhattan's elongated north–south geometry makes latitude the dominant spatial axis. P0 is a *baseline* comparator; optimized policies (P1, P2) already account for demand. Simulation confirms P0 achieves 3.17 min mean RT at K=20 with 99.7% 8-minute coverage.
 
 ### A15: P0 Nomenclature (Internal Reference)
 **Assumption**: The project uses a single, standardized P0 definition (spatially-stratified allocation) throughout all public-facing documents. An earlier index-based implementation (deprecated) exists in code for backward compatibility but is not referenced in the technical report.

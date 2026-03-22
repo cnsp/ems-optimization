@@ -171,9 +171,9 @@ Simulation baselines below are from the current P0 (spatially-stratified) at K=2
 | KPI | Baseline (P0, cap=2) | Target (P2, cap=2) | Measurement |
 |-----|---------------------|-------------------|-------------|
 | Mean Response Time | 3.17 min | < 3.0 min | Daily from CAD |
-| 8-min Coverage (NFPA standard) | 99.6% | > 99% | Weekly calculation |
+| 8-min Coverage (NFPA standard) | 99.7% | > 99% | Weekly calculation |
 | 6-min Coverage (NYC law) | ~93.7% | > 95% | Weekly calculation |
-| P90 (90th %ile) Response Time | 5.32 min | < 5 min | Weekly calculation |
+| P90 (90th %ile) Response Time | 5.33 min | < 5 min | Weekly calculation |
 | Utilization | 7.6% | 7–10% | Weekly calculation |
 | Crew satisfaction | N/A | > 80% positive | Quarterly survey |
 

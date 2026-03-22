@@ -50,7 +50,7 @@ verified: "Master index of all 62 documentation files"
 ### Experimental Design & Results
 | Document | Description |
 |----------|-------------|
-| [`experimental_design.md`](experimental_design.md) | Experimental design: 5 experiment sets, 2,400 runs |
+| [`experimental_design.md`](experimental_design.md) | Experimental design: 5 experiment sets, 2,760 runs |
 | [`optimization_results.md`](../analysis/optimization_results.md) | Optimization results summary (cap=2, current P0) |
 | [`capacity_sensitivity_analysis.md`](../analysis/capacity_sensitivity_analysis.md) | Full-spectrum capacity sensitivity (cap 1–5) |
 | [`cbd_robustness_analysis.md`](../analysis/cbd_robustness_analysis.md) | CBD robustness analysis with current metrics |
@@ -161,10 +161,10 @@ Most `.md` files have corresponding `.pdf` versions (60 PDFs total). PDFs are au
 |--------|-------|--------|
 | P0 mean RT (K=20) | 3.17 min | Spatially-stratified baseline |
 | P2 mean RT (K=20) | 2.57 min | Demand-weighted MIP |
-| 8-min coverage (P2, K=20) | 99.6% | Production simulation |
+| 8-min coverage (P2, K=20) | 99.7% | Production simulation |
 | Default capacity | 2 units/firehouse | DEC-010 |
 | P0 nomenclature | Spatially-stratified | DEC-011/DEC-012 |
-| Total production runs | 2,400 | 5 experiment sets × 30 replications |
+| Total production runs | 2,760 | 5 experiment sets × 30 replications |
 
 ---
 

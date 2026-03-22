@@ -37,8 +37,9 @@ except ImportError:
 # Paths
 # ---------------------------------------------------------------------------
 PROJECT = Path(__file__).resolve().parent.parent.parent
-DATA_DIR = PROJECT / "results" / "analysis" / "simulation" / "production"
-CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
+DATA_DIR = PROJECT / "results" / "baseline" / "simulation"
+CAPACITY = 2  # v2 baseline uses capacity=2 (DEC-010)
+
 TABLE_DIR = PROJECT / "results" / "analysis" / "tables"
 TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -58,7 +59,7 @@ METRIC_LABELS = {
 def load_experiment(name: str) -> pd.DataFrame:
     path = DATA_DIR / f"{name}.csv"
     if not path.exists():
-        sys.exit(f"ERROR: {path} not found.")
+        sys.exit(f"ERROR: {name}.csv not found in {DATA_DIR}")
     return pd.read_csv(path)
 
 

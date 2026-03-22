@@ -18,7 +18,7 @@ All simulation experiments reported in this assessment use the following fixed p
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| **Firehouse capacity** | **5 units per firehouse** | v1 production experiments (`results/simulation/production/`) |
+| **Firehouse capacity** | **2 units per firehouse** | v2 production experiments (`results/analysis/simulation/production/`); see DEC-010 |
 | Coverage threshold | 8 minutes (NFPA standard) / 6 minutes (NYC law) | Dual thresholds |
 | Simulation horizon | 168 hours (1 week) | Per replication |
 | Replications | 30 | Per experimental cell |
@@ -92,13 +92,13 @@ Three allocation policies were formulated and solved via Mixed-Integer Programmi
 | **P1 (Demand-Proportional)** | x_i ∝ nearby demand | Heuristic |
 | **P2 (Demand-Weighted MIP)** | min Σ d_j · t_ij · y_ij s.t. fleet/capacity/assignment constraints | **Optimal** (solved to optimality, all instances) |
 
-#### P2 Optimal Allocation Performance (K=20, cap=5)
+#### P2 Optimal Allocation Performance (K=20, cap=2)
 | Metric | Value | 95% CI | Source |
 |--------|-------|--------|--------|
 | Mean Response Time | **2.57 min** | [2.554, 2.587] | `results/baseline/tables/table1_baseline_comparison.csv` |
-| P90 (90th %ile) Response Time | **3.76 min** | [3.717, 3.803] | `results/baseline/tables/confidence_intervals.csv` |
+| P90 (90th %ile) Response Time | **3.75 min** | [3.717, 3.803] | `results/baseline/tables/table1_baseline_comparison.csv` |
 | 6-min Coverage (NYC law) | **98.2%** | [98.0%, 98.4%] | `results/baseline/tables/confidence_intervals.csv` |
-| 8-min Coverage (NFPA standard) | **99.6%** | [99.54%, 99.71%] | `results/baseline/tables/confidence_intervals.csv` |
+| 8-min Coverage (NFPA standard) | **99.7%** | [99.54%, 99.71%] | `results/baseline/tables/table1_baseline_comparison.csv` |
 | Mean Utilisation | **7.5%** | [7.35%, 7.57%] | `results/baseline/tables/confidence_intervals.csv` |
 
 #### Robustness of Optimality Across Distance Metrics
@@ -128,7 +128,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 | Metric | P0 (Spatial-Stratified) | P1 (Proportional) | P2 (Optimised) | P2 vs P0 Δ |
 |--------|------------------------|-------------------|-----------------|------------|
 | Mean RT | 3.17 min | 2.62 min | **2.57 min** | **−19.0%** |
-| P90 (90th %ile) RT | 5.33 min | 3.99 min | **3.75 min** | **−29.6%** |
+| P90 (90th %ile) RT | 5.33 min | 3.99 min | **3.75 min** | **−29.7%** |
 | 6-min Coverage (NYC law) | 94.0% | 98.0% | **98.2%** | **+4.2 pp** |
 | 8-min Coverage (NFPA standard) | 99.7% | 99.6% | **99.7%** | **+0.0 pp** |
 | Utilisation | 7.6% | 7.4% | **7.4%** | −0.2 pp |
@@ -183,7 +183,7 @@ The allocation was validated under both **Haversine** and **Manhattan (taxicab)*
 | 35 | 3.27 min | **2.43 min** | 92.1% | **98.7%** | 93.8% | **99.7%** |
 | 40 | 2.45 min | **2.43 min** | 99.7% | **98.7%** | 99.8% | **99.7%** |
 
-*Source: `results/simulation/production/exp2_fleet_sensitivity.csv`*
+*Source: `results/analysis/simulation/production/exp2_fleet_sensitivity.csv`*
 
 **Key finding:** P0 performance varies significantly with K due to spatial firehouse selection. At some K values (K=20, K=30, K=40), the latitude-based stratification selects well-distributed firehouses, yielding strong P0 performance. At others (K=15, K=25, K=35), gaps in coverage emerge. P2 is consistently strong across all K values.
 
@@ -200,7 +200,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 | 1.50× | 3.28 min | **2.71 min** | 92.6% | **96.8%** | 99.3% | **99.5%** |
 | 2.00× | 3.36 min | **2.84 min** | 91.7% | **95.7%** | 98.9% | **99.1%** |
 
-*Source: `results/simulation/production/exp3_demand_sensitivity.csv`*
+*Source: `results/analysis/simulation/production/exp3_demand_sensitivity.csv`*
 
 **Key finding:** Policy rankings are **invariant** to demand intensity changes of ±100%. P2 dominates P0 under all tested scenarios. Policy×demand interaction is statistically significant but practically negligible (η² = 0.004).
 
@@ -212,7 +212,7 @@ Two-way ANOVA: Policy (F = 24,301, p < 0.001, η² = 0.29), K (F = 9,743, p < 0.
 | 25 min | 3.17 min | **2.57 min** | P2 ≻ P1 ≻ P0 |
 | 30 min | 3.20 min | **2.62 min** | P2 ≻ P1 ≻ P0 |
 
-*Source: `results/simulation/production/exp4_service_robustness.csv`*
+*Source: `results/analysis/simulation/production/exp4_service_robustness.csv`*
 
 **Key finding:** Service time has **negligible effect** on response time metrics (η² = 0.013). No significant Policy × Service Time interaction (F = 0.68, p = 0.61). Utilisation is sensitive to service time (η² = 0.93) as expected.
 
@@ -280,7 +280,7 @@ All three policies achieve ≥99% 8-min coverage at K=15 or above. The primary d
 | RQ | Question | Status | Evidence Quality | Key Metric | Simulation Runs | Statistical Tests |
 |----|----------|--------|-----------------|------------|----------------|-------------------|
 | **RQ1** | Spatiotemporal demand variation | Fully Answered | **Strong** — 628K records, NHPP model, seasonal analysis | Hourly factor range 0.40–1.40; Precinct share range 2–8%; Seasonal CV = 9% | N/A (data analysis) | Chi-square (p < 0.001), ANOVA (p < 0.001) |
-| **RQ2** | Optimal ambulance allocation | Fully Answered | **Strong** — MIP solved to optimality, validated with 2 distance metrics | P2: 2.57 min mean RT, 99.6% coverage (K=20) | 90 (Exp1) + 60 (distance) + 60 (CBD-focused) | MIP optimality gap = 0%; Haversine vs Manhattan: identical |
+| **RQ2** | Optimal ambulance allocation | Fully Answered | **Strong** — MIP solved to optimality, validated with 2 distance metrics | P2: 2.57 min mean RT, 99.7% coverage (K=20) | 90 (Exp1) + 60 (distance) + 60 (CBD-focused) | MIP optimality gap = 0%; Haversine vs Manhattan: identical |
 | **RQ3** | Policy comparison under realistic conditions | Fully Answered | **Very Strong** — 2,700+ replicated runs, ANOVA/Tukey/Cohen's d | P2 vs P0: −18.9% RT, +4.2 pp 6-min coverage; Cohen's d = 10.3 | 2,700+ (all experiments) | ANOVA F = 1,019 (p < 0.001, η² = 0.959); Tukey HSD all p < 0.001 |
 | **RQ4** | Sensitivity to fleet/demand/service | Fully Answered | **Very Strong** — Full factorial + CBD stress testing | Rankings invariant across all 1,350 sensitivity runs; η² < 0.001 for interactions | 1,350 (Exp2–4) + 330 (CBD) | Two-way ANOVA; interaction η² = 0.0007 (demand), 0 (service time) |
 | **RQ5** | Fleet size for target coverage | Fully Answered | **Strong** — 6-level fleet sweep with 30 reps each | All policies achieve ≥99% 8-min at K=15; P2 leads on 6-min coverage and mean RT | 540 (Exp2) | 95% CIs for each K-level; monotonicity confirmed |

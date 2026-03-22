@@ -1,6 +1,6 @@
 ---
 status: 📋 REFERENCE
-last_updated: "2026-03-20"
+last_updated: "2026-03-22"
 verified: "Specialized analysis document. Cross-reference with current production results."
 ---
 # Verification & Validation Log
@@ -26,11 +26,20 @@ plausible, sensible outputs.
 
 | Test File | Tests | Status |
 |---|---|---|
-| `tests/test_simulation_core.py` | 14 | All Pass |
+| `tests/test_simulation_core.py` | 16 | All Pass |
 | `tests/test_dispatch_logic.py` | 9 | All Pass |
 | `tests/test_extreme_cases.py` | 8 | All Pass |
 | `tests/test_reproducibility.py` | 6 | All Pass |
-| **Total** | **39** | **39/39 Pass** |
+| `tests/test_demand_advanced.py` | 17 | All Pass |
+| `tests/test_service_advanced.py` | 25 | All Pass |
+| `tests/test_optimization_advanced.py` | 20 | All Pass |
+| `tests/test_simulation_advanced.py` | 21 | All Pass |
+| `tests/test_seed_manager.py` | 18 | All Pass |
+| `tests/test_properties.py` | 12 | All Pass |
+| `tests/test_regression.py` | 11 | All Pass |
+| `tests/test_integration.py` | 7 | All Pass |
+| `tests/test_performance.py` | 6 | All Pass |
+| **Total** | **176** | **176/176 Pass** |
 
 ### 2.2 Test Categories
 
@@ -201,7 +210,7 @@ plausible, sensible outputs.
 
 ## 7. Conclusion
 
-The simulation engine passes all 39 unit tests, all 4 verification scenarios, and all 3 validation
+The simulation engine passes all 176 unit tests, all 4 verification scenarios, and all 3 validation
 pilots. The model exhibits correct event ordering, unit conservation, FIFO queueing, deterministic
 reproducibility, and sensible sensitivity behavior. The engine is ready for production scenario analysis.
 
@@ -219,6 +228,6 @@ reproducibility, and sensible sensitivity behavior. The engine is ready for prod
 | `results/simulation/verification/02_zero_demand.json` | Zero demand verification |
 | `results/simulation/verification/03_single_unit.json` | Single unit stress test |
 | `results/simulation/verification/04_extreme_demand.json` | Extreme demand stability |
-| `results/simulation/validation_pilot/pilot1_p0_vs_p2.json` | P0 vs P2 comparison |
-| `results/simulation/validation_pilot/pilot2_sensitivity_K.json` | K sensitivity analysis |
-| `results/simulation/validation_pilot/pilot3_sensitivity_demand.json` | Demand sensitivity |
+| `results/baseline/simulation/validation_pilot/pilot1_p0_vs_p2.json` | P0 vs P2 comparison |
+| `results/baseline/simulation/validation_pilot/pilot2_sensitivity_K.json` | K sensitivity analysis |
+| `results/baseline/simulation/validation_pilot/pilot3_sensitivity_demand.json` | Demand sensitivity |

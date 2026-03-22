@@ -446,7 +446,7 @@ Data flow (View 2) shows artifact dependencies; runtime sequence (View 3) shows 
 | 21 | `scripts/archive/run_production_experiments.py` | **Script** | Original V1 production pipeline | **Legacy** | No — superseded by #1 |
 | 22 | `scripts/archive/audit_step*.py` | **Script** | Historical data auditing (4 scripts) | **Legacy** | No |
 | 23 | `scripts/archive/data_audit.py` | **Script** | Historical data audit | **Legacy** | No |
-| 24 | `pytest tests/ -v` | **Test suite** | 14 test modules | **Active** | Quality assurance |
+| 24 | `pytest tests/ -v` | **Test suite** | 13 test modules | **Active** | Quality assurance |
 
 ### Primary Path Determination
 

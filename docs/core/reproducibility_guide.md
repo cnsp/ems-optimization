@@ -97,7 +97,7 @@ with open("results/run_metadata.json", "w") as f:
 1. Find the `master_seed` from the run's metadata or config.
 2. Set it in `configs/reproducibility.yaml` or `EMS_MASTER_SEED`.
 3. **Set the correct capacity parameter** for the experiment regime:
-   - **v1 experiments** (`results/simulation/production/`): use `capacity=5` in `configs/optimization.yaml`
+   - **v1 experiments** (`results/analysis/simulation/production/`): use `capacity=5` in `configs/optimization.yaml`
    - **Extended Fleet Analysis** (`results/baseline/`): use `capacity=2` in `configs/optimization.yaml` (current default)
 4. Run the same code version (check the git commit hash).
 5. Results will be bit-for-bit identical.
