@@ -33,7 +33,7 @@ note: "Preserved for project history. Contains old metrics/references in histori
 ### Phase 2: Spatially-Stratified P0 ("V2")
 
 - **Implementation**: `policies.spatially_stratified_allocation()` — latitude-based spatial stratification
-- **Improvement**: Mean RT = 3.17 min at K=20, 99.6% 8-minute coverage (61% improvement)
+- **Improvement**: Mean RT = 3.17 min at K=20, 99.7% 8-minute coverage (61% improvement)
 - **Rationale**: Fair geographic baseline that eliminates CSV-ordering bias
 - **Decision Reference**: DEC-011 in `docs/core/decisions_log.md`
 - **Period**: Phase 9 onwards
@@ -90,8 +90,8 @@ result = allocator.baseline_p0(K=20)  # Calls spatially_stratified_allocation in
 | Metric | Old P0 (index-based, deprecated) | Current P0 (spatially-stratified) | P2 (optimized) |
 |--------|----------------------------------|-----------------------------------|----------------|
 | Mean RT (K=20) | 8.08 min | 3.17 min | 2.57 min |
-| P90 RT (K=20) | 19.47 min | 5.62 min | 3.76 min |
-| 8-min Coverage (K=20) | 64.4% | 99.6% | 99.6% |
+| P90 RT (K=20) | 19.47 min | 5.33 min | 3.75 min |
+| 8-min Coverage (K=20) | 64.4% | 99.7% | 99.7% |
 | Firehouses Used | 20 (arbitrary) | 20 (geographically spread) | 20 (demand-optimized) |
 
 The 61% improvement from the old to current P0 confirms that **geographic placement** is the dominant factor in EMS response time performance.

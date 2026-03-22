@@ -94,25 +94,25 @@ Standard deviation is held proportional (σ/μ ratio constant).
 - **Objective**: Compare P0, P1, P2 at baseline conditions
 - **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s = 25, **C = 5**
 - **Runs**: 3 policies × 30 replications = **90 runs**
-- **Output**: `results/simulation/production/exp1_policy_comparison.csv`
+- **Output**: `results/analysis/simulation/production/exp1_policy_comparison.csv`
 
 ### Experiment 2: Fleet Size Sensitivity
 - **Objective**: Evaluate performance across fleet sizes
 - **Factors**: π ∈ {P0, P1, P2}, K ∈ {15, 20, 25, 30, 35, 40}, δ = 1.0, μ_s = 25, **C = 5**
 - **Runs**: 3 × 6 × 30 = **540 runs**
-- **Output**: `results/simulation/production/exp2_fleet_sensitivity.csv`
+- **Output**: `results/analysis/simulation/production/exp2_fleet_sensitivity.csv`
 
 ### Experiment 3: Demand Scaling Sensitivity
 - **Objective**: Assess robustness to demand changes
 - **Factors**: π ∈ {P0, P1, P2}, K = 20, δ ∈ {0.5, 0.75, 1.0, 1.25, 1.5, 2.0}, μ_s = 25, **C = 5**
 - **Runs**: 3 × 6 × 30 = **540 runs**
-- **Output**: `results/simulation/production/exp3_demand_sensitivity.csv`
+- **Output**: `results/analysis/simulation/production/exp3_demand_sensitivity.csv`
 
 ### Experiment 4: Service Time Robustness
 - **Objective**: Test sensitivity to on-scene service duration
 - **Factors**: π ∈ {P0, P1, P2}, K = 20, δ = 1.0, μ_s ∈ {20, 25, 30}, **C = 5**
 - **Runs**: 3 × 3 × 30 = **270 runs**
-- **Output**: `results/simulation/production/exp4_service_robustness.csv`
+- **Output**: `results/analysis/simulation/production/exp4_service_robustness.csv`
 
 ### Total Experimental Runs
 | Experiment | Runs |

@@ -27,7 +27,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 - Distributes ambulances **equally** across 48 firehouses
 - **Ignores** where crashes actually happen
 - Results in **3.17-minute average response time** at K=20
-- **99.6%** of calls get response within 8 minutes (NFPA standard); **93.7%** within 6 minutes (NYC law)
+- **99.7%** of calls get response within 8 minutes (NFPA standard); **93.7%** within 6 minutes (NYC law)
 
 **Why this matters:**
 - Manhattan has ~3.48 MVC calls per hour (30,500+ per year)
@@ -46,7 +46,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 |--------|-----------------|--------|
 | Mean Response Time | **3.17 min** | < 4 min |
 | P95 Response Time | **6.26 min** | < 8 min |
-| 8-min Coverage | **99.6%** | > 95% |
+| 8-min Coverage | **99.7%** | > 95% |
 | Utilization | 7.6% | — |
 
 **Context:** The spatially-stratified baseline ensures geographic coverage across Manhattan, meeting the 8-minute target. However, it does not account for demand patterns, leaving room for response time improvements through demand-aware allocation.
@@ -82,7 +82,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 |--------|----------------------|--------------------------|-----------------|
 | Mean Response Time | 3.17 min | 2.63 min | **2.57 min** |
 | P95 Response Time | 6.26 min | 5.05 min | **4.66 min** |
-| 8-min Coverage | 99.6% | 99.6% | **99.6%** |
+| 8-min Coverage | 99.7% | 99.6% | **99.7%** |
 | Fleet Used | 20 units | 20 units | 20 units |
 
 **Interpretation:**
@@ -101,7 +101,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 ### Response Time Distribution Shift
 
 **P0 Distribution:** 3.17 min mean, compact distribution with P95 at 6.26 min
-**P2 Distribution:** Tight cluster around 2.57 min, 99.6% under 8 min
+**P2 Distribution:** Tight cluster around 2.57 min, 99.7% under 8 min
 
 ### Key Visual Insights (see results/figures/):
 - `pub_fig1_policy_comparison.png` — Side-by-side policy comparison

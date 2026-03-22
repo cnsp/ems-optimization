@@ -15,7 +15,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | Rule | Details |
 |------|---------|
 | **Source of truth for simulation** | `results/baseline/` — cap=2, spatially-stratified P0, 30 replications |
-| **Source of truth for optimization** | `results/archive/optimization/` — cap=5 (Phase 3 historical), but metrics are correct |
+| **Source of truth for optimization** | `results/baseline/` — cap=2 (current default per DEC-010). For historical cap=5 results, see `results/archive/optimization/` (Phase 3 legacy) |
 | **Source of truth for publication tables** | `results/tables/table1_*` through `table4_*` |
 | **Default capacity assumption** | **cap=2** (see DEC-010). Files with cap=5 are either legacy or part of capacity sweeps |
 | **P0 means** | Spatially-stratified uniform (latitude-based). Files with `P0` without `_spatial` suffix in `capacity_comparison/` or `heatmaps/` refer to the **deprecated** index-based P0 |
@@ -266,7 +266,7 @@ Static allocation maps at K=40.
 
 ### For verification & validation:
 → **`results/simulation/verification/*.json`**  
-→ **`results/simulation/validation_pilot/*.json`**
+→ **`results/baseline/simulation/validation_pilot/*.json`**
 
 ### For publication figures:
 → **`results/figures/pub_fig*.png`**

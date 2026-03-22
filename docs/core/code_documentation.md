@@ -407,7 +407,7 @@ runner = BatchRunner(base_config)
 results = runner.run_factorial(factors, n_reps=30)
 ```
 
-2. Save results to `results/simulation/production/`
+2. Save results to `results/analysis/simulation/production/`
 3. Add analysis to `scripts/analyze_production_results.py`
 
 ### Integrating Road Network Routing

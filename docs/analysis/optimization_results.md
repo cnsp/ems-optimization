@@ -1,13 +1,15 @@
 ---
-status: ✅ CURRENT
-last_updated: "2026-03-20"
-verified: "All metrics, code references, and nomenclature are current as of March 2026"
+status: ⚠️ HISTORICAL (cap=5)
+last_updated: "2026-03-22"
+verified: "Metrics reflect Phase 3 optimization runs with capacity=5 (pre-DEC-010). For current cap=2 baseline, see technical_report.md §5.1."
 ---
 # Optimization Results Summary
 
+> **⚠️ HISTORICAL DOCUMENT (Pre-DEC-010):** The optimization results in this document were generated with **capacity=5** units per firehouse (the Phase 3 default). The project default has since been changed to **capacity=2** per DEC-010. Tables showing "Max Units = 5" reflect the cap=5 regime. For current production simulation results with capacity=2, see the [Technical Report §5.1](../core/technical_report.md) and `results/baseline/`. Directional findings (P2 dominates P0, diminishing returns at K≥20) remain valid.
+
 **EMS Optimization Project - Phase 3: Policy Generation and Performance Comparison**
 
-*Last Updated: March 12, 2026*
+*Last Updated: March 22, 2026*
 
 ---
 
@@ -35,7 +37,7 @@ We generated and compared five EMS unit allocation policies across four resource
 
 **Constraints**:
 - Total units: K ∈ {20, 30, 40, 48}
-- Firehouse capacity: max 2 units per location (default; sensitivity tested 1–5)
+- Firehouse capacity: max 5 units per location (Phase 3 default; current default is cap=2 per DEC-010)
 - Travel speed: 20 mph (average)
 - Coverage threshold: 8 minutes
 

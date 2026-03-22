@@ -84,14 +84,14 @@ def solve_allocations(tt, demand):
     """Solve Manhattan-wide and CBD-focused P2."""
     # Manhattan-wide P2
     logger.info("Solving Manhattan-wide P2 (demand_weighted)...")
-    prob_mw = build_demand_weighted(tt, demand, K=K, capacity=5)
+    prob_mw = build_demand_weighted(tt, demand, K=K, capacity=2)
     prob_mw.solve(pulp.PULP_CBC_CMD(msg=0, timeLimit=120))
     alloc_mw = extract_allocation(prob_mw)
     logger.info(f"  Manhattan-wide: {int(alloc_mw.sum())} units, {(alloc_mw>0).sum()} firehouses")
 
     # CBD-focused P2
     logger.info("Solving CBD-focused P2...")
-    prob_cbd = build_cbd_focused_demand_weighted(tt, demand, K=K, cbd_precincts=CBD_PRECINCTS, capacity=5)
+    prob_cbd = build_cbd_focused_demand_weighted(tt, demand, K=K, cbd_precincts=CBD_PRECINCTS, capacity=2)
     prob_cbd.solve(pulp.PULP_CBC_CMD(msg=0, timeLimit=120))
     alloc_cbd = extract_allocation(prob_cbd)
     logger.info(f"  CBD-focused: {int(alloc_cbd.sum())} units, {(alloc_cbd>0).sum()} firehouses")

@@ -62,8 +62,8 @@ Both optimisations allocated K=20 units across 20 firehouses. Only **2 firehouse
 
 | Scenario | Mean RT (min) | Median RT (min) | P90 (90th %ile) RT (min) | 8-min Coverage (NFPA) |
 |----------|--------------|----------------|-------------|-------------------|
-| **P2-Haversine** | 2.55 | 2.24 | 3.73 | 99.6% |
-| **P2-Manhattan** | 2.55 | 2.24 | 3.73 | 99.6% |
+| **P2-Haversine** | 2.54 | 2.24 | 3.68 | 99.7% |
+| **P2-Manhattan** | 2.54 | 2.24 | 3.66 | 99.7% |
 
 The simulation results are **nearly identical** because the simulation engine uses its own travel-time model (Haversine-based) regardless of which distance metric was used for optimisation.
 

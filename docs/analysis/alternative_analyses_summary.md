@@ -31,10 +31,10 @@ Does the choice of distance metric (Haversine vs Manhattan/taxicab) significantl
 
 | Metric | Mean RT (min) | Coverage (≤8 min) | Active Firehouses |
 |--------|--------------|-------------------|-------------------|
-| Haversine P0 | 3.17 | 99.6% | 20 |
+| Haversine P0 | 3.17 | 99.7% | 20 |
 | Haversine P1 | 2.63 | 99.6% | 20 |
-| Haversine P2 | 2.57 | 99.6% | 20 |
-| Manhattan P2 | 2.55 | 99.6% | 20 |
+| Haversine P2 | 2.57 | 99.7% | 20 |
+| Manhattan P2 | 2.55 | 99.7% | 20 |
 
 - Manhattan distances are ~27% longer than Haversine on average
 - Allocations differ at only 2 of 48 firehouses

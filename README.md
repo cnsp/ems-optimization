@@ -13,7 +13,7 @@
 |--------|----------------------|-----------------|-------------|
 | Mean Response Time | 3.17 min | **2.57 min** | **−19.0%** |
 | P95 Response Time | 6.26 min | **4.66 min** | **−25.6%** |
-| 8-min Coverage | 99.6% | **99.6%** | +0.0 pp |
+| 8-min Coverage | 99.7% | **99.7%** | +0.0 pp |
 | Mean Utilization | 7.6% | 7.5% | −0.1 pp |
 
 Results based on 2,700+ simulation experiments with 30 replications each (p < 0.001).
@@ -136,7 +136,7 @@ ems-optimization/
 │ ├── optimization/ # MIP formulations, policies & allocator
 │ ├── simulation/ # SimPy DES engine
 │ └── utils/ # Distance calculations
-├── tests/ # 39 unit tests (pytest)
+├── tests/ # 176 unit tests (pytest)
 ├── requirements.txt # Python dependencies
 ├── Makefile # Build automation
 └── LICENSE # MIT License
@@ -300,7 +300,7 @@ print(f"Mean RT: {metrics['mean_response_time']:.2f} min")
 ## How to Run Tests
 
 ```bash
-# Run all 39 tests
+# Run all 176 tests
 pytest tests/ -v
 
 # Run specific test modules
