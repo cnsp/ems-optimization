@@ -24,12 +24,19 @@ warnings.filterwarnings('ignore')
 
 # Paths
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-CAPACITY = 5  # v1 optimization results used capacity=5 (implicit default)
-RESULTS_DIR = BASE_DIR / 'results' / 'optimization'
+CAPACITY = 2  # v2 baseline uses capacity=2 (DEC-010)
+RESULTS_DIR = BASE_DIR / 'results' / 'baseline' / 'simulation'
 FIGURES_DIR = BASE_DIR / 'results' / 'figures'
 
-# Load data
-results_df = pd.read_csv(RESULTS_DIR / 'policy_comparison.csv')
+# Load V2 baseline data and build tradeoff table
+_raw = pd.read_csv(RESULTS_DIR / 'all_results_raw.csv')
+# Aggregate per (policy, K): mean response_time and mean coverage_8min
+_agg = _raw.groupby(['policy', 'K']).agg(
+    response_time=('mean_response_time', 'mean'),
+    pct_demand_covered=('coverage_8min', lambda x: x.mean() * 100),
+).reset_index()
+_agg.rename(columns={'policy': 'policy_id'}, inplace=True)
+results_df = _agg
 
 print("Data loaded:")
 print(results_df[['K', 'policy_id', 'response_time', 'pct_demand_covered']].to_string(index=False))
@@ -38,14 +45,15 @@ print(results_df[['K', 'policy_id', 'response_time', 'pct_demand_covered']].to_s
 # Policy display configuration
 # ============================================================================
 POLICY_INFO = {
-    'P0':  {'name': 'P0: Spatially-Stratified Baseline',         'marker': 's', 'zorder': 5},
-    'P1':  {'name': 'P1: Demand-Proportional',       'marker': '^', 'zorder': 6},
-    'P2':  {'name': 'P2: Demand-Weighted Opt.',      'marker': 'o', 'zorder': 7},
-    'P2b': {'name': 'P2b: P-Median Opt.',            'marker': 'D', 'zorder': 7},
-    'P2c': {'name': 'P2c: Maximal Coverage Opt.',    'marker': 'P', 'zorder': 6},
+    'P0':  {'name': 'P0: Spatially-Stratified Baseline',  'marker': 's', 'zorder': 5},
+    'P1':  {'name': 'P1: Demand-Proportional',             'marker': '^', 'zorder': 6},
+    'P2':  {'name': 'P2: Demand-Weighted Opt.',            'marker': 'o', 'zorder': 7},
 }
 
-K_COLORS = {20: '#1f77b4', 30: '#ff7f0e', 40: '#2ca02c', 48: '#d62728'}
+K_COLORS = {
+    10: '#9467bd', 15: '#8c564b', 20: '#1f77b4', 25: '#17becf',
+    30: '#ff7f0e', 35: '#bcbd22', 40: '#2ca02c', 45: '#e377c2', 48: '#d62728',
+}
 
 # ============================================================================
 # Figure 1: Improved scatter with jitter and smart annotations
@@ -172,7 +180,7 @@ ax_table.axis('off')
 # Create summary table
 table_data = []
 for K in sorted(results_df['K'].unique()):
-    for pid in ['P0', 'P1', 'P2', 'P2b', 'P2c']:
+    for pid in ['P0', 'P1', 'P2']:
         row = results_df[(results_df['K'] == K) & (results_df['policy_id'] == pid)]
         if len(row) > 0:
             r = row.iloc[0]

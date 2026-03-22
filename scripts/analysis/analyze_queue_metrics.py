@@ -2,7 +2,7 @@
 """Queue Metrics Analysis for EMS Optimization Study.
 
 Extracts, analyzes, and visualizes queue-related metrics from all
-production experiment results and CBD experiments.
+V2 baseline experiment results and CBD experiments.
 
 Default outputs:
   - results/analysis/figures/queue_comparison_by_policy.png
@@ -48,17 +48,18 @@ POLICY_COLORS = {"P0": "#e74c3c", "P1": "#f39c12", "P2": "#27ae60"}
 
 
 def load_all_production_results() -> dict:
-    """Load all production experiment CSVs."""
-    prod_dir = PROJECT_ROOT / "results" / "analysis" / "simulation" / "production"
+    """Load all V2 baseline experiment CSVs (cap=2)."""
+    prod_dir = PROJECT_ROOT / "results" / "baseline" / "simulation"
     data = {}
-    for f in sorted(prod_dir.glob("exp*.csv")):
+    search_dir = prod_dir
+    for f in sorted(search_dir.glob("exp*.csv")):
         name = f.stem
         if name == "experiment_summary":
             continue  # Skip summary file
         df = pd.read_csv(f)
         if "replication" in df.columns:
             data[name] = df
-            logger.info(f"Loaded {name}: {len(df)} rows")
+            logger.info(f"Loaded {name}: {len(df)} rows, source={search_dir.name}")
     return data
 
 

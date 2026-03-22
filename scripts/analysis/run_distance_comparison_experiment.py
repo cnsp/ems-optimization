@@ -78,7 +78,7 @@ def load_data():
 def solve_p2(travel_time, demand, label="P2"):
     """Solve demand-weighted allocation."""
     import pulp
-    prob = build_demand_weighted(travel_time, demand, K=K, capacity=5)
+    prob = build_demand_weighted(travel_time, demand, K=K, capacity=2)
     prob.solve(pulp.PULP_CBC_CMD(msg=0, timeLimit=120))
     alloc = extract_allocation(prob)
     logger.info(f"  {label}: {int(alloc.sum())} units across {(alloc>0).sum()} firehouses")

@@ -3,7 +3,7 @@
 Phase 6 – Publication-Quality Figures
 ======================================
 
-Reads production experiment CSVs and generates five publication figures (300 DPI).
+Reads V2 baseline experiment CSVs and generates five publication figures (300 DPI).
 
 Default output: results/analysis/figures/
 """
@@ -23,19 +23,20 @@ from scipy import stats
 # Config
 # ---------------------------------------------------------------------------
 PROJECT = Path(__file__).resolve().parent.parent.parent
-DATA_DIR = PROJECT / "results" / "analysis" / "simulation" / "production"
+DATA_DIR = PROJECT / "results" / "baseline" / "simulation"
 DEFAULT_FIG_DIR = PROJECT / "results" / "analysis" / "figures"
 FIG_DIR = DEFAULT_FIG_DIR  # overridden by --output-dir
 
 DPI = 300
-CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
+CAPACITY = 2  # v2 baseline uses capacity=2 (DEC-010)
 PALETTE = {"P0": "#d62728", "P1": "#1f77b4", "P2": "#2ca02c"}
 POLICY_LABELS = {"P0": "P0 (Spatially-Stratified)", "P1": "P1 (Demand-Prop.)", "P2": "P2 (Max Coverage)"}
 sns.set_theme(style="whitegrid", font_scale=1.1, rc={"figure.dpi": DPI})
 
 
 def load(name: str) -> pd.DataFrame:
-    return pd.read_csv(DATA_DIR / f"{name}.csv")
+    path = DATA_DIR / f"{name}.csv"
+    return pd.read_csv(path)
 
 
 # ===================================================================

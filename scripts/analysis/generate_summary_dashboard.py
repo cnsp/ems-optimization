@@ -28,10 +28,10 @@ from matplotlib.patches import FancyBboxPatch
 # ── Paths ──────────────────────────────────────────────────────────
 PROJECT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TABLES  = os.path.join(PROJECT, "results", "analysis", "tables")
-SIM     = os.path.join(PROJECT, "results", "analysis", "simulation", "production")
+SIM     = os.path.join(PROJECT, "results", "baseline", "simulation")
 DEFAULT_OUT_DIR = os.path.join(PROJECT, "results", "analysis", "figures")
 
-CAPACITY = 5  # v1 production experiments used capacity=5 (implicit default)
+CAPACITY = 2  # v2 baseline uses capacity=2 (DEC-010)
 
 # ── Color Palette ──────────────────────────────────────────────────
 COLORS = {
@@ -55,7 +55,8 @@ def main():
 
     # ── Load Data ──────────────────────────────────────────────────────
     desc = pd.read_csv(os.path.join(TABLES, "descriptive_statistics.csv"))
-    exp_summary = pd.read_csv(os.path.join(SIM, "experiment_summary.csv"))
+    exp_summary_path = os.path.join(SIM, "experiment_summary.csv")
+    exp_summary = pd.read_csv(exp_summary_path)
 
     # ── Create Figure ──────────────────────────────────────────────────
     fig = plt.figure(figsize=(20, 14), facecolor='white')
@@ -215,7 +216,7 @@ def main():
         'NHPP demand model (λ₀=3.48/hr)',
         '3 MIP optimization models',
         'SimPy discrete-event simulation',
-        '1,440 production runs',
+        '1,440 baseline runs (cap=2)',
         '39 unit tests (all passing)',
         '7,134 lines of Python code',
         '33 figures, 27 result tables',
