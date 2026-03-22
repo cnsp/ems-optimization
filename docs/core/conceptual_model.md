@@ -139,6 +139,7 @@ in the system for the entire simulation horizon.
 ### 3.2 Capacity
 
 Total fleet size **K** is a scenario parameter (default values: 20, 30, 40, 48).
+These are illustrative examples from a quick-run subset and do not represent the full canonical K design (K = 10, 15, 20, 25, 30, 35, 40, 45, 48).
 Units are distributed across 48 Manhattan firehouses subject to:
 
 - Per-firehouse capacity cap: **C = 2** units maximum (default; sensitivity analysis tested C = 1–5).
@@ -670,7 +671,7 @@ will be varied in sensitivity experiments:
 | Base arrival rate λ₀ | 3.48 /hr | ±25% (2.61 – 4.35) |
 | Average EMS speed *v* | 20 mph | 15 – 25 mph |
 | Service time mean μ_s | 25 min | 20 – 35 min |
-| Total units *K* | 40 | {20, 30, 40, 48} |
+| Total units *K* | 40 | {20, 30, 40, 48} *(quick-run subset; full canonical: 10–48)* |
 | Response-time threshold τ | 8 min | {6, 8, 10, 12} min |
 
 ---

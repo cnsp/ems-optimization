@@ -3,7 +3,7 @@
 
 Combinations: 9 K values × 3 policies × 4 capacity levels = 108 maps.
 
-K values: 5, 10, 15, 20, 25, 30, 35, 40, 45
+K values: 10, 15, 20, 25, 30, 35, 40, 45, 48
 Policies: P0 (spatially-stratified), P1 (demand-proportional), P2 (demand-weighted optimisation)
 Capacities: 1, 2, 3, 5
 
@@ -45,7 +45,7 @@ logging.basicConfig(
 log = logging.getLogger("heatmaps")
 
 # ── Configuration ────────────────────────────────────────────────────
-K_VALUES = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+K_VALUES = [10, 15, 20, 25, 30, 35, 40, 45, 48]
 CAPACITY_VALUES = [1, 2, 3, 5]
 POLICY_NAMES = ["P0", "P1", "P2"]  # display names
 POLICY_INTERNAL = {

@@ -34,7 +34,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 | Factor | Symbol | Levels | Values |
 |--------|--------|--------|--------|
 | Allocation Policy | π | 3 | P0 (Uniform), P1 (Demand-Proportional), P2 (Demand-Weighted) |
-| Fleet Size | K | 6 | 15, 20, 25, 30, 35, 40 |
+| Fleet Size | K | 6 | 15, 20, 25, 30, 35, 40 *(Exp2 subset; full canonical design: K = 10–48)* |
 | Demand Multiplier | δ | 6 | 0.5, 0.75, 1.0, 1.25, 1.5, 2.0 |
 | Service Time Mean | μ_s | 3 | 20 min (−20%), 25 min (baseline), 30 min (+20%) |
 
@@ -98,7 +98,7 @@ Standard deviation is held proportional (σ/μ ratio constant).
 
 ### Experiment 2: Fleet Size Sensitivity
 - **Objective**: Evaluate performance across fleet sizes
-- **Factors**: π ∈ {P0, P1, P2}, K ∈ {15, 20, 25, 30, 35, 40}, δ = 1.0, μ_s = 25, **C = 5**
+- **Factors**: π ∈ {P0, P1, P2}, K ∈ {15, 20, 25, 30, 35, 40} *(Exp2 subset; full production design: K = 10–48)*, δ = 1.0, μ_s = 25, **C = 5**
 - **Runs**: 3 × 6 × 30 = **540 runs**
 - **Output**: `results/analysis/simulation/production/exp2_fleet_sensitivity.csv`
 

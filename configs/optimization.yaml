@@ -5,6 +5,8 @@
 # ============================================================
 
 # Total EMS units to allocate (scenarios to evaluate)
+# NOTE: [20, 30, 40, 48] is the quick-run subset.
+# Full canonical K values: [10, 15, 20, 25, 30, 35, 40, 45, 48]
 unit_counts: [20, 30, 40, 48]
 
 # Default total units if not specified

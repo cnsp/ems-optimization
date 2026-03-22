@@ -29,6 +29,8 @@ A total of **2,700+ simulation replications** were run across five experiment se
 using 30 independent replications per scenario with
 Common Random Numbers (CRN) for fair comparisons.
 
+> **Scope note:** This summary focuses on the Exp2 subset K = 15–40. The full canonical experimental design spans K = 10–48.
+
 **All analyses use capacity=2 units per firehouse (the operationally optimal default).**
 Capacity sensitivity analysis (cap 1–5) confirmed that capacity=2 matches or improves
 upon higher capacity limits at typical fleet sizes; see the technical report §5.12 for details.
