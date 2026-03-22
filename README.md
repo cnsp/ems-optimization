@@ -11,10 +11,10 @@
 
 | Metric | P0 (Baseline) | P2 (Optimized) | Improvement |
 |--------|----------------------|-----------------|-------------|
-| Mean Response Time | 3.17 min | **2.57 min** | **−19.0%** |
+| Mean Response Time | 3.17 min | **2.57 min** | **−18.9%** |
 | P95 Response Time | 6.26 min | **4.66 min** | **−25.6%** |
 | 8-min Coverage | 99.7% | **99.7%** | +0.0 pp |
-| Mean Utilization | 7.6% | 7.5% | −0.1 pp |
+| Mean Utilization | 7.6% | 7.4% | −0.2 pp |
 
 Results based on 2,700+ simulation experiments with 30 replications each (p < 0.001).
 Capacity sensitivity analysis (cap 1–5) confirms cap=2 as operationally optimal default.
