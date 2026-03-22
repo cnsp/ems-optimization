@@ -23,10 +23,11 @@ Usage
 -----
     python scripts/analysis/generate_precinct_demand_visualizations.py
 
-Outputs are saved to ``results/figures/``.
+Default output: ``results/baseline/figures/``
 """
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -46,8 +47,8 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 DATA_RAW = PROJECT_ROOT / "data" / "raw"
-FIGURES_DIR = PROJECT_ROOT / "results" / "figures"
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+DEFAULT_FIGURES_DIR = PROJECT_ROOT / "results" / "baseline" / "figures"
+FIGURES_DIR = DEFAULT_FIGURES_DIR  # overridden by --output-dir
 
 # ---------------------------------------------------------------------------
 # Colours
@@ -64,7 +65,7 @@ MEDIAN_COLOUR = "#E67E22"
 def load_demand() -> pd.DataFrame:
     """Load precinct demand data and compute daily crash rate."""
     df = pd.read_csv(DATA_PROCESSED / "demand_lambda_precinct.csv")
-    df["crashes_per_day"] = df["crash_rate_per_hour"] * 24
+    df["crashes_per_day"] = df["lambda_per_hour"] * 24
     return df.sort_values("crashes_per_day", ascending=True).reset_index(drop=True)
 
 
@@ -266,6 +267,18 @@ def generate_spatial_heatmap(df: pd.DataFrame) -> Path:
 # ---------------------------------------------------------------------------
 
 def main():
+    global FIGURES_DIR
+    parser = argparse.ArgumentParser(description="Generate precinct demand visualizations")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help=f"Output directory for figures (default: {DEFAULT_FIGURES_DIR})")
+    args = parser.parse_args()
+
+    if args.output_dir:
+        FIGURES_DIR = Path(args.output_dir)
+    else:
+        FIGURES_DIR = DEFAULT_FIGURES_DIR
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+
     print("=" * 60)
     print("Generating Precinct Demand Visualizations")
     print("=" * 60)
