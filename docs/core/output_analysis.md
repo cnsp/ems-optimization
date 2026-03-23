@@ -1,7 +1,7 @@
 ---
-status: 📋 REFERENCE
-last_updated: "2026-03-20"
-verified: "Specialized analysis document. Cross-reference with current production results."
+status: ✅ CURRENT
+last_updated: "2026-03-22"
+verified: "Aligned with technical_report.md and experimental_design.md. All metrics, run counts, and terminology current as of March 2026."
 ---
 # Output Analysis – Statistical Methodology
 
@@ -9,9 +9,13 @@ verified: "Specialized analysis document. Cross-reference with current productio
 
 This document specifies the statistical framework used to analyse results from the
 EMS Readiness Optimization production experiments (Phase 5). The analysis covers
-**1 440 simulation replications** across four experiment sets and three allocation
-policies. All procedures follow publication standards for discrete-event simulation
-output analysis (Law, 2015; Banks et al., 2010).
+**2,760 simulation runs** across five experiment sets (Policy & Fleet Analysis,
+Demand Sensitivity, Service Robustness, CBD Robustness, and Capacity Sensitivity)
+and three allocation policies (P0 Spatially-Stratified Uniform, P1 Demand-Proportional,
+P2 Demand-Weighted Optimized). All procedures follow publication standards for
+discrete-event simulation output analysis (Law, 2015; Banks et al., 2010).
+
+> **Cross-reference:** See `docs/core/technical_report.md` §4.5.1 for the full factorial design table and `docs/core/experimental_design.md` for detailed factor definitions.
 
 ---
 
@@ -21,8 +25,23 @@ output analysis (Law, 2015; Banks et al., 2010).
 |--------|--------|-----------|
 | Mean Response Time | $\bar{R}$ | Average minutes from call arrival to unit arrival on scene |
 | P90 (90th %ile) Response Time | $R_{90}$ | 90th percentile response time — time exceeded by only 10% of calls |
-| 8-min Coverage | $C_8$ | Fraction of calls responded to within 8 minutes |
+| 6-min Coverage (NYC law) | $C_6$ | Fraction of calls responded to within 6 minutes |
+| 8-min Coverage (NFPA standard) | $C_8$ | Fraction of calls responded to within 8 minutes |
 | Mean Utilization | $\bar{U}$ | Average fraction of time units are busy |
+| Mean Queue Length | $\bar{L}$ | Time-weighted average queue length |
+| Queue Fraction | $Q_f$ | Fraction of incidents that waited in queue |
+
+#### CBD-Specific Metrics (CBD Robustness experiment only)
+
+| Metric | Symbol | Definition |
+|--------|--------|-----------|
+| CBD Mean RT | $\bar{R}_{\text{CBD}}$ | Mean response time for CBD-zone incidents only |
+| CBD 6-min Coverage | $C_{6,\text{CBD}}$ | 6-minute coverage within the CBD |
+| CBD 8-min Coverage | $C_{8,\text{CBD}}$ | 8-minute coverage within the CBD |
+
+#### Capacity Sensitivity Metrics (Capacity experiment only)
+
+Capacity sensitivity analysis (cap 1–5) uses the same primary metrics above, evaluated at K ∈ {20, 40} with 15 replications per cell. See `docs/analysis/capacity_sensitivity_analysis.md`.
 
 ---
 

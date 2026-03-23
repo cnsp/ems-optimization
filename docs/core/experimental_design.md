@@ -11,7 +11,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 | ID | Research Question |
 |----|-------------------|
-| RQ1 | How do the three allocation policies (P0: Uniform, P1: Demand-Proportional, P2: Demand-Weighted Optimized) compare in terms of mean response time, P90 (90th percentile) response time, 6-minute coverage (NYC law), and 8-minute coverage (NFPA standard)? |
+| RQ1 | How do the three allocation policies (P0: Spatially-Stratified Uniform, P1: Demand-Proportional, P2: Demand-Weighted Optimized) compare in terms of mean response time, P90 (90th percentile) response time, 6-minute coverage (NYC law), and 8-minute coverage (NFPA standard)? |
 | RQ2 | How sensitive is each policy's performance to fleet size (K)? |
 | RQ3 | How robust is each policy to changes in demand intensity? |
 | RQ4 | How do service time variations affect policy performance? |
@@ -22,7 +22,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 |----|-----------|-----------|
 | H1 | P2 achieves lower mean response time than P1, which outperforms P0 | Optimization-based allocation better matches supply to demand |
 | H2 | P2's advantage over P0 diminishes as K increases | With excess capacity, allocation quality matters less |
-| H3 | All policies degrade under high demand, but P0 degrades fastest | Uniform allocation wastes units in low-demand areas |
+| H3 | All policies degrade under high demand, but P0 degrades fastest | Spatially-stratified uniform allocation wastes units in low-demand areas |
 | H4 | P2 is more robust to service time variation than P0 | Optimized placement compensates for longer on-scene times |
 
 ---
@@ -33,7 +33,7 @@ verified: "All metrics, code references, and nomenclature are current as of Marc
 
 | Factor | Symbol | Levels | Values |
 |--------|--------|--------|--------|
-| Allocation Policy | π | 3 | P0 (Uniform), P1 (Demand-Proportional), P2 (Demand-Weighted) |
+| Allocation Policy | π | 3 | P0 (Spatially-Stratified Uniform), P1 (Demand-Proportional), P2 (Demand-Weighted) |
 | Fleet Size | K | 6 | 15, 20, 25, 30, 35, 40 *(Exp2 subset; full canonical design: K = 10–48)* |
 | Demand Multiplier | δ | 6 | 0.5, 0.75, 1.0, 1.25, 1.5, 2.0 |
 | Service Time Mean | μ_s | 3 | 20 min (−20%), 25 min (baseline), 30 min (+20%) |
@@ -49,7 +49,7 @@ At fleet sizes K ≤ 30, the capacity constraint does not bind—results are ide
 ### Factor Details
 
 #### Allocation Policies
-- **P0 (Uniform)**: Equal distribution of K units across active firehouses (round-robin remainder)
+- **P0 (Spatially-Stratified Uniform)**: Latitude-based spatial selection of K evenly-spaced firehouses, providing even geographic coverage (see `spatially_stratified_allocation` in `src/ems_readiness/optimization/policies.py`)
 - **P1 (Demand-Proportional)**: Units proportional to nearest-firehouse demand credit
 - **P2 (Demand-Weighted Optimized)**: MIP minimizing expected demand-weighted response time
 
@@ -114,14 +114,18 @@ Standard deviation is held proportional (σ/μ ratio constant).
 - **Runs**: 3 × 3 × 30 = **270 runs**
 - **Output**: `results/analysis/simulation/production/exp4_service_robustness.csv`
 
-### Total Experimental Runs
+### Total Experimental Runs (Exp 1–4)
 | Experiment | Runs |
 |-----------|------|
 | Exp 1: Policy Comparison | 90 |
 | Exp 2: Fleet Sensitivity | 540 |
 | Exp 3: Demand Sensitivity | 540 |
 | Exp 4: Service Robustness | 270 |
-| **Total** | **1,440** |
+| **Subtotal (Exp 1–4)** | **1,440** |
+
+> **Note:** The full production design (documented in `docs/core/technical_report.md` §4.5.1) expands to **2,760 total runs** across five experiment sets by adding CBD Robustness (330 runs) and Capacity Sensitivity (450 runs, cap 1–5). The Policy & Fleet Analysis experiment uses the full canonical K range (10, 15, 20, 25, 30, 35, 40, 45, 48), totalling 810 runs. Exp 2 above documents the original 6-level K subset. All production results use **capacity=2**.
+>
+> **Run-count reconciliation:** The five table-level components in §4.5.1 (810 + 540 + 270 + 330 + 450) sum to 2,400, not 2,760. The 2,760 figure counts **all individual replication rows** across every output file. The 360-run difference arises because (a) the production pipeline stored its own experiment files (`exp1`–`exp4`) separately from the baseline sweep (`all_results_raw.csv`, 810 rows), adding 1,620 production rows (90 + 720 + 540 + 270), and (b) Exp 2's actual output includes 180 `P0_legacy` (uniform allocation) runs for backward-compatibility comparison, expanding it from 540 to 720. The Capacity Sensitivity experiment (450 runs) was executed but stored in aggregated form only (54 summary rows); its per-replication rows are not part of the 2,760 tally. See `technical_report.md` §4.5.1 for the full reconciliation table. A "run" = one 168-hour simulation replication for a single policy–parameter combination.
 
 ---
 
@@ -190,5 +194,16 @@ random_seed - Random seed used
 
 ---
 
+---
+
+## 8. Cross-References
+
+- **Full experimental design table** (all 5 experiment sets, 2,760 runs): `docs/core/technical_report.md` §4.5.1
+- **Output analysis methodology**: `docs/core/output_analysis.md`
+- **CBD robustness analysis**: `docs/analysis/cbd_analysis.md`
+- **Capacity sensitivity analysis**: `docs/analysis/capacity_sensitivity_analysis.md`
+
+---
+
 *Document created: Phase 5 – Experimental Design*
-*Last updated: 2026-03-12*
+*Last updated: 2026-03-22*

@@ -384,7 +384,21 @@ Built using **SimPy** discrete-event simulation library in Python:
 | Capacity Sensitivity | Policy × K (20, 40) × Cap (1–5) | cap=1–5 | 3×2×5 | 15 | 450 | §5.12 |
 | **Total** | | | | | **2,760** | |
 
-Each replication simulates 168 hours (1 week) with a 24-hour warm-up period. Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
+> **Run-count reconciliation note:** The five experiment rows above sum to 2,400, not 2,760. The reported total of **2,760** is the count of all individual simulation-replication rows across every experiment output file. The 360-run difference arises because the production pipeline (`results/analysis/simulation/production/`) generated its own experiment files **in addition to** the baseline sweep (`results/baseline/simulation/all_results_raw.csv`):
+>
+> | Source | File | Runs |
+> |--------|------|-----:|
+> | Baseline sweep (Policy & Fleet) | `all_results_raw.csv` | 810 |
+> | Production Exp 1 (Policy Comparison, K=20) | `exp1_policy_comparison.csv` | 90 |
+> | Production Exp 2 (Fleet Sensitivity, incl. P0\_legacy) | `exp2_fleet_sensitivity.csv` | 720 |
+> | Production Exp 3 (Demand Sensitivity) | `exp3_demand_sensitivity.csv` | 540 |
+> | Production Exp 4 (Service Robustness) | `exp4_service_robustness.csv` | 270 |
+> | CBD Robustness | `cbd_experiment_results.csv` | 330 |
+> | **Grand total** | | **2,760** |
+>
+> Exp 2 includes 180 runs for the `P0_legacy` (uniform) variant used for backward-compatibility comparison, expanding its count from the documented 3×6×30 = 540 to 4×6×30 = 720. The Capacity Sensitivity experiment (450 runs) was executed but its results are stored in aggregated form only (`simulation_results.csv`, 54 summary rows); its per-replication rows are not included in the 2,760 tally. A "run" is defined as one complete 168-hour (1-week) discrete-event simulation replication for a single policy–parameter combination.
+
+Each replication simulates 168 hours (1 week) with no warm-up period (terminating simulation; `warmup_hours: 0` in `configs/simulation.yaml`). Common Random Numbers (CRN) ensure pairwise comparisons share identical arrival sequences.
 
 **Capacity constraint:** All primary experiments use capacity=2 units per firehouse, established as the operationally optimal default by the Capacity Sensitivity experiment (§5.12). At fleet sizes K ≤ 30, capacity constraints do not bind—results are identical whether cap=2 or cap=5 is used. The Capacity Sensitivity experiment alone varies capacity from 1 to 5 to confirm this finding.
 
@@ -1229,7 +1243,7 @@ python scripts/run_verification.py
 # 6. Run validation pilots (3 pilots)
 python scripts/run_validation_pilots.py
 
-# 7. Execute production experiments (1,440 runs)
+# 7. Execute production experiments (810 runs: 3 policies × 9 K values × 30 reps)
 python scripts/run_production_v2.py
 
 # 8. Analyze production results
